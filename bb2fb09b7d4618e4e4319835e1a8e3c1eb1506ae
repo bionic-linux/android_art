@@ -46,6 +46,230 @@
       },
       "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b2d822_5bc0f100",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5440,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "The `CreateVarHandleCommonLocations()` call creates a `LocationSummary` indicating that the invoke shall be intrinsified, so it must be after the check whether to intrinsify.\n\nMove the `locations` and `old_temp_count` definitions to their old position after the non-Baker RB check.",
+      "range": {
+        "startLine": 5440,
+        "startChar": 31,
+        "endLine": 5440,
+        "endChar": 61
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6688fc6b_6b813d94",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "Move after the checks below.",
+      "range": {
+        "startLine": 4469,
+        "startChar": 31,
+        "endLine": 4469,
+        "endChar": 61
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16538305_80dcd25f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4470,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "Add\n\n    DCHECK_EQ(arg_index, 1u + GetExpectedVarHandleCoordinatesCount(invoke));\n\nwhich was somehow removed. (See line 4467 in \"Base\" version of this file.)",
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7581be_75b72c08",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2520,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "But it shall be clobbered, so we must make sure the register allocator shall not consider it unclobbered and reuse it for another instruction. Please add EAX as an explicit temp.",
+      "range": {
+        "startLine": 2520,
+        "startChar": 22,
+        "endLine": 2520,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e799a01d_9ad4de0f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4299,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "ditto\n\n(But `GetAndSet` with ignored return value is essentially a `Set`, so why are we even optimizing this case?)",
+      "range": {
+        "startLine": 4299,
+        "startChar": 27,
+        "endLine": 4299,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686cca9d_0c11a829",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4683,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4683,
+        "startChar": 22,
+        "endLine": 4683,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5124df_73ae7202",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2638,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "Mark it as clobbered by adding an explicit temp.",
+      "range": {
+        "startLine": 2638,
+        "startChar": 20,
+        "endLine": 2638,
+        "endChar": 50
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4254a50_bcc1a0fa",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4520,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4520,
+        "startChar": 22,
+        "endLine": 4520,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa880f56_6892bc40",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4845,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4845,
+        "startChar": 22,
+        "endLine": 4845,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b2c386_804d6f64",
+        "filename": "test/859-checker-var-handles-intrinsics/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T08:41:05Z",
+      "side": 1,
+      "message": "when the return value is ignored by the `VarHandle` call specifying a `void` return type.\n\n(Or add tests where the return value is not ignored.)",
+      "range": {
+        "startLine": 1,
+        "startChar": 37,
+        "endLine": 1,
+        "endChar": 72
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
