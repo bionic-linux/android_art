@@ -48,7 +48,6 @@ class ProfileCompilationInfo;
 class TimingLogger;
 class TypeLookupTable;
 class VdexFile;
-class VerificationResults;
 class ZipEntry;
 
 namespace debug {
@@ -115,7 +114,6 @@ enum class CopyOption {
 class OatWriter {
  public:
   OatWriter(const CompilerOptions& compiler_options,
-            const VerificationResults* verification_results,
             TimingLogger* timings,
             ProfileCompilationInfo* info);
 
@@ -376,7 +374,6 @@ class OatWriter {
 
   const CompilerDriver* compiler_driver_;
   const CompilerOptions& compiler_options_;
-  const VerificationResults* const verification_results_;
   ImageWriter* image_writer_;
   // Whether the dex files being compiled are going to be extracted to the vdex.
   bool extract_dex_files_into_vdex_;

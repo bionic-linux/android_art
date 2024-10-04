@@ -2648,7 +2648,6 @@ class Dex2Oat final {
       bool do_oat_writer_layout = DoOatLayoutOptimizations();
       oat_writers_.emplace_back(new linker::OatWriter(
           *compiler_options_,
-          verification_results_.get(),
           timings_,
           do_oat_writer_layout ? profile_compilation_info_.get() : nullptr));
     }

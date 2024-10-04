@@ -245,7 +245,6 @@ inline void ImageTest::DoCompile(ImageHeader::StorageMode storage_mode,
         elf_writers.emplace_back(CreateElfWriterQuick(*compiler_options_, oat_file.GetFile()));
         elf_writers.back()->Start();
         oat_writers.emplace_back(new OatWriter(*compiler_options_,
-                                               verification_results_.get(),
                                                &timings,
                                                /*profile_compilation_info*/nullptr));
       }
