@@ -21,7 +21,7 @@
 #      This file can be obtained from running `m dist` or by configuring the device with
 #      the `art/tools/boot-image-profile-configure-device.sh` script.
 #   2) the preloaded classes denylist which specify what clases should not be preloaded
-#      in Zygote. Usually located in usually in frameworks/base/config/preloaded-classes-denylist
+#      in Zygote. Usually located in usually in frameworks/base/boot/preloaded-classes-denylist
 #   3) a list of raw boot image profiles extracted from devices. An example how to do that is
 #      by running `art/tools/boot-image-profile-extract-profile.sh` script.
 #
@@ -41,9 +41,9 @@ fi
 if [[ "$#" -lt 4 ]]; then
   echo "Usage $0 <output-dir> <boot.zip-location> <preloaded-denylist-location> <profile-input1> <profile-input2> ... <profman args>"
   echo "Without any profman args the script will use defaults."
-  echo "Example: $0 output-dir boot.zip frameworks/base/config/preloaded-classes-denylist android1.prof android2.prof"
-  echo "         $0 output-dir boot.zip frameworks/base/config/preloaded-classes-denylist android.prof --profman-arg --upgrade-startup-to-hot=true"
-  echo "preloaded-deny-list-location is usually frameworks/base/config/preloaded-classes-denylist"
+  echo "Example: $0 output-dir boot.zip frameworks/base/boot/preloaded-classes-denylist android1.prof android2.prof"
+  echo "         $0 output-dir boot.zip frameworks/base/boot/preloaded-classes-denylist android.prof --profman-arg --upgrade-startup-to-hot=true"
+  echo "preloaded-deny-list-location is usually frameworks/base/boot/preloaded-classes-denylist"
   exit 1
 fi
 
