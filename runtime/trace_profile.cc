@@ -48,6 +48,21 @@ static constexpr size_t kAlwaysOnTraceHeaderSize = 8;
 
 bool TraceProfiler::profile_in_progress_ = false;
 
+void TraceProfiler::AllocateBuffer(Thread* thread) {
+  if (!art_flags::always_enable_profile_code()) {
+    LOG(ERROR) << "Feature not supported. Please build with ART_ALWAYS_ENABLE_PROFILE_CODE.";
+    return;
+  }
+
+  Thread* self = Thread::Current();
+  MutexLock mu(self, *Locks::trace_lock_);
+  if (!profile_in_progress_) {
+    return;
+  }
+
+  thread->SetLowOverheadMethodTraceBuffer(kAlwaysOnTraceBufSize);
+}
+
 void TraceProfiler::Start() {
   if (!art_flags::always_enable_profile_code()) {
     LOG(ERROR) << "Feature not supported. Please build with ART_ALWAYS_ENABLE_PROFILE_CODE.";
@@ -71,9 +86,12 @@ void TraceProfiler::Start() {
   ScopedSuspendAll ssa(__FUNCTION__);
   MutexLock tl(self, *Locks::thread_list_lock_);
   for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
-    auto buffer = new uintptr_t[kAlwaysOnTraceBufSize];
+    /*auto buffer = new uintptr_t[kAlwaysOnTraceBufSize];
     memset(buffer, 0, kAlwaysOnTraceBufSize * sizeof(uintptr_t));
-    thread->SetMethodTraceBuffer(buffer, kAlwaysOnTraceBufSize);
+    thread->SetMethodTraceBuffer(buffer, kAlwaysOnTraceBufSize);*/
+    // if (thread->GetThreadId() == ThreadList::kMainThreadId) {
+    thread->SetLowOverheadMethodTraceBuffer(kAlwaysOnTraceBufSize);
+    // }
   }
 }
 
@@ -112,8 +130,8 @@ uint8_t* TraceProfiler::DumpBuffer(uint32_t thread_id,
 
   int num_records = 0;
   uintptr_t prev_method_action_encoding = 0;
-  for (size_t i = 0; i < kAlwaysOnTraceBufSize; i++) {
-    uintptr_t method_action_encoding = method_trace_entries[num_records];
+  for (size_t i = kAlwaysOnTraceBufSize - 1; i > 0; i-=1) {
+    uintptr_t method_action_encoding = method_trace_entries[i];
     // 0 value indicates the rest of the entries are empty.
     if (method_action_encoding == 0) {
       break;
@@ -123,11 +141,14 @@ uint8_t* TraceProfiler::DumpBuffer(uint32_t thread_id,
     curr_buffer_ptr = EncodeSignedLeb128(curr_buffer_ptr, method_diff);
 
     ArtMethod* method = reinterpret_cast<ArtMethod*>(method_action_encoding & kMaskTraceAction);
-    methods.insert(method);
+    if (method != nullptr) {
+      methods.insert(method);
+    }
     num_records++;
     prev_method_action_encoding = method_action_encoding;
   }
 
+  LOG(ERROR) << "NumEntries " << num_records << " " << thread_id;
   // Fill in header information:
   // 1 byte of header identifier
   // 4 bytes of thread_id
@@ -198,16 +219,27 @@ void TraceProfiler::Dump(std::unique_ptr<File>&& trace_file) {
     // Reset the current pointer.
     thread->SetMethodTraceBufferCurrentEntry(kAlwaysOnTraceBufSize);
   }
+
+  // Write any data in to file and close the file.
+  if (curr_buffer_ptr != buffer_ptr) {
+    if (!trace_file->WriteFully(buffer_ptr, curr_buffer_ptr - buffer_ptr)) {
+      PLOG(WARNING) << "Failed streaming a tracing event.";
+    }
+  }
+  if (!trace_file->Close()) {
+    PLOG(WARNING) << "Failed to close file.";
+  }
 }
 
 void TraceProfiler::ReleaseThreadBuffer(Thread* self) {
   if (!IsTraceProfileInProgress()) {
+    self->SetMethodTraceBuffer(nullptr, 0);
     return;
   }
   // TODO(mythria): Maybe it's good to cache these and dump them when requested. For now just
   // relese the buffer when a thread is exiting.
-  auto buffer = self->GetMethodTraceBuffer();
-  delete[] buffer;
+  // auto buffer = self->GetMethodTraceBuffer();
+  // delete[] buffer;
   self->SetMethodTraceBuffer(nullptr, 0);
 }
 
