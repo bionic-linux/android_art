@@ -2635,8 +2635,10 @@ static void CreateUnsafeGetAndUpdateLocations(ArenaAllocator* allocator,
   // to take advantage of XCHG or XADD. Arbitrarily pick RAX.
   locations->SetInAt(3, Location::RegisterLocation(RAX));
   // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-  // same manner as it is used an as `in` register.
-  if (invoke->GetType() != DataType::Type::kVoid) {
+  // same manner as it is marked as a temp register.
+  if (invoke->GetType() == DataType::Type::kVoid) {
+    locations->AddTemp(Location::RegisterLocation(RAX));
+  } else {
     locations->SetOut(Location::RegisterLocation(RAX));
   }
 }
@@ -4516,13 +4518,6 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86_
     // A temporary is needed to load the new floating-point value into a register for XCHG.
     locations->AddTemp(Location::RequiresRegister());
   } else {
-    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-    // same manner as it is used an as `in` register.
-    if (!is_void) {
-      // Use the same register for both the new value and output to take advantage of XCHG.
-      // It doesn't have to be RAX, but we need to choose some to make sure it's the same.
-      locations->SetOut(Location::RegisterLocation(RAX));
-    }
     locations->SetInAt(new_value_index, Location::RegisterLocation(RAX));
     if (value_type == DataType::Type::kReference) {
       // Need two temporaries for MarkGCCard.
@@ -4532,6 +4527,15 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86_
         DCHECK(kUseBakerReadBarrier);
         locations->AddTemp(Location::RequiresRegister());
       }
+    }
+    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
+    // same manner as it is marked as a temp register.
+    if (is_void) {
+      locations->AddTemp(Location::RegisterLocation(RAX));
+    } else {
+      // Use the same register for both the new value and output to take advantage of XCHG.
+      // It doesn't have to be RAX, but we need to choose some to make sure it's the same.
+      locations->SetOut(Location::RegisterLocation(RAX));
     }
   }
 }
@@ -4841,14 +4845,6 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
     locations->AddTemp(Location::RequiresRegister());
   } else {
     DCHECK_NE(value_type, DataType::Type::kReference);
-    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-    // same manner as it is used an as `in` register.
-    if (!is_void) {
-      // Use the same register for both the new value and output to take advantage of XADD.
-      // It should be RAX, because the byte-swapping path of GenerateVarHandleGetAndAdd falls
-      // back to GenerateVarHandleGetAndOp that expects out in RAX.
-      locations->SetOut(Location::RegisterLocation(RAX));
-    }
     locations->SetInAt(new_value_index, Location::RegisterLocation(RAX));
     if (GetExpectedVarHandleCoordinatesCount(invoke) == 2) {
       // For byte array views with non-native endianness we need extra BSWAP operations, so we
@@ -4857,6 +4853,16 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
       // clobbered by repeated CMPXCHG) and one for performing the operation. At compile time we
       // cannot distinguish this case from arrays or native-endian byte array views.
       locations->AddRegisterTemps(2);
+    }
+    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
+    // same manner as it is marked as a temp register.
+    if (is_void) {
+      locations->AddTemp(Location::RegisterLocation(RAX));
+    } else {
+      // Use the same register for both the new value and output to take advantage of XADD.
+      // It should be RAX, because the byte-swapping path of GenerateVarHandleGetAndAdd falls
+      // back to GenerateVarHandleGetAndOp that expects out in RAX.
+      locations->SetOut(Location::RegisterLocation(RAX));
     }
   }
 }
