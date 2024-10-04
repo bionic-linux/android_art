@@ -44,6 +44,7 @@
 #include "thread-current-inl.h"
 #include "thread_list.h"
 #include "trace.h"
+#include "trace_profile.h"
 
 #include <sys/resource.h>
 
@@ -364,6 +365,7 @@ static void ZygoteHooks_nativePostForkChild(JNIEnv* env,
     runtime->GetJit()->PostForkChildAction(is_system_server, is_zygote);
   }
 
+  TraceProfiler::Start();
   // Update tracing.
   if (Trace::GetMethodTracingMode() != TracingMode::kTracingInactive) {
     TraceOutputMode output_mode = Trace::GetOutputMode();
