@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87add4b7_d6fca68a",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-04T09:12:38Z",
+      "side": 1,
+      "message": "Could you try casting it to `const uint8_t*`? Calculating the difference between two `const uint64_t*` gives you the number of `uint64_t` (8 bytes) between the two pointers, so it\u0027s not what you are looking for.",
+      "range": {
+        "startLine": 339,
+        "startChar": 23,
+        "endLine": 339,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9ad7be47_6b91598f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 338,
+                "startChar": 0,
+                "endLine": 340,
+                "endChar": 0
+              },
+              "replacement": "  const uint8_t* oatMethodQuickCode \u003d\n      reinterpret_cast\u003cconst uint8_t*\u003e(artMethod-\u003eGetOatMethodQuickCode(kRuntimePointerSize));\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 349,
+                "startChar": 0,
+                "endLine": 350,
+                "endChar": 0
+              },
+              "replacement": "                          oatMethodQuickCode - elfBegin;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d127fc17fdf975a2759de3b32ebaacd6f7e81e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ba8769_f85e7543",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-04T09:12:38Z",
+      "side": 1,
+      "message": "I think this should be `elfBegin`?",
+      "range": {
+        "startLine": 341,
+        "startChar": 7,
+        "endLine": 341,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "56ffdb58_2266369b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 341,
+                "startChar": 0,
+                "endLine": 342,
+                "endChar": 0
+              },
+              "replacement": "  auto odexOffset \u003d elfBegin;  // TODO: get the offset of the odex itself like from proc/\u003cpid\u003e/map\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0d127fc17fdf975a2759de3b32ebaacd6f7e81e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
