@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e96cc0_f089dfee",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:20:25Z",
+      "side": 1,
+      "message": "Is there a benefit to doing this versus an arena vector? We have to do a `auto* vregs \u003d reinterpret_cast\u003cHUserRecord\u003cHEnvironment*\u003e*\u003e(this + 1);` below and it is less intuitive than having a `vregs_` field.\nI\u0027d think that two allocations (one for `HEnvironment`, and the other for the `vregs`) should result in the same code. The only difference is that they wouldn\u0027t be guaranteed to be contiguous but that should be fine I\u0027d think.",
+      "range": {
+        "startLine": 2082,
+        "startChar": 0,
+        "endLine": 2084,
+        "endChar": 94
+      },
+      "revId": "6c0f5be5b42b8e9c97b79e5c3994310df6697ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
