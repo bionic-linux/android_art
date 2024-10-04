@@ -2634,8 +2634,9 @@ static void CreateUnsafeGetAndUpdateLocations(ArenaAllocator* allocator,
   // Use the same register for both the output and the new value or addend
   // to take advantage of XCHG or XADD. Arbitrarily pick RAX.
   locations->SetInAt(3, Location::RegisterLocation(RAX));
+  locations->AddTemp(Location::RegisterLocation(RAX));
   // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-  // same manner as it is used an as `in` register.
+  // same manner as it is marked as a temp register.
   if (invoke->GetType() != DataType::Type::kVoid) {
     locations->SetOut(Location::RegisterLocation(RAX));
   }
@@ -4516,8 +4517,9 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86_
     // A temporary is needed to load the new floating-point value into a register for XCHG.
     locations->AddTemp(Location::RequiresRegister());
   } else {
+    locations->AddTemp(Location::RegisterLocation(RAX));
     // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-    // same manner as it is used an as `in` register.
+    // same manner as it is marked as a temp register.
     if (!is_void) {
       // Use the same register for both the new value and output to take advantage of XCHG.
       // It doesn't have to be RAX, but we need to choose some to make sure it's the same.
@@ -4841,8 +4843,9 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
     locations->AddTemp(Location::RequiresRegister());
   } else {
     DCHECK_NE(value_type, DataType::Type::kReference);
+    locations->AddTemp(Location::RegisterLocation(RAX));
     // Only set the `out` register if it's needed. In the void case we can still use RAX in the
-    // same manner as it is used an as `in` register.
+    // same manner as it is marked as a temp register.
     if (!is_void) {
       // Use the same register for both the new value and output to take advantage of XADD.
       // It should be RAX, because the byte-swapping path of GenerateVarHandleGetAndAdd falls
