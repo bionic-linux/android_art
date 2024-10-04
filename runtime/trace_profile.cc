@@ -112,8 +112,8 @@ uint8_t* TraceProfiler::DumpBuffer(uint32_t thread_id,
 
   int num_records = 0;
   uintptr_t prev_method_action_encoding = 0;
-  for (size_t i = 0; i < kAlwaysOnTraceBufSize; i++) {
-    uintptr_t method_action_encoding = method_trace_entries[num_records];
+  for (size_t i = kAlwaysOnTraceBufSize - 1; i > 0; i-=1) {
+    uintptr_t method_action_encoding = method_trace_entries[i];
     // 0 value indicates the rest of the entries are empty.
     if (method_action_encoding == 0) {
       break;
@@ -197,6 +197,16 @@ void TraceProfiler::Dump(std::unique_ptr<File>&& trace_file) {
     memset(method_trace_entries, 0, kAlwaysOnTraceBufSize * sizeof(uintptr_t));
     // Reset the current pointer.
     thread->SetMethodTraceBufferCurrentEntry(kAlwaysOnTraceBufSize);
+  }
+
+  // Write any data in to file and close the file.
+  if (curr_buffer_ptr != buffer_ptr) {
+    if (!trace_file->WriteFully(buffer_ptr, curr_buffer_ptr - buffer_ptr)) {
+      PLOG(WARNING) << "Failed streaming a tracing event.";
+    }
+  }
+  if (!trace_file->Close()) {
+    PLOG(WARNING) << "Failed to close file.";
   }
 }
 
