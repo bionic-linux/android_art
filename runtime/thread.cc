@@ -56,6 +56,7 @@
 #include "base/utils.h"
 #include "class_linker-inl.h"
 #include "class_root-inl.h"
+#include "com_android_art_flags.h"
 #include "debugger.h"
 #include "dex/descriptors_names.h"
 #include "dex/dex_file-inl.h"
@@ -111,6 +112,7 @@
 #include "thread-inl.h"
 #include "thread_list.h"
 #include "trace.h"
+#include "trace_profile.h"
 #include "verify_object.h"
 #include "well_known_classes-inl.h"
 
@@ -128,6 +130,7 @@
 
 extern "C" __attribute__((weak)) void* __hwasan_tag_pointer(const volatile void* p,
                                                             unsigned char tag);
+namespace art_flags = com::android::art::flags;
 
 namespace art HIDDEN {
 
@@ -1006,6 +1009,11 @@ bool Thread::Init(ThreadList* thread_list, JavaVMExt* java_vm, JNIEnvExt* jni_en
       LOG(ERROR) << "Failed to create JNIEnvExt: " << error_msg;
       return false;
     }
+  }
+
+  if (art_flags::always_enable_profile_code()) {
+    tlsPtr_.method_trace_buffer = trace_buffer;
+    tlsPtr_.method_trace_buffer_curr_entry = trace_buffer + kAlwaysOnTraceBufSize;
   }
 
   ScopedTrace trace3("ThreadList::Register");
