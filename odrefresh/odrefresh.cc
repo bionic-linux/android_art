@@ -1909,6 +1909,15 @@ OnDeviceRefresh::RunDex2oatForBootClasspath(const std::string& staging_dir,
                                                  preloaded_classes_file,
                                                  strerror(errno)));
     }
+
+    std::string art_preloaded_classes_file(GetArtRoot() + "/etc/preloaded-classes");
+    std::unique_ptr<File> art_file(OS::OpenFileForReading(art_preloaded_classes_file.c_str()));
+    if (art_file != nullptr) {
+      args.Add("--preloaded-classes-fds=%d", art_file->Fd());
+      readonly_files_raii.push_back(std::move(art_file));
+    } else if (errno == ENOENT) {
+      LOG(WARNING) << ART_FORMAT("Missing art preloaded classes file '{}'", art_preloaded_classes_file);
+    }
   } else {
     // Mainline extension.
     args.Add("--compiler-filter=%s", kMainlineCompilerFilter);
