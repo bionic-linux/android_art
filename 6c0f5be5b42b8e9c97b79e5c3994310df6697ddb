@@ -22,6 +22,30 @@
       },
       "revId": "6c0f5be5b42b8e9c97b79e5c3994310df6697ddb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4606d54_6675ddc6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-04T13:59:53Z",
+      "side": 1,
+      "message": "`ArenaVector\u003c\u003e` is 4 pointers. That adds up to a lot of memory and that\u0027s what I\u0027m reducing with this CL.\n\nWe could have a plain `HUserRecord\u003cHEnvironment*\u003e*` in addition to the `number_of_vregs_` and construct the `ArrayRe\u003c\u003e` from these two, but I\u0027d rather avoid allocating memory for that pointer.",
+      "parentUuid": "b8e96cc0_f089dfee",
+      "range": {
+        "startLine": 2082,
+        "startChar": 0,
+        "endLine": 2084,
+        "endChar": 94
+      },
+      "revId": "6c0f5be5b42b8e9c97b79e5c3994310df6697ddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
