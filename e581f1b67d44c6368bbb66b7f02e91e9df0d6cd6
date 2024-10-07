@@ -183,6 +183,29 @@
       },
       "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450a39dd_8794056e",
+        "filename": "runtime/thread-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T12:41:19Z",
+      "side": 1,
+      "message": "Fix indentation: 4 bytes.",
+      "range": {
+        "startLine": 587,
+        "startChar": 6,
+        "endLine": 587,
+        "endChar": 14
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
