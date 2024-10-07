@@ -16,6 +16,75 @@
       "message": "Please rebase.",
       "revId": "9798434a49d566cc728263337b2998e034fb333c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea829c36_a8404aff",
+        "filename": "runtime/arch/arm/native_entrypoints_arm.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T10:50:49Z",
+      "side": 1,
+      "message": "Not needed? (Same for other architectures.)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20de037_6aedf6bd",
+        "filename": "runtime/arch/arm64/asm_support_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T10:50:49Z",
+      "side": 1,
+      "message": "Move `ALL_ARGS_SIZE` and `SAVE_ALL_ARGS_INCREASE_FRAME` before `RESTORE_TWO_REGS_DECREASE_FRAME`. (Do not interleave `ALL_ARGS` macros with the single-instruction helpers.)",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38608f01_4139090f",
+        "filename": "runtime/arch/arm64/jni_entrypoints_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T10:50:49Z",
+      "side": 1,
+      "message": "Can we use TST+B.ne? Or could the linker put the target out of the B.ne range?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
