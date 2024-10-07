@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61faf329_357e008b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-07T14:18:39Z",
+      "side": 1,
+      "message": "Thanks!\nUnfortunately, I think especially the last comment below really needs to be addressed.",
+      "revId": "5c65b68df58549184a6a0518c85e7209b1db0ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef34b81_e40f7ba0",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-07T14:18:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this is equivalent to the original. This will return true if another thread increased target_footprint_ to something larger than new_footprint since we read old_target.\n\nI don\u0027t think that\u0027s desired here. We still want to retry here in that case.\n\nThis only affects the non-concurrent case, which is rarely used.",
+      "range": {
+        "startLine": 463,
+        "startChar": 6,
+        "endLine": 463,
+        "endChar": 54
+      },
+      "revId": "5c65b68df58549184a6a0518c85e7209b1db0ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c541f8_01c7bc87",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-07T14:18:39Z",
+      "side": 1,
+      "message": "Only needed the first time, since compare_echange_weak reloads it on failure.\nBut a comment to that effect wouldn\u0027t hurt.",
+      "range": {
+        "startLine": 3741,
+        "startChar": 4,
+        "endLine": 3741,
+        "endChar": 78
+      },
+      "revId": "5c65b68df58549184a6a0518c85e7209b1db0ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002e6687_6cebe1e5",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-07T14:18:39Z",
+      "side": 1,
+      "message": "\"if target_footprint_ \u003e\u003d target\"\n\nThe detailed failure condition seems important.",
+      "range": {
+        "startLine": 481,
+        "startChar": 46,
+        "endLine": 481,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3ea22690_5d8b1ec5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/heap.h",
+              "range": {
+                "startLine": 480,
+                "startChar": 0,
+                "endLine": 482,
+                "endChar": 0
+              },
+              "replacement": "  // Attempts to increase target footprint to the provided target value.\n  // Returns true if it was successful, false otherwise.\n  // If target_footprint_ \u003e\u003d target, returns false.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5c65b68df58549184a6a0518c85e7209b1db0ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
