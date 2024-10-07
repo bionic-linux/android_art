@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3fff9f_9809248e",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-07T09:56:03Z",
+      "side": 1,
+      "message": "Maybe extract this as a helper method somewhere in art/base?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3c4ea5f0_d5b1b711",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "imgdiag/imgdiag_test.cc",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "  if (IsOnVm()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3471acd4826d466ce421ee33dcc204142d8f0638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
