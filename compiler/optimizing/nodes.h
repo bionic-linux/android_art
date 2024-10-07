@@ -398,7 +398,6 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
         linear_order_(allocator->Adapter(kArenaAllocLinearOrder)),
         entry_block_(nullptr),
         exit_block_(nullptr),
-        maximum_number_of_out_vregs_(0),
         number_of_vregs_(0),
         number_of_in_vregs_(0),
         temporaries_vreg_slots_(0),
@@ -548,18 +547,6 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   void SetCurrentInstructionId(int32_t id) {
     CHECK_GE(id, current_instruction_id_);
     current_instruction_id_ = id;
-  }
-
-  uint16_t GetMaximumNumberOfOutVRegs() const {
-    return maximum_number_of_out_vregs_;
-  }
-
-  void SetMaximumNumberOfOutVRegs(uint16_t new_value) {
-    maximum_number_of_out_vregs_ = new_value;
-  }
-
-  void UpdateMaximumNumberOfOutVRegs(uint16_t other_value) {
-    maximum_number_of_out_vregs_ = std::max(maximum_number_of_out_vregs_, other_value);
   }
 
   void UpdateTemporariesVRegSlots(size_t slots) {
@@ -800,9 +787,6 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
 
   HBasicBlock* entry_block_;
   HBasicBlock* exit_block_;
-
-  // The maximum number of virtual registers arguments passed to a HInvoke in this graph.
-  uint16_t maximum_number_of_out_vregs_;
 
   // The number of virtual registers in this method. Contains the parameters.
   uint16_t number_of_vregs_;
@@ -2074,38 +2058,37 @@ class SideEffects : public ValueObject {
 // A HEnvironment object contains the values of virtual registers at a given location.
 class HEnvironment : public ArenaObject<kArenaAllocEnvironment> {
  public:
-  ALWAYS_INLINE HEnvironment(ArenaAllocator* allocator,
-                             size_t number_of_vregs,
-                             ArtMethod* method,
-                             uint32_t dex_pc,
-                             HInstruction* holder)
-      : vregs_(number_of_vregs, allocator->Adapter(kArenaAllocEnvironmentVRegs)),
-        locations_(allocator->Adapter(kArenaAllocEnvironmentLocations)),
-        parent_(nullptr),
-        method_(method),
-        dex_pc_(dex_pc),
-        holder_(holder) {
+  static HEnvironment* Create(ArenaAllocator* allocator,
+                              size_t number_of_vregs,
+                              ArtMethod* method,
+                              uint32_t dex_pc,
+                              HInstruction* holder) {
+    // The storage for vreg records is allocated right after the `HEnvironment` itself.
+    static_assert(IsAligned<alignof(HUserRecord<HEnvironment*>)>(sizeof(HEnvironment)));
+    static_assert(IsAligned<alignof(HUserRecord<HEnvironment*>)>(ArenaAllocator::kAlignment));
+    size_t alloc_size = sizeof(HEnvironment) + number_of_vregs * sizeof(HUserRecord<HEnvironment*>);
+    void* storage = allocator->Alloc(alloc_size, kArenaAllocEnvironment);
+    return new (storage) HEnvironment(number_of_vregs, method, dex_pc, holder);
   }
 
-  ALWAYS_INLINE HEnvironment(ArenaAllocator* allocator,
-                             const HEnvironment& to_copy,
-                             HInstruction* holder)
-      : HEnvironment(allocator,
-                     to_copy.Size(),
-                     to_copy.GetMethod(),
-                     to_copy.GetDexPc(),
-                     holder) {}
+  static HEnvironment* Create(ArenaAllocator* allocator,
+                              const HEnvironment& to_copy,
+                              HInstruction* holder) {
+    return Create(allocator, to_copy.Size(), to_copy.GetMethod(), to_copy.GetDexPc(), holder);
+  }
 
-  void AllocateLocations() {
-    DCHECK(locations_.empty());
-    locations_.resize(vregs_.size());
+  void AllocateLocations(ArenaAllocator* allocator) {
+    DCHECK(locations_ == nullptr);
+    if (Size() != 0u) {
+      locations_ = allocator->AllocArray<Location>(Size(), kArenaAllocEnvironmentLocations);
+    }
   }
 
   void SetAndCopyParentChain(ArenaAllocator* allocator, HEnvironment* parent) {
     if (parent_ != nullptr) {
       parent_->SetAndCopyParentChain(allocator, parent);
     } else {
-      parent_ = new (allocator) HEnvironment(allocator, *parent, holder_);
+      parent_ = Create(allocator, *parent, holder_);
       parent_->CopyFrom(parent);
       if (parent->GetParent() != nullptr) {
         parent_->SetAndCopyParentChain(allocator, parent->GetParent());
@@ -2114,7 +2097,7 @@ class HEnvironment : public ArenaObject<kArenaAllocEnvironment> {
   }
 
   void CopyFrom(ArrayRef<HInstruction* const> locals);
-  void CopyFrom(HEnvironment* environment);
+  void CopyFrom(const HEnvironment* environment);
 
   // Copy from `env`. If it's a loop phi for `loop_header`, copy the first
   // input to the loop phi instead. This is for inserting instructions that
@@ -2122,11 +2105,11 @@ class HEnvironment : public ArenaObject<kArenaAllocEnvironment> {
   void CopyFromWithLoopPhiAdjustment(HEnvironment* env, HBasicBlock* loop_header);
 
   void SetRawEnvAt(size_t index, HInstruction* instruction) {
-    vregs_[index] = HUserRecord<HEnvironment*>(instruction);
+    GetVRegs()[index] = HUserRecord<HEnvironment*>(instruction);
   }
 
   HInstruction* GetInstructionAt(size_t index) const {
-    return vregs_[index].GetInstruction();
+    return GetVRegs()[index].GetInstruction();
   }
 
   void RemoveAsUserOfInput(size_t index) const;
@@ -2136,15 +2119,19 @@ class HEnvironment : public ArenaObject<kArenaAllocEnvironment> {
   // HInstruction::ReplaceInput.
   void ReplaceInput(HInstruction* replacement, size_t index);
 
-  size_t Size() const { return vregs_.size(); }
+  size_t Size() const { return number_of_vregs_; }
 
   HEnvironment* GetParent() const { return parent_; }
 
   void SetLocationAt(size_t index, Location location) {
+    DCHECK_LT(index, number_of_vregs_);
+    DCHECK(locations_ != nullptr);
     locations_[index] = location;
   }
 
   Location GetLocationAt(size_t index) const {
+    DCHECK_LT(index, number_of_vregs_);
+    DCHECK(locations_ != nullptr);
     return locations_[index];
   }
 
@@ -2183,14 +2170,42 @@ class HEnvironment : public ArenaObject<kArenaAllocEnvironment> {
   }
 
  private:
-  ArenaVector<HUserRecord<HEnvironment*>> vregs_;
-  ArenaVector<Location> locations_;
-  HEnvironment* parent_;
-  ArtMethod* method_;
+  ALWAYS_INLINE HEnvironment(size_t number_of_vregs,
+                             ArtMethod* method,
+                             uint32_t dex_pc,
+                             HInstruction* holder)
+      : number_of_vregs_(dchecked_integral_cast<uint32_t>(number_of_vregs)),
+        dex_pc_(dex_pc),
+        holder_(holder),
+        parent_(nullptr),
+        method_(method),
+        locations_(nullptr) {
+  }
+
+  ArrayRef<HUserRecord<HEnvironment*>> GetVRegs() {
+    auto* vregs = reinterpret_cast<HUserRecord<HEnvironment*>*>(this + 1);
+    return ArrayRef<HUserRecord<HEnvironment*>>(vregs, number_of_vregs_);
+  }
+
+  ArrayRef<const HUserRecord<HEnvironment*>> GetVRegs() const {
+    auto* vregs = reinterpret_cast<const HUserRecord<HEnvironment*>*>(this + 1);
+    return ArrayRef<const HUserRecord<HEnvironment*>>(vregs, number_of_vregs_);
+  }
+
+  const uint32_t number_of_vregs_;
   const uint32_t dex_pc_;
 
   // The instruction that holds this environment.
   HInstruction* const holder_;
+
+  // The parent environment for inlined code.
+  HEnvironment* parent_;
+
+  // The environment's method, if resolved.
+  ArtMethod* method_;
+
+  // Locations assigned by the register allocator.
+  Location* locations_;
 
   friend class HInstruction;
 
@@ -2523,7 +2538,7 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
   void CopyEnvironmentFrom(HEnvironment* environment) {
     DCHECK(environment_ == nullptr);
     ArenaAllocator* allocator = GetBlock()->GetGraph()->GetAllocator();
-    environment_ = new (allocator) HEnvironment(allocator, *environment, this);
+    environment_ = HEnvironment::Create(allocator, *environment, this);
     environment_->CopyFrom(environment);
     if (environment->GetParent() != nullptr) {
       environment_->SetAndCopyParentChain(allocator, environment->GetParent());
@@ -2534,7 +2549,7 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
                                                 HBasicBlock* block) {
     DCHECK(environment_ == nullptr);
     ArenaAllocator* allocator = GetBlock()->GetGraph()->GetAllocator();
-    environment_ = new (allocator) HEnvironment(allocator, *environment, this);
+    environment_ = HEnvironment::Create(allocator, *environment, this);
     environment_->CopyFromWithLoopPhiAdjustment(environment, block);
     if (environment->GetParent() != nullptr) {
       environment_->SetAndCopyParentChain(allocator, environment->GetParent());
@@ -2786,7 +2801,7 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
     for (auto env_use_node = env_uses_.begin(); env_use_node != env_fixup_end; ++env_use_node) {
       HEnvironment* user = env_use_node->GetUser();
       size_t input_index = env_use_node->GetIndex();
-      user->vregs_[input_index] = HUserRecord<HEnvironment*>(this, before_env_use_node);
+      user->GetVRegs()[input_index] = HUserRecord<HEnvironment*>(this, before_env_use_node);
       before_env_use_node = env_use_node;
     }
   }
@@ -2796,8 +2811,8 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
     if (next != env_uses_.end()) {
       HEnvironment* next_user = next->GetUser();
       size_t next_index = next->GetIndex();
-      DCHECK(next_user->vregs_[next_index].GetInstruction() == this);
-      next_user->vregs_[next_index] = HUserRecord<HEnvironment*>(this, before_env_use_node);
+      DCHECK(next_user->GetVRegs()[next_index].GetInstruction() == this);
+      next_user->GetVRegs()[next_index] = HUserRecord<HEnvironment*>(this, before_env_use_node);
     }
   }
 
@@ -4175,8 +4190,7 @@ class HEqual final : public HCondition {
 
 class HNotEqual final : public HCondition {
  public:
-  HNotEqual(HInstruction* first, HInstruction* second,
-            uint32_t dex_pc = kNoDexPc)
+  HNotEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kNotEqual, first, second, dex_pc) {
   }
 
@@ -4221,8 +4235,7 @@ class HNotEqual final : public HCondition {
 
 class HLessThan final : public HCondition {
  public:
-  HLessThan(HInstruction* first, HInstruction* second,
-            uint32_t dex_pc = kNoDexPc)
+  HLessThan(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThan, first, second, dex_pc) {
   }
 
@@ -4261,8 +4274,7 @@ class HLessThan final : public HCondition {
 
 class HLessThanOrEqual final : public HCondition {
  public:
-  HLessThanOrEqual(HInstruction* first, HInstruction* second,
-                   uint32_t dex_pc = kNoDexPc)
+  HLessThanOrEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThanOrEqual, first, second, dex_pc) {
   }
 
@@ -4776,6 +4788,9 @@ class HInvoke : public HVariableInputSizeInstruction {
   // inputs at the end of their list of inputs.
   uint32_t GetNumberOfArguments() const { return number_of_arguments_; }
 
+  // Return the number of outgoing vregs.
+  uint32_t GetNumberOfOutVRegs() const { return number_of_out_vregs_; }
+
   InvokeType GetInvokeType() const {
     return GetPackedField<InvokeTypeField>();
   }
@@ -4841,6 +4856,7 @@ class HInvoke : public HVariableInputSizeInstruction {
   HInvoke(InstructionKind kind,
           ArenaAllocator* allocator,
           uint32_t number_of_arguments,
+          uint32_t number_of_out_vregs,
           uint32_t number_of_other_inputs,
           DataType::Type return_type,
           uint32_t dex_pc,
@@ -4857,9 +4873,10 @@ class HInvoke : public HVariableInputSizeInstruction {
           allocator,
           number_of_arguments + number_of_other_inputs,
           kArenaAllocInvokeInputs),
-      number_of_arguments_(number_of_arguments),
       method_reference_(method_reference),
       resolved_method_reference_(resolved_method_reference),
+      number_of_arguments_(dchecked_integral_cast<uint16_t>(number_of_arguments)),
+      number_of_out_vregs_(dchecked_integral_cast<uint16_t>(number_of_out_vregs)),
       intrinsic_(Intrinsics::kNone),
       intrinsic_optimizations_(0) {
     SetPackedField<InvokeTypeField>(invoke_type);
@@ -4869,11 +4886,14 @@ class HInvoke : public HVariableInputSizeInstruction {
 
   DEFAULT_COPY_CONSTRUCTOR(Invoke);
 
-  uint32_t number_of_arguments_;
   ArtMethod* resolved_method_;
   const MethodReference method_reference_;
   // Cached values of the resolved method, to avoid needing the mutator lock.
   const MethodReference resolved_method_reference_;
+
+  uint16_t number_of_arguments_;
+  uint16_t number_of_out_vregs_;
+
   Intrinsics intrinsic_;
 
   // A magic word holding optimizations for intrinsics. See intrinsics.h.
@@ -4884,6 +4904,7 @@ class HInvokeUnresolved final : public HInvoke {
  public:
   HInvokeUnresolved(ArenaAllocator* allocator,
                     uint32_t number_of_arguments,
+                    uint32_t number_of_out_vregs,
                     DataType::Type return_type,
                     uint32_t dex_pc,
                     MethodReference method_reference,
@@ -4891,6 +4912,7 @@ class HInvokeUnresolved final : public HInvoke {
       : HInvoke(kInvokeUnresolved,
                 allocator,
                 number_of_arguments,
+                number_of_out_vregs,
                 /* number_of_other_inputs= */ 0u,
                 return_type,
                 dex_pc,
@@ -4913,6 +4935,7 @@ class HInvokePolymorphic final : public HInvoke {
  public:
   HInvokePolymorphic(ArenaAllocator* allocator,
                      uint32_t number_of_arguments,
+                     uint32_t number_of_out_vregs,
                      uint32_t number_of_other_inputs,
                      DataType::Type return_type,
                      uint32_t dex_pc,
@@ -4926,6 +4949,7 @@ class HInvokePolymorphic final : public HInvoke {
       : HInvoke(kInvokePolymorphic,
                 allocator,
                 number_of_arguments,
+                number_of_out_vregs,
                 number_of_other_inputs,
                 return_type,
                 dex_pc,
@@ -4961,6 +4985,7 @@ class HInvokeCustom final : public HInvoke {
  public:
   HInvokeCustom(ArenaAllocator* allocator,
                 uint32_t number_of_arguments,
+                uint32_t number_of_out_vregs,
                 uint32_t call_site_index,
                 DataType::Type return_type,
                 uint32_t dex_pc,
@@ -4969,6 +4994,7 @@ class HInvokeCustom final : public HInvoke {
       : HInvoke(kInvokeCustom,
                 allocator,
                 number_of_arguments,
+                number_of_out_vregs,
                 /* number_of_other_inputs= */ 0u,
                 return_type,
                 dex_pc,
@@ -5016,6 +5042,7 @@ class HInvokeStaticOrDirect final : public HInvoke {
 
   HInvokeStaticOrDirect(ArenaAllocator* allocator,
                         uint32_t number_of_arguments,
+                        uint32_t number_of_out_vregs,
                         DataType::Type return_type,
                         uint32_t dex_pc,
                         MethodReference method_reference,
@@ -5028,6 +5055,7 @@ class HInvokeStaticOrDirect final : public HInvoke {
       : HInvoke(kInvokeStaticOrDirect,
                 allocator,
                 number_of_arguments,
+                number_of_out_vregs,
                 // There is potentially one extra argument for the HCurrentMethod input,
                 // and one other if the clinit check is explicit. These can be removed later.
                 (NeedsCurrentMethodInput(dispatch_info) ? 1u : 0u) +
@@ -5243,6 +5271,7 @@ class HInvokeVirtual final : public HInvoke {
  public:
   HInvokeVirtual(ArenaAllocator* allocator,
                  uint32_t number_of_arguments,
+                 uint32_t number_of_out_vregs,
                  DataType::Type return_type,
                  uint32_t dex_pc,
                  MethodReference method_reference,
@@ -5253,6 +5282,7 @@ class HInvokeVirtual final : public HInvoke {
       : HInvoke(kInvokeVirtual,
                 allocator,
                 number_of_arguments,
+                number_of_out_vregs,
                 0u,
                 return_type,
                 dex_pc,
@@ -5306,6 +5336,7 @@ class HInvokeInterface final : public HInvoke {
  public:
   HInvokeInterface(ArenaAllocator* allocator,
                    uint32_t number_of_arguments,
+                   uint32_t number_of_out_vregs,
                    DataType::Type return_type,
                    uint32_t dex_pc,
                    MethodReference method_reference,
@@ -5317,6 +5348,7 @@ class HInvokeInterface final : public HInvoke {
       : HInvoke(kInvokeInterface,
                 allocator,
                 number_of_arguments + (NeedsCurrentMethod(load_kind) ? 1 : 0),
+                number_of_out_vregs,
                 0u,
                 return_type,
                 dex_pc,
@@ -7530,6 +7562,7 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
  public:
   HStringBuilderAppend(HIntConstant* format,
                        uint32_t number_of_arguments,
+                       uint32_t number_of_out_vregs,
                        bool has_fp_args,
                        ArenaAllocator* allocator,
                        uint32_t dex_pc)
@@ -7544,7 +7577,8 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
             dex_pc,
             allocator,
             number_of_arguments + /* format */ 1u,
-            kArenaAllocInvokeInputs) {
+            kArenaAllocInvokeInputs),
+        number_of_out_vregs_(number_of_out_vregs) {
     DCHECK_GE(number_of_arguments, 1u);  // There must be something to append.
     SetRawInputAt(FormatIndex(), format);
   }
@@ -7559,6 +7593,9 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
     DCHECK_GE(InputCount(), 1u);
     return InputCount() - 1u;
   }
+
+  // Return the number of outgoing vregs.
+  uint32_t GetNumberOfOutVRegs() const { return number_of_out_vregs_; }
 
   size_t FormatIndex() const {
     return GetNumberOfArguments();
@@ -7578,6 +7615,9 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
 
  protected:
   DEFAULT_COPY_CONSTRUCTOR(StringBuilderAppend);
+
+ private:
+  uint32_t number_of_out_vregs_;
 };
 
 class HUnresolvedInstanceFieldGet final : public HExpression<1> {
