@@ -27,7 +27,7 @@
 extern "C" bool GetInitialArgs(const char*** args, size_t* num_args) {
   static const char* initial_args[] = {
       "--deadline_threshold_ms=1200000",  // hwasan takes ~10min.
-      "--slow_threshold_ms=300000",
+      "--slow_threshold_ms=3000000",
   };
   *args = initial_args;
   *num_args = 2;
