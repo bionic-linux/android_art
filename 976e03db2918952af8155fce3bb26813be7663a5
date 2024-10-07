@@ -16,6 +16,24 @@
       "message": "Does the `cpuVariants` list in `build/soong/android/arch_list.go` need an a510 target as well?",
       "revId": "976e03db2918952af8155fce3bb26813be7663a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09dda05_fd25a14a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2024-10-07T12:39:02Z",
+      "side": 1,
+      "message": "Hi Renato, I added build system support at\nhttps://android-review.googlesource.com/c/platform/build/soong/+/2696494",
+      "parentUuid": "b2026f54_eae1c7df",
+      "revId": "976e03db2918952af8155fce3bb26813be7663a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
