@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607019c3_c2dbcd32",
+        "filename": "runtime/arch/context.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T08:59:13Z",
+      "side": 1,
+      "message": "I\u0027d prefer to handle this with https://android-review.googlesource.com/3293973 . (While that cleanup makes a tiny step towards untangling `Context` from the host ISA, the pervasive use of `uintptr_t` makes it impossible to emulate an architecture with a different pointer size. Such emulation would require a deeper rewrite.)",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
