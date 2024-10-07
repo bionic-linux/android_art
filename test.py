@@ -20,6 +20,9 @@
 # --host: for host tests
 # --target: for target tests
 # All the other arguments will be passed to the run-test testrunner.
+
+# DO NOT SUBMIT
+
 import sys
 import subprocess
 import os
