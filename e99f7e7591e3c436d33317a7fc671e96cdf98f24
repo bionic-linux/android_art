@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26f333fc_e67fabc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T13:38:12Z",
+      "side": 1,
+      "message": "Small follow-up cleanup: https://android-review.googlesource.com/3296691 .",
+      "revId": "e99f7e7591e3c436d33317a7fc671e96cdf98f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
