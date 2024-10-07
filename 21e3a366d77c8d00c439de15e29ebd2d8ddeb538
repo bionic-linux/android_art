@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44914229_41fcc649",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4546,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-07T14:58:38Z",
+      "side": 1,
+      "message": "Moved down since there were some assumptions regarding other temps (e.g. the ones for MarkGCCard)",
+      "revId": "21e3a366d77c8d00c439de15e29ebd2d8ddeb538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
