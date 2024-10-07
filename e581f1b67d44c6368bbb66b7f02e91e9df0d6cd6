@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51ce7de8_3c1e581d",
+        "filename": "libartbase/arch/instruction_set.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "Typo - please add the missing period: `i.e.:` \n\n(Same twice in the commit message.)",
+      "range": {
+        "startLine": 57,
+        "startChar": 49,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "607019c3_c2dbcd32",
         "filename": "runtime/arch/context.h",
         "patchSetId": 6
@@ -19,6 +42,144 @@
         "startChar": 4,
         "endLine": 48,
         "endChar": 58
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcef79aa_549165f1",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "`InstructionSet::kArm`",
+      "range": {
+        "startLine": 414,
+        "startChar": 51,
+        "endLine": 414,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c39cb5_8b8c3bba",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "`InstructionSet::kArm64`",
+      "range": {
+        "startLine": 455,
+        "startChar": 51,
+        "endLine": 455,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b60f0e2_843d6a4e",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "`InstructionSet::kRiscv64`",
+      "range": {
+        "startLine": 511,
+        "startChar": 57,
+        "endLine": 511,
+        "endChar": 77
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfaa2caa_0746abc4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "`InstructionSet::kX86`",
+      "range": {
+        "startLine": 550,
+        "startChar": 51,
+        "endLine": 550,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c2384a_d69e4306",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "`InstructionSet::k86_64`\n\n(And we could have a local variable `static constexpr size_t kBytesPerSpill` defined before the `switch`.)",
+      "range": {
+        "startLine": 600,
+        "startChar": 54,
+        "endLine": 600,
+        "endChar": 74
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b37d946_b268aeae",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-07T09:27:26Z",
+      "side": 1,
+      "message": "If we were able to run simulator with host ISA and target ISA having different pointer sizes, should we actually use `dex2oat` with the target ISA pointer size?",
+      "range": {
+        "startLine": 1006,
+        "startChar": 49,
+        "endLine": 1006,
+        "endChar": 69
       },
       "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
