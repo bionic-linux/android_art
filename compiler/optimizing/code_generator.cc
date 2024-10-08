@@ -913,9 +913,8 @@ void CodeGenerator::BlockIfInRegister(Location location, bool is_out) const {
 }
 
 void CodeGenerator::AllocateLocations(HInstruction* instruction) {
-  ArenaAllocator* allocator = GetGraph()->GetAllocator();
   for (HEnvironment* env = instruction->GetEnvironment(); env != nullptr; env = env->GetParent()) {
-    env->AllocateLocations(allocator);
+    env->AllocateLocations();
   }
   instruction->Accept(GetLocationBuilder());
   DCHECK(CheckTypeConsistency(instruction));
