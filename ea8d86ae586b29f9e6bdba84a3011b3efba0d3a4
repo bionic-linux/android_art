@@ -1,0 +1,393 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6cf2ac_a419af0d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "This will not create a valid MemOperand. You will have to move the address to a register and do `MemOperand(reg)`. Alternatively, do `Location::RequiresRegister` in `CreateUnsafeGetAbsoluteLocations` and get rid of this case.",
+      "range": {
+        "startLine": 786,
+        "startChar": 13,
+        "endLine": 786,
+        "endChar": 29
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70745e5_3915b8b7",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Your case is different than `GenUnsafePut` and you don\u0027t need both value and source. They are the same.",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 29
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c718238c_5a724329",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 1128,
+        "startChar": 13,
+        "endLine": 1128,
+        "endChar": 29
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b303e3cf_1da4432f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2584,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Please add a comment saying that if `offset` is invalid then we treat this as an absolute get",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5569c3c2_21a2bd0f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2586,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "This should be done for relative loads only i.e. when `offset.IsValid()` is true",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31af0502_e9665802",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2592,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Do we need it for references too? That path doesn\u0027t use `absolute_address`",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16a884d_f874903f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Move into `GenerateIntrinsicSetStore`, as both paths use it.",
+      "range": {
+        "startLine": 3044,
+        "startChar": 0,
+        "endLine": 3046,
+        "endChar": 3
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ea0947_e12b7d8c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2337,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "There\u0027s no get/put absolute for references right? If so, this will always return false and we can simplify this.",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b688bb38_92da6699",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2415,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "unused, remove",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b08e12_14fda7a8",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2417,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "nit: `()` not needed",
+      "range": {
+        "startLine": 2417,
+        "startChar": 25,
+        "endLine": 2417,
+        "endChar": 26
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6d0062_5c26101a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "You are using the same address for lo and hi. I think that what you want is `Address(address_offset, 0);` and `Address(address_offset, 4);`",
+      "range": {
+        "startLine": 1768,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 45
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad52c59_97a4eaab",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "formatting is weird",
+      "range": {
+        "startLine": 1780,
+        "startChar": 61,
+        "endLine": 1784,
+        "endChar": 61
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc13610_b8fce9e2",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Same here, `IsUnsafeGetReference` will always return false",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02489fd7_2c5f7ae6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2213,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Case not relevant to absolute",
+      "range": {
+        "startLine": 2206,
+        "startChar": 0,
+        "endLine": 2213,
+        "endChar": 3
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9bc996_004be033",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2254,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d8553d_c34d43d9",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Same as others archs, this will be false",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa015954_ef4216f6",
+        "filename": "runtime/oat/image.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "int",
+      "range": {
+        "startLine": 37,
+        "startChar": 61,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037ebbae_ebfeb960",
+        "filename": "runtime/oat/image.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "int",
+      "range": {
+        "startLine": 37,
+        "startChar": 78,
+        "endLine": 37,
+        "endChar": 82
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5260dc9_c4c1682d",
+        "filename": "test/004-UnsafeTest/src/Main.java",
+        "patchSetId": 30
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-08T12:43:01Z",
+      "side": 1,
+      "message": "Why 16? We are using 8 right?",
+      "range": {
+        "startLine": 266,
+        "startChar": 40,
+        "endLine": 266,
+        "endChar": 42
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
