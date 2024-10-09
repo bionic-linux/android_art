@@ -100,6 +100,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7182f43_e4e0402a",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1899,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:39:30Z",
+      "side": 1,
+      "message": "What\u0027s the intended behaviour for old devices where this file has the union of ART and framework classes? Iiuc what\u0027ll happen now is that we\u0027ll create an image with classes from both files, so old devices will potentially waste memory on core classes wrt new platforms, and it\u0027ll get gradually worse as the core BCP changes. Is that acceptable or is something else needed (e.g. pruning classes in certain packages from this list)? Either way, it warrants a discussion in the CL description.",
+      "range": {
+        "startLine": 1899,
+        "startChar": 39,
+        "endLine": 1899,
+        "endChar": 82
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "922b9f70_5d45e1c1",
         "filename": "odrefresh/odrefresh.cc",
         "patchSetId": 11
