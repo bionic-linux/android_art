@@ -68,6 +68,7 @@ enum ArenaAllocKind {
   kArenaAllocTryCatchInfo,
   kArenaAllocUseListNode,
   kArenaAllocEnvironment,
+  kArenaAllocEnvironmentVRegs,
   kArenaAllocEnvironmentLocations,
   kArenaAllocLocationSummary,
   kArenaAllocSsaBuilder,
