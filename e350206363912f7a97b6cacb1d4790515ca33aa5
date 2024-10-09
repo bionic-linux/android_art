@@ -16,6 +16,29 @@
       "message": "Please rebase.",
       "revId": "e350206363912f7a97b6cacb1d4790515ca33aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55b19e4_0adb123a",
+        "filename": "runtime/arch/arm64/asm_support_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-09T16:04:39Z",
+      "side": 1,
+      "message": "Do we really need the macro for going to the slow path?\n\nI don\u0027t think we shall need transitions to host architecture when simulating these branches.\n\n(Maybe we need only the `CALL_SYMBOL`.)",
+      "range": {
+        "startLine": 517,
+        "startChar": 8,
+        "endLine": 517,
+        "endChar": 25
+      },
+      "revId": "e350206363912f7a97b6cacb1d4790515ca33aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
