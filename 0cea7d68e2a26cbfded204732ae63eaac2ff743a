@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bf156b_7e194601",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 34
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd3172c_ddde4350",
+      "revId": "0cea7d68e2a26cbfded204732ae63eaac2ff743a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b66aebb5_21844b37",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-09T08:47:40Z",
       "side": 1,
       "message": "Remove. This is done in `GenerateIntrinsicSetStore`",
+      "range": {
+        "startLine": 3095,
+        "startChar": 0,
+        "endLine": 3097,
+        "endChar": 3
+      },
+      "revId": "0cea7d68e2a26cbfded204732ae63eaac2ff743a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c24aeb_004d59a6",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 34
+      },
+      "lineNbr": 3097,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66aebb5_21844b37",
       "range": {
         "startLine": 3095,
         "startChar": 0,

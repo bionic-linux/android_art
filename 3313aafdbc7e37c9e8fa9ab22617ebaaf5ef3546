@@ -22,6 +22,30 @@
       },
       "revId": "3313aafdbc7e37c9e8fa9ab22617ebaaf5ef3546",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5186fa_ce392b4b",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 35
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3072cc07_2e9ed891",
+      "range": {
+        "startLine": 1118,
+        "startChar": 22,
+        "endLine": 1118,
+        "endChar": 61
+      },
+      "revId": "3313aafdbc7e37c9e8fa9ab22617ebaaf5ef3546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
