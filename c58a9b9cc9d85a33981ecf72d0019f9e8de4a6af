@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6b4af8_66ead6c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "It can be worth noting that this adds ~128 KiB to the APEX, just to confirm it\u0027s an intentional regression.",
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a66dbf0_b9dabe98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Nit: Please break long line.",
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b965d020_eca913de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to interpret these results. Do they confirm that the preloaded classes stay exactly the same with and without this topic?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22dedf6_12b4345b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "+jiakaiz for odrefresh changes.",
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29717a1c_4adce6cc",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1899,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Nit: Please make variable names more clear now that this isn\u0027t the only file.",
+      "range": {
+        "startLine": 1899,
+        "startChar": 16,
+        "endLine": 1899,
+        "endChar": 38
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922b9f70_5d45e1c1",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1918,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Is it intentional to ignore other I/O errors? What about using a lambda to avoid the code duplication wrt the above?",
+      "range": {
+        "startLine": 1918,
+        "startChar": 11,
+        "endLine": 1918,
+        "endChar": 31
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bd84b5_ca8fdc90",
+        "filename": "odrefresh/odrefresh_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Nit: Here too.",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 27
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9248d740_9d97815d",
+        "filename": "odrefresh/odrefresh_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be some test in this file that checks that dex2oat receives the correct args for `--preloaded-classes-fds`?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 78
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "280931c6_8220d400",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Does it correctly filter out the part of the image profile that shouldn\u0027t go into the platform? If not, how should it be used to generate both parts of the profile? Or if that\u0027s not something to document here then please rephrase to not give the impression that this is how to create \"the\" final boot image profile.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 95
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9240d67_9063d399",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-09T18:30:30Z",
+      "side": 1,
+      "message": "Nit: Too many \"usually\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "c58a9b9cc9d85a33981ecf72d0019f9e8de4a6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
