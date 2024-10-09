@@ -331,6 +331,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb580fb4_0c8cc3a7",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2337,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-09T08:47:40Z",
+      "side": 1,
+      "message": "I meant that since `IsUnsafeGetReference` will always be false, `can_call` will always be false and we can simplify the code",
+      "parentUuid": "34d0fc26_3b343a78",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b688bb38_92da6699",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 30
@@ -460,6 +478,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3169e0c_4f91772f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-09T08:47:40Z",
+      "side": 1,
+      "message": "\u003e PTAL and lmk if I did this right.\n\nYep, thanks!\n\n\u003e Also, I\u0027m a little concerned that my test passed. Am I missing something in test coverage that would have exposed this?\n\nThis particular part of the code is dead, since the only absolute intrinsic currently implemented is int32. For the other intriniscs, we will emit them as a regular call and won\u0027t be intrinsified",
+      "parentUuid": "33191308_98e8e1d7",
+      "range": {
+        "startLine": 1768,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 45
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aad52c59_97a4eaab",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 30
@@ -536,6 +578,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4fc13610_b8fce9e2",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89451d49_cbd54682",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-09T08:47:40Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "cf904d0c_b562e4eb",
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -653,6 +713,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "48d8553d_c34d43d9",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d185df7_d5c2740f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-09T08:47:40Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "9c9066d6_5bf844a1",
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
