@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3072cc07_2e9ed891",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 35
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-09T09:02:48Z",
+      "side": 1,
+      "message": "I think you might need a `.X()` at the end, like `GenUnsafePut` does for `base` i.e. `MemOperand(WRegisterFrom(address_loc).X());`",
+      "range": {
+        "startLine": 1118,
+        "startChar": 22,
+        "endLine": 1118,
+        "endChar": 61
+      },
+      "revId": "3313aafdbc7e37c9e8fa9ab22617ebaaf5ef3546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
