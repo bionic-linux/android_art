@@ -3135,18 +3135,6 @@ void HBoundType::SetUpperBound(const ReferenceTypeInfo& upper_bound, bool can_be
   SetPackedFlag<kFlagUpperCanBeNull>(can_be_null);
 }
 
-ReferenceTypeInfo ReferenceTypeInfo::Create(TypeHandle type_handle, bool is_exact) {
-  if (kIsDebugBuild) {
-    ScopedObjectAccess soa(Thread::Current());
-    DCHECK(IsValidHandle(type_handle));
-    if (!is_exact) {
-      DCHECK(!type_handle->CannotBeAssignedFromOtherTypes())
-          << "Callers of ReferenceTypeInfo::Create should ensure is_exact is properly computed";
-    }
-  }
-  return ReferenceTypeInfo(type_handle, is_exact);
-}
-
 std::ostream& operator<<(std::ostream& os, const ReferenceTypeInfo& rhs) {
   ScopedObjectAccess soa(Thread::Current());
   os << "["
