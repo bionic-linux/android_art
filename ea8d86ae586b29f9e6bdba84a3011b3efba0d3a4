@@ -247,6 +247,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f46201_67d4b91e",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd3172c_ddde4350",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f16a884d_f874903f",
@@ -288,6 +306,30 @@
         "startLine": 3044,
         "startChar": 0,
         "endLine": 3046,
+        "endChar": 3
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "951c4347_70da1877",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 3097,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66aebb5_21844b37",
+      "range": {
+        "startLine": 3095,
+        "startChar": 0,
+        "endLine": 3097,
         "endChar": 3
       },
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
@@ -343,6 +385,24 @@
       "side": 1,
       "message": "I meant that since `IsUnsafeGetReference` will always be false, `can_call` will always be false and we can simplify the code",
       "parentUuid": "34d0fc26_3b343a78",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e849bdf_cc47a4e3",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2337,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb580fb4_0c8cc3a7",
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -500,6 +560,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d69282_8e4e7ad1",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3169e0c_4f91772f",
+      "range": {
+        "startLine": 1768,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 45
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aad52c59_97a4eaab",
@@ -596,6 +680,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "cf904d0c_b562e4eb",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d3d0c5_a51c5eee",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89451d49_cbd54682",
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -731,6 +833,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "9c9066d6_5bf844a1",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f1bc9f_4b4f2e89",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d185df7_d5c2740f",
       "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
