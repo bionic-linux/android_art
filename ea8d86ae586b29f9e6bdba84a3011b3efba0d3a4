@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c47c817_506d9e9b",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3072cc07_2e9ed891",
+      "range": {
+        "startLine": 1118,
+        "startChar": 22,
+        "endLine": 1118,
+        "endChar": 61
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e70745e5_3915b8b7",
@@ -265,6 +289,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b29bf77_2579dad5",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd3172c_ddde4350",
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f16a884d_f874903f",
@@ -323,6 +365,30 @@
         "id": 1059977
       },
       "writtenOn": "2024-10-09T08:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66aebb5_21844b37",
+      "range": {
+        "startLine": 3095,
+        "startChar": 0,
+        "endLine": 3097,
+        "endChar": 3
+      },
+      "revId": "ea8d86ae586b29f9e6bdba84a3011b3efba0d3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0437ec61_4bccf1ab",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 3097,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-09T09:06:52Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "b66aebb5_21844b37",
