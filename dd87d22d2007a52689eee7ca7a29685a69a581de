@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731636b0_eac59a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "Some other things I noticed. The code LGTM. We might want to add checker tests in art/test/858-checker-unsafe/src/Main.java like we discussed offline.\n\nFYI I think the errors you got in presubmit are unrelated to your change",
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78476d6d_aef4ec1a",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2587,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "nit: these can be moved to line 2597 for smaller scoping",
+      "range": {
+        "startLine": 2586,
+        "startChar": 0,
+        "endLine": 2587,
+        "endChar": 63
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150f2f04_da1bbb30",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2716,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "One more that should always return false (and therefore `can_call` will be false)",
+      "range": {
+        "startLine": 2716,
+        "startChar": 48,
+        "endLine": 2716,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2975fedb_0405bd87",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "This case doesn\u0027t exist for us",
+      "range": {
+        "startLine": 2731,
+        "startChar": 6,
+        "endLine": 2731,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ce6367_43a5d828",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2776,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "This type is not relevant to absolute",
+      "range": {
+        "startLine": 2776,
+        "startChar": 6,
+        "endLine": 2776,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623aa0db_2dda93a0",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T13:16:27Z",
+      "side": 1,
+      "message": "Reference case not relevant to absolute",
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
