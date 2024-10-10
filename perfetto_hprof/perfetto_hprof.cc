@@ -758,6 +758,22 @@ class HeapGraphDumper {
       object_proto->set_self_size(obj->SizeOf());
     }
 
+    const art::gc::Heap* heap = art::Runtime::Current()->GetHeap();
+    const auto* space = heap->FindContinuousSpaceFromObject(obj, true);
+    if (space != nullptr) {
+      if (space->IsZygoteSpace()) {
+        object_proto->set_heap_type(perfetto::protos::pbzero::HeapGraphObject::HEAP_TYPE_ZYGOTE);
+      } else if (space->IsImageSpace() && heap->ObjectIsInBootImageSpace(obj)) {
+        object_proto->set_heap_type(
+            perfetto::protos::pbzero::HeapGraphObject::HEAP_TYPE_BOOT_IMAGE);
+      }
+    } else {
+      const auto* los = heap->GetLargeObjectsSpace();
+      if (los->Contains(obj) && los->IsZygoteLargeObject(art::Thread::Current(), obj)) {
+        object_proto->set_heap_type(perfetto::protos::pbzero::HeapGraphObject::HEAP_TYPE_ZYGOTE);
+      }
+    }
+
     FillReferences(obj, klass, object_proto);
 
     FillFieldValues(obj, klass, object_proto);
