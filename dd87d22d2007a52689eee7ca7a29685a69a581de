@@ -67,6 +67,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1495ed1f_3fc4ac46",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2703,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T16:06:08Z",
+      "side": 1,
+      "message": "This one has to be kept since it is the relative unsafe get (this is the cause of the test failures)",
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "150f2f04_da1bbb30",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 38
