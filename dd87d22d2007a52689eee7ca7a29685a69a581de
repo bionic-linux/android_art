@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "256fcb7c_7eb5ed53",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2587,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T15:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78476d6d_aef4ec1a",
+      "range": {
+        "startLine": 2586,
+        "startChar": 0,
+        "endLine": 2587,
+        "endChar": 63
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "150f2f04_da1bbb30",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3919a605_7222f194",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2716,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T15:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150f2f04_da1bbb30",
+      "range": {
+        "startLine": 2716,
+        "startChar": 48,
+        "endLine": 2716,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2975fedb_0405bd87",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-10-10T13:16:27Z",
       "side": 1,
       "message": "This case doesn\u0027t exist for us",
+      "range": {
+        "startLine": 2731,
+        "startChar": 6,
+        "endLine": 2731,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "210f3edd_b3944aba",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T15:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2975fedb_0405bd87",
       "range": {
         "startLine": 2731,
         "startChar": 6,
@@ -123,6 +195,24 @@
       "writtenOn": "2024-10-10T13:16:27Z",
       "side": 1,
       "message": "Reference case not relevant to absolute",
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6867f2f0_8646c831",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T15:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "623aa0db_2dda93a0",
       "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
