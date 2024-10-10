@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad5c906_a6d486ae",
+        "filename": "compiler/optimizing/reference_type_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-10T16:13:23Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "6c607408384ae7ac1fe577902a7489337d8be9a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
