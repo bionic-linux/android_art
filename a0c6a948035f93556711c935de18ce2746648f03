@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281c7968_60d6fd0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-10T12:54:26Z",
+      "side": 1,
+      "message": "I just put some high-level comments for now because I think they are really important. I haven\u0027t looked into the details of the code yet.",
+      "revId": "a0c6a948035f93556711c935de18ce2746648f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3824a40d_dfceb4ef",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-10T12:54:26Z",
+      "side": 1,
+      "message": "I wonder if anyone is still using this script and what it\u0027s used for. From the implementation, it looks like it creates a profile from both ART jars and framework jars because it takes all the jars from `dex_bootjars_input`. Therefore, saying that this script creates the \"framework\" boot image profile seems wrong to me.\n\nWe should discuss whether we should still keep this script, and if we should, what the current purpose of the script is.",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "a0c6a948035f93556711c935de18ce2746648f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
