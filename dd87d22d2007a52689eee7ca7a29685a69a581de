@@ -182,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb742188_45d88745",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 38
+      },
+      "lineNbr": 2776,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T15:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93ce6367_43a5d828",
+      "range": {
+        "startLine": 2776,
+        "startChar": 6,
+        "endLine": 2776,
+        "endChar": 77
+      },
+      "revId": "dd87d22d2007a52689eee7ca7a29685a69a581de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "623aa0db_2dda93a0",
