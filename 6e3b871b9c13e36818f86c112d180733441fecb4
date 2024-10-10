@@ -1,0 +1,236 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ed2204_4cc00713",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "do you mean ART sets these thread priorities itself, or is this in always in response to framework code changing niceness?",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0f0f40b6_38df60aa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 14,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": "1. ART occasionally sets thread priorities itself, using niceness values obtained by\n   interpolating between Java priorities. These niceness values do not map perfectly back onto\n   Java priorities. Thread.getPriority() rounds them to the nearest Java priority.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e530fd_01667ebd",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f738273c_8161b878",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "   `Object.wait()`.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41373f2_4745e977",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "Is it worthwhile to add the binder case here, too, or is that too much detail? eg, for synchronous binder calls, the \u0027niceness\u0027 of the caller is generally inherited (but still respects RLIMIT_NICE).\n\nIf the caller is real-time, then one of three things can happen:\n1. If the callee process has CAP_SYS_NICE, the callee binder thread will inherit the real-time policy\n2. If the callee has RLIMIT_RTPRIO set and \u003e 0, then respect that rlimit when inheriting RT\n3. Otherwise, fall back to use min nice\n\nAs discussed on the thread, neither of these cases would be reflected by getPriority(); maybe binder could actually fix this by explicitly calling setPriority() in Java with the priority it is executing as? This will be a no-op from the scheduler perspective, but it will fix the \u0027cache\u0027.",
+      "fixSuggestions": [
+        {
+          "fixId": "e7ce4c4f_31746685",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "   either spin consuming CPU time, or attempt to release it by calling `sched_yield()` or `Thread.yield()`\n   are *incorrect*. At a minimum they should eventually sleep for short periods. Preferably, they should\n   call an OS waiting primitive, as mutex acquisition, or Java\u0027s `Object.wait()` does.\n\n3. Synchronous binder calls inherit the niceness of the caller, but still respect `RLIMIT_NICE`.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9232b1f_62fe8973",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "specific",
+      "range": {
+        "startLine": 32,
+        "startChar": 73,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0582ee47_01361c64",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "setPriority",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e8ced95d_404f5ca3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": "Java code is arguably allowed to expect that Thread.getPriority() returns the last value passed\nto Thread.setPriority, at least unless the application itself calls Android-specif code or native\ncode documented to alter thread priorities. This argues that Thread.getPriority() should cache\nthe current priority. Historically, this has also been done for performance reasons. We continue\nto do so.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43595d5_f39aac86",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-10-10T08:11:17Z",
+      "side": 1,
+      "message": "I think it is useful to get input from the system health team on this. For example, the framework currently \u0027boosts\u0027 the top app UI threads to use SCHED_FIFO; if the app itself changes the prio of these threads, that effect will be undone. So maybe the recommendation should be to not change priorities on UI threads, since that will be done by the system?",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "01cb2e52_ada9cf71",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "1. The application is entitled to adjust its own thread priorities. Everything else should interfere\n   with that as little as possible. The application should adjust priorities using either\n   `Thread.setPriority(int)` or `android.os.Process.setThreadPriority(int)`. JNI code that updates\n   the thread priority only for the duration of the call, may be able to adjust its own priorities\n   using OS calls, using something like the ART protocol outlined below, so long as the JNI code\n   does not call back into Java code sensitive to thread priorities.\n"
+            },
+            {
+              "path": "runtime/thread_priorities.md",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "4. In order to minimize interference with applications directly using OS primitive to adjust\n   priorities, external processes should avoid updating thread priorities of threads that may\n   currently be actively running. Ignoring this advice may result in lost priority updates, but\n   should not otherwise break anything. That is good, because it is unclear that such timing\n   constraints are always fully enforceable.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
