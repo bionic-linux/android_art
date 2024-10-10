@@ -118,12 +118,16 @@ class LargeObjectSpace : public DiscontinuousSpace, public AllocSpace {
   // Clamp the space size to the given capacity.
   virtual void ClampGrowthLimit(size_t capacity) = 0;
 
-  // The way large object spaces are implemented, the object alignment has to be
-  // the same as the *runtime* OS page size. However, in the future this may
-  // change so it is important to use LargeObjectSpace::ObjectAlignment() rather
-  // than gPageSize when appropriate.
+  // Object alignment must be a multiple of the runtime OS page size.
 #if defined(ART_PAGE_SIZE_AGNOSTIC)
-  static ALWAYS_INLINE size_t ObjectAlignment() { return gPageSize; }
+  static ALWAYS_INLINE size_t ObjectAlignment() {
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+    // If made to depend on gPageSize this will not be known at compile-time.
+    return kLargeFolioAlignment;
+#else
+    return gPageSize;
+#endif
+    }
 #else
   static constexpr size_t ObjectAlignment() { return kMinPageSize; }
 #endif

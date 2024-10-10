@@ -289,11 +289,20 @@ class AtomicStack {
   // Size in number of elements.
   void Init() {
     std::string error_msg;
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+    mem_map_ = MemMap::MapAnonymousAligned(name_.c_str(),
+                                           capacity_ * sizeof(begin_[0]),
+                                           PROT_READ | PROT_WRITE,
+                                           /*low_4gb=*/ false,
+                                           kLargeFolioAlignment,
+                                           &error_msg);
+#else
     mem_map_ = MemMap::MapAnonymous(name_.c_str(),
                                     capacity_ * sizeof(begin_[0]),
                                     PROT_READ | PROT_WRITE,
                                     /*low_4gb=*/ false,
                                     &error_msg);
+#endif
     CHECK(mem_map_.IsValid()) << "couldn't allocate mark stack.\n" << error_msg;
     uint8_t* addr = mem_map_.Begin();
     CHECK(addr != nullptr);

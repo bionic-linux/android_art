@@ -86,11 +86,20 @@ SpaceBitmap<kAlignment> SpaceBitmap<kAlignment>::Create(
   // (we represent one word as an `intptr_t`).
   const size_t bitmap_size = ComputeBitmapSize(heap_capacity);
   std::string error_msg;
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  MemMap mem_map = MemMap::MapAnonymousAligned(name.c_str(),
+                                               bitmap_size,
+                                               PROT_READ | PROT_WRITE,
+                                               /*low_4gb=*/ false,
+                                               kLargeFolioAlignment,
+                                               &error_msg);
+#else
   MemMap mem_map = MemMap::MapAnonymous(name.c_str(),
                                         bitmap_size,
                                         PROT_READ | PROT_WRITE,
                                         /*low_4gb=*/ false,
                                         &error_msg);
+#endif
   if (UNLIKELY(!mem_map.IsValid())) {
     LOG(ERROR) << "Failed to allocate bitmap " << name << ": " << error_msg;
     return SpaceBitmap<kAlignment>();
