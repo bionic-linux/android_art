@@ -205,6 +205,7 @@ static constexpr size_t kPostForkMaxHeapDurationMS = 2000;
 // 320 MB (0x14000000) - (default non-moving space capacity).
 // The value is picked to ensure it is aligned to the largest supported PMD
 // size, which is 32mb with a 16k page size on AArch64.
+// Note that kBegin aligned to PMD implies aligned to kLargeFolioAlignment.
 uint8_t* const Heap::kPreferredAllocSpaceBegin = reinterpret_cast<uint8_t*>(([]() constexpr {
   constexpr size_t kBegin = 320 * MB - Heap::kDefaultNonMovingSpaceCapacity;
   constexpr int kMaxPMDSize = (kMaxPageSize / sizeof(uint64_t)) * kMaxPageSize;
@@ -437,6 +438,14 @@ Heap::Heap(size_t initial_size,
   if (VLOG_IS_ON(heap) || VLOG_IS_ON(startup)) {
     LOG(INFO) << "Heap() entering";
   }
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  CHECK_EQ(gPageSize, 4 * art::KB);
+  DCHECK_ALIGNED_PARAM(kLargeFolioAlignment, gPageSize);
+  CHECK_EQ(foreground_collector_type_, kCollectorTypeCC);
+  size_t alignment = kLargeFolioAlignment;
+#else
+  size_t alignment = gPageSize;
+#endif
 
   LOG(INFO) << "Using " << foreground_collector_type_ << " GC.";
   if (gUseUserfaultfd) {
@@ -503,7 +512,7 @@ Heap::Heap(size_t initial_size,
   } else if (foreground_collector_type_ != kCollectorTypeCC && is_zygote) {
     heap_reservation_size = capacity_;
   }
-  heap_reservation_size = RoundUp(heap_reservation_size, gPageSize);
+  heap_reservation_size = RoundUp(heap_reservation_size, alignment);
   // Load image space(s).
   std::vector<std::unique_ptr<space::ImageSpace>> boot_image_spaces;
   MemMap heap_reservation;
@@ -591,7 +600,9 @@ Heap::Heap(size_t initial_size,
     CHECK(non_moving_space_mem_map.IsValid()) << error_str;
     DCHECK(!heap_reservation.IsValid());
     // Try to reserve virtual memory at a lower address if we have a separate non moving space.
-    request_begin = kPreferredAllocSpaceBegin + non_moving_space_capacity;
+    request_begin =
+        kPreferredAllocSpaceBegin + RoundUp(non_moving_space_capacity, alignment);
+    DCHECK_ALIGNED_PARAM(request_begin, alignment);
   }
   // Attempt to create 2 mem maps at or after the requested begin.
   if (foreground_collector_type_ != kCollectorTypeCC) {

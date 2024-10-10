@@ -138,15 +138,24 @@ LargeObjectMapSpace* LargeObjectMapSpace::Create(const std::string& name) {
 mirror::Object* LargeObjectMapSpace::Alloc(Thread* self, size_t num_bytes,
                                            size_t* bytes_allocated, size_t* usable_size,
                                            size_t* bytes_tl_bulk_allocated) {
-  DCHECK_LE(gPageSize, ObjectAlignment())
+  std::string error_msg;
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  MemMap mem_map = MemMap::MapAnonymousAligned("large object space allocation",
+                                               num_bytes,
+                                               PROT_READ | PROT_WRITE,
+                                               /*low_4gb=*/true,
+                                               ObjectAlignment(),
+                                               &error_msg);
+#else
+  DCHECK_GE(gPageSize, ObjectAlignment())
       << "MapAnonymousAligned() should be used if the large-object alignment is larger than the "
          "runtime page size";
-  std::string error_msg;
   MemMap mem_map = MemMap::MapAnonymous("large object space allocation",
                                         num_bytes,
                                         PROT_READ | PROT_WRITE,
                                         /*low_4gb=*/true,
                                         &error_msg);
+#endif
   if (UNLIKELY(!mem_map.IsValid())) {
     LOG(WARNING) << "Large object allocation failed: " << error_msg;
     return nullptr;
@@ -367,15 +376,24 @@ inline bool FreeListSpace::SortByPrevFree::operator()(const AllocationInfo* a,
 
 FreeListSpace* FreeListSpace::Create(const std::string& name, size_t size) {
   CHECK_ALIGNED_PARAM(size, ObjectAlignment());
-  DCHECK_LE(gPageSize, ObjectAlignment())
-      << "MapAnonymousAligned() should be used if the large-object alignment is larger than the "
-         "runtime page size";
   std::string error_msg;
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  MemMap mem_map = MemMap::MapAnonymousAligned(name.c_str(),
+                                               size,
+                                               PROT_READ | PROT_WRITE,
+                                               /*low_4gb=*/true,
+                                               ObjectAlignment(),
+                                               &error_msg);
+#else
+  DCHECK_GE(gPageSize, ObjectAlignment())
+    << "MapAnonymousAligned() should be used if the large-object alignment is larger than the "
+       "runtime page size";
   MemMap mem_map = MemMap::MapAnonymous(name.c_str(),
                                         size,
                                         PROT_READ | PROT_WRITE,
                                         /*low_4gb=*/true,
                                         &error_msg);
+#endif
   CHECK(mem_map.IsValid()) << "Failed to allocate large object space mem map: " << error_msg;
   return new FreeListSpace(name, std::move(mem_map), mem_map.Begin(), mem_map.End());
 }

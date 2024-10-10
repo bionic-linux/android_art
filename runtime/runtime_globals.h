@@ -107,6 +107,19 @@ static constexpr ALWAYS_INLINE size_t ModuloPageSize(size_t num) {
   return (num & (gPageSize-1));
 }
 
+#if defined(__linux__) && defined(__aarch64__)
+
+// Hard-coded for evaluation on 4KB base page size and kCollectorTypeCC.
+#define ART_ENABLE_MTHP_SUPPORT
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+// When running with mTHP support on AArch64, we should apply memory management operations on 64KB
+// aligned boundaries wherever possible, to ensure that the kernel can keep backing the memory with
+// a 'large folio' size sufficient to use the contiguous PTE bit, thus enabling TLB optimization.
+static constexpr size_t kLargeFolioAlignment = 64 * art::KB;
+
+#endif
+#endif
+
 // Returns whether the given memory offset can be used for generating
 // an implicit null check.
 static inline bool CanDoImplicitNullCheckOn(uintptr_t offset) {

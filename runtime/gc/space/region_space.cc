@@ -118,8 +118,14 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
       current_region_(&full_region_),
       evac_region_(nullptr),
       cyclic_alloc_region_index_(0U) {
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  size_t alignment = kLargeFolioAlignment;
+#else
+  size_t alignment = gPageSize;
+#endif
+  DCHECK_ALIGNED_PARAM(kRegionSize, alignment);
   CHECK_ALIGNED(mem_map_.Size(), kRegionSize);
-  CHECK_ALIGNED(mem_map_.Begin(), kRegionSize);
+  CHECK_ALIGNED_PARAM(mem_map_.Begin(), alignment);
   DCHECK_GT(num_regions_, 0U);
   regions_.reset(new Region[num_regions_]);
   uint8_t* region_addr = mem_map_.Begin();
@@ -394,6 +400,10 @@ void RegionSpace::SetFromSpace(accounting::ReadBarrierTable* rb_table,
 }
 
 static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end, bool release_eagerly) {
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  DCHECK_ALIGNED_PARAM(begin, kLargeFolioAlignment);
+  DCHECK_ALIGNED_PARAM(end - begin, kLargeFolioAlignment);
+#endif
   ZeroMemory(begin, end - begin, release_eagerly);
   if (kProtectClearedRegions) {
     CheckedCall(mprotect, __FUNCTION__, begin, end - begin, PROT_NONE);
@@ -401,12 +411,17 @@ static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end, bool release_eage
 }
 
 void RegionSpace::ReleaseFreeRegions() {
+#if defined(ART_ENABLE_MTHP_SUPPORT)
+  size_t alignment = kLargeFolioAlignment;
+#else
+  size_t alignment = gPageSize;
+#endif
   MutexLock mu(Thread::Current(), region_lock_);
   for (size_t i = 0u; i < num_regions_; ++i) {
     if (regions_[i].IsFree()) {
       uint8_t* begin = regions_[i].Begin();
-      DCHECK_ALIGNED_PARAM(begin, gPageSize);
-      DCHECK_ALIGNED_PARAM(regions_[i].End(), gPageSize);
+      DCHECK_ALIGNED_PARAM(begin, alignment);
+      DCHECK_ALIGNED_PARAM(regions_[i].End(), alignment);
       bool res = madvise(begin, regions_[i].End() - begin, MADV_DONTNEED);
       CHECK_NE(res, -1) << "madvise failed";
     }
