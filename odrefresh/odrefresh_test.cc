@@ -175,12 +175,14 @@ class OdRefreshTest : public CommonArtTest {
     CreateEmptyFile(framework_profile_);
     dirty_image_objects_file_ = system_etc_dir + "/dirty-image-objects";
     CreateEmptyFile(dirty_image_objects_file_);
-    preloaded_classes_file_ = system_etc_dir + "/preloaded-classes";
-    CreateEmptyFile(preloaded_classes_file_);
+    framework_preloaded_classes_file_ = system_etc_dir + "/preloaded-classes";
+    CreateEmptyFile(framework_preloaded_classes_file_);
     art_etc_dir_ = android_art_root_path + "/etc";
     ASSERT_TRUE(EnsureDirectoryExists(art_etc_dir_));
     art_profile_ = art_etc_dir_ + "/boot-image.prof";
     CreateEmptyFile(art_profile_);
+    art_preloaded_classes_file_ = art_etc_dir_ + "/preloaded-classes";
+    CreateEmptyFile(art_preloaded_classes_file_);
 
     framework_dir_ = android_root_path + "/framework";
     framework_jar_ = framework_dir_ + "/framework.jar";
@@ -275,7 +277,8 @@ class OdRefreshTest : public CommonArtTest {
   std::string art_profile_;
   std::string services_jar_profile_;
   std::string dirty_image_objects_file_;
-  std::string preloaded_classes_file_;
+  std::string framework_preloaded_classes_file_;
+  std::string art_preloaded_classes_file_;
   std::string cache_info_xml_;
   std::function<bool()> check_compilation_space_;
   std::function<int(const char*, const char*)> setfilecon_;
