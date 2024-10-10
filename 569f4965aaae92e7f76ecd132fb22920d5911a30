@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1149ece_2555416f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 41
+      },
+      "lineNbr": 2703,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T16:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1495ed1f_3fc4ac46",
+      "revId": "569f4965aaae92e7f76ecd132fb22920d5911a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f710c161_3badf496",
@@ -14,6 +32,30 @@
       "writtenOn": "2024-10-10T16:06:08Z",
       "side": 1,
       "message": "`UnsafeGetAbsolute`",
+      "range": {
+        "startLine": 112,
+        "startChar": 54,
+        "endLine": 112,
+        "endChar": 71
+      },
+      "revId": "569f4965aaae92e7f76ecd132fb22920d5911a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec7909d_f18297be",
+        "filename": "test/858-checker-unsafe/src/Main.java",
+        "patchSetId": 41
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-10T16:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f710c161_3badf496",
       "range": {
         "startLine": 112,
         "startChar": 54,
