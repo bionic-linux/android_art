@@ -398,6 +398,7 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
         linear_order_(allocator->Adapter(kArenaAllocLinearOrder)),
         entry_block_(nullptr),
         exit_block_(nullptr),
+        maximum_number_of_out_vregs_(0),
         number_of_vregs_(0),
         number_of_in_vregs_(0),
         temporaries_vreg_slots_(0),
@@ -547,6 +548,18 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   void SetCurrentInstructionId(int32_t id) {
     CHECK_GE(id, current_instruction_id_);
     current_instruction_id_ = id;
+  }
+
+  uint16_t GetMaximumNumberOfOutVRegs() const {
+    return maximum_number_of_out_vregs_;
+  }
+
+  void SetMaximumNumberOfOutVRegs(uint16_t new_value) {
+    maximum_number_of_out_vregs_ = new_value;
+  }
+
+  void UpdateMaximumNumberOfOutVRegs(uint16_t other_value) {
+    maximum_number_of_out_vregs_ = std::max(maximum_number_of_out_vregs_, other_value);
   }
 
   void UpdateTemporariesVRegSlots(size_t slots) {
@@ -787,6 +800,9 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
 
   HBasicBlock* entry_block_;
   HBasicBlock* exit_block_;
+
+  // The maximum number of virtual registers arguments passed to a HInvoke in this graph.
+  uint16_t maximum_number_of_out_vregs_;
 
   // The number of virtual registers in this method. Contains the parameters.
   uint16_t number_of_vregs_;
@@ -4190,7 +4206,8 @@ class HEqual final : public HCondition {
 
 class HNotEqual final : public HCondition {
  public:
-  HNotEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
+  HNotEqual(HInstruction* first, HInstruction* second,
+            uint32_t dex_pc = kNoDexPc)
       : HCondition(kNotEqual, first, second, dex_pc) {
   }
 
@@ -4235,7 +4252,8 @@ class HNotEqual final : public HCondition {
 
 class HLessThan final : public HCondition {
  public:
-  HLessThan(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
+  HLessThan(HInstruction* first, HInstruction* second,
+            uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThan, first, second, dex_pc) {
   }
 
@@ -4274,7 +4292,8 @@ class HLessThan final : public HCondition {
 
 class HLessThanOrEqual final : public HCondition {
  public:
-  HLessThanOrEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
+  HLessThanOrEqual(HInstruction* first, HInstruction* second,
+                   uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThanOrEqual, first, second, dex_pc) {
   }
 
@@ -4788,9 +4807,6 @@ class HInvoke : public HVariableInputSizeInstruction {
   // inputs at the end of their list of inputs.
   uint32_t GetNumberOfArguments() const { return number_of_arguments_; }
 
-  // Return the number of outgoing vregs.
-  uint32_t GetNumberOfOutVRegs() const { return number_of_out_vregs_; }
-
   InvokeType GetInvokeType() const {
     return GetPackedField<InvokeTypeField>();
   }
@@ -4856,7 +4872,6 @@ class HInvoke : public HVariableInputSizeInstruction {
   HInvoke(InstructionKind kind,
           ArenaAllocator* allocator,
           uint32_t number_of_arguments,
-          uint32_t number_of_out_vregs,
           uint32_t number_of_other_inputs,
           DataType::Type return_type,
           uint32_t dex_pc,
@@ -4873,10 +4888,9 @@ class HInvoke : public HVariableInputSizeInstruction {
           allocator,
           number_of_arguments + number_of_other_inputs,
           kArenaAllocInvokeInputs),
+      number_of_arguments_(number_of_arguments),
       method_reference_(method_reference),
       resolved_method_reference_(resolved_method_reference),
-      number_of_arguments_(dchecked_integral_cast<uint16_t>(number_of_arguments)),
-      number_of_out_vregs_(dchecked_integral_cast<uint16_t>(number_of_out_vregs)),
       intrinsic_(Intrinsics::kNone),
       intrinsic_optimizations_(0) {
     SetPackedField<InvokeTypeField>(invoke_type);
@@ -4886,14 +4900,11 @@ class HInvoke : public HVariableInputSizeInstruction {
 
   DEFAULT_COPY_CONSTRUCTOR(Invoke);
 
+  uint32_t number_of_arguments_;
   ArtMethod* resolved_method_;
   const MethodReference method_reference_;
   // Cached values of the resolved method, to avoid needing the mutator lock.
   const MethodReference resolved_method_reference_;
-
-  uint16_t number_of_arguments_;
-  uint16_t number_of_out_vregs_;
-
   Intrinsics intrinsic_;
 
   // A magic word holding optimizations for intrinsics. See intrinsics.h.
@@ -4904,7 +4915,6 @@ class HInvokeUnresolved final : public HInvoke {
  public:
   HInvokeUnresolved(ArenaAllocator* allocator,
                     uint32_t number_of_arguments,
-                    uint32_t number_of_out_vregs,
                     DataType::Type return_type,
                     uint32_t dex_pc,
                     MethodReference method_reference,
@@ -4912,7 +4922,6 @@ class HInvokeUnresolved final : public HInvoke {
       : HInvoke(kInvokeUnresolved,
                 allocator,
                 number_of_arguments,
-                number_of_out_vregs,
                 /* number_of_other_inputs= */ 0u,
                 return_type,
                 dex_pc,
@@ -4935,7 +4944,6 @@ class HInvokePolymorphic final : public HInvoke {
  public:
   HInvokePolymorphic(ArenaAllocator* allocator,
                      uint32_t number_of_arguments,
-                     uint32_t number_of_out_vregs,
                      uint32_t number_of_other_inputs,
                      DataType::Type return_type,
                      uint32_t dex_pc,
@@ -4949,7 +4957,6 @@ class HInvokePolymorphic final : public HInvoke {
       : HInvoke(kInvokePolymorphic,
                 allocator,
                 number_of_arguments,
-                number_of_out_vregs,
                 number_of_other_inputs,
                 return_type,
                 dex_pc,
@@ -4985,7 +4992,6 @@ class HInvokeCustom final : public HInvoke {
  public:
   HInvokeCustom(ArenaAllocator* allocator,
                 uint32_t number_of_arguments,
-                uint32_t number_of_out_vregs,
                 uint32_t call_site_index,
                 DataType::Type return_type,
                 uint32_t dex_pc,
@@ -4994,7 +5000,6 @@ class HInvokeCustom final : public HInvoke {
       : HInvoke(kInvokeCustom,
                 allocator,
                 number_of_arguments,
-                number_of_out_vregs,
                 /* number_of_other_inputs= */ 0u,
                 return_type,
                 dex_pc,
@@ -5042,7 +5047,6 @@ class HInvokeStaticOrDirect final : public HInvoke {
 
   HInvokeStaticOrDirect(ArenaAllocator* allocator,
                         uint32_t number_of_arguments,
-                        uint32_t number_of_out_vregs,
                         DataType::Type return_type,
                         uint32_t dex_pc,
                         MethodReference method_reference,
@@ -5055,7 +5059,6 @@ class HInvokeStaticOrDirect final : public HInvoke {
       : HInvoke(kInvokeStaticOrDirect,
                 allocator,
                 number_of_arguments,
-                number_of_out_vregs,
                 // There is potentially one extra argument for the HCurrentMethod input,
                 // and one other if the clinit check is explicit. These can be removed later.
                 (NeedsCurrentMethodInput(dispatch_info) ? 1u : 0u) +
@@ -5271,7 +5274,6 @@ class HInvokeVirtual final : public HInvoke {
  public:
   HInvokeVirtual(ArenaAllocator* allocator,
                  uint32_t number_of_arguments,
-                 uint32_t number_of_out_vregs,
                  DataType::Type return_type,
                  uint32_t dex_pc,
                  MethodReference method_reference,
@@ -5282,7 +5284,6 @@ class HInvokeVirtual final : public HInvoke {
       : HInvoke(kInvokeVirtual,
                 allocator,
                 number_of_arguments,
-                number_of_out_vregs,
                 0u,
                 return_type,
                 dex_pc,
@@ -5336,7 +5337,6 @@ class HInvokeInterface final : public HInvoke {
  public:
   HInvokeInterface(ArenaAllocator* allocator,
                    uint32_t number_of_arguments,
-                   uint32_t number_of_out_vregs,
                    DataType::Type return_type,
                    uint32_t dex_pc,
                    MethodReference method_reference,
@@ -5348,7 +5348,6 @@ class HInvokeInterface final : public HInvoke {
       : HInvoke(kInvokeInterface,
                 allocator,
                 number_of_arguments + (NeedsCurrentMethod(load_kind) ? 1 : 0),
-                number_of_out_vregs,
                 0u,
                 return_type,
                 dex_pc,
@@ -7562,7 +7561,6 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
  public:
   HStringBuilderAppend(HIntConstant* format,
                        uint32_t number_of_arguments,
-                       uint32_t number_of_out_vregs,
                        bool has_fp_args,
                        ArenaAllocator* allocator,
                        uint32_t dex_pc)
@@ -7577,8 +7575,7 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
             dex_pc,
             allocator,
             number_of_arguments + /* format */ 1u,
-            kArenaAllocInvokeInputs),
-        number_of_out_vregs_(number_of_out_vregs) {
+            kArenaAllocInvokeInputs) {
     DCHECK_GE(number_of_arguments, 1u);  // There must be something to append.
     SetRawInputAt(FormatIndex(), format);
   }
@@ -7593,9 +7590,6 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
     DCHECK_GE(InputCount(), 1u);
     return InputCount() - 1u;
   }
-
-  // Return the number of outgoing vregs.
-  uint32_t GetNumberOfOutVRegs() const { return number_of_out_vregs_; }
 
   size_t FormatIndex() const {
     return GetNumberOfArguments();
@@ -7615,9 +7609,6 @@ class HStringBuilderAppend final : public HVariableInputSizeInstruction {
 
  protected:
   DEFAULT_COPY_CONSTRUCTOR(StringBuilderAppend);
-
- private:
-  uint32_t number_of_out_vregs_;
 };
 
 class HUnresolvedInstanceFieldGet final : public HExpression<1> {
