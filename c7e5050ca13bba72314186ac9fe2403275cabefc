@@ -33,6 +33,24 @@
       "message": "We are seeing test failures that should be able to be reproed locally with `m test-art-host-gtest`. In particular, `LoadStoreAnalysisTest.ArrayAliasingTest` from `test-art-host-gtest-art_compiler_tests` is failing.\nIf you can\u0027t repro, let me know",
       "revId": "c7e5050ca13bba72314186ac9fe2403275cabefc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03285ae_c70d1635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-11T16:48:47Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve fixed the test in question and improved the gtest helpers to make the use of vector size less ambiguous.\n\nSide-note: for a day or two when this failed, I could see the presubmit failures under the checks tab which was very helpful!",
+      "parentUuid": "09489db8_a1d4b721",
+      "revId": "c7e5050ca13bba72314186ac9fe2403275cabefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
