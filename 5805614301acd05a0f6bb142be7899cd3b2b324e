@@ -16,6 +16,24 @@
       "message": "TODO run the same postsubmit that previously failed to verify that the reland won\u0027t re-break",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762c0760_d72531cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-11T20:06:39Z",
+      "side": 1,
+      "message": "I can\u0027t, no permissions.\n```\n$ led get-builder art/ci/angler-armv8-ndebug | led edit-gerrit-cl https://android-review.git.corp.google.com/c/platform/art/+/3306222 | led launch\n[I 2024-10-11 20:05:12] Launching the led job as a real build\n[W 2024-10-11 20:05:12] RPC failed permanently: rpc error: code \u003d PermissionDenied desc \u003d \"user:shayba@google.com\" does not have permission \"buildbucket.builds.create\" in bucket \"art/ci.shadow\" {\"host\":\"cr-buildbucket.appspot.com\", \"method\":\"CreateBuild\", \"service\":\"buildbucket.v2.Builds\"}\n[E 2024-10-11 20:05:12] rpc error: code \u003d PermissionDenied desc \u003d \"user:shayba@google.com\" does not have permission \"buildbucket.builds.create\" in bucket \"art/ci.shadow\n```\n\nHey @solanes@google.com, could I ask you to kick off a LUCI run for me please?\nOr - could I get allowlisted?\nOr both? 😊",
+      "parentUuid": "6e671191_30702266",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
