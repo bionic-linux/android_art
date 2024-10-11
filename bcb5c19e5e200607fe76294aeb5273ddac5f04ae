@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a3d1f3_95cba4c0",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2587,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-11T15:43:32Z",
+      "side": 0,
+      "message": "Fails on this line. For the reland we can keep the `UseScratchRegisterScope` on each one of the uses instead of up here.",
+      "revId": "bcb5c19e5e200607fe76294aeb5273ddac5f04ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
