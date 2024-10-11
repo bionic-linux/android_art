@@ -162,7 +162,9 @@ class VerifierDepsTest : public CommonCompilerDriverTest {
               method.GetInvokeType(class_def->access_flags_));
       CHECK(resolved_method != nullptr);
       if (method_name == resolved_method->GetName()) {
-        RegTypeCache reg_types(soa.Self(), class_linker_, Runtime::Current()->GetArenaPool());
+        ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
+        RegTypeCache reg_types(
+            soa.Self(), class_linker_, arena_pool, class_loader_handle, primary_dex_file_);
         std::unique_ptr<MethodVerifier> verifier(
             MethodVerifier::CreateVerifier(soa.Self(),
                                            &reg_types,

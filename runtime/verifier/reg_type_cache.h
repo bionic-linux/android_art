@@ -36,6 +36,7 @@ class ClassLoader;
 }  // namespace mirror
 
 class ClassLinker;
+class DexFile;
 class ScopedArenaAllocator;
 
 namespace verifier {
@@ -69,6 +70,8 @@ class RegTypeCache {
   EXPORT RegTypeCache(Thread* self,
                       ClassLinker* class_linker,
                       ArenaPool* arena_pool,
+                      Handle<mirror::ClassLoader> class_loader,
+                      const DexFile* dex_file,
                       bool can_load_classes = true,
                       bool can_suspend = true);
 
@@ -106,6 +109,8 @@ class RegTypeCache {
       REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& FromUnresolvedSuperClass(const RegType& child)
       REQUIRES_SHARED(Locks::mutator_lock_);
+
+  const RegType& FromTypeIndex(dex::TypeIndex type_index) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Note: this should not be used outside of RegType::ClassJoin!
   const RegType& MakeUnresolvedReference() REQUIRES_SHARED(Locks::mutator_lock_);
@@ -196,6 +201,9 @@ class RegTypeCache {
   const RegType& From(Handle<mirror::ClassLoader> loader, const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  const RegType& FromTypeIndexUncached(dex::TypeIndex type_index)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Returns the pass in RegType.
   template <class RegTypeType>
   RegTypeType& AddEntry(RegTypeType* new_entry) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -219,6 +227,11 @@ class RegTypeCache {
   ScopedNullHandle<mirror::Class> null_handle_;
 
   ClassLinker* class_linker_;
+
+  // Fast lookup by type index.
+  Handle<mirror::ClassLoader> class_loader_;
+  const DexFile* const dex_file_;
+  const RegType** const entries_for_type_index_;
 
   // Whether or not we're allowed to load classes.
   const bool can_load_classes_;

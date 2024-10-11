@@ -115,6 +115,13 @@ const RegType& RegTypeCache::FromDescriptor(Handle<mirror::ClassLoader> loader,
   }
 }
 
+const RegType& RegTypeCache::FromTypeIndexUncached(dex::TypeIndex type_index) {
+  DCHECK(entries_for_type_index_[type_index.index_] == nullptr);
+  const char* descriptor = dex_file_->GetTypeDescriptor(type_index);
+  const RegType& reg_type = FromDescriptor(class_loader_, descriptor);
+  entries_for_type_index_[type_index.index_] = &reg_type;
+  return reg_type;
+}
 
 const RegType& RegTypeCache::RegTypeFromPrimitiveType(Primitive::Type prim_type) const {
   switch (prim_type) {
@@ -284,6 +291,8 @@ const RegType& RegTypeCache::FromClass(const char* descriptor,
 RegTypeCache::RegTypeCache(Thread* self,
                            ClassLinker* class_linker,
                            ArenaPool* arena_pool,
+                           Handle<mirror::ClassLoader> class_loader,
+                           const DexFile* dex_file,
                            bool can_load_classes,
                            bool can_suspend)
     : arena_stack_(arena_pool),
@@ -292,6 +301,9 @@ RegTypeCache::RegTypeCache(Thread* self,
       klass_entries_(allocator_.Adapter(kArenaAllocVerifier)),
       handles_(self),
       class_linker_(class_linker),
+      class_loader_(class_loader),
+      dex_file_(dex_file),
+      entries_for_type_index_(allocator_.AllocArray<const RegType*>(dex_file->NumTypeIds())),
       can_load_classes_(can_load_classes),
       can_suspend_(can_suspend) {
   DCHECK(can_suspend || !can_load_classes) << "Cannot load classes if suspension is disabled!";

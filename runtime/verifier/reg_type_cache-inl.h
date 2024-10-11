@@ -19,6 +19,7 @@
 
 #include "base/bit_vector-inl.h"
 #include "class_root-inl.h"
+#include "dex/dex_file.h"
 #include "mirror/class-inl.h"
 #include "mirror/method_handle_impl.h"
 #include "mirror/method_type.h"
@@ -44,6 +45,14 @@ inline const ConstantType& RegTypeCache::FromCat1Const(int32_t value, bool preci
     return *down_cast<const ConstantType*>(entries_[value - kMinSmallConstant]);
   }
   return FromCat1NonSmallConstant(value, precise);
+}
+
+inline const RegType& RegTypeCache::FromTypeIndex(dex::TypeIndex type_index) {
+  DCHECK_LT(type_index.index_, dex_file_->NumTypeIds());
+  if (entries_for_type_index_[type_index.index_] != nullptr) {
+    return *entries_for_type_index_[type_index.index_];
+  }
+  return FromTypeIndexUncached(type_index);
 }
 
 inline const BooleanType& RegTypeCache::Boolean() {

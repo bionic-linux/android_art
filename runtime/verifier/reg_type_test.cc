@@ -23,6 +23,7 @@
 #include "base/scoped_arena_allocator.h"
 #include "common_runtime_test.h"
 #include "compiler_callbacks.h"
+#include "dex/test_dex_file_builder.h"
 #include "reg_type-inl.h"
 #include "reg_type_cache-inl.h"
 #include "scoped_thread_state_change-inl.h"
@@ -37,6 +38,26 @@ class RegTypeTest : public CommonRuntimeTest {
     use_boot_image_ = true;  // Make the Runtime creation cheaper.
   }
 
+  void SetUp() override {
+    CommonRuntimeTest::SetUp();
+
+    // Cache the `ClassLinker`.
+    class_linker_ = Runtime::Current()->GetClassLinker();
+
+    // Build a fake `DexFile` with some descriptors.
+    static const char* const descriptors[] = {
+      // References.
+      "Ljava/lang/Object;", "Ljava/lang/String;", "LNonExistent;",
+      // Primitives.
+      "Z", "B", "C", "S", "I", "J", "F", "D"
+    };
+    TestDexFileBuilder builder;
+    for (const char* descriptor : descriptors) {
+      builder.AddType(descriptor);
+    }
+    dex_file_ = builder.Build("arbitrary-location");
+  }
+
   static const RegType& PreciseJavaLangObjectFromDescriptor(RegTypeCache* cache,
                                                             Handle<mirror::ClassLoader> loader)
       REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -49,13 +70,17 @@ class RegTypeTest : public CommonRuntimeTest {
     CHECK(precise_obj.IsPreciseReference());
     return precise_obj;
   }
+
+  std::unique_ptr<const DexFile> dex_file_;
+  std::unique_ptr<RegTypeCache*> cache_;
 };
 
 TEST_F(RegTypeTest, ConstLoHi) {
   // Tests creating primitive types types.
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& ref_type_const_0 = cache.FromCat1Const(10, true);
   const RegType& ref_type_const_1 = cache.FromCat1Const(10, true);
   const RegType& ref_type_const_2 = cache.FromCat1Const(30, true);
@@ -78,7 +103,8 @@ TEST_F(RegTypeTest, ConstLoHi) {
 TEST_F(RegTypeTest, Pairs) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   int64_t val = static_cast<int32_t>(1234);
   const RegType& precise_lo = cache.FromCat2ConstLo(static_cast<int32_t>(val), true);
   const RegType& precise_hi = cache.FromCat2ConstHi(static_cast<int32_t>(val >> 32), true);
@@ -103,7 +129,8 @@ TEST_F(RegTypeTest, Pairs) {
 TEST_F(RegTypeTest, Primitives) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
 
   const RegType& bool_reg_type = cache.Boolean();
   EXPECT_FALSE(bool_reg_type.IsUndefined());
@@ -378,7 +405,7 @@ TEST_F(RegTypeReferenceTest, JavaLangObjectImprecise) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& imprecise_obj = cache.JavaLangObject(false);
   const RegType& precise_obj = cache.JavaLangObject(true);
   const RegType& precise_obj_2 = PreciseJavaLangObjectFromDescriptor(&cache, loader);
@@ -395,7 +422,7 @@ TEST_F(RegTypeReferenceTest, UnresolvedType) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& ref_type_0 = cache.FromDescriptor(loader, "Ljava/lang/DoesNotExist;");
   EXPECT_TRUE(ref_type_0.IsUnresolvedReference());
   EXPECT_TRUE(ref_type_0.IsNonZeroReferenceTypes());
@@ -413,7 +440,7 @@ TEST_F(RegTypeReferenceTest, UnresolvedUnintializedType) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& ref_type_0 = cache.FromDescriptor(loader, "Ljava/lang/DoesNotExist;");
   EXPECT_TRUE(ref_type_0.IsUnresolvedReference());
   const RegType& ref_type = cache.FromDescriptor(loader, "Ljava/lang/DoesNotExist;");
@@ -437,7 +464,7 @@ TEST_F(RegTypeReferenceTest, Dump) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& unresolved_ref = cache.FromDescriptor(loader, "Ljava/lang/DoesNotExist;");
   const RegType& unresolved_ref_another =
       cache.FromDescriptor(loader, "Ljava/lang/DoesNotExistEither;");
@@ -466,7 +493,7 @@ TEST_F(RegTypeReferenceTest, JavalangString) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& ref_type = cache.JavaLangString();
   const RegType& ref_type_2 = cache.JavaLangString();
   const RegType& ref_type_3 = cache.FromDescriptor(loader, "Ljava/lang/String;");
@@ -488,7 +515,7 @@ TEST_F(RegTypeReferenceTest, JavalangObject) {
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& ref_type = cache.JavaLangObject(true);
   const RegType& ref_type_2 = cache.JavaLangObject(true);
   const RegType& ref_type_3 = PreciseJavaLangObjectFromDescriptor(&cache, loader);
@@ -503,7 +530,7 @@ TEST_F(RegTypeReferenceTest, Merging) {
   ScopedObjectAccess soa(Thread::Current());
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache_new(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache_new(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& string = cache_new.JavaLangString();
   const RegType& Object = cache_new.JavaLangObject(true);
   EXPECT_TRUE(string.Merge(Object, &cache_new, /* verifier= */ nullptr).IsJavaLangObject());
@@ -527,7 +554,8 @@ TEST_F(RegTypeTest, MergingFloat) {
   // Testing merging logic with float and float constants.
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache_new(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache_new(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
 
   constexpr int32_t kTestConstantValue = 10;
   const RegType& float_type = cache_new.Float();
@@ -559,7 +587,8 @@ TEST_F(RegTypeTest, MergingLong) {
   // Testing merging logic with long and long constants.
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache_new(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache_new(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
 
   constexpr int32_t kTestConstantValue = 10;
   const RegType& long_lo_type = cache_new.LongLo();
@@ -618,7 +647,8 @@ TEST_F(RegTypeTest, MergingDouble) {
   // Testing merging logic with double and double constants.
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache_new(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache_new(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
 
   constexpr int32_t kTestConstantValue = 10;
   const RegType& double_lo_type = cache_new.DoubleLo();
@@ -732,7 +762,7 @@ TEST_F(RegTypeTest, MergeSemiLatticeRef) {
   ScopedDisableMovingGC no_gc(soa.Self());
 
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
 
   const RegType& conflict = cache.Conflict();
   const RegType& zero = cache.Zero();
@@ -1055,7 +1085,8 @@ TEST_F(RegTypeTest, ConstPrecision) {
   // Tests creating primitive types types.
   ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
   ScopedObjectAccess soa(Thread::Current());
-  RegTypeCache cache_new(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache_new(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& imprecise_const = cache_new.FromCat1Const(10, false);
   const RegType& precise_const = cache_new.FromCat1Const(10, true);
 
@@ -1094,20 +1125,19 @@ TEST_F(RegTypeOOMTest, ClassJoinOOM) {
   constexpr const char* kNumberArrayFive = "[[[[[Ljava/lang/Number;";
 
   ScopedNullHandle<mirror::ClassLoader> loader;
-  RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
   const RegType& int_array_array = cache.FromDescriptor(loader, kIntArrayFive);
   ASSERT_TRUE(int_array_array.HasClass());
   const RegType& float_array_array = cache.FromDescriptor(loader, kFloatArrayFive);
   ASSERT_TRUE(float_array_array.HasClass());
 
   // Check assumptions: the joined classes don't exist, yet.
-  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  ASSERT_TRUE(class_linker->LookupClass(soa.Self(), kNumberArrayFour, nullptr) == nullptr);
-  ASSERT_TRUE(class_linker->LookupClass(soa.Self(), kNumberArrayFive, nullptr) == nullptr);
+  ASSERT_TRUE(class_linker_->LookupClass(soa.Self(), kNumberArrayFour, nullptr) == nullptr);
+  ASSERT_TRUE(class_linker_->LookupClass(soa.Self(), kNumberArrayFive, nullptr) == nullptr);
 
   // Fill the heap.
   VariableSizedHandleScope hs(soa.Self());
-  FillHeap(soa.Self(), class_linker, &hs);
+  FillHeap(soa.Self(), class_linker_, &hs);
 
   const RegType& join_type = int_array_array.Merge(float_array_array, &cache, nullptr);
   ASSERT_TRUE(join_type.IsUnresolvedReference());
@@ -1116,7 +1146,7 @@ TEST_F(RegTypeOOMTest, ClassJoinOOM) {
 class RegTypeClassJoinTest : public RegTypeTest {
  protected:
   void TestClassJoin(const char* in1, const char* in2, const char* out) {
-  ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
+    ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
 
     ScopedObjectAccess soa(Thread::Current());
     jobject jclass_loader = LoadDex("Interfaces");
@@ -1133,7 +1163,8 @@ class RegTypeClassJoinTest : public RegTypeTest {
 
     ScopedDisableMovingGC no_gc(soa.Self());
 
-    RegTypeCache cache(soa.Self(), Runtime::Current()->GetClassLinker(), arena_pool);
+    ScopedNullHandle<mirror::ClassLoader> loader;
+    RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
     const RegType& c1_reg_type = *cache.InsertClass(in1, c1.Get(), false);
     const RegType& c2_reg_type = *cache.InsertClass(in2, c2.Get(), false);
 
@@ -1155,6 +1186,28 @@ TEST_F(RegTypeClassJoinTest, ClassJoinClassClass) {
   // This test codifies that we prefer the class hierarchy over interfaces. It's a mostly
   // arbitrary choice, optimally we'd have set types and could handle multi-inheritance precisely.
   TestClassJoin("LInterfaces$A;", "LInterfaces$B;", "Ljava/lang/Object;");
+}
+
+TEST_F(RegTypeClassJoinTest, LookupByTypeIndex) {
+  ArenaPool* arena_pool = Runtime::Current()->GetArenaPool();
+  ScopedObjectAccess soa(Thread::Current());
+  ScopedNullHandle<mirror::ClassLoader> loader;
+  RegTypeCache cache(soa.Self(), class_linker_, arena_pool, loader, dex_file_.get());
+
+  auto get_type_index = [&](std::string_view descriptor) {
+    const dex::TypeId* type_id = dex_file_->FindTypeId(descriptor);
+    CHECK(type_id != nullptr);
+    return dex_file_->GetIndexForTypeId(*type_id);
+  };
+
+  ASSERT_EQ(&cache.Boolean(), &cache.FromTypeIndex(get_type_index("Z")));
+  ASSERT_EQ(&cache.Byte(), &cache.FromTypeIndex(get_type_index("B")));
+  ASSERT_EQ(&cache.Char(), &cache.FromTypeIndex(get_type_index("C")));
+  ASSERT_EQ(&cache.Short(), &cache.FromTypeIndex(get_type_index("S")));
+  ASSERT_EQ(&cache.Integer(), &cache.FromTypeIndex(get_type_index("I")));
+  ASSERT_EQ(&cache.LongLo(), &cache.FromTypeIndex(get_type_index("J")));
+  ASSERT_EQ(&cache.Float(), &cache.FromTypeIndex(get_type_index("F")));
+  ASSERT_EQ(&cache.DoubleLo(), &cache.FromTypeIndex(get_type_index("D")));
 }
 
 }  // namespace verifier
