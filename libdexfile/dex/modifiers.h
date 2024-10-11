@@ -23,6 +23,7 @@
 
 namespace art {
 
+// The lower 16 bits are set from Java sources. We should preserve these.
 static constexpr uint32_t kAccPublic =       0x0001;  // class, field, method, ic
 static constexpr uint32_t kAccPrivate =      0x0002;  // field, method, ic
 static constexpr uint32_t kAccProtected =    0x0004;  // field, method, ic
@@ -43,6 +44,8 @@ static constexpr uint32_t kAccAnnotation =   0x2000;  // class, ic (1.5)
 static constexpr uint32_t kAccEnum =         0x4000;  // class, field, ic (1.5)
 
 static constexpr uint32_t kAccJavaFlagsMask = 0xffff;  // bits set from Java sources (low 16)
+
+// Bits set from ART.
 
 static constexpr uint32_t kAccConstructor =           0x00010000;  // method (dex only) <(cl)init>
 static constexpr uint32_t kAccDeclaredSynchronized =  0x00020000;  // method (dex only)
@@ -128,7 +131,7 @@ static constexpr uint32_t kAccHiddenapiBits = kAccPublicApi | kAccCorePlatformAp
 // which overlap are not valid when kAccIntrinsic is set.
 static constexpr uint32_t kAccIntrinsicBits = kAccHiddenapiBits |
     kAccSingleImplementation | kAccMustCountLocks | kAccCompileDontBother | kAccCopied |
-    kAccPreviouslyWarm | kAccMemorySharedMethod;
+    kAccPreviouslyWarm | kAccMemorySharedMethod | kAccDefault;
 
 // Valid (meaningful) bits for a field.
 static constexpr uint32_t kAccValidFieldFlags = kAccPublic | kAccPrivate | kAccProtected |

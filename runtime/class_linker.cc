@@ -77,6 +77,7 @@
 #include "dex/dex_file_annotations.h"
 #include "dex/dex_file_exception_helpers.h"
 #include "dex/dex_file_loader.h"
+#include "dex/modifiers.h"
 #include "dex/signature-inl.h"
 #include "dex/utf.h"
 #include "entrypoints/entrypoint_utils-inl.h"
@@ -5527,6 +5528,8 @@ void ClassLinker::CreateProxyMethod(Handle<mirror::Class> klass, ArtMethod* prot
   // Clear the abstract and default flags to ensure that defaults aren't picked in
   // preference to the invocation handler.
   const uint32_t kRemoveFlags = kAccAbstract | kAccDefault;
+  DCHECK((out->GetAccessFlags() & kAccIntrinsic) == 0)
+      << "kAccDefault is used for the intrinsics, so removing it here would be a mistake.";
   // Make the method final.
   // Mark kAccCompileDontBother so that we don't take JIT samples for the method. b/62349349
   const uint32_t kAddFlags = kAccFinal | kAccCompileDontBother;
@@ -8197,6 +8200,8 @@ void ClassLinker::LinkMethodsHelper<kPointerSize>::ReallocMethods(ObjPtr<mirror:
         // TODO This is rather arbitrary. We should maybe support classes where only some of its
         // methods are skip_access_checks.
         DCHECK_EQ(new_method.GetAccessFlags() & kAccNative, 0u);
+        DCHECK((new_method.GetAccessFlags() & kAccIntrinsic) == 0)
+            << "kAccDefault is used for the intrinsics, so setting it here would be a mistake.";
         constexpr uint32_t kSetFlags = kAccDefault | kAccCopied;
         constexpr uint32_t kMaskFlags = ~kAccSkipAccessChecks;
         new_method.SetAccessFlags((new_method.GetAccessFlags() | kSetFlags) & kMaskFlags);
