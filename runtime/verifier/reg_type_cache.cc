@@ -100,6 +100,13 @@ const RegType& RegTypeCache::FromDescriptor(Handle<mirror::ClassLoader> loader,
   }
 }
 
+const RegType& RegTypeCache::FromTypeIndexUncached(dex::TypeIndex type_index) {
+  DCHECK(entries_for_type_index_[type_index.index_] == nullptr);
+  const char* descriptor = dex_file_->GetTypeDescriptor(type_index);
+  const RegType& reg_type = FromDescriptor(class_loader_, descriptor);
+  entries_for_type_index_[type_index.index_] = &reg_type;
+  return reg_type;
+}
 
 const RegType& RegTypeCache::RegTypeFromPrimitiveType(Primitive::Type prim_type) const {
   switch (prim_type) {
@@ -202,42 +209,55 @@ const RegType& RegTypeCache::MakeUnresolvedReference() {
       null_handle_, AddString("a"), entries_.size()));
 }
 
-const RegType* RegTypeCache::FindClass(ObjPtr<mirror::Class> klass) const {
+const RegType& RegTypeCache::FromClass(ObjPtr<mirror::Class> klass) {
   DCHECK(klass != nullptr);
+  DCHECK(!klass->IsProxyClass());
+
   if (klass->IsPrimitive()) {
-    return &RegTypeFromPrimitiveType(klass->GetPrimitiveType());
+    return RegTypeFromPrimitiveType(klass->GetPrimitiveType());
+  }
+  if (!klass->IsArrayClass() && &klass->GetDexFile() == dex_file_) {
+    // Go through the `TypeIndex`-based cache. If the entry is not there yet, we shall
+    // fill it in now to make sure it's available for subsequent lookups.
+    std::optional<StackHandleScope<1u>> hs(std::nullopt);
+    if (kIsDebugBuild) {
+      hs.emplace(Thread::Current());
+    }
+    Handle<mirror::Class> h_class =
+        kIsDebugBuild ? hs->NewHandle(klass) : Handle<mirror::Class>();
+    const RegType& reg_type = FromTypeIndex(klass->GetDexTypeIndex());
+    DCHECK(reg_type.HasClass());
+    DCHECK(reg_type.GetClass() == h_class.Get());
+    return reg_type;
   }
   for (auto& pair : klass_entries_) {
-    const Handle<mirror::Class> reg_klass = pair.first;
-    const RegType* reg_type = pair.second;
-    if (reg_klass.Get() == klass) {
-      return reg_type;
+    const Handle<mirror::Class> entry_klass = pair.first;
+    const RegType* entry_reg_type = pair.second;
+    if (entry_klass.Get() == klass) {
+      return *entry_reg_type;
     }
   }
-  return nullptr;
-}
 
-const RegType* RegTypeCache::InsertClass(const std::string_view& descriptor,
-                                         ObjPtr<mirror::Class> klass) {
   // No reference to the class was found, create new reference.
-  DCHECK(FindClass(klass) == nullptr);
-  RegType* const reg_type =
-      new (&allocator_) ReferenceType(handles_.NewHandle(klass), descriptor, entries_.size());
-  return &AddEntry(reg_type);
-}
-
-const RegType& RegTypeCache::FromClass(const char* descriptor, ObjPtr<mirror::Class> klass) {
-  DCHECK(klass != nullptr);
-  const RegType* reg_type = FindClass(klass);
-  if (reg_type == nullptr) {
-    reg_type = InsertClass(AddString(std::string_view(descriptor)), klass);
+  std::string_view descriptor;
+  if (klass->IsArrayClass()) {
+    std::string temp;
+    descriptor = AddString(std::string_view(klass->GetDescriptor(&temp)));
+  } else {
+    // Point `descriptor` to the string data in the dex file that defines the `klass`.
+    // That dex file cannot be unloaded while we hold a `Handle<>` to that `klass`.
+    descriptor = klass->GetDescriptorView();
   }
-  return *reg_type;
+  Handle<mirror::Class> h_klass = handles_.NewHandle(klass);
+  const RegType* reg_type = new (&allocator_) ReferenceType(h_klass, descriptor, entries_.size());
+  return AddEntry(reg_type);
 }
 
 RegTypeCache::RegTypeCache(Thread* self,
                            ClassLinker* class_linker,
                            ArenaPool* arena_pool,
+                           Handle<mirror::ClassLoader> class_loader,
+                           const DexFile* dex_file,
                            bool can_load_classes,
                            bool can_suspend)
     : arena_stack_(arena_pool),
@@ -246,12 +266,18 @@ RegTypeCache::RegTypeCache(Thread* self,
       klass_entries_(allocator_.Adapter(kArenaAllocVerifier)),
       handles_(self),
       class_linker_(class_linker),
+      class_loader_(class_loader),
+      dex_file_(dex_file),
+      entries_for_type_index_(allocator_.AllocArray<const RegType*>(dex_file->NumTypeIds())),
       can_load_classes_(can_load_classes),
       can_suspend_(can_suspend) {
   DCHECK(can_suspend || !can_load_classes) << "Cannot load classes if suspension is disabled!";
   if (kIsDebugBuild && can_suspend) {
     Thread::Current()->AssertThreadSuspensionIsAllowable(gAborting == 0);
   }
+  // TODO: Why are we using `ScopedArenaAllocator` here instead of the `ArenaAllocator` which
+  // guarantees zero-initialization? We could avoid this `fill_n()` with the `ArenaAllocator`.
+  std::fill_n(entries_for_type_index_, dex_file->NumTypeIds(), nullptr);
   // The klass_entries_ array does not have primitives or small constants.
   static constexpr size_t kNumReserveEntries = 32;
   klass_entries_.reserve(kNumReserveEntries);
@@ -542,15 +568,15 @@ const RegType& RegTypeCache::GetComponentType(const RegType& array,
     return FromDescriptor(loader, descriptor.c_str() + 1);
   } else {
     ObjPtr<mirror::Class> klass = array.GetClass()->GetComponentType();
-    std::string temp;
-    const char* descriptor = klass->GetDescriptor(&temp);
     if (klass->IsErroneous()) {
       // Arrays may have erroneous component types, use unresolved in that case.
       // We assume that the primitive classes are not erroneous, so we know it is a
       // reference type.
+      std::string temp;
+      const char* descriptor = klass->GetDescriptor(&temp);
       return FromDescriptor(loader, descriptor);
     } else {
-      return FromClass(descriptor, klass);
+      return FromClass(klass);
     }
   }
 }
