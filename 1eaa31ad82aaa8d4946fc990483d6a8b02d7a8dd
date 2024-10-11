@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee65724f_b946aa53",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-11T09:38:37Z",
+      "side": 1,
+      "message": "(non-blocking since this CL just moved existing code around) Not needed since all cases were defined",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1905,
+        "endChar": 20
+      },
+      "revId": "1eaa31ad82aaa8d4946fc990483d6a8b02d7a8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
