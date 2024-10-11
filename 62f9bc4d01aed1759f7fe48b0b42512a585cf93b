@@ -22,6 +22,30 @@
       },
       "revId": "62f9bc4d01aed1759f7fe48b0b42512a585cf93b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a97688b_cb4755e9",
+        "filename": "compiler/optimizing/handle_cache-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-11T09:48:32Z",
+      "side": 1,
+      "message": "I didn\u0027t want to `#include \"handle_scope-inl.h` (which pulls in a lot of code) from the `handle_cache.h`. And I managed to avoid even `#include \"handle_scope.h` there with a forward declaration of `VariableSizedHandleScope`.",
+      "parentUuid": "f2e18fab_8dd307eb",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "62f9bc4d01aed1759f7fe48b0b42512a585cf93b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
