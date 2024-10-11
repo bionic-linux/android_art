@@ -16,6 +16,24 @@
       "message": "Revision 45 was getting an error on arm32 builders, and I think it\u0027s related to this going out of scope somehow.",
       "revId": "7cc2e9c26bd89a6e7e246d192757ee6b218b117e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f33586e_7739a815",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 45
+      },
+      "lineNbr": 2595,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-11T09:29:19Z",
+      "side": 1,
+      "message": "Acknowledged, fine to keep above",
+      "parentUuid": "39c882c6_7adce69c",
+      "revId": "7cc2e9c26bd89a6e7e246d192757ee6b218b117e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
