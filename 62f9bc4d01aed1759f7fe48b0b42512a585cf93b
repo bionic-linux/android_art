@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e18fab_8dd307eb",
+        "filename": "compiler/optimizing/handle_cache-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-11T09:43:31Z",
+      "side": 1,
+      "message": "Just curious: Why these methods in the inl?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "62f9bc4d01aed1759f7fe48b0b42512a585cf93b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
