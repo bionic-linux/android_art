@@ -17,6 +17,7 @@
 #ifndef ART_COMPILER_DRIVER_COMPILER_OPTIONS_H_
 #define ART_COMPILER_DRIVER_COMPILER_OPTIONS_H_
 
+#include <cstdint>
 #include <memory>
 #include <ostream>
 #include <string>
@@ -42,6 +43,7 @@ class VerifierDepsTest;
 
 namespace linker {
 class Arm64RelativePatcherTest;
+class Thumb2RelativePatcherTest;
 }  // namespace linker
 
 class ArtMethod;
@@ -59,15 +61,37 @@ enum class ProfileMethodsCheck : uint8_t {
 
 class CompilerOptions final {
  public:
-  // Guide heuristics to determine whether to compile method if profile data not available.
-  static const size_t kDefaultHugeMethodThreshold = 10000;
-  static const size_t kDefaultLargeMethodThreshold = 600;
-  static const size_t kDefaultNumDexMethodsThreshold = 900;
-  static constexpr double kDefaultTopKProfileThreshold = 90.0;
-  static const bool kDefaultGenerateDebugInfo = false;
-  static const bool kDefaultGenerateMiniDebugInfo = true;
-  static const size_t kDefaultInlineMaxCodeUnits = 32;
+  // Default values for parameters set via flags.
+  static constexpr bool kDefaultGenerateDebugInfo = false;
+  static constexpr bool kDefaultGenerateMiniDebugInfo = true;
+  static constexpr size_t kDefaultHugeMethodThreshold = 10000;
+  static constexpr size_t kDefaultInlineMaxCodeUnits = 32;
+  // Token to represent no value set for `inline_max_code_units_`.
   static constexpr size_t kUnsetInlineMaxCodeUnits = -1;
+  // We set a lower inlining threshold for baseline to reduce code size and compilation time. This
+  // cannot be changed via flags.
+  static constexpr size_t kBaselineInlineMaxCodeUnits = 14;
+
+  // Instruction limit to control memory.
+  static constexpr size_t kInlinerMaximumNumberOfTotalInstructions = 1024;
+
+  // Maximum number of instructions for considering a method small,
+  // which we will always try to inline if the other non-instruction limits
+  // are not reached.
+  static constexpr size_t kInlinerMaximumNumberOfInstructionsForSmallMethod = 3;
+
+  // Limit the number of dex registers that we accumulate while inlining
+  // to avoid creating large amount of nested environments.
+  static constexpr size_t kInlinerMaximumNumberOfCumulatedDexRegisters = 32;
+
+  // Limit recursive call inlining, which do not benefit from too
+  // much inlining compared to code locality.
+  static constexpr size_t kInlinerMaximumNumberOfRecursiveCalls = 4;
+
+  // Limit recursive polymorphic call inlining to prevent code bloat, since it can quickly get out of
+  // hand in the presence of multiple Wrapper classes. We set this to 0 to disallow polymorphic
+  // recursive calls at all.
+  static constexpr size_t kInlinerMaximumNumberOfPolymorphicRecursiveCalls = 0;
 
   enum class CompilerType : uint8_t {
     kAotCompiler,             // AOT compiler.
@@ -122,20 +146,8 @@ class CompilerOptions final {
     return huge_method_threshold_;
   }
 
-  size_t GetLargeMethodThreshold() const {
-    return large_method_threshold_;
-  }
-
   bool IsHugeMethod(size_t num_dalvik_instructions) const {
     return num_dalvik_instructions > huge_method_threshold_;
-  }
-
-  bool IsLargeMethod(size_t num_dalvik_instructions) const {
-    return num_dalvik_instructions > large_method_threshold_;
-  }
-
-  size_t GetNumDexMethodsThreshold() const {
-    return num_dex_methods_threshold_;
   }
 
   size_t GetInlineMaxCodeUnits() const {
@@ -145,8 +157,8 @@ class CompilerOptions final {
     inline_max_code_units_ = units;
   }
 
-  double GetTopKProfileThreshold() const {
-    return top_k_profile_threshold_;
+  bool EmitReadBarrier() const {
+    return emit_read_barrier_;
   }
 
   bool GetDebuggable() const {
@@ -225,6 +237,10 @@ class CompilerOptions final {
     return baseline_;
   }
 
+  bool ProfileBranches() const {
+    return profile_branches_;
+  }
+
   // Are we compiling an app image?
   bool IsAppImage() const {
     return image_type_ == ImageType::kAppImage;
@@ -298,7 +314,7 @@ class CompilerOptions final {
 
   // Returns whether the given `pretty_descriptor` is in the list of preloaded
   // classes. `pretty_descriptor` should be the result of calling `PrettyDescriptor`.
-  EXPORT bool IsPreloadedClass(const char* pretty_descriptor) const;
+  EXPORT bool IsPreloadedClass(std::string_view pretty_descriptor) const;
 
   bool ParseCompilerOptions(const std::vector<std::string>& options,
                             bool ignore_unrecognized,
@@ -330,10 +346,6 @@ class CompilerOptions final {
 
   bool DeduplicateCode() const {
     return deduplicate_code_;
-  }
-
-  RegisterAllocator::Strategy GetRegisterAllocationStrategy() const {
-    return register_allocation_strategy_;
   }
 
   const std::vector<std::string>* GetPassesToRun() const {
@@ -376,6 +388,26 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  size_t InlinerMaximumNumberOfTotalInstructions() const {
+    return inliner_maximum_number_of_total_instructions_;
+  }
+
+  size_t InlinerMaximumNumberOfInstructionsForSmallMethod() const {
+    return inliner_maximum_number_of_instructions_for_small_method_;
+  }
+
+  size_t InlinerMaximumNumberOfCumulatedDexRegisters() const {
+    return inliner_maximum_number_of_cumulated_dex_registers_;
+  }
+
+  size_t InlinerMaximumNumberOfRecursiveCalls() const {
+    return inliner_maximum_number_of_recursive_calls_;
+  }
+
+  size_t InlinerMaximumNumberOfPolymorphicRecursiveCalls() const {
+    return inliner_maximum_number_of_polymorphic_recursive_calls_;
+  }
+
   // Returns true if `dex_file` is within an oat file we're producing right now.
   bool WithinOatFile(const DexFile* dex_file) const {
     return ContainsElement(GetDexFilesForOatFile(), dex_file);
@@ -389,12 +421,9 @@ class CompilerOptions final {
 
  private:
   EXPORT bool ParseDumpInitFailures(const std::string& option, std::string* error_msg);
-  EXPORT bool ParseRegisterAllocationStrategy(const std::string& option, std::string* error_msg);
 
   CompilerFilter::Filter compiler_filter_;
   size_t huge_method_threshold_;
-  size_t large_method_threshold_;
-  size_t num_dex_methods_threshold_;
   size_t inline_max_code_units_;
 
   InstructionSet instruction_set_;
@@ -420,6 +449,7 @@ class CompilerOptions final {
   ImageType image_type_;
   bool multi_image_;
   bool compile_art_test_;
+  bool emit_read_barrier_;
   bool baseline_;
   bool debuggable_;
   bool generate_debug_info_;
@@ -432,9 +462,7 @@ class CompilerOptions final {
   bool dump_timings_;
   bool dump_pass_timings_;
   bool dump_stats_;
-
-  // When using a profile file only the top K% of the profiled samples will be compiled.
-  double top_k_profile_threshold_;
+  bool profile_branches_;
 
   // Info for profile guided compilation.
   const ProfileCompilationInfo* profile_compilation_info_;
@@ -486,7 +514,11 @@ class CompilerOptions final {
   // Maximum solid block size in the generated image.
   uint32_t max_image_block_size_;
 
-  RegisterAllocator::Strategy register_allocation_strategy_;
+  size_t inliner_maximum_number_of_total_instructions_;
+  size_t inliner_maximum_number_of_instructions_for_small_method_;
+  size_t inliner_maximum_number_of_cumulated_dex_registers_;
+  size_t inliner_maximum_number_of_recursive_calls_;
+  size_t inliner_maximum_number_of_polymorphic_recursive_calls_;
 
   // If not null, specifies optimization passes which will be run instead of defaults.
   // Note that passes_to_run_ is not checked for correctness and providing an incorrect
@@ -502,6 +534,7 @@ class CompilerOptions final {
   friend class jit::JitCompiler;
   friend class verifier::VerifierDepsTest;
   friend class linker::Arm64RelativePatcherTest;
+  friend class linker::Thumb2RelativePatcherTest;
 
   template <class Base>
   friend bool ReadCompilerOptions(Base& map, CompilerOptions* options, std::string* error_msg);
