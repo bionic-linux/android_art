@@ -19,6 +19,7 @@
 #include <fstream>
 #include <string_view>
 
+#include "android-base/properties.h"
 #include "android-base/stringprintf.h"
 
 #include "arch/instruction_set.h"
@@ -80,6 +81,19 @@ CompilerOptions::CompilerOptions()
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
       passes_to_run_(nullptr) {
+  inliner_maximum_number_of_total_instructions_ = android::base::GetUintProperty(
+      "dalvik.inliner.max_num_total_instructions", kInlinerMaximumNumberOfTotalInstructions);
+  inliner_maximum_number_of_instructions_for_small_method_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_instructions_for_small_method",
+                                     kInlinerMaximumNumberOfInstructionsForSmallMethod);
+  inliner_maximum_number_of_cumulated_dex_registers_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_cumulated_dex_registers",
+                                     kInlinerMaximumNumberOfCumulatedDexRegisters);
+  inliner_maximum_number_of_recursive_calls_ = android::base::GetUintProperty(
+      "dalvik.inliner.max_num_recursive_calls", kInlinerMaximumNumberOfRecursiveCalls);
+  inliner_maximum_number_of_polymorphic_recursive_calls_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_polymorphic_recursive_calls",
+                                     kInlinerMaximumNumberOfPolymorphicRecursiveCalls);
 }
 
 CompilerOptions::~CompilerOptions() {
