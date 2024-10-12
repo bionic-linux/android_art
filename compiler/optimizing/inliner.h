@@ -20,6 +20,7 @@
 #include "base/macros.h"
 #include "dex/dex_file_types.h"
 #include "dex/invoke_type.h"
+#include "driver/compiler_options.h"
 #include "jit/profiling_info.h"
 #include "optimization.h"
 #include "profile/profile_compilation_info.h"
@@ -46,21 +47,7 @@ class HInliner : public HOptimization {
            HEnvironment* caller_environment,
            size_t depth,
            bool try_catch_inlining_allowed,
-           const char* name = kInlinerPassName)
-      : HOptimization(outer_graph, name, stats),
-        outermost_graph_(outermost_graph),
-        outer_compilation_unit_(outer_compilation_unit),
-        caller_compilation_unit_(caller_compilation_unit),
-        codegen_(codegen),
-        total_number_of_dex_registers_(total_number_of_dex_registers),
-        total_number_of_instructions_(total_number_of_instructions),
-        parent_(parent),
-        caller_environment_(caller_environment),
-        depth_(depth),
-        inlining_budget_(0),
-        try_catch_inlining_allowed_(try_catch_inlining_allowed),
-        run_extra_type_propagation_(false),
-        inline_stats_(nullptr) {}
+           const char* name = kInlinerPassName);
 
   bool Run() override;
 
@@ -81,6 +68,8 @@ class HInliner : public HOptimization {
     kInlineCacheMegamorphic = 4,
     kInlineCacheMissingTypes = 5
   };
+
+  bool AlwaysThrows(ArtMethod* method);
 
   bool TryInline(HInvoke* invoke_instruction);
 
@@ -328,6 +317,7 @@ class HInliner : public HOptimization {
   const DexCompilationUnit& outer_compilation_unit_;
   const DexCompilationUnit& caller_compilation_unit_;
   CodeGenerator* const codegen_;
+  const CompilerOptions& options_;
   const size_t total_number_of_dex_registers_;
   size_t total_number_of_instructions_;
 
