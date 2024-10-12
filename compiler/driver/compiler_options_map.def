@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #ifndef COMPILER_OPTIONS_KEY
 #error "Please #define COMPILER_OPTIONS_KEY before #including this file"
 #define COMPILER_OPTIONS_KEY(...)  // Don't display errors in this file in IDEs.
 #endif
-
 // This file defines the list of keys for CompilerOptionsMap.
 // These can be used with CompilerOptionsMap.Get/Set/etc, once that template class has been
 // instantiated.
@@ -32,9 +30,7 @@
 //
 // Please keep the columns aligned if possible when adding new rows.
 //
-
 // Parse-able keys from the command line.
-
 // TODO: Add type parser.
 COMPILER_OPTIONS_KEY (CompilerFilter::Filter,      CompilerFilter)
 COMPILER_OPTIONS_KEY (bool,                        CompileArtTest)
@@ -63,5 +59,9 @@ COMPILER_OPTIONS_KEY (Unit,                        DumpTimings)
 COMPILER_OPTIONS_KEY (Unit,                        DumpPassTimings)
 COMPILER_OPTIONS_KEY (Unit,                        DumpStats)
 COMPILER_OPTIONS_KEY (unsigned int,                MaxImageBlockSize)
-
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfTotalInstructions,          1024)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfInstructionsForSmallMethod, 3)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfCumulatedDexRegisters,      32)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfRecursiveCalls,             4)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfPolymorphicRecursiveCalls,  0)
 #undef COMPILER_OPTIONS_KEY

@@ -13,14 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #include "compiler_options.h"
-
 #include <fstream>
 #include <string_view>
-
+#include "android-base/properties.h"
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
 #include "art_method-inl.h"
@@ -33,9 +30,7 @@
 #include "runtime.h"
 #include "scoped_thread_state_change-inl.h"
 #include "simple_compiler_options_map.h"
-
 namespace art HIDDEN {
-
 CompilerOptions::CompilerOptions()
     : compiler_filter_(CompilerFilter::kDefaultCompilerFilter),
       huge_method_threshold_(kDefaultHugeMethodThreshold),
@@ -50,11 +45,13 @@ CompilerOptions::CompilerOptions()
       multi_image_(false),
       compile_art_test_(false),
       emit_read_barrier_(false),
+      emit_read_barrier_(false),
       baseline_(false),
       debuggable_(false),
       generate_debug_info_(kDefaultGenerateDebugInfo),
       generate_mini_debug_info_(kDefaultGenerateMiniDebugInfo),
       generate_build_id_(false),
+      implicit_null_checks_(false),
       implicit_null_checks_(false),
       implicit_so_checks_(true),
       implicit_suspend_checks_(false),
@@ -62,6 +59,7 @@ CompilerOptions::CompilerOptions()
       dump_timings_(false),
       dump_pass_timings_(false),
       dump_stats_(false),
+      profile_branches_(false),
       profile_branches_(false),
       profile_compilation_info_(nullptr),
       verbose_methods_(),
@@ -80,25 +78,32 @@ CompilerOptions::CompilerOptions()
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
       passes_to_run_(nullptr) {
+  inliner_maximum_number_of_total_instructions_ = android::base::GetUintProperty(
+      "dalvik.inliner.max_num_total_instructions", kInlinerMaximumNumberOfTotalInstructions);
+  inliner_maximum_number_of_instructions_for_small_method_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_instructions_for_small_method",
+                                     kInlinerMaximumNumberOfInstructionsForSmallMethod);
+  inliner_maximum_number_of_cumulated_dex_registers_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_cumulated_dex_registers",
+                                     kInlinerMaximumNumberOfCumulatedDexRegisters);
+  inliner_maximum_number_of_recursive_calls_ = android::base::GetUintProperty(
+      "dalvik.inliner.max_num_recursive_calls", kInlinerMaximumNumberOfRecursiveCalls);
+  inliner_maximum_number_of_polymorphic_recursive_calls_ =
+      android::base::GetUintProperty("dalvik.inliner.max_num_polymorphic_recursive_calls",
+                                     kInlinerMaximumNumberOfPolymorphicRecursiveCalls);
 }
-
 CompilerOptions::~CompilerOptions() {
   // Everything done by member destructors.
   // The definitions of classes forward-declared in the header have now been #included.
 }
-
 namespace {
-
 bool kEmitRuntimeReadBarrierChecks = kIsDebugBuild &&
     RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
-
 }  // namespace
-
 bool CompilerOptions::EmitRunTimeChecksInDebugMode() const {
   // Run-time checks (e.g. Marking Register checks) are only emitted in slow-debug mode.
   return kEmitRuntimeReadBarrierChecks;
 }
-
 bool CompilerOptions::ParseDumpInitFailures(const std::string& option, std::string* error_msg) {
   init_failure_output_.reset(new std::ofstream(option));
   if (init_failure_output_.get() == nullptr) {
@@ -112,7 +117,6 @@ bool CompilerOptions::ParseDumpInitFailures(const std::string& option, std::stri
   }
   return true;
 }
-
 bool CompilerOptions::ParseCompilerOptions(const std::vector<std::string>& options,
                                            bool ignore_unrecognized,
                                            std::string* error_msg) {
@@ -122,22 +126,18 @@ bool CompilerOptions::ParseCompilerOptions(const std::vector<std::string>& optio
     *error_msg = parse_result.GetMessage();
     return false;
   }
-
   SimpleParseArgumentMap args = parser.ReleaseArgumentsMap();
   return ReadCompilerOptions(args, this, error_msg);
 }
-
 bool CompilerOptions::IsImageClass(const char* descriptor) const {
   // Historical note: We used to hold the set indirectly and there was a distinction between an
   // empty set and a null, null meaning to include all classes. However, the distinction has been
   // removed; if we don't have a profile, we treat it as an empty set of classes. b/77340429
   return image_classes_.find(std::string_view(descriptor)) != image_classes_.end();
 }
-
 bool CompilerOptions::IsPreloadedClass(std::string_view pretty_descriptor) const {
   return preloaded_classes_.find(pretty_descriptor) != preloaded_classes_.end();
 }
-
 bool CompilerOptions::ShouldCompileWithClinitCheck(ArtMethod* method) const {
   if (method != nullptr &&
       Runtime::Current()->IsAotCompiler() &&
@@ -158,5 +158,4 @@ bool CompilerOptions::ShouldCompileWithClinitCheck(ArtMethod* method) const {
   }
   return false;
 }
-
 }  // namespace art
