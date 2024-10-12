@@ -63,5 +63,10 @@ COMPILER_OPTIONS_KEY (Unit,                        DumpTimings)
 COMPILER_OPTIONS_KEY (Unit,                        DumpPassTimings)
 COMPILER_OPTIONS_KEY (Unit,                        DumpStats)
 COMPILER_OPTIONS_KEY (unsigned int,                MaxImageBlockSize)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfTotalInstructions,          1024)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfInstructionsForSmallMethod, 3)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfCumulatedDexRegisters,      32)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfRecursiveCalls,             4)
+COMPILER_OPTIONS_KEY (size_t,                      MaximumNumberOfPolymorphicRecursiveCalls,  0)
 
 #undef COMPILER_OPTIONS_KEY
