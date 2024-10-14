@@ -16,6 +16,24 @@
       "message": "I think the other build warnings will go away after adding the semicolon here",
       "revId": "1e4424009e58fb3078081775ed99be024cad3620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb33c32_d5e62aa0",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2649,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T14:29:25Z",
+      "side": 1,
+      "message": "Yeah, pardon my dust, I\u0027m coding in the 5 minutes I get between meetings and throwing it at presubmit.",
+      "parentUuid": "3d202ae7_d372b89c",
+      "revId": "1e4424009e58fb3078081775ed99be024cad3620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
