@@ -23,6 +23,7 @@
 
 #include "android-base/logging.h"
 #include "android-base/macros.h"
+#include "android-base/properties.h"
 #include "android-base/stringprintf.h"
 
 #include "base/macros.h"
@@ -50,6 +51,21 @@ struct CmdlineType<CompilerFilter::Filter> : CmdlineTypeParser<CompilerFilter::F
   }
 };
 
+template <class Base, typename T, typename U>
+void assignIfExistsOrReadPropertyOrDefault(Base& map, const TKey<T>& key, U* out, T default_value) {
+  if (map.Exists(key)) {
+    *out = std::move(*map.Get(key));
+    return true;
+  }
+  std::string value = android::base::GetProperty(key.name(), "");
+  if (!value.empty()) {
+    if (android::base::ParseInt(value, out, min, max)) {
+      return true;
+    }
+  }
+  *out = default_value;
+}
+
 template <class Base>
 inline bool ReadCompilerOptions(Base& map, CompilerOptions* options, std::string* error_msg) {
   if (map.Exists(Base::CompilerFilter)) {
@@ -58,6 +74,17 @@ inline bool ReadCompilerOptions(Base& map, CompilerOptions* options, std::string
   map.AssignIfExists(Base::CompileArtTest, &options->compile_art_test_);
   map.AssignIfExists(Base::HugeMethodMaxThreshold, &options->huge_method_threshold_);
   map.AssignIfExists(Base::InlineMaxCodeUnitsThreshold, &options->inline_max_code_units_);
+
+  using android::base::GetUintProperty;
+
+  if (!map.AssignIfExists(Base::InlineMaximumNumberOfTotalInstructions, &options->inliner_maximum_number_of_total_instructions_)) {
+    options->inliner_maximum_number_of_total_instructions_ = map.Get GetUintProperty("dalvik.inliner.max_num_total_instructions",
+                                                                            map.GetOrDefault(Base::InlineMaximumNumberOfTotalInstructions));
+  }
+  map.AssignIfExists(Base::InlineMaximumNumberOfInstructionsForSmallMethod, &options->inliner_maximum_number_of_instructions_for_small_method_);
+  map.AssignIfExists(Base::InlineMaximumNumberOfCumulatedDexRegisters, &options->inliner_maximum_number_of_cumulated_dex_registers_);
+  map.AssignIfExists(Base::InlineMaximumNumberOfRecursiveCalls, &options->inliner_maximum_number_of_recursive_calls_);
+  map.AssignIfExists(Base::InlineMaximumNumberOfPolymorphicRecursiveCalls, &options->inliner_maximum_number_of_polymorphic_recursive_calls_);
   map.AssignIfExists(Base::GenerateDebugInfo, &options->generate_debug_info_);
   map.AssignIfExists(Base::GenerateMiniDebugInfo, &options->generate_mini_debug_info_);
   map.AssignIfExists(Base::GenerateBuildID, &options->generate_build_id_);
@@ -128,12 +155,40 @@ NO_INLINE void AddCompilerOptionsArgumentParserOptions(Builder& b) {
           .template WithType<unsigned int>()
           .WithHelp("threshold size for a huge method for compiler filter tuning.")
           .IntoKey(Map::HugeMethodMaxThreshold)
+
       .Define("--inline-max-code-units=_")
           .template WithType<unsigned int>()
           .WithHelp("the maximum code units that a methodcan have to be considered for inlining.\n"
                     "A zero value will disable inlining. Honored only by Optimizing. Has priority\n"
                     "over the --compiler-filter option. Intended for development/experimental use.")
           .IntoKey(Map::InlineMaxCodeUnitsThreshold)
+      .Define("--inline-max-num-total-instructions=_")
+          .template WithType<unsigned int>()
+          .WithHelp("Maximum number of instructions to inline in a single method.")
+          .IntoKey(map::InlineMaximumNumberOfTotalInstructions)
+      .Define("--inline-max-num-small-method-instructions=_")
+          .template WithType<unsigned int>()
+          .WithHelp("Maximum number of instructions for considering a method small,\n"
+                    "which we will always try to inline if the other non-instruction\n"
+                    "limits are not reached.")
+          .IntoKey(map::InlineMaximumNumberOfInstructionsForSmallMethod)
+      .Define("--inline-max-num-total-instructions=_")
+          .template WithType<unsigned int>()
+          .WithHelp("Limit the number of dex registers that we accumulate while inlining\n"
+                    "to avoid creating large amount of nested environments.")
+          .IntoKey(map::InlineMaximumNumberOfCumulatedDexRegisters)
+      .Define("--inline-max-num-total-instructions=_")
+          .template WithType<unsigned int>()
+          .WithHelp("Limit recursive call inlining, which do not benefit from too\n"
+                    "much inlining compared to code locality.")
+          .IntoKey(map::InlineMaximumNumberOfRecursiveCalls)
+      .Define("--inline-max-num-total-instructions=_")
+          .template WithType<unsigned int>()
+          .WithHelp("Limit recursive polymorphic call inlining to prevent code bloat,\n"
+                    "since it can quickly get out of hand in the presence of multiple\n"
+                    " Wrapper classes. We set this to 0 to disallow polymorphic recursive\n"
+                    "calls at all.")
+          .IntoKey(map::InlineMaximumNumberOfPolymorphicRecursiveCalls)
 
       .Define({"--generate-debug-info", "-g", "--no-generate-debug-info"})
           .WithValues({true, true, false})
@@ -238,6 +293,7 @@ NO_INLINE void AddCompilerOptionsArgumentParserOptions(Builder& b) {
           .template WithType<unsigned int>()
           .WithHelp("Maximum solid block size for compressed images.")
           .IntoKey(Map::MaxImageBlockSize)
+
       // Obsolete flags
       .Ignore({
         "--num-dex-methods=_",

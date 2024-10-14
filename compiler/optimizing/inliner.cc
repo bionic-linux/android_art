@@ -50,27 +50,6 @@
 
 namespace art HIDDEN {
 
-// Instruction limit to control memory.
-static constexpr size_t kMaximumNumberOfTotalInstructions = 1024;
-
-// Maximum number of instructions for considering a method small,
-// which we will always try to inline if the other non-instruction limits
-// are not reached.
-static constexpr size_t kMaximumNumberOfInstructionsForSmallMethod = 3;
-
-// Limit the number of dex registers that we accumulate while inlining
-// to avoid creating large amount of nested environments.
-static constexpr size_t kMaximumNumberOfCumulatedDexRegisters = 32;
-
-// Limit recursive call inlining, which do not benefit from too
-// much inlining compared to code locality.
-static constexpr size_t kMaximumNumberOfRecursiveCalls = 4;
-
-// Limit recursive polymorphic call inlining to prevent code bloat, since it can quickly get out of
-// hand in the presence of multiple Wrapper classes. We set this to 0 to disallow polymorphic
-// recursive calls at all.
-static constexpr size_t kMaximumNumberOfPolymorphicRecursiveCalls = 0;
-
 // Controls the use of inline caches in AOT mode.
 static constexpr bool kUseAOTInlineCaches = true;
 
@@ -89,6 +68,35 @@ static constexpr bool kInlineTryCatches = true;
 #define LOG_SUCCESS() LOG_INTERNAL("Success: ")
 #define LOG_FAIL(stats_ptr, stat) MaybeRecordStat(stats_ptr, stat); LOG_INTERNAL("Fail: ")
 #define LOG_FAIL_NO_STAT() LOG_INTERNAL("Fail: ")
+
+HInliner::HInliner(HGraph* outer_graph,
+                   HGraph* outermost_graph,
+                   CodeGenerator* codegen,
+                   const DexCompilationUnit& outer_compilation_unit,
+                   const DexCompilationUnit& caller_compilation_unit,
+                   OptimizingCompilerStats* stats,
+                   size_t total_number_of_dex_registers,
+                   size_t total_number_of_instructions,
+                   HInliner* parent,
+                   HEnvironment* caller_environment,
+                   size_t depth,
+                   bool try_catch_inlining_allowed,
+                   const char* name)
+    : HOptimization(outer_graph, name, stats),
+      outermost_graph_(outermost_graph),
+      outer_compilation_unit_(outer_compilation_unit),
+      caller_compilation_unit_(caller_compilation_unit),
+      codegen_(codegen),
+      options_(codegen->GetCompilerOptions()),
+      total_number_of_dex_registers_(total_number_of_dex_registers),
+      total_number_of_instructions_(total_number_of_instructions),
+      parent_(parent),
+      caller_environment_(caller_environment),
+      depth_(depth),
+      inlining_budget_(0),
+      try_catch_inlining_allowed_(try_catch_inlining_allowed),
+      run_extra_type_propagation_(false),
+      inline_stats_(nullptr) {}
 
 std::string HInliner::DepthString(int line) const {
   std::string value;
@@ -125,18 +133,18 @@ static size_t CountNumberOfInstructions(HGraph* graph) {
 }
 
 void HInliner::UpdateInliningBudget() {
-  if (total_number_of_instructions_ >= kMaximumNumberOfTotalInstructions) {
+  if (total_number_of_instructions_ >= options_.InlinerMaximumNumberOfTotalInstructions()) {
     // Always try to inline small methods.
-    inlining_budget_ = kMaximumNumberOfInstructionsForSmallMethod;
+    inlining_budget_ = options_.InlinerMaximumNumberOfInstructionsForSmallMethod();
   } else {
     inlining_budget_ = std::max(
-        kMaximumNumberOfInstructionsForSmallMethod,
-        kMaximumNumberOfTotalInstructions - total_number_of_instructions_);
+        options_.InlinerMaximumNumberOfInstructionsForSmallMethod(),
+        options_.InlinerMaximumNumberOfTotalInstructions() - total_number_of_instructions_);
   }
 }
 
 bool HInliner::Run() {
-  if (codegen_->GetCompilerOptions().GetInlineMaxCodeUnits() == 0) {
+  if (options_.GetInlineMaxCodeUnits() == 0) {
     // Inlining effectively disabled.
     return false;
   } else if (graph_->IsDebuggable()) {
@@ -164,7 +172,7 @@ bool HInliner::Run() {
   //   that this method is actually inlined.
   // We limit the latter to AOT compilation, as the JIT may or may not inline
   // depending on the state of classes at runtime.
-  const bool honor_noinline_directives = codegen_->GetCompilerOptions().CompileArtTest();
+  const bool honor_noinline_directives = options_.CompileArtTest();
   const bool honor_inline_directives =
       honor_noinline_directives &&
       Runtime::Current()->IsAotCompiler() &&
@@ -415,7 +423,7 @@ static bool IsMethodVerified(ArtMethod* method)
   return false;
 }
 
-static bool AlwaysThrows(ArtMethod* method)
+bool HInliner::AlwaysThrows(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(method != nullptr);
   // Skip non-compilable and unverified methods.
@@ -424,9 +432,8 @@ static bool AlwaysThrows(ArtMethod* method)
   }
   // Skip native methods, methods with try blocks, and methods that are too large.
   CodeItemDataAccessor accessor(method->DexInstructionData());
-  if (!accessor.HasCodeItem() ||
-      accessor.TriesSize() != 0 ||
-      accessor.InsnsSizeInCodeUnits() > kMaximumNumberOfTotalInstructions) {
+  if (!accessor.HasCodeItem() || accessor.TriesSize() != 0 ||
+      accessor.InsnsSizeInCodeUnits() > options_.InlinerMaximumNumberOfTotalInstructions()) {
     return false;
   }
   // Scan for exits.
@@ -690,7 +697,7 @@ bool HInliner::TryInlineFromInlineCache(HInvoke* invoke_instruction)
 HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
     HInvoke* invoke_instruction,
     /*out*/StackHandleScope<InlineCache::kIndividualCacheSize>* classes) {
-  DCHECK(codegen_->GetCompilerOptions().IsJitCompiler());
+  DCHECK(options_.IsJitCompiler());
 
   ArtMethod* caller = graph_->GetArtMethod();
   // Under JIT, we should always know the caller.
@@ -703,8 +710,8 @@ HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
     if (depth_ == 0) {
       cache = profiling_info->GetInlineCache(invoke_instruction->GetDexPc());
     } else {
-      uint32_t dex_pc = ProfilingInfoBuilder::EncodeInlinedDexPc(
-          this, codegen_->GetCompilerOptions(), invoke_instruction);
+      uint32_t dex_pc =
+          ProfilingInfoBuilder::EncodeInlinedDexPc(this, options_, invoke_instruction);
       if (dex_pc != kNoDexPc) {
         cache = profiling_info->GetInlineCache(dex_pc);
       }
@@ -737,7 +744,7 @@ HInliner::InlineCacheType HInliner::GetInlineCacheAOT(
   DCHECK_EQ(classes->Capacity(), InlineCache::kIndividualCacheSize);
   DCHECK_EQ(classes->Size(), 0u);
 
-  const ProfileCompilationInfo* pci = codegen_->GetCompilerOptions().GetProfileCompilationInfo();
+  const ProfileCompilationInfo* pci = options_.GetProfileCompilationInfo();
   if (pci == nullptr) {
     return kInlineCacheNoData;
   }
@@ -1065,7 +1072,7 @@ bool HInliner::TryInlinePolymorphicCall(
     // We only want to limit recursive polymorphic cases, not monomorphic ones.
     const bool too_many_polymorphic_recursive_calls =
         !actually_monomorphic &&
-        CountRecursiveCallsOf(method) > kMaximumNumberOfPolymorphicRecursiveCalls;
+        CountRecursiveCallsOf(method) > options_.InlinerMaximumNumberOfPolymorphicRecursiveCalls();
     if (too_many_polymorphic_recursive_calls) {
       LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedPolymorphicRecursiveBudget)
           << "Method " << method->PrettyMethod()
@@ -1205,7 +1212,7 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
     HInvoke* invoke_instruction,
     const StackHandleScope<InlineCache::kIndividualCacheSize>& classes) {
   // This optimization only works under JIT for now.
-  if (!codegen_->GetCompilerOptions().IsJitCompiler()) {
+  if (!options_.IsJitCompiler()) {
     return false;
   }
 
@@ -1551,7 +1558,7 @@ bool HInliner::IsInliningSupported(const HInvoke* invoke_instruction,
 bool HInliner::IsInliningEncouraged(const HInvoke* invoke_instruction,
                                     ArtMethod* method,
                                     const CodeItemDataAccessor& accessor) const {
-  if (CountRecursiveCallsOf(method) > kMaximumNumberOfRecursiveCalls) {
+  if (CountRecursiveCallsOf(method) > options_.InlinerMaximumNumberOfRecursiveCalls()) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedRecursiveBudget)
         << "Method "
         << method->PrettyMethod()
@@ -1559,7 +1566,7 @@ bool HInliner::IsInliningEncouraged(const HInvoke* invoke_instruction,
     return false;
   }
 
-  size_t inline_max_code_units = codegen_->GetCompilerOptions().GetInlineMaxCodeUnits();
+  size_t inline_max_code_units = options_.GetInlineMaxCodeUnits();
   if (accessor.InsnsSizeInCodeUnits() > inline_max_code_units) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedCodeItem)
         << "Method " << method->PrettyMethod()
@@ -1645,9 +1652,7 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
 
   // Check whether we're allowed to inline. The outermost compilation unit is the relevant
   // dex file here (though the transitivity of an inline chain would allow checking the caller).
-  if (!MayInline(codegen_->GetCompilerOptions(),
-                 *method->GetDexFile(),
-                 *outer_compilation_unit_.GetDexFile())) {
+  if (!MayInline(options_, *method->GetDexFile(), *outer_compilation_unit_.GetDexFile())) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedWont)
         << "Won't inline " << method->PrettyMethod() << " in "
         << outer_compilation_unit_.GetDexFile()->GetLocation() << " ("
@@ -2058,7 +2063,7 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
   }
 
   const bool too_many_registers =
-      total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters;
+      total_number_of_dex_registers_ > options_.InlinerMaximumNumberOfCumulatedDexRegisters();
   bool needs_bss_check = false;
   const bool can_encode_in_stack_map = CanEncodeInlinedMethodInStackMap(
       *outer_compilation_unit_.GetDexFile(), resolved_method, codegen_, &needs_bss_check);
@@ -2147,10 +2152,8 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
       if (outermost_graph_->IsCompilingBaseline() &&
           (current->IsInvokeVirtual() || current->IsInvokeInterface()) &&
           ProfilingInfoBuilder::IsInlineCacheUseful(current->AsInvoke(), codegen_)) {
-        uint32_t maximum_inlining_depth_for_baseline =
-            InlineCache::MaxDexPcEncodingDepth(
-                outermost_graph_->GetArtMethod(),
-                codegen_->GetCompilerOptions().GetInlineMaxCodeUnits());
+        uint32_t maximum_inlining_depth_for_baseline = InlineCache::MaxDexPcEncodingDepth(
+            outermost_graph_->GetArtMethod(), options_.GetInlineMaxCodeUnits());
         if (depth_ + 1 > maximum_inlining_depth_for_baseline) {
           LOG_FAIL_NO_STAT() << "Reached maximum depth for inlining in baseline compilation: "
                              << depth_ << " for " << callee_graph->GetArtMethod()->PrettyMethod();
@@ -2215,18 +2218,18 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
       && !annotations::MethodContainsRSensitiveAccess(callee_dex_file, callee_class, method_index);
 
   const int32_t caller_instruction_counter = graph_->GetCurrentInstructionId();
-  HGraph* callee_graph = new (graph_->GetAllocator()) HGraph(
-      graph_->GetAllocator(),
-      graph_->GetArenaStack(),
-      graph_->GetHandleCache()->GetHandles(),
-      callee_dex_file,
-      method_index,
-      codegen_->GetCompilerOptions().GetInstructionSet(),
-      invoke_type,
-      callee_dead_reference_safe,
-      graph_->IsDebuggable(),
-      graph_->GetCompilationKind(),
-      /* start_instruction_id= */ caller_instruction_counter);
+  HGraph* callee_graph =
+      new (graph_->GetAllocator()) HGraph(graph_->GetAllocator(),
+                                          graph_->GetArenaStack(),
+                                          graph_->GetHandleCache()->GetHandles(),
+                                          callee_dex_file,
+                                          method_index,
+                                          options_.GetInstructionSet(),
+                                          invoke_type,
+                                          callee_dead_reference_safe,
+                                          graph_->IsDebuggable(),
+                                          graph_->GetCompilationKind(),
+                                          /* start_instruction_id= */ caller_instruction_counter);
   callee_graph->SetArtMethod(resolved_method);
 
   ScopedProfilingInfoUse spiu(Runtime::Current()->GetJit(), resolved_method, Thread::Current());
@@ -2332,7 +2335,7 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
 
   // Bail early for pathological cases on the environment (for example recursive calls,
   // or too large environment).
-  if (total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters) {
+  if (total_number_of_dex_registers_ > options_.InlinerMaximumNumberOfCumulatedDexRegisters()) {
     LOG_NOTE() << "Calls in " << callee_graph->GetArtMethod()->PrettyMethod()
              << " will not be inlined because the outer method has reached"
              << " its environment budget limit.";
