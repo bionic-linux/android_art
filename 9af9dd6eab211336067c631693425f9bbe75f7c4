@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "468cce26_f669b0be",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a8f8e0a9_2f620a36",
+      "range": {
+        "startLine": 1246,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 12
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd665dc_300876a1",

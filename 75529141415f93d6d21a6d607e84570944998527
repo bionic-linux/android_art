@@ -132,6 +132,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "156db2c6_4b82f0e3",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a623f4a_7611956a",
+      "range": {
+        "startLine": 606,
+        "startChar": 13,
+        "endLine": 606,
+        "endChar": 14
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e85a0d4_4e9afc19",
@@ -145,6 +169,30 @@
       "writtenOn": "2024-10-01T16:05:21Z",
       "side": 1,
       "message": "Could we do this before the loops only once? Not sure if You want a new `TestCodeGeneratorARM64` every time.",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 11
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38993a1c_441001b4",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "I don\u0027t think this is possible because we want a new graph (created by `InitEntryMainExitGraph()`) for each test. It might be possible if we could clear and then re-initialise the graph instead of creating a new one in `InitEntryMainExitGraph()` but I don\u0027t think that is simple to do. I think the simplest solution is to create a new `TestCodeGeneratorARM64` each time.",
+      "parentUuid": "7e85a0d4_4e9afc19",
       "range": {
         "startLine": 967,
         "startChar": 0,
@@ -178,6 +226,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbed7aea_5828a50e",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa44f56a_dd9d77e7",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b597cd1f_ae79837c",
@@ -191,6 +263,30 @@
       "writtenOn": "2024-10-01T16:05:21Z",
       "side": 1,
       "message": "Obsolete? The method is void.",
+      "range": {
+        "startLine": 197,
+        "startChar": 80,
+        "endLine": 198,
+        "endChar": 36
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6911ff_c55a387f",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b597cd1f_ae79837c",
       "range": {
         "startLine": 197,
         "startChar": 80,
@@ -224,6 +320,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5aa1853_a81b84dd",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fafb7d6_934c3a13",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 12
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2af72cd3_9b6b589a",
@@ -247,6 +367,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed92baa3_eb6e8fe5",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3435,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2af72cd3_9b6b589a",
+      "range": {
+        "startLine": 3433,
+        "startChar": 0,
+        "endLine": 3435,
+        "endChar": 20
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b369467_de8864cb",
@@ -260,6 +404,24 @@
       "writtenOn": "2024-10-01T16:05:21Z",
       "side": 1,
       "message": "suggestion: move this one upwards closer to other VecPred methods.",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b642b42_7a5cb6fa",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "This follows the ordering of `nodes_vector.h` so I\u0027d like to keep it consistent with that. It should be noted that `VecCondition` inherits from `HVecPredSetOperation` so while the naming is different, they are still part of the same class.",
+      "parentUuid": "5b369467_de8864cb",
       "revId": "75529141415f93d6d21a6d607e84570944998527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -329,6 +491,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b24e81_c23aebf8",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915b85fe_9c908394",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2668776_05d0ec5a",
@@ -374,6 +554,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9161440a_5777eb56",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "We\u0027ve had some discussion of this internally and I think that it would be best to keep the testing targeted so we don\u0027t introduce additional tests unnecessarily. While we could add those as run tests, it would be redundant as we already test:\n\n1. The vectorization in `loop_optimization_test.cc`.\n2. The codegen for the new HIR in `codegen_test.cc`.\n\nI think these tests should cover all conditions and types in use in a much simpler way than writing a large number of individual run tests for each combination of `IfCondition` and `DataType::Type`. What do you think?\n\nPS:\n\u003e The AI added tests\n\nThis sounds very interesting, can you share any details about what AI this is? Is this something done by CI?",
+      "parentUuid": "c2668776_05d0ec5a",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c8c258_379f81bf",
@@ -387,6 +585,24 @@
       "writtenOn": "2024-10-01T16:05:21Z",
       "side": 1,
       "message": "Are these ones not supported yet but will be in the future?",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99bcd5dd_221eb7ed",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-14T13:47:53Z",
+      "side": 1,
+      "message": "Technically it could be done however we have no current plans to add this support.",
+      "parentUuid": "93c8c258_379f81bf",
       "revId": "75529141415f93d6d21a6d607e84570944998527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
