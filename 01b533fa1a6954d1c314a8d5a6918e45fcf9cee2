@@ -255,6 +255,126 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6773d327_74ee6711",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965b988c_40f27623",
+      "range": {
+        "startLine": 334,
+        "startChar": 33,
+        "endLine": 334,
+        "endChar": 48
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fe201b_f9059c16",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done other than where using `reinterpert_cast` (to avoid duplication) and here:\n```\nauto odex_offset \u003d elf_begin;\nauto method_offset \u003d oat_method_quick_code - odex_offset;\n```\n\nWhich makes me realize - should the types on the java object be `long` instead of `int`? And what explicit types should I use here in either case?",
+      "parentUuid": "ccbb69f3_3089290e",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba2516c_1aa3ef2e",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0cc4765_6b109c53",
+      "range": {
+        "startLine": 334,
+        "startChar": 50,
+        "endLine": 334,
+        "endChar": 62
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51549978_50132c17",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3b8563_96ffe83f",
+      "range": {
+        "startLine": 334,
+        "startChar": 7,
+        "endLine": 334,
+        "endChar": 14
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33d7576_e55a8c97",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18d5cea_9300b720",
+      "range": {
+        "startLine": 334,
+        "startChar": 33,
+        "endLine": 334,
+        "endChar": 48
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0264e433_7bec9cb2",
@@ -286,6 +406,24 @@
           ]
         }
       ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac1f2fb_717f862f",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done - is it OK to return it to java with `odex_path.get()`?",
+      "parentUuid": "0264e433_7bec9cb2",
       "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -333,6 +471,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f837fdf_d8250a53",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done - I removed the `DCHECK_GE(oatFile-\u003eBegin(), elfBegin);` - should I add an explicit check and `return nullptr` for that as well?",
+      "parentUuid": "c73935ce_b5e0f2dc",
+      "range": {
+        "startLine": 343,
+        "startChar": 2,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4932812a_6cd56245",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 13
@@ -367,6 +529,48 @@
       "writtenOn": "2024-10-14T12:17:08Z",
       "side": 1,
       "message": "oatMethodQuickCode \u003d\u003d nullptr",
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fa0f50_5a1ba9f2",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73498e0_b35e1848",
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "058344f4_f1734fb0",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4932812a_6cd56245",
+      "range": {
+        "startLine": 347,
+        "startChar": 22,
+        "endLine": 347,
+        "endChar": 45
+      },
       "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -408,6 +612,30 @@
           ]
         }
       ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b955a36_69d8460e",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:58:07Z",
+      "side": 1,
+      "message": "Done - do I need to do something similar for `env-\u003eGetMethodID`? A similar refactor there doesn\u0027t compile.",
+      "parentUuid": "012fd9e3_c530f8ff",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 84
+      },
       "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
