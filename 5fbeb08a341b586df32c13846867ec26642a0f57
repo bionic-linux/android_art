@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7be3deb_5fc3d1c0",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-14T08:58:54Z",
+      "side": 1,
+      "message": "Maybe better to have this logic in `compiler_options_map-inl.h`, where we would define precedence between the sysprop and the command line flag.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a8318b7c_7023c11a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/driver/compiler_options.cc",
+              "range": {
+                "startLine": 84,
+                "startChar": 0,
+                "endLine": 97,
+                "endChar": 0
+              },
+              "replacement": "  using android::base::GetUintProperty;\n  inliner_maximum_number_of_total_instructions_ \u003d GetUintProperty(\n      \"dalvik.inliner.max_num_total_instructions\",\n      kInlinerMaximumNumberOfTotalInstructions);\n  inliner_maximum_number_of_instructions_for_small_method_ \u003d GetUintProperty(\n      \"dalvik.inliner.max_num_instructions_for_small_method\",\n      kInlinerMaximumNumberOfInstructionsForSmallMethod);\n  inliner_maximum_number_of_cumulated_dex_registers_ \u003d GetUintProperty(\n      \"dalvik.inliner.max_num_cumulated_dex_registers\",\n      kInlinerMaximumNumberOfCumulatedDexRegisters);\n  inliner_maximum_number_of_recursive_calls_ \u003d GetUintProperty(\n      \"dalvik.inliner.max_num_recursive_calls\",\n      kInlinerMaximumNumberOfRecursiveCalls);\n  inliner_maximum_number_of_polymorphic_recursive_calls_ \u003d GetUintProperty(\n      \"dalvik.inliner.max_num_polymorphic_recursive_calls\",\n      kInlinerMaximumNumberOfPolymorphicRecursiveCalls);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b4751c_612a6d72",
+        "filename": "compiler/driver/compiler_options_map.def",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-14T08:58:54Z",
+      "side": 1,
+      "message": "You need also update code to read these options, see examples in `compiler_options_map-inl.h`.",
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cb66f0_6a3e4685",
+        "filename": "compiler/optimizing/inliner.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-14T08:58:54Z",
+      "side": 1,
+      "message": "One line.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
