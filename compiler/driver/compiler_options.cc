@@ -19,6 +19,7 @@
 #include <fstream>
 #include <string_view>
 
+#include "android-base/properties.h"
 #include "android-base/stringprintf.h"
 
 #include "arch/instruction_set.h"
@@ -35,6 +36,27 @@
 #include "simple_compiler_options_map.h"
 
 namespace art HIDDEN {
+
+// Instruction limit to control memory.
+static constexpr size_t kInlinerMaximumNumberOfTotalInstructions = 1024;
+
+// Maximum number of instructions for considering a method small,
+// which we will always try to inline if the other non-instruction limits
+// are not reached.
+static constexpr size_t kInlinerMaximumNumberOfInstructionsForSmallMethod = 3;
+
+// Limit the number of dex registers that we accumulate while inlining
+// to avoid creating large amount of nested environments.
+static constexpr size_t kInlinerMaximumNumberOfCumulatedDexRegisters = 32;
+
+// Limit recursive call inlining, which do not benefit from too
+// much inlining compared to code locality.
+static constexpr size_t kInlinerMaximumNumberOfRecursiveCalls = 4;
+
+// Limit recursive polymorphic call inlining to prevent code bloat, since it can quickly get out of
+// hand in the presence of multiple Wrapper classes. We set this to 0 to disallow polymorphic
+// recursive calls at all.
+static constexpr size_t kInlinerMaximumNumberOfPolymorphicRecursiveCalls = 0;
 
 CompilerOptions::CompilerOptions()
     : compiler_filter_(CompilerFilter::kDefaultCompilerFilter),
@@ -80,6 +102,20 @@ CompilerOptions::CompilerOptions()
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
       passes_to_run_(nullptr) {
+  using android::base::GetUintProperty;
+  inliner_maximum_number_of_total_instructions_ = GetUintProperty(
+      "dalvik.inliner.max_num_total_instructions", kInlinerMaximumNumberOfTotalInstructions);
+  inliner_maximum_number_of_instructions_for_small_method_ =
+      GetUintProperty("dalvik.inliner.max_num_instructions_for_small_method",
+                      kInlinerMaximumNumberOfInstructionsForSmallMethod);
+  inliner_maximum_number_of_cumulated_dex_registers_ =
+      GetUintProperty("dalvik.inliner.max_num_cumulated_dex_registers",
+                      kInlinerMaximumNumberOfCumulatedDexRegisters);
+  inliner_maximum_number_of_recursive_calls_ = GetUintProperty(
+      "dalvik.inliner.max_num_recursive_calls", kInlinerMaximumNumberOfRecursiveCalls);
+  inliner_maximum_number_of_polymorphic_recursive_calls_ =
+      GetUintProperty("dalvik.inliner.max_num_polymorphic_recursive_calls",
+                      kInlinerMaximumNumberOfPolymorphicRecursiveCalls);
 }
 
 CompilerOptions::~CompilerOptions() {
