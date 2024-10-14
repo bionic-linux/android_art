@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a3ce3e4_71cbc3df",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T14:58:40Z",
+      "side": 1,
+      "message": "\u003e For methods too large that\u0027s to limit the time it takes to analyze\n\nNot sure how much compile time we save by skipping these methods.\n\n\u003e For try/catch is to avoid to know the boundaries of the try catch.\n\nBut this is for marking methods as \"always throws\" so we should see at least one return instruction if the method doesn\u0027t always throw. Even if the `throw` is within a try/catch there should be another throw or return down the line at the end of the method.",
+      "parentUuid": "e856e827_21039eab",
+      "range": {
+        "startLine": 433,
+        "startChar": 26,
+        "endLine": 433,
+        "endChar": 82
+      },
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61862931_e71611e2",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
