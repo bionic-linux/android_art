@@ -17,6 +17,7 @@
 #ifndef ART_COMPILER_DRIVER_COMPILER_OPTIONS_H_
 #define ART_COMPILER_DRIVER_COMPILER_OPTIONS_H_
 
+#include <cstdint>
 #include <memory>
 #include <ostream>
 #include <string>
@@ -366,6 +367,26 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  size_t InlinerMaximumNumberOfTotalInstructions() const {
+    return inliner_maximum_number_of_total_instructions_;
+  }
+
+  size_t InlinerMaximumNumberOfInstructionsForSmallMethod() const {
+    return inliner_maximum_number_of_instructions_for_small_method_;
+  }
+
+  size_t InlinerMaximumNumberOfCumulatedDexRegisters() const {
+    return inliner_maximum_number_of_cumulated_dex_registers_;
+  }
+
+  size_t InlinerMaximumNumberOfRecursiveCalls() const {
+    return inliner_maximum_number_of_recursive_calls_;
+  }
+
+  size_t InlinerMaximumNumberOfPolymorphicRecursiveCalls() const {
+    return inliner_maximum_number_of_polymorphic_recursive_calls_;
+  }
+
   // Returns true if `dex_file` is within an oat file we're producing right now.
   bool WithinOatFile(const DexFile* dex_file) const {
     return ContainsElement(GetDexFilesForOatFile(), dex_file);
@@ -471,6 +492,12 @@ class CompilerOptions final {
 
   // Maximum solid block size in the generated image.
   uint32_t max_image_block_size_;
+
+  size_t inliner_maximum_number_of_total_instructions_;
+  size_t inliner_maximum_number_of_instructions_for_small_method_;
+  size_t inliner_maximum_number_of_cumulated_dex_registers_;
+  size_t inliner_maximum_number_of_recursive_calls_;
+  size_t inliner_maximum_number_of_polymorphic_recursive_calls_;
 
   // If not null, specifies optimization passes which will be run instead of defaults.
   // Note that passes_to_run_ is not checked for correctness and providing an incorrect
