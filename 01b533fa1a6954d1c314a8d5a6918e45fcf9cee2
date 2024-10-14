@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b878fe_8797e78e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-14T12:17:08Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccbb69f3_3089290e",
@@ -217,6 +234,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "965b988c_40f27623",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-14T12:17:08Z",
+      "side": 1,
+      "message": "Are we sure this will not be nullptr? I think it is possible to not have an odex file.",
+      "range": {
+        "startLine": 334,
+        "startChar": 33,
+        "endLine": 334,
+        "endChar": 48
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0264e433_7bec9cb2",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 13
@@ -310,6 +350,23 @@
         "endLine": 347,
         "endChar": 45
       },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73498e0_b35e1848",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-14T12:17:08Z",
+      "side": 1,
+      "message": "oatMethodQuickCode \u003d\u003d nullptr",
       "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
