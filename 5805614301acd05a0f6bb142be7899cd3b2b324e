@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36276de_089c8aa2",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2585,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T08:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b83181_74b4a496",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ecdfcbf_57b95807",
@@ -84,6 +102,24 @@
       "writtenOn": "2024-10-14T08:41:31Z",
       "side": 1,
       "message": "`offset` might not be valid.\n\nDo we even need this `__ add` and `temp_reg`? `MemOperand(temp_reg)` will be equal to `MemOperand address` as far as I can see. This would let us remove `temps` as well.\n\nSame for other cases.",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fffe0648_16ee04e7",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T08:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ecdfcbf_57b95807",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
