@@ -16,6 +16,24 @@
       "message": "You have to keep this one. `maybe_temp` is a parameter, and is unrelated to `UseScratchRegisterScope`",
       "revId": "c1bd4376b18ff46e5156cc597bd3311dd86fabd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8e97e7_7e264995",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2603,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T09:46:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "dab1a6b9_a9101876",
+      "revId": "c1bd4376b18ff46e5156cc597bd3311dd86fabd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
