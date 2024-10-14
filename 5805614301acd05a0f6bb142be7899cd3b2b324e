@@ -194,6 +194,24 @@
       "parentUuid": "ce1e8932_f22e7251",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f308f151_d6778011",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T12:25:44Z",
+      "side": 1,
+      "message": "You are correct for the base+offset case. For the absolute case you are adding, the extra temp is not needed. For deduplication purposes, we might keep acquiring the temp in both scenarios but use `temp_reg \u003d base` in the absolute case, and do the `add` in the `base+offset` case. Something like:\n\n```\nvixl32::Register temp_reg;\n  if (offset.IsValid()) {\n    // If offset is valid then this is a get from a relative address.\n    temp_reg \u003d temps.Acquire();\n    __ Add(temp_reg, base, offset);\n  } else {\n    temp_reg \u003d base;\n  }\n```\nWDYT?",
+      "parentUuid": "8155b548_4f83fb11",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
