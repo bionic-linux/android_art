@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3c41c0_89aa756c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T22:20:42Z",
+      "side": 1,
+      "message": "Is this failure concerning?\nhttps://android-build.corp.google.com/test_investigate/invocation/I33100010326084282/test/TR84929478224399759/?blocking\u003dblocking\u0026status\u003dnone\n\nI see:\n```\njava.io.IOException: MD5 digest of local file `/tmp/tf-workfolder15635717453443919155/tf-container15840856215324686497/tf-workfolder2359381778811037074/art-run-test-536-checker-needs-access-check16011017991307096790/graph.cfg` does not match MD5 digest of remote file `/data/local/tmp/art-run-test-536-checker-needs-access-check.checker.aGxcEBilcN/graph.cfg` pulled from device: eb2d32b214707e81b282838cc27604bb vs 08164fd2d9b6265452eddbe2b3e9eb5c\n```\nIf the CFG changed, maybe it\u0027s because I changed the inliner\u0027s behavior? (this change is supposed to be a no-op)\n(I really wish the test produced the expected and actual CFGs as artifacts so I could actually look at them from the invocation)",
+      "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
