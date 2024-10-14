@@ -25,7 +25,6 @@ public class Main {
     private static final int ITERATIONS = 100;
 
     private static final VarHandle widgetIdVarHandle;
-    private static int initialHotnessCounter;
 
     public static native int getHotnessCounter(Class<?> cls, String methodName);
 
@@ -56,6 +55,13 @@ public class Main {
         throw new AssertionError("assertEquals i1: " + i1 + ", i2: " + i2);
     }
 
+    private static void assertDifferent(int i1, int i2) {
+        if (i1 != i2) {
+            return;
+        }
+        throw new AssertionError("assertDifferent i1: " + i1 + ", i2: " + i2);
+    }
+
     private static void assertEquals(Object o, Object p) {
         if (o == p) {
             return;
@@ -78,17 +84,24 @@ public class Main {
 
     private static void testMethodHandleCounters() throws Throwable {
         for (int i = 0; i < ITERATIONS; ++i) {
-            // Regular MethodHandle invocations
-            MethodHandle mh =
-                    MethodHandles.lookup()
-                            .findConstructor(
-                                    Widget.class, MethodType.methodType(void.class, int.class));
+            // Regular MethodHandle invocations increase the counter.
+            MethodHandle mh = MethodHandles.lookup().findConstructor(
+                    Widget.class, MethodType.methodType(void.class, int.class));
+            int invokeCounter = getHotnessCounter(MethodHandle.class, "invoke");
+            int invokeExactCounter = getHotnessCounter(MethodHandle.class, "invokeExact");
             Widget w = (Widget) mh.invoke(3);
             w = (Widget) mh.invokeExact(3);
-            assertEquals(initialHotnessCounter, getHotnessCounter(MethodHandle.class, "invoke"));
-            assertEquals(initialHotnessCounter, getHotnessCounter(MethodHandle.class, "invokeExact"));
 
-            // Reflective MethodHandle invocations
+            int newInvokeCounter = getHotnessCounter(MethodHandle.class, "invoke");
+            int newInvokeExactCounter = getHotnessCounter(MethodHandle.class, "invokeExact");
+
+            assertDifferent(invokeCounter, newInvokeCounter);
+            assertDifferent(invokeExactCounter, newInvokeExactCounter);
+
+            invokeCounter = newInvokeCounter;
+            invokeExactCounter = newInvokeExactCounter;
+
+            // Reflective MethodHandle invocations don't increase the counter.
             String[] methodNames = {"invoke", "invokeExact"};
             for (String methodName : methodNames) {
                 Method invokeMethod = MethodHandle.class.getMethod(methodName, Object[].class);
@@ -103,10 +116,11 @@ public class Main {
                     assertEquals(ite.getCause().getClass(), UnsupportedOperationException.class);
                 }
             }
-            assertEquals(initialHotnessCounter,
-                getHotnessCounter(MethodHandle.class, "invoke"));
-            assertEquals(initialHotnessCounter,
-                getHotnessCounter(MethodHandle.class, "invokeExact"));
+            newInvokeCounter = getHotnessCounter(MethodHandle.class, "invoke");
+            newInvokeExactCounter = getHotnessCounter(MethodHandle.class, "invokeExact");
+
+            assertEquals(invokeCounter, newInvokeCounter);
+            assertEquals(invokeExactCounter, newInvokeExactCounter);
         }
 
         System.out.println("MethodHandle OK");
@@ -115,13 +129,19 @@ public class Main {
     private static void testVarHandleCounters() throws Throwable {
         Widget w = new Widget(0);
         for (int i = 0; i < ITERATIONS; ++i) {
-            // Regular accessor invocations
+            // Regular accessor invocations increase the counter.
+            // TODO(solanes): Why do these onces increase the counter?
+            int setCounter = getHotnessCounter(VarHandle.class, "set");
+            int getCounter = getHotnessCounter(VarHandle.class, "get");
             widgetIdVarHandle.set(w, i);
             assertEquals(i, widgetIdVarHandle.get(w));
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "set"));
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "get"));
+            int newSetCounter = getHotnessCounter(VarHandle.class, "set");
+            int newGetCounter = getHotnessCounter(VarHandle.class, "get");
 
-            // Reflective accessor invocations
+            assertEquals(setCounter, newSetCounter);
+            assertEquals(getCounter, newGetCounter);
+
+            // Reflective accessor invocations don't increase the counter.
             for (String accessorName : new String[] {"get", "set"}) {
                 Method setMethod = VarHandle.class.getMethod(accessorName, Object[].class);
                 try {
@@ -131,15 +151,17 @@ public class Main {
                     assertEquals(ite.getCause().getClass(), UnsupportedOperationException.class);
                 }
             }
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "set"));
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "get"));
+            newSetCounter = getHotnessCounter(VarHandle.class, "set");
+            newGetCounter = getHotnessCounter(VarHandle.class, "get");
+
+            assertEquals(setCounter, newSetCounter);
+            assertEquals(getCounter, newGetCounter);
         }
         System.out.println("VarHandle OK");
     }
 
     public static void main(String[] args) throws Throwable {
         System.loadLibrary(args[0]);
-        initialHotnessCounter = getHotnessCounter(VarHandle.class, "set");
         testMethodHandleCounters();
         testVarHandleCounters();
     }
