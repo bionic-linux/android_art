@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43b3c52_f8672565",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T10:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5241761b_28b831b9",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3f4629d_f356ba33",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "620035e9_2716e1dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T10:06:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f4629d_f356ba33",
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38db543c_f10b18fc",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-10-11T13:50:39Z",
       "side": 1,
       "message": "Where did you run into this?",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "489c7ad3_73920fd2",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T10:06:35Z",
+      "side": 1,
+      "message": "On /metadata.",
+      "parentUuid": "38db543c_f10b18fc",
       "range": {
         "startLine": 151,
         "startChar": 15,
