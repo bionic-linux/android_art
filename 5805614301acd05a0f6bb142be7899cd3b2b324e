@@ -212,6 +212,24 @@
       "parentUuid": "8155b548_4f83fb11",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebde1a94_45dbd157",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T12:46:53Z",
+      "side": 1,
+      "message": "I\u0027ll try that.\nAdded also for float64.",
+      "parentUuid": "f308f151_d6778011",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
