@@ -140,6 +140,24 @@
       "parentUuid": "9ecdfcbf_57b95807",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1e8932_f22e7251",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T11:59:17Z",
+      "side": 1,
+      "message": "I guess we can\u0027t do that?\n\n```\nCmdline: out/host/linux-x86/bin/dex2oatd --avoid-storing-invocation --write-invocation-to\u003dout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm/boot.invocation --runtime-arg -Xms64m --runtime-arg -Xmx64m --profile-file\u003dout/soong/.intermediates/build/soong/dex_bootjars/android_common/boot/boot.prof --profile-file\u003dout/soong/.intermediates/art/build/boot/art-bootclasspath-fragment/android_common_apex31/art-bootclasspath-fragment/boot.prof --dirty-image-objects\u003dframeworks/base/config/dirty-image-objects --base\u003d0x70000000 --preloaded-classes\u003dframeworks/base/config/preloaded-classes --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/core-oj.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/core-libart.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/okhttp.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/bouncycastle.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/apache-xml.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/framework.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/framework-graphics.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/framework-location.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/ext.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/telephony-common.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/voip-common.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/ims-common.jar --dex-file\u003dout/soong/dexpreopt_arm64/dex_bootjars_input/core-icu4j.jar --dex-location\u003d/apex/com.android.art/javalib/core-oj.jar --dex-location\u003d/apex/com.android.art/javalib/core-libart.jar --dex-location\u003d/apex/com.android.art/javalib/okhttp.jar --dex-location\u003d/apex/com.android.art/javalib/bouncycastle.jar --dex-location\u003d/apex/com.android.art/javalib/apache-xml.jar --dex-location\u003d/system/framework/framework.jar --dex-location\u003d/system/framework/framework-graphics.jar --dex-location\u003d/system/framework/framework-location.jar --dex-location\u003d/system/framework/ext.jar --dex-location\u003d/system/framework/telephony-common.jar --dex-location\u003d/system/framework/voip-common.jar --dex-location\u003d/system/framework/ims-common.jar --dex-location\u003d/apex/com.android.i18n/javalib/core-icu4j.jar --generate-debug-info --generate-build-id --image-format\u003dlz4hc --oat-symbols\u003dout/soong/dexpreopt_arm64/dex_bootjars_unstripped/android/system/framework/arm/boot.oat --oat-file\u003dout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm/boot.oat --oat-location\u003dout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/boot.oat --image\u003dout/soong/dexpreopt_arm64/dex_bootjars/android/system/framework/arm/boot.art --instruction-set\u003darm --android-root\u003dout/empty --no-inline-from\u003dcore-oj.jar --force-determinism --abort-on-hard-verifier-error --strip --compiler-filter\u003dspeed-profile --instruction-set-variant\u003dgeneric --instruction-set-features\u003ddefault --runtime-arg -Xgc:CMC --generate-mini-debug-info\nThread: 112741 \"Compiler driver\"\nRegisters:\n    rax: 0x0000000000000000    rbx: 0x00007f6b501edea8    rcx: 0x00007f6b592b1c37    rdx: 0x0000000000000006\n    rdi: 0x000000000001b0ec    rsi: 0x000000000001b865    rbp: 0x00007f6b501edf30    rsp: 0x00007f6b501edd58\n    r8 : 0x00007f6b593f5640    r9 : 0x6d657373612f3233    r10: 0x0000000000000008    r11: 0x0000000000000202\n    r12: 0x00007f6b501eded8    r13: 0x00007f6b501edff0    r14: 0x00007f6b501edec0    r15: 0x00007f6b501ede90\n    rip: 0x00007f6b592b1c37    eflags: 0x00000202 [ IF ]\n     cs: 0x00000033     gs: 0x00000000     fs: 0x00000000\n\nBacktrace:\nIll-formed \u0027ldrexd\u0027 instruction.\nin external/vixl/src/aarch32/assembler-aarch32.h, line 6148\ndex2oatd F art/runtime/runtime_common.cc] HandleUnexpectedSignal reentered\n\ndex2oatd F art/runtime/runtime_common.cc]  S06\n\nERROR: Dex2oat failed to compile a boot image.It is likely that the boot classpath is inconsistent.Rebuild with ART_BOOT_IMAGE_EXTRA_ARGS\u003d\"--runtime-arg -verbose:verifier\" to see verification errors.\n```",
+      "parentUuid": "fffe0648_16ee04e7",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
