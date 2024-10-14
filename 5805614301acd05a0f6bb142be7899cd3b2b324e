@@ -176,6 +176,24 @@
       "parentUuid": "fffe0648_16ee04e7",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8155b548_4f83fb11",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-14T12:16:59Z",
+      "side": 1,
+      "message": "So I think for `ldrexd`/`strexd` there is no form that takes an address and an offset, so we have to load the absolute address into a register.\nIs this correct?\nIf so, then IIUC this also mean that we can\u0027t remove `maybe_temp` as you suggested elsewhere, correct?",
+      "parentUuid": "ce1e8932_f22e7251",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
