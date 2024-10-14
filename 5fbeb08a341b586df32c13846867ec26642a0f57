@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e856e827_21039eab",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-14T14:44:02Z",
+      "side": 1,
+      "message": "For methods too large that\u0027s to limit the time it takes to analyze. For try/catch is to avoid to know the boundaries of the try catch.\n\nSo all in all, it\u0027s to keep the analsys simple.",
+      "parentUuid": "a2df0406_c2492327",
+      "range": {
+        "startLine": 433,
+        "startChar": 26,
+        "endLine": 433,
+        "endChar": 82
+      },
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61862931_e71611e2",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
