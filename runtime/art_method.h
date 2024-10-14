@@ -356,7 +356,12 @@ class EXPORT ArtMethod final {
   }
 
   static bool IsMemorySharedMethod(uint32_t access_flags) {
-    return (access_flags & kAccMemorySharedMethod) != 0;
+    // There's an overlap with `kAccMemorySharedMethod` and `kAccIntrinsicBits` but that's OK as
+    // intrinsics are always in the boot image. We just have to be careful and check the
+    // `kAccIntrinsic` bit too.
+    static_assert((kAccMemorySharedMethod & kAccIntrinsicBits) != 0,
+                  "kAccMemorySharedMethod deliberately overlaps intrinsic bits");
+    return (access_flags & kAccMemorySharedMethod) != 0 && (access_flags & kAccIntrinsic) == 0;
   }
 
   void SetMemorySharedMethod() REQUIRES_SHARED(Locks::mutator_lock_) {
