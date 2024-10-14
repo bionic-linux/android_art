@@ -45,6 +45,88 @@
       },
       "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b27d391_010ee475",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T15:17:54Z",
+      "side": 1,
+      "message": "\"find\" (\"instantiate\" sounds like instantiating the object rather than the class).",
+      "range": {
+        "startLine": 366,
+        "startChar": 29,
+        "endLine": 366,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5e342bc8_682fcd78",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 366,
+                "startChar": 0,
+                "endLine": 367,
+                "endChar": 0
+              },
+              "replacement": "    LOG(ERROR) \u003c\u003c \"Could not find dalvik/system/VMDebug$JavaMethodExecutableOffset\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705bb00e_53746cd8",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T15:17:54Z",
+      "side": 1,
+      "message": "Nit: snake_case.",
+      "range": {
+        "startLine": 370,
+        "startChar": 12,
+        "endLine": 370,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ef08a355_072d6f59",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 370,
+                "startChar": 0,
+                "endLine": 372,
+                "endChar": 0
+              },
+              "replacement": "  jmethodID constructor_id \u003d env-\u003eGetMethodID(clazz.get(), \"\u003cinit\u003e\", \"(Ljava/lang/String;II)V\");\n  return env-\u003eNewObject(clazz.get(), constructor_id, odex_path.get(), odex_offset, method_offset);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
