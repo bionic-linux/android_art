@@ -34,6 +34,58 @@
       "parentUuid": "6e671191_30702266",
       "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c970a6_c1f22fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T08:41:31Z",
+      "side": 1,
+      "message": "The `led` command you want is not that one. It is `led get-builder angler-armv7-non-gen-cc | led edit-gerrit-cl https://android-review.git.corp.google.com/c/platform/art/+/3306222 | led launch` (note the armv7, armv8 was fine). I can kick it off, after the `address` comments.\n\nI can look into the allowlist and how to add people in the meantime.",
+      "parentUuid": "762c0760_d72531cd",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b83181_74b4a496",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2585,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T08:41:31Z",
+      "side": 1,
+      "message": "nit: move this down to line 2591 so that the `address` calculation is all together",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecdfcbf_57b95807",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2612,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T08:41:31Z",
+      "side": 1,
+      "message": "`offset` might not be valid.\n\nDo we even need this `__ add` and `temp_reg`? `MemOperand(temp_reg)` will be equal to `MemOperand address` as far as I can see. This would let us remove `temps` as well.\n\nSame for other cases.",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
