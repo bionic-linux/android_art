@@ -1,0 +1,358 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbb69f3_3089290e",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "Please avoid using `auto` unless in particular circumstances. go/totw/232#otherwise-avoid-using-auto",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0046fd99_333dfb6c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 334,
+                "startChar": 0,
+                "endLine": 336,
+                "endChar": 0
+              },
+              "replacement": "  const OatFile* oatFile \u003d c-\u003eGetDexFile().GetOatDexFile()-\u003eGetOatFile();\n  jstring odexPath \u003d env-\u003eNewStringUTF(oatFile-\u003eGetLocation().c_str());\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 337,
+                "startChar": 0,
+                "endLine": 338,
+                "endChar": 0
+              },
+              "replacement": "  const ArtMethod* artMethod \u003d m-\u003eGetArtMethod();\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 346,
+                "startChar": 0,
+                "endLine": 348,
+                "endChar": 0
+              },
+              "replacement": "  const uint8_t* odexOffset \u003d elfBegin;\n  const uint8_t* methodOffset \u003d\n      oatMethodQuickCode \u003d\u003d nullptr ? nullptr : oatMethodQuickCode - odexOffset;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18d5cea_9300b720",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "If there is no odex and vdex at all, will `GetOatDexFile()` return nullptr?",
+      "range": {
+        "startLine": 334,
+        "startChar": 33,
+        "endLine": 334,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2352cd69_69b047f4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 335,
+                "startChar": 0,
+                "endLine": 335,
+                "endChar": 0
+              },
+              "replacement": "  if (oatFile \u003d\u003d nullptr) {\n    LOG(ERROR) \u003c\u003c \"Could not find oat file\";\n    return nullptr;\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cc4765_6b109c53",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "Looks like this can return nullptr too. https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file.h;l\u003d536;drc\u003d9a4c0e57e6cac52898dba55989cf4c9efacf37ed",
+      "range": {
+        "startLine": 334,
+        "startChar": 50,
+        "endLine": 334,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "803f228d_82bbd60f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 333,
+                "startChar": 0,
+                "endLine": 333,
+                "endChar": 0
+              },
+              "replacement": "\n  if (c-\u003eGetDexFile().GetOatDexFile() \u003d\u003d nullptr) {\n    LOG(ERROR) \u003c\u003c \"Could not find oat file\";\n    return nullptr;\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3b8563_96ffe83f",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "Please use `snake_case` go/cstyle#Variable_Names",
+      "range": {
+        "startLine": 334,
+        "startChar": 7,
+        "endLine": 334,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7fd65721_30505d27",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 334,
+                "startChar": 0,
+                "endLine": 336,
+                "endChar": 0
+              },
+              "replacement": "  auto oat_file \u003d c-\u003eGetDexFile().GetOatDexFile()-\u003eGetOatFile();\n  auto odex_path \u003d env-\u003eNewStringUTF(oat_file-\u003eGetLocation().c_str());\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 342,
+                "startChar": 0,
+                "endLine": 343,
+                "endChar": 0
+              },
+              "replacement": "  const uint8_t* elfBegin \u003d oat_file-\u003eComputeElfBegin(\u0026errorMsg);\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 344,
+                "startChar": 0,
+                "endLine": 345,
+                "endChar": 0
+              },
+              "replacement": "  DCHECK_GE(oat_file-\u003eBegin(), elfBegin);\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 351,
+                "startChar": 0,
+                "endLine": 352,
+                "endChar": 0
+              },
+              "replacement": "  return env-\u003eNewObject(clazz, constructorID, odex_path, odexOffset, methodOffset);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0264e433_7bec9cb2",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "This will cause a leak. Please use `ScopedLocalRef`.\n\nThere is a helper macro [`CREATE_UTF_OR_RETURN`](https://cs.android.com/android/platform/superproject/main/+/main:libnativehelper/header_only_include/nativehelper/utils.h;l\u003d125;drc\u003ddc1e927c68b24b333df3d2c04ee7e4b0f26060b7) to create it easily.",
+      "fixSuggestions": [
+        {
+          "fixId": "a9a21af2_4115adf9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 335,
+                "startChar": 0,
+                "endLine": 336,
+                "endChar": 0
+              },
+              "replacement": "  auto odexPath \u003d CREATE_UTF_OR_RETURN(env, oatFile-\u003eGetLocation().c_str());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73935ce_b5e0f2dc",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "This can return nullptr if an error occurred. https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file.h;l\u003d366;drc\u003d3df5451580a6cc40047deb445ad75c75325b92b7",
+      "range": {
+        "startLine": 343,
+        "startChar": 2,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "944b2055_8f1d7dc6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 343,
+                "startChar": 0,
+                "endLine": 344,
+                "endChar": 0
+              },
+              "replacement": "  if (elfBegin \u003d\u003d nullptr) {\n    LOG(ERROR) \u003c\u003c errorMsg;\n    return nullptr;\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4932812a_6cd56245",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "If there is no quick code, will it be better to return nullptr rather than a JavaMethodExecutableOffset object with an invalid address?",
+      "range": {
+        "startLine": 347,
+        "startChar": 22,
+        "endLine": 347,
+        "endChar": 45
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012fd9e3_c530f8ff",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-14T09:56:41Z",
+      "side": 1,
+      "message": "ScopedLocalRef, to avoid leak.\n\nAnd please handle the nullptr case.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 84
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6c77b91a_6756bf21",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 349,
+                "startChar": 0,
+                "endLine": 350,
+                "endChar": 0
+              },
+              "replacement": "  ScopedLocalRef\u003cjclass\u003e clazz(env, env-\u003eFindClass(\"dalvik/system/VMDebug$JavaMethodExecutableOffset\"));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
