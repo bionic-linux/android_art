@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64de64f9_100c33c2",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-10-14T08:48:11Z",
+      "side": 0,
+      "message": "I have removed `desugar` from the common targets as otherwise buildbot-build.sh will fail with the following message:\n\n```\nFAILED: ninja: unknown target \u0027desugar\u0027, did you mean \u0027debugfs\u0027?\n```\n\nIs this change safe?",
+      "range": {
+        "startLine": 64,
+        "startChar": 108,
+        "endLine": 64,
+        "endChar": 115
+      },
+      "revId": "23cfc82c8eaad0b7e613dcbc2447061c06f310a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
