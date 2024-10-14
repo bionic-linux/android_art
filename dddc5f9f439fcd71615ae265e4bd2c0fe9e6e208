@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d6c463_e8b8811f",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:59:20Z",
+      "side": 1,
+      "message": "Can this return null?",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7f3fff_942134b5",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T14:59:20Z",
+      "side": 1,
+      "message": "can return null?",
+      "range": {
+        "startLine": 350,
+        "startChar": 39,
+        "endLine": 350,
+        "endChar": 49
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
