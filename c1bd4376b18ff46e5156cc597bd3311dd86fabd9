@@ -34,6 +34,23 @@
       "parentUuid": "dab1a6b9_a9101876",
       "revId": "c1bd4376b18ff46e5156cc597bd3311dd86fabd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921f556c_b6abb071",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-14T10:15:26Z",
+      "side": 0,
+      "message": "`maybe_temp` is not used in the `kReference` path so we can require one less temporary in this path and optimize that.\n\nIt includes updating the two callers (https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/intrinsics_arm_vixl.cc;l\u003d2709-2712;drc\u003d9a4c0e57e6cac52898dba55989cf4c9efacf37ed and https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/intrinsics_arm_vixl.cc;l\u003d4567-4569;drc\u003d9a4c0e57e6cac52898dba55989cf4c9efacf37ed) as well as this location creation https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/intrinsics_arm_vixl.cc;l\u003d2690-2696;drc\u003d9a4c0e57e6cac52898dba55989cf4c9efacf37ed. I think we don\u0027t have to update the other location creation.\n\nLet\u0027s wait until the tests pass for this change so that we don\u0027t do too many changes at once. This is an optimization for the register allocator and not a correctness issue.",
+      "revId": "c1bd4376b18ff46e5156cc597bd3311dd86fabd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
