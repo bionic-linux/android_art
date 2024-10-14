@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25930520_ec4d6bec",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T18:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7f3fff_942134b5",
+      "range": {
+        "startLine": 350,
+        "startChar": 39,
+        "endLine": 350,
+        "endChar": 49
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b27d391_010ee475",
@@ -88,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3215bc4_34003ce5",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T18:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b27d391_010ee475",
+      "range": {
+        "startLine": 366,
+        "startChar": 29,
+        "endLine": 366,
+        "endChar": 40
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705bb00e_53746cd8",
@@ -125,6 +173,30 @@
           ]
         }
       ],
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b6c32d_a9a09ec4",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T18:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705bb00e_53746cd8",
+      "range": {
+        "startLine": 370,
+        "startChar": 12,
+        "endLine": 370,
+        "endChar": 25
+      },
       "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

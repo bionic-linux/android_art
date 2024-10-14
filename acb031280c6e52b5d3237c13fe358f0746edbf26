@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e7f622_3292dfbf",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-14T18:16:49Z",
+      "side": 1,
+      "message": "Which of these (if any) are unexpected and should throw runtime exceptions instead? E.g. once we have an `OatFile`, *should* `ComputeElfBegin` always succeed?",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
