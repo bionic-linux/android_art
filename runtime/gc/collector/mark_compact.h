@@ -54,6 +54,44 @@ class BumpPointerSpace;
 }  // namespace space
 
 namespace collector {
+class MarkCompact;
+
+class YoungMarkCompact final : public GarbageCollector {
+ public:
+  YoungMarkCompact(Heap* heap, MarkCompact* main);
+
+  void RunPhases() override REQUIRES(!Locks::mutator_lock_);
+
+  GcType GetGcType() const override { return kGcTypeSticky; }
+
+  CollectorType GetCollectorType() const override { return kCollectorTypeCMC; }
+
+  mirror::Object* MarkObject([[maybe_unused]] mirror::Object* obj) override { return nullptr; }
+  void MarkHeapReference([[maybe_unused]] mirror::HeapReference<mirror::Object>* obj,
+                         [[maybe_unused]] bool do_atomic_update) override {}
+  void VisitRoots([[maybe_unused]] mirror::Object*** roots,
+                  [[maybe_unused]] size_t count,
+                  [[maybe_unused]] const RootInfo& info) override {}
+  void VisitRoots([[maybe_unused]] mirror::CompressedReference<mirror::Object>** roots,
+                  [[maybe_unused]] size_t count,
+                  [[maybe_unused]] const RootInfo& info) override {}
+  bool IsNullOrMarkedHeapReference([[maybe_unused]] mirror::HeapReference<mirror::Object>* obj,
+                                   [[maybe_unused]] bool do_atomic_update) override {
+    return false;
+  }
+  void RevokeAllThreadLocalBuffers() override {};
+
+  void DelayReferenceReferent([[maybe_unused]] ObjPtr<mirror::Class> klass,
+                              [[maybe_unused]] ObjPtr<mirror::Reference> reference) override {}
+  mirror::Object* IsMarked([[maybe_unused]] mirror::Object* obj) override { return nullptr; }
+  void ProcessMarkStack() override {}
+
+ private:
+  MarkCompact* const main_collector_;
+
+  DISALLOW_IMPLICIT_CONSTRUCTORS(YoungMarkCompact);
+};
+
 class MarkCompact final : public GarbageCollector {
  public:
   using SigbusCounterType = uint32_t;
@@ -84,9 +122,7 @@ class MarkCompact final : public GarbageCollector {
   // is asserted in the function.
   bool SigbusHandler(siginfo_t* info) REQUIRES(!lock_) NO_THREAD_SAFETY_ANALYSIS;
 
-  GcType GetGcType() const override {
-    return kGcTypeFull;
-  }
+  GcType GetGcType() const override { return kGcTypePartial; }
 
   CollectorType GetCollectorType() const override {
     return kCollectorTypeCMC;
@@ -174,6 +210,8 @@ class MarkCompact final : public GarbageCollector {
     kClampInfoPending,
     kClampInfoFinished
   };
+
+  friend void YoungMarkCompact::RunPhases();
 
  private:
   using ObjReference = mirror::CompressedReference<mirror::Object>;
