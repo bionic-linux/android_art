@@ -200,6 +200,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cd6813_3c423958",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T13:48:29Z",
+      "side": 1,
+      "message": "\u003e doesn\u0027t the bind mount operation itself need this permission to find the source and target?\n\nNo, mounting doesn\u0027t need the \"getattr\" permission.\n\n\u003e if they test OTAs they\u0027d notice and can correct.\n\nYou are probably right, but another aspect to consider is that we don\u0027t have a way to check the SDK level right now. I followed a discussion. Let\u0027s see how it goes.",
+      "parentUuid": "d383a7ef_d0f879e0",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
