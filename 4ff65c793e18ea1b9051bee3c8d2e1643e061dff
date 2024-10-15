@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb7a36a_0f7b257a",
+        "filename": "runtime/arch/x86/instruction_set_features_x86_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2024-10-15T13:45:28Z",
+      "side": 1,
+      "message": "Oops - good catch :)",
+      "parentUuid": "f00a5d5e_b65ed8db",
+      "range": {
+        "startLine": 214,
+        "startChar": 33,
+        "endLine": 214,
+        "endChar": 41
+      },
+      "revId": "4ff65c793e18ea1b9051bee3c8d2e1643e061dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58fef20a_aa4b1a99",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-15T08:18:14Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 224,
+        "startChar": 40,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "4ff65c793e18ea1b9051bee3c8d2e1643e061dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d12a26a0_b60a7d31",
+        "filename": "runtime/arch/x86/instruction_set_features_x86_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2024-10-15T13:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fef20a_aa4b1a99",
       "range": {
         "startLine": 224,
         "startChar": 40,
