@@ -798,6 +798,10 @@ Heap::Heap(size_t initial_size,
     if (MayUseCollector(kCollectorTypeCMC)) {
       mark_compact_ = new collector::MarkCompact(this);
       garbage_collectors_.push_back(mark_compact_);
+      if (use_generational_cc_) {
+        young_mark_compact_ = new collector::YoungMarkCompact(this, mark_compact_);
+        garbage_collectors_.push_back(young_mark_compact_);
+      }
     }
     if (MayUseCollector(kCollectorTypeCC)) {
       concurrent_copying_collector_ = new collector::ConcurrentCopying(this,
@@ -2327,6 +2331,9 @@ void Heap::ChangeCollector(CollectorType collector_type) {
         break;
       }
       case kCollectorTypeCMC: {
+        if (use_generational_cc_) {
+          gc_plan_.push_back(collector::kGcTypeSticky);
+        }
         gc_plan_.push_back(collector::kGcTypeFull);
         if (use_tlab_) {
           ChangeAllocator(kAllocatorTypeTLAB);
@@ -2862,6 +2869,9 @@ collector::GcType Heap::CollectGarbageInternal(collector::GcType gc_type,
           break;
         case kCollectorTypeCMC:
           collector = mark_compact_;
+          if (use_generational_cc_ && gc_type == collector::kGcTypeSticky) {
+            collector = young_mark_compact_;
+          }
           break;
         case kCollectorTypeCC:
           collector::ConcurrentCopying* active_cc_collector;
