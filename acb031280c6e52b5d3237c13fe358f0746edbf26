@@ -141,6 +141,30 @@
       },
       "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8214728_6253e442",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-15T14:34:34Z",
+      "side": 1,
+      "message": "Sorry, I missed Jiakai\u0027s comment. We discussed offline. I missed that we already checked oat_method_quick_code isn\u0027t a nullptr. Given that oat_method_quick_code isn\u0027t a nullptr then the rest of them shouldn\u0027t return a nullptr. If they do then something has gone wrong so we can throw an exception.",
+      "parentUuid": "637e74e9_b82329f0",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
