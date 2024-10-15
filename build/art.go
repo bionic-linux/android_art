@@ -76,6 +76,9 @@ func globalFlags(ctx android.LoadHookContext) ([]string, []string) {
 		tlab = true
 	} else if gcType == "CMC" {
 		tlab = true
+		if !ctx.Config().IsEnvFalse("ART_USE_GENERATIONAL_CC") {
+			cflags = append(cflags, "-DART_USE_GENERATIONAL_CC=1")
+		}
 	}
 
 	if tlab {

@@ -1640,10 +1640,15 @@ class Heap {
 
   std::vector<collector::GarbageCollector*> garbage_collectors_;
   collector::SemiSpace* semi_space_collector_;
-  collector::MarkCompact* mark_compact_;
   Atomic<collector::ConcurrentCopying*> active_concurrent_copying_collector_;
-  collector::ConcurrentCopying* young_concurrent_copying_collector_;
-  collector::ConcurrentCopying* concurrent_copying_collector_;
+  union {
+    collector::ConcurrentCopying* young_concurrent_copying_collector_;
+    collector::YoungMarkCompact* young_mark_compact_;
+  };
+  union {
+    collector::ConcurrentCopying* concurrent_copying_collector_;
+    collector::MarkCompact* mark_compact_;
+  };
 
   const bool is_running_on_memory_tool_;
   const bool use_tlab_;
