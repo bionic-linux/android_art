@@ -495,6 +495,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ea33f4_e806ef08",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-15T20:48:23Z",
+      "side": 1,
+      "message": "Sorry - lost the `reinterpret_cast64` changes somehow in the shuffle. Done.",
+      "parentUuid": "717a30be_e5f5a13d",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0264e433_7bec9cb2",
