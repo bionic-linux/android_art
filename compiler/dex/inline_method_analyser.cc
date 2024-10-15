@@ -210,7 +210,8 @@ bool RecordConstructorIPut(ArtMethod* method,
                            const Instruction* new_iput,
                            uint16_t this_vreg,
                            uint16_t zero_vreg_mask,
-                           /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts])
+                           /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts],
+                           uint16_t &iputs_size)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(IsInstructionIPut(new_iput->Opcode()));
   uint32_t field_index = new_iput->VRegC_22c();
@@ -221,10 +222,8 @@ bool RecordConstructorIPut(ArtMethod* method,
   }
   // Remove previous IPUT to the same field, if any. Different field indexes may refer
   // to the same field, so we need to compare resolved fields from the dex cache.
-  for (size_t old_pos = 0; old_pos != arraysize(iputs); ++old_pos) {
-    if (iputs[old_pos].field_index == DexFile::kDexNoIndex16) {
-      break;
-    }
+  const uint16_t tmp_size = iputs_size;
+  for (size_t old_pos = 0; old_pos < tmp_size; ++old_pos) {
     ArtField* f = class_linker->LookupResolvedField(iputs[old_pos].field_index,
                                                     method,
                                                     /* is_static= */ false);
@@ -232,35 +231,30 @@ bool RecordConstructorIPut(ArtMethod* method,
     if (f == field) {
       auto back_it = std::copy(iputs + old_pos + 1, iputs + arraysize(iputs), iputs + old_pos);
       *back_it = ConstructorIPutData();
+      --iputs_size;
       break;
     }
   }
   // If the stored value isn't zero, record the IPUT.
   if ((zero_vreg_mask & (1u << new_iput->VRegA_22c())) == 0u) {
-    size_t new_pos = 0;
-    while (new_pos != arraysize(iputs) && iputs[new_pos].field_index != DexFile::kDexNoIndex16) {
-      ++new_pos;
-    }
+    size_t new_pos = iputs_size;
     if (new_pos == arraysize(iputs)) {
       return false;  // Exceeded capacity of the output array.
     }
     iputs[new_pos].field_index = field_index;
     iputs[new_pos].arg = new_iput->VRegA_22c() - this_vreg;
+    iputs_size++;
   }
   return true;
 }
 
 bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
                           ArtMethod* method,
-                          /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts])
+                          /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts],
+                          uint16_t &iputs_size)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // On entry we should not have any IPUTs yet.
-  DCHECK(std::all_of(
-      iputs,
-      iputs + arraysize(iputs),
-      [](const ConstructorIPutData& iput_data) {
-        return iput_data.field_index == DexFile::kDexNoIndex16;
-      }));
+  DCHECK(iputs_size == 0);
 
   // Limit the maximum number of code units we're willing to match.
   static constexpr size_t kMaxCodeUnits = 16u;
@@ -329,21 +323,27 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
         if (!target_code_item.HasCodeItem()) {
           return false;  // Native constructor?
         }
-        if (!DoAnalyseConstructor(&target_code_item, target_method, iputs)) {
+        if (!DoAnalyseConstructor(&target_code_item, target_method, iputs, iputs_size)) {
           return false;
         }
         // Prune IPUTs with zero input.
-        auto kept_end = std::remove_if(
-            iputs,
-            iputs + arraysize(iputs),
-            [forwarded](const ConstructorIPutData& iput_data) {
-              return iput_data.arg >= forwarded;
-            });
-        std::fill(kept_end, iputs + arraysize(iputs), ConstructorIPutData());
+        if (iputs_size > 0) {
+          auto kept_end = std::remove_if(
+              iputs,
+              iputs + iputs_size,
+              [forwarded, &iputs_size](const ConstructorIPutData& iput_data) {
+                if (iput_data.arg >= forwarded) {
+                  iputs_size--;
+                  return true;
+                } else {
+                  return false;
+                }
+              });
+          std::fill(kept_end, iputs + arraysize(iputs), ConstructorIPutData());
+        }
         // If we have any IPUTs from the call, check that the target method is in the same
         // dex file (compare DexCache references), otherwise field_indexes would be bogus.
-        if (iputs[0].field_index != DexFile::kDexNoIndex16 &&
-            target_method->GetDexCache() != method->GetDexCache()) {
+        if (iputs_size > 0 && target_method->GetDexCache() != method->GetDexCache()) {
           return false;
         }
       }
@@ -355,7 +355,7 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
     } else {
       DCHECK(IsInstructionIPut(instruction.Opcode()));
       DCHECK_EQ(instruction.VRegB_22c(), this_vreg);
-      if (!RecordConstructorIPut(method, &instruction, this_vreg, zero_vreg_mask, iputs)) {
+      if (!RecordConstructorIPut(method, &instruction, this_vreg, zero_vreg_mask, iputs, iputs_size)) {
         return false;
       }
     }
@@ -369,15 +369,13 @@ bool AnalyseConstructor(const CodeItemDataAccessor* code_item,
                         ArtMethod* method,
                         InlineMethod* result)
     REQUIRES_SHARED(Locks::mutator_lock_) {
+  uint16_t iputs_size(0u);
   ConstructorIPutData iputs[kMaxConstructorIPuts];
-  if (!DoAnalyseConstructor(code_item, method, iputs)) {
+  if (!DoAnalyseConstructor(code_item, method, iputs, iputs_size)) {
     return false;
   }
   static_assert(kMaxConstructorIPuts == 3, "Unexpected limit");  // Code below depends on this.
-  DCHECK_IMPLIES(iputs[0].field_index == DexFile::kDexNoIndex16,
-                 iputs[1].field_index == DexFile::kDexNoIndex16);
-  DCHECK_IMPLIES(iputs[1].field_index == DexFile::kDexNoIndex16,
-                 iputs[2].field_index == DexFile::kDexNoIndex16);
+  DCHECK(iputs_size <= kMaxConstructorIPuts);
 
 #define STORE_IPUT(n)                                                         \
   do {                                                                        \
@@ -391,7 +389,7 @@ bool AnalyseConstructor(const CodeItemDataAccessor* code_item,
 #undef STORE_IPUT
 
   result->opcode = kInlineOpConstructor;
-  result->d.constructor_data.reserved = 0u;
+  result->d.constructor_data.size = iputs_size;
   return true;
 }
 

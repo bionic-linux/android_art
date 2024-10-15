@@ -1769,8 +1769,7 @@ bool HInliner::TryPatternSubstitution(HInvoke* invoke_instruction,
       static_assert(arraysize(iput_args) == arraysize(iput_field_indexes), "Size mismatch");
       // Count valid field indexes.
       size_t number_of_iputs = 0u;
-      while (number_of_iputs != arraysize(iput_field_indexes) &&
-          iput_field_indexes[number_of_iputs] != DexFile::kDexNoIndex16) {
+      while (number_of_iputs < data.size) {
         // Check that there are no duplicate valid field indexes.
         DCHECK_EQ(0, std::count(iput_field_indexes + number_of_iputs + 1,
                                 iput_field_indexes + arraysize(iput_field_indexes),
