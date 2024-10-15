@@ -16,6 +16,24 @@
       "message": "Don\u0027t shoot the messenger: Missing `if (offset.IsValid()) {` trick since `offset` might be invalid.",
       "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee64799d_14b4f000",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T14:25:38Z",
+      "side": 1,
+      "message": "On second thought: both float32 and float64 are not available for absolute put/get so they will always have a valid `offset`",
+      "parentUuid": "9bd155b8_fc8e161f",
+      "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
