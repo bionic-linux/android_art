@@ -51,6 +51,24 @@
       "message": "Missing the temp + add in float32 case",
       "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36dec93f_ed3edcfc",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-15T14:14:34Z",
+      "side": 1,
+      "message": "Interesting, I thought `[Rn{, #offset}]` was allowed with `vldr`.\nDone. Thank you!\nHow did you find this problem? By inspecting the diff, or did you divine something out of the builder errors? I tried the former but didn\u0027t see this problem, and I tried the latter but didn\u0027t see any useful troubleshooting information to point directly at this case.",
+      "parentUuid": "fd783662_a1eb72de",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
