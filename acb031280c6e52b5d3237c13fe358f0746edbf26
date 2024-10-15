@@ -117,6 +117,30 @@
       },
       "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637e74e9_b82329f0",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-15T10:44:56Z",
+      "side": 1,
+      "message": "The first can certainly happen, so returning nullptr should be good there. \n\nI think the same with second if (``c-\u003eGetDexFile().GetOatDexFile()``) as well. We may not have an odex file. \n\n``odex_file-\u003eGetOatFile()`` can return null too. See here: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file.h;l\u003d534\n\nThe last check (``oat_file-\u003eComputeElfBegin(\u0026error_msg)``) should usually not fail. Though if the Oat file isn\u0027t backed by an elf file (see here: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file.cc;l\u003d1906;) it could fail.\n\nPlease wait for Jiakai. He knows more about oat files and vdex files.",
+      "parentUuid": "75e7f622_3292dfbf",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

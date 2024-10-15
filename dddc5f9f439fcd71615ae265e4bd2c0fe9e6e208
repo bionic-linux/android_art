@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6240487d_e7e7b9cc",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-15T10:44:56Z",
+      "side": 1,
+      "message": "No, I don\u0027t think this can be null. Executable is created by giving a valid ArtMethod from Method::CreateFromArtMethod or Constructor::CreateFromArtMethod. If m isn\u0027t null then m-\u003eGetArtMethod shouldn\u0027t be null.",
+      "parentUuid": "f4d6c463_e8b8811f",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f7f3fff_942134b5",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 15
