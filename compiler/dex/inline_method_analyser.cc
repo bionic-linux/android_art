@@ -214,6 +214,12 @@ bool RecordConstructorIPut(ArtMethod* method,
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(IsInstructionIPut(new_iput->Opcode()));
   uint32_t field_index = new_iput->VRegC_22c();
+  // Login in TryPatternSubstitution() thinks field_index 0xFFFF is invalid
+  if (field_index == DexFile::kDexNoIndex16) {
+    VLOG(compiler) << "Field index is too big";
+    return false;
+  }
+
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
   ArtField* field = class_linker->LookupResolvedField(field_index, method, /* is_static= */ false);
   if (UNLIKELY(field == nullptr)) {
