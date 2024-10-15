@@ -142,6 +142,30 @@
       },
       "revId": "735f9be670c8c6999e2e046a18ad3e141baef982",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66105877_be31cad1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-10-15T14:01:06Z",
+      "side": 1,
+      "message": "Hi there, I rework fix, indeed the problem that in the qemu\u0027s rootfs mentioned directory is missed.\nhttps://android-review.googlesource.com/c/platform/art/+/3307144",
+      "parentUuid": "e90cb12d_bb54af50",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "735f9be670c8c6999e2e046a18ad3e141baef982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
