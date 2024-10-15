@@ -16,6 +16,23 @@
       "message": "I\u0027ve rebased this patch and rechecked the uses of kRuntimeISA. I will now address the remaining comments in the next patchset.",
       "revId": "67c9ab3843ac4a8b59f567ff65b981737ba14010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90eb7b5e_69630c5d",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-15T09:53:04Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "67c9ab3843ac4a8b59f567ff65b981737ba14010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
