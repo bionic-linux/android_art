@@ -70,6 +70,24 @@
       "parentUuid": "e409601f_b2c9d0d5",
       "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ad0998_dd967f8a",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-15T15:02:49Z",
+      "side": 1,
+      "message": "Inflight wifi.",
+      "parentUuid": "dadfd5ef_3874821e",
+      "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
