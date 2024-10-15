@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6664f3f_16859be1",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-15T09:29:05Z",
+      "side": 1,
+      "message": "Why not just `VIXLInt32Literal` ?",
+      "range": {
+        "startLine": 213,
+        "startChar": 14,
+        "endLine": 213,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1a740685_88f58527",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/code_generator_arm64.h",
+              "range": {
+                "startLine": 194,
+                "startChar": 0,
+                "endLine": 196,
+                "endChar": 0
+              },
+              "replacement": "        jump_targets_.emplace_back(new VIXLInt32Literal(0));\n"
+            },
+            {
+              "path": "compiler/optimizing/code_generator_arm64.h",
+              "range": {
+                "startLine": 213,
+                "startChar": 0,
+                "endLine": 214,
+                "endChar": 0
+              },
+              "replacement": "  ArenaVector\u003cVIXLInt32Literal*\u003e jump_targets_;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b544a1017753bfef7b91a2ea3024ffbde6cd5bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
