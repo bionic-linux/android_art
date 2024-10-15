@@ -87,6 +87,24 @@
       "parentUuid": "fd783662_a1eb72de",
       "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d3057f_a05d0c98",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T14:24:26Z",
+      "side": 1,
+      "message": "The error in the other comment had `10-15 13:40:41.199 21163 21163 F DEBUG   :       #03 pc 008f7179  /apex/com.android.art/lib/libartd.so (vixl::aarch32::Assembler::vldr(vixl::aarch32::Condition, vixl::aarch32::DataType, vixl::aarch32::SRegister, vixl::aarch32::MemOperand const\u0026)+96) (BuildId: 0ba0afaf26acc1799ab5def13df08e29)` which means there\u0027s something wrong in the `vldr` creation. I then took a look at the diff of your change and realized that you didn\u0027t have the `temp` for the float32 case when we had it before.",
+      "parentUuid": "36dec93f_ed3edcfc",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

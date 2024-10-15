@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eafd8332_884c6b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T14:24:26Z",
+      "side": 1,
+      "message": "We print both a summary (which is similar to what you see on presubmit) and the full logcat in LUCI. This is useful for investigating crashes that appear only in logcat. Crashes like these should appear without any env variable meddling. This particular command was run with `testrunner.py --target --verbose --debug --optimizing`",
+      "parentUuid": "043beb95_b97e9053",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9b83181_74b4a496",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 2
