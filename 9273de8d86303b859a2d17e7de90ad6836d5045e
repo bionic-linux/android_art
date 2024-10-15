@@ -52,6 +52,24 @@
       "parentUuid": "ee64799d_14b4f000",
       "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dadfd5ef_3874821e",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T14:39:33Z",
+      "side": 1,
+      "message": "Did you mean to upload a patchset? No logic was added with this comment",
+      "parentUuid": "e409601f_b2c9d0d5",
+      "revId": "9273de8d86303b859a2d17e7de90ad6836d5045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
