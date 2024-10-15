@@ -152,6 +152,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a285ae4_e530f31c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T13:10:06Z",
+      "side": 1,
+      "message": "I\u0027m afraid we can\u0027t. We recursively bind-mount /proc, /sys, and /dev, and OEMs may have their own customizations in those directories, so we can\u0027t be sure that we have the permission.",
+      "parentUuid": "ae0db7db_61c6f35f",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
