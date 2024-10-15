@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6970153e_b344b96c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T16:06:38Z",
+      "side": 1,
+      "message": "\u003e Just one thing, it\u0027s worth a comment why you do this instead of calling `Realpath`.\n\nDone.\n\n\u003e Btw, should https://r.android.com/3307255 be reverted now?\n\nYes.",
+      "parentUuid": "b6404965_3af6aeb7",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "b39b3d99734ff7c13964854ba064012141f57e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
