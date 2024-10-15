@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41efee74_a9140c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:05:39Z",
+      "side": 1,
+      "message": "Code looks good. There\u0027s a merge conflict somewhere but it should be easy to solve once we merge the other two CLs and do a rebase. After that we can run the presubmit checks",
+      "revId": "55562d473c979f046c9853c9cd4e45c14b04a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157dd257_2755e769",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:05:39Z",
+      "side": 1,
+      "message": "Fine to keep since we have this pattern in other cases but FYI this is dead code and should be removed by clang",
+      "range": {
+        "startLine": 1248,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 16
+      },
+      "revId": "55562d473c979f046c9853c9cd4e45c14b04a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

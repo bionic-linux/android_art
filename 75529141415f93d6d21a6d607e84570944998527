@@ -426,6 +426,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c9e2c1_2b23fe15",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:05:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b642b42_7a5cb6fa",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915b85fe_9c908394",
@@ -572,6 +590,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac1365c_8168877b",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:05:39Z",
+      "side": 1,
+      "message": "\u003e targeted testing\n\nAck, let\u0027s have that test configuration\n\n\u003e AI stuff\n\nAs reviewers, we get some AI generated fixed based on the comment I type. I can accept and attach it to my comment (default value) or discard it. This is done in Gerrit automatically. It is useful for cases like the ones I typed since it is mostly manual work really.",
+      "parentUuid": "9161440a_5777eb56",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c8c258_379f81bf",
@@ -603,6 +639,24 @@
       "side": 1,
       "message": "Technically it could be done however we have no current plans to add this support.",
       "parentUuid": "93c8c258_379f81bf",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de417361_f3cc3dba",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:05:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99bcd5dd_221eb7ed",
       "revId": "75529141415f93d6d21a6d607e84570944998527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
