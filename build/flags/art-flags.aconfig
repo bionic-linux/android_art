@@ -34,3 +34,12 @@ flag {
   is_fixed_read_only: true
   is_exported: false
 }
+
+flag {
+  name: "art_service_v3"
+  namespace: "art_mainline"
+  description: "Flag for all new ART Service APIs added in the 25Q2 version of the ART module."
+  bug: "373820009"
+  is_fixed_read_only: true
+  is_exported: true
+}
