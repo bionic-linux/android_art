@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65297e71_675b8677",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-15T13:47:18Z",
+      "side": 1,
+      "message": "I\u0027m getting some kind of verification error on Mokey.\nI\u0027m syncing a workspace and rebuilding with `ART_BOOT_IMAGE_EXTRA_ARGS\u003d\"--runtime-arg -verbose:verifier\"` to see if I can get more info.",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
