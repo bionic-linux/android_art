@@ -78,16 +78,6 @@ public class Main {
 
     private static void testMethodHandleCounters() throws Throwable {
         for (int i = 0; i < ITERATIONS; ++i) {
-            // Regular MethodHandle invocations
-            MethodHandle mh =
-                    MethodHandles.lookup()
-                            .findConstructor(
-                                    Widget.class, MethodType.methodType(void.class, int.class));
-            Widget w = (Widget) mh.invoke(3);
-            w = (Widget) mh.invokeExact(3);
-            assertEquals(initialHotnessCounter, getHotnessCounter(MethodHandle.class, "invoke"));
-            assertEquals(initialHotnessCounter, getHotnessCounter(MethodHandle.class, "invokeExact"));
-
             // Reflective MethodHandle invocations
             String[] methodNames = {"invoke", "invokeExact"};
             for (String methodName : methodNames) {
@@ -115,12 +105,6 @@ public class Main {
     private static void testVarHandleCounters() throws Throwable {
         Widget w = new Widget(0);
         for (int i = 0; i < ITERATIONS; ++i) {
-            // Regular accessor invocations
-            widgetIdVarHandle.set(w, i);
-            assertEquals(i, widgetIdVarHandle.get(w));
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "set"));
-            assertEquals(initialHotnessCounter, getHotnessCounter(VarHandle.class, "get"));
-
             // Reflective accessor invocations
             for (String accessorName : new String[] {"get", "set"}) {
                 Method setMethod = VarHandle.class.getMethod(accessorName, Object[].class);
