@@ -16,6 +16,41 @@
       "message": "I\u0027m getting some kind of verification error on Mokey.\nI\u0027m syncing a workspace and rebuilding with `ART_BOOT_IMAGE_EXTRA_ARGS\u003d\"--runtime-arg -verbose:verifier\"` to see if I can get more info.",
       "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d408f4b_216e7eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:57:20Z",
+      "side": 1,
+      "message": "FYI the issues with 674 and 817 hidden api tests happening without your CL too (https://android-build.corp.google.com/build_explorer/build_details/12495552/art-asan/)",
+      "parentUuid": "65297e71_675b8677",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd783662_a1eb72de",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T13:57:20Z",
+      "side": 1,
+      "message": "Missing the temp + add in float32 case",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
