@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 import android.annotation.SystemApi;
 
 import com.android.internal.annotations.Immutable;
+import com.android.server.art.proto.BatchDexoptParamsProto;
 
 import com.google.auto.value.AutoValue;
 
@@ -84,4 +85,19 @@ public abstract class BatchDexoptParams {
 
     /** The params for dexopting each package. */
     public abstract @NonNull DexoptParams getDexoptParams();
+
+    /** @hide */
+    public static @NonNull BatchDexoptParams fromProto(@NonNull BatchDexoptParamsProto proto) {
+        return new BatchDexoptParams
+                .Builder(proto.getPackageList(), DexoptParams.fromProto(proto.getDexoptParams()))
+                .build();
+    }
+
+    /** @hide */
+    public @NonNull BatchDexoptParamsProto toProto() {
+        return BatchDexoptParamsProto.newBuilder()
+                .addAllPackage(getPackages())
+                .setDexoptParams(getDexoptParams().toProto())
+                .build();
+    }
 }
