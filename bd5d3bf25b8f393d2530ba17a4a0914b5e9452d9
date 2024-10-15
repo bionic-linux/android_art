@@ -248,6 +248,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed83a3f_bfcc21ff",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T15:21:36Z",
+      "side": 1,
+      "message": "\u003e Weird. I thought the kernel bind operation would operate on inodes, so something on the way would need to follow symlinks first. Then I suppose one could use bind mounting as a backdoor to glean some getattr info(?).\n\nThat\u0027s an interesting point! You made me dig more into this, and it turned out that \"getattr\" is not needed for resolving symlinks. The Bionic implementation of [`realpath`](https://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/bionic/realpath.cpp;l\u003d46;drc\u003d22fb267ad6f95ab083abb56e914f8081552108a7) needs \"getattr\" because it calls `stat(2)` to handle the case where the file is removed during the call. I don\u0027t think we expect file changes in our use case.\n\nI reimplemented this function with the idea borrowed from Bionic to avoid the need for \"getattr\".\n\n\u003e Just check if the ro.build.version.sdk property is higher than 35?\n\nThat\u0027s an idea, but I\u0027d like to see how the discussion goes in case someone yells at us that we shouldn\u0027t be doing it. We may have to do it when we have a strong need, but that\u0027s for later discussions. Anyway, we don\u0027t need the \"getattr\" permission now.",
+      "parentUuid": "4070529d_a271175e",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
