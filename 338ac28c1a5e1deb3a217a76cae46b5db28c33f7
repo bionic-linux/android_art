@@ -16,6 +16,24 @@
       "message": "We should repurpose the `InlineConstructorData::reserved` bits to hold the number of `iput`s. Then we can drop the `DexFile::kDexNoIndex16` check from the constructor case in the `HInliner::TryPatternSubstitution()`.",
       "revId": "338ac28c1a5e1deb3a217a76cae46b5db28c33f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a742477_bf91b9ba",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-15T11:03:39Z",
+      "side": 1,
+      "message": "Great idea",
+      "parentUuid": "32d2ea67_671c72e6",
+      "revId": "338ac28c1a5e1deb3a217a76cae46b5db28c33f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
