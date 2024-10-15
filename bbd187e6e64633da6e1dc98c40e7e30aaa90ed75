@@ -105,6 +105,24 @@
       "parentUuid": "36dec93f_ed3edcfc",
       "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a13a6a6_eb4e0105",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-15T14:34:14Z",
+      "side": 1,
+      "message": "I see it now. Thanks!",
+      "parentUuid": "f9d3057f_a05d0c98",
+      "revId": "bbd187e6e64633da6e1dc98c40e7e30aaa90ed75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
