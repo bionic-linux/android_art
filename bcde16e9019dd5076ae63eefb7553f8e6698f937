@@ -40,6 +40,30 @@
       ],
       "revId": "bcde16e9019dd5076ae63eefb7553f8e6698f937",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4402ff3_b2b41240",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T16:40:51Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f6f3858c_9aea73f0",
+      "range": {
+        "startLine": 150,
+        "startChar": 39,
+        "endLine": 150,
+        "endChar": 40
+      },
+      "revId": "bcde16e9019dd5076ae63eefb7553f8e6698f937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
