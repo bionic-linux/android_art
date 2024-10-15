@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51369074_06b7e49f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:21:23Z",
+      "side": 1,
+      "message": "There are also other references to the Testing ART APEX in projects not covered by the CLs (https://r.android.com/3283202, https://r.android.com/3285714, https://r.android.com/3284657) currently part of of [this topic](https://android-review.git.corp.google.com/q/topic:%22deprecate-testing-art-apex%22) (see\nhttps://cs.android.com/search?q\u003dcom.android.art.testing%20-file:%5Eart%20-file:%5Eexternal%2Fboringssl%20-file:%5Etools%2Ftradefederation%2Fcore\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain); please take a look at them.",
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2703c06c_46b0648e",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 5
