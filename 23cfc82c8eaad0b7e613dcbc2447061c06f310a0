@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cc04d63_73aef302",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 0,
+      "message": "As a follow-up refactoring, I suggest merging the content of APEX defaults `com.android.art-devel-defaults` into the definition of APEX `com.android.art.debug`.",
+      "range": {
+        "startLine": 305,
+        "startChar": 16,
+        "endLine": 305,
+        "endChar": 46
+      },
+      "revId": "23cfc82c8eaad0b7e613dcbc2447061c06f310a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56cfa42_9f29a342",
+        "filename": "test/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1364,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 0,
+      "message": "We want to keep this test module (in particular, it\u0027s used by ATP test `v2/android-runtime-team/art/target-gtests`), but have it work with the Debug ART APEX instead.",
+      "range": {
+        "startLine": 1364,
+        "startChar": 11,
+        "endLine": 1364,
+        "endChar": 32
+      },
+      "revId": "23cfc82c8eaad0b7e613dcbc2447061c06f310a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b45cbe_9707325b",
+        "filename": "test/README.atest.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 0,
+      "message": "Only this option should be removed; the other ones should be kept.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "23cfc82c8eaad0b7e613dcbc2447061c06f310a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64de64f9_100c33c2",
         "filename": "tools/buildbot-build.sh",
         "patchSetId": 5
@@ -14,6 +83,30 @@
       "writtenOn": "2024-10-14T08:48:11Z",
       "side": 0,
       "message": "I have removed `desugar` from the common targets as otherwise buildbot-build.sh will fail with the following message:\n\n```\nFAILED: ninja: unknown target \u0027desugar\u0027, did you mean \u0027debugfs\u0027?\n```\n\nIs this change safe?",
+      "range": {
+        "startLine": 64,
+        "startChar": 108,
+        "endLine": 64,
+        "endChar": 115
+      },
+      "revId": "23cfc82c8eaad0b7e613dcbc2447061c06f310a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5831976a_a3c06765",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 0,
+      "message": "Maybe this is no longer needed, but I\u0027m surprised why we did not hit this before. @mast@google.com, do you know about this?\n\nI suggest putting this change in its own CL, as it looks unrelated to this Gerrit topic.",
+      "parentUuid": "64de64f9_100c33c2",
       "range": {
         "startLine": 64,
         "startChar": 108,

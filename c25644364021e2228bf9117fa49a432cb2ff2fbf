@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd3a51d_0a8cc3f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "We need more thorough testing here; I suggest mentioning (and checking):\n\n- Chroot-based on-device testing (following [`art/test/README.chroot.md`](https://cs.android.com/android/platform/superproject/main/+/main:art/test/README.chroot.md));\n- `atest ArtGtestsTargetChroot`",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f287a21f_eb798a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "Cool start!",
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2703c06c_46b0648e",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "This should be removed too.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c96dac5_d284ecaa",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "This class should be removed too.",
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a29c634_c8635b87",
+        "filename": "build/apex/manifest-art-debug.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "To be removed.",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ba3615_fe81c646",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "This comment needs to be adjusted.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98c2ed6_075b231f",
+        "filename": "test/art-gtests-target-chroot.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "This file should be kept (see https://android-review.git.corp.google.com/c/platform/art/+/3283202/5/test/Android.bp).",
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659777b0_faf2cc16",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "\"Debug ART APEX\" (here and below).",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 20
+      },
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be59f71f_44775359",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-15T19:08:21Z",
+      "side": 1,
+      "message": "This script (which is used by [the ART Buildbot on LUCI](https://source.chromium.org/chromium/infra/infra_superproject/+/main:build/recipes/recipes/art.py;l\u003d415;drc\u003d85ce33abf81ab3e89b10def222f3b61a80278adb) and referenced in the [chroot-based on-device testing workflow](https://cs.android.com/android/platform/superproject/main/+/main:art/test/README.chroot.md;l\u003d140;drc\u003d20bcfc03bb7fc254dbeecb89117ab3453fda561e)) needs to be adjusted.",
+      "revId": "c25644364021e2228bf9117fa49a432cb2ff2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
