@@ -128,6 +128,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0db7db_61c6f35f",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-15T13:04:00Z",
+      "side": 1,
+      "message": "I saw https://r.android.com/3307255. Provided that gets in, can this be restricted, e.g. based on SDK level?",
+      "parentUuid": "489c7ad3_73920fd2",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
