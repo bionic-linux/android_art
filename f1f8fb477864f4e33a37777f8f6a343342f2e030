@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e6cf86_a68583ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-15T09:26:35Z",
+      "side": 1,
+      "message": "Thanks for reopening this, I\u0027ve redone this search and made the changes that I think are necessary.",
+      "parentUuid": "8f6a4742_65050d42",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "f1f8fb477864f4e33a37777f8f6a343342f2e030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4fa424_5b9e6f95",
