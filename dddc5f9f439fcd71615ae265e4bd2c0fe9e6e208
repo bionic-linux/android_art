@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6ce9d2_5e48470b",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T10:22:05Z",
+      "side": 1,
+      "message": "Probably not, but I\u0027ll add someone from the ART Performance team to take another look at the whole CL because I know little about this kind of ART runtime stuff. Sorry :)",
+      "parentUuid": "f4d6c463_e8b8811f",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "dddc5f9f439fcd71615ae265e4bd2c0fe9e6e208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7f3fff_942134b5",

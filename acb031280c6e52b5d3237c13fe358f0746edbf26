@@ -3,6 +3,77 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fadb905_a33a9b13",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T10:22:05Z",
+      "side": 1,
+      "message": "\"OatDexFile\" means a dex file inside the oat file data structure. It\u0027s not an odex file. I think calling it `oat_dex_file` is more appropriate.",
+      "range": {
+        "startLine": 346,
+        "startChar": 20,
+        "endLine": 346,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fe342d59_ed91d31a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 346,
+                "startChar": 0,
+                "endLine": 349,
+                "endChar": 0
+              },
+              "replacement": "  const OatDexFile* oat_dex_file \u003d c-\u003eGetDexFile().GetOatDexFile();\n  if (oat_dex_file \u003d\u003d nullptr) {\n    LOG(ERROR) \u003c\u003c \"Could not find oat dex file\";\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 352,
+                "startChar": 0,
+                "endLine": 353,
+                "endChar": 0
+              },
+              "replacement": "  const OatFile* oat_file \u003d oat_dex_file-\u003eGetOatFile();\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 365,
+                "startChar": 0,
+                "endLine": 366,
+                "endChar": 0
+              },
+              "replacement": "  ScopedLocalRef\u003cjstring\u003e oat_dex_path \u003d CREATE_UTF_OR_RETURN(env, oat_file-\u003eGetLocation().c_str());\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 379,
+                "startChar": 0,
+                "endLine": 380,
+                "endChar": 0
+              },
+              "replacement": "  return env-\u003eNewObject(clazz.get(), constructor_id, oat_dex_path.get(), odex_offset, method_offset);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75e7f622_3292dfbf",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 18
@@ -14,6 +85,30 @@
       "writtenOn": "2024-10-14T18:16:49Z",
       "side": 1,
       "message": "Which of these (if any) are unexpected and should throw runtime exceptions instead? E.g. once we have an `OatFile`, *should* `ComputeElfBegin` always succeed?",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "acb031280c6e52b5d3237c13fe358f0746edbf26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40b57c6_76f5072d",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-15T10:22:05Z",
+      "side": 1,
+      "message": "My understanding is that, if `oat_method_quick_code` is not nullptr, then any other errors are unexpected.",
+      "parentUuid": "75e7f622_3292dfbf",
       "range": {
         "startLine": 341,
         "startChar": 0,
