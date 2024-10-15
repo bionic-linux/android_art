@@ -34,6 +34,24 @@
       "parentUuid": "8d3c41c0_89aa756c",
       "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2390788_5a6836a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T12:36:34Z",
+      "side": 1,
+      "message": "These kinds of failures have been flakily happening and are unrelated to changes in gerrit",
+      "parentUuid": "520fe5dd_66c6f5db",
+      "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
