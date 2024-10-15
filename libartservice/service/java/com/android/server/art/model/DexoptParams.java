@@ -30,6 +30,7 @@ import com.android.internal.annotations.Immutable;
 import com.android.server.art.ArtConstants;
 import com.android.server.art.ReasonMapping;
 import com.android.server.art.Utils;
+import com.android.server.art.proto.DexoptParamsProto;
 
 /** @hide */
 @SystemApi(client = SystemApi.Client.SYSTEM_SERVER)
@@ -230,5 +231,33 @@ public class DexoptParams {
                 .setCompilerFilter(mCompilerFilter)
                 .setPriorityClass(mPriorityClass)
                 .setSplitName(mSplitName);
+    }
+
+    /** @hide */
+    public static @NonNull DexoptParams fromProto(@NonNull DexoptParamsProto proto) {
+        DexoptParams.Builder builder = new DexoptParams.Builder(proto.getReason(), proto.getFlags())
+                                               .setCompilerFilter(proto.getCompilerFilter())
+                                               .setPriorityClass(proto.getPriorityClass());
+
+        if (proto.hasSplitName()) {
+            builder.setSplitName(proto.getSplitName());
+        }
+
+        return builder.build();
+    }
+
+    /** @hide */
+    public @NonNull DexoptParamsProto toProto() {
+        DexoptParamsProto.Builder builder = DexoptParamsProto.newBuilder()
+                                                    .setFlags(getFlags())
+                                                    .setCompilerFilter(getCompilerFilter())
+                                                    .setPriorityClass(getPriorityClass())
+                                                    .setReason(getReason());
+
+        if (getSplitName() != null) {
+            builder.setSplitName(getSplitName());
+        }
+
+        return builder.build();
     }
 }

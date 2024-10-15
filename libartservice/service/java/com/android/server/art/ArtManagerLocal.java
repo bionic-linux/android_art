@@ -159,6 +159,13 @@ public final class ArtManagerLocal {
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public ArtManagerLocal(@NonNull Context context) {
         mInjector = new Injector(this, context);
+        setBatchDexoptStartCallback(
+                Runnable::run, (snapshot, reason, defaultPackages, builder, cancellationSignal) -> {
+                    if (reason.equals(ReasonMapping.REASON_PRE_REBOOT_DEXOPT)) {
+                        builder.setDexoptParams(
+                                new DexoptParams.Builder(ReasonMapping.REASON_BG_DEXOPT).build());
+                    }
+                });
     }
 
     /** @hide */
@@ -471,6 +478,17 @@ public final class ArtManagerLocal {
             @NonNull CancellationSignal cancellationSignal,
             @Nullable @CallbackExecutor Executor progressCallbackExecutor,
             @Nullable Map<Integer, Consumer<OperationProgress>> progressCallbacks) {
+        return dexoptPackagesWithParams(snapshot, reason, cancellationSignal,
+                progressCallbackExecutor, progressCallbacks, null /* params */);
+    }
+
+    /** @hide */
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    @NonNull
+    public BatchDexoptParams getBatchDexoptParams(
+            @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
+            @NonNull @BatchDexoptReason String reason,
+            @NonNull CancellationSignal cancellationSignal) {
         List<String> defaultPackages =
                 Collections.unmodifiableList(getDefaultPackages(snapshot, reason));
         DexoptParams defaultDexoptParams = new DexoptParams.Builder(reason).build();
@@ -485,7 +503,22 @@ public final class ArtManagerLocal {
         }
         BatchDexoptParams params = builder.build();
         Utils.check(params.getDexoptParams().getReason().equals(reason));
+        return params;
+    }
 
+    /** @hide */
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    @NonNull
+    public Map<Integer, DexoptResult> dexoptPackagesWithParams(
+            @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
+            @NonNull @BatchDexoptReason String reason,
+            @NonNull CancellationSignal cancellationSignal,
+            @Nullable @CallbackExecutor Executor progressCallbackExecutor,
+            @Nullable Map<Integer, Consumer<OperationProgress>> progressCallbacks,
+            @Nullable BatchDexoptParams params) {
+        if (params == null) {
+            params = getBatchDexoptParams(snapshot, reason, cancellationSignal);
+        }
         ExecutorService dexoptExecutor =
                 Executors.newFixedThreadPool(ReasonMapping.getConcurrencyForReason(reason));
         Map<Integer, DexoptResult> dexoptResults = new HashMap<>();
@@ -1646,7 +1679,7 @@ public final class ArtManagerLocal {
         @NonNull
         public synchronized PreRebootDexoptJob getPreRebootDexoptJob() {
             if (mPrDexoptJob == null) {
-                mPrDexoptJob = new PreRebootDexoptJob(mContext);
+                mPrDexoptJob = new PreRebootDexoptJob(mContext, mArtManagerLocal);
             }
             return mPrDexoptJob;
         }
