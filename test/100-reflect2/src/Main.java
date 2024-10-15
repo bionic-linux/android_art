@@ -178,6 +178,12 @@ class Main {
     // Sort the return values by their string values since the order is undefined by the spec.
     System.out.println(Arrays.toString(sort(String.class.getDeclaredConstructors(), comp)));
     System.out.println(Arrays.toString(sort(String.class.getDeclaredFields(), comp)));
+    // TODO(mast): R8 changes some methods. We should probably ignore private
+    // and protected methods, but R8 also adds some public ones it needs to stop
+    // doing, e.g.
+    // public static java.lang.String.$r8$lambda$B_77PyL0qkmRb2BguSk0UhuYQEw
+    // which D8 outputs as
+    // static java.lang.String.lambda$indent$2.
     System.out.println(Arrays.toString(sort(String.class.getDeclaredMethods(), comp)));
 
     System.out.println(Arrays.toString(Main.class.getInterfaces()));
