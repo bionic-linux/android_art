@@ -608,6 +608,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3733c140_004f0c5c",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-15T14:19:45Z",
+      "side": 1,
+      "message": "Thanks for the insight into this!",
+      "parentUuid": "bac1365c_8168877b",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c8c258_379f81bf",
