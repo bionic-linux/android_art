@@ -224,6 +224,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4070529d_a271175e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-15T14:03:46Z",
+      "side": 1,
+      "message": "\u003e No, mounting doesn\u0027t need the \"getattr\" permission.\n\nWeird. I thought the kernel bind operation would operate on inodes, so something on the way would need to follow symlinks first. Then I suppose one could use bind mounting as a backdoor to glean some getattr info(?).\n\n\u003e we don\u0027t have a way to check the SDK level right now.\n\nJust check if the ro.build.version.sdk property is higher than 35? It\u0027d mean this bypass is enabled in dogfood, but that\u0027s not a big deal.",
+      "parentUuid": "58cd6813_3c423958",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
