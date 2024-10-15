@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a3e3c9_90b8db02",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-15T16:43:13Z",
+      "side": 1,
+      "message": "The prevalent style in this file is to define `kMask` and `kValue` and check if `(access_flags \u0026 kMask) \u003d\u003d kValue`, see `IsPreCompiled()`. But I\u0027m fine with this style if you want to keep it.",
+      "range": {
+        "startLine": 364,
+        "startChar": 11,
+        "endLine": 364,
+        "endChar": 94
+      },
+      "revId": "6f25eb303173a052fb9f2fe0906ed562a9330e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
