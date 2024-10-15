@@ -272,6 +272,30 @@
       },
       "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6404965_3af6aeb7",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-15T16:00:54Z",
+      "side": 1,
+      "message": "Great! Ideally Bionic should be fixed to use an existence check that doesn\u0027t require additional sepolicy permissions, but that wouldn\u0027t help us here.\n\nJust one thing, it\u0027s worth a comment why you do this instead of calling `Realpath`.\n\nBtw, should https://r.android.com/3307255 be reverted now?",
+      "parentUuid": "0ed83a3f_bfcc21ff",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "bd5d3bf25b8f393d2530ba17a4a0914b5e9452d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
