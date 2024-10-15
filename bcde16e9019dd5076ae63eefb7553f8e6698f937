@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f3858c_9aea73f0",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-15T16:27:18Z",
+      "side": 1,
+      "message": "Suggestion: \"does a stat(2) call which\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 39,
+        "endLine": 150,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "15e371e2_a8269458",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 152,
+                "endChar": 0
+              },
+              "replacement": "  // We don\u0027t use `Realpath` because it does a `stat(2)` call which requires the SELinux \"getattr\"\n  // permission. which we don\u0027t have on all mount points.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bcde16e9019dd5076ae63eefb7553f8e6698f937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
