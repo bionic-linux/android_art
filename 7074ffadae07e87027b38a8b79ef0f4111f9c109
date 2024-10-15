@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef1e9b6_b064474f",
+        "filename": "test/716-jli-jit-samples/src-art/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T15:46:17Z",
+      "side": 0,
+      "message": "I think we can remove the regular method handle invocations given that this test:\n1) was about not increasing the counter for the reflective calls, \n2) it was passing by luck that the intrisic bits had the `kAccMemorySharedMethod` as 1, and\n3) the counter increasing depending on whether you are running JIT, AOT, etc as well as whether we implemented the intrinsics for this particular arch",
+      "revId": "7074ffadae07e87027b38a8b79ef0f4111f9c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bb6167_ab91ef41",
+        "filename": "test/716-jli-jit-samples/src-art/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T15:46:17Z",
+      "side": 0,
+      "message": "These calls do increase the counter but they will stop increasing the counter when the intrinsic implementation is done for them",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 43
+      },
+      "revId": "7074ffadae07e87027b38a8b79ef0f4111f9c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7628e330_85c87d22",
+        "filename": "test/716-jli-jit-samples/src-art/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-15T15:46:17Z",
+      "side": 0,
+      "message": "These ones are always intrinsified and therefore never increase the counter",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 54
+      },
+      "revId": "7074ffadae07e87027b38a8b79ef0f4111f9c109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
