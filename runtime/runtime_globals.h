@@ -122,9 +122,9 @@ static constexpr bool kMovingCollector = true;
 static constexpr bool kMarkCompactSupport = false && kMovingCollector;
 // True if we allow moving classes.
 static constexpr bool kMovingClasses = !kMarkCompactSupport;
-// When using the Concurrent Copying (CC) collector, if
+// When using the Concurrent Collectors (CC or CMC), if
 // `ART_USE_GENERATIONAL_CC` is true, enable generational collection by default,
-// i.e. use sticky-bit CC for minor collections and (full) CC for major
+// i.e. use sticky-bit CC/CMC for minor collections and (full) CC/CMC for major
 // collections.
 // This default value can be overridden with the runtime option
 // `-Xgc:[no]generational_cc`.
