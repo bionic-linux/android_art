@@ -20,6 +20,7 @@
 #include <sys/resource.h>
 #include <sys/time.h>
 extern "C" void android_set_application_target_sdk_version(uint32_t version);
+extern "C" void android_set_16kb_appcompat_mode(bool enable_app_compat);
 #endif
 #include <inttypes.h>
 #include <limits>
@@ -346,6 +347,12 @@ static void VMRuntime_requestConcurrentGC(JNIEnv* env, jobject) {
                             heap->GetCurrentGcNum());
 }
 
+static void VMRuntime_set16KbAppCompatModeNative(JNIEnv*, jobject, [[maybe_unused]] jboolean enable_app_compat) {
+#ifdef ART_TARGET_ANDROID
+ android_set_16kb_appcompat_mode(enable_app_compat);
+#endif //ART_TARGET_ANDROID
+}
+
 static void VMRuntime_startHeapTaskProcessor(JNIEnv* env, jobject) {
   Runtime::Current()->GetHeap()->GetTaskProcessor()->Start(Thread::ForEnv(env));
 }
@@ -593,6 +600,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, getBaseApkOptimizationInfo,
       "()Ldalvik/system/DexFile$OptimizationInfo;"),
   NATIVE_METHOD(VMRuntime, getFullGcCount, "()J"),
+  NATIVE_METHOD(VMRuntime, set16KbAppCompatModeNative, "(Z)V"),
 };
 
 void register_dalvik_system_VMRuntime(JNIEnv* env) {
