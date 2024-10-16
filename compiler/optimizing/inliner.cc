@@ -422,10 +422,9 @@ static bool AlwaysThrows(ArtMethod* method)
   if (!method->IsCompilable() || !IsMethodVerified(method)) {
     return false;
   }
-  // Skip native methods, methods with try blocks, and methods that are too large.
+  // Skip native methods, and methods that are too large.
   CodeItemDataAccessor accessor(method->DexInstructionData());
   if (!accessor.HasCodeItem() ||
-      accessor.TriesSize() != 0 ||
       accessor.InsnsSizeInCodeUnits() > kMaximumNumberOfTotalInstructions) {
     return false;
   }
@@ -445,6 +444,8 @@ static bool AlwaysThrows(ArtMethod* method)
         break;
     }
   }
+  // Note it is possible for an ArtMethod to have no return and no throwing DEX instructions e.g.
+  // `void foo() { while (true) { } }`.
   return throw_seen;
 }
 

@@ -1,0 +1,1 @@
+Tests we correctly mark an always throwing method with a try/catch
