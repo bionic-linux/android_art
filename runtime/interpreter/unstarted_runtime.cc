@@ -27,6 +27,7 @@
 #include <initializer_list>
 #include <limits>
 #include <locale>
+#include <time.h>
 
 #include "art_method-inl.h"
 #include "base/casts.h"
@@ -1044,6 +1045,12 @@ void UnstartedRuntime::UnstartedSystemGetProperty(
 void UnstartedRuntime::UnstartedSystemGetPropertyWithDefault(
     Thread* self, ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
   GetSystemProperty(self, shadow_frame, result, arg_offset, true);
+}
+
+void UnstartedRuntime::UnstartedSystemNanoTime(Thread*, ShadowFrame*, JValue* result, size_t) {
+  struct timespec now;
+  clock_gettime(CLOCK_MONOTONIC, &now);
+  result->SetJ(now.tv_sec * 1000000000LL + now.tv_nsec);
 }
 
 static std::string GetImmediateCaller(ShadowFrame* shadow_frame)

@@ -17,6 +17,7 @@
 import static java.nio.file.StandardOpenOption.*;
 import java.nio.file.*;
 import java.io.*;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class Main {
@@ -24,6 +25,7 @@ public class Main {
     private static final String TEMP_FILE_NAME_SUFFIX = ".txt";
 
     public static void main(String[] args) throws IOException {
+        printSeed();
         System.loadLibrary(args[0]);
 
         setRlimitNoFile(512);
@@ -67,6 +69,20 @@ public class Main {
           files.get(i).delete();
         }
         System.out.println("done.");
+    }
+
+    private static void printSeed() {
+        try {
+            Class randomHolder = Class.forName("java.lang.Math$RandomNumberGeneratorHolder");
+            Field randomField = randomHolder.getDeclaredField("randomNumberGenerator");
+            randomField.setAccessible(true);
+            Random random = (Random) randomField.get(null);
+            Field seedField = Random.class.getDeclaredField("seed");
+            seedField.setAccessible(true);
+            System.out.println("seed=" + seedField.get(random));
+        } catch (Exception ignored) {
+            System.out.println(ignored);
+        }
     }
 
     private static File createTempFile() throws Exception {
