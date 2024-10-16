@@ -521,6 +521,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d18d3d0c_f50d4faf",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-16T09:39:42Z",
+      "side": 1,
+      "message": "Sorry, what I meant was to use `const uint8_t*` for `odex_offset` and use `size_t` for `method_offset`, and then `reinterpret_cast64` both to `jlong` when you call `NewObject`.\n\n`jlong` is a signed type, so it\u0027s not great for representing pointers and offsets. We have to use `jlong` in the returned object because that\u0027s the only 64-bit int type that Java supports, but it doesn\u0027t mean we have to use it during the calculation. In fact, the expression `reinterpret_cast64\u003cjlong\u003e(oat_method_quick_code) - odex_offset` is weird because you are casting `oat_method_quick_code` (in `const uint8_t*`, an unsigned type) to `jlong` (a signed type) and subtracting `odex_offset` (in `size_t`, an unsigned type) from it, causing it to be implicitly casted to unsigned again by the compiler. I guess the result is still fine, but I would suggest to avoid that for peace of mind.",
+      "parentUuid": "a5ea33f4_e806ef08",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0264e433_7bec9cb2",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 13

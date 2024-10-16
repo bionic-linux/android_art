@@ -39,6 +39,112 @@
       },
       "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4159fe17_42171864",
+        "filename": "build/flags/art-flags.aconfig",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-16T09:39:42Z",
+      "side": 1,
+      "message": "Regarding which aconfig file to use, I don\u0027t have a strong opinion. Both the ART aconfig and the libcore aconfig can be used in libcore, and there is no technical difference between them. As discussed in the chat, it looks like we are missing a cherry-pick for the libcore exported flag lib (ag/28278365), so using the ART aconfig makes sense to me.\n\nRegarding which namespace to use, I would recommend using `art_performance` because this API is related to the ART runtime.",
+      "parentUuid": "93f588d4_0f5fe8ba",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a110d8_4832b7c8",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-16T09:39:42Z",
+      "side": 1,
+      "message": "I know now I\u0027m starting to nit picking :) Could you please log the [PrettyMethod](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/art_method.h;l\u003d1047;drc\u003dd3472f2a4c8214d3dc24a2c39d949562bb6be1db) so that readers know which method this log is about?",
+      "range": {
+        "startLine": 342,
+        "startChar": 45,
+        "endLine": 342,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "423c245d_f8fd5363",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 342,
+                "startChar": 0,
+                "endLine": 343,
+                "endChar": 0
+              },
+              "replacement": "    LOG(ERROR) \u003c\u003c \"No OatMethodQuickCode for method \" \u003c\u003c art_method-\u003ePrettyMethod();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97235ee9_42101162",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-16T09:39:42Z",
+      "side": 1,
+      "message": "Nit: You can omit `.c_str()` because `CREATE_UTF_OR_RETURN` can take `std::string`.",
+      "range": {
+        "startLine": 366,
+        "startChar": 87,
+        "endLine": 366,
+        "endChar": 95
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e6c16d05_8c1d58f6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 366,
+                "startChar": 0,
+                "endLine": 367,
+                "endChar": 0
+              },
+              "replacement": "  ScopedLocalRef\u003cjstring\u003e odex_path \u003d CREATE_UTF_OR_RETURN(env, oat_file-\u003eGetLocation());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
