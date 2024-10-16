@@ -16,6 +16,24 @@
       "message": "They won\u0027t be broken until https://cs.android.com/android/platform/superproject/main/+/main:libcore/ojluni/src/main/java/java/lang/Runtime.java;l\u003d106;drc\u003d39d78e5c4421b1aad687455c9145a53de1fd8c26 is updated.\n\nI\u0027m not sure what the relationship between the art host tests and appcompat is, updating those two call sites to be safe (they broke when I an unconditional check in Runtime to verify that loaded libs were not writable)",
       "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79f4486_d7f7553b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1053813
+      },
+      "writtenOn": "2024-10-16T11:35:54Z",
+      "side": 1,
+      "message": "Resolving comment",
+      "parentUuid": "4dd9ab2f_122b0d8f",
+      "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
