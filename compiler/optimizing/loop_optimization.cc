@@ -2768,6 +2768,11 @@ bool HLoopOptimization::VectorizeIfCondition(LoopNode* node,
     return false;
   }
 
+  if (node->loop_info->IsDefinedOutOfTheLoop(if_input)) {
+    // Don't vectorize invariant conditions.
+    return false;
+  }
+
   HCondition* cond = if_input->AsCondition();
   HInstruction* opa = cond->InputAt(0);
   HInstruction* opb = cond->InputAt(1);
