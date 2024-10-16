@@ -545,6 +545,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "349eede7_b488a035",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-16T13:45:36Z",
+      "side": 1,
+      "message": "Only remaining doubt (I think) is the right cast for `size_t` to `jlong`, as `reinterpret_cast64\u003cjlong\u003e` won\u0027t work for that.  Is `static_cast` ok?",
+      "parentUuid": "d18d3d0c_f50d4faf",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "01b533fa1a6954d1c314a8d5a6918e45fcf9cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0264e433_7bec9cb2",
         "filename": "runtime/native/dalvik_system_VMDebug.cc",
         "patchSetId": 13
