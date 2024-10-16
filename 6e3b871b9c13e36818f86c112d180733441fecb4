@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "816a6eac_fd944fa0",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-16T20:41:41Z",
+      "side": 1,
+      "message": "Done, slightly differently.",
+      "parentUuid": "21ed2204_4cc00713",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0e530fd_01667ebd",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44298df_eace6d41",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-16T20:41:41Z",
+      "side": 1,
+      "message": "I think it\u0027s grammatically more correct as is. But the sentence should be simpler. Simplified it.",
+      "parentUuid": "b0e530fd_01667ebd",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 23
+      },
       "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -178,6 +226,54 @@
           ]
         }
       ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b113456_313a6eb9",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-16T20:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0582ee47_01361c64",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3efe30a_c8cb6385",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-16T20:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9232b1f_62fe8973",
+      "range": {
+        "startLine": 32,
+        "startChar": 73,
+        "endLine": 32,
+        "endChar": 79
+      },
       "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
