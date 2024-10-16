@@ -435,6 +435,38 @@ public class Main {
     }
   }
 
+  /// CHECK-START-ARM64: void Main.$compile$noinline$LoopInvariantCondition(float[], float) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-NOT: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // TODO: vectorize loops with invariant conditions.
+  public static void $compile$noinline$LoopInvariantCondition(float x[], float y) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      float val = x[i];
+      if (y != MAGIC_FLOAT_VALUE_C) {
+        x[i] += MAGIC_FLOAT_ADD_CONST + val;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$LoopInvariantConditionDifferentTypes(short[], int) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-NOT: VecLoad
+  //
+  /// CHECK-FI:
+  public static void $compile$noinline$LoopInvariantConditionDifferentTypes(short[] x, int y) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      short val = x[i];
+      if (y != MAGIC_FLOAT_VALUE_C) {
+        x[i] += MAGIC_FLOAT_ADD_CONST + val;
+      }
+    }
+  }
+
   //
   // Main driver.
   //
@@ -518,6 +550,14 @@ public class Main {
     Main instance = new Main();
     $compile$noinline$InstanceOf(intArray, instance);
     expectIntEquals(27279, IntArraySum(intArray));
+
+    initFloatArray(floatArray);
+    $compile$noinline$LoopInvariantCondition(floatArray, MAGIC_FLOAT_VALUE_A);
+    expectFloatEquals(31985.0f, FloatArraySum(floatArray));
+
+    initShortArray(shortArray);
+    $compile$noinline$LoopInvariantConditionDifferentTypes(shortArray, MAGIC_VALUE_A);
+    expectIntEquals(31985, ShortArraySum(shortArray));
 
     System.out.println("passed");
   }
