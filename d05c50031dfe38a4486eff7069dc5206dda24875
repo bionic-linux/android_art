@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15749565_2204c6e3",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-16T15:26:52Z",
+      "side": 1,
+      "message": "We don\u0027t want `System.nanoTime` to be called at compile time because `java.util.Random`\u0027s default constructor ...",
+      "range": {
+        "startLine": 1050,
+        "startChar": 6,
+        "endLine": 1050,
+        "endChar": 61
+      },
+      "revId": "d05c50031dfe38a4486eff7069dc5206dda24875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
