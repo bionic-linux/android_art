@@ -85,6 +85,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
       "kryo",
       "kryo385",
       "kryo785",
+      "kryo8g3",
       // clang-format on
   };
 
@@ -96,6 +97,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
       "cortex-a76",
       "kryo385",
       "kryo785",
+      "kryo8g3",
   };
 
   static const char* arm64_variants_with_fp16[] = {
@@ -106,6 +108,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
       "cortex-a76",
       "kryo385",
       "kryo785",
+      "kryo8g3",
   };
 
   static const char* arm64_variants_with_dotprod[] = {
@@ -115,6 +118,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
       "cortex-a75",
       "cortex-a76",
       "kryo785",
+      "kryo8g3",
   };
 
   bool needs_a53_835769_fix = FindVariantInArray(arm64_variants_with_a53_835769_bug,
@@ -159,6 +163,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
         "kryo300",
         "kryo385",
         "kryo785",
+	"kryo8g3",
         "oryon",
     };
     if (!FindVariantInArray(
