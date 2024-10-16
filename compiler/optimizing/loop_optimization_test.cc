@@ -167,7 +167,7 @@ class PredicatedSimdLoopOptimizationTest : public LoopOptimizationTestBase {
   void BuildGraph() override {
     return_block_ = InitEntryMainExitGraphWithReturnVoid();
     HBasicBlock* back_edge;
-    std::tie(std::ignore, header_, back_edge) = CreateWhileLoop(return_block_);
+    std::tie(preheader_, header_, back_edge) = CreateWhileLoop(return_block_);
     std::tie(diamond_top_, diamond_true_, std::ignore) = CreateDiamondPattern(back_edge);
 
     parameter_ = MakeParam(DataType::Type::kInt32);
@@ -224,6 +224,7 @@ class PredicatedSimdLoopOptimizationTest : public LoopOptimizationTestBase {
     return kForceTryPredicatedSIMD && loop_opt_->IsInPredicatedVectorizationMode();
   }
 
+  HBasicBlock* preheader_;
   HBasicBlock* header_;
   HBasicBlock* diamond_top_;
   HBasicBlock* diamond_true_;
@@ -465,6 +466,19 @@ TEST_F(PredicatedSimdLoopOptimizationTest, VectorizeCondition##Name##CondType) {
   }                                                                                             \
   PerformAnalysis(/*run_checker=*/ true);                                                       \
   EXPECT_TRUE(graph_->HasPredicatedSIMD());                                                     \
+}                                                                                               \
+TEST_F(PredicatedSimdLoopOptimizationTest, VectorizeInvariantCondition##Name##CondType) {       \
+  if (!IsPredicatedVectorizationSupported()) {                                                  \
+    GTEST_SKIP() << "Predicated SIMD is not enabled.";                                          \
+  }                                                                                             \
+  if (!ReplaceIfCondition(DataType::Type::k##CondType,                                          \
+                          DataType::Type::k##CondType,                                          \
+                          preheader_,                                                           \
+                          kCond##Name)) {                                                       \
+    return;                                                                                     \
+  }                                                                                             \
+  PerformAnalysis(/*run_checker=*/ true);                                                       \
+  EXPECT_FALSE(graph_->HasPredicatedSIMD());                                                    \
 }
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Bool)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Uint8)
