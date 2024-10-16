@@ -422,7 +422,13 @@ static bool AlwaysThrows(ArtMethod* method)
   if (!method->IsCompilable() || !IsMethodVerified(method)) {
     return false;
   }
+
   // Skip native methods, methods with try blocks, and methods that are too large.
+  // TODO(solanes): We could correctly mark methods with try/blocks as always throwing as long as we
+  // can get rid of the infinite loop cases. These cases (e.g. `void foo() { while (true) { } }`)
+  // are the only ones that can have no return instruction and still not be an "always throwing
+  // method". Unfortunately, we need to construct the graph to know there's an infinite loop and
+  // therefore not worth the trouble.
   CodeItemDataAccessor accessor(method->DexInstructionData());
   if (!accessor.HasCodeItem() ||
       accessor.TriesSize() != 0 ||
