@@ -52,6 +52,24 @@
       "parentUuid": "f79f4486_d7f7553b",
       "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d11c864_e7496ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1053813
+      },
+      "writtenOn": "2024-10-16T13:14:42Z",
+      "side": 1,
+      "message": "No, just not sure what Compatibility.isChangeEnabled returns and if it actually will be set to true when the EnabledSince is set to something other than CUR_DEVELOPMENT. \n\nEither way this should ensure that those tests don\u0027t start failing when that happens.",
+      "parentUuid": "fbbf8fd5_da9d9785",
+      "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
