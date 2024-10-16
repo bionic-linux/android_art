@@ -272,6 +272,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34077024_7b2b482a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-16T14:58:11Z",
+      "side": 1,
+      "message": "```\n$ art/tools/buildbot-cleanup-device.sh \u0026\u0026 art/tools/buildbot-setup-device.sh \u0026\u0026 art/tools/buildbot-sync.sh \u0026\u0026 art/test/testrunner/testrunner.py --target --32 --optimizing -t 712-\nadbd is already running as root\nAndroid Debug Bridge version 1.0.41\nVersion 33.0.3-9388228\nInstalled as /usr/local/google/home/shayba/master-art/prebuilts/runtime/adb\nadbd is already running as root\nDate on host\nWed Oct 16 02:54:51 PM UTC 2024\nDate on device\nWed Oct 16 22:54:50 CST 2024\nKilling llkd, seen killing adb\nTurn off selinux\nSetting local loopback\nSetting adb buffer size to 32MB\nRemoving adb spam filter\nKill stalled dalvikvm processes\nPrepare the chroot dir in /data/local/art-test-chroot\nadbd is already running as root\nSyncing system/bin directory...\nsystem/bin/: 198 files pushed, 0 skipped. 2.6 MB/s (1528825 bytes in 0.570s)\nSyncing system/etc directory...\nsystem/etc/: 5 files pushed, 0 skipped. 0.0 MB/s (4395 bytes in 0.184s)\nSyncing system/lib directory...\nsystem/lib/: 31 files pushed, 0 skipped. 5.5 MB/s (4078286 bytes in 0.707s)\nSyncing system/usr directory...\nsystem/usr/: 2 files pushed, 0 skipped. 2.3 MB/s (461526 bytes in 0.187s)\nSyncing system/xbin directory...\nsystem/xbin/: 1 file pushed, 0 skipped. 0.0 MB/s (5800 bytes in 0.135s)\nSyncing linkerconfig directory...\nlinkerconfig/: 5 files pushed, 0 skipped. 0.4 MB/s (71661 bytes in 0.189s)\nSyncing data directory...\ndata/: 10 files pushed, 0 skipped. 4.3 MB/s (1817932 bytes in 0.401s)\n/usr/local/google/home/shayba/master-art/art/tools/public.libraries.buildbot.txt: 1 file pushed, 0 skipped. 0.3 MB/s (54 bytes in 0.000s)\nActivating APEX com.android.art.testing as com.android.art...\n/system/apex/com.android.art.testing/: 154 files pushed, 0 skipped. 31.4 MB/s (153213415 bytes in 4.652s)\nActivating APEX com.android.i18n as com.android.i18n...\n/system/apex/com.android.i18n/: 11 files pushed, 0 skipped. 43.4 MB/s (32555427 bytes in 0.715s)\nActivating APEX com.android.runtime as com.android.runtime...\n/system/apex/com.android.runtime/: 18 files pushed, 0 skipped. 18.0 MB/s (4783922 bytes in 0.253s)\nActivating APEX com.android.tzdata as com.android.tzdata...\n/system/apex/com.android.tzdata/: 6 files pushed, 0 skipped. 3.7 MB/s (731836 bytes in 0.189s)\nActivating APEX com.android.conscrypt as com.android.conscrypt...\n/system/apex/com.android.conscrypt/: 11 files pushed, 0 skipped. 9.5 MB/s (2328227 bytes in 0.234s)\nActivating APEX art_fake_com.android.os.statsd as com.android.os.statsd...\n/system/apex/art_fake_com.android.os.statsd/: 3 files pushed, 0 skipped. 0.0 MB/s (8165 bytes in 0.186s)\nGenerating the primary boot image (32-bit)...\n/system/bin/generate-boot-image32: 1 file pushed, 0 skipped. 90.1 MB/s (228560 bytes in 0.002s)\nConcurrency: 6 (redfin)\n1/1 (100%) test passed\n```",
+      "parentUuid": "0c5c5c16_c779c9a8",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9b83181_74b4a496",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 2
