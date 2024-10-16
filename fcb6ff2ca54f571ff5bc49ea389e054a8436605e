@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170b1fcc_7486eed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-16T10:43:00Z",
+      "side": 1,
+      "message": "LUCI run: https://ci.chromium.org/b/8733926815016994273",
+      "revId": "fcb6ff2ca54f571ff5bc49ea389e054a8436605e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
