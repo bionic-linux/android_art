@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a050e56_1bb6e67e",
+        "filename": "libdexfile/dex/modifiers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-16T13:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdbb92b7_5823ce02",
+      "revId": "2aec9edce87068c2225bc27a81bf8b8731c386d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc8e31d_b4feb8aa",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-16T13:15:14Z",
       "side": 1,
       "message": "I find this message a bit confusing. What about\n\n    static_assert((kAccDefault \u0026 kAccIntrinsicBits) !\u003d 0);\n    DCHECK(!out-\u003eIsIntrinsic()) \u003c\u003c \"Removing kAccDefault from an intrinsic would be a mistake\";\n\n? Similar below.",
+      "range": {
+        "startLine": 5531,
+        "startChar": 2,
+        "endLine": 5532,
+        "endChar": 91
+      },
+      "revId": "2aec9edce87068c2225bc27a81bf8b8731c386d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6332ea6e_5a8da39c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5532,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-16T13:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc8e31d_b4feb8aa",
       "range": {
         "startLine": 5531,
         "startChar": 2,
