@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135a6746_521cb188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-16T08:55:36Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f588d4_0f5fe8ba",
+        "filename": "build/flags/art-flags.aconfig",
+        "patchSetId": 21
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-16T08:55:36Z",
+      "side": 1,
+      "message": "Is art_mainline the right one here? I am also wondering if this flag should be in libcore instead of art. We don\u0027t use this in art right?\n\nJiakai knows better about flags. So if Jiakai is good with this I am fine too.",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "72310ce3a96167b638a557d9b7dd2a5821ac7538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
