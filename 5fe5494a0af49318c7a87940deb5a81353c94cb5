@@ -52,6 +52,23 @@
       "parentUuid": "520fe5dd_66c6f5db",
       "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1c31ce_4dc489ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-16T13:05:54Z",
+      "side": 1,
+      "message": "Passing presubmit.\nPLMK how to proceed.",
+      "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
