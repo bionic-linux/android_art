@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df176edc_59f06ad6",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "Style: The `\u0026` is part of the type, so it should be `uint16_t\u0026 iputs_size`.\n\n(And I\u0027d prefer `size_t\u0026 iput_count`.)",
+      "range": {
+        "startLine": 214,
+        "startChar": 27,
+        "endLine": 214,
+        "endChar": 47
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3cedef_16aeb368",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "Are you trying to avoid reloading the `iputs_size` in the loop? In that case I\u0027d prefer\n\n    for (size_t old_pos \u003d 0, end \u003d iputs_size; old_pos \u003c end; ++old_pos) {\n\nWe shall lose the `const` but it\u0027s more compact and I prefer to have it typed as `size_t` for consistency with `old_pos`.",
+      "range": {
+        "startLine": 225,
+        "startChar": 17,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3cd8fa_b34bdc1f",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "This should be updated to `iputs_size`. There\u0027s no need to move additional empty entries.",
+      "range": {
+        "startLine": 232,
+        "startChar": 60,
+        "endLine": 232,
+        "endChar": 76
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8742e1a2_42d3a860",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "Style: I prefer pre-increment over post-increment.",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142677ee_87c683d6",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "Style: `uint16_t\u0026 iputs_size`",
+      "range": {
+        "startLine": 254,
+        "startChar": 26,
+        "endLine": 254,
+        "endChar": 46
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9a7b40_dfa10a02",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "`DCHECK_EQ(iputs_size, 0u)`.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a530507_f7a704c6",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "We could instead recalculate `iputs_size` after the loop as `std::distance(iputs, kept_end)`.",
+      "range": {
+        "startLine": 336,
+        "startChar": 18,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee30c7e_dac29305",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1424ba_48f5c711",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "DCHECK_LE(iputs_size, kMaxConstructorIPuts);",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 45
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc10c3d_6425e922",
+        "filename": "compiler/dex/inline_method_analyser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "I\u0027d prefer `iput_count`.",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a86a83_8126c79c",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "We can now rewrite this as a `for`-loop. The `number_of_iputs` after the loop can be replaced with `data.size`.",
+      "range": {
+        "startLine": 1772,
+        "startChar": 6,
+        "endLine": 1772,
+        "endChar": 43
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd09cd1_3a839fce",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T09:36:32Z",
+      "side": 1,
+      "message": "This must be `data.size` to avoid matching a valid field index 0xffff with the uninitialized `kNoDexIndex16` values.",
+      "range": {
+        "startLine": 1775,
+        "startChar": 53,
+        "endLine": 1775,
+        "endChar": 82
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
