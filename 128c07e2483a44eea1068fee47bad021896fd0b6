@@ -34,6 +34,24 @@
       "parentUuid": "4dd9ab2f_122b0d8f",
       "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbf8fd5_da9d9785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-16T12:50:39Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not sure what the relationship between the art host tests and appcompat is,\n\nAre you referring to the hiddenapi tests? They run on both host and device I think.  I don\u0027t see any app compat aspects there. Did you have any particular doubts in mind?",
+      "parentUuid": "f79f4486_d7f7553b",
+      "revId": "128c07e2483a44eea1068fee47bad021896fd0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
