@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036aad5a_998260a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1244622
+      },
+      "writtenOn": "2024-10-16T22:03:59Z",
+      "side": 1,
+      "message": "CL needs owner CR+2. Nick, can you please take a look?",
+      "revId": "64860dc5d73b3478c74311cc5b5680b8221f1490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
