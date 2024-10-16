@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "112492cc_3f616cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-16T17:48:39Z",
+      "side": 1,
+      "message": "Thanks Martin.",
+      "revId": "84929ff42cf23d6c5af3efea4f510839e40bc84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b215db_592ad064",
@@ -14,6 +31,30 @@
       "writtenOn": "2024-10-16T17:16:24Z",
       "side": 1,
       "message": "The meaning of this is a bit unclear to me. Following offline discussion, can it be renamed to `is_tradefed_runnable` (and the comment above be changed accordingly)?",
+      "range": {
+        "startLine": 616,
+        "startChar": 6,
+        "endLine": 616,
+        "endChar": 17
+      },
+      "revId": "84929ff42cf23d6c5af3efea4f510839e40bc84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f25eef_139256d6",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-16T17:48:39Z",
+      "side": 1,
+      "message": "Good idea! I implemented your suggestion in a follow-up refactoring CL: https://android-review.git.corp.google.com/c/platform/art/+/3311099.",
+      "parentUuid": "99b215db_592ad064",
       "range": {
         "startLine": 616,
         "startChar": 6,
