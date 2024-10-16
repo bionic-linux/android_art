@@ -290,6 +290,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83eaee24_6ff6817f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-16T15:11:34Z",
+      "side": 1,
+      "message": "Kicking off a new LUCI run (https://ci.chromium.org/ui/p/art/builders/ci.shadow/angler-armv7-non-gen-cc/4/overview) since the previous one used patchset 15 for some reason. I verified this new LUCI run uses the latest patchset (17).\nSorry about the extra work",
+      "parentUuid": "34077024_7b2b482a",
+      "revId": "5805614301acd05a0f6bb142be7899cd3b2b324e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9b83181_74b4a496",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 2
