@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e794b013_4123cf65",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8204,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-16T13:39:01Z",
+      "side": 1,
+      "message": "\"Setting ... from ...\"?\nWhat about \"Adding ... to ...\"?\n(And line too long.)",
+      "range": {
+        "startLine": 8204,
+        "startChar": 46,
+        "endLine": 8204,
+        "endChar": 70
+      },
+      "revId": "414b242bfc30986be20578a2a77761e3cdb72081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
