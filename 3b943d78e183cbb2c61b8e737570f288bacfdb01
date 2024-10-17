@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353cee7f_2a730149",
+        "filename": "test/2282-checker-always-throws-try-catch/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-17T08:08:06Z",
+      "side": 1,
+      "message": "Methods like this one could be correctly marked as \"always throws\" if we can get rid of cases like `alwaysThrowsInfiniteLoop`",
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d0a445_2bd9f5c7",
+        "filename": "test/2282-checker-always-throws-try-catch/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-17T08:08:06Z",
+      "side": 1,
+      "message": "This is what the CL is fixing. This is true tip of tree.",
+      "range": {
+        "startLine": 53,
+        "startChar": 92,
+        "endLine": 53,
+        "endChar": 97
+      },
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
