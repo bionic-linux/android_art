@@ -33,6 +33,23 @@
       "message": "Thanks Martin.",
       "revId": "398d327f0a1544f83ecf1e0ad37752998ebeacea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22560a7d_6c80be17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-17T14:24:08Z",
+      "side": 1,
+      "message": "Note: The Bloat Buster warnings – which are not even about the ART Module (`com.google.android.art.apex`), but about `com.google.android.btservices.apex` – are a red herring, as the changes in this stack of CLs only affect ART tests.",
+      "revId": "398d327f0a1544f83ecf1e0ad37752998ebeacea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
