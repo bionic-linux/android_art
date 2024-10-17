@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "75cd1b27_a7fc7c58",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-17T08:54:40Z",
+      "side": 1,
+      "message": "So the issue is that `!has_one_return` could apply to always throwing methods and infinite loops? Can you add that below?",
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c54cd3c_a3a6c114",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2053,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-17T08:54:40Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 2053,
+        "startChar": 63,
+        "endLine": 2053,
+        "endChar": 65
+      },
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "353cee7f_2a730149",
