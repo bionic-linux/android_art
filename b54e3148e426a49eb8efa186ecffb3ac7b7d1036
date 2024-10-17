@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74612ae4_2f286750",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "Done in PS6.",
+      "parentUuid": "6d3cd8fa_b34bdc1f",
+      "range": {
+        "startLine": 232,
+        "startChar": 60,
+        "endLine": 232,
+        "endChar": 76
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8742e1a2_42d3a860",
@@ -131,6 +155,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "Style: I prefer pre-increment over post-increment.",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6dafcb_17098bce",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "Done in PS6.",
+      "parentUuid": "8742e1a2_42d3a860",
       "range": {
         "startLine": 246,
         "startChar": 4,
@@ -237,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c81251f_84ae9238",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "Partially done in PS6 (changed `0` to `0u`, variable was renamed).\nStyle: I\u0027d prefer the `DCHECK_EQ()`.",
+      "parentUuid": "568eeb1f_a3022660",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a530507_f7a704c6",
         "filename": "compiler/dex/inline_method_analyser.cc",
         "patchSetId": 5
@@ -248,6 +320,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "We could instead recalculate `iputs_size` after the loop as `std::distance(iputs, kept_end)`.",
+      "range": {
+        "startLine": 336,
+        "startChar": 18,
+        "endLine": 336,
+        "endChar": 31
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03801aae_4776ab5c",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "Done in PS6.",
+      "parentUuid": "6a530507_f7a704c6",
       "range": {
         "startLine": 336,
         "startChar": 18,
@@ -412,6 +508,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f174206a_f1cfa417",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "This is a minor style issue, so feel free to acknowledge this and mark as resolved with no code changes.",
+      "parentUuid": "40a86a83_8126c79c",
+      "range": {
+        "startLine": 1772,
+        "startChar": 6,
+        "endLine": 1772,
+        "endChar": 43
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dd09cd1_3a839fce",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 5
@@ -423,6 +543,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "This must be `data.size` to avoid matching a valid field index 0xffff with the uninitialized `kNoDexIndex16` values.",
+      "range": {
+        "startLine": 1775,
+        "startChar": 53,
+        "endLine": 1775,
+        "endChar": 82
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a0797b_0b43cb5e",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "This is a correctness issue and needs to be addressed before merging.",
+      "parentUuid": "8dd09cd1_3a839fce",
       "range": {
         "startLine": 1775,
         "startChar": 53,

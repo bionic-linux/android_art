@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de489e8c_7249c1fd",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T08:55:00Z",
+      "side": 1,
+      "message": "Style: One argument per line.",
+      "range": {
+        "startLine": 351,
+        "startChar": 33,
+        "endLine": 352,
+        "endChar": 50
+      },
+      "revId": "0b1c2e757016bd5eca179f38b4c5df5856270efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
