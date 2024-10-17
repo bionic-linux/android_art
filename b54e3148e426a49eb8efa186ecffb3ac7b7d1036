@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59081cde_728c5ca4",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df176edc_59f06ad6",
+      "range": {
+        "startLine": 214,
+        "startChar": 27,
+        "endLine": 214,
+        "endChar": 47
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3cedef_16aeb368",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "Are you trying to avoid reloading the `iputs_size` in the loop? In that case I\u0027d prefer\n\n    for (size_t old_pos \u003d 0, end \u003d iputs_size; old_pos \u003c end; ++old_pos) {\n\nWe shall lose the `const` but it\u0027s more compact and I prefer to have it typed as `size_t` for consistency with `old_pos`.",
+      "range": {
+        "startLine": 225,
+        "startChar": 17,
+        "endLine": 225,
+        "endChar": 25
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2900786d_7a07a0b5",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3cedef_16aeb368",
       "range": {
         "startLine": 225,
         "startChar": 17,
@@ -116,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2fc00a7_aded69cd",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142677ee_87c683d6",
+      "range": {
+        "startLine": 254,
+        "startChar": 26,
+        "endLine": 254,
+        "endChar": 46
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e9a7b40_dfa10a02",
@@ -129,6 +201,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "`DCHECK_EQ(iputs_size, 0u)`.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568eeb1f_a3022660",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e9a7b40_dfa10a02",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -179,6 +275,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "405e7556_b269807a",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee30c7e_dac29305",
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1424ba_48f5c711",
@@ -202,6 +316,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b0e6dc_bb379617",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1424ba_48f5c711",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 45
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bc10c3d_6425e922",
@@ -215,6 +353,30 @@
       "writtenOn": "2024-10-16T09:36:32Z",
       "side": 1,
       "message": "I\u0027d prefer `iput_count`.",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "b54e3148e426a49eb8efa186ecffb3ac7b7d1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "650e119d_6d47025d",
+        "filename": "compiler/dex/inline_method_analyser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2024-10-17T08:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc10c3d_6425e922",
       "range": {
         "startLine": 79,
         "startChar": 11,
