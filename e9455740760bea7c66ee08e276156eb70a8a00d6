@@ -22,6 +22,30 @@
       },
       "revId": "e9455740760bea7c66ee08e276156eb70a8a00d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfac3258_be2ae4fb",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5532,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-17T08:15:36Z",
+      "side": 1,
+      "message": "That comment exists in https://cs.android.com/android/platform/superproject/main/+/main:art/libdexfile/dex/modifiers.h;l\u003d71-72;drc\u003d072fda78e9e5d599c93333263f67fafdb47c5ace already, and I am not sure it fits here. Here, we just care that it is overlapping with the intrinsic bits and therefore it is not safe to be removed/added. Added this info to the DCHECKs.",
+      "parentUuid": "c2d465b8_f8616698",
+      "range": {
+        "startLine": 5532,
+        "startChar": 34,
+        "endLine": 5532,
+        "endChar": 92
+      },
+      "revId": "e9455740760bea7c66ee08e276156eb70a8a00d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
