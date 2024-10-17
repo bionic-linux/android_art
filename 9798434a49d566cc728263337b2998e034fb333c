@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a4b5d7_5cbb1ed2",
+        "filename": "runtime/arch/arm/native_entrypoints_arm.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T18:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea829c36_a8404aff",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c20de037_6aedf6bd",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e121a53c_5bfbde63",
+        "filename": "runtime/arch/arm64/asm_support_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T18:22:22Z",
+      "side": 1,
+      "message": "I assumed you meant to move those macros **after** `RESTORE_TWO_REGS_DECREASE_FRAME` (before `RESTORE_ALL_ARGS_DECREASE_FRAME`) in order to not interleave, right?",
+      "parentUuid": "c20de037_6aedf6bd",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38608f01_4139090f",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-10-07T10:50:49Z",
       "side": 1,
       "message": "Can we use TST+B.ne? Or could the linker put the target out of the B.ne range?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6177845e_0d7858d0",
+        "filename": "runtime/arch/arm64/jni_entrypoints_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T18:22:22Z",
+      "side": 1,
+      "message": "In an earlier version of this patch I used TST+B.ne however after some unrelated changes the linker put `art_jni_dlsym_lookup_stub` slightly more than 1MB away, so out of range of conditional branching.\n\nAfter the most recent rebase this doesn\u0027t appear to be the case at the moment however I would rather be more conservative and ensure that the branch can reach, in case some other unrelated change breaks this in the future.",
+      "parentUuid": "38608f01_4139090f",
       "range": {
         "startLine": 70,
         "startChar": 4,
