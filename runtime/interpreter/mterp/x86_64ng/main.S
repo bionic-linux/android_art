@@ -1608,6 +1608,9 @@ END_FUNCTION \name
 .endm
 
 .macro CHECK_AND_UPDATE_SHARED_MEMORY_METHOD if_hot, if_not_hot
+    // Intrinsics are always in the boot image and considered hot.
+    testl $$ART_METHOD_IS_INTRINSIC_FLAG, ART_METHOD_ACCESS_FLAGS_OFFSET(%rdi)
+    jnz \if_hot
     testl $$ART_METHOD_IS_MEMORY_SHARED_FLAG, ART_METHOD_ACCESS_FLAGS_OFFSET(%rdi)
     jz \if_hot
     movzwl rSELF:THREAD_SHARED_METHOD_HOTNESS_OFFSET, %esi
