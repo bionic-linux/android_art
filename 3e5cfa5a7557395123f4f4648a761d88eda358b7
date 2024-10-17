@@ -22,6 +22,30 @@
       },
       "revId": "3e5cfa5a7557395123f4f4648a761d88eda358b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff91c8e_117700c5",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-17T08:05:35Z",
+      "side": 1,
+      "message": "Thanks for checking, Vladimir! I\u0027ve just sent aosp/3313175.",
+      "parentUuid": "1577f378_002b0425",
+      "range": {
+        "startLine": 1053,
+        "startChar": 26,
+        "endLine": 1053,
+        "endChar": 61
+      },
+      "revId": "3e5cfa5a7557395123f4f4648a761d88eda358b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
