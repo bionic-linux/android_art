@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080a6295_f75a3767",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-17T18:43:01Z",
+      "side": 1,
+      "message": "Did you intend `--args` (first occurrence) or `--arg` (second one)? Can you provide a real existing option in this example instead?",
+      "range": {
+        "startLine": 395,
+        "startChar": 57,
+        "endLine": 395,
+        "endChar": 68
+      },
+      "revId": "21be09270957a0c9ca0bfd09cf6d7486f63f9c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865f6d33_ab9dfa94",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-17T18:43:01Z",
+      "side": 1,
+      "message": "example",
+      "range": {
+        "startLine": 403,
+        "startChar": 8,
+        "endLine": 403,
+        "endChar": 17
+      },
+      "revId": "21be09270957a0c9ca0bfd09cf6d7486f63f9c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12c973e_e6be5bb5",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-17T18:43:01Z",
+      "side": 1,
+      "message": "because",
+      "range": {
+        "startLine": 404,
+        "startChar": 4,
+        "endLine": 404,
+        "endChar": 10
+      },
+      "revId": "21be09270957a0c9ca0bfd09cf6d7486f63f9c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
