@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1577f378_002b0425",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-17T07:05:47Z",
+      "side": 1,
+      "message": "Some caller could catch this and finish initialization of some class with a different code path. Should we use `AbortTransactionOrFail()` instead?",
+      "range": {
+        "startLine": 1053,
+        "startChar": 26,
+        "endLine": 1053,
+        "endChar": 61
+      },
+      "revId": "3e5cfa5a7557395123f4f4648a761d88eda358b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
