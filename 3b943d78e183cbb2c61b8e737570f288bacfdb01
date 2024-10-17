@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16310773_33e825f0",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-17T09:48:52Z",
+      "side": 1,
+      "message": "I have the comment in lines 2064-2069 explaining this. Reworked the comment to be more explicit.\n\n\u003e could apply to always throwing methods and infinite loops\n\nInfinite loops with throws end up here. Infinite loops without throws don\u0027t have an exit block and have an early return in line 1997.",
+      "parentUuid": "75cd1b27_a7fc7c58",
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c54cd3c_a3a6c114",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-17T08:54:40Z",
       "side": 1,
       "message": "drop",
+      "range": {
+        "startLine": 2053,
+        "startChar": 63,
+        "endLine": 2053,
+        "endChar": 65
+      },
+      "revId": "3b943d78e183cbb2c61b8e737570f288bacfdb01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a49198_2e979df6",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2053,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-17T09:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c54cd3c_a3a6c114",
       "range": {
         "startLine": 2053,
         "startChar": 63,
