@@ -69,6 +69,64 @@
       "message": "Passing presubmit.\nPLMK how to proceed.",
       "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c565c692_725a1f65",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-17T14:42:18Z",
+      "side": 1,
+      "message": "What I don\u0027t like about this approach is that it\u0027s not treating things uniformly. Some other compiler options may be defined by system properties but are being set elsewere (AndroidRuntime.cpp I think?). So I\u0027d prefer if we found a better place for looking for system properties. I think it\u0027s ok for now that you pass them through AndroidRuntime.cpp.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 72
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e8f2ba6b_6a49a859",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/driver/compiler_options.cc",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 105,
+                "endChar": 0
+              },
+              "replacement": "  // TODO(b/151140101): Move all system property parsing to a single place.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5454ee92_bc24988a",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-17T14:42:18Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "5fe5494a0af49318c7a87940deb5a81353c94cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
