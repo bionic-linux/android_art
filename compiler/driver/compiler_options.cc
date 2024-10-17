@@ -19,6 +19,7 @@
 #include <fstream>
 #include <string_view>
 
+#include "android-base/properties.h"
 #include "android-base/stringprintf.h"
 
 #include "arch/instruction_set.h"
@@ -79,8 +80,7 @@ CompilerOptions::CompilerOptions()
       initialize_app_image_classes_(false),
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
-      passes_to_run_(nullptr) {
-}
+      passes_to_run_(nullptr) {}
 
 CompilerOptions::~CompilerOptions() {
   // Everything done by member destructors.

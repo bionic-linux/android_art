@@ -366,6 +366,37 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  // Instruction limit to control memory.
+  size_t InlinerMaximumNumberOfTotalInstructions() const {
+    return inliner_maximum_number_of_total_instructions_;
+  }
+
+  // Maximum number of instructions for considering a method small,
+  // which we will always try to inline if the other non-instruction limits
+  // are not reached.
+  size_t InlinerMaximumNumberOfInstructionsForSmallMethod() const {
+    return inliner_maximum_number_of_instructions_for_small_method_;
+  }
+
+  // Limit the number of dex registers that we accumulate while inlining
+  // to avoid creating large amount of nested environments.
+  size_t InlinerMaximumNumberOfCumulatedDexRegisters() const {
+    return inliner_maximum_number_of_cumulated_dex_registers_;
+  }
+
+  // Limit recursive call inlining, which do not benefit from too
+  // much inlining compared to code locality.
+  size_t InlinerMaximumNumberOfRecursiveCalls() const {
+    return inliner_maximum_number_of_recursive_calls_;
+  }
+
+  // Limit recursive polymorphic call inlining to prevent code bloat, since it can quickly get out of
+  // hand in the presence of multiple Wrapper classes. We set this to 0 to disallow polymorphic
+  // recursive calls at all.
+  size_t InlinerMaximumNumberOfPolymorphicRecursiveCalls() const {
+    return inliner_maximum_number_of_polymorphic_recursive_calls_;
+  }
+
   // Returns true if `dex_file` is within an oat file we're producing right now.
   bool WithinOatFile(const DexFile* dex_file) const {
     return ContainsElement(GetDexFilesForOatFile(), dex_file);
@@ -471,6 +502,12 @@ class CompilerOptions final {
 
   // Maximum solid block size in the generated image.
   uint32_t max_image_block_size_;
+
+  size_t inliner_maximum_number_of_total_instructions_;
+  size_t inliner_maximum_number_of_instructions_for_small_method_;
+  size_t inliner_maximum_number_of_cumulated_dex_registers_;
+  size_t inliner_maximum_number_of_recursive_calls_;
+  size_t inliner_maximum_number_of_polymorphic_recursive_calls_;
 
   // If not null, specifies optimization passes which will be run instead of defaults.
   // Note that passes_to_run_ is not checked for correctness and providing an incorrect
