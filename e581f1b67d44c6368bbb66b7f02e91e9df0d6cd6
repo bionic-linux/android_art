@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d5f097_d0ef44af",
+        "filename": "libartbase/arch/instruction_set.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ce7de8_3c1e581d",
+      "range": {
+        "startLine": 57,
+        "startChar": 49,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "607019c3_c2dbcd32",
@@ -94,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd4276f_2026d9a1",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcef79aa_549165f1",
+      "range": {
+        "startLine": 414,
+        "startChar": 51,
+        "endLine": 414,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77c39cb5_8b8c3bba",
@@ -107,6 +155,30 @@
       "writtenOn": "2024-10-07T09:27:26Z",
       "side": 1,
       "message": "`InstructionSet::kArm64`",
+      "range": {
+        "startLine": 455,
+        "startChar": 51,
+        "endLine": 455,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f573082_e9689027",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c39cb5_8b8c3bba",
       "range": {
         "startLine": 455,
         "startChar": 51,
@@ -140,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa882a6_4185083b",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b60f0e2_843d6a4e",
+      "range": {
+        "startLine": 511,
+        "startChar": 57,
+        "endLine": 511,
+        "endChar": 77
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfaa2caa_0746abc4",
@@ -153,6 +249,30 @@
       "writtenOn": "2024-10-07T09:27:26Z",
       "side": 1,
       "message": "`InstructionSet::kX86`",
+      "range": {
+        "startLine": 550,
+        "startChar": 51,
+        "endLine": 550,
+        "endChar": 71
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eaf2cf5_ceb8b7cf",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfaa2caa_0746abc4",
       "range": {
         "startLine": 550,
         "startChar": 51,
@@ -186,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44621351_a3d5003b",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c2384a_d69e4306",
+      "range": {
+        "startLine": 600,
+        "startChar": 54,
+        "endLine": 600,
+        "endChar": 74
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b37d946_b268aeae",
@@ -209,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0025dc59_04a41484",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Good point, this should always be using the host\u0027s compiler path (and hence pointer size) regardless of whether the simulator is in use or not.",
+      "parentUuid": "7b37d946_b268aeae",
+      "range": {
+        "startLine": 1006,
+        "startChar": 49,
+        "endLine": 1006,
+        "endChar": 69
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "450a39dd_8794056e",
@@ -222,6 +390,30 @@
       "writtenOn": "2024-10-07T12:41:19Z",
       "side": 1,
       "message": "Fix indentation: 4 bytes.",
+      "range": {
+        "startLine": 587,
+        "startChar": 6,
+        "endLine": 587,
+        "endChar": 14
+      },
+      "revId": "e581f1b67d44c6368bbb66b7f02e91e9df0d6cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2fbb3e_334e7110",
+        "filename": "runtime/thread-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450a39dd_8794056e",
       "range": {
         "startLine": 587,
         "startChar": 6,

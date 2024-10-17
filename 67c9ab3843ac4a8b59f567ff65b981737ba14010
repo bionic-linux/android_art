@@ -33,6 +33,24 @@
       "message": "Line too long.",
       "revId": "67c9ab3843ac4a8b59f567ff65b981737ba14010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775b6885_592ffbc3",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-17T08:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90eb7b5e_69630c5d",
+      "revId": "67c9ab3843ac4a8b59f567ff65b981737ba14010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
