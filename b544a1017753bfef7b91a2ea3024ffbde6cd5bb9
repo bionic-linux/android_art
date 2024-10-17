@@ -50,6 +50,30 @@
       ],
       "revId": "b544a1017753bfef7b91a2ea3024ffbde6cd5bb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56af76f3_5025538d",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1975361
+      },
+      "writtenOn": "2024-10-17T15:23:23Z",
+      "side": 1,
+      "message": "At the moment both VIXL 32/64 backend\u0027s Literal classes are not copy/move constructable (which is required by the vector class); there is a chance that this could be checked and adjusted, but I don\u0027t think it is high on the priority list at the moment. If you thing this is important, I could convey this then.",
+      "parentUuid": "c6664f3f_16859be1",
+      "range": {
+        "startLine": 213,
+        "startChar": 14,
+        "endLine": 213,
+        "endChar": 46
+      },
+      "revId": "b544a1017753bfef7b91a2ea3024ffbde6cd5bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
