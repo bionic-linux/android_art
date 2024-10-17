@@ -1542,8 +1542,12 @@ END \name
 
 .macro CHECK_AND_UPDATE_SHARED_MEMORY_METHOD if_hot, if_not_hot
     ldr ip, [r0, #ART_METHOD_ACCESS_FLAGS_OFFSET]
+    // Intrinsics are always in the boot image and therefore memory shared.
+    tst ip, #ART_METHOD_IS_INTRINSIC_FLAG
+    bne 1f
     tst ip, #ART_METHOD_IS_MEMORY_SHARED_FLAG
     beq \if_hot
+1:
     ldr ip, [rSELF, #THREAD_SHARED_METHOD_HOTNESS_OFFSET]
     cmp ip, #0
     beq \if_hot
