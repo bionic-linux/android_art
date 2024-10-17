@@ -66,6 +66,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e116ea4a_51f42e3f",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-17T21:07:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "466a7e64_c62a7907",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "revId": "5fbeb08a341b586df32c13846867ec26642a0f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b4751c_612a6d72",
