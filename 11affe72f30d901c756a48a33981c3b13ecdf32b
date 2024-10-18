@@ -55,6 +55,87 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4437dd8f_9d3b4298",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-18T09:38:09Z",
+      "side": 1,
+      "message": "You can drop this now.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd7f090_c60e3ed6",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-18T09:38:09Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f9a0c6_60b616ce",
+        "filename": "compiler/driver/compiler_options_map-inl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-18T09:38:09Z",
+      "side": 1,
+      "message": "Why not map.AssignIfExists?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d529e73f_3384ca73",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/driver/compiler_options_map-inl.h",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "  map.AssignIfExists(Base::InlineMaximumNumberOfTotalInstructions,\n                     \u0026options-\u003einliner_maximum_number_of_total_instructions_);\n  map.AssignIfExists(Base::InlineMaximumNumberOfInstructionsForSmallMethod,\n                     \u0026options-\u003einliner_maximum_number_of_instructions_for_small_method_);\n  map.AssignIfExists(Base::InlineMaximumNumberOfCumulatedDexRegisters,\n                     \u0026options-\u003einliner_maximum_number_of_cumulated_dex_registers_);\n  map.AssignIfExists(Base::InlineMaximumNumberOfRecursiveCalls,\n                     \u0026options-\u003einliner_maximum_number_of_recursive_calls_);\n  map.AssignIfExists(Base::InlineMaximumNumberOfPolymorphicRecursiveCalls,\n                     \u0026options-\u003einliner_maximum_number_of_polymorphic_recursive_calls_);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107d993e_1418e103",
         "filename": "compiler/driver/compiler_options_map.def",
         "patchSetId": 9
