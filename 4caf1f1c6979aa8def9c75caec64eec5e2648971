@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1653df6c_0d70ed8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-10-18T02:43:52Z",
+      "side": 1,
+      "message": "I have a cl that will re-enable the unused variable error for art so I don\u0027t have to continuously update this unused variable stuff.",
+      "revId": "4caf1f1c6979aa8def9c75caec64eec5e2648971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
