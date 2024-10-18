@@ -22,6 +22,30 @@
       },
       "revId": "49bc6e6d8b97f33fce144be79ae0a6422cadb550",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fee5d48_cf169c2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-10-18T09:43:48Z",
+      "side": 1,
+      "message": "Oh, no, that would be massive amount of generated frequently changing files.\n\nI just made local git directory (easy way to diff large amount of text files from run to run).",
+      "parentUuid": "4cddd615_3a6ec188",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "49bc6e6d8b97f33fce144be79ae0a6422cadb550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
