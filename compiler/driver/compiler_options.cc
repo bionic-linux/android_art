@@ -79,6 +79,14 @@ CompilerOptions::CompilerOptions()
       initialize_app_image_classes_(false),
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
+      inliner_maximum_number_of_total_instructions_(kDefaultMaximumNumberOfTotalInstructions),
+      inliner_maximum_number_of_instructions_for_small_method_(
+          kDefaultMaximumNumberOfInstructionsForSmallMethod),
+      inliner_maximum_number_of_cumulated_dex_registers_(
+          kDefaultMaximumNumberOfCumulatedDexRegisters),
+      inliner_maximum_number_of_recursive_calls_(kDefaultMaximumNumberOfRecursiveCalls),
+      inliner_maximum_number_of_polymorphic_recursive_calls_(
+          kDefaultMaximumNumberOfPolymorphicRecursiveCalls),
       passes_to_run_(nullptr) {
 }
 
