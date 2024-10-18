@@ -51,6 +51,29 @@
       "message": "These tests are failing:\n```\ntest-art-host-gtest-art_compiler_tests32\ntest-art-host-gtest-art_compiler_tests64\ntest-art-host-gtest-art_dex2oat_tests32\ntest-art-host-gtest-art_dex2oat_tests64\n```",
       "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107d993e_1418e103",
+        "filename": "compiler/driver/compiler_options_map.def",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-18T08:27:40Z",
+      "side": 1,
+      "message": "change these to `unsigned int` (and the relevant ones in other places too). Otherwise, you have to define some things e.g. `CmdlineType` for the new type.\n\nYou can locally run `m test-art-host-gtest-art_compiler_tests` (or `m test-art-host-gtest` for the whole ART gtests) to make sure they are passing",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
