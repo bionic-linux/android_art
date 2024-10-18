@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c28610a_2cb10403",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-18T07:58:40Z",
+      "side": 1,
+      "message": "We could do\n\n    orn wip, wip, wip, lsl #(ART_METHOD_IS_INTRINSIC_FLAG_BIT - ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT)\n    tbnz wip, #ART_METHOD_IS_INTRINSIC_FLAG_BIT, \\if_hot\n\nor\n\n    bic wip, wip, wip, lsr #(ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT - ART_METHOD_IS_INTRINSIC_FLAG_BIT)\n    tbz wip, #ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT, \\if_hot\n\nto have just one branching instruction. I don\u0027t know if it would be faster.",
+      "range": {
+        "startLine": 1544,
+        "startChar": 4,
+        "endLine": 1545,
+        "endChar": 59
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d53164_71c4989b",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-18T07:58:40Z",
+      "side": 1,
+      "message": "We can use the fact that the intrinsic bit is the highest bit and ORNS shall set the N flag, so we don\u0027t need an explicit TST:\n\n    orns wip, wip, wip, lsl #(ART_METHOD_IS_INTRINSIC_FLAG_BIT - ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT)\n    bpl \\if_hot\n\nMaybe we should assert\n\n    #if ART_METHOD_IS_INTRINSIC_FLAG_BIT !\u003d 31\n    #error \"The intrinsic bit should be the highest bit.\"\n    #endif",
+      "range": {
+        "startLine": 1546,
+        "startChar": 4,
+        "endLine": 1549,
+        "endChar": 15
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff74060_26e3abfe",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-18T07:58:40Z",
+      "side": 1,
+      "message": "Bug: This clobbers t0 which we need in the next line.\n\nGiven that the intrinsic bit is the highest bit in the 32-bit word, we can replace the LWU above with LW to sign-extend the intrinsic bit and then this check can be\n\n    bltz t0, 1f",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 66
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2c00d4_b8c3d39f",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-18T07:58:40Z",
+      "side": 1,
+      "message": "Note: If we wanted to avoid 3 bytes in code size, we\u0027d use the fact that the intrinsic bit is the highest bit and use a comparison with 0 to test it (encoding 0 in one byte rather than encoding 0x80000000 in four bytes).",
+      "range": {
+        "startLine": 1612,
+        "startChar": 4,
+        "endLine": 1613,
+        "endChar": 10
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
