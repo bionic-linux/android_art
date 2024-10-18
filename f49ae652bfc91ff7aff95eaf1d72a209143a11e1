@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e727443_478910a3",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-18T15:56:12Z",
+      "side": 1,
+      "message": "Avoided the performance cliff by special-casing intrinsics",
+      "parentUuid": "1c28610a_2cb10403",
+      "range": {
+        "startLine": 1544,
+        "startChar": 4,
+        "endLine": 1545,
+        "endChar": 59
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d53164_71c4989b",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e636d9_0d56d80f",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-18T15:56:12Z",
+      "side": 1,
+      "message": "Avoided the performance cliff by special-casing intrinsics",
+      "parentUuid": "f8d53164_71c4989b",
+      "range": {
+        "startLine": 1546,
+        "startChar": 4,
+        "endLine": 1549,
+        "endChar": 15
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ff74060_26e3abfe",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-18T07:58:40Z",
       "side": 1,
       "message": "Bug: This clobbers t0 which we need in the next line.\n\nGiven that the intrinsic bit is the highest bit in the 32-bit word, we can replace the LWU above with LW to sign-extend the intrinsic bit and then this check can be\n\n    bltz t0, 1f",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 66
+      },
+      "revId": "f49ae652bfc91ff7aff95eaf1d72a209143a11e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a1f9bf_d85795f9",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-18T15:56:12Z",
+      "side": 1,
+      "message": "Done. Not sure if it would be worth it to clobber other register (e.g. t1) too so that we can skip loading `ART_METHOD_ACCESS_FLAGS_OFFSET(a0)` twice.",
+      "parentUuid": "6ff74060_26e3abfe",
       "range": {
         "startLine": 254,
         "startChar": 4,
