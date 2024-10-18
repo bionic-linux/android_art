@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cddd615_3a6ec188",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-18T07:26:47Z",
+      "side": 1,
+      "message": "Did you forget to `git add` them in this commit?",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "49bc6e6d8b97f33fce144be79ae0a6422cadb550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
