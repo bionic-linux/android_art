@@ -34,6 +34,23 @@
       "parentUuid": "406ce532_6417691c",
       "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d13fba_240cbeb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T04:23:05Z",
+      "side": 1,
+      "message": "These tests are failing:\n```\ntest-art-host-gtest-art_compiler_tests32\ntest-art-host-gtest-art_compiler_tests64\ntest-art-host-gtest-art_dex2oat_tests32\ntest-art-host-gtest-art_dex2oat_tests64\n```",
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
