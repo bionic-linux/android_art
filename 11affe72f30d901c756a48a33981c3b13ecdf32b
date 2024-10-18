@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6c0987_244fe34b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d13fba_240cbeb5",
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4437dd8f_9d3b4298",
@@ -76,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d01fb9_6ce3d399",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4437dd8f_9d3b4298",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133a1675_c4cffe1e",
+        "filename": "compiler/driver/compiler_options.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc24ef43_415130bc",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 72
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd7f090_c60e3ed6",
@@ -89,6 +155,24 @@
       "writtenOn": "2024-10-18T09:38:09Z",
       "side": 1,
       "message": "Line too long",
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ecaf76_5f4b9c0a",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd7f090_c60e3ed6",
       "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -136,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "184faab0_7ffe0778",
+        "filename": "compiler/driver/compiler_options_map-inl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "Does AssignIfExists assign the default if an explicit value is not provided?",
+      "parentUuid": "52f9a0c6_60b616ce",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107d993e_1418e103",
         "filename": "compiler/driver/compiler_options_map.def",
         "patchSetId": 9
@@ -147,6 +255,30 @@
       "writtenOn": "2024-10-18T08:27:40Z",
       "side": 1,
       "message": "change these to `unsigned int` (and the relevant ones in other places too). Otherwise, you have to define some things e.g. `CmdlineType` for the new type.\n\nYou can locally run `m test-art-host-gtest-art_compiler_tests` (or `m test-art-host-gtest` for the whole ART gtests) to make sure they are passing",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503a6100_841c7f5d",
+        "filename": "compiler/driver/compiler_options_map.def",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T15:48:58Z",
+      "side": 1,
+      "message": "ty\nI found art/test/README.md and it was very helpful",
+      "parentUuid": "107d993e_1418e103",
       "range": {
         "startLine": 44,
         "startChar": 22,
