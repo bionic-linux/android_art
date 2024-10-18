@@ -311,6 +311,30 @@
       },
       "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54dec92_be439f76",
+        "filename": "compiler/driver/compiler_options_map.def",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-18T16:18:42Z",
+      "side": 1,
+      "message": "At inliner.cc:166, failing: `DCHECK_NE(inlining_budget_, 0u);`\nLooks like the default for `InlineMaximumNumberOfTotalInstructions` is not propagating?",
+      "parentUuid": "0550fafa_80f33694",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "11affe72f30d901c756a48a33981c3b13ecdf32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
