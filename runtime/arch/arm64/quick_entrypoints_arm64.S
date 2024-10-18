@@ -2552,6 +2552,14 @@ ENTRY art_quick_compile_optimized
     ret
 END art_quick_compile_optimized
 
+ENTRY art_quick_nop_record_entry_trace_event
+    ret
+END art_quick_nop_record_entry_trace_event
+
+ENTRY art_quick_nop_record_exit_trace_event
+    ret
+END art_quick_nop_record_exit_trace_event
+
 ENTRY art_quick_record_entry_trace_event
     ldr xIP1, [xSELF, #TRACE_BUFFER_CURRENT_OFFSET]
     // xIP0 has the trace buffer pointer. This is loaded on the fast path before
