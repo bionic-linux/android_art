@@ -366,15 +366,46 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  // Instruction limit to control memory.
+  unsigned int InlinerMaximumNumberOfTotalInstructions() const {
+    return inliner_maximum_number_of_total_instructions_;
+  }
+
+  // Maximum number of instructions for considering a method small,
+  // which we will always try to inline if the other non-instruction limits
+  // are not reached.
+  unsigned int InlinerMaximumNumberOfInstructionsForSmallMethod() const {
+    return inliner_maximum_number_of_instructions_for_small_method_;
+  }
+
+  // Limit the number of dex registers that we accumulate while inlining
+  // to avoid creating large amount of nested environments.
+  unsigned int InlinerMaximumNumberOfCumulatedDexRegisters() const {
+    return inliner_maximum_number_of_cumulated_dex_registers_;
+  }
+
+  // Limit recursive call inlining, which do not benefit from too
+  // much inlining compared to code locality.
+  unsigned int InlinerMaximumNumberOfRecursiveCalls() const {
+    return inliner_maximum_number_of_recursive_calls_;
+  }
+
+  // Limit recursive polymorphic call inlining to prevent code bloat, since it
+  // can quickly get out of hand in the presence of multiple Wrapper classes. We
+  // set this to 0 to disallow polymorphic recursive calls at all.
+  unsigned int InlinerMaximumNumberOfPolymorphicRecursiveCalls() const {
+    return inliner_maximum_number_of_polymorphic_recursive_calls_;
+  }
+
   // Returns true if `dex_file` is within an oat file we're producing right now.
   bool WithinOatFile(const DexFile* dex_file) const {
     return ContainsElement(GetDexFilesForOatFile(), dex_file);
   }
 
-  // If this is a static non-constructor method in the boot classpath, and its class isn't
-  // initialized at compile-time, or won't be initialized by the zygote, add
-  // initialization checks at entry. This will avoid the need of trampolines
-  // which at runtime we will need to dirty after initialization.
+  // If this is a static non-constructor method in the boot classpath, and its
+  // class isn't initialized at compile-time, or won't be initialized by the
+  // zygote, add initialization checks at entry. This will avoid the need of
+  // trampolines which at runtime we will need to dirty after initialization.
   EXPORT bool ShouldCompileWithClinitCheck(ArtMethod* method) const;
 
  private:
@@ -395,8 +426,10 @@ class CompilerOptions final {
   // List of dex files associated with the oat file, empty for JIT.
   std::vector<const DexFile*> dex_files_for_oat_file_;
 
-  // Image classes, specifies the classes that will be included in the image if creating an image.
-  // Must not be empty for real boot image, only for tests pretending to compile boot image.
+  // Image classes, specifies the classes that will be included in the image if
+  // creating an image.
+  // Must not be empty for real boot image, only for tests pretending to compile
+  // boot image.
   HashSet<std::string> image_classes_;
 
   // Classes listed in the preloaded-classes file, used for boot image and
@@ -471,6 +504,12 @@ class CompilerOptions final {
 
   // Maximum solid block size in the generated image.
   uint32_t max_image_block_size_;
+
+  unsigned int inliner_maximum_number_of_total_instructions_;
+  unsigned int inliner_maximum_number_of_instructions_for_small_method_;
+  unsigned int inliner_maximum_number_of_cumulated_dex_registers_;
+  unsigned int inliner_maximum_number_of_recursive_calls_;
+  unsigned int inliner_maximum_number_of_polymorphic_recursive_calls_;
 
   // If not null, specifies optimization passes which will be run instead of defaults.
   // Note that passes_to_run_ is not checked for correctness and providing an incorrect
