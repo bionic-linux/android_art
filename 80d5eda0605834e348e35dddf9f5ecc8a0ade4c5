@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a91710_13a130de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-18T20:07:26Z",
+      "side": 1,
+      "message": "Trying presubmit without the libartpalette and frameworks changes, which must work for this to be safe.",
+      "revId": "80d5eda0605834e348e35dddf9f5ecc8a0ade4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
