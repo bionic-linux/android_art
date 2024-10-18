@@ -162,6 +162,15 @@ void InitEntryPoints(JniEntryPoints* jpoints,
                      QuickEntryPoints* qpoints,
                      bool monitor_jni_entry_exit);
 void UpdateReadBarrierEntrypoints(QuickEntryPoints* qpoints, bool is_active);
+void UpdateLowOverheadTraceEntryPoints(QuickEntryPoints* qpoints, bool enable);
+
+void Thread::UpdateLowOverheadTraceEntrypoints([[maybe_unused]] bool enable) {
+#if defined(__aarch64__)
+  // Currently only implemented for ARM64. Other architectures don't support low
+  // overhead tracing.
+  UpdateLowOverheadTraceEntryPoints(&tlsPtr_.quick_entrypoints, enable);
+#endif
+}
 
 void Thread::SetIsGcMarkingAndUpdateEntrypoints(bool is_marking) {
   CHECK(gUseReadBarrier);

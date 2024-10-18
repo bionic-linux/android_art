@@ -849,6 +849,14 @@ void Trace::Start(std::unique_ptr<File>&& trace_file_in,
                                                          the_trace_,
                                                          /*needs_interpreter=*/false);
     }
+
+    if (art_flags::always_enable_profile_code()) {
+      // Reset the trace low overhead trace entry points to be a nop.
+      MutexLock thread_list_mutex(self, *Locks::thread_list_lock_);
+      for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
+        thread->UpdateLowOverheadTraceEntrypoints(/*enable= */ false);
+      }
+    }
   }
 
   // Can't call this when holding the mutator lock.
