@@ -105,6 +105,15 @@ class PACKED(sizeof(T)) Atomic : public std::atomic<T> {
     return this->compare_exchange_weak(expected_value, desired_value, std::memory_order_release);
   }
 
+  // Atomically replace the value with desired_value if it matches the expected_value.
+  // Participates in total ordering of atomic operations.
+  // Returns the existing value before the exchange. In other words, if the returned value is the
+  // same as expected_value, the exchange completed, otherwise the value was left unchanged.
+  T CompareAndExchandeStrongSequentiallyConsistent(T expected_value, T desired_value) {
+    this->compare_exchange_strong(expected_value, desired_value, std::memory_order_seq_cst);
+    return expected_value;
+  }
+
   bool CompareAndSet(T expected_value,
                      T desired_value,
                      CASMode mode,
