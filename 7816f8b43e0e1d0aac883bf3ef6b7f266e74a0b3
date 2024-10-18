@@ -16,6 +16,203 @@
       "message": "Adding Victor for the API change.",
       "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c45fc1_db5c8553",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "Can\u0027t this be UDC to please the NewApi linter?",
+      "range": {
+        "startLine": 847,
+        "startChar": 17,
+        "endLine": 847,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "150bdbda_3b7a61bb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 847,
+                "startChar": 0,
+                "endLine": 848,
+                "endChar": 0
+              },
+              "replacement": "    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1ea585_b9f1f3d3",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "Why this reassignment? Should it be final?",
+      "range": {
+        "startLine": 867,
+        "startChar": 8,
+        "endLine": 867,
+        "endChar": 46
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb946aa_dcddd146",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "I misunderstood this command until I read the source, so I suggest making it a bit more clear: \"Configure batch dexopt parameters to be applied when the given reason is used.\"",
+      "range": {
+        "startLine": 1070,
+        "startChar": 24,
+        "endLine": 1070,
+        "endChar": 68
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "abaf3524_569d4539",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 1070,
+                "startChar": 0,
+                "endLine": 1071,
+                "endChar": 0
+              },
+              "replacement": "        pw.println(\"    Configure batch dexopt parameters to be applied when the given reason is\");\n        pw.println(\"    used.\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9091a9_ebe5b626",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "Remind me, we\u0027ll only load `PreRebootManager` and other classes in service-art.jar \"from the future\", right? I.e. PackageManager and all other framework dependencies are the current versions when we call into the loaded instance?\n\nCould be worth a comment here, since this is a pretty unusual situation and I had to refresh myself on how it works.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 91
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d83cd9_9dcca2de",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManagerInterface.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "The reason this is a serialised proto is that we don\u0027t have the build support to handle a forward compatible intra-module API?",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70132dfe_98dfa68f",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "Please document exactly which values are allowed in these, so it\u0027s clear for future compat.\n\nAlso consider restricting them (and check the restrictions in `DexoptParams.toProto`) for the use case at hand. The more we can restrict these the better, to avoid future compat headaches. E.g. is `priority_class` applicable at all for pre-reboot dexopt, and should it be possible to override the reason? (If we don\u0027t pass the reason here, can we avoid the system API change?)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9311588a_e122c703",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-18T18:21:00Z",
+      "side": 1,
+      "message": "Isn\u0027t it weird to specify a specific split for a whole list of packages (unless possibly when it\u0027s the base APK, but even then I wonder about the use case)?\n\nIiuc the only use of this field in `DexoptParams` is to support the `--split` arg to `pm compile`, where it\u0027s [always applied](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtShellCommand.java;l\u003d332;drc\u003d00face6199cf2f1c9fa4c3d2e2c0b1cc769bff6c) to a single package only.\n\nIf we need to support this for batch dexopts, it should probably be a field per package, or maybe even a list of fields per package, and we\u0027d have to change the representation in `DexoptParams`. Until then I suggest leaving it out, to avoid having to support this field later on.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
