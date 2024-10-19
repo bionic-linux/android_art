@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335459e9_b3bca113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-10-19T19:46:33Z",
+      "side": 1,
+      "message": "@ngeoffray@google.com you had reasonable concerns about impact on dex2oat runtime. What\u0027s a good way to measure the impact of this change?\nI looked at ART Benchmark Service but it seems that there is no metric for dex2oat time. Maybe there\u0027s another benchmark suite that I could run? Or would you like me to just run some dex2oat commands on a test device and see what happens?",
+      "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
