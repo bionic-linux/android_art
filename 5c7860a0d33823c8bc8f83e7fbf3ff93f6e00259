@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3232ae2_bd1bdc4c",
+        "filename": "runtime/interpreter/mterp/nterp.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-21T14:14:30Z",
+      "side": 1,
+      "message": "Do we expect to hit this? With the code you added in nterp, can\u0027t you add a DCHECK that we\u0027re not hitting it?",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8232ad47_d923dbc7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/interpreter/mterp/nterp.cc",
+              "range": {
+                "startLine": 698,
+                "startChar": 0,
+                "endLine": 703,
+                "endChar": 0
+              },
+              "replacement": "    // Intrinsics are special and will be considered hot from the first call.\n    DCHECK_EQ(Thread::Current()-\u003eGetSharedMethodHotness(), 0u);\n    Thread::Current()-\u003eResetSharedMethodHotness();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5c7860a0d33823c8bc8f83e7fbf3ff93f6e00259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1fa37b_06017020",
+        "filename": "runtime/jit/jit-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-21T14:14:30Z",
+      "side": 1,
+      "message": "Move this to the if above with `\u0026\u0026` ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "758ef885_aec53e2e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/jit/jit-inl.h",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "      if (method-\u003eIsIntrinsic()) {\n        return;\n      } else {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5c7860a0d33823c8bc8f83e7fbf3ff93f6e00259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
