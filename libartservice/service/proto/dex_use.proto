@@ -30,8 +30,8 @@ message DexUseProto {
 
 message PackageDexUseProto {
     string owning_package_name = 1;
-    repeated PrimaryDexUseProto primary_dex_use = 2;
-    repeated SecondaryDexUseProto secondary_dex_use = 3;
+    repeated PrimaryDexUseProto primary_dex_use = 3;
+    repeated SecondaryDexUseProto secondary_dex_use = 2;
 }
 
 message PrimaryDexUseProto {
