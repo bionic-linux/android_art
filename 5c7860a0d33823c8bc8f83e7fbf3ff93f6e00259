@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25440d85_b7bc7a1e",
+        "filename": "runtime/interpreter/mterp/nterp.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T14:19:27Z",
+      "side": 1,
+      "message": "Yes, we can hit this line. The `if_hot` case calls `nterp_hot_method` which is implemented with this `NterpHotMethod` method.",
+      "parentUuid": "a3232ae2_bd1bdc4c",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 33
+      },
+      "revId": "5c7860a0d33823c8bc8f83e7fbf3ff93f6e00259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1fa37b_06017020",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "5c7860a0d33823c8bc8f83e7fbf3ff93f6e00259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f995b7df_1683eb41",
+        "filename": "runtime/jit/jit-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T14:19:27Z",
+      "side": 1,
+      "message": "That would make the intrinsics fall into the `method-\u003eResetCounter(Runtime::Current()-\u003eGetJITOptions()-\u003eGetWarmupThreshold());` case which we don\u0027t want. We want to just enqueue them for compilation.",
+      "parentUuid": "dd1fa37b_06017020",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 35
+      },
       "revId": "5c7860a0d33823c8bc8f83e7fbf3ff93f6e00259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
