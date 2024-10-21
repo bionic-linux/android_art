@@ -93,6 +93,30 @@
       },
       "revId": "33b29ec5c2ec94795cc9b4ac410548e7198fc875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924b1a4b_e842defd",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-10-21T23:10:04Z",
+      "side": 1,
+      "message": "Much better. Thanks.",
+      "parentUuid": "6c19853c_13b18c1c",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "33b29ec5c2ec94795cc9b4ac410548e7198fc875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
