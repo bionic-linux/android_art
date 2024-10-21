@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "057b499c_39038600",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-21T18:07:01Z",
+      "side": 1,
+      "message": "Sorry, I checked and it indeed has two underscores.",
+      "parentUuid": "ac06b3ef_0b4b63c1",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f2e862e0514bac122c990d58cdf1deaf0b9b7bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ba16c98_cf4f419e",
