@@ -16,6 +16,40 @@
       "message": "@ngeoffray@google.com you had reasonable concerns about impact on dex2oat runtime. What\u0027s a good way to measure the impact of this change?\nI looked at ART Benchmark Service but it seems that there is no metric for dex2oat time. Maybe there\u0027s another benchmark suite that I could run? Or would you like me to just run some dex2oat commands on a test device and see what happens?",
       "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445b040b_41d14e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T08:18:29Z",
+      "side": 1,
+      "message": "Can we make a topic with r.android.com/3311528 so that they land together?",
+      "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa1b6bd_479e3a3b",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T08:18:29Z",
+      "side": 1,
+      "message": "line too long (by 1 char)",
+      "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
