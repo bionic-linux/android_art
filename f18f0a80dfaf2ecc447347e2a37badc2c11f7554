@@ -22,6 +22,30 @@
       },
       "revId": "f18f0a80dfaf2ecc447347e2a37badc2c11f7554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b7b006_28c9e4bb",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:03:27Z",
+      "side": 1,
+      "message": "Everyone has to check it. No matter if `ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT` returns true or false we have to check `ART_METHOD_IS_INTRINSIC_FLAG_BIT` to know whether it means `MEMORY_SHARED` or if it is a bit in the intrinsics bits",
+      "parentUuid": "46281e58_b135765a",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1544,
+        "endChar": 56
+      },
+      "revId": "f18f0a80dfaf2ecc447347e2a37badc2c11f7554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
