@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1590871e_fae19906",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2078,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:22:55Z",
+      "side": 0,
+      "message": "Int64 was already supported right? Was this missed in a previous CL?",
+      "range": {
+        "startLine": 2078,
+        "startChar": 44,
+        "endLine": 2078,
+        "endChar": 57
+      },
+      "revId": "0cd4e3d7346bdb191b34dea9e67f3a2015933345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

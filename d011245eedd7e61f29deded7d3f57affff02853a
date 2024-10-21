@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eb49c2_2fd315de",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:22:55Z",
+      "side": 1,
+      "message": "nit: formatting",
+      "range": {
+        "startLine": 1336,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f23b4372_4cefc146",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+              "range": {
+                "startLine": 1338,
+                "startChar": 0,
+                "endLine": 1342,
+                "endChar": 0
+              },
+              "replacement": "                                         p_reg,\n                                         left.VnS(),\n                                         right.VnS(),\n                                         instruction-\u003eGetCondition());\n"
+            },
+            {
+              "path": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+              "range": {
+                "startLine": 1345,
+                "startChar": 0,
+                "endLine": 1349,
+                "endChar": 0
+              },
+              "replacement": "                                         p_reg,\n                                         left.VnD(),\n                                         right.VnD(),\n                                         instruction-\u003eGetCondition());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2ce212_e0c78980",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:22:55Z",
+      "side": 1,
+      "message": "FYI this doesn\u0027t prevent calling with other types like Reference or Void. Maybe we can add a DCHECK that `IsIntegralType(type) || IsFloatingPointType(type)`.",
+      "range": {
+        "startLine": 2776,
+        "startChar": 0,
+        "endLine": 2779,
+        "endChar": 3
+      },
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93818639_7080f140",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:22:55Z",
+      "side": 1,
+      "message": "Are they just not required to be implemented? Or are they outright not expected at all in the graph?",
+      "range": {
+        "startLine": 140,
+        "startChar": 53,
+        "endLine": 140,
+        "endChar": 65
+      },
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
