@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac06b3ef_0b4b63c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-21T18:04:43Z",
+      "side": 1,
+      "message": "Should it be RUN_TEST_DEBUG_SAVE_RUNNER_DIR without double underscore?",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f2e862e0514bac122c990d58cdf1deaf0b9b7bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba16c98_cf4f419e",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-10-21T18:04:43Z",
+      "side": 1,
+      "message": "Move to line 543?",
+      "range": {
+        "startLine": 509,
+        "startChar": 4,
+        "endLine": 509,
+        "endChar": 31
+      },
+      "revId": "f2e862e0514bac122c990d58cdf1deaf0b9b7bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
