@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a137b6b8_25946489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-21T10:40:36Z",
+      "side": 1,
+      "message": "Ah, by impact, I meant lines of code and complexity, not runtime. Checking those values dynamically should not have performance impact.",
+      "parentUuid": "335459e9_b3bca113",
+      "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fa1b6bd_479e3a3b",
@@ -48,6 +66,29 @@
       "writtenOn": "2024-10-21T08:18:29Z",
       "side": 1,
       "message": "line too long (by 1 char)",
+      "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68659ab0_c7c9c951",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-21T10:40:36Z",
+      "side": 1,
+      "message": "Stick with uint32_t ?",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 70
+      },
       "revId": "f0d2ea3ed77640b48a47d192d90866dab71750a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
