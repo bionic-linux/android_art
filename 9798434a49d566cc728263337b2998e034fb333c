@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74531897_f66b57a2",
+        "filename": "runtime/arch/arm64/asm_support_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-21T07:49:25Z",
+      "side": 1,
+      "message": "Yes, I did, thanks! (Or I may have meant \"before\" but copy-pasted the wrong macro name.)",
+      "parentUuid": "e121a53c_5bfbde63",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38608f01_4139090f",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "In an earlier version of this patch I used TST+B.ne however after some unrelated changes the linker put `art_jni_dlsym_lookup_stub` slightly more than 1MB away, so out of range of conditional branching.\n\nAfter the most recent rebase this doesn\u0027t appear to be the case at the moment however I would rather be more conservative and ensure that the branch can reach, in case some other unrelated change breaks this in the future.",
       "parentUuid": "38608f01_4139090f",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "9798434a49d566cc728263337b2998e034fb333c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1018df49_04d9bc21",
+        "filename": "runtime/arch/arm64/jni_entrypoints_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-21T07:49:25Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "6177845e_0d7858d0",
       "range": {
         "startLine": 70,
         "startChar": 4,
