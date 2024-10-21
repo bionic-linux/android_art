@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46281e58_b135765a",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-21T10:42:37Z",
+      "side": 1,
+      "message": "We should do this in the slow path, to avoid everyone checking it.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1544,
+        "endChar": 56
+      },
+      "revId": "f18f0a80dfaf2ecc447347e2a37badc2c11f7554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
