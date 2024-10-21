@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8ce680_9d49028f",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:27:39Z",
+      "side": 1,
+      "message": "nit: off by one spacing",
+      "range": {
+        "startLine": 481,
+        "startChar": 96,
+        "endLine": 481,
+        "endChar": 97
+      },
+      "revId": "fe1c74b44a6d49bc8fd8823bb1bd72ec534170fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6818625_ce5b9e62",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T11:27:39Z",
+      "side": 1,
+      "message": "Is this not vectorized because of the implicit widening? If so, can you add a comment saying so?",
+      "revId": "fe1c74b44a6d49bc8fd8823bb1bd72ec534170fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
