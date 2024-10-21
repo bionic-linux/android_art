@@ -46,6 +46,30 @@
       },
       "revId": "f18f0a80dfaf2ecc447347e2a37badc2c11f7554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094a1520_e9562449",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-21T14:06:13Z",
+      "side": 1,
+      "message": "After offline talk, I swapped the order and do the `ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT` check first",
+      "parentUuid": "40b7b006_28c9e4bb",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1544,
+        "endChar": 56
+      },
+      "revId": "f18f0a80dfaf2ecc447347e2a37badc2c11f7554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
