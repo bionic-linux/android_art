@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87bb3268_b65c313a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-22T21:46:55Z",
+      "side": 1,
+      "message": "This is a somewhat reluctant +2, since I\u0027m unconvinced the original CL was a net negative.",
+      "revId": "9e0baafe3446928d7acc46d626de24e74bd47a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
