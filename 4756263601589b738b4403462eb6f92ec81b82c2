@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e409b8f2_9fe9712b",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-22T12:07:35Z",
+      "side": 1,
+      "message": "Nit: `HeapTargetUtilization`, for consistency.",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "4756263601589b738b4403462eb6f92ec81b82c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
