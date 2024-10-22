@@ -32,6 +32,7 @@
 #include "intrinsics_utils.h"
 #include "lock_word.h"
 #include "mirror/array-inl.h"
+#include "mirror/method_handle_impl.h"
 #include "mirror/object_array-inl.h"
 #include "mirror/reference.h"
 #include "mirror/string.h"
@@ -4262,14 +4263,19 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
 
   Address method_handle_kind = Address(method_handle, mirror::MethodHandle::HandleKindOffset());
   if (invoke->AsInvokePolymorphic()->CanTargetInstanceMethod()) {
-    // Handle invoke-virtual case.
-    __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeVirtual));
-    __ j(kNotEqual, &static_dispatch);
     CpuRegister receiver = locations->InAt(1).AsRegister<CpuRegister>();
 
     __ testl(receiver, receiver);
     __ j(kEqual, slow_path->GetEntryLabel());
 
+    __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeDirect));
+    // No dispatch is needed for invoke-direct.
+    __ j(kEqual, &execute_target_method);
+    // Fallthrough.
+
+    // Handle invoke-virtual case.
+    __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeVirtual));
+    __ j(kNotEqual, &static_dispatch);
     // Skip virtual dispatch if `method` is private.
     __ testl(Address(method, ArtMethod::AccessFlagsOffset()), Immediate(kAccPrivate));
     __ j(kNotZero, &execute_target_method);
