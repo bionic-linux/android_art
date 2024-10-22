@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2311f155_78bcc0e4",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-22T15:49:42Z",
+      "side": 1,
+      "message": "Except for the \"jitzygote\" case - running without compiled boot image. Is that worth adding a comment?",
+      "range": {
+        "startLine": 360,
+        "startChar": 22,
+        "endLine": 360,
+        "endChar": 46
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47dc4f53_2a19f8a2",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-22T15:49:42Z",
+      "side": 1,
+      "message": "Do we want to reduce this to two instructions?\n\n    orns wip, wip, wip, lsl #(ART_METHOD_IS_INTRINSIC_FLAG_BIT - ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT)\n    bmi \\if_hot\n\nGiven that this uses a \"shifted register\" instruction, it may not necessarily be faster. It could be faster on some CPU cores and slower on others.",
+      "range": {
+        "startLine": 1545,
+        "startChar": 4,
+        "endLine": 1549,
+        "endChar": 15
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3900c5c1_4dbd6914",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-22T15:49:42Z",
+      "side": 1,
+      "message": "If you reorder the checks (they both go to the same `\\if_hot` label), the answer is in my comment on PS3: Replace LWU with LW and check the sign bit with BLTZ.",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 71
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
