@@ -83,7 +83,6 @@ TEST_F(SsaLivenessAnalysisTest, TestAput) {
   std::initializer_list<HInstruction*> args{array, index, value, extra_arg1, extra_arg2};
 
   HBasicBlock* block = CreateSuccessor(entry_);
-  HInstruction* null_check = MakeNullCheck(block, array, /*env=*/ args);
   HInstruction* length = MakeArrayLength(block, array);
   HInstruction* bounds_check = MakeBoundsCheck(block, index, length, /*env=*/ args);
   MakeArraySet(block, array, index, value, DataType::Type::kInt32);
@@ -125,7 +124,6 @@ TEST_F(SsaLivenessAnalysisTest, TestDeoptimize) {
   std::initializer_list<HInstruction*> args{array, index, value, extra_arg1, extra_arg2};
 
   HBasicBlock* block = CreateSuccessor(entry_);
-  HInstruction* null_check = MakeNullCheck(block, array, /*env=*/ args);
   HInstruction* length = MakeArrayLength(block, array);
   // Use HAboveOrEqual+HDeoptimize as the bounds check.
   HInstruction* ae = MakeCondition(block, kCondAE, index, length);
