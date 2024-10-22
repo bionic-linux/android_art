@@ -22,6 +22,70 @@
       },
       "revId": "4756263601589b738b4403462eb6f92ec81b82c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13386c01_851d893e",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-22T18:25:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow the argument from the preceding discussion in this paragraph to this conclusion. Iiuc the argument is that the cost is constant regardless of GC frequency, and `HeapTargetUtilization` lets us tune that cost, also regardless of GC frequency. But I\u0027m not sure.",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "4756263601589b738b4403462eb6f92ec81b82c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63aefc55_793f4499",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-22T18:25:59Z",
+      "side": 1,
+      "message": "Typo: \"characteristics\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "21ccc847_8339a36e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc_configuration.md",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": "`HeapMinFree` should really reflect the characteristics of the Java implementation, given data\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4756263601589b738b4403462eb6f92ec81b82c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
