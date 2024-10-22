@@ -315,15 +315,12 @@ TEST_F(BoundsCheckEliminationTest, LoopArrayBoundsElimination1f) {
 }
 
 // for (int i=array.length; i>0; i+=increment) { array[i-1] = 10; }
-HInstruction* BoundsCheckEliminationTest::BuildSSAGraph2(int initial,
-                                                         int increment,
-                                                         IfCondition cond) {
+HInstruction* BoundsCheckEliminationTest::BuildSSAGraph2(int initial, int, IfCondition cond) {
   HBasicBlock* return_block = InitEntryMainExitGraphWithReturnVoid();
   auto [pre_header, loop_header, loop_body] = CreateWhileLoop(return_block);
 
   HInstruction* parameter = MakeParam(DataType::Type::kReference);
   HInstruction* constant_initial = graph_->GetIntConstant(initial);
-  HInstruction* constant_increment = graph_->GetIntConstant(increment);
   HInstruction* constant_minus_1 = graph_->GetIntConstant(-1);
   HInstruction* constant_10 = graph_->GetIntConstant(10);
 
@@ -503,7 +500,6 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
   auto [inner_body_compare, inner_body_swap, skip_swap] = CreateDiamondPattern(inner_body_add);
 
   HInstruction* parameter = MakeParam(DataType::Type::kReference);
-  HInstruction* constant_0 = graph_->GetIntConstant(0);
   HInstruction* constant_minus_1 = graph_->GetIntConstant(-1);
   HInstruction* constant_1 = graph_->GetIntConstant(1);
 
