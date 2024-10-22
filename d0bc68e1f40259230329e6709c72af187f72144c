@@ -108,6 +108,24 @@
       "message": "Why are we doing this replacement if the codegen handles the 64-bit `HRol`? (Except for the ECX clobbering issue.)",
       "revId": "d0bc68e1f40259230329e6709c72af187f72144c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854e6141_db2a8210",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-10-22T11:52:30Z",
+      "side": 1,
+      "message": "@vmarko@google.com I didn\u0027t know how to solve the cloberring issue. And honestly still can\u0027t get why we should invent the complicated codegen if it\u0027s easier to just eliminate a `Rol` node especially for a target which is not being used.",
+      "parentUuid": "ded14ff4_8b52bbd9",
+      "revId": "d0bc68e1f40259230329e6709c72af187f72144c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
