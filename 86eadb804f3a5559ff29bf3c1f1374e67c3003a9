@@ -22,6 +22,30 @@
       },
       "revId": "86eadb804f3a5559ff29bf3c1f1374e67c3003a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28951e83_adc1f1e6",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-22T16:25:09Z",
+      "side": 1,
+      "message": "This should have been `try/catch blocks`. Updated comment.",
+      "parentUuid": "e6b008d9_4515c65a",
+      "range": {
+        "startLine": 427,
+        "startChar": 60,
+        "endLine": 427,
+        "endChar": 61
+      },
+      "revId": "86eadb804f3a5559ff29bf3c1f1374e67c3003a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
