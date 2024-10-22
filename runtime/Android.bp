@@ -1139,10 +1139,7 @@ art_cc_test {
     ],
     target: {
         host: {
-            required: [
-                "dex2oatd",
-                "art_boot_images",
-            ],
+            required: ["dex2oatd"],
         },
     },
 }

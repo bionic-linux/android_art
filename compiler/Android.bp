@@ -542,7 +542,6 @@ art_cc_defaults {
             shared_libs: [
                 "libartd-simulator",
             ],
-            required: ["art_boot_images"],
         },
     },
 }

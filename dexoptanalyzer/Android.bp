@@ -104,7 +104,6 @@ art_cc_defaults {
             required: [
                 "dex2oatd",
                 "dexoptanalyzerd",
-                "art_boot_images",
             ],
         },
     },

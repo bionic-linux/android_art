@@ -71,8 +71,7 @@ ART_TEST_HOST_RUN_TEST_DEPENDENCIES := \
   $(ART_HOST_OUT_SHARED_LIBRARIES)/libopenjdkjvmti$(ART_HOST_SHLIB_EXTENSION) \
   $(ART_HOST_OUT_SHARED_LIBRARIES)/libopenjdkjvmtid$(ART_HOST_SHLIB_EXTENSION) \
   $(ART_HOST_DEX_DEPENDENCIES) \
-  $(HOST_I18N_DATA) \
-  art_boot_images
+  $(HOST_I18N_DATA)
 
 ifneq ($(HOST_PREFER_32_BIT),true)
 ART_TEST_HOST_RUN_TEST_DEPENDENCIES += \
@@ -97,7 +96,7 @@ endif
 
 test-art-host-run-test-dependencies : \
       $(ART_TEST_HOST_RUN_TEST_DEPENDENCIES) $(TEST_ART_RUN_TEST_DEPENDENCIES) \
-      $(HOST_BOOT_IMAGE_JARS)
+      $(HOST_BOOT_IMAGE_JARS) $(HOST_BOOT_IMAGE) $(2ND_HOST_BOOT_IMAGE)
 .PHONY: test-art-host-run-test-dependencies
 test-art-run-test-dependencies : test-art-host-run-test-dependencies
 

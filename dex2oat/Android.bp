@@ -483,10 +483,7 @@ art_cc_defaults {
     ],
     target: {
         host: {
-            required: [
-                "dex2oatd",
-                "art_boot_images",
-            ],
+            required: ["dex2oatd"],
         },
     },
 

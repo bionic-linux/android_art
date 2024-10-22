@@ -101,10 +101,7 @@ art_cc_test {
     srcs: ["imgdiag_test.cc"],
     target: {
         host: {
-            required: [
-                "imgdiagd",
-                "art_boot_images",
-            ],
+            required: ["imgdiagd"],
         },
     },
 }
