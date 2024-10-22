@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9cff68_78149eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-22T22:52:18Z",
+      "side": 1,
+      "message": "I like the code simplification a lot.  I think this approach is probably an improvement, but not ideal. It will be significantly off in some cases:\n\nIf an allocation pattern repeats at the a rate that divides the TLAB size, you\u0027ll get really biased results. I think cputime profilers have seen this effect in the past, and generally randomize sampling as a result. I guess for long-lived threads, the GC should randomize things a bit.\n\nIf you have mostly short-lived threads doing the allocation, you\u0027ll greatly over-count the first allocation, I suspect? The total is also likely to be way high, since the TLABs won\u0027t be fully used. But then this to some extent reflects what\u0027s probably a bit of a GC problem at the moment. System server has O(450) threads. That means they use O(15MB) once they each allocate a single small object. I think we really need to reduce the 32K TLAB size.\n\nLokesh - When a thread dies, do we reuse its TLAB before the next GC? We probably should?",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
