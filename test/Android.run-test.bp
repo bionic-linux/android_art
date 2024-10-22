@@ -21,14 +21,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard00",
-    src: ":art-run-test-host-data-shard00-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard00.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard01-tmp",
     out: ["art-run-test-host-data-shard01.zip"],
@@ -38,14 +30,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?01-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard01",
-    src: ":art-run-test-host-data-shard01-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard01.zip",
 }
 
 java_genrule {
@@ -59,14 +43,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard02",
-    src: ":art-run-test-host-data-shard02-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard02.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard03-tmp",
     out: ["art-run-test-host-data-shard03.zip"],
@@ -76,14 +52,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?03-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard03",
-    src: ":art-run-test-host-data-shard03-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard03.zip",
 }
 
 java_genrule {
@@ -97,14 +65,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard04",
-    src: ":art-run-test-host-data-shard04-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard04.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard05-tmp",
     out: ["art-run-test-host-data-shard05.zip"],
@@ -114,14 +74,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?05-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard05",
-    src: ":art-run-test-host-data-shard05-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard05.zip",
 }
 
 java_genrule {
@@ -135,14 +87,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard06",
-    src: ":art-run-test-host-data-shard06-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard06.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard07-tmp",
     out: ["art-run-test-host-data-shard07.zip"],
@@ -152,14 +96,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?07-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard07",
-    src: ":art-run-test-host-data-shard07-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard07.zip",
 }
 
 java_genrule {
@@ -173,14 +109,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard08",
-    src: ":art-run-test-host-data-shard08-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard08.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard09-tmp",
     out: ["art-run-test-host-data-shard09.zip"],
@@ -190,14 +118,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?09-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard09",
-    src: ":art-run-test-host-data-shard09-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard09.zip",
 }
 
 java_genrule {
@@ -211,14 +131,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard10",
-    src: ":art-run-test-host-data-shard10-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard10.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard11-tmp",
     out: ["art-run-test-host-data-shard11.zip"],
@@ -228,14 +140,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?11-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard11",
-    src: ":art-run-test-host-data-shard11-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard11.zip",
 }
 
 java_genrule {
@@ -249,14 +153,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard12",
-    src: ":art-run-test-host-data-shard12-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard12.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard13-tmp",
     out: ["art-run-test-host-data-shard13.zip"],
@@ -266,14 +162,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?13-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard13",
-    src: ":art-run-test-host-data-shard13-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard13.zip",
 }
 
 java_genrule {
@@ -287,14 +175,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard14",
-    src: ":art-run-test-host-data-shard14-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard14.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard15-tmp",
     out: ["art-run-test-host-data-shard15.zip"],
@@ -304,14 +184,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?15-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard15",
-    src: ":art-run-test-host-data-shard15-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard15.zip",
 }
 
 java_genrule {
@@ -325,14 +197,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard16",
-    src: ":art-run-test-host-data-shard16-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard16.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard17-tmp",
     out: ["art-run-test-host-data-shard17.zip"],
@@ -342,14 +206,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?17-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard17",
-    src: ":art-run-test-host-data-shard17-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard17.zip",
 }
 
 java_genrule {
@@ -363,14 +219,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard18",
-    src: ":art-run-test-host-data-shard18-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard18.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard19-tmp",
     out: ["art-run-test-host-data-shard19.zip"],
@@ -380,14 +228,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?19-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard19",
-    src: ":art-run-test-host-data-shard19-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard19.zip",
 }
 
 java_genrule {
@@ -401,14 +241,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard20",
-    src: ":art-run-test-host-data-shard20-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard20.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard21-tmp",
     out: ["art-run-test-host-data-shard21.zip"],
@@ -418,14 +250,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?21-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard21",
-    src: ":art-run-test-host-data-shard21-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard21.zip",
 }
 
 java_genrule {
@@ -439,14 +263,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard22",
-    src: ":art-run-test-host-data-shard22-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard22.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard23-tmp",
     out: ["art-run-test-host-data-shard23.zip"],
@@ -456,14 +272,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?23-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard23",
-    src: ":art-run-test-host-data-shard23-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard23.zip",
 }
 
 java_genrule {
@@ -477,14 +285,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard24",
-    src: ":art-run-test-host-data-shard24-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard24.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard25-tmp",
     out: ["art-run-test-host-data-shard25.zip"],
@@ -494,14 +294,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?25-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard25",
-    src: ":art-run-test-host-data-shard25-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard25.zip",
 }
 
 java_genrule {
@@ -515,14 +307,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard26",
-    src: ":art-run-test-host-data-shard26-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard26.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard27-tmp",
     out: ["art-run-test-host-data-shard27.zip"],
@@ -532,14 +316,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?27-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard27",
-    src: ":art-run-test-host-data-shard27-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard27.zip",
 }
 
 java_genrule {
@@ -553,14 +329,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard28",
-    src: ":art-run-test-host-data-shard28-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard28.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard29-tmp",
     out: ["art-run-test-host-data-shard29.zip"],
@@ -570,14 +338,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?29-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard29",
-    src: ":art-run-test-host-data-shard29-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard29.zip",
 }
 
 java_genrule {
@@ -591,14 +351,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard30",
-    src: ":art-run-test-host-data-shard30-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard30.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard31-tmp",
     out: ["art-run-test-host-data-shard31.zip"],
@@ -608,14 +360,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?31-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard31",
-    src: ":art-run-test-host-data-shard31-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard31.zip",
 }
 
 java_genrule {
@@ -629,14 +373,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard32",
-    src: ":art-run-test-host-data-shard32-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard32.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard33-tmp",
     out: ["art-run-test-host-data-shard33.zip"],
@@ -646,14 +382,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?33-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard33",
-    src: ":art-run-test-host-data-shard33-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard33.zip",
 }
 
 java_genrule {
@@ -667,14 +395,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard34",
-    src: ":art-run-test-host-data-shard34-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard34.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard35-tmp",
     out: ["art-run-test-host-data-shard35.zip"],
@@ -684,14 +404,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?35-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard35",
-    src: ":art-run-test-host-data-shard35-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard35.zip",
 }
 
 java_genrule {
@@ -705,14 +417,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard36",
-    src: ":art-run-test-host-data-shard36-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard36.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard37-tmp",
     out: ["art-run-test-host-data-shard37.zip"],
@@ -722,14 +426,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?37-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard37",
-    src: ":art-run-test-host-data-shard37-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard37.zip",
 }
 
 java_genrule {
@@ -743,14 +439,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard38",
-    src: ":art-run-test-host-data-shard38-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard38.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard39-tmp",
     out: ["art-run-test-host-data-shard39.zip"],
@@ -760,14 +448,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?39-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard39",
-    src: ":art-run-test-host-data-shard39-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard39.zip",
 }
 
 java_genrule {
@@ -781,14 +461,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard40",
-    src: ":art-run-test-host-data-shard40-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard40.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard41-tmp",
     out: ["art-run-test-host-data-shard41.zip"],
@@ -798,14 +470,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?41-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard41",
-    src: ":art-run-test-host-data-shard41-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard41.zip",
 }
 
 java_genrule {
@@ -819,14 +483,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard42",
-    src: ":art-run-test-host-data-shard42-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard42.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard43-tmp",
     out: ["art-run-test-host-data-shard43.zip"],
@@ -836,14 +492,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?43-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard43",
-    src: ":art-run-test-host-data-shard43-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard43.zip",
 }
 
 java_genrule {
@@ -857,14 +505,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard44",
-    src: ":art-run-test-host-data-shard44-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard44.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard45-tmp",
     out: ["art-run-test-host-data-shard45.zip"],
@@ -874,14 +514,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?45-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard45",
-    src: ":art-run-test-host-data-shard45-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard45.zip",
 }
 
 java_genrule {
@@ -895,14 +527,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard46",
-    src: ":art-run-test-host-data-shard46-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard46.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard47-tmp",
     out: ["art-run-test-host-data-shard47.zip"],
@@ -912,14 +536,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?47-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard47",
-    src: ":art-run-test-host-data-shard47-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard47.zip",
 }
 
 java_genrule {
@@ -933,14 +549,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard48",
-    src: ":art-run-test-host-data-shard48-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard48.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard49-tmp",
     out: ["art-run-test-host-data-shard49.zip"],
@@ -950,14 +558,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?49-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard49",
-    src: ":art-run-test-host-data-shard49-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard49.zip",
 }
 
 java_genrule {
@@ -971,14 +571,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard50",
-    src: ":art-run-test-host-data-shard50-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard50.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard51-tmp",
     out: ["art-run-test-host-data-shard51.zip"],
@@ -988,14 +580,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?51-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard51",
-    src: ":art-run-test-host-data-shard51-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard51.zip",
 }
 
 java_genrule {
@@ -1009,14 +593,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard52",
-    src: ":art-run-test-host-data-shard52-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard52.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard53-tmp",
     out: ["art-run-test-host-data-shard53.zip"],
@@ -1026,14 +602,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?53-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard53",
-    src: ":art-run-test-host-data-shard53-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard53.zip",
 }
 
 java_genrule {
@@ -1047,14 +615,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard54",
-    src: ":art-run-test-host-data-shard54-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard54.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard55-tmp",
     out: ["art-run-test-host-data-shard55.zip"],
@@ -1064,14 +624,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?55-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard55",
-    src: ":art-run-test-host-data-shard55-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard55.zip",
 }
 
 java_genrule {
@@ -1085,14 +637,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard56",
-    src: ":art-run-test-host-data-shard56-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard56.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard57-tmp",
     out: ["art-run-test-host-data-shard57.zip"],
@@ -1102,14 +646,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?57-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard57",
-    src: ":art-run-test-host-data-shard57-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard57.zip",
 }
 
 java_genrule {
@@ -1123,14 +659,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard58",
-    src: ":art-run-test-host-data-shard58-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard58.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard59-tmp",
     out: ["art-run-test-host-data-shard59.zip"],
@@ -1140,14 +668,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?59-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard59",
-    src: ":art-run-test-host-data-shard59-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard59.zip",
 }
 
 java_genrule {
@@ -1161,14 +681,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard60",
-    src: ":art-run-test-host-data-shard60-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard60.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard61-tmp",
     out: ["art-run-test-host-data-shard61.zip"],
@@ -1178,14 +690,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?61-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard61",
-    src: ":art-run-test-host-data-shard61-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard61.zip",
 }
 
 java_genrule {
@@ -1199,14 +703,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard62",
-    src: ":art-run-test-host-data-shard62-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard62.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard63-tmp",
     out: ["art-run-test-host-data-shard63.zip"],
@@ -1216,14 +712,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?63-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard63",
-    src: ":art-run-test-host-data-shard63-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard63.zip",
 }
 
 java_genrule {
@@ -1237,14 +725,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard64",
-    src: ":art-run-test-host-data-shard64-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard64.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard65-tmp",
     out: ["art-run-test-host-data-shard65.zip"],
@@ -1254,14 +734,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?65-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard65",
-    src: ":art-run-test-host-data-shard65-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard65.zip",
 }
 
 java_genrule {
@@ -1275,14 +747,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard66",
-    src: ":art-run-test-host-data-shard66-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard66.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard67-tmp",
     out: ["art-run-test-host-data-shard67.zip"],
@@ -1292,14 +756,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?67-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard67",
-    src: ":art-run-test-host-data-shard67-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard67.zip",
 }
 
 java_genrule {
@@ -1313,14 +769,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard68",
-    src: ":art-run-test-host-data-shard68-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard68.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard69-tmp",
     out: ["art-run-test-host-data-shard69.zip"],
@@ -1330,14 +778,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?69-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard69",
-    src: ":art-run-test-host-data-shard69-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard69.zip",
 }
 
 java_genrule {
@@ -1351,14 +791,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard70",
-    src: ":art-run-test-host-data-shard70-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard70.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard71-tmp",
     out: ["art-run-test-host-data-shard71.zip"],
@@ -1368,14 +800,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?71-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard71",
-    src: ":art-run-test-host-data-shard71-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard71.zip",
 }
 
 java_genrule {
@@ -1389,14 +813,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard72",
-    src: ":art-run-test-host-data-shard72-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard72.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard73-tmp",
     out: ["art-run-test-host-data-shard73.zip"],
@@ -1406,14 +822,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?73-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard73",
-    src: ":art-run-test-host-data-shard73-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard73.zip",
 }
 
 java_genrule {
@@ -1427,14 +835,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard74",
-    src: ":art-run-test-host-data-shard74-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard74.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard75-tmp",
     out: ["art-run-test-host-data-shard75.zip"],
@@ -1444,14 +844,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?75-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard75",
-    src: ":art-run-test-host-data-shard75-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard75.zip",
 }
 
 java_genrule {
@@ -1465,14 +857,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard76",
-    src: ":art-run-test-host-data-shard76-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard76.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard77-tmp",
     out: ["art-run-test-host-data-shard77.zip"],
@@ -1482,14 +866,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?77-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard77",
-    src: ":art-run-test-host-data-shard77-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard77.zip",
 }
 
 java_genrule {
@@ -1503,14 +879,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard78",
-    src: ":art-run-test-host-data-shard78-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard78.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard79-tmp",
     out: ["art-run-test-host-data-shard79.zip"],
@@ -1520,14 +888,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?79-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard79",
-    src: ":art-run-test-host-data-shard79-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard79.zip",
 }
 
 java_genrule {
@@ -1541,14 +901,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard80",
-    src: ":art-run-test-host-data-shard80-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard80.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard81-tmp",
     out: ["art-run-test-host-data-shard81.zip"],
@@ -1558,14 +910,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?81-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard81",
-    src: ":art-run-test-host-data-shard81-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard81.zip",
 }
 
 java_genrule {
@@ -1579,14 +923,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard82",
-    src: ":art-run-test-host-data-shard82-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard82.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard83-tmp",
     out: ["art-run-test-host-data-shard83.zip"],
@@ -1596,14 +932,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?83-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard83",
-    src: ":art-run-test-host-data-shard83-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard83.zip",
 }
 
 java_genrule {
@@ -1617,14 +945,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard84",
-    src: ":art-run-test-host-data-shard84-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard84.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard85-tmp",
     out: ["art-run-test-host-data-shard85.zip"],
@@ -1634,14 +954,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?85-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard85",
-    src: ":art-run-test-host-data-shard85-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard85.zip",
 }
 
 java_genrule {
@@ -1655,14 +967,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard86",
-    src: ":art-run-test-host-data-shard86-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard86.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard87-tmp",
     out: ["art-run-test-host-data-shard87.zip"],
@@ -1672,14 +976,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?87-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard87",
-    src: ":art-run-test-host-data-shard87-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard87.zip",
 }
 
 java_genrule {
@@ -1693,14 +989,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard88",
-    src: ":art-run-test-host-data-shard88-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard88.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard89-tmp",
     out: ["art-run-test-host-data-shard89.zip"],
@@ -1710,14 +998,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?89-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard89",
-    src: ":art-run-test-host-data-shard89-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard89.zip",
 }
 
 java_genrule {
@@ -1731,14 +1011,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard90",
-    src: ":art-run-test-host-data-shard90-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard90.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard91-tmp",
     out: ["art-run-test-host-data-shard91.zip"],
@@ -1748,14 +1020,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?91-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard91",
-    src: ":art-run-test-host-data-shard91-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard91.zip",
 }
 
 java_genrule {
@@ -1769,14 +1033,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard92",
-    src: ":art-run-test-host-data-shard92-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard92.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard93-tmp",
     out: ["art-run-test-host-data-shard93.zip"],
@@ -1786,14 +1042,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?93-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard93",
-    src: ":art-run-test-host-data-shard93-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard93.zip",
 }
 
 java_genrule {
@@ -1807,14 +1055,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard94",
-    src: ":art-run-test-host-data-shard94-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard94.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard95-tmp",
     out: ["art-run-test-host-data-shard95.zip"],
@@ -1824,14 +1064,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?95-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard95",
-    src: ":art-run-test-host-data-shard95-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard95.zip",
 }
 
 java_genrule {
@@ -1845,14 +1077,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard96",
-    src: ":art-run-test-host-data-shard96-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard96.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard97-tmp",
     out: ["art-run-test-host-data-shard97.zip"],
@@ -1862,14 +1086,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?97-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard97",
-    src: ":art-run-test-host-data-shard97-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard97.zip",
 }
 
 java_genrule {
@@ -1883,14 +1099,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard98",
-    src: ":art-run-test-host-data-shard98-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard98.zip",
-}
-
 java_genrule {
     name: "art-run-test-host-data-shard99-tmp",
     out: ["art-run-test-host-data-shard99.zip"],
@@ -1900,14 +1108,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode host --test-dir-regex 'art/test/..?99-' $(in)",
     defaults: ["art-run-test-host-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shard99",
-    src: ":art-run-test-host-data-shard99-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shard99.zip",
 }
 
 java_genrule {
@@ -1920,14 +1120,6 @@ java_genrule {
     defaults: ["art-run-test-host-data-defaults"],
     tools: ["hiddenapi"],
     cmd: TEST_BUILD_COMMON_ARGS + "--hiddenapi $(location hiddenapi) --mode host --test-dir-regex 'art/test/....?-[^/]*hiddenapi' $(in)",
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-shardHiddenApi",
-    src: ":art-run-test-host-data-shardHiddenApi-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-host-data-shardHiddenApi.zip",
 }
 
 genrule_defaults {
@@ -2073,117 +1265,6 @@ java_genrule {
     cmd: "$(location merge_zips) $(out) $(in)",
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-host-data-merged",
-    src: ":art-run-test-host-data-merged-tmp",
-    required: [
-        "art-run-test-host-data-shard00",
-        "art-run-test-host-data-shard01",
-        "art-run-test-host-data-shard02",
-        "art-run-test-host-data-shard03",
-        "art-run-test-host-data-shard04",
-        "art-run-test-host-data-shard05",
-        "art-run-test-host-data-shard06",
-        "art-run-test-host-data-shard07",
-        "art-run-test-host-data-shard08",
-        "art-run-test-host-data-shard09",
-        "art-run-test-host-data-shard10",
-        "art-run-test-host-data-shard11",
-        "art-run-test-host-data-shard12",
-        "art-run-test-host-data-shard13",
-        "art-run-test-host-data-shard14",
-        "art-run-test-host-data-shard15",
-        "art-run-test-host-data-shard16",
-        "art-run-test-host-data-shard17",
-        "art-run-test-host-data-shard18",
-        "art-run-test-host-data-shard19",
-        "art-run-test-host-data-shard20",
-        "art-run-test-host-data-shard21",
-        "art-run-test-host-data-shard22",
-        "art-run-test-host-data-shard23",
-        "art-run-test-host-data-shard24",
-        "art-run-test-host-data-shard25",
-        "art-run-test-host-data-shard26",
-        "art-run-test-host-data-shard27",
-        "art-run-test-host-data-shard28",
-        "art-run-test-host-data-shard29",
-        "art-run-test-host-data-shard30",
-        "art-run-test-host-data-shard31",
-        "art-run-test-host-data-shard32",
-        "art-run-test-host-data-shard33",
-        "art-run-test-host-data-shard34",
-        "art-run-test-host-data-shard35",
-        "art-run-test-host-data-shard36",
-        "art-run-test-host-data-shard37",
-        "art-run-test-host-data-shard38",
-        "art-run-test-host-data-shard39",
-        "art-run-test-host-data-shard40",
-        "art-run-test-host-data-shard41",
-        "art-run-test-host-data-shard42",
-        "art-run-test-host-data-shard43",
-        "art-run-test-host-data-shard44",
-        "art-run-test-host-data-shard45",
-        "art-run-test-host-data-shard46",
-        "art-run-test-host-data-shard47",
-        "art-run-test-host-data-shard48",
-        "art-run-test-host-data-shard49",
-        "art-run-test-host-data-shard50",
-        "art-run-test-host-data-shard51",
-        "art-run-test-host-data-shard52",
-        "art-run-test-host-data-shard53",
-        "art-run-test-host-data-shard54",
-        "art-run-test-host-data-shard55",
-        "art-run-test-host-data-shard56",
-        "art-run-test-host-data-shard57",
-        "art-run-test-host-data-shard58",
-        "art-run-test-host-data-shard59",
-        "art-run-test-host-data-shard60",
-        "art-run-test-host-data-shard61",
-        "art-run-test-host-data-shard62",
-        "art-run-test-host-data-shard63",
-        "art-run-test-host-data-shard64",
-        "art-run-test-host-data-shard65",
-        "art-run-test-host-data-shard66",
-        "art-run-test-host-data-shard67",
-        "art-run-test-host-data-shard68",
-        "art-run-test-host-data-shard69",
-        "art-run-test-host-data-shard70",
-        "art-run-test-host-data-shard71",
-        "art-run-test-host-data-shard72",
-        "art-run-test-host-data-shard73",
-        "art-run-test-host-data-shard74",
-        "art-run-test-host-data-shard75",
-        "art-run-test-host-data-shard76",
-        "art-run-test-host-data-shard77",
-        "art-run-test-host-data-shard78",
-        "art-run-test-host-data-shard79",
-        "art-run-test-host-data-shard80",
-        "art-run-test-host-data-shard81",
-        "art-run-test-host-data-shard82",
-        "art-run-test-host-data-shard83",
-        "art-run-test-host-data-shard84",
-        "art-run-test-host-data-shard85",
-        "art-run-test-host-data-shard86",
-        "art-run-test-host-data-shard87",
-        "art-run-test-host-data-shard88",
-        "art-run-test-host-data-shard89",
-        "art-run-test-host-data-shard90",
-        "art-run-test-host-data-shard91",
-        "art-run-test-host-data-shard92",
-        "art-run-test-host-data-shard93",
-        "art-run-test-host-data-shard94",
-        "art-run-test-host-data-shard95",
-        "art-run-test-host-data-shard96",
-        "art-run-test-host-data-shard97",
-        "art-run-test-host-data-shard98",
-        "art-run-test-host-data-shard99",
-        "art-run-test-host-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-host-data-merged.zip",
-}
-
 // Phony target used to build all shards
 java_genrule {
     name: "art-run-test-host-data-tmp",
@@ -2294,117 +1375,6 @@ java_genrule {
     cmd: "echo $(in) > $(out)",
 }
 
-// Phony target used to install all shards
-prebuilt_etc_host {
-    name: "art-run-test-host-data",
-    src: ":art-run-test-host-data-tmp",
-    required: [
-        "art-run-test-host-data-shard00",
-        "art-run-test-host-data-shard01",
-        "art-run-test-host-data-shard02",
-        "art-run-test-host-data-shard03",
-        "art-run-test-host-data-shard04",
-        "art-run-test-host-data-shard05",
-        "art-run-test-host-data-shard06",
-        "art-run-test-host-data-shard07",
-        "art-run-test-host-data-shard08",
-        "art-run-test-host-data-shard09",
-        "art-run-test-host-data-shard10",
-        "art-run-test-host-data-shard11",
-        "art-run-test-host-data-shard12",
-        "art-run-test-host-data-shard13",
-        "art-run-test-host-data-shard14",
-        "art-run-test-host-data-shard15",
-        "art-run-test-host-data-shard16",
-        "art-run-test-host-data-shard17",
-        "art-run-test-host-data-shard18",
-        "art-run-test-host-data-shard19",
-        "art-run-test-host-data-shard20",
-        "art-run-test-host-data-shard21",
-        "art-run-test-host-data-shard22",
-        "art-run-test-host-data-shard23",
-        "art-run-test-host-data-shard24",
-        "art-run-test-host-data-shard25",
-        "art-run-test-host-data-shard26",
-        "art-run-test-host-data-shard27",
-        "art-run-test-host-data-shard28",
-        "art-run-test-host-data-shard29",
-        "art-run-test-host-data-shard30",
-        "art-run-test-host-data-shard31",
-        "art-run-test-host-data-shard32",
-        "art-run-test-host-data-shard33",
-        "art-run-test-host-data-shard34",
-        "art-run-test-host-data-shard35",
-        "art-run-test-host-data-shard36",
-        "art-run-test-host-data-shard37",
-        "art-run-test-host-data-shard38",
-        "art-run-test-host-data-shard39",
-        "art-run-test-host-data-shard40",
-        "art-run-test-host-data-shard41",
-        "art-run-test-host-data-shard42",
-        "art-run-test-host-data-shard43",
-        "art-run-test-host-data-shard44",
-        "art-run-test-host-data-shard45",
-        "art-run-test-host-data-shard46",
-        "art-run-test-host-data-shard47",
-        "art-run-test-host-data-shard48",
-        "art-run-test-host-data-shard49",
-        "art-run-test-host-data-shard50",
-        "art-run-test-host-data-shard51",
-        "art-run-test-host-data-shard52",
-        "art-run-test-host-data-shard53",
-        "art-run-test-host-data-shard54",
-        "art-run-test-host-data-shard55",
-        "art-run-test-host-data-shard56",
-        "art-run-test-host-data-shard57",
-        "art-run-test-host-data-shard58",
-        "art-run-test-host-data-shard59",
-        "art-run-test-host-data-shard60",
-        "art-run-test-host-data-shard61",
-        "art-run-test-host-data-shard62",
-        "art-run-test-host-data-shard63",
-        "art-run-test-host-data-shard64",
-        "art-run-test-host-data-shard65",
-        "art-run-test-host-data-shard66",
-        "art-run-test-host-data-shard67",
-        "art-run-test-host-data-shard68",
-        "art-run-test-host-data-shard69",
-        "art-run-test-host-data-shard70",
-        "art-run-test-host-data-shard71",
-        "art-run-test-host-data-shard72",
-        "art-run-test-host-data-shard73",
-        "art-run-test-host-data-shard74",
-        "art-run-test-host-data-shard75",
-        "art-run-test-host-data-shard76",
-        "art-run-test-host-data-shard77",
-        "art-run-test-host-data-shard78",
-        "art-run-test-host-data-shard79",
-        "art-run-test-host-data-shard80",
-        "art-run-test-host-data-shard81",
-        "art-run-test-host-data-shard82",
-        "art-run-test-host-data-shard83",
-        "art-run-test-host-data-shard84",
-        "art-run-test-host-data-shard85",
-        "art-run-test-host-data-shard86",
-        "art-run-test-host-data-shard87",
-        "art-run-test-host-data-shard88",
-        "art-run-test-host-data-shard89",
-        "art-run-test-host-data-shard90",
-        "art-run-test-host-data-shard91",
-        "art-run-test-host-data-shard92",
-        "art-run-test-host-data-shard93",
-        "art-run-test-host-data-shard94",
-        "art-run-test-host-data-shard95",
-        "art-run-test-host-data-shard96",
-        "art-run-test-host-data-shard97",
-        "art-run-test-host-data-shard98",
-        "art-run-test-host-data-shard99",
-        "art-run-test-host-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-host-data.txt",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard00-tmp",
     out: ["art-run-test-target-data-shard00.zip"],
@@ -2414,14 +1384,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?00-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard00",
-    src: ":art-run-test-target-data-shard00-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard00.zip",
 }
 
 java_genrule {
@@ -2435,14 +1397,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard01",
-    src: ":art-run-test-target-data-shard01-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard01.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard02-tmp",
     out: ["art-run-test-target-data-shard02.zip"],
@@ -2452,14 +1406,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?02-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard02",
-    src: ":art-run-test-target-data-shard02-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard02.zip",
 }
 
 java_genrule {
@@ -2473,14 +1419,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard03",
-    src: ":art-run-test-target-data-shard03-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard03.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard04-tmp",
     out: ["art-run-test-target-data-shard04.zip"],
@@ -2490,14 +1428,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?04-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard04",
-    src: ":art-run-test-target-data-shard04-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard04.zip",
 }
 
 java_genrule {
@@ -2511,14 +1441,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard05",
-    src: ":art-run-test-target-data-shard05-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard05.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard06-tmp",
     out: ["art-run-test-target-data-shard06.zip"],
@@ -2528,14 +1450,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?06-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard06",
-    src: ":art-run-test-target-data-shard06-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard06.zip",
 }
 
 java_genrule {
@@ -2549,14 +1463,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard07",
-    src: ":art-run-test-target-data-shard07-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard07.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard08-tmp",
     out: ["art-run-test-target-data-shard08.zip"],
@@ -2566,14 +1472,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?08-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard08",
-    src: ":art-run-test-target-data-shard08-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard08.zip",
 }
 
 java_genrule {
@@ -2587,14 +1485,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard09",
-    src: ":art-run-test-target-data-shard09-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard09.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard10-tmp",
     out: ["art-run-test-target-data-shard10.zip"],
@@ -2604,14 +1494,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?10-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard10",
-    src: ":art-run-test-target-data-shard10-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard10.zip",
 }
 
 java_genrule {
@@ -2625,14 +1507,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard11",
-    src: ":art-run-test-target-data-shard11-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard11.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard12-tmp",
     out: ["art-run-test-target-data-shard12.zip"],
@@ -2642,14 +1516,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?12-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard12",
-    src: ":art-run-test-target-data-shard12-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard12.zip",
 }
 
 java_genrule {
@@ -2663,14 +1529,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard13",
-    src: ":art-run-test-target-data-shard13-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard13.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard14-tmp",
     out: ["art-run-test-target-data-shard14.zip"],
@@ -2680,14 +1538,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?14-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard14",
-    src: ":art-run-test-target-data-shard14-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard14.zip",
 }
 
 java_genrule {
@@ -2701,14 +1551,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard15",
-    src: ":art-run-test-target-data-shard15-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard15.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard16-tmp",
     out: ["art-run-test-target-data-shard16.zip"],
@@ -2718,14 +1560,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?16-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard16",
-    src: ":art-run-test-target-data-shard16-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard16.zip",
 }
 
 java_genrule {
@@ -2739,14 +1573,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard17",
-    src: ":art-run-test-target-data-shard17-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard17.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard18-tmp",
     out: ["art-run-test-target-data-shard18.zip"],
@@ -2756,14 +1582,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?18-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard18",
-    src: ":art-run-test-target-data-shard18-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard18.zip",
 }
 
 java_genrule {
@@ -2777,14 +1595,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard19",
-    src: ":art-run-test-target-data-shard19-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard19.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard20-tmp",
     out: ["art-run-test-target-data-shard20.zip"],
@@ -2794,14 +1604,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?20-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard20",
-    src: ":art-run-test-target-data-shard20-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard20.zip",
 }
 
 java_genrule {
@@ -2815,14 +1617,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard21",
-    src: ":art-run-test-target-data-shard21-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard21.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard22-tmp",
     out: ["art-run-test-target-data-shard22.zip"],
@@ -2832,14 +1626,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?22-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard22",
-    src: ":art-run-test-target-data-shard22-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard22.zip",
 }
 
 java_genrule {
@@ -2853,14 +1639,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard23",
-    src: ":art-run-test-target-data-shard23-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard23.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard24-tmp",
     out: ["art-run-test-target-data-shard24.zip"],
@@ -2870,14 +1648,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?24-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard24",
-    src: ":art-run-test-target-data-shard24-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard24.zip",
 }
 
 java_genrule {
@@ -2891,14 +1661,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard25",
-    src: ":art-run-test-target-data-shard25-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard25.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard26-tmp",
     out: ["art-run-test-target-data-shard26.zip"],
@@ -2908,14 +1670,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?26-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard26",
-    src: ":art-run-test-target-data-shard26-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard26.zip",
 }
 
 java_genrule {
@@ -2929,14 +1683,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard27",
-    src: ":art-run-test-target-data-shard27-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard27.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard28-tmp",
     out: ["art-run-test-target-data-shard28.zip"],
@@ -2946,14 +1692,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?28-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard28",
-    src: ":art-run-test-target-data-shard28-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard28.zip",
 }
 
 java_genrule {
@@ -2967,14 +1705,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard29",
-    src: ":art-run-test-target-data-shard29-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard29.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard30-tmp",
     out: ["art-run-test-target-data-shard30.zip"],
@@ -2984,14 +1714,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?30-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard30",
-    src: ":art-run-test-target-data-shard30-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard30.zip",
 }
 
 java_genrule {
@@ -3005,14 +1727,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard31",
-    src: ":art-run-test-target-data-shard31-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard31.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard32-tmp",
     out: ["art-run-test-target-data-shard32.zip"],
@@ -3022,14 +1736,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?32-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard32",
-    src: ":art-run-test-target-data-shard32-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard32.zip",
 }
 
 java_genrule {
@@ -3043,14 +1749,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard33",
-    src: ":art-run-test-target-data-shard33-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard33.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard34-tmp",
     out: ["art-run-test-target-data-shard34.zip"],
@@ -3060,14 +1758,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?34-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard34",
-    src: ":art-run-test-target-data-shard34-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard34.zip",
 }
 
 java_genrule {
@@ -3081,14 +1771,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard35",
-    src: ":art-run-test-target-data-shard35-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard35.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard36-tmp",
     out: ["art-run-test-target-data-shard36.zip"],
@@ -3098,14 +1780,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?36-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard36",
-    src: ":art-run-test-target-data-shard36-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard36.zip",
 }
 
 java_genrule {
@@ -3119,14 +1793,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard37",
-    src: ":art-run-test-target-data-shard37-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard37.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard38-tmp",
     out: ["art-run-test-target-data-shard38.zip"],
@@ -3136,14 +1802,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?38-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard38",
-    src: ":art-run-test-target-data-shard38-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard38.zip",
 }
 
 java_genrule {
@@ -3157,14 +1815,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard39",
-    src: ":art-run-test-target-data-shard39-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard39.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard40-tmp",
     out: ["art-run-test-target-data-shard40.zip"],
@@ -3174,14 +1824,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?40-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard40",
-    src: ":art-run-test-target-data-shard40-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard40.zip",
 }
 
 java_genrule {
@@ -3195,14 +1837,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard41",
-    src: ":art-run-test-target-data-shard41-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard41.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard42-tmp",
     out: ["art-run-test-target-data-shard42.zip"],
@@ -3212,14 +1846,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?42-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard42",
-    src: ":art-run-test-target-data-shard42-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard42.zip",
 }
 
 java_genrule {
@@ -3233,14 +1859,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard43",
-    src: ":art-run-test-target-data-shard43-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard43.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard44-tmp",
     out: ["art-run-test-target-data-shard44.zip"],
@@ -3250,14 +1868,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?44-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard44",
-    src: ":art-run-test-target-data-shard44-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard44.zip",
 }
 
 java_genrule {
@@ -3271,14 +1881,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard45",
-    src: ":art-run-test-target-data-shard45-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard45.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard46-tmp",
     out: ["art-run-test-target-data-shard46.zip"],
@@ -3288,14 +1890,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?46-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard46",
-    src: ":art-run-test-target-data-shard46-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard46.zip",
 }
 
 java_genrule {
@@ -3309,14 +1903,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard47",
-    src: ":art-run-test-target-data-shard47-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard47.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard48-tmp",
     out: ["art-run-test-target-data-shard48.zip"],
@@ -3326,14 +1912,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?48-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard48",
-    src: ":art-run-test-target-data-shard48-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard48.zip",
 }
 
 java_genrule {
@@ -3347,14 +1925,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard49",
-    src: ":art-run-test-target-data-shard49-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard49.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard50-tmp",
     out: ["art-run-test-target-data-shard50.zip"],
@@ -3364,14 +1934,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?50-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard50",
-    src: ":art-run-test-target-data-shard50-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard50.zip",
 }
 
 java_genrule {
@@ -3385,14 +1947,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard51",
-    src: ":art-run-test-target-data-shard51-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard51.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard52-tmp",
     out: ["art-run-test-target-data-shard52.zip"],
@@ -3402,14 +1956,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?52-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard52",
-    src: ":art-run-test-target-data-shard52-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard52.zip",
 }
 
 java_genrule {
@@ -3423,14 +1969,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard53",
-    src: ":art-run-test-target-data-shard53-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard53.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard54-tmp",
     out: ["art-run-test-target-data-shard54.zip"],
@@ -3440,14 +1978,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?54-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard54",
-    src: ":art-run-test-target-data-shard54-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard54.zip",
 }
 
 java_genrule {
@@ -3461,14 +1991,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard55",
-    src: ":art-run-test-target-data-shard55-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard55.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard56-tmp",
     out: ["art-run-test-target-data-shard56.zip"],
@@ -3478,14 +2000,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?56-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard56",
-    src: ":art-run-test-target-data-shard56-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard56.zip",
 }
 
 java_genrule {
@@ -3499,14 +2013,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard57",
-    src: ":art-run-test-target-data-shard57-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard57.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard58-tmp",
     out: ["art-run-test-target-data-shard58.zip"],
@@ -3516,14 +2022,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?58-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard58",
-    src: ":art-run-test-target-data-shard58-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard58.zip",
 }
 
 java_genrule {
@@ -3537,14 +2035,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard59",
-    src: ":art-run-test-target-data-shard59-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard59.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard60-tmp",
     out: ["art-run-test-target-data-shard60.zip"],
@@ -3554,14 +2044,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?60-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard60",
-    src: ":art-run-test-target-data-shard60-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard60.zip",
 }
 
 java_genrule {
@@ -3575,14 +2057,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard61",
-    src: ":art-run-test-target-data-shard61-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard61.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard62-tmp",
     out: ["art-run-test-target-data-shard62.zip"],
@@ -3592,14 +2066,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?62-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard62",
-    src: ":art-run-test-target-data-shard62-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard62.zip",
 }
 
 java_genrule {
@@ -3613,14 +2079,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard63",
-    src: ":art-run-test-target-data-shard63-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard63.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard64-tmp",
     out: ["art-run-test-target-data-shard64.zip"],
@@ -3630,14 +2088,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?64-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard64",
-    src: ":art-run-test-target-data-shard64-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard64.zip",
 }
 
 java_genrule {
@@ -3651,14 +2101,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard65",
-    src: ":art-run-test-target-data-shard65-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard65.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard66-tmp",
     out: ["art-run-test-target-data-shard66.zip"],
@@ -3668,14 +2110,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?66-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard66",
-    src: ":art-run-test-target-data-shard66-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard66.zip",
 }
 
 java_genrule {
@@ -3689,14 +2123,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard67",
-    src: ":art-run-test-target-data-shard67-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard67.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard68-tmp",
     out: ["art-run-test-target-data-shard68.zip"],
@@ -3706,14 +2132,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?68-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard68",
-    src: ":art-run-test-target-data-shard68-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard68.zip",
 }
 
 java_genrule {
@@ -3727,14 +2145,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard69",
-    src: ":art-run-test-target-data-shard69-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard69.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard70-tmp",
     out: ["art-run-test-target-data-shard70.zip"],
@@ -3744,14 +2154,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?70-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard70",
-    src: ":art-run-test-target-data-shard70-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard70.zip",
 }
 
 java_genrule {
@@ -3765,14 +2167,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard71",
-    src: ":art-run-test-target-data-shard71-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard71.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard72-tmp",
     out: ["art-run-test-target-data-shard72.zip"],
@@ -3782,14 +2176,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?72-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard72",
-    src: ":art-run-test-target-data-shard72-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard72.zip",
 }
 
 java_genrule {
@@ -3803,14 +2189,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard73",
-    src: ":art-run-test-target-data-shard73-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard73.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard74-tmp",
     out: ["art-run-test-target-data-shard74.zip"],
@@ -3820,14 +2198,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?74-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard74",
-    src: ":art-run-test-target-data-shard74-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard74.zip",
 }
 
 java_genrule {
@@ -3841,14 +2211,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard75",
-    src: ":art-run-test-target-data-shard75-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard75.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard76-tmp",
     out: ["art-run-test-target-data-shard76.zip"],
@@ -3858,14 +2220,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?76-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard76",
-    src: ":art-run-test-target-data-shard76-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard76.zip",
 }
 
 java_genrule {
@@ -3879,14 +2233,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard77",
-    src: ":art-run-test-target-data-shard77-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard77.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard78-tmp",
     out: ["art-run-test-target-data-shard78.zip"],
@@ -3896,14 +2242,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?78-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard78",
-    src: ":art-run-test-target-data-shard78-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard78.zip",
 }
 
 java_genrule {
@@ -3917,14 +2255,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard79",
-    src: ":art-run-test-target-data-shard79-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard79.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard80-tmp",
     out: ["art-run-test-target-data-shard80.zip"],
@@ -3934,14 +2264,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?80-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard80",
-    src: ":art-run-test-target-data-shard80-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard80.zip",
 }
 
 java_genrule {
@@ -3955,14 +2277,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard81",
-    src: ":art-run-test-target-data-shard81-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard81.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard82-tmp",
     out: ["art-run-test-target-data-shard82.zip"],
@@ -3972,14 +2286,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?82-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard82",
-    src: ":art-run-test-target-data-shard82-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard82.zip",
 }
 
 java_genrule {
@@ -3993,14 +2299,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard83",
-    src: ":art-run-test-target-data-shard83-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard83.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard84-tmp",
     out: ["art-run-test-target-data-shard84.zip"],
@@ -4010,14 +2308,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?84-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard84",
-    src: ":art-run-test-target-data-shard84-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard84.zip",
 }
 
 java_genrule {
@@ -4031,14 +2321,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard85",
-    src: ":art-run-test-target-data-shard85-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard85.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard86-tmp",
     out: ["art-run-test-target-data-shard86.zip"],
@@ -4048,14 +2330,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?86-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard86",
-    src: ":art-run-test-target-data-shard86-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard86.zip",
 }
 
 java_genrule {
@@ -4069,14 +2343,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard87",
-    src: ":art-run-test-target-data-shard87-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard87.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard88-tmp",
     out: ["art-run-test-target-data-shard88.zip"],
@@ -4086,14 +2352,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?88-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard88",
-    src: ":art-run-test-target-data-shard88-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard88.zip",
 }
 
 java_genrule {
@@ -4107,14 +2365,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard89",
-    src: ":art-run-test-target-data-shard89-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard89.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard90-tmp",
     out: ["art-run-test-target-data-shard90.zip"],
@@ -4124,14 +2374,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?90-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard90",
-    src: ":art-run-test-target-data-shard90-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard90.zip",
 }
 
 java_genrule {
@@ -4145,14 +2387,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard91",
-    src: ":art-run-test-target-data-shard91-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard91.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard92-tmp",
     out: ["art-run-test-target-data-shard92.zip"],
@@ -4162,14 +2396,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?92-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard92",
-    src: ":art-run-test-target-data-shard92-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard92.zip",
 }
 
 java_genrule {
@@ -4183,14 +2409,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard93",
-    src: ":art-run-test-target-data-shard93-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard93.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard94-tmp",
     out: ["art-run-test-target-data-shard94.zip"],
@@ -4200,14 +2418,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?94-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard94",
-    src: ":art-run-test-target-data-shard94-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard94.zip",
 }
 
 java_genrule {
@@ -4221,14 +2431,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard95",
-    src: ":art-run-test-target-data-shard95-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard95.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard96-tmp",
     out: ["art-run-test-target-data-shard96.zip"],
@@ -4238,14 +2440,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?96-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard96",
-    src: ":art-run-test-target-data-shard96-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard96.zip",
 }
 
 java_genrule {
@@ -4259,14 +2453,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard97",
-    src: ":art-run-test-target-data-shard97-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard97.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shard98-tmp",
     out: ["art-run-test-target-data-shard98.zip"],
@@ -4276,14 +2462,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode target --test-dir-regex 'art/test/..?98-' $(in)",
     defaults: ["art-run-test-target-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard98",
-    src: ":art-run-test-target-data-shard98-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard98.zip",
 }
 
 java_genrule {
@@ -4297,14 +2475,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shard99",
-    src: ":art-run-test-target-data-shard99-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shard99.zip",
-}
-
 java_genrule {
     name: "art-run-test-target-data-shardHiddenApi-tmp",
     out: ["art-run-test-target-data-shardHiddenApi.zip"],
@@ -4315,14 +2485,6 @@ java_genrule {
     defaults: ["art-run-test-target-data-defaults"],
     tools: ["hiddenapi"],
     cmd: TEST_BUILD_COMMON_ARGS + "--hiddenapi $(location hiddenapi) --mode target --test-dir-regex 'art/test/....?-[^/]*hiddenapi' $(in)",
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-shardHiddenApi",
-    src: ":art-run-test-target-data-shardHiddenApi-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-target-data-shardHiddenApi.zip",
 }
 
 genrule_defaults {
@@ -4468,117 +2630,6 @@ java_genrule {
     cmd: "$(location merge_zips) $(out) $(in)",
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-target-data-merged",
-    src: ":art-run-test-target-data-merged-tmp",
-    required: [
-        "art-run-test-target-data-shard00",
-        "art-run-test-target-data-shard01",
-        "art-run-test-target-data-shard02",
-        "art-run-test-target-data-shard03",
-        "art-run-test-target-data-shard04",
-        "art-run-test-target-data-shard05",
-        "art-run-test-target-data-shard06",
-        "art-run-test-target-data-shard07",
-        "art-run-test-target-data-shard08",
-        "art-run-test-target-data-shard09",
-        "art-run-test-target-data-shard10",
-        "art-run-test-target-data-shard11",
-        "art-run-test-target-data-shard12",
-        "art-run-test-target-data-shard13",
-        "art-run-test-target-data-shard14",
-        "art-run-test-target-data-shard15",
-        "art-run-test-target-data-shard16",
-        "art-run-test-target-data-shard17",
-        "art-run-test-target-data-shard18",
-        "art-run-test-target-data-shard19",
-        "art-run-test-target-data-shard20",
-        "art-run-test-target-data-shard21",
-        "art-run-test-target-data-shard22",
-        "art-run-test-target-data-shard23",
-        "art-run-test-target-data-shard24",
-        "art-run-test-target-data-shard25",
-        "art-run-test-target-data-shard26",
-        "art-run-test-target-data-shard27",
-        "art-run-test-target-data-shard28",
-        "art-run-test-target-data-shard29",
-        "art-run-test-target-data-shard30",
-        "art-run-test-target-data-shard31",
-        "art-run-test-target-data-shard32",
-        "art-run-test-target-data-shard33",
-        "art-run-test-target-data-shard34",
-        "art-run-test-target-data-shard35",
-        "art-run-test-target-data-shard36",
-        "art-run-test-target-data-shard37",
-        "art-run-test-target-data-shard38",
-        "art-run-test-target-data-shard39",
-        "art-run-test-target-data-shard40",
-        "art-run-test-target-data-shard41",
-        "art-run-test-target-data-shard42",
-        "art-run-test-target-data-shard43",
-        "art-run-test-target-data-shard44",
-        "art-run-test-target-data-shard45",
-        "art-run-test-target-data-shard46",
-        "art-run-test-target-data-shard47",
-        "art-run-test-target-data-shard48",
-        "art-run-test-target-data-shard49",
-        "art-run-test-target-data-shard50",
-        "art-run-test-target-data-shard51",
-        "art-run-test-target-data-shard52",
-        "art-run-test-target-data-shard53",
-        "art-run-test-target-data-shard54",
-        "art-run-test-target-data-shard55",
-        "art-run-test-target-data-shard56",
-        "art-run-test-target-data-shard57",
-        "art-run-test-target-data-shard58",
-        "art-run-test-target-data-shard59",
-        "art-run-test-target-data-shard60",
-        "art-run-test-target-data-shard61",
-        "art-run-test-target-data-shard62",
-        "art-run-test-target-data-shard63",
-        "art-run-test-target-data-shard64",
-        "art-run-test-target-data-shard65",
-        "art-run-test-target-data-shard66",
-        "art-run-test-target-data-shard67",
-        "art-run-test-target-data-shard68",
-        "art-run-test-target-data-shard69",
-        "art-run-test-target-data-shard70",
-        "art-run-test-target-data-shard71",
-        "art-run-test-target-data-shard72",
-        "art-run-test-target-data-shard73",
-        "art-run-test-target-data-shard74",
-        "art-run-test-target-data-shard75",
-        "art-run-test-target-data-shard76",
-        "art-run-test-target-data-shard77",
-        "art-run-test-target-data-shard78",
-        "art-run-test-target-data-shard79",
-        "art-run-test-target-data-shard80",
-        "art-run-test-target-data-shard81",
-        "art-run-test-target-data-shard82",
-        "art-run-test-target-data-shard83",
-        "art-run-test-target-data-shard84",
-        "art-run-test-target-data-shard85",
-        "art-run-test-target-data-shard86",
-        "art-run-test-target-data-shard87",
-        "art-run-test-target-data-shard88",
-        "art-run-test-target-data-shard89",
-        "art-run-test-target-data-shard90",
-        "art-run-test-target-data-shard91",
-        "art-run-test-target-data-shard92",
-        "art-run-test-target-data-shard93",
-        "art-run-test-target-data-shard94",
-        "art-run-test-target-data-shard95",
-        "art-run-test-target-data-shard96",
-        "art-run-test-target-data-shard97",
-        "art-run-test-target-data-shard98",
-        "art-run-test-target-data-shard99",
-        "art-run-test-target-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-target-data-merged.zip",
-}
-
 // Phony target used to build all shards
 java_genrule {
     name: "art-run-test-target-data-tmp",
@@ -4689,117 +2740,6 @@ java_genrule {
     cmd: "echo $(in) > $(out)",
 }
 
-// Phony target used to install all shards
-prebuilt_etc_host {
-    name: "art-run-test-target-data",
-    src: ":art-run-test-target-data-tmp",
-    required: [
-        "art-run-test-target-data-shard00",
-        "art-run-test-target-data-shard01",
-        "art-run-test-target-data-shard02",
-        "art-run-test-target-data-shard03",
-        "art-run-test-target-data-shard04",
-        "art-run-test-target-data-shard05",
-        "art-run-test-target-data-shard06",
-        "art-run-test-target-data-shard07",
-        "art-run-test-target-data-shard08",
-        "art-run-test-target-data-shard09",
-        "art-run-test-target-data-shard10",
-        "art-run-test-target-data-shard11",
-        "art-run-test-target-data-shard12",
-        "art-run-test-target-data-shard13",
-        "art-run-test-target-data-shard14",
-        "art-run-test-target-data-shard15",
-        "art-run-test-target-data-shard16",
-        "art-run-test-target-data-shard17",
-        "art-run-test-target-data-shard18",
-        "art-run-test-target-data-shard19",
-        "art-run-test-target-data-shard20",
-        "art-run-test-target-data-shard21",
-        "art-run-test-target-data-shard22",
-        "art-run-test-target-data-shard23",
-        "art-run-test-target-data-shard24",
-        "art-run-test-target-data-shard25",
-        "art-run-test-target-data-shard26",
-        "art-run-test-target-data-shard27",
-        "art-run-test-target-data-shard28",
-        "art-run-test-target-data-shard29",
-        "art-run-test-target-data-shard30",
-        "art-run-test-target-data-shard31",
-        "art-run-test-target-data-shard32",
-        "art-run-test-target-data-shard33",
-        "art-run-test-target-data-shard34",
-        "art-run-test-target-data-shard35",
-        "art-run-test-target-data-shard36",
-        "art-run-test-target-data-shard37",
-        "art-run-test-target-data-shard38",
-        "art-run-test-target-data-shard39",
-        "art-run-test-target-data-shard40",
-        "art-run-test-target-data-shard41",
-        "art-run-test-target-data-shard42",
-        "art-run-test-target-data-shard43",
-        "art-run-test-target-data-shard44",
-        "art-run-test-target-data-shard45",
-        "art-run-test-target-data-shard46",
-        "art-run-test-target-data-shard47",
-        "art-run-test-target-data-shard48",
-        "art-run-test-target-data-shard49",
-        "art-run-test-target-data-shard50",
-        "art-run-test-target-data-shard51",
-        "art-run-test-target-data-shard52",
-        "art-run-test-target-data-shard53",
-        "art-run-test-target-data-shard54",
-        "art-run-test-target-data-shard55",
-        "art-run-test-target-data-shard56",
-        "art-run-test-target-data-shard57",
-        "art-run-test-target-data-shard58",
-        "art-run-test-target-data-shard59",
-        "art-run-test-target-data-shard60",
-        "art-run-test-target-data-shard61",
-        "art-run-test-target-data-shard62",
-        "art-run-test-target-data-shard63",
-        "art-run-test-target-data-shard64",
-        "art-run-test-target-data-shard65",
-        "art-run-test-target-data-shard66",
-        "art-run-test-target-data-shard67",
-        "art-run-test-target-data-shard68",
-        "art-run-test-target-data-shard69",
-        "art-run-test-target-data-shard70",
-        "art-run-test-target-data-shard71",
-        "art-run-test-target-data-shard72",
-        "art-run-test-target-data-shard73",
-        "art-run-test-target-data-shard74",
-        "art-run-test-target-data-shard75",
-        "art-run-test-target-data-shard76",
-        "art-run-test-target-data-shard77",
-        "art-run-test-target-data-shard78",
-        "art-run-test-target-data-shard79",
-        "art-run-test-target-data-shard80",
-        "art-run-test-target-data-shard81",
-        "art-run-test-target-data-shard82",
-        "art-run-test-target-data-shard83",
-        "art-run-test-target-data-shard84",
-        "art-run-test-target-data-shard85",
-        "art-run-test-target-data-shard86",
-        "art-run-test-target-data-shard87",
-        "art-run-test-target-data-shard88",
-        "art-run-test-target-data-shard89",
-        "art-run-test-target-data-shard90",
-        "art-run-test-target-data-shard91",
-        "art-run-test-target-data-shard92",
-        "art-run-test-target-data-shard93",
-        "art-run-test-target-data-shard94",
-        "art-run-test-target-data-shard95",
-        "art-run-test-target-data-shard96",
-        "art-run-test-target-data-shard97",
-        "art-run-test-target-data-shard98",
-        "art-run-test-target-data-shard99",
-        "art-run-test-target-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-target-data.txt",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard00-tmp",
     out: ["art-run-test-jvm-data-shard00.zip"],
@@ -4809,14 +2749,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?00-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard00",
-    src: ":art-run-test-jvm-data-shard00-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard00.zip",
 }
 
 java_genrule {
@@ -4830,14 +2762,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard01",
-    src: ":art-run-test-jvm-data-shard01-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard01.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard02-tmp",
     out: ["art-run-test-jvm-data-shard02.zip"],
@@ -4847,14 +2771,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?02-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard02",
-    src: ":art-run-test-jvm-data-shard02-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard02.zip",
 }
 
 java_genrule {
@@ -4868,14 +2784,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard03",
-    src: ":art-run-test-jvm-data-shard03-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard03.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard04-tmp",
     out: ["art-run-test-jvm-data-shard04.zip"],
@@ -4885,14 +2793,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?04-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard04",
-    src: ":art-run-test-jvm-data-shard04-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard04.zip",
 }
 
 java_genrule {
@@ -4906,14 +2806,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard05",
-    src: ":art-run-test-jvm-data-shard05-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard05.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard06-tmp",
     out: ["art-run-test-jvm-data-shard06.zip"],
@@ -4923,14 +2815,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?06-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard06",
-    src: ":art-run-test-jvm-data-shard06-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard06.zip",
 }
 
 java_genrule {
@@ -4944,14 +2828,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard07",
-    src: ":art-run-test-jvm-data-shard07-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard07.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard08-tmp",
     out: ["art-run-test-jvm-data-shard08.zip"],
@@ -4961,14 +2837,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?08-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard08",
-    src: ":art-run-test-jvm-data-shard08-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard08.zip",
 }
 
 java_genrule {
@@ -4982,14 +2850,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard09",
-    src: ":art-run-test-jvm-data-shard09-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard09.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard10-tmp",
     out: ["art-run-test-jvm-data-shard10.zip"],
@@ -4999,14 +2859,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?10-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard10",
-    src: ":art-run-test-jvm-data-shard10-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard10.zip",
 }
 
 java_genrule {
@@ -5020,14 +2872,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard11",
-    src: ":art-run-test-jvm-data-shard11-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard11.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard12-tmp",
     out: ["art-run-test-jvm-data-shard12.zip"],
@@ -5037,14 +2881,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?12-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard12",
-    src: ":art-run-test-jvm-data-shard12-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard12.zip",
 }
 
 java_genrule {
@@ -5058,14 +2894,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard13",
-    src: ":art-run-test-jvm-data-shard13-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard13.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard14-tmp",
     out: ["art-run-test-jvm-data-shard14.zip"],
@@ -5075,14 +2903,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?14-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard14",
-    src: ":art-run-test-jvm-data-shard14-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard14.zip",
 }
 
 java_genrule {
@@ -5096,14 +2916,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard15",
-    src: ":art-run-test-jvm-data-shard15-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard15.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard16-tmp",
     out: ["art-run-test-jvm-data-shard16.zip"],
@@ -5113,14 +2925,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?16-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard16",
-    src: ":art-run-test-jvm-data-shard16-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard16.zip",
 }
 
 java_genrule {
@@ -5134,14 +2938,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard17",
-    src: ":art-run-test-jvm-data-shard17-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard17.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard18-tmp",
     out: ["art-run-test-jvm-data-shard18.zip"],
@@ -5151,14 +2947,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?18-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard18",
-    src: ":art-run-test-jvm-data-shard18-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard18.zip",
 }
 
 java_genrule {
@@ -5172,14 +2960,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard19",
-    src: ":art-run-test-jvm-data-shard19-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard19.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard20-tmp",
     out: ["art-run-test-jvm-data-shard20.zip"],
@@ -5189,14 +2969,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?20-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard20",
-    src: ":art-run-test-jvm-data-shard20-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard20.zip",
 }
 
 java_genrule {
@@ -5210,14 +2982,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard21",
-    src: ":art-run-test-jvm-data-shard21-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard21.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard22-tmp",
     out: ["art-run-test-jvm-data-shard22.zip"],
@@ -5227,14 +2991,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?22-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard22",
-    src: ":art-run-test-jvm-data-shard22-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard22.zip",
 }
 
 java_genrule {
@@ -5248,14 +3004,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard23",
-    src: ":art-run-test-jvm-data-shard23-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard23.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard24-tmp",
     out: ["art-run-test-jvm-data-shard24.zip"],
@@ -5265,14 +3013,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?24-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard24",
-    src: ":art-run-test-jvm-data-shard24-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard24.zip",
 }
 
 java_genrule {
@@ -5286,14 +3026,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard25",
-    src: ":art-run-test-jvm-data-shard25-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard25.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard26-tmp",
     out: ["art-run-test-jvm-data-shard26.zip"],
@@ -5303,14 +3035,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?26-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard26",
-    src: ":art-run-test-jvm-data-shard26-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard26.zip",
 }
 
 java_genrule {
@@ -5324,14 +3048,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard27",
-    src: ":art-run-test-jvm-data-shard27-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard27.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard28-tmp",
     out: ["art-run-test-jvm-data-shard28.zip"],
@@ -5341,14 +3057,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?28-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard28",
-    src: ":art-run-test-jvm-data-shard28-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard28.zip",
 }
 
 java_genrule {
@@ -5362,14 +3070,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard29",
-    src: ":art-run-test-jvm-data-shard29-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard29.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard30-tmp",
     out: ["art-run-test-jvm-data-shard30.zip"],
@@ -5379,14 +3079,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?30-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard30",
-    src: ":art-run-test-jvm-data-shard30-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard30.zip",
 }
 
 java_genrule {
@@ -5400,14 +3092,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard31",
-    src: ":art-run-test-jvm-data-shard31-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard31.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard32-tmp",
     out: ["art-run-test-jvm-data-shard32.zip"],
@@ -5417,14 +3101,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?32-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard32",
-    src: ":art-run-test-jvm-data-shard32-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard32.zip",
 }
 
 java_genrule {
@@ -5438,14 +3114,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard33",
-    src: ":art-run-test-jvm-data-shard33-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard33.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard34-tmp",
     out: ["art-run-test-jvm-data-shard34.zip"],
@@ -5455,14 +3123,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?34-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard34",
-    src: ":art-run-test-jvm-data-shard34-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard34.zip",
 }
 
 java_genrule {
@@ -5476,14 +3136,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard35",
-    src: ":art-run-test-jvm-data-shard35-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard35.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard36-tmp",
     out: ["art-run-test-jvm-data-shard36.zip"],
@@ -5493,14 +3145,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?36-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard36",
-    src: ":art-run-test-jvm-data-shard36-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard36.zip",
 }
 
 java_genrule {
@@ -5514,14 +3158,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard37",
-    src: ":art-run-test-jvm-data-shard37-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard37.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard38-tmp",
     out: ["art-run-test-jvm-data-shard38.zip"],
@@ -5531,14 +3167,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?38-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard38",
-    src: ":art-run-test-jvm-data-shard38-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard38.zip",
 }
 
 java_genrule {
@@ -5552,14 +3180,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard39",
-    src: ":art-run-test-jvm-data-shard39-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard39.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard40-tmp",
     out: ["art-run-test-jvm-data-shard40.zip"],
@@ -5569,14 +3189,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?40-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard40",
-    src: ":art-run-test-jvm-data-shard40-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard40.zip",
 }
 
 java_genrule {
@@ -5590,14 +3202,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard41",
-    src: ":art-run-test-jvm-data-shard41-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard41.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard42-tmp",
     out: ["art-run-test-jvm-data-shard42.zip"],
@@ -5607,14 +3211,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?42-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard42",
-    src: ":art-run-test-jvm-data-shard42-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard42.zip",
 }
 
 java_genrule {
@@ -5628,14 +3224,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard43",
-    src: ":art-run-test-jvm-data-shard43-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard43.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard44-tmp",
     out: ["art-run-test-jvm-data-shard44.zip"],
@@ -5645,14 +3233,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?44-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard44",
-    src: ":art-run-test-jvm-data-shard44-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard44.zip",
 }
 
 java_genrule {
@@ -5666,14 +3246,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard45",
-    src: ":art-run-test-jvm-data-shard45-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard45.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard46-tmp",
     out: ["art-run-test-jvm-data-shard46.zip"],
@@ -5683,14 +3255,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?46-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard46",
-    src: ":art-run-test-jvm-data-shard46-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard46.zip",
 }
 
 java_genrule {
@@ -5704,14 +3268,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard47",
-    src: ":art-run-test-jvm-data-shard47-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard47.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard48-tmp",
     out: ["art-run-test-jvm-data-shard48.zip"],
@@ -5721,14 +3277,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?48-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard48",
-    src: ":art-run-test-jvm-data-shard48-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard48.zip",
 }
 
 java_genrule {
@@ -5742,14 +3290,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard49",
-    src: ":art-run-test-jvm-data-shard49-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard49.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard50-tmp",
     out: ["art-run-test-jvm-data-shard50.zip"],
@@ -5759,14 +3299,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?50-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard50",
-    src: ":art-run-test-jvm-data-shard50-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard50.zip",
 }
 
 java_genrule {
@@ -5780,14 +3312,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard51",
-    src: ":art-run-test-jvm-data-shard51-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard51.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard52-tmp",
     out: ["art-run-test-jvm-data-shard52.zip"],
@@ -5797,14 +3321,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?52-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard52",
-    src: ":art-run-test-jvm-data-shard52-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard52.zip",
 }
 
 java_genrule {
@@ -5818,14 +3334,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard53",
-    src: ":art-run-test-jvm-data-shard53-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard53.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard54-tmp",
     out: ["art-run-test-jvm-data-shard54.zip"],
@@ -5835,14 +3343,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?54-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard54",
-    src: ":art-run-test-jvm-data-shard54-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard54.zip",
 }
 
 java_genrule {
@@ -5856,14 +3356,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard55",
-    src: ":art-run-test-jvm-data-shard55-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard55.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard56-tmp",
     out: ["art-run-test-jvm-data-shard56.zip"],
@@ -5873,14 +3365,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?56-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard56",
-    src: ":art-run-test-jvm-data-shard56-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard56.zip",
 }
 
 java_genrule {
@@ -5894,14 +3378,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard57",
-    src: ":art-run-test-jvm-data-shard57-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard57.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard58-tmp",
     out: ["art-run-test-jvm-data-shard58.zip"],
@@ -5911,14 +3387,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?58-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard58",
-    src: ":art-run-test-jvm-data-shard58-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard58.zip",
 }
 
 java_genrule {
@@ -5932,14 +3400,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard59",
-    src: ":art-run-test-jvm-data-shard59-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard59.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard60-tmp",
     out: ["art-run-test-jvm-data-shard60.zip"],
@@ -5949,14 +3409,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?60-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard60",
-    src: ":art-run-test-jvm-data-shard60-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard60.zip",
 }
 
 java_genrule {
@@ -5970,14 +3422,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard61",
-    src: ":art-run-test-jvm-data-shard61-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard61.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard62-tmp",
     out: ["art-run-test-jvm-data-shard62.zip"],
@@ -5987,14 +3431,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?62-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard62",
-    src: ":art-run-test-jvm-data-shard62-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard62.zip",
 }
 
 java_genrule {
@@ -6008,14 +3444,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard63",
-    src: ":art-run-test-jvm-data-shard63-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard63.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard64-tmp",
     out: ["art-run-test-jvm-data-shard64.zip"],
@@ -6025,14 +3453,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?64-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard64",
-    src: ":art-run-test-jvm-data-shard64-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard64.zip",
 }
 
 java_genrule {
@@ -6046,14 +3466,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard65",
-    src: ":art-run-test-jvm-data-shard65-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard65.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard66-tmp",
     out: ["art-run-test-jvm-data-shard66.zip"],
@@ -6063,14 +3475,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?66-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard66",
-    src: ":art-run-test-jvm-data-shard66-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard66.zip",
 }
 
 java_genrule {
@@ -6084,14 +3488,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard67",
-    src: ":art-run-test-jvm-data-shard67-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard67.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard68-tmp",
     out: ["art-run-test-jvm-data-shard68.zip"],
@@ -6101,14 +3497,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?68-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard68",
-    src: ":art-run-test-jvm-data-shard68-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard68.zip",
 }
 
 java_genrule {
@@ -6122,14 +3510,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard69",
-    src: ":art-run-test-jvm-data-shard69-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard69.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard70-tmp",
     out: ["art-run-test-jvm-data-shard70.zip"],
@@ -6139,14 +3519,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?70-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard70",
-    src: ":art-run-test-jvm-data-shard70-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard70.zip",
 }
 
 java_genrule {
@@ -6160,14 +3532,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard71",
-    src: ":art-run-test-jvm-data-shard71-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard71.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard72-tmp",
     out: ["art-run-test-jvm-data-shard72.zip"],
@@ -6177,14 +3541,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?72-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard72",
-    src: ":art-run-test-jvm-data-shard72-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard72.zip",
 }
 
 java_genrule {
@@ -6198,14 +3554,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard73",
-    src: ":art-run-test-jvm-data-shard73-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard73.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard74-tmp",
     out: ["art-run-test-jvm-data-shard74.zip"],
@@ -6215,14 +3563,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?74-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard74",
-    src: ":art-run-test-jvm-data-shard74-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard74.zip",
 }
 
 java_genrule {
@@ -6236,14 +3576,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard75",
-    src: ":art-run-test-jvm-data-shard75-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard75.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard76-tmp",
     out: ["art-run-test-jvm-data-shard76.zip"],
@@ -6253,14 +3585,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?76-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard76",
-    src: ":art-run-test-jvm-data-shard76-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard76.zip",
 }
 
 java_genrule {
@@ -6274,14 +3598,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard77",
-    src: ":art-run-test-jvm-data-shard77-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard77.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard78-tmp",
     out: ["art-run-test-jvm-data-shard78.zip"],
@@ -6291,14 +3607,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?78-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard78",
-    src: ":art-run-test-jvm-data-shard78-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard78.zip",
 }
 
 java_genrule {
@@ -6312,14 +3620,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard79",
-    src: ":art-run-test-jvm-data-shard79-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard79.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard80-tmp",
     out: ["art-run-test-jvm-data-shard80.zip"],
@@ -6329,14 +3629,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?80-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard80",
-    src: ":art-run-test-jvm-data-shard80-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard80.zip",
 }
 
 java_genrule {
@@ -6350,14 +3642,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard81",
-    src: ":art-run-test-jvm-data-shard81-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard81.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard82-tmp",
     out: ["art-run-test-jvm-data-shard82.zip"],
@@ -6367,14 +3651,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?82-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard82",
-    src: ":art-run-test-jvm-data-shard82-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard82.zip",
 }
 
 java_genrule {
@@ -6388,14 +3664,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard83",
-    src: ":art-run-test-jvm-data-shard83-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard83.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard84-tmp",
     out: ["art-run-test-jvm-data-shard84.zip"],
@@ -6405,14 +3673,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?84-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard84",
-    src: ":art-run-test-jvm-data-shard84-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard84.zip",
 }
 
 java_genrule {
@@ -6426,14 +3686,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard85",
-    src: ":art-run-test-jvm-data-shard85-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard85.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard86-tmp",
     out: ["art-run-test-jvm-data-shard86.zip"],
@@ -6443,14 +3695,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?86-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard86",
-    src: ":art-run-test-jvm-data-shard86-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard86.zip",
 }
 
 java_genrule {
@@ -6464,14 +3708,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard87",
-    src: ":art-run-test-jvm-data-shard87-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard87.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard88-tmp",
     out: ["art-run-test-jvm-data-shard88.zip"],
@@ -6481,14 +3717,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?88-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard88",
-    src: ":art-run-test-jvm-data-shard88-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard88.zip",
 }
 
 java_genrule {
@@ -6502,14 +3730,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard89",
-    src: ":art-run-test-jvm-data-shard89-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard89.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard90-tmp",
     out: ["art-run-test-jvm-data-shard90.zip"],
@@ -6519,14 +3739,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?90-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard90",
-    src: ":art-run-test-jvm-data-shard90-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard90.zip",
 }
 
 java_genrule {
@@ -6540,14 +3752,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard91",
-    src: ":art-run-test-jvm-data-shard91-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard91.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard92-tmp",
     out: ["art-run-test-jvm-data-shard92.zip"],
@@ -6557,14 +3761,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?92-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard92",
-    src: ":art-run-test-jvm-data-shard92-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard92.zip",
 }
 
 java_genrule {
@@ -6578,14 +3774,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard93",
-    src: ":art-run-test-jvm-data-shard93-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard93.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard94-tmp",
     out: ["art-run-test-jvm-data-shard94.zip"],
@@ -6595,14 +3783,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?94-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard94",
-    src: ":art-run-test-jvm-data-shard94-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard94.zip",
 }
 
 java_genrule {
@@ -6616,14 +3796,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard95",
-    src: ":art-run-test-jvm-data-shard95-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard95.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard96-tmp",
     out: ["art-run-test-jvm-data-shard96.zip"],
@@ -6633,14 +3805,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?96-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard96",
-    src: ":art-run-test-jvm-data-shard96-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard96.zip",
 }
 
 java_genrule {
@@ -6654,14 +3818,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard97",
-    src: ":art-run-test-jvm-data-shard97-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard97.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shard98-tmp",
     out: ["art-run-test-jvm-data-shard98.zip"],
@@ -6671,14 +3827,6 @@ java_genrule {
     ],
     cmd: TEST_BUILD_COMMON_ARGS + "--mode jvm --test-dir-regex 'art/test/..?98-' $(in)",
     defaults: ["art-run-test-jvm-data-defaults"],
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard98",
-    src: ":art-run-test-jvm-data-shard98-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard98.zip",
 }
 
 java_genrule {
@@ -6692,14 +3840,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shard99",
-    src: ":art-run-test-jvm-data-shard99-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shard99.zip",
-}
-
 java_genrule {
     name: "art-run-test-jvm-data-shardHiddenApi-tmp",
     out: ["art-run-test-jvm-data-shardHiddenApi.zip"],
@@ -6710,14 +3850,6 @@ java_genrule {
     defaults: ["art-run-test-jvm-data-defaults"],
     tools: ["hiddenapi"],
     cmd: TEST_BUILD_COMMON_ARGS + "--hiddenapi $(location hiddenapi) --mode jvm --test-dir-regex 'art/test/....?-[^/]*hiddenapi' $(in)",
-}
-
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-shardHiddenApi",
-    src: ":art-run-test-jvm-data-shardHiddenApi-tmp",
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-shardHiddenApi.zip",
 }
 
 genrule_defaults {
@@ -6863,117 +3995,6 @@ java_genrule {
     cmd: "$(location merge_zips) $(out) $(in)",
 }
 
-// Install in the output directory to make it accessible for tests.
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data-merged",
-    src: ":art-run-test-jvm-data-merged-tmp",
-    required: [
-        "art-run-test-jvm-data-shard00",
-        "art-run-test-jvm-data-shard01",
-        "art-run-test-jvm-data-shard02",
-        "art-run-test-jvm-data-shard03",
-        "art-run-test-jvm-data-shard04",
-        "art-run-test-jvm-data-shard05",
-        "art-run-test-jvm-data-shard06",
-        "art-run-test-jvm-data-shard07",
-        "art-run-test-jvm-data-shard08",
-        "art-run-test-jvm-data-shard09",
-        "art-run-test-jvm-data-shard10",
-        "art-run-test-jvm-data-shard11",
-        "art-run-test-jvm-data-shard12",
-        "art-run-test-jvm-data-shard13",
-        "art-run-test-jvm-data-shard14",
-        "art-run-test-jvm-data-shard15",
-        "art-run-test-jvm-data-shard16",
-        "art-run-test-jvm-data-shard17",
-        "art-run-test-jvm-data-shard18",
-        "art-run-test-jvm-data-shard19",
-        "art-run-test-jvm-data-shard20",
-        "art-run-test-jvm-data-shard21",
-        "art-run-test-jvm-data-shard22",
-        "art-run-test-jvm-data-shard23",
-        "art-run-test-jvm-data-shard24",
-        "art-run-test-jvm-data-shard25",
-        "art-run-test-jvm-data-shard26",
-        "art-run-test-jvm-data-shard27",
-        "art-run-test-jvm-data-shard28",
-        "art-run-test-jvm-data-shard29",
-        "art-run-test-jvm-data-shard30",
-        "art-run-test-jvm-data-shard31",
-        "art-run-test-jvm-data-shard32",
-        "art-run-test-jvm-data-shard33",
-        "art-run-test-jvm-data-shard34",
-        "art-run-test-jvm-data-shard35",
-        "art-run-test-jvm-data-shard36",
-        "art-run-test-jvm-data-shard37",
-        "art-run-test-jvm-data-shard38",
-        "art-run-test-jvm-data-shard39",
-        "art-run-test-jvm-data-shard40",
-        "art-run-test-jvm-data-shard41",
-        "art-run-test-jvm-data-shard42",
-        "art-run-test-jvm-data-shard43",
-        "art-run-test-jvm-data-shard44",
-        "art-run-test-jvm-data-shard45",
-        "art-run-test-jvm-data-shard46",
-        "art-run-test-jvm-data-shard47",
-        "art-run-test-jvm-data-shard48",
-        "art-run-test-jvm-data-shard49",
-        "art-run-test-jvm-data-shard50",
-        "art-run-test-jvm-data-shard51",
-        "art-run-test-jvm-data-shard52",
-        "art-run-test-jvm-data-shard53",
-        "art-run-test-jvm-data-shard54",
-        "art-run-test-jvm-data-shard55",
-        "art-run-test-jvm-data-shard56",
-        "art-run-test-jvm-data-shard57",
-        "art-run-test-jvm-data-shard58",
-        "art-run-test-jvm-data-shard59",
-        "art-run-test-jvm-data-shard60",
-        "art-run-test-jvm-data-shard61",
-        "art-run-test-jvm-data-shard62",
-        "art-run-test-jvm-data-shard63",
-        "art-run-test-jvm-data-shard64",
-        "art-run-test-jvm-data-shard65",
-        "art-run-test-jvm-data-shard66",
-        "art-run-test-jvm-data-shard67",
-        "art-run-test-jvm-data-shard68",
-        "art-run-test-jvm-data-shard69",
-        "art-run-test-jvm-data-shard70",
-        "art-run-test-jvm-data-shard71",
-        "art-run-test-jvm-data-shard72",
-        "art-run-test-jvm-data-shard73",
-        "art-run-test-jvm-data-shard74",
-        "art-run-test-jvm-data-shard75",
-        "art-run-test-jvm-data-shard76",
-        "art-run-test-jvm-data-shard77",
-        "art-run-test-jvm-data-shard78",
-        "art-run-test-jvm-data-shard79",
-        "art-run-test-jvm-data-shard80",
-        "art-run-test-jvm-data-shard81",
-        "art-run-test-jvm-data-shard82",
-        "art-run-test-jvm-data-shard83",
-        "art-run-test-jvm-data-shard84",
-        "art-run-test-jvm-data-shard85",
-        "art-run-test-jvm-data-shard86",
-        "art-run-test-jvm-data-shard87",
-        "art-run-test-jvm-data-shard88",
-        "art-run-test-jvm-data-shard89",
-        "art-run-test-jvm-data-shard90",
-        "art-run-test-jvm-data-shard91",
-        "art-run-test-jvm-data-shard92",
-        "art-run-test-jvm-data-shard93",
-        "art-run-test-jvm-data-shard94",
-        "art-run-test-jvm-data-shard95",
-        "art-run-test-jvm-data-shard96",
-        "art-run-test-jvm-data-shard97",
-        "art-run-test-jvm-data-shard98",
-        "art-run-test-jvm-data-shard99",
-        "art-run-test-jvm-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data-merged.zip",
-}
-
 // Phony target used to build all shards
 java_genrule {
     name: "art-run-test-jvm-data-tmp",
@@ -7082,115 +4103,4 @@ java_genrule {
         ":art-run-test-jvm-data-shardHiddenApi-tmp",
     ],
     cmd: "echo $(in) > $(out)",
-}
-
-// Phony target used to install all shards
-prebuilt_etc_host {
-    name: "art-run-test-jvm-data",
-    src: ":art-run-test-jvm-data-tmp",
-    required: [
-        "art-run-test-jvm-data-shard00",
-        "art-run-test-jvm-data-shard01",
-        "art-run-test-jvm-data-shard02",
-        "art-run-test-jvm-data-shard03",
-        "art-run-test-jvm-data-shard04",
-        "art-run-test-jvm-data-shard05",
-        "art-run-test-jvm-data-shard06",
-        "art-run-test-jvm-data-shard07",
-        "art-run-test-jvm-data-shard08",
-        "art-run-test-jvm-data-shard09",
-        "art-run-test-jvm-data-shard10",
-        "art-run-test-jvm-data-shard11",
-        "art-run-test-jvm-data-shard12",
-        "art-run-test-jvm-data-shard13",
-        "art-run-test-jvm-data-shard14",
-        "art-run-test-jvm-data-shard15",
-        "art-run-test-jvm-data-shard16",
-        "art-run-test-jvm-data-shard17",
-        "art-run-test-jvm-data-shard18",
-        "art-run-test-jvm-data-shard19",
-        "art-run-test-jvm-data-shard20",
-        "art-run-test-jvm-data-shard21",
-        "art-run-test-jvm-data-shard22",
-        "art-run-test-jvm-data-shard23",
-        "art-run-test-jvm-data-shard24",
-        "art-run-test-jvm-data-shard25",
-        "art-run-test-jvm-data-shard26",
-        "art-run-test-jvm-data-shard27",
-        "art-run-test-jvm-data-shard28",
-        "art-run-test-jvm-data-shard29",
-        "art-run-test-jvm-data-shard30",
-        "art-run-test-jvm-data-shard31",
-        "art-run-test-jvm-data-shard32",
-        "art-run-test-jvm-data-shard33",
-        "art-run-test-jvm-data-shard34",
-        "art-run-test-jvm-data-shard35",
-        "art-run-test-jvm-data-shard36",
-        "art-run-test-jvm-data-shard37",
-        "art-run-test-jvm-data-shard38",
-        "art-run-test-jvm-data-shard39",
-        "art-run-test-jvm-data-shard40",
-        "art-run-test-jvm-data-shard41",
-        "art-run-test-jvm-data-shard42",
-        "art-run-test-jvm-data-shard43",
-        "art-run-test-jvm-data-shard44",
-        "art-run-test-jvm-data-shard45",
-        "art-run-test-jvm-data-shard46",
-        "art-run-test-jvm-data-shard47",
-        "art-run-test-jvm-data-shard48",
-        "art-run-test-jvm-data-shard49",
-        "art-run-test-jvm-data-shard50",
-        "art-run-test-jvm-data-shard51",
-        "art-run-test-jvm-data-shard52",
-        "art-run-test-jvm-data-shard53",
-        "art-run-test-jvm-data-shard54",
-        "art-run-test-jvm-data-shard55",
-        "art-run-test-jvm-data-shard56",
-        "art-run-test-jvm-data-shard57",
-        "art-run-test-jvm-data-shard58",
-        "art-run-test-jvm-data-shard59",
-        "art-run-test-jvm-data-shard60",
-        "art-run-test-jvm-data-shard61",
-        "art-run-test-jvm-data-shard62",
-        "art-run-test-jvm-data-shard63",
-        "art-run-test-jvm-data-shard64",
-        "art-run-test-jvm-data-shard65",
-        "art-run-test-jvm-data-shard66",
-        "art-run-test-jvm-data-shard67",
-        "art-run-test-jvm-data-shard68",
-        "art-run-test-jvm-data-shard69",
-        "art-run-test-jvm-data-shard70",
-        "art-run-test-jvm-data-shard71",
-        "art-run-test-jvm-data-shard72",
-        "art-run-test-jvm-data-shard73",
-        "art-run-test-jvm-data-shard74",
-        "art-run-test-jvm-data-shard75",
-        "art-run-test-jvm-data-shard76",
-        "art-run-test-jvm-data-shard77",
-        "art-run-test-jvm-data-shard78",
-        "art-run-test-jvm-data-shard79",
-        "art-run-test-jvm-data-shard80",
-        "art-run-test-jvm-data-shard81",
-        "art-run-test-jvm-data-shard82",
-        "art-run-test-jvm-data-shard83",
-        "art-run-test-jvm-data-shard84",
-        "art-run-test-jvm-data-shard85",
-        "art-run-test-jvm-data-shard86",
-        "art-run-test-jvm-data-shard87",
-        "art-run-test-jvm-data-shard88",
-        "art-run-test-jvm-data-shard89",
-        "art-run-test-jvm-data-shard90",
-        "art-run-test-jvm-data-shard91",
-        "art-run-test-jvm-data-shard92",
-        "art-run-test-jvm-data-shard93",
-        "art-run-test-jvm-data-shard94",
-        "art-run-test-jvm-data-shard95",
-        "art-run-test-jvm-data-shard96",
-        "art-run-test-jvm-data-shard97",
-        "art-run-test-jvm-data-shard98",
-        "art-run-test-jvm-data-shard99",
-        "art-run-test-jvm-data-shardHiddenApi",
-    ],
-    sub_dir: "art",
-    filename: "art-run-test-jvm-data.txt",
 }
