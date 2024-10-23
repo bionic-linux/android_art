@@ -22,6 +22,30 @@
       },
       "revId": "623410c93e3768843017a9c72697fea739397d2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a38af5f_e58f0d81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-23T14:57:02Z",
+      "side": 1,
+      "message": "Good catch! Fixed in PS2.",
+      "parentUuid": "4e004b00_efdb4c82",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 1
+      },
+      "revId": "623410c93e3768843017a9c72697fea739397d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
