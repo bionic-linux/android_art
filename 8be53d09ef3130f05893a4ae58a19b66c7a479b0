@@ -22,6 +22,30 @@
       },
       "revId": "8be53d09ef3130f05893a4ae58a19b66c7a479b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032d3d11_895c2692",
+        "filename": "runtime/arch/riscv64/jni_entrypoints_riscv64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-23T14:37:28Z",
+      "side": 1,
+      "message": "Thanks for posting the error, I\u0027ve created https://android-review.googlesource.com/c/platform/art/+/3315517 to reland this.",
+      "parentUuid": "7ad844e1_d40ac925",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "8be53d09ef3130f05893a4ae58a19b66c7a479b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
