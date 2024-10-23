@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "720275c1_9e8f03fe",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-23T08:39:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ef1793a6_fc49c9de",
+      "range": {
+        "startLine": 360,
+        "startChar": 22,
+        "endLine": 360,
+        "endChar": 46
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47dc4f53_2a19f8a2",
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "If you really want to check the `ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT` first and still not lose the `ART_METHOD_IS_INTRINSIC_FLAG_BIT` (to avoid the reload) and you don\u0027t want to clobber another register either, this can be achieved by expanding the `BRANCH_IF_BIT_CLEAR` and replacing the SLLI with ROLI. The second bit shall be found in a different position but it shall not be lost.\n\nBut I\u0027d prefer to reorder the checks and use BLTZ.\n\nAnyway, we can leave that for later and submit this CL as is.",
       "parentUuid": "23065119_d9c349a3",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 71
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9799a2c3_02627901",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-23T08:39:38Z",
+      "side": 1,
+      "message": "Ack, I can optimize risc-v in a follow-up CL",
+      "parentUuid": "595ccd1f_c6a87990",
       "range": {
         "startLine": 252,
         "startChar": 4,
