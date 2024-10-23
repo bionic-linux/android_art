@@ -18,6 +18,7 @@
 
 #include <algorithm>
 
+#include "art_field-inl.h"
 #include "base/bit_utils.h"
 #include "base/casts.h"
 #include "base/logging.h"
@@ -25,6 +26,7 @@
 #include "intrinsics_enum.h"
 #include "optimizing/data_type.h"
 #include "optimizing/nodes.h"
+#include "scoped_thread_state_change-inl.h"
 
 namespace art HIDDEN {
 
@@ -53,6 +55,8 @@ class HConstantFoldingVisitor final : public HGraphDelegateVisitor {
   void VisitIf(HIf* inst) override;
   void VisitInvoke(HInvoke* inst) override;
   void VisitTypeConversion(HTypeConversion* inst) override;
+
+  void VisitStaticFieldGet(HStaticFieldGet* instruction) override;
 
   void PropagateValue(HBasicBlock* starting_block, HInstruction* variable, HConstant* constant);
 
@@ -627,6 +631,23 @@ void HConstantFoldingVisitor::VisitTypeConversion(HTypeConversion* inst) {
     select->UpdateType();
     inst->ReplaceWith(select);
     inst->GetBlock()->RemoveInstruction(inst);
+  }
+}
+
+static bool IsSDK_INT(HStaticFieldGet* instruction) {
+  ArtField* field = instruction->GetFieldInfo().GetField();
+  if (!field->IsPublic() || !field->IsFinal()) {
+    return false;
+  }
+  ScopedObjectAccess soa(Thread::Current());
+  return field->GetDeclaringClass()->DescriptorEquals("Landroid/os/Build$VERSION;") &&
+         field->GetNameView() == "SDK_INT";
+}
+
+void HConstantFoldingVisitor::VisitStaticFieldGet(HStaticFieldGet* instruction) {
+  if (IsSDK_INT(instruction)) {
+    instruction->ReplaceWith(GetGraph()->GetIntConstant(35));
+    instruction->GetBlock()->RemoveInstruction(instruction);
   }
 }
 
