@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1793a6_fc49c9de",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-23T07:07:33Z",
+      "side": 1,
+      "message": "Thinking about this again, this is about the `ArtMethod`, not about the compiled code, right? And even for \"jitzygote\", the zygote puts that `ArtMethod` in the in-memory boot image (calling `dex2oat` with `memfd` file descriptors). So, we could add a note about this but I do not think it\u0027s necessary.\n\nOnly non-standard execution without any boot image at all is missing the memory shared `ArtMethod` and even that case benefits from making intrinsics immediately hot, so that they can be JITted.\n\nAs far as actual code is concerned, no further changes are needed; intrinsics should be treated as memory shared.",
+      "parentUuid": "1abac55c_79f68fbf",
+      "range": {
+        "startLine": 360,
+        "startChar": 22,
+        "endLine": 360,
+        "endChar": 46
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47dc4f53_2a19f8a2",
         "filename": "runtime/interpreter/mterp/armng/main.S",
         "patchSetId": 9
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "We had a talk with Nicolas yesterday about reordering these checks (In a previous patchset I was checking first the ART_METHOD_IS_INTRINSIC_FLAG bit). The conclusion was to land an implementation that wouldn\u0027t be more costly for the regular methods and treat the memory shared / intrinsic methods as the slow path.\n\nIn that sense, I think the `orns+bmi` should be faster than the 4 instructions but I am not sure it will be faster that `tst+beq` for the regular instructions.\n\nWDYT about leaving the checks as-is?",
       "parentUuid": "47dc4f53_2a19f8a2",
+      "range": {
+        "startLine": 1545,
+        "startChar": 4,
+        "endLine": 1549,
+        "endChar": 15
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22ad0eb_5d3a34c9",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-23T07:07:33Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "35b2a481_78ca12c9",
       "range": {
         "startLine": 1545,
         "startChar": 4,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Same as above regarding the order of the checks.",
       "parentUuid": "3900c5c1_4dbd6914",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 71
+      },
+      "revId": "6334a76d52347d19760d86d3f2de5cb61504d75a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595ccd1f_c6a87990",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-23T07:07:33Z",
+      "side": 1,
+      "message": "If you really want to check the `ART_METHOD_IS_MEMORY_SHARED_FLAG_BIT` first and still not lose the `ART_METHOD_IS_INTRINSIC_FLAG_BIT` (to avoid the reload) and you don\u0027t want to clobber another register either, this can be achieved by expanding the `BRANCH_IF_BIT_CLEAR` and replacing the SLLI with ROLI. The second bit shall be found in a different position but it shall not be lost.\n\nBut I\u0027d prefer to reorder the checks and use BLTZ.\n\nAnyway, we can leave that for later and submit this CL as is.",
+      "parentUuid": "23065119_d9c349a3",
       "range": {
         "startLine": 252,
         "startChar": 4,
