@@ -16,6 +16,24 @@
       "message": "nit: there\u0027s no need to mention this is a fallthrough",
       "revId": "7818248c5400f046022cfdaecd46d01b1ae39b5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f87a1b_ec48ea5a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4274,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-23T10:06:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aded7ad1_aba29d22",
+      "revId": "7818248c5400f046022cfdaecd46d01b1ae39b5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
