@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad844e1_d40ac925",
+        "filename": "runtime/arch/riscv64/jni_entrypoints_riscv64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-23T06:48:12Z",
+      "side": 1,
+      "message": "This change was reverted because of this error:\n\n    ld.lld: error: out/soong/.intermediates/art/test/libart-gtest/android_riscv64_static_lto-none/libart-gtest.a(jni_entrypoints_riscv64.o):(.text+0x8): relocation R_RISCV_JAL out of range: -1396552 is not in [-1048576, 1048575]; references \u0027art_jni_dlsym_lookup_stub\u0027\n\nPlease apply the same workaround as for arm64 to reland the change.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "8be53d09ef3130f05893a4ae58a19b66c7a479b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
