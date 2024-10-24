@@ -126,6 +126,24 @@
       "parentUuid": "ded14ff4_8b52bbd9",
       "revId": "d0bc68e1f40259230329e6709c72af187f72144c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bea3a8a_b8c68eb7",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-10-24T20:02:08Z",
+      "side": 1,
+      "message": "@vmarko@google.com please take a look.",
+      "parentUuid": "854e6141_db2a8210",
+      "revId": "d0bc68e1f40259230329e6709c72af187f72144c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
