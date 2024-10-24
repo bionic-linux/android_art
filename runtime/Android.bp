@@ -172,6 +172,7 @@ cc_defaults {
     ],
     export_shared_lib_headers: [
         "libdexfile",
+        "libprofile",
     ],
 }
 
@@ -188,6 +189,7 @@ cc_defaults {
     ],
     export_shared_lib_headers: [
         "libdexfiled",
+        "libprofiled",
     ],
 }
 

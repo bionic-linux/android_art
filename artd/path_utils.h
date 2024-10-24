@@ -96,6 +96,10 @@ android::base::Result<std::string> BuildProfileOrDmPath(
 android::base::Result<std::string> BuildVdexPath(
     const aidl::com::android::server::art::VdexPath& vdex_path);
 
+android::base::Result<std::string> BuildProfileSaveNotificationPath(const std::string& package_name,
+                                                                    int user_id,
+                                                                    int pid);
+
 // Takes an argument of type `WritableProfilePath`. Returns the pre-reboot flag by value if the
 // argument is const, or by reference otherwise.
 template <typename T,
