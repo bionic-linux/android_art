@@ -16,9 +16,11 @@
 
 package com.android.server.art;
 
+import static android.app.ActivityManager.RunningAppProcessInfo;
 import static android.os.ParcelFileDescriptor.AutoCloseInputStream;
 
 import static com.android.server.art.DexUseManagerLocal.CheckedSecondaryDexInfo;
+import static com.android.server.art.ProfilePath.PrimaryCurProfilePath;
 import static com.android.server.art.model.DexoptResult.DexContainerFileDexoptResult;
 import static com.android.server.art.model.DexoptResult.PackageDexoptResult;
 import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptStatus;
@@ -37,6 +39,7 @@ import static org.mockito.Mockito.anyBoolean;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.argThat;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.isNull;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
@@ -46,6 +49,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.app.ActivityManager;
 import android.apphibernation.AppHibernationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -58,6 +62,7 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
+import android.system.OsConstants;
 
 import androidx.test.filters.SmallTest;
 
@@ -88,6 +93,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 
 import java.io.File;
@@ -120,6 +126,7 @@ public class ArtManagerLocalTest {
             CURRENT_TIME_MS - TimeUnit.DAYS.toMillis(INACTIVE_DAYS) + 1;
     private static final long NOT_RECENT_TIME_MS =
             CURRENT_TIME_MS - TimeUnit.DAYS.toMillis(INACTIVE_DAYS) - 1;
+    private static final int APP_ID = 1000;
 
     @Rule
     public StaticMockitoRule mockitoRule = new StaticMockitoRule(
@@ -140,6 +147,7 @@ public class ArtManagerLocalTest {
     @Mock private Context mContext;
     @Mock private PreRebootDexoptJob mPreRebootDexoptJob;
     @Mock private PreRebootStatsReporter.Injector mPreRebootStatsReporterInjector;
+    @Mock private ActivityManager mActivityManager;
     private PackageState mPkgState1;
     private AndroidPackage mPkg1;
     private CheckedSecondaryDexInfo mPkg1SecondaryDexInfo1;
@@ -188,6 +196,7 @@ public class ArtManagerLocalTest {
                 .when(mInjector.getPreRebootStatsReporter())
                 .thenAnswer(
                         invocation -> new PreRebootStatsReporter(mPreRebootStatsReporterInjector));
+        lenient().when(mInjector.getActivityManager()).thenReturn(mActivityManager);
 
         lenient().when(mArtFileManagerInjector.getArtd()).thenReturn(mArtd);
         lenient().when(mArtFileManagerInjector.getUserManager()).thenReturn(mUserManager);
@@ -1466,6 +1475,58 @@ public class ArtManagerLocalTest {
         verify(mContext, never()).registerReceiver(any(), any());
     }
 
+    @Test
+    public void testFlushProfiles() throws Exception {
+        when(mInjector.getCallingUserHandle()).thenReturn(UserHandle.of(0));
+        when(mActivityManager.getRunningAppProcesses())
+                .thenReturn(
+                        List.of(createProcessInfo(1000 /* pid */, "com.example.foo",
+                                        UserHandle.of(0).getUid(APP_ID), new String[] {PKG_NAME_1},
+                                        RunningAppProcessInfo.IMPORTANCE_FOREGROUND),
+                                createProcessInfo(1001 /* pid */, "com.example.foo:service1",
+                                        UserHandle.of(0).getUid(APP_ID), new String[] {PKG_NAME_1},
+                                        RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE),
+                                createProcessInfo(1002 /* pid */, "com.example.foo:service2",
+                                        UserHandle.of(0).getUid(APP_ID), new String[] {PKG_NAME_1},
+                                        RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE)),
+                        // A process goes away later.
+                        List.of(createProcessInfo(1000 /* pid */, "com.example.foo",
+                                        UserHandle.of(0).getUid(APP_ID), new String[] {PKG_NAME_1},
+                                        RunningAppProcessInfo.IMPORTANCE_FOREGROUND),
+                                createProcessInfo(1001 /* pid */, "com.example.foo:service1",
+                                        UserHandle.of(0).getUid(APP_ID), new String[] {PKG_NAME_1},
+                                        RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE)));
+
+        PrimaryCurProfilePath profilePath = AidlUtils.buildPrimaryCurProfilePath(
+                0 /* userId */, PKG_NAME_1, PrimaryDexUtils.getProfileName(null /* splitName */));
+
+        var notification1 = mock(IArtdNotification.class);
+        var notification2 = mock(IArtdNotification.class);
+        var notification3 = mock(IArtdNotification.class);
+        doReturn(notification1)
+                .when(mArtd)
+                .initProfileSaveNotification(deepEq(profilePath), eq(1000) /* pid */);
+        doReturn(notification2)
+                .when(mArtd)
+                .initProfileSaveNotification(deepEq(profilePath), eq(1001) /* pid */);
+        doReturn(notification3)
+                .when(mArtd)
+                .initProfileSaveNotification(deepEq(profilePath), eq(1002) /* pid */);
+        when(notification1.wait(anyInt())).thenReturn(true);
+        when(notification2.wait(anyInt())).thenReturn(true);
+
+        assertThat(mArtManagerLocal.flushProfiles(mSnapshot, PKG_NAME_1)).isTrue();
+
+        InOrder inOrder = inOrder(mInjector, notification1, notification2);
+        inOrder.verify(mInjector).kill(1000 /* pid */, OsConstants.SIGUSR1);
+        inOrder.verify(notification1).wait(1000 /* timeoutMs */);
+        inOrder.verify(mInjector).kill(1001 /* pid */, OsConstants.SIGUSR1);
+        inOrder.verify(notification2).wait(1000 /* timeoutMs */);
+
+        verify(mInjector, never()).kill(1002 /* pid */, OsConstants.SIGUSR1);
+        verify(notification3, never()).wait(anyInt());
+    }
+
     private AndroidPackage createPackage(boolean multiSplit) {
         AndroidPackage pkg = mock(AndroidPackage.class);
 
@@ -1507,6 +1568,7 @@ public class ArtManagerLocalTest {
         lenient().when(pkgState.getPackageName()).thenReturn(packageName);
         lenient().when(pkgState.getPrimaryCpuAbi()).thenReturn("arm64-v8a");
         lenient().when(pkgState.getSecondaryCpuAbi()).thenReturn("armeabi-v7a");
+        lenient().when(pkgState.getAppId()).thenReturn(APP_ID);
 
         AndroidPackage pkg = createPackage(multiSplit);
         lenient().when(pkgState.getAndroidPackage()).thenReturn(pkg);
@@ -1573,5 +1635,13 @@ public class ArtManagerLocalTest {
         lenient()
                 .when(mStorageManager.getAllocatableBytes(any()))
                 .thenReturn(ArtManagerLocal.DOWNGRADE_THRESHOLD_ABOVE_LOW_BYTES);
+    }
+
+    private RunningAppProcessInfo createProcessInfo(
+            int pid, String processName, int uid, String[] pkgList, int importance) {
+        var info = new RunningAppProcessInfo(processName, pid, pkgList);
+        info.uid = uid;
+        info.importance = importance;
+        return info;
     }
 }
