@@ -411,17 +411,13 @@ TEST_F(RegTypeReferenceTest, UnresolvedUnintializedType) {
   EXPECT_TRUE(ref_type_0.IsUnresolvedReference());
   const RegType& ref_type = cache.FromDescriptor("Ljava/lang/DoesNotExist;");
   EXPECT_TRUE(ref_type_0.Equals(ref_type));
-  // Create an uninitialized type of this unresolved type
-  const RegType& unresolved_unintialised = cache.Uninitialized(ref_type, 1101ull);
+  // Create an uninitialized type of this unresolved type.
+  const RegType& unresolved_unintialised = cache.Uninitialized(ref_type);
   EXPECT_TRUE(unresolved_unintialised.IsUnresolvedAndUninitializedReference());
   EXPECT_TRUE(unresolved_unintialised.IsUninitializedTypes());
   EXPECT_TRUE(unresolved_unintialised.IsNonZeroReferenceTypes());
-  // Create an uninitialized type of this unresolved type with different  PC
-  const RegType& ref_type_unresolved_unintialised_1 =  cache.Uninitialized(ref_type, 1102ull);
-  EXPECT_TRUE(unresolved_unintialised.IsUnresolvedAndUninitializedReference());
-  EXPECT_FALSE(unresolved_unintialised.Equals(ref_type_unresolved_unintialised_1));
-  // Create an uninitialized type of this unresolved type with the same PC
-  const RegType& unresolved_unintialised_2 = cache.Uninitialized(ref_type, 1101ull);
+  // Create an another uninitialized type of this unresolved type.
+  const RegType& unresolved_unintialised_2 = cache.Uninitialized(ref_type);
   EXPECT_TRUE(unresolved_unintialised.Equals(unresolved_unintialised_2));
 }
 
@@ -434,8 +430,8 @@ TEST_F(RegTypeReferenceTest, Dump) {
   const RegType& unresolved_ref = cache.FromDescriptor("Ljava/lang/DoesNotExist;");
   const RegType& unresolved_ref_another = cache.FromDescriptor("Ljava/lang/DoesNotExistEither;");
   const RegType& resolved_ref = cache.JavaLangString();
-  const RegType& resolved_unintialiesd = cache.Uninitialized(resolved_ref, 10);
-  const RegType& unresolved_unintialized = cache.Uninitialized(unresolved_ref, 12);
+  const RegType& resolved_unintialiesd = cache.Uninitialized(resolved_ref);
+  const RegType& unresolved_unintialized = cache.Uninitialized(unresolved_ref);
   const RegType& unresolved_merged = cache.FromUnresolvedMerge(
       unresolved_ref, unresolved_ref_another, /* verifier= */ nullptr);
 
@@ -443,9 +439,9 @@ TEST_F(RegTypeReferenceTest, Dump) {
   EXPECT_EQ(expected, unresolved_ref.Dump());
   expected = "Reference: java.lang.String";
   EXPECT_EQ(expected, resolved_ref.Dump());
-  expected ="Uninitialized Reference: java.lang.String Allocation PC: 10";
+  expected ="Uninitialized Reference: java.lang.String";
   EXPECT_EQ(expected, resolved_unintialiesd.Dump());
-  expected = "Unresolved And Uninitialized Reference: java.lang.DoesNotExist Allocation PC: 12";
+  expected = "Unresolved And Uninitialized Reference: java.lang.DoesNotExist";
   EXPECT_EQ(expected, unresolved_unintialized.Dump());
   expected = "UnresolvedMergedReferences(Zero/null | Unresolved Reference: java.lang.DoesNotExist, Unresolved Reference: java.lang.DoesNotExistEither)";
   EXPECT_EQ(expected, unresolved_merged.Dump());
@@ -468,7 +464,7 @@ TEST_F(RegTypeReferenceTest, JavalangString) {
   EXPECT_TRUE(ref_type.IsReference());
 
   // Create an uninitialized type out of this:
-  const RegType& ref_type_unintialized = cache.Uninitialized(ref_type, 0110ull);
+  const RegType& ref_type_unintialized = cache.Uninitialized(ref_type);
   EXPECT_TRUE(ref_type_unintialized.IsUninitializedReference());
   EXPECT_FALSE(ref_type_unintialized.IsUnresolvedAndUninitializedReference());
 }
@@ -747,20 +743,19 @@ TEST_F(RegTypeTest, MergeSemiLatticeRef) {
   ASSERT_TRUE(unresolved_ab.IsUnresolvedMergedReference());
 
   const RegType& uninit_this = cache.UninitializedThisArgument(obj);
-  const RegType& uninit_obj_0 = cache.Uninitialized(obj, 0u);
-  const RegType& uninit_obj_1 = cache.Uninitialized(obj, 1u);
+  const RegType& uninit_obj = cache.Uninitialized(obj);
 
   const RegType& uninit_unres_this = cache.UninitializedThisArgument(unresolved_a);
-  const RegType& uninit_unres_a_0 = cache.Uninitialized(unresolved_a, 0);
-  const RegType& uninit_unres_b_0 = cache.Uninitialized(unresolved_b, 0);
+  const RegType& uninit_unres_a = cache.Uninitialized(unresolved_a);
+  const RegType& uninit_unres_b = cache.Uninitialized(unresolved_b);
 
   const RegType& number = cache.FromDescriptor("Ljava/lang/Number;");
   ASSERT_FALSE(number.IsUnresolvedReference());
   const RegType& integer = cache.FromDescriptor("Ljava/lang/Integer;");
   ASSERT_FALSE(integer.IsUnresolvedReference());
 
-  const RegType& uninit_number_0 = cache.Uninitialized(number, 0u);
-  const RegType& uninit_integer_0 = cache.Uninitialized(integer, 0u);
+  const RegType& uninit_number = cache.Uninitialized(number);
+  const RegType& uninit_integer = cache.Uninitialized(integer);
 
   const RegType& number_arr = cache.FromDescriptor("[Ljava/lang/Number;");
   ASSERT_FALSE(number_arr.IsUnresolvedReference());
@@ -789,7 +784,7 @@ TEST_F(RegTypeTest, MergeSemiLatticeRef) {
   const RegType& unresolved_ab_int = cache.FromUnresolvedMerge(unresolved_ab, integer, nullptr);
   ASSERT_TRUE(unresolved_ab_int.IsUnresolvedMergedReference());
   std::vector<const RegType*> uninitialized_types = {
-      &uninit_this, &uninit_obj_0, &uninit_obj_1, &uninit_number_0, &uninit_integer_0
+      &uninit_this, &uninit_obj, &uninit_number, &uninit_integer
   };
   std::vector<const RegType*> unresolved_types = {
       &unresolved_a,
@@ -803,7 +798,7 @@ TEST_F(RegTypeTest, MergeSemiLatticeRef) {
       &unresolved_ab_int
   };
   std::vector<const RegType*> uninit_unresolved_types = {
-      &uninit_unres_this, &uninit_unres_a_0, &uninit_unres_b_0
+      &uninit_unres_this, &uninit_unres_a, &uninit_unres_b
   };
   std::vector<const RegType*> plain_nonobj_classes = { &number, &integer };
   std::vector<const RegType*> plain_nonobj_arr_classes = {
