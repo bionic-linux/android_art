@@ -16,6 +16,8 @@
 
 package com.android.server.art;
 
+import static android.app.ActivityManager.RunningAppProcessInfo;
+
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.Mockito.eq;
@@ -23,7 +25,9 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import android.app.ActivityManager;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.util.SparseArray;
 
 import androidx.test.filters.SmallTest;
@@ -219,5 +223,60 @@ public class UtilsTest {
         assertThat(Utils.pathStartsWith("/a", "/")).isTrue();
         assertThat(Utils.pathStartsWith("/", "/")).isTrue();
         assertThat(Utils.pathStartsWith("/", "/a")).isFalse();
+    }
+
+    @Test
+    public void TestGetRunningPidsForPackage() throws Exception {
+        String packageName1 = "com.example.foo";
+        String packageName2 = "com.example.bar";
+        PackageState pkgState1 = createPackageState(packageName1, 10000 /* appId */);
+
+        var am = mock(ActivityManager.class);
+        when(am.getRunningAppProcesses())
+                .thenReturn(List.of(createProcessInfo(1000 /* pid */, "com.example.foo",
+                                            UserHandle.of(0).getUid(10000),
+                                            new String[] {packageName1, packageName2},
+                                            RunningAppProcessInfo.IMPORTANCE_FOREGROUND),
+                        createProcessInfo(1001 /* pid */, "com.example.foo:service1",
+                                UserHandle.of(0).getUid(10000), new String[] {packageName1},
+                                RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE),
+                        createProcessInfo(1002 /* pid */, "random-name",
+                                UserHandle.of(0).getUid(10000),
+                                new String[] {packageName2, packageName1},
+                                RunningAppProcessInfo.IMPORTANCE_SERVICE),
+                        // Wrong importance.
+                        createProcessInfo(1003 /* pid */, "com.example.foo",
+                                UserHandle.of(0).getUid(10000),
+                                new String[] {packageName2, packageName1},
+                                RunningAppProcessInfo.IMPORTANCE_CACHED),
+                        // User 1.
+                        createProcessInfo(1004 /* pid */, "com.example.foo",
+                                UserHandle.of(1).getUid(10000),
+                                new String[] {packageName1, packageName2},
+                                RunningAppProcessInfo.IMPORTANCE_FOREGROUND),
+                        // Wrong package (the process name doesn't matter).
+                        createProcessInfo(1005 /* pid */, "com.example.foo",
+                                UserHandle.of(0).getUid(10000), new String[] {packageName2},
+                                RunningAppProcessInfo.IMPORTANCE_FOREGROUND)));
+
+        assertThat(Utils.getRunningPidsForPackage(am, pkgState1, UserHandle.of(0)))
+                .containsExactly(1000, 1001, 1002);
+        assertThat(Utils.getRunningPidsForPackage(am, pkgState1, UserHandle.of(1)))
+                .containsExactly(1004);
+    }
+
+    private RunningAppProcessInfo createProcessInfo(
+            int pid, String processName, int uid, String[] pkgList, int importance) {
+        var info = new RunningAppProcessInfo(processName, pid, pkgList);
+        info.uid = uid;
+        info.importance = importance;
+        return info;
+    }
+
+    private PackageState createPackageState(String packageName, int appId) {
+        PackageState pkgState = mock(PackageState.class);
+        lenient().when(pkgState.getPackageName()).thenReturn(packageName);
+        lenient().when(pkgState.getAppId()).thenReturn(appId);
+        return pkgState;
     }
 }
