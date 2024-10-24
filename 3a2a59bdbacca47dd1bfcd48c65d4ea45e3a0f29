@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "080c5692_476ffcdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-24T14:10:11Z",
+      "side": 1,
+      "message": "You\u0027re right, I over-simplified this test module\u0027s history here; I provided a better explanation in PS2. Thanks!",
+      "parentUuid": "e8bc9339_7fdeb7ac",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "3a2a59bdbacca47dd1bfcd48c65d4ea45e3a0f29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fdca603f_a534fea8",
         "filename": "test/Android.bp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-24T12:18:43Z",
       "side": 1,
       "message": "Actually this was added specifically for MTS in https://r.android.com/1417409 - device-tests apparently was fine without it. But since this should be going away altogether soon it\u0027s perhaps not worth the risk cleaning it up again.",
+      "range": {
+        "startLine": 1344,
+        "startChar": 74,
+        "endLine": 1344,
+        "endChar": 94
+      },
+      "revId": "3a2a59bdbacca47dd1bfcd48c65d4ea45e3a0f29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a2bae5_52045a45",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-24T14:10:11Z",
+      "side": 1,
+      "message": "Agreed, I thought I\u0027d make minimal changes here, as we plan to deprecate the Testing ART APEX (and this test module) eventually.",
+      "parentUuid": "fdca603f_a534fea8",
       "range": {
         "startLine": 1344,
         "startChar": 74,
