@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!",
       "revId": "0ecd7bf4cb7716c806784f09383e9c3dfcbb714a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304f0cc3_e404fed9",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-24T14:44:07Z",
+      "side": 1,
+      "message": "Why putting them in assembly? Can\u0027t they just be C methods that just return (and then you wouldn\u0027t need the arm64 macro check in thread.cc).",
+      "range": {
+        "startLine": 2555,
+        "startChar": 0,
+        "endLine": 2561,
+        "endChar": 41
+      },
+      "revId": "0ecd7bf4cb7716c806784f09383e9c3dfcbb714a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
