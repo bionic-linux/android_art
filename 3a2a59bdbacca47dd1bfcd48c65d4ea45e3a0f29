@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "11f2f642_44a54cc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-24T14:35:04Z",
+      "side": 1,
+      "message": "Thanks, good to know.",
+      "parentUuid": "080c5692_476ffcdd",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "3a2a59bdbacca47dd1bfcd48c65d4ea45e3a0f29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fdca603f_a534fea8",
         "filename": "test/Android.bp",
         "patchSetId": 1
