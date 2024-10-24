@@ -269,8 +269,7 @@ class Artd : public aidl::com::android::server::art::BnArtd {
                                     int64_t* _aidl_return) override;
 
   ndk::ScopedAStatus initProfileSaveNotification(
-      const std::string& in_packageName,
-      int in_userId,
+      const aidl::com::android::server::art::ProfilePath::PrimaryCurProfilePath& in_profilePath,
       int in_pid,
       std::shared_ptr<aidl::com::android::server::art::IArtdNotification>* _aidl_return) override;
 

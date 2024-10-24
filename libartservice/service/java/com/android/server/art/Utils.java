@@ -16,11 +16,14 @@
 
 package com.android.server.art;
 
+import static android.app.ActivityManager.RunningAppProcessInfo;
+
 import static com.android.server.art.ProfilePath.TmpProfilePath;
 
 import android.R;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.app.ActivityManager;
 import android.app.role.RoleManager;
 import android.apphibernation.AppHibernationManager;
 import android.content.Context;
@@ -33,6 +36,7 @@ import android.os.ServiceSpecificException;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Trace;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -58,6 +62,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -499,6 +504,21 @@ public final class Utils {
             }
         }
         return path.length() == prefixLen || path.charAt(prefixLen) == '/';
+    }
+
+    public static List<Integer> getRunningPidsForPackage(@NonNull ActivityManager am,
+            @NonNull PackageState pkgState, @NonNull UserHandle userHandle) {
+        int uid = userHandle.getUid(pkgState.getAppId());
+        return am.getRunningAppProcesses()
+                .stream()
+                .filter(info -> info.uid == uid)
+                .filter(info
+                        -> Arrays.stream(info.pkgList)
+                                .anyMatch(name -> name.equals(pkgState.getPackageName())))
+                // Filter by importance to only include running processes.
+                .filter(info -> info.importance <= RunningAppProcessInfo.IMPORTANCE_SERVICE)
+                .map(info -> info.pid)
+                .collect(Collectors.toList());
     }
 
     @AutoValue
