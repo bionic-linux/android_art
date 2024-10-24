@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e7a4d2_0691c31b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-24T14:40:29Z",
+      "side": 1,
+      "message": "Add a note here on why.",
+      "revId": "d3a0932bdba51d4b5f24d80eb1c93bb407e12b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
