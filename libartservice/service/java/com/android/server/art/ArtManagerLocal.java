@@ -37,6 +37,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
+import android.app.ActivityManager;
 import android.app.job.JobInfo;
 import android.apphibernation.AppHibernationManager;
 import android.content.BroadcastReceiver;
@@ -54,6 +55,9 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.OsConstants;
 import android.text.TextUtils;
 import android.util.Pair;
 
@@ -1178,6 +1182,60 @@ public final class ArtManagerLocal {
     }
 
     /**
+     * Forces all running processes of the given packages to flush profiles to the disk.
+     *
+     * @return true on success; false on timeout or artd crash.
+     *
+     * @hide
+     */
+    public boolean flushProfiles(
+            @NonNull PackageManagerLocal.FilteredSnapshot snapshot, @NonNull String packageName) {
+        PackageState pkgState = Utils.getPackageStateOrThrow(snapshot, packageName);
+        UserHandle userHandle = mInjector.getCallingUserHandle();
+
+        mCleanupLock.readLock().lock();
+        try (var pin = mInjector.createArtdPin()) {
+            List<Integer> pids = Utils.getRunningPidsForPackage(
+                    mInjector.getActivityManager(), pkgState, userHandle);
+            Map<Integer, IArtdNotification> notifications = new HashMap<>();
+            for (int pid : pids) {
+                try {
+                    IArtdNotification notification =
+                            mInjector.getArtd().initProfileSaveNotification(
+                                    packageName, userHandle.getIdentifier(), pid);
+                    notifications.put(pid, notification);
+                } catch (ServiceSpecificException e) {
+                    AsLog.w("Failed to init profile save notification for pid " + pid, e);
+                }
+            }
+            // Only iterate over pids that are still there.
+            pids = Utils.getRunningPidsForPackage(
+                    mInjector.getActivityManager(), pkgState, userHandle);
+            boolean success = true;
+            for (int pid : pids) {
+                IArtdNotification notification = notifications.get(pid);
+                if (notification == null) {
+                    continue;
+                }
+                // Send signal and wait one by one, to avoid the race among processes on the same
+                // profile file.
+                try {
+                    mInjector.kill(pid, OsConstants.SIGUSR1);
+                    success |= notification.wait(1000 /* timeoutMs */);
+                } catch (ErrnoException | ServiceSpecificException e) {
+                    AsLog.w("Failed to flush profile on pid " + pid, e);
+                }
+            }
+            return success;
+        } catch (RemoteException e) {
+            Utils.logArtdException(e);
+            return false;
+        } finally {
+            mCleanupLock.readLock().unlock();
+        }
+    }
+
+    /**
      * Should be used by {@link BackgroundDexoptJobService} ONLY.
      *
      * @hide
@@ -1566,6 +1624,7 @@ public final class ArtManagerLocal {
             getUserManager();
             getDexUseManager();
             getStorageManager();
+            getActivityManager();
             GlobalInjector.getInstance().checkArtModuleServiceManager();
 
             // `PreRebootDexoptJob` does not depend on external dependencies, so unlike the calls
@@ -1707,6 +1766,23 @@ public final class ArtManagerLocal {
         @NonNull
         public PreRebootStatsReporter getPreRebootStatsReporter() {
             return new PreRebootStatsReporter();
+        }
+
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @NonNull
+        public ActivityManager getActivityManager() {
+            return Objects.requireNonNull(mContext.getSystemService(ActivityManager.class));
+        }
+
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        public void kill(int pid, int signal) throws ErrnoException {
+            Os.kill(pid, signal);
+        }
+
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @NonNull
+        public UserHandle getCallingUserHandle() {
+            return Binder.getCallingUserHandle();
         }
     }
 }
