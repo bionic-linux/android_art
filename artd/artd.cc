@@ -17,7 +17,9 @@
 #include "artd.h"
 
 #include <fcntl.h>
+#include <sys/inotify.h>
 #include <sys/mount.h>
+#include <sys/poll.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -48,6 +50,7 @@
 #include "aidl/com/android/server/art/BnArtd.h"
 #include "aidl/com/android/server/art/DexoptTrigger.h"
 #include "aidl/com/android/server/art/IArtdCancellationSignal.h"
+#include "aidl/com/android/server/art/IArtdNotification.h"
 #include "android-base/errors.h"
 #include "android-base/file.h"
 #include "android-base/logging.h"
@@ -55,6 +58,7 @@
 #include "android-base/result.h"
 #include "android-base/scopeguard.h"
 #include "android-base/strings.h"
+#include "android-base/unique_fd.h"
 #include "android/binder_auto_utils.h"
 #include "android/binder_interface_utils.h"
 #include "android/binder_manager.h"
@@ -68,6 +72,7 @@
 #include "base/mem_map.h"
 #include "base/memfd.h"
 #include "base/os.h"
+#include "base/pidfd.h"
 #include "base/zip_archive.h"
 #include "cmdline_types.h"
 #include "dex/dex_file_loader.h"
@@ -102,6 +107,7 @@ using ::aidl::com::android::server::art::FsPermission;
 using ::aidl::com::android::server::art::GetDexoptNeededResult;
 using ::aidl::com::android::server::art::GetDexoptStatusResult;
 using ::aidl::com::android::server::art::IArtdCancellationSignal;
+using ::aidl::com::android::server::art::IArtdNotification;
 using ::aidl::com::android::server::art::MergeProfileOptions;
 using ::aidl::com::android::server::art::OutputArtifacts;
 using ::aidl::com::android::server::art::OutputProfile;
@@ -120,6 +126,7 @@ using ::android::base::Result;
 using ::android::base::Split;
 using ::android::base::Tokenize;
 using ::android::base::Trim;
+using ::android::base::unique_fd;
 using ::android::base::WriteStringToFd;
 using ::android::base::WriteStringToFile;
 using ::android::fs_mgr::FstabEntry;
@@ -1403,6 +1410,116 @@ ScopedAStatus Artd::getProfileSize(const ProfilePath& in_profile, int64_t* _aidl
   std::string profile_path = OR_RETURN_FATAL(BuildProfileOrDmPath(in_profile));
   *_aidl_return = GetSize(profile_path).value_or(0);
   return ScopedAStatus::ok();
+}
+
+ScopedAStatus Artd::initProfileSaveNotification(const std::string& in_packageName,
+                                                int in_userId,
+                                                int in_pid,
+                                                std::shared_ptr<IArtdNotification>* _aidl_return) {
+  RETURN_FATAL_IF_PRE_REBOOT(options_);
+
+  // We use a file as a notification mechanism. The profile saver in the app's runtime deletes the
+  // file to indicate that the profile save is done.
+  std::string path =
+      OR_RETURN_FATAL(BuildProfileSaveNotificationPath(in_packageName, in_userId, in_pid));
+
+  std::unique_ptr<File> file(OS::OpenFileWithFlags(path.c_str(), O_WRONLY | O_CREAT | O_CLOEXEC));
+  file->MarkUnchecked();  // Nothing to write.
+  if (file == nullptr) {
+    return NonFatal(
+        ART_FORMAT("Failed to create or open notification file '{}': {}", path, strerror(errno)));
+  }
+  auto file_cleanup = make_scope_guard([&] { file->Unlink(); });
+
+  unique_fd inotify_fd(inotify_init1(IN_NONBLOCK | IN_CLOEXEC));
+  if (inotify_fd < 0) {
+    return NonFatal(ART_FORMAT("Failed to inotify_init1: {}", strerror(errno)));
+  }
+
+  std::string fd_path = ART_FORMAT("/proc/self/fd/{}", file->Fd());
+  int wd = inotify_add_watch(inotify_fd, fd_path.c_str(), IN_DELETE_SELF);
+  if (wd < 0) {
+    return NonFatal(ART_FORMAT(
+        "Failed to inotify_add_watch '{}' for '{}': {}", fd_path, path, strerror(errno)));
+  }
+
+  unique_fd pidfd = PidfdOpen(in_pid, /*flags=*/0);
+  if (pidfd < 0) {
+    if (errno == ESRCH) {
+      // The process has gone now.
+      LOG(INFO) << ART_FORMAT("Process exited without sending notification '{}'", path);
+      *_aidl_return = ndk::SharedRefBase::make<ArtdNotification>();
+      return ScopedAStatus::ok();
+    }
+    return NonFatal(ART_FORMAT("Failed to pidfd_open {}: {}", in_pid, strerror(errno)));
+  }
+
+  file_cleanup.Disable();
+  *_aidl_return =
+      ndk::SharedRefBase::make<ArtdNotification>(path, std::move(inotify_fd), std::move(pidfd));
+  // `file` is intentionally closed after the return. This is done to make `unlink` result in the
+  // deletion of the inode, to trigger `IN_DELETE_SELF`.
+  return ScopedAStatus::ok();
+}
+
+ScopedAStatus ArtdNotification::wait(int in_timeoutMs, bool* _aidl_return) {
+  auto cleanup = make_scope_guard([&, this] { CleanUp(); });
+
+  if (!mu_.try_lock()) {
+    return Fatal("`wait` can be called only once");
+  }
+  std::lock_guard<std::mutex> lock(mu_, std::adopt_lock);
+  LOG(INFO) << ART_FORMAT("Waiting for notification '{}'", path_);
+
+  if (is_called_) {
+    return Fatal("`wait` can be called only once");
+  }
+  is_called_ = true;
+
+  if (done_) {
+    *_aidl_return = true;
+    return ScopedAStatus::ok();
+  }
+
+  struct pollfd pollfds[2]{
+      {.fd = inotify_fd_.get(), .events = POLLIN},
+      {.fd = pidfd_.get(), .events = POLLIN},
+  };
+  int ret = TEMP_FAILURE_RETRY(poll(pollfds, /*nfds=*/2, in_timeoutMs));
+  if (ret < 0) {
+    return NonFatal(
+        ART_FORMAT("Failed to poll to wait for notification '{}': {}", path_, strerror(errno)));
+  }
+  if (ret == 0) {
+    LOG(INFO) << ART_FORMAT("Timed out while waiting for notification '{}'", path_);
+    *_aidl_return = false;
+    return ScopedAStatus::ok();
+  }
+  if ((pollfds[0].revents & POLLIN) != 0) {
+    LOG(INFO) << ART_FORMAT("Received notification '{}'", path_);
+    *_aidl_return = true;
+    return ScopedAStatus::ok();
+  }
+  if ((pollfds[1].revents & POLLIN) != 0) {
+    LOG(INFO) << ART_FORMAT("Process exited without sending notification '{}'", path_);
+    *_aidl_return = true;
+    return ScopedAStatus::ok();
+  }
+
+  LOG(FATAL) << "Unreachable code";
+  UNREACHABLE();
+}
+
+ArtdNotification::~ArtdNotification() { CleanUp(); }
+
+void ArtdNotification::CleanUp() {
+  std::lock_guard<std::mutex> lock(mu_);
+  // This deletion takes place if the process has exited or a timeout occured. It may be interpreted
+  // by another listener as a notification, but that's fine because in either case, it's rarely
+  // useful for another listener to wait longer.
+  DeleteFile(path_);
+  inotify_fd_.reset();
+  pidfd_.reset();
 }
 
 ScopedAStatus Artd::commitPreRebootStagedFiles(const std::vector<ArtifactsPath>& in_artifacts,

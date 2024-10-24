@@ -35,8 +35,10 @@
 
 #include "aidl/com/android/server/art/BnArtd.h"
 #include "aidl/com/android/server/art/BnArtdCancellationSignal.h"
+#include "aidl/com/android/server/art/BnArtdNotification.h"
 #include "android-base/result.h"
 #include "android-base/thread_annotations.h"
+#include "android-base/unique_fd.h"
 #include "android/binder_auto_utils.h"
 #include "base/os.h"
 #include "exec_utils.h"
@@ -83,6 +85,32 @@ class ArtdCancellationSignal : public aidl::com::android::server::art::BnArtdCan
   std::unordered_set<pid_t> pids_ GUARDED_BY(mu_);
 
   std::function<int(pid_t, int)> kill_;
+};
+
+class ArtdNotification : public aidl::com::android::server::art::BnArtdNotification {
+ public:
+  ArtdNotification() : done_(true) {}
+  ArtdNotification(const std::string& path,
+                   android::base::unique_fd&& inotify_fd,
+                   android::base::unique_fd&& pidfd)
+      : path_(std::move(path)),
+        inotify_fd_(std::move(inotify_fd)),
+        pidfd_(std::move(pidfd)),
+        done_(false) {}
+
+  ndk::ScopedAStatus wait(int in_timeoutMs, bool* _aidl_return) EXCLUDES(mu_) override;
+
+  virtual ~ArtdNotification();
+
+ private:
+  void CleanUp() EXCLUDES(mu_);
+
+  std::mutex mu_;
+  std::string path_ GUARDED_BY(mu_);
+  android::base::unique_fd inotify_fd_ GUARDED_BY(mu_);
+  android::base::unique_fd pidfd_ GUARDED_BY(mu_);
+  bool done_ GUARDED_BY(mu_);
+  bool is_called_ GUARDED_BY(mu_) = false;
 };
 
 class Artd : public aidl::com::android::server::art::BnArtd {
@@ -227,6 +255,12 @@ class Artd : public aidl::com::android::server::art::BnArtd {
 
   ndk::ScopedAStatus getProfileSize(const aidl::com::android::server::art::ProfilePath& in_profile,
                                     int64_t* _aidl_return) override;
+
+  ndk::ScopedAStatus initProfileSaveNotification(
+      const std::string& in_packageName,
+      int in_userId,
+      int in_pid,
+      std::shared_ptr<aidl::com::android::server::art::IArtdNotification>* _aidl_return) override;
 
   ndk::ScopedAStatus commitPreRebootStagedFiles(
       const std::vector<aidl::com::android::server::art::ArtifactsPath>& in_artifacts,
