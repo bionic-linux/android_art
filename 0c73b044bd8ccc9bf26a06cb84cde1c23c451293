@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df746d2f_9c8cc3a3",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-24T14:35:12Z",
+      "side": 1,
+      "message": "Replace with `IsSameDexFile` ?",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 63
+      },
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32e2125_447f1fe1",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-24T14:35:12Z",
+      "side": 1,
+      "message": "`IsSameDexFile`.",
+      "range": {
+        "startLine": 219,
+        "startChar": 32,
+        "endLine": 219,
+        "endChar": 65
+      },
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f2df66_ab828cee",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-24T14:35:12Z",
+      "side": 1,
+      "message": "Maybe having a `if (kIsDebugBuild) { ... } else { ... }` would make things easier to read?",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8ba144a7_c949ace4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/verifier/reg_type_cache.cc",
+              "range": {
+                "startLine": 222,
+                "startChar": 0,
+                "endLine": 223,
+                "endChar": 0
+              },
+              "replacement": "    std::optional\u003cStackHandleScope\u003c1u\u003e\u003e hs;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
