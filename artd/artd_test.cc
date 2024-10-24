@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
 
 #include <algorithm>
 #include <chrono>
@@ -350,8 +349,7 @@ class ArtdTest : public CommonArtTest {
                                            std::move(mock_exec_utils),
                                            mock_kill_.AsStdFunction(),
                                            mock_fstat_.AsStdFunction(),
-                                           mock_poll_.AsStdFunction(),
-                                           mock_read_.AsStdFunction());
+                                           mock_poll_.AsStdFunction());
     scratch_dir_ = std::make_unique<ScratchDir>();
     scratch_path_ = scratch_dir_->GetPath();
     // Remove the trailing '/';
@@ -544,7 +542,6 @@ class ArtdTest : public CommonArtTest {
   MockFunction<remove_noexcept_t<decltype(kill)>> mock_kill_;
   MockFunction<remove_noexcept_t<decltype(fstat)>> mock_fstat_;
   MockFunction<remove_noexcept_t<decltype(poll)>> mock_poll_;
-  MockFunction<remove_noexcept_t<decltype(read)>> mock_read_;
 
   std::string dex_file_;
   std::string isa_;
@@ -2560,7 +2557,7 @@ class ArtdProfileSaveNotificationTest : public ArtdTest {
   const PrimaryCurProfilePath profile_path_{
       .userId = 0,
       .packageName = "com.android.foo",
-      .profileName = "primary.prof",
+      .profileName = "primary",
   };
   std::string notification_file_;
   int pid_;
@@ -2568,22 +2565,42 @@ class ArtdProfileSaveNotificationTest : public ArtdTest {
 };
 
 TEST_F(ArtdProfileSaveNotificationTest, initAndWaitSuccess) {
-  EXPECT_CALL(mock_poll_, Call).WillRepeatedly(poll);
-  EXPECT_CALL(mock_read_, Call).Times(2).WillRepeatedly(read);
+  constexpr std::chrono::duration<int> kTimeout = std::chrono::seconds(1);
+  std::condition_variable wait_started_cv;
+  std::mutex mu;
+
+  EXPECT_CALL(mock_poll_, Call)
+      .Times(2)
+      .WillRepeatedly(DoAll(
+          [&](auto, auto, auto) {
+            // Step 3, 5.
+            std::unique_lock<std::mutex> lock(mu);
+            wait_started_cv.notify_one();
+          },
+          poll));
 
   std::shared_ptr<IArtdNotification> notification;
   ASSERT_STATUS_OK(artd_->initProfileSaveNotification(profile_path_, pid_, &notification));
 
+  std::unique_lock<std::mutex> lock(mu);
+
+  // Step 1.
   std::thread t([&] {
+    // Step 2.
     bool aidl_return;
     ASSERT_STATUS_OK(notification->wait(/*in_timeoutMs=*/1000, &aidl_return));
+    // Step 7.
     EXPECT_TRUE(aidl_return);
   });
+  wait_started_cv.wait_for(lock, kTimeout);
 
+  // Step 4.
   std::unique_ptr<NewFile> unrelated_file = OR_FAIL(NewFile::Create(
       Dirname(notification_file_) + "/unrelated.prof", FsPermission{.uid = -1, .gid = -1}));
   OR_FAIL(unrelated_file->CommitOrAbandon());
+  wait_started_cv.wait_for(lock, kTimeout);
 
+  // Step 6.
   std::unique_ptr<NewFile> file =
       OR_FAIL(NewFile::Create(notification_file_, FsPermission{.uid = -1, .gid = -1}));
   OR_FAIL(file->CommitOrAbandon());
@@ -2806,7 +2823,6 @@ class ArtdPreRebootTest : public ArtdTest {
                                            mock_kill_.AsStdFunction(),
                                            mock_fstat_.AsStdFunction(),
                                            mock_poll_.AsStdFunction(),
-                                           mock_read_.AsStdFunction(),
                                            mock_mount_.AsStdFunction(),
                                            mock_restorecon_.AsStdFunction(),
                                            pre_reboot_tmp_dir_,

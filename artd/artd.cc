@@ -1451,7 +1451,7 @@ ScopedAStatus Artd::initProfileSaveNotification(const PrimaryCurProfilePath& in_
   }
 
   *_aidl_return = ndk::SharedRefBase::make<ArtdNotification>(
-      poll_, read_, path, std::move(inotify_fd), std::move(pidfd));
+      poll_, path, std::move(inotify_fd), std::move(pidfd));
   return ScopedAStatus::ok();
 }
 
@@ -1497,7 +1497,7 @@ ScopedAStatus ArtdNotification::wait(int in_timeoutMs, bool* _aidl_return) {
       break;
     }
     if ((pollfds[0].revents & POLLIN) != 0) {
-      ssize_t len = TEMP_FAILURE_RETRY(read_(inotify_fd_, buf.get(), kBufSize));
+      ssize_t len = TEMP_FAILURE_RETRY(read(inotify_fd_, buf.get(), kBufSize));
       if (len < 0) {
         return NonFatal(ART_FORMAT(
             "Failed to read inotify fd for notification '{}': {}", path_, strerror(errno)));

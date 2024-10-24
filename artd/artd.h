@@ -96,12 +96,10 @@ class ArtdNotification : public aidl::com::android::server::art::BnArtdNotificat
  public:
   ArtdNotification() : done_(true) {}
   ArtdNotification(std::function<remove_noexcept_t<decltype(poll)>> poll_func,
-                   std::function<remove_noexcept_t<decltype(read)>> read_func,
                    const std::string& path,
                    android::base::unique_fd&& inotify_fd,
                    android::base::unique_fd&& pidfd)
       : poll_(poll_func),
-        read_(read_func),
         path_(std::move(path)),
         inotify_fd_(std::move(inotify_fd)),
         pidfd_(std::move(pidfd)),
@@ -115,7 +113,6 @@ class ArtdNotification : public aidl::com::android::server::art::BnArtdNotificat
   void CleanUp() EXCLUDES(mu_);
 
   const std::function<remove_noexcept_t<decltype(poll)>> poll_;
-  const std::function<remove_noexcept_t<decltype(read)>> read_;
 
   std::mutex mu_;
   std::string path_ GUARDED_BY(mu_);
@@ -134,7 +131,6 @@ class Artd : public aidl::com::android::server::art::BnArtd {
                 std::function<remove_noexcept_t<decltype(kill)>> kill_func = kill,
                 std::function<remove_noexcept_t<decltype(fstat)>> fstat_func = fstat,
                 std::function<remove_noexcept_t<decltype(poll)>> poll_func = poll,
-                std::function<remove_noexcept_t<decltype(read)>> read_func = read,
                 std::function<remove_noexcept_t<decltype(mount)>> mount_func = mount,
                 std::function<decltype(Restorecon)> restorecon_func = Restorecon,
                 std::optional<std::string> pre_reboot_tmp_dir = std::nullopt,
@@ -145,7 +141,6 @@ class Artd : public aidl::com::android::server::art::BnArtd {
         kill_(std::move(kill_func)),
         fstat_(std::move(fstat_func)),
         poll_(std::move(poll_func)),
-        read_(std::move(read_func)),
         mount_(std::move(mount_func)),
         restorecon_(std::move(restorecon_func)),
         pre_reboot_tmp_dir_(std::move(pre_reboot_tmp_dir)),
@@ -376,7 +371,6 @@ class Artd : public aidl::com::android::server::art::BnArtd {
   const std::function<remove_noexcept_t<decltype(kill)>> kill_;
   const std::function<remove_noexcept_t<decltype(fstat)>> fstat_;
   const std::function<remove_noexcept_t<decltype(poll)>> poll_;
-  const std::function<remove_noexcept_t<decltype(read)>> read_;
   const std::function<remove_noexcept_t<decltype(mount)>> mount_;
   const std::function<decltype(Restorecon)> restorecon_;
   const std::optional<std::string> pre_reboot_tmp_dir_;
