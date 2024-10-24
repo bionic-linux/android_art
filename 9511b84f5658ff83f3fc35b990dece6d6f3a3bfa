@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c705a61_b2603f85",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-24T13:20:40Z",
+      "side": 1,
+      "message": "Still can\u0027t get used to the fact that `function(variable)` can change `variable`.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15fe7e5_d83add39",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-24T13:20:40Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 600,
+        "startChar": 54,
+        "endLine": 600,
+        "endChar": 55
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e25b76_a43a5144",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-24T13:20:40Z",
+      "side": 1,
+      "message": "nit: I don\u0027t know what is the style guide (can see both `template\u003c` and `template \u003c`). Wouldn\u0027t be better to keep it aligned with the rest of this file?",
+      "range": {
+        "startLine": 553,
+        "startChar": 10,
+        "endLine": 553,
+        "endChar": 11
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37855370_8457d9ad",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-24T13:20:40Z",
+      "side": 1,
+      "message": "I can\u0027t find uses of \"compare and exchange\" being shortened to CAE. Hope it won\u0027t be confusing (can\u0027t offer better naming anyway, sorry).",
+      "range": {
+        "startLine": 564,
+        "startChar": 10,
+        "endLine": 564,
+        "endChar": 13
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5513a9_0033ce03",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-10-24T13:20:40Z",
+      "side": 1,
+      "message": "This already happens in other methods, but nethertheless: \n\n`offset` is `jlong`. Will this work on 32-bit systems given\n\n```\nconstexpr explicit MemberOffset(size_t val) : Offset(val) {}\n```",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
