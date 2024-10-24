@@ -34,6 +34,46 @@
       "parentUuid": "28d92103_91e1c1cc",
       "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930cbb76_0abff787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-24T12:31:18Z",
+      "side": 1,
+      "message": "Next time, please create the revert in gerrit and then download-edit-upload. It creates a record on the CL you\u0027re reverting and it also makes the code review easier as I can compare the PS1 with the fixed PS\u003cn\u003e. If you don\u0027t, I need to download the different CLs and review the `git diff` in a terminal.",
+      "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb7f875_40ab4252",
+        "filename": "runtime/arch/riscv64/jni_entrypoints_riscv64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-24T12:31:18Z",
+      "side": 1,
+      "message": "This is a JAL instruction with +/-1MiB but the error message actually complained about \"relocation R_RISCV_JAL out of range: -1396552\". I\u0027m not sure if the assembler or linker can automatically replace it with the two-instruction sequence, or if we need to explicitly use the TAIL pseudo-instruction.\n\n(Note that the assembler or linker must have previously replaced the BNEZ with BEQZ+JAL to generate the error message, so I\u0027m not really sure about the toolchain capabilities here.)",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
