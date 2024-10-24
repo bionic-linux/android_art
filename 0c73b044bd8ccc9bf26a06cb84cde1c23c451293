@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d829d5f2_6fec004c",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-24T15:18:59Z",
+      "side": 1,
+      "message": "I find that helper function unnecessary. And it\u0027s defined in the compiler\u0027s `nodes.h`, so I\u0027d have to move it somewhere else if I wanted to use it here. I\u0027d rather keep this as is for now.",
+      "parentUuid": "df746d2f_9c8cc3a3",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 63
+      },
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c32e2125_447f1fe1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-24T14:35:12Z",
       "side": 1,
       "message": "`IsSameDexFile`.",
+      "range": {
+        "startLine": 219,
+        "startChar": 32,
+        "endLine": 219,
+        "endChar": 65
+      },
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35971b6c_eceaf61e",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-24T15:18:59Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "c32e2125_447f1fe1",
       "range": {
         "startLine": 219,
         "startChar": 32,
@@ -84,6 +132,30 @@
           ]
         }
       ],
+      "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7c6cf6_d9296de5",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-24T15:18:59Z",
+      "side": 1,
+      "message": "I\u0027d prefer to share the call to `FromTypeIndex()` between the debug and release builds.\n\nI could implement a helper class `DebugBuildHandle\u003c\u003e` that would wrap a `StackHandleScope\u003c1u\u003e` and `Handle\u003cT\u003e` in debug build and have no fields in release build. But that\u0027s something for another CL.",
+      "parentUuid": "d1f2df66_ab828cee",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 3
+      },
       "revId": "0c73b044bd8ccc9bf26a06cb84cde1c23c451293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
