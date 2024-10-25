@@ -255,6 +255,11 @@ TEST_F(PathUtilsTest, BuildVdexPath) {
       HasValue("/a/oat/arm64/b.vdex"));
 }
 
+TEST_F(PathUtilsTest, BuildProfileSaveNotificationPath) {
+  EXPECT_THAT(BuildProfileSaveNotificationPath("com.android.foo", /*user_id=*/1, /*pid=*/1234),
+              HasValue(android_data_ + "/misc/profiles/cur/1/com.android.foo/pid_1234.tmp"));
+}
+
 }  // namespace
 }  // namespace artd
 }  // namespace art
