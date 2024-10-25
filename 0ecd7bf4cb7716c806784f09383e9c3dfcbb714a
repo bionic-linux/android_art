@@ -39,6 +39,30 @@
       },
       "revId": "0ecd7bf4cb7716c806784f09383e9c3dfcbb714a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa71fc0a_368f8f26",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-25T12:42:52Z",
+      "side": 1,
+      "message": "I moved them to C. Since the `UpdateLowOverheadTraceEntrypoints` method also needs the actual trace event entrypoints which are defined only for arm64 we still need the update method to be architecture specific I think. I added an empty method for other architectures as well. So we no longer need the arm64 check in thread.cc.",
+      "parentUuid": "304f0cc3_e404fed9",
+      "range": {
+        "startLine": 2555,
+        "startChar": 0,
+        "endLine": 2561,
+        "endChar": 41
+      },
+      "revId": "0ecd7bf4cb7716c806784f09383e9c3dfcbb714a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
