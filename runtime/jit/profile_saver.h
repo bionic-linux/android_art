@@ -17,6 +17,7 @@
 #ifndef ART_RUNTIME_JIT_PROFILE_SAVER_H_
 #define ART_RUNTIME_JIT_PROFILE_SAVER_H_
 
+#include "app_info.h"
 #include "base/mutex.h"
 #include "base/safe_map.h"
 #include "dex/method_reference.h"
@@ -38,7 +39,8 @@ class ProfileSaver {
                     const std::string& output_filename,
                     jit::JitCodeCache* jit_code_cache,
                     const std::vector<std::string>& code_paths,
-                    const std::string& ref_profile_filename)
+                    const std::string& ref_profile_filename,
+                    AppInfo::CodeType code_type)
       REQUIRES(!Locks::profiler_lock_, !instance_->wait_lock_);
 
   // Stops the profile saver thread.
@@ -57,6 +59,10 @@ class ProfileSaver {
 
   // Notify that startup has completed.
   static void NotifyStartupCompleted() REQUIRES(!Locks::profiler_lock_, !instance_->wait_lock_);
+
+  // Returns the path to the profile save notification file for the given pid.
+  // See `NotifyProfileSave` for details.
+  EXPORT static std::string GetNotificationPath(const std::string& notification_dir, pid_t pid);
 
  private:
   // Helper classes for collecting classes and methods.
@@ -92,8 +98,8 @@ class ProfileSaver {
 
   void AddTrackedLocations(const std::string& output_filename,
                            const std::vector<std::string>& code_paths,
-                           const std::string& ref_profile_filename)
-      REQUIRES(Locks::profiler_lock_);
+                           const std::string& ref_profile_filename,
+                           AppInfo::CodeType code_type) REQUIRES(Locks::profiler_lock_);
 
   // Fetches the current resolved classes and methods from the ClassLinker and stores them in the
   // profile_cache_ for later save.
@@ -114,6 +120,19 @@ class ProfileSaver {
 
   // Extends the given set of flags with global flags if necessary (e.g. the running architecture).
   ProfileCompilationInfo::MethodHotness::Flag AnnotateSampleFlags(uint32_t flags);
+
+  // Returns the path to the profile save notification file.
+  // See `NotifyProfileSave` for details.
+  std::string GetNotificationPath() const REQUIRES(Locks::profiler_lock_);
+
+  // Triggers the profile save notification.
+  //
+  // Profile save notification is a mechanism to notify other processes of force profile save
+  // events. Before a force profile save takes place, other processes can optionally place a
+  // notification file `pid_<pid>.tmp` next to the output profile file (typically in the `cur`
+  // profile directory). After a force profile save, the profile saver deletes the notification file
+  // to indicate that the save is done. This mechanism is currently used by `artd`.
+  void NotifyProfileSave() const;
 
   // The only instance of the saver.
   static ProfileSaver* instance_ GUARDED_BY(Locks::profiler_lock_);
@@ -139,6 +158,10 @@ class ProfileSaver {
   // This influences the time of the first ever save.
   SafeMap<std::string, std::string> tracked_profiles_
       GUARDED_BY(Locks::profiler_lock_);
+
+  // The directory that holds the profile save notification file.
+  // See `NotifyProfileSave` for details.
+  std::string notification_dir_ GUARDED_BY(Locks::profiler_lock_);
 
   bool shutting_down_ GUARDED_BY(Locks::profiler_lock_);
   uint64_t last_time_ns_saver_woke_up_ GUARDED_BY(wait_lock_);
