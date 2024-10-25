@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ART_LIBARTTOOLS_TESTING_H_
-#define ART_LIBARTTOOLS_TESTING_H_
+#ifndef ART_LIBARTTOOLS_INCLUDE_TESTING_TOOLS_TESTING_H_
+#define ART_LIBARTTOOLS_INCLUDE_TESTING_TOOLS_TESTING_H_
 
 #include <signal.h>
 #include <stdio.h>
@@ -24,6 +24,7 @@
 #include <unistd.h>
 
 #include <functional>
+#include <memory>
 #include <string>
 #include <utility>
 #include <vector>
@@ -46,15 +47,23 @@ using ::android::base::ScopeGuard;
 }
 
 [[maybe_unused]] static std::string GetBin(const std::string& name) {
-  CHECK(kIsTargetAndroid);
-  return ART_FORMAT("{}/bin/{}", GetAndroidRoot(), name);
+  if constexpr (kIsTargetAndroid) {
+    return ART_FORMAT("{}/bin/{}", GetAndroidRoot(), name);
+  }
+  if (std::filesystem::exists("/usr/bin/" + name)) {
+    return "/usr/bin/" + name;
+  } else if (std::filesystem::exists("/bin/" + name)) {
+    return "/bin/" + name;
+  }
+  LOG(FATAL) << ART_FORMAT("Binary '{}' not found", name);
+  UNREACHABLE();
 }
 
 // Executes the command. If the `wait` is true, waits for the process to finish and keeps it in a
 // waitable state; otherwise, returns immediately after fork. When the current scope exits, destroys
 // the process.
-[[maybe_unused]] static std::pair<pid_t, ScopeGuard<std::function<void()>>> ScopedExec(
-    std::vector<std::string>& args, bool wait) {
+[[maybe_unused]] static std::pair<pid_t, std::unique_ptr<ScopeGuard<std::function<void()>>>>
+ScopedExec(std::vector<std::string>& args, bool wait) {
   std::vector<char*> execv_args;
   execv_args.reserve(args.size() + 1);
   for (std::string& arg : args) {
@@ -80,7 +89,9 @@ using ::android::base::ScopeGuard;
       }
       CHECK_EQ(TEMP_FAILURE_RETRY(waitid(P_PID, pid, &info, WEXITED)), 0);
     });
-    return std::make_pair(pid, make_scope_guard(std::move(cleanup)));
+    return std::make_pair(
+        pid,
+        std::make_unique<ScopeGuard<std::function<void()>>>(make_scope_guard(std::move(cleanup))));
   } else {
     LOG(FATAL) << "Failed to call fork";
     UNREACHABLE();
@@ -90,4 +101,4 @@ using ::android::base::ScopeGuard;
 }  // namespace tools
 }  // namespace art
 
-#endif  // ART_LIBARTTOOLS_TESTING_H_
+#endif  // ART_LIBARTTOOLS_INCLUDE_TESTING_TOOLS_TESTING_H_
