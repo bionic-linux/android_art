@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!",
       "revId": "3246ef6892e36a56ff4de266bf7f3ad39721a88c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007e4f8d_51fc0117",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-25T12:15:35Z",
+      "side": 1,
+      "message": "This is the ignore list I mentioned in the other comment.",
+      "range": {
+        "startLine": 514,
+        "startChar": 16,
+        "endLine": 514,
+        "endChar": 29
+      },
+      "revId": "3246ef6892e36a56ff4de266bf7f3ad39721a88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

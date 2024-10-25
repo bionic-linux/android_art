@@ -40,6 +40,30 @@
       ],
       "revId": "9e9f0bcd84ace54d313c3bcc039b8b576bda850d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de822a45_606d7efd",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-25T12:15:35Z",
+      "side": 0,
+      "message": "I added this to CmdLineParser::Ignore (https://cs.android.com/android/platform/superproject/main/+/main:art/cmdline/cmdline_parser.h;l\u003d477;) on line 519. AFAIU, it parses but just ignores the argument. Wouldn\u0027t that be sufficient?",
+      "parentUuid": "d5fd1238_9f6c425f",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "9e9f0bcd84ace54d313c3bcc039b8b576bda850d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
