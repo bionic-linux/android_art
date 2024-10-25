@@ -27,6 +27,7 @@
 #include "base/file_utils.h"
 #include "base/macros.h"
 #include "file_utils.h"
+#include "jit/profile_saver.h"
 #include "oat/oat_file_assistant.h"
 #include "runtime_image.h"
 #include "service.h"
@@ -294,6 +295,16 @@ Result<std::string> BuildProfileOrDmPath(const ProfilePath& profile_path) {
 Result<std::string> BuildVdexPath(const VdexPath& vdex_path) {
   DCHECK(vdex_path.getTag() == VdexPath::artifactsPath);
   return OR_RETURN(BuildArtifactsPath(vdex_path.get<VdexPath::artifactsPath>())).vdex_path;
+}
+
+Result<std::string> BuildProfileSaveNotificationPath(const std::string& package_name,
+                                                     int user_id,
+                                                     int pid) {
+  OR_RETURN(ValidatePathElement(package_name, "package_name"));
+  return ProfileSaver::GetNotificationPath(
+      ART_FORMAT(
+          "{}/misc/profiles/cur/{}/{}", OR_RETURN(GetAndroidDataOrError()), user_id, package_name),
+      pid);
 }
 
 bool PreRebootFlag(const ProfilePath& profile_path) {
