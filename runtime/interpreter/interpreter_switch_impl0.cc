@@ -115,6 +115,25 @@ class ActiveInstrumentationHandler {
     instrumentation->Branch(self, method, dex_pc, dex_pc_offset);
   }
 
+  static bool ExceptionHandledEvent(Thread* self,
+                                    bool is_move_exception,
+                                    const instrumentation::Instrumentation* instrumentation)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    StackHandleScope<1> hs(self);
+    Handle<mirror::Throwable> exception(hs.NewHandle(self->GetException()));
+    self->ClearException();
+    instrumentation->ExceptionHandledEvent(self, exception.Get());
+    if (self->IsExceptionPending()) {
+      return false;  // Pending exception.
+    }
+
+    // If it is a move exception instruction. Restore the original exception.
+    if (is_move_exception) {
+      self->SetException(exception.Get());
+    }
+    return true;
+  }
+
   // Unlike most other events the DexPcMovedEvent can be sent when there is a pending exception (if
   // the next instruction is MOVE_EXCEPTION). This means it needs to be handled carefully to be able
   // to detect exceptions thrown by the DexPcMovedEvent itself. These exceptions could be thrown by
