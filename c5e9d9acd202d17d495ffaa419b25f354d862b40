@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a709c2_0764c676",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-25T15:38:19Z",
+      "side": 1,
+      "message": "Add a /* parameter_name */.",
+      "range": {
+        "startLine": 762,
+        "startChar": 64,
+        "endLine": 762,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fc7dabd7_0f0be586",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "perfetto_hprof/perfetto_hprof.cc",
+              "range": {
+                "startLine": 762,
+                "startChar": 0,
+                "endLine": 763,
+                "endChar": 0
+              },
+              "replacement": "    const auto* space \u003d heap-\u003eFindContinuousSpaceFromObject(obj, /* check_free_list\u003d*/ true);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c5e9d9acd202d17d495ffaa419b25f354d862b40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
