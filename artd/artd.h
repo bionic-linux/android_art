@@ -17,9 +17,12 @@
 #ifndef ART_ARTD_ARTD_H_
 #define ART_ARTD_ARTD_H_
 
+#include <sys/inotify.h>
 #include <sys/mount.h>
+#include <sys/poll.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 #include <csignal>
 #include <cstdint>
@@ -35,10 +38,14 @@
 
 #include "aidl/com/android/server/art/BnArtd.h"
 #include "aidl/com/android/server/art/BnArtdCancellationSignal.h"
+#include "aidl/com/android/server/art/BnArtdNotification.h"
 #include "android-base/result.h"
 #include "android-base/thread_annotations.h"
+#include "android-base/unique_fd.h"
 #include "android/binder_auto_utils.h"
 #include "base/os.h"
+#include "base/pidfd.h"
+#include "base/types.h"
 #include "exec_utils.h"
 #include "oat/oat_file_assistant_context.h"
 #include "tools/cmdline_builder.h"
@@ -62,7 +69,7 @@ struct Options {
 
 class ArtdCancellationSignal : public aidl::com::android::server::art::BnArtdCancellationSignal {
  public:
-  explicit ArtdCancellationSignal(std::function<int(pid_t, int)> kill_func)
+  explicit ArtdCancellationSignal(std::function<remove_noexcept_t<decltype(kill)>> kill_func)
       : kill_(std::move(kill_func)) {}
 
   ndk::ScopedAStatus cancel() override;
@@ -82,32 +89,63 @@ class ArtdCancellationSignal : public aidl::com::android::server::art::BnArtdCan
   // The pids of currently running child processes that are bound to this signal.
   std::unordered_set<pid_t> pids_ GUARDED_BY(mu_);
 
-  std::function<int(pid_t, int)> kill_;
+  std::function<remove_noexcept_t<decltype(kill)>> kill_;
+};
+
+class ArtdNotification : public aidl::com::android::server::art::BnArtdNotification {
+ public:
+  ArtdNotification() : done_(true) {}
+  ArtdNotification(std::function<remove_noexcept_t<decltype(poll)>> poll_func,
+                   std::function<remove_noexcept_t<decltype(read)>> read_func,
+                   const std::string& path,
+                   android::base::unique_fd&& inotify_fd,
+                   android::base::unique_fd&& pidfd)
+      : poll_(poll_func),
+        read_(read_func),
+        path_(std::move(path)),
+        inotify_fd_(std::move(inotify_fd)),
+        pidfd_(std::move(pidfd)),
+        done_(false) {}
+
+  ndk::ScopedAStatus wait(int in_timeoutMs, bool* _aidl_return) EXCLUDES(mu_) override;
+
+  virtual ~ArtdNotification();
+
+ private:
+  void CleanUp() EXCLUDES(mu_);
+
+  const std::function<remove_noexcept_t<decltype(poll)>> poll_;
+  const std::function<remove_noexcept_t<decltype(read)>> read_;
+
+  std::mutex mu_;
+  std::string path_ GUARDED_BY(mu_);
+  android::base::unique_fd inotify_fd_ GUARDED_BY(mu_);
+  android::base::unique_fd pidfd_ GUARDED_BY(mu_);
+  bool done_ GUARDED_BY(mu_);
+  bool is_called_ GUARDED_BY(mu_) = false;
 };
 
 class Artd : public aidl::com::android::server::art::BnArtd {
  public:
-  explicit Artd(
-      Options&& options,
-      std::unique_ptr<art::tools::SystemProperties> props =
-          std::make_unique<art::tools::SystemProperties>(),
-      std::unique_ptr<ExecUtils> exec_utils = std::make_unique<ExecUtils>(),
-      std::function<int(pid_t, int)> kill_func = kill,
-      std::function<int(int, struct stat*)> fstat_func = fstat,
-      std::function<int(const char*, const char*, const char*, uint32_t, const void*)> mount_func =
-          mount,
-      std::function<android::base::Result<void>(
-          const std::string&,
-          const std::optional<
-              aidl::com::android::server::art::OutputArtifacts::PermissionSettings::SeContext>&,
-          bool)> restorecon_func = Restorecon,
-      std::optional<std::string> pre_reboot_tmp_dir = std::nullopt,
-      std::optional<std::string> init_environ_rc_path = std::nullopt)
+  explicit Artd(Options&& options,
+                std::unique_ptr<art::tools::SystemProperties> props =
+                    std::make_unique<art::tools::SystemProperties>(),
+                std::unique_ptr<ExecUtils> exec_utils = std::make_unique<ExecUtils>(),
+                std::function<remove_noexcept_t<decltype(kill)>> kill_func = kill,
+                std::function<remove_noexcept_t<decltype(fstat)>> fstat_func = fstat,
+                std::function<remove_noexcept_t<decltype(poll)>> poll_func = poll,
+                std::function<remove_noexcept_t<decltype(read)>> read_func = read,
+                std::function<remove_noexcept_t<decltype(mount)>> mount_func = mount,
+                std::function<decltype(Restorecon)> restorecon_func = Restorecon,
+                std::optional<std::string> pre_reboot_tmp_dir = std::nullopt,
+                std::optional<std::string> init_environ_rc_path = std::nullopt)
       : options_(std::move(options)),
         props_(std::move(props)),
         exec_utils_(std::move(exec_utils)),
         kill_(std::move(kill_func)),
         fstat_(std::move(fstat_func)),
+        poll_(std::move(poll_func)),
+        read_(std::move(read_func)),
         mount_(std::move(mount_func)),
         restorecon_(std::move(restorecon_func)),
         pre_reboot_tmp_dir_(std::move(pre_reboot_tmp_dir)),
@@ -228,6 +266,11 @@ class Artd : public aidl::com::android::server::art::BnArtd {
   ndk::ScopedAStatus getProfileSize(const aidl::com::android::server::art::ProfilePath& in_profile,
                                     int64_t* _aidl_return) override;
 
+  ndk::ScopedAStatus initProfileSaveNotification(
+      const aidl::com::android::server::art::ProfilePath::PrimaryCurProfilePath& in_profilePath,
+      int in_pid,
+      std::shared_ptr<aidl::com::android::server::art::IArtdNotification>* _aidl_return) override;
+
   ndk::ScopedAStatus commitPreRebootStagedFiles(
       const std::vector<aidl::com::android::server::art::ArtifactsPath>& in_artifacts,
       const std::vector<aidl::com::android::server::art::ProfilePath::WritableProfilePath>&
@@ -330,15 +373,12 @@ class Artd : public aidl::com::android::server::art::BnArtd {
   const Options options_;
   const std::unique_ptr<art::tools::SystemProperties> props_;
   const std::unique_ptr<ExecUtils> exec_utils_;
-  const std::function<int(pid_t, int)> kill_;
-  const std::function<int(int, struct stat*)> fstat_;
-  const std::function<int(const char*, const char*, const char*, uint32_t, const void*)> mount_;
-  const std::function<android::base::Result<void>(
-      const std::string&,
-      const std::optional<
-          aidl::com::android::server::art::OutputArtifacts::PermissionSettings::SeContext>&,
-      bool)>
-      restorecon_;
+  const std::function<remove_noexcept_t<decltype(kill)>> kill_;
+  const std::function<remove_noexcept_t<decltype(fstat)>> fstat_;
+  const std::function<remove_noexcept_t<decltype(poll)>> poll_;
+  const std::function<remove_noexcept_t<decltype(read)>> read_;
+  const std::function<remove_noexcept_t<decltype(mount)>> mount_;
+  const std::function<decltype(Restorecon)> restorecon_;
   const std::optional<std::string> pre_reboot_tmp_dir_;
   const std::optional<std::string> init_environ_rc_path_;
 };
