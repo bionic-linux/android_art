@@ -22,7 +22,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include "android-base/file.h"
 #include "android-base/strings.h"
+#include "app_info.h"
 #include "art_method-inl.h"
 #include "base/compiler_filter.h"
 #include "base/logging.h"  // For VLOG.
@@ -115,6 +117,10 @@ void ProfileSaver::NotifyStartupCompleted() {
   }
   MutexLock mu2(self, instance_->wait_lock_);
   instance_->period_condition_.Signal(self);
+}
+
+std::string ProfileSaver::GetNotificationPath(const std::string& notification_dir, pid_t pid) {
+  return ART_FORMAT("{}/pid_{}.tmp", notification_dir, pid);
 }
 
 void ProfileSaver::Run() {
@@ -957,11 +963,12 @@ static bool ShouldProfileLocation(const std::string& location, bool profile_aot_
   return true;
 }
 
-void  ProfileSaver::Start(const ProfileSaverOptions& options,
-                          const std::string& output_filename,
-                          jit::JitCodeCache* jit_code_cache,
-                          const std::vector<std::string>& code_paths,
-                          const std::string& ref_profile_filename) {
+void ProfileSaver::Start(const ProfileSaverOptions& options,
+                         const std::string& output_filename,
+                         jit::JitCodeCache* jit_code_cache,
+                         const std::vector<std::string>& code_paths,
+                         const std::string& ref_profile_filename,
+                         AppInfo::CodeType code_type) {
   Runtime* const runtime = Runtime::Current();
   DCHECK(options.IsEnabled());
   DCHECK(runtime->GetJit() != nullptr);
@@ -1014,7 +1021,8 @@ void  ProfileSaver::Start(const ProfileSaverOptions& options,
     // apps which share the same runtime).
     DCHECK_EQ(instance_->jit_code_cache_, jit_code_cache);
     // Add the code_paths to the tracked locations.
-    instance_->AddTrackedLocations(output_filename, code_paths_to_profile, ref_profile_filename);
+    instance_->AddTrackedLocations(
+        output_filename, code_paths_to_profile, ref_profile_filename, code_type);
     return;
   }
 
@@ -1023,7 +1031,8 @@ void  ProfileSaver::Start(const ProfileSaverOptions& options,
       << ". With reference profile: " << ref_profile_filename;
 
   instance_ = new ProfileSaver(options, jit_code_cache);
-  instance_->AddTrackedLocations(output_filename, code_paths_to_profile, ref_profile_filename);
+  instance_->AddTrackedLocations(
+      output_filename, code_paths_to_profile, ref_profile_filename, code_type);
 
   // Create a new thread which does the saving.
   CHECK_PTHREAD_CALL(
@@ -1128,7 +1137,8 @@ static void AddTrackedLocationsToMap(const std::string& output_filename,
 
 void ProfileSaver::AddTrackedLocations(const std::string& output_filename,
                                        const std::vector<std::string>& code_paths,
-                                       const std::string& ref_profile_filename) {
+                                       const std::string& ref_profile_filename,
+                                       AppInfo::CodeType code_type) {
   // Register the output profile and its reference profile.
   auto it = tracked_profiles_.find(output_filename);
   if (it == tracked_profiles_.end()) {
@@ -1148,6 +1158,11 @@ void ProfileSaver::AddTrackedLocations(const std::string& output_filename,
   AddTrackedLocationsToMap(output_filename,
                            code_paths,
                            &tracked_dex_base_locations_to_be_resolved_);
+
+  if ((code_type == AppInfo::CodeType::kPrimaryApk || code_type == AppInfo::CodeType::kSplitApk) &&
+      notification_dir_.empty()) {
+    notification_dir_ = android::base::Dirname(output_filename);
+  }
 }
 
 void ProfileSaver::DumpInstanceInfo(std::ostream& os) {
@@ -1182,6 +1197,7 @@ void ProfileSaver::ForceProcessProfiles() {
   // Refactor the way we handle the instance so that we don't end up in this situation.
   if (saver != nullptr) {
     saver->ProcessProfilingInfo(/*force_save=*/ true, /*number_of_new_methods=*/ nullptr);
+    saver->NotifyProfileSave();
   }
 }
 
@@ -1250,6 +1266,28 @@ uint32_t ProfileSaver::GetExtraMethodHotnessFlags(const ProfileSaverOptions& opt
 Hotness::Flag ProfileSaver::AnnotateSampleFlags(uint32_t flags) {
   uint32_t extra_flags = GetExtraMethodHotnessFlags(options_);
   return static_cast<Hotness::Flag>(flags | extra_flags);
+}
+
+std::string ProfileSaver::GetNotificationPath() const {
+  if (notification_dir_.empty()) {
+    return "";
+  }
+  return GetNotificationPath(notification_dir_, getpid());
+}
+
+void ProfileSaver::NotifyProfileSave() const {
+  std::string notification_path;
+  {
+    MutexLock mu(Thread::Current(), *Locks::profiler_lock_);
+    notification_path = GetNotificationPath();
+  }
+
+  if (!notification_path.empty()) {
+    // Delete the notification file to indicate that the save is done.
+    if (unlink(notification_path.c_str()) != 0 && errno != ENOENT) {
+      PLOG(WARNING) << "Failed to delete the notification file '" << notification_path << "'";
+    }
+  }
 }
 
 }   // namespace art
