@@ -36,6 +36,7 @@
 #include <optional>
 #include <string>
 #include <thread>
+#include <tuple>
 #include <type_traits>
 #include <utility>
 #include <vector>
@@ -56,7 +57,9 @@
 #include "base/array_ref.h"
 #include "base/common_art_test.h"
 #include "base/macros.h"
+#include "base/pidfd.h"
 #include "exec_utils.h"
+#include "file_utils.h"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include "oat/oat_file.h"
@@ -65,6 +68,7 @@
 #include "testing.h"
 #include "tools/binder_utils.h"
 #include "tools/system_properties.h"
+#include "tools/testing.h"
 #include "ziparchive/zip_writer.h"
 
 extern char** environ;
@@ -82,6 +86,7 @@ using ::aidl::com::android::server::art::DexoptOptions;
 using ::aidl::com::android::server::art::FileVisibility;
 using ::aidl::com::android::server::art::FsPermission;
 using ::aidl::com::android::server::art::IArtdCancellationSignal;
+using ::aidl::com::android::server::art::IArtdNotification;
 using ::aidl::com::android::server::art::OutputArtifacts;
 using ::aidl::com::android::server::art::OutputProfile;
 using ::aidl::com::android::server::art::PriorityClass;
@@ -100,6 +105,8 @@ using ::android::base::Split;
 using ::android::base::WriteStringToFd;
 using ::android::base::WriteStringToFile;
 using ::android::base::testing::HasValue;
+using ::art::tools::GetBin;
+using ::art::tools::ScopedExec;
 using ::testing::_;
 using ::testing::AllOf;
 using ::testing::AnyNumber;
@@ -339,7 +346,11 @@ class ArtdTest : public CommonArtTest {
                                            std::move(mock_props),
                                            std::move(mock_exec_utils),
                                            mock_kill_.AsStdFunction(),
-                                           mock_fstat_.AsStdFunction());
+                                           mock_fstat_.AsStdFunction(),
+                                           mock_inotify_init1_.AsStdFunction(),
+                                           mock_inotify_add_watch_.AsStdFunction(),
+                                           mock_pidfd_open_.AsStdFunction(),
+                                           mock_poll_.AsStdFunction());
     scratch_dir_ = std::make_unique<ScratchDir>();
     scratch_path_ = scratch_dir_->GetPath();
     // Remove the trailing '/';
@@ -529,8 +540,12 @@ class ArtdTest : public CommonArtTest {
       ScopedUnsetEnvironmentVariable("ANDROID_EXPAND");
   MockSystemProperties* mock_props_;
   MockExecUtils* mock_exec_utils_;
-  MockFunction<int(pid_t, int)> mock_kill_;
-  MockFunction<int(int, struct stat*)> mock_fstat_;
+  MockFunction<remove_noexcept_t<decltype(kill)>> mock_kill_;
+  MockFunction<remove_noexcept_t<decltype(fstat)>> mock_fstat_;
+  MockFunction<remove_noexcept_t<decltype(inotify_init1)>> mock_inotify_init1_;
+  MockFunction<remove_noexcept_t<decltype(inotify_add_watch)>> mock_inotify_add_watch_;
+  MockFunction<decltype(PidfdOpen)> mock_pidfd_open_;
+  MockFunction<remove_noexcept_t<decltype(poll)>> mock_poll_;
 
   std::string dex_file_;
   std::string isa_;
@@ -2526,6 +2541,89 @@ TEST_F(ArtdTest, getProfileSize) {
   EXPECT_EQ(aidl_return, 1);
 }
 
+class ArtdProfileSaveNotificationTest : public ArtdTest {
+ protected:
+  void SetUp() override {
+    ArtdTest::SetUp();
+
+    ON_CALL(mock_inotify_init1_, Call).WillByDefault(inotify_init1);
+    ON_CALL(mock_inotify_add_watch_, Call).WillByDefault(inotify_add_watch);
+    ON_CALL(mock_pidfd_open_, Call).WillByDefault(PidfdOpen);
+    ON_CALL(mock_poll_, Call).WillByDefault(poll);
+
+    std::vector<std::string> args{GetBin("sleep"), "10"};
+    std::tie(pid_, scope_guard_) = ScopedExec(args, /*wait=*/false);
+    notification_file_ = OR_FAIL(BuildPrimaryCurProfilePath(profile_path_));
+    std::filesystem::create_directories(android::base::Dirname(notification_file_));
+  }
+
+  const PrimaryCurProfilePath profile_path_{
+      .userId = 0,
+      .packageName = "com.android.foo",
+      .profileName = "primary.prof",
+  };
+  std::string notification_file_;
+  int pid_;
+  std::unique_ptr<ScopeGuard<std::function<void()>>> scope_guard_;
+};
+
+TEST_F(ArtdProfileSaveNotificationTest, initAndWaitSuccess) {
+  std::shared_ptr<IArtdNotification> notification;
+  ASSERT_STATUS_OK(artd_->initProfileSaveNotification(profile_path_, pid_, &notification));
+
+  std::thread t([&] {
+    bool aidl_return;
+    ASSERT_STATUS_OK(notification->wait(/*in_timeoutMs=*/1000, &aidl_return));
+    EXPECT_TRUE(aidl_return);
+  });
+
+  std::unique_ptr<NewFile> file =
+      OR_FAIL(NewFile::Create(notification_file_, FsPermission{.uid = -1, .gid = -1}));
+  OR_FAIL(file->CommitOrAbandon());
+
+  t.join();
+}
+
+TEST_F(ArtdProfileSaveNotificationTest, initAndWaitProcessGone) {
+  std::shared_ptr<IArtdNotification> notification;
+  ASSERT_STATUS_OK(artd_->initProfileSaveNotification(profile_path_, pid_, &notification));
+
+  std::thread t([&] {
+    bool aidl_return;
+    ASSERT_STATUS_OK(notification->wait(/*in_timeoutMs=*/1000, &aidl_return));
+    EXPECT_TRUE(aidl_return);
+  });
+
+  kill(pid_, SIGKILL);
+
+  t.join();
+}
+
+TEST_F(ArtdProfileSaveNotificationTest, initAndWaitTimeout) {
+  EXPECT_CALL(mock_poll_, Call).WillOnce(Return(0));
+
+  std::shared_ptr<IArtdNotification> notification;
+  ASSERT_STATUS_OK(artd_->initProfileSaveNotification(profile_path_, pid_, &notification));
+
+  bool aidl_return;
+  ASSERT_STATUS_OK(notification->wait(/*in_timeoutMs=*/1000, &aidl_return));
+  EXPECT_FALSE(aidl_return);
+}
+
+TEST_F(ArtdProfileSaveNotificationTest, initProcessGone) {
+  // Kill the process before pidfd_open.
+  scope_guard_.reset();
+
+  EXPECT_CALL(mock_poll_, Call).Times(0);
+
+  std::shared_ptr<IArtdNotification> notification;
+  ASSERT_STATUS_OK(artd_->initProfileSaveNotification(profile_path_, pid_, &notification));
+
+  bool aidl_return;
+  ASSERT_STATUS_OK(notification->wait(/*in_timeoutMs=*/1000, &aidl_return));
+  EXPECT_TRUE(aidl_return);
+}
+
 TEST_F(ArtdTest, commitPreRebootStagedFiles) {
   CreateFile(android_data_ + "/dalvik-cache/arm64/system@app@Foo@Foo.apk@classes.dex.staged",
              "new_odex_1");
@@ -2694,6 +2792,10 @@ class ArtdPreRebootTest : public ArtdTest {
                                            std::move(mock_exec_utils),
                                            mock_kill_.AsStdFunction(),
                                            mock_fstat_.AsStdFunction(),
+                                           mock_inotify_init1_.AsStdFunction(),
+                                           mock_inotify_add_watch_.AsStdFunction(),
+                                           mock_pidfd_open_.AsStdFunction(),
+                                           mock_poll_.AsStdFunction(),
                                            mock_mount_.AsStdFunction(),
                                            mock_restorecon_.AsStdFunction(),
                                            pre_reboot_tmp_dir_,
