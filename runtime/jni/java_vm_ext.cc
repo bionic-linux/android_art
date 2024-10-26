@@ -353,7 +353,18 @@ class Libraries {
     Thread* const self = Thread::Current();
     std::vector<SharedLibrary*> unload_libraries;
     {
-      MutexLock mu(self, *Locks::jni_libraries_lock_);
+      // jni_libraries_lock_ appears to be held long enough that we just retry once, rather than
+      // spinning.
+      int retries = 0;
+      static constexpr int MAX_RETRIES = 3;
+      while (!Locks::jni_libraries_lock_->ExclusiveTryLock(self)) {
+        if (++retries > MAX_RETRIES) {
+          // Give up and unload libraries during the next call instead. We do not want to block
+          // indefinitely here, for fear of timeouts. See b/374209523.
+          return;
+        }
+        usleep(2000);
+      }
       for (auto it = libraries_.begin(); it != libraries_.end(); ) {
         SharedLibrary* const library = it->second;
         // If class loader is null then it was unloaded, call JNI_OnUnload.
@@ -367,6 +378,7 @@ class Libraries {
           ++it;
         }
       }
+      Locks::jni_libraries_lock_->ExclusiveUnlock(self);
     }
     ScopedThreadSuspension sts(self, ThreadState::kNative);
     // Do this without holding the jni libraries lock to prevent possible deadlocks.
