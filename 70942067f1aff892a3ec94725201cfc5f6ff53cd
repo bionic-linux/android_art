@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d926d4b_b9f561d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-10-26T19:25:56Z",
+      "side": 1,
+      "message": "It belatedly occurred to me that we at least need to be able to tell whether this code is getting triggered. Hence PS2. I also changed it to sleep for shorter periods. I\u0027ve recently gotten used to multiple second delays, but 2 msecs may actually be a bit long here.",
+      "revId": "70942067f1aff892a3ec94725201cfc5f6ff53cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
