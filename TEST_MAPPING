@@ -2950,6 +2950,9 @@
     },
     {
       "name": "libnativeloader_test[com.google.android.art.apex]"
+    },
+    {
+      "name": "CtsLibcoreTestCases[com.android.art.apex]"
     }
   ],
   "presubmit": [
