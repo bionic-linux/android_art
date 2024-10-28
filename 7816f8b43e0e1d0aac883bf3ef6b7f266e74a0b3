@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fb88d9_b2a376e5",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c45fc1_db5c8553",
+      "range": {
+        "startLine": 847,
+        "startChar": 17,
+        "endLine": 847,
+        "endChar": 54
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1ea585_b9f1f3d3",
@@ -72,6 +96,30 @@
       "writtenOn": "2024-10-18T18:21:00Z",
       "side": 1,
       "message": "Why this reassignment? Should it be final?",
+      "range": {
+        "startLine": 867,
+        "startChar": 8,
+        "endLine": 867,
+        "endChar": 46
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d062878b_0265aa4a",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "The variable passed to a lambda must be final or effectively final. This statement is to create an effectively final variable. It can be final, but not necessary.",
+      "parentUuid": "6c1ea585_b9f1f3d3",
       "range": {
         "startLine": 867,
         "startChar": 8,
@@ -123,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "269287f1_26620032",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb946aa_dcddd146",
+      "range": {
+        "startLine": 1070,
+        "startChar": 24,
+        "endLine": 1070,
+        "endChar": 68
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c9091a9_ebe5b626",
@@ -136,6 +208,30 @@
       "writtenOn": "2024-10-18T18:21:00Z",
       "side": 1,
       "message": "Remind me, we\u0027ll only load `PreRebootManager` and other classes in service-art.jar \"from the future\", right? I.e. PackageManager and all other framework dependencies are the current versions when we call into the loaded instance?\n\nCould be worth a comment here, since this is a pretty unusual situation and I had to refresh myself on how it works.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 91
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b16f29e_863af5ae",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "Right. Added a comment above.",
+      "parentUuid": "4c9091a9_ebe5b626",
       "range": {
         "startLine": 233,
         "startChar": 0,
@@ -169,6 +265,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b6b716_6ac416da",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManagerInterface.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "No, the reason is that we have to avoid using classes defined in `service-art.jar`. Since we load a new `service-art.jar` on top of the old `service-art.jar`, the same class in those two jars are considered two different classes (ART uses \u003cclass-loader, class-name\u003e to identify a class). Therefore, if we pass an instance of the old `BatchDexoptParams` class to this function, which expects a new jar, we\u0027ll get a crash. By serializing the information from `BatchDexoptParams` into a proto, we can use `byte[]` as the parameter type, which has only one definition, on the bootclasspath.\n\nThere is no concern of forward compatibility. This function only takes arguments from old code, so it only needs to be backward compatible. In this sense, it\u0027s not much different from any other ART Service APIs.",
+      "parentUuid": "a5d83cd9_9dcca2de",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70132dfe_98dfa68f",
@@ -192,6 +312,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "535abaa9_e39a1a43",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "I defined this proto only to avoid using classes defined in `service-art.jar` in `PreRebootManagerInterface`. There is nothing special in this proto that needs extra care. At the end of the day, it\u0027s just a representation of `BatchDexoptParams`, which is a system server API that needs to be backward compatible by nature and already has all the [restrictions](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/model/DexoptParams.java;l\u003d125-177;drc\u003d5916ee589c4880e2d8a1a9ad6dc852108e4c44c1).\n\nNote that we are not creating a new API but only to extend the existing [`BatchDexoptStartCallback`](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d1416;drc\u003dc4064f4d533d7808d34f275a9e4a3048a3f9f591) API to support Pre-reboot Dexopt. All the compat aspects about `BatchDexoptStartCallback` are already there since Android U, for all compilation reasons except `ab-ota`. I think we\u0027ve done sufficient discussions when we were designing and implementing the API. To avoid going round in circles, let\u0027s not repeat all the discussions over again.\n\nChange of reason is [forbidden](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d1413;drc\u003dc4064f4d533d7808d34f275a9e4a3048a3f9f591). However, omitting the `reason` field from the proto doesn\u0027t look beneficial but only adds complexity, because one would have to remember that `toProto` drops a field and `fromProto` adds a field.\n\nThe system API change is needed. The reason constant will be used by API users in `BatchDexoptStartCallback` (e.g., in a `case` clause as [this example](https://source.android.com/docs/core/runtime/configure/art-service#customize_the_package_list_and_dexopt_parameters) shows).",
+      "parentUuid": "70132dfe_98dfa68f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9311588a_e122c703",
@@ -205,6 +349,30 @@
       "writtenOn": "2024-10-18T18:21:00Z",
       "side": 1,
       "message": "Isn\u0027t it weird to specify a specific split for a whole list of packages (unless possibly when it\u0027s the base APK, but even then I wonder about the use case)?\n\nIiuc the only use of this field in `DexoptParams` is to support the `--split` arg to `pm compile`, where it\u0027s [always applied](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtShellCommand.java;l\u003d332;drc\u003d00face6199cf2f1c9fa4c3d2e2c0b1cc769bff6c) to a single package only.\n\nIf we need to support this for batch dexopts, it should probably be a field per package, or maybe even a list of fields per package, and we\u0027d have to change the representation in `DexoptParams`. Until then I suggest leaving it out, to avoid having to support this field later on.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06abaef7_17217c1a",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-28T11:32:03Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. Again, we are not designing the `BatchDexoptStartCallback` API here, as the design was done more than a year ago. I admit that allowing the user to specify a split here is weird, and the only possible use case I can see (if it ever makes sense) is, as you said, to only dexopt base APK. However, the ship has already sailed, as users may have already been using this field for `bg-dexopt`, `first-boot`, etc., so adding a restriction on `ab-ota` wouldn\u0027t reduce complexity but would only increase it.",
+      "parentUuid": "9311588a_e122c703",
       "range": {
         "startLine": 42,
         "startChar": 0,
