@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35e370e_312d6be4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T17:23:37Z",
+      "side": 1,
+      "message": "Thanks! I verified this is working as expected now.",
+      "revId": "3246ef6892e36a56ff4de266bf7f3ad39721a88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "007e4f8d_51fc0117",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "Ah probably that\u0027s enough. Did you double check?",
       "parentUuid": "007e4f8d_51fc0117",
+      "range": {
+        "startLine": 514,
+        "startChar": 16,
+        "endLine": 514,
+        "endChar": 29
+      },
+      "revId": "3246ef6892e36a56ff4de266bf7f3ad39721a88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "454bc8c0_32bc30ad",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T17:23:37Z",
+      "side": 1,
+      "message": "I verified it with both the standalone dalvikvm and passing flags to zygote using ``adb shell setprop dalvik.vm.extra-opts \u0027\"-Xprofile:wallclock\"\u0027``. Adding this to the ignore list works as expected.",
+      "parentUuid": "e87d290d_762f54ad",
       "range": {
         "startLine": 514,
         "startChar": 16,
