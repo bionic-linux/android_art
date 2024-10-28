@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3edc731_657533e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T16:21:29Z",
+      "side": 1,
+      "message": "IIUC we were always using an array but this CL makes ArtFields and Method arrays large enough that there\u0027s no shared entries and hence no misses right?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5952b213_2cc88e99",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T16:21:29Z",
+      "side": 1,
+      "message": "Maybe add a DCHECK that page_end \u003e\u003d page_begin? I know we return early if the size is less than a page so it shouldn\u0027t happen but maybe safer to add a check?",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 54
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5493e4e9_d81c6590",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T16:21:29Z",
+      "side": 1,
+      "message": "Should we also log errno here? I think we do log errno for some pthread calls.",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 40
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dae6b63_00b2c835",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T16:21:29Z",
+      "side": 1,
+      "message": "The size for this is just 1024 entries right? Do we still need to Reclaim memory here? The same for Types array too.",
+      "range": {
+        "startLine": 278,
+        "startChar": 24,
+        "endLine": 278,
+        "endChar": 38
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
