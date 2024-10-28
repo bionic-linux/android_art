@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92795644_5c11a27f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T17:02:55Z",
+      "side": 1,
+      "message": "I\u0027m planning on removing that full array at startup optimization. If this CL sticks, then the full array only at startup is not useful anymore.",
+      "parentUuid": "672a3088_bab06501",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5952b213_2cc88e99",
