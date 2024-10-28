@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c991188_afa88b47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T16:42:00Z",
+      "side": 1,
+      "message": "We use PairArray of {index, value} when the number of fields/methods was above the value here.\n\nBy setting it to maximum number of fields/methods, we ensure we use a direct array.",
+      "parentUuid": "c3edc731_657533e1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5952b213_2cc88e99",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-28T16:21:29Z",
       "side": 1,
       "message": "Maybe add a DCHECK that page_end \u003e\u003d page_begin? I know we return early if the size is less than a page so it shouldn\u0027t happen but maybe safer to add a check?",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 54
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23416a9f_f9330676",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T16:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5952b213_2cc88e99",
       "range": {
         "startLine": 265,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b38c0b_5bbfe8e8",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T16:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5493e4e9_d81c6590",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 40
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dae6b63_00b2c835",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-10-28T16:21:29Z",
       "side": 1,
       "message": "The size for this is just 1024 entries right? Do we still need to Reclaim memory here? The same for Types array too.",
+      "range": {
+        "startLine": 278,
+        "startChar": 24,
+        "endLine": 278,
+        "endChar": 38
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69358df1_d28cb942",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T16:42:00Z",
+      "side": 1,
+      "message": "Should be about a page today yes, but we may change it. I wanted to have this code treat arrays similarly.",
+      "parentUuid": "5dae6b63_00b2c835",
       "range": {
         "startLine": 278,
         "startChar": 24,
