@@ -64,6 +64,30 @@
       },
       "revId": "86b28287202b0477bb16e009f0a42cafe3122752",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32790302_b163f762",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T09:22:47Z",
+      "side": 1,
+      "message": "Can you add that as a comment here?",
+      "parentUuid": "fece2684_987ae8e0",
+      "range": {
+        "startLine": 3536,
+        "startChar": 0,
+        "endLine": 3536,
+        "endChar": 67
+      },
+      "revId": "86b28287202b0477bb16e009f0a42cafe3122752",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
