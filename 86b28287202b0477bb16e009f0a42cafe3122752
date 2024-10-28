@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd5d202_88f1bbad",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-28T09:09:46Z",
+      "side": 1,
+      "message": "But what if we cannot load classes and still populate the dex cache, isn\u0027t that an issue?",
+      "range": {
+        "startLine": 3536,
+        "startChar": 0,
+        "endLine": 3536,
+        "endChar": 67
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "440ac43a_a94961df",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/verifier/method_verifier.cc",
+              "range": {
+                "startLine": 3537,
+                "startChar": 0,
+                "endLine": 3537,
+                "endChar": 0
+              },
+              "replacement": "  // TODO(b/14111111): Consider adding a new error code for this case.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "86b28287202b0477bb16e009f0a42cafe3122752",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
