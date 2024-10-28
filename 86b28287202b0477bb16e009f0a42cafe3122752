@@ -40,6 +40,30 @@
       ],
       "revId": "86b28287202b0477bb16e009f0a42cafe3122752",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fece2684_987ae8e0",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-28T09:21:32Z",
+      "side": 1,
+      "message": "Indeed, it could be. But this was already the case before this CL and I\u0027m not changing anything here.\n\nOnly `FindLocksAtDexPc()` has `CanLoadClasses() \u003d\u003d false`. And `FindLocksAtDexPc()` should really be rewritten to not even look up anything, just track the locking information. But that\u0027s a subject of a separate bug.",
+      "parentUuid": "9fd5d202_88f1bbad",
+      "range": {
+        "startLine": 3536,
+        "startChar": 0,
+        "endLine": 3536,
+        "endChar": 67
+      },
+      "revId": "86b28287202b0477bb16e009f0a42cafe3122752",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
