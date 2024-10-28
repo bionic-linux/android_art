@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672a3088_bab06501",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-28T16:59:15Z",
+      "side": 1,
+      "message": "Thanks! Just another question, we seem to have an optimization to allocate full arrays during startup but that is disabled for now: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/mirror/dex_cache.cc;l\u003d41;\n\nDo we want to increase the size even if we enable the optimization to use full arrays during startup. I guess reclaiming memory would be useful. I was just wondering if we should enable the optimization instead of increasing the size.",
+      "parentUuid": "2c991188_afa88b47",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "8dad572f9ebd686dae44e638176f79cc241f4436",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5952b213_2cc88e99",
         "filename": "runtime/mirror/dex_cache.cc",
         "patchSetId": 2
