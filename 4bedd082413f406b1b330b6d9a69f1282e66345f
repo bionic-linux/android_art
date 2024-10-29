@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35f9b0a5_e271ccec",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-29T15:49:56Z",
+      "side": 1,
+      "message": "Maybe something like `notify_for_pid_` to make these files more clear when they pop up?",
+      "range": {
+        "startLine": 123,
+        "startChar": 24,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e2162cee_f9e455ed",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/jit/profile_saver.cc",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "  return ART_FORMAT(\"{}/notify_for_pid_{}.tmp\", notification_dir, pid);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4bedd082413f406b1b330b6d9a69f1282e66345f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14a70fc2_e3291618",
         "filename": "runtime/jit/profile_saver.h",
         "patchSetId": 3
@@ -42,6 +83,29 @@
         "startChar": 75,
         "endLine": 130,
         "endChar": 93
+      },
+      "revId": "4bedd082413f406b1b330b6d9a69f1282e66345f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8308ecf7_6ab36336",
+        "filename": "runtime/jit/profile_saver.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-29T15:49:56Z",
+      "side": 1,
+      "message": "Can you please clarify which pid this is?",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 32
       },
       "revId": "4bedd082413f406b1b330b6d9a69f1282e66345f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
