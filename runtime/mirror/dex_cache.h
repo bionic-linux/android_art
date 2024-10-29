@@ -327,6 +327,9 @@ class MANAGED DexCache final : public Object {
   void SetResolvedType(dex::TypeIndex type_idx, ObjPtr<Class> resolved)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void NotifyClassLoad(ObjPtr<Class> resolved)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   void ClearResolvedType(dex::TypeIndex type_idx) REQUIRES_SHARED(Locks::mutator_lock_);
 
   ALWAYS_INLINE ArtMethod* GetResolvedMethod(uint32_t method_idx)
