@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fcbbff_65665ae5",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-29T15:40:29Z",
+      "side": 1,
+      "message": "Why do you need these? The only new header use I can see in .h files is app_info.h, and it\u0027s not in here.",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "4bedd082413f406b1b330b6d9a69f1282e66345f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a70fc2_e3291618",
+        "filename": "runtime/jit/profile_saver.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-29T15:40:29Z",
+      "side": 1,
+      "message": "Nit: \"forced profile save\"?",
+      "range": {
+        "startLine": 130,
+        "startChar": 75,
+        "endLine": 130,
+        "endChar": 93
+      },
+      "revId": "4bedd082413f406b1b330b6d9a69f1282e66345f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
