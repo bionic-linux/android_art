@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c6b96d_3e4662e3",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8ce680_9d49028f",
+      "range": {
+        "startLine": 481,
+        "startChar": 96,
+        "endLine": 481,
+        "endChar": 97
+      },
+      "revId": "fe1c74b44a6d49bc8fd8823bb1bd72ec534170fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6818625_ce5b9e62",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-10-21T11:27:39Z",
       "side": 1,
       "message": "Is this not vectorized because of the implicit widening? If so, can you add a comment saying so?",
+      "revId": "fe1c74b44a6d49bc8fd8823bb1bd72ec534170fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24db5c3_5629e248",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:40:29Z",
+      "side": 1,
+      "message": "This is not vectorized for the same reason as the above test: because invariant conditions aren\u0027t supported. I originally made it to test an optimization (which I will hopefully push at some point in the future) which could vectorize invariant conditions. This test was more interesting for that case because invariant conditions could always be vectorized even when the same variant conditions couldn\u0027t be.\n\nHaving a rethink, this test currently has the same coverage as the above test and can be removed.",
+      "parentUuid": "a6818625_ce5b9e62",
       "revId": "fe1c74b44a6d49bc8fd8823bb1bd72ec534170fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
