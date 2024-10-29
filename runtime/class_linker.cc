@@ -2313,6 +2313,9 @@ bool ClassLinker::AddImageSpace(gc::space::ImageSpace* space,
     bool can_use_nterp = interpreter::CanRuntimeUseNterp();
     uint16_t hotness_threshold = runtime->GetJITOptions()->GetWarmupThreshold();
     header.VisitPackedArtMethods([&](ArtMethod& method) REQUIRES_SHARED(Locks::mutator_lock_) {
+      if (!method.IsRuntimeMethod() && !method.IsCopied()) {
+        method.GetDexCache()->SetResolvedMethod(method.GetDexMethodIndex(), &method);
+      }
       // In the image, the `data` pointer field of the ArtMethod contains the code
       // item offset. Change this to the actual pointer to the code item.
       if (method.HasCodeItem()) {
@@ -2335,6 +2338,10 @@ bool ClassLinker::AddImageSpace(gc::space::ImageSpace* space,
         }
       }
     }, space->Begin(), image_pointer_size_);
+
+    header.VisitPackedArtFields([&](ArtField& field) REQUIRES_SHARED(Locks::mutator_lock_) {
+      field.GetDexCache()->SetResolvedField(field.GetDexFieldIndex(), &field);
+    }, space->Begin());
   }
 
   if (runtime->IsVerificationSoftFail()) {
@@ -3636,6 +3643,8 @@ ObjPtr<mirror::Class> ClassLinker::DefineClass(Thread* self,
 
   // Notify native debugger of the new class and its layout.
   jit::Jit::NewTypeLoadedIfUsingJit(h_new_class.Get());
+
+  h_new_class->GetDexCache()->NotifyClassLoad(h_new_class.Get());
 
   return sdc.Finish(h_new_class);
 }
