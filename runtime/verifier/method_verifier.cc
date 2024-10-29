@@ -56,6 +56,7 @@
 #include "mirror/var_handle.h"
 #include "obj_ptr-inl.h"
 #include "reg_type-inl.h"
+#include "reg_type_cache.h"
 #include "register_line-inl.h"
 #include "runtime.h"
 #include "scoped_newline.h"
@@ -125,64 +126,66 @@ class MethodVerifier final : public ::art::verifier::MethodVerifier {
     return IsConstructor() && !IsStatic();
   }
 
-  const RegType& ResolveCheckedClass(dex::TypeIndex class_idx) override
-      REQUIRES_SHARED(Locks::mutator_lock_) {
-    DCHECK(!HasFailures());
-    const RegType& result = ResolveClass<CheckAccess::kYes>(class_idx);
-    DCHECK(!HasFailures());
-    return result;
-  }
-
   void FindLocksAtDexPc() REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
   MethodVerifier(Thread* self,
-                 ClassLinker* class_linker,
                  ArenaPool* arena_pool,
+                 RegTypeCache* reg_types,
                  VerifierDeps* verifier_deps,
-                 const DexFile* dex_file,
                  const dex::CodeItem* code_item,
                  uint32_t method_idx,
-                 bool can_load_classes,
-                 bool allow_thread_suspension,
                  bool aot_mode,
                  Handle<mirror::DexCache> dex_cache,
-                 Handle<mirror::ClassLoader> class_loader,
                  const dex::ClassDef& class_def,
                  uint32_t access_flags,
                  bool verify_to_dump,
                  uint32_t api_level) REQUIRES_SHARED(Locks::mutator_lock_)
      : art::verifier::MethodVerifier(self,
-                                     class_linker,
                                      arena_pool,
+                                     reg_types,
                                      verifier_deps,
-                                     dex_file,
                                      class_def,
                                      code_item,
                                      method_idx,
-                                     can_load_classes,
-                                     allow_thread_suspension,
                                      aot_mode),
        method_access_flags_(access_flags),
        return_type_(nullptr),
        dex_cache_(dex_cache),
-       class_loader_(class_loader),
+       class_loader_(reg_types->GetClassLoader()),
        declaring_class_(nullptr),
        interesting_dex_pc_(-1),
        monitor_enter_dex_pcs_(nullptr),
        verify_to_dump_(verify_to_dump),
-       allow_thread_suspension_(allow_thread_suspension),
+       allow_thread_suspension_(reg_types->CanSuspend()),
        is_constructor_(false),
        api_level_(api_level == 0 ? std::numeric_limits<uint32_t>::max() : api_level) {
+    DCHECK_EQ(dex_cache->GetDexFile(), reg_types->GetDexFile())
+        << dex_cache->GetDexFile()->GetLocation() << " / "
+        << reg_types->GetDexFile()->GetLocation();
   }
 
-  void UninstantiableError(const char* descriptor) {
-    Fail(VerifyError::VERIFY_ERROR_NO_CLASS) << "Could not create precise reference for "
-                                             << "non-instantiable klass " << descriptor;
+  void FinalAbstractClassError(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
+    // Note: We reuse NO_CLASS as the instruction we're checking shall throw an exception at
+    // runtime if executed. A final abstract class shall fail verification, so no instances can
+    // be created and therefore instance field or method access can be reached only for a null
+    // reference and throw NPE. All other instructions where we check for final abstract class
+    // shall throw `VerifyError`. (But we can also hit OOME/SOE while creating the exception.)
+    std::string temp;
+    const char* descriptor = klass->GetDescriptor(&temp);
+    Fail(VerifyError::VERIFY_ERROR_NO_CLASS)
+        << "Final abstract class used in a context that requires a verified class: " << descriptor;
   }
-  static bool IsInstantiableOrPrimitive(ObjPtr<mirror::Class> klass)
+
+  void CheckForFinalAbstractClass(ObjPtr<mirror::Class> klass)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    return klass->IsInstantiable() || klass->IsPrimitive();
+    if (UNLIKELY(klass->IsFinal() &&
+                 klass->IsAbstract() &&
+                 !klass->IsInterface() &&
+                 !klass->IsPrimitive() &&
+                 !klass->IsArrayClass())) {
+      FinalAbstractClassError(klass);
+    }
   }
 
   // Is the method being verified a constructor? See the comment on the field.
@@ -668,9 +671,7 @@ class MethodVerifier final : public ::art::verifier::MethodVerifier {
   const RegType& GetDeclaringClass() REQUIRES_SHARED(Locks::mutator_lock_) {
     if (declaring_class_ == nullptr) {
       const dex::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
-      const char* descriptor
-          = dex_file_->GetTypeDescriptor(dex_file_->GetTypeId(method_id.class_idx_));
-      declaring_class_ = &reg_types_.FromDescriptor(class_loader_, descriptor);
+      declaring_class_ = &reg_types_.FromTypeIndex(method_id.class_idx_);
     }
     return *declaring_class_;
   }
@@ -681,22 +682,6 @@ class MethodVerifier final : public ::art::verifier::MethodVerifier {
 
   const RegType& DetermineCat1Constant(int32_t value)
       REQUIRES_SHARED(Locks::mutator_lock_);
-
-  // Try to create a register type from the given class. In case a precise type is requested, but
-  // the class is not instantiable, a soft error (of type NO_CLASS) will be enqueued and a
-  // non-precise reference will be returned.
-  // Note: we reuse NO_CLASS as this will throw an exception at runtime, when the failing class is
-  //       actually touched.
-  const RegType& FromClass(const char* descriptor, ObjPtr<mirror::Class> klass, bool precise)
-      REQUIRES_SHARED(Locks::mutator_lock_) {
-    DCHECK(klass != nullptr);
-    if (precise && !klass->IsInstantiable() && !klass->IsPrimitive()) {
-      Fail(VerifyError::VERIFY_ERROR_NO_CLASS) << "Could not create precise reference for "
-          << "non-instantiable klass " << descriptor;
-      precise = false;
-    }
-    return reg_types_.FromClass(descriptor, klass, precise);
-  }
 
   ALWAYS_INLINE bool FailOrAbort(bool condition, const char* error_msg, uint32_t work_insn_idx);
 
@@ -2534,7 +2519,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
           Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "invalid fill-array-data for array of type "
                                             << array_type;
         } else {
-          const RegType& component_type = reg_types_.GetComponentType(array_type, class_loader_);
+          const RegType& component_type = reg_types_.GetComponentType(array_type);
           DCHECK(!component_type.IsConflict());
           if (component_type.IsNonZeroReferenceTypes()) {
             Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "invalid fill-array-data with component type "
@@ -2730,7 +2715,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyAGet(inst, reg_types_.LongLo(), true);
       break;
     case Instruction::AGET_OBJECT:
-      VerifyAGet(inst, reg_types_.JavaLangObject(false), false);
+      VerifyAGet(inst, reg_types_.JavaLangObject(), false);
       break;
 
     case Instruction::APUT_BOOLEAN:
@@ -2752,7 +2737,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyAPut(inst, reg_types_.LongLo(), true);
       break;
     case Instruction::APUT_OBJECT:
-      VerifyAPut(inst, reg_types_.JavaLangObject(false), false);
+      VerifyAPut(inst, reg_types_.JavaLangObject(), false);
       break;
 
     case Instruction::IGET_BOOLEAN:
@@ -2774,8 +2759,8 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyISFieldAccess<FieldAccessType::kAccGet>(inst, reg_types_.LongLo(), true, false);
       break;
     case Instruction::IGET_OBJECT:
-      VerifyISFieldAccess<FieldAccessType::kAccGet>(inst, reg_types_.JavaLangObject(false), false,
-                                                    false);
+      VerifyISFieldAccess<FieldAccessType::kAccGet>(
+          inst, reg_types_.JavaLangObject(), false, false);
       break;
 
     case Instruction::IPUT_BOOLEAN:
@@ -2797,8 +2782,8 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyISFieldAccess<FieldAccessType::kAccPut>(inst, reg_types_.LongLo(), true, false);
       break;
     case Instruction::IPUT_OBJECT:
-      VerifyISFieldAccess<FieldAccessType::kAccPut>(inst, reg_types_.JavaLangObject(false), false,
-                                                    false);
+      VerifyISFieldAccess<FieldAccessType::kAccPut>(
+          inst, reg_types_.JavaLangObject(), false, false);
       break;
 
     case Instruction::SGET_BOOLEAN:
@@ -2820,8 +2805,8 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyISFieldAccess<FieldAccessType::kAccGet>(inst, reg_types_.LongLo(), true, true);
       break;
     case Instruction::SGET_OBJECT:
-      VerifyISFieldAccess<FieldAccessType::kAccGet>(inst, reg_types_.JavaLangObject(false), false,
-                                                    true);
+      VerifyISFieldAccess<FieldAccessType::kAccGet>(
+          inst, reg_types_.JavaLangObject(), false, true);
       break;
 
     case Instruction::SPUT_BOOLEAN:
@@ -2843,8 +2828,8 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       VerifyISFieldAccess<FieldAccessType::kAccPut>(inst, reg_types_.LongLo(), true, true);
       break;
     case Instruction::SPUT_OBJECT:
-      VerifyISFieldAccess<FieldAccessType::kAccPut>(inst, reg_types_.JavaLangObject(false), false,
-                                                    true);
+      VerifyISFieldAccess<FieldAccessType::kAccPut>(
+          inst, reg_types_.JavaLangObject(), false, true);
       break;
 
     case Instruction::INVOKE_VIRTUAL:
@@ -2857,32 +2842,17 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
                        inst->Opcode() == Instruction::INVOKE_SUPER_RANGE);
       MethodType type = is_super ? METHOD_SUPER : METHOD_VIRTUAL;
       ArtMethod* called_method = VerifyInvocationArgs(inst, type, is_range);
-      const RegType* return_type = nullptr;
-      if (called_method != nullptr) {
-        ObjPtr<mirror::Class> return_type_class = CanLoadClasses()
-            ? called_method->ResolveReturnType()
-            : called_method->LookupResolvedReturnType();
-        if (return_type_class != nullptr) {
-          return_type = &FromClass(called_method->GetReturnTypeDescriptor(),
-                                   return_type_class,
-                                   return_type_class->CannotBeAssignedFromOtherTypes());
-        } else {
-          DCHECK_IMPLIES(CanLoadClasses(), self_->IsExceptionPending());
-          self_->ClearException();
-        }
-      }
-      if (return_type == nullptr) {
-        uint32_t method_idx = GetMethodIdxOfInvoke(inst);
-        const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
-        dex::TypeIndex return_type_idx =
-            dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
-        const char* descriptor = dex_file_->GetTypeDescriptor(return_type_idx);
-        return_type = &reg_types_.FromDescriptor(class_loader_, descriptor);
-      }
-      if (!return_type->IsLowHalf()) {
-        work_line_->SetResultRegisterType(this, *return_type);
+      uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
+      const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+      dex::TypeIndex return_type_idx = dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
+      DCHECK_IMPLIES(called_method != nullptr,
+                     called_method->GetReturnTypeDescriptorView() ==
+                         dex_file_->GetTypeDescriptorView(return_type_idx));
+      const RegType& return_type = reg_types_.FromTypeIndex(return_type_idx);
+      if (!return_type.IsLowHalf()) {
+        work_line_->SetResultRegisterType(this, return_type);
       } else {
-        work_line_->SetResultRegisterTypeWide(*return_type, return_type->HighHalf(&reg_types_));
+        work_line_->SetResultRegisterTypeWide(return_type, return_type.HighHalf(&reg_types_));
       }
       just_set_result = true;
       break;
@@ -2891,31 +2861,15 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     case Instruction::INVOKE_DIRECT_RANGE: {
       bool is_range = (inst->Opcode() == Instruction::INVOKE_DIRECT_RANGE);
       ArtMethod* called_method = VerifyInvocationArgs(inst, METHOD_DIRECT, is_range);
-      const char* return_type_descriptor;
-      bool is_constructor;
-      const RegType* return_type = nullptr;
-      if (called_method == nullptr) {
-        uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-        const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
-        is_constructor = dex_file_->GetStringView(method_id.name_idx_) == "<init>";
-        dex::TypeIndex return_type_idx =
-            dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
-        return_type_descriptor =  dex_file_->GetTypeDescriptor(return_type_idx);
-      } else {
-        is_constructor = called_method->IsConstructor();
-        return_type_descriptor = called_method->GetReturnTypeDescriptor();
-        ObjPtr<mirror::Class> return_type_class = CanLoadClasses()
-            ? called_method->ResolveReturnType()
-            : called_method->LookupResolvedReturnType();
-        if (return_type_class != nullptr) {
-          return_type = &FromClass(return_type_descriptor,
-                                   return_type_class,
-                                   return_type_class->CannotBeAssignedFromOtherTypes());
-        } else {
-          DCHECK_IMPLIES(CanLoadClasses(), self_->IsExceptionPending());
-          self_->ClearException();
-        }
-      }
+      uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
+      const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+      dex::TypeIndex return_type_idx = dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
+      DCHECK_IMPLIES(called_method != nullptr,
+                     called_method->GetReturnTypeDescriptorView() ==
+                         dex_file_->GetTypeDescriptorView(return_type_idx));
+      bool is_constructor = (called_method != nullptr)
+          ? called_method->IsConstructor()
+          : dex_file_->GetStringView(method_id.name_idx_) == "<init>";
       if (is_constructor) {
         /*
          * Some additional checks when calling a constructor. We know from the invocation arg check
@@ -2956,40 +2910,34 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
          */
         work_line_->MarkRefsAsInitialized(this, this_type);
       }
-      if (return_type == nullptr) {
-        return_type = &reg_types_.FromDescriptor(class_loader_, return_type_descriptor);
-      }
-      if (!return_type->IsLowHalf()) {
-        work_line_->SetResultRegisterType(this, *return_type);
+      const RegType& return_type = reg_types_.FromTypeIndex(return_type_idx);
+      if (!return_type.IsLowHalf()) {
+        work_line_->SetResultRegisterType(this, return_type);
       } else {
-        work_line_->SetResultRegisterTypeWide(*return_type, return_type->HighHalf(&reg_types_));
+        work_line_->SetResultRegisterTypeWide(return_type, return_type.HighHalf(&reg_types_));
       }
       just_set_result = true;
       break;
     }
     case Instruction::INVOKE_STATIC:
     case Instruction::INVOKE_STATIC_RANGE: {
-        bool is_range = (inst->Opcode() == Instruction::INVOKE_STATIC_RANGE);
-        ArtMethod* called_method = VerifyInvocationArgs(inst, METHOD_STATIC, is_range);
-        const char* descriptor;
-        if (called_method == nullptr) {
-          uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-          const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
-          dex::TypeIndex return_type_idx =
-              dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
-          descriptor = dex_file_->GetTypeDescriptor(return_type_idx);
-        } else {
-          descriptor = called_method->GetReturnTypeDescriptor();
-        }
-        const RegType& return_type = reg_types_.FromDescriptor(class_loader_, descriptor);
-        if (!return_type.IsLowHalf()) {
-          work_line_->SetResultRegisterType(this, return_type);
-        } else {
-          work_line_->SetResultRegisterTypeWide(return_type, return_type.HighHalf(&reg_types_));
-        }
-        just_set_result = true;
+      bool is_range = (inst->Opcode() == Instruction::INVOKE_STATIC_RANGE);
+      ArtMethod* called_method = VerifyInvocationArgs(inst, METHOD_STATIC, is_range);
+      uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
+      const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+      dex::TypeIndex return_type_idx = dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
+      DCHECK_IMPLIES(called_method != nullptr,
+                     called_method->GetReturnTypeDescriptorView() ==
+                         dex_file_->GetTypeDescriptorView(return_type_idx));
+      const RegType& return_type = reg_types_.FromTypeIndex(return_type_idx);
+      if (!return_type.IsLowHalf()) {
+        work_line_->SetResultRegisterType(this, return_type);
+      } else {
+        work_line_->SetResultRegisterTypeWide(return_type, return_type.HighHalf(&reg_types_));
       }
+      just_set_result = true;
       break;
+    }
     case Instruction::INVOKE_INTERFACE:
     case Instruction::INVOKE_INTERFACE_RANGE: {
       bool is_range =  (inst->Opcode() == Instruction::INVOKE_INTERFACE_RANGE);
@@ -3026,17 +2974,13 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
        * We don't have an object instance, so we can't find the concrete method. However, all of
        * the type information is in the abstract method, so we're good.
        */
-      const char* descriptor;
-      if (abs_method == nullptr) {
-        uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-        const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
-        dex::TypeIndex return_type_idx =
-            dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
-        descriptor = dex_file_->GetTypeDescriptor(return_type_idx);
-      } else {
-        descriptor = abs_method->GetReturnTypeDescriptor();
-      }
-      const RegType& return_type = reg_types_.FromDescriptor(class_loader_, descriptor);
+      uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
+      const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+      dex::TypeIndex return_type_idx = dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
+      DCHECK_IMPLIES(abs_method != nullptr,
+                     abs_method->GetReturnTypeDescriptorView() ==
+                         dex_file_->GetTypeDescriptorView(return_type_idx));
+      const RegType& return_type = reg_types_.FromTypeIndex(return_type_idx);
       if (!return_type.IsLowHalf()) {
         work_line_->SetResultRegisterType(this, return_type);
       } else {
@@ -3064,12 +3008,9 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
         DCHECK(HasFailures());
         break;
       }
-      const uint16_t vRegH = (is_range) ? inst->VRegH_4rcc() : inst->VRegH_45cc();
-      const dex::ProtoIndex proto_idx(vRegH);
-      const char* return_descriptor =
-          dex_file_->GetReturnTypeDescriptor(dex_file_->GetProtoId(proto_idx));
+      const dex::ProtoIndex proto_idx((is_range) ? inst->VRegH_4rcc() : inst->VRegH_45cc());
       const RegType& return_type =
-          reg_types_.FromDescriptor(class_loader_, return_descriptor);
+          reg_types_.FromTypeIndex(dex_file_->GetProtoId(proto_idx).return_type_idx_);
       if (!return_type.IsLowHalf()) {
         work_line_->SetResultRegisterType(this, return_type);
       } else {
@@ -3098,11 +3039,9 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       DexFileParameterIterator param_it(*dex_file_, proto_id);
       // Treat method as static as it has yet to be determined.
       VerifyInvocationArgsFromIterator(&param_it, inst, METHOD_STATIC, is_range, nullptr);
-      const char* return_descriptor = dex_file_->GetReturnTypeDescriptor(proto_id);
 
       // Step 3. Propagate return type information
-      const RegType& return_type =
-          reg_types_.FromDescriptor(class_loader_, return_descriptor);
+      const RegType& return_type = reg_types_.FromTypeIndex(proto_id.return_type_idx_);
       if (!return_type.IsLowHalf()) {
         work_line_->SetResultRegisterType(this, return_type);
       } else {
@@ -3588,37 +3527,31 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
 template <bool kVerifierDebug>
 template <CheckAccess C>
 const RegType& MethodVerifier<kVerifierDebug>::ResolveClass(dex::TypeIndex class_idx) {
-  ClassLinker* linker = GetClassLinker();
-  ObjPtr<mirror::Class> klass = CanLoadClasses()
-      ? linker->ResolveType(class_idx, dex_cache_, class_loader_)
-      : linker->LookupResolvedType(class_idx, dex_cache_.Get(), class_loader_.Get());
-  if (CanLoadClasses() && klass == nullptr) {
-    DCHECK(self_->IsExceptionPending());
-    self_->ClearException();
-  }
-  const RegType* result = nullptr;
-  if (klass != nullptr) {
-    bool precise = klass->CannotBeAssignedFromOtherTypes();
-    if (precise && !IsInstantiableOrPrimitive(klass)) {
-      const char* descriptor = dex_file_->GetTypeDescriptor(class_idx);
-      UninstantiableError(descriptor);
-      precise = false;
+  // FIXME: `RegTypeCache` can currently return a few fundamental classes such as j.l.Object
+  // or j.l.Class without resolving them using the current class loader and recording them
+  // in the corresponding `ClassTable`. The subsequent method and field lookup by callers of
+  // `ResolveClass<>()` can then put their methods and fields to the `DexCache` which should
+  // not be done for classes that are not in the `ClassTable`, potentially leading to crashes.
+  // For now, we force the class resolution here to avoid the inconsistency.
+  // Note that there's nothing we can do if we cannot load classes. (The only code path that
+  // does not allow loading classes is `FindLocksAtDexPc()` which should really need only to
+  // distinguish between reference and non-reference types and track locking. All the other
+  // work, including class lookup, is unnecessary as the class has already been verified.)
+  if (CanLoadClasses()) {
+    ClassLinker* linker = GetClassLinker();
+    ObjPtr<mirror::Class> klass =  linker->ResolveType(class_idx, dex_cache_, class_loader_);
+    if (klass == nullptr) {
+      DCHECK(self_->IsExceptionPending());
+      self_->ClearException();
     }
-    result = reg_types_.FindClass(klass, precise);
-    if (result == nullptr) {
-      const char* descriptor = dex_file_->GetTypeDescriptor(class_idx);
-      result = reg_types_.InsertClass(descriptor, klass, precise);
-    }
-  } else {
-    const char* descriptor = dex_file_->GetTypeDescriptor(class_idx);
-    result = &reg_types_.FromDescriptor(class_loader_, descriptor);
   }
-  DCHECK(result != nullptr);
-  if (result->IsConflict()) {
+
+  const RegType& result = reg_types_.FromTypeIndex(class_idx);
+  if (result.IsConflict()) {
     const char* descriptor = dex_file_->GetTypeDescriptor(class_idx);
     Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "accessing broken descriptor '" << descriptor
         << "' in " << GetDeclaringClass();
-    return *result;
+    return result;
   }
 
   // If requested, check if access is allowed. Unresolved types are included in this check, as the
@@ -3627,23 +3560,23 @@ const RegType& MethodVerifier<kVerifierDebug>::ResolveClass(dex::TypeIndex class
   //
   // Note: we do this for unresolved classes to trigger re-verification at runtime.
   if (C != CheckAccess::kNo &&
-      result->IsNonZeroReferenceTypes() &&
+      result.IsNonZeroReferenceTypes() &&
       ((C == CheckAccess::kYes && IsSdkVersionSetAndAtLeast(api_level_, SdkVersion::kP))
-          || !result->IsUnresolvedTypes())) {
+          || !result.IsUnresolvedTypes())) {
     const RegType& referrer = GetDeclaringClass();
     if ((IsSdkVersionSetAndAtLeast(api_level_, SdkVersion::kP) || !referrer.IsUnresolvedTypes()) &&
-        !referrer.CanAccess(*result)) {
+        !referrer.CanAccess(result)) {
       if (IsAotMode()) {
         Fail(VERIFY_ERROR_ACCESS_CLASS);
         VLOG(verifier)
-            << "(possibly) illegal class access: '" << referrer << "' -> '" << *result << "'";
+            << "(possibly) illegal class access: '" << referrer << "' -> '" << result << "'";
       } else {
         Fail(VERIFY_ERROR_ACCESS_CLASS)
-            << "(possibly) illegal class access: '" << referrer << "' -> '" << *result << "'";
+            << "(possibly) illegal class access: '" << referrer << "' -> '" << result << "'";
       }
     }
   }
-  return *result;
+  return result;
 }
 
 template <bool kVerifierDebug>
@@ -3724,6 +3657,8 @@ bool MethodVerifier<kVerifierDebug>::HandleMoveException(const Instruction* inst
       Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "unable to find exception handler";
       return std::make_pair(true, &reg_types_.Conflict());
     }
+    DCHECK(common_super->HasClass());
+    CheckForFinalAbstractClass(common_super->GetClass());
     return std::make_pair(true, common_super);
   };
   auto result = caught_exc_type_fn();
@@ -3928,14 +3863,11 @@ ArtMethod* MethodVerifier<kVerifierDebug>::VerifyInvocationArgsFromIterator(
       // postponed to runtime).
       if (res_method != nullptr && !res_method->IsMiranda()) {
         ObjPtr<mirror::Class> klass = res_method->GetDeclaringClass();
-        std::string temp;
-        res_method_class = &FromClass(klass->GetDescriptor(&temp), klass,
-                                      klass->CannotBeAssignedFromOtherTypes());
+        res_method_class = &reg_types_.FromClass(klass);
       } else {
         const uint32_t method_idx = GetMethodIdxOfInvoke(inst);
         const dex::TypeIndex class_idx = dex_file_->GetMethodId(method_idx).class_idx_;
-        res_method_class =
-            &reg_types_.FromDescriptor(class_loader_, dex_file_->GetTypeDescriptor(class_idx));
+        res_method_class = &reg_types_.FromTypeIndex(class_idx);
       }
       if (!res_method_class->IsAssignableFrom(adjusted_type, this)) {
         Fail(adjusted_type.IsUnresolvedTypes()
@@ -3964,15 +3896,7 @@ ArtMethod* MethodVerifier<kVerifierDebug>::VerifyInvocationArgsFromIterator(
       return nullptr;
     }
 
-    const char* param_descriptor = it->GetDescriptor();
-
-    if (param_descriptor == nullptr) {
-      Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "Rejecting invocation because of missing signature "
-          "component";
-      return nullptr;
-    }
-
-    const RegType& reg_type = reg_types_.FromDescriptor(class_loader_, param_descriptor);
+    const RegType& reg_type = reg_types_.FromTypeIndex(it->GetTypeIdx());
     uint32_t get_reg = is_range ? inst->VRegC() + static_cast<uint32_t>(sig_registers) :
         arg[sig_registers];
     if (reg_type.IsIntegralTypes()) {
@@ -4083,32 +4007,6 @@ bool MethodVerifier<kVerifierDebug>::CheckCallSite(uint32_t call_site_idx) {
   return true;
 }
 
-class MethodParamListDescriptorIterator {
- public:
-  explicit MethodParamListDescriptorIterator(ArtMethod* res_method) :
-      res_method_(res_method), pos_(0), params_(res_method->GetParameterTypeList()),
-      params_size_(params_ == nullptr ? 0 : params_->Size()) {
-  }
-
-  bool HasNext() {
-    return pos_ < params_size_;
-  }
-
-  void Next() {
-    ++pos_;
-  }
-
-  const char* GetDescriptor() REQUIRES_SHARED(Locks::mutator_lock_) {
-    return res_method_->GetTypeDescriptorFromTypeIdx(params_->GetTypeItem(pos_).type_idx_);
-  }
-
- private:
-  ArtMethod* res_method_;
-  size_t pos_;
-  const dex::TypeList* params_;
-  const size_t params_size_;
-};
-
 template <bool kVerifierDebug>
 ArtMethod* MethodVerifier<kVerifierDebug>::VerifyInvocationArgs(
     const Instruction* inst, MethodType method_type, bool is_range) {
@@ -4128,8 +4026,7 @@ ArtMethod* MethodVerifier<kVerifierDebug>::VerifyInvocationArgs(
   // has a vtable entry for the target method. Or the target is on a interface.
   if (method_type == METHOD_SUPER) {
     dex::TypeIndex class_idx = dex_file_->GetMethodId(method_idx).class_idx_;
-    const RegType& reference_type =
-        reg_types_.FromDescriptor(class_loader_, dex_file_->GetTypeDescriptor(class_idx));
+    const RegType& reference_type = reg_types_.FromTypeIndex(class_idx);
     if (reference_type.IsUnresolvedTypes()) {
       // We cannot differentiate on whether this is a class change error or just
       // a missing method. This will be handled at runtime.
@@ -4175,16 +4072,23 @@ ArtMethod* MethodVerifier<kVerifierDebug>::VerifyInvocationArgs(
     }
   }
 
+  dex::ProtoIndex proto_idx;
   if (UNLIKELY(method_type == METHOD_POLYMORPHIC)) {
     // Process the signature of the calling site that is invoking the method handle.
-    dex::ProtoIndex proto_idx(inst->VRegH());
-    DexFileParameterIterator it(*dex_file_, dex_file_->GetProtoId(proto_idx));
-    return VerifyInvocationArgsFromIterator(&it, inst, method_type, is_range, res_method);
+    proto_idx = dex::ProtoIndex(inst->VRegH());
   } else {
     // Process the target method's signature.
-    MethodParamListDescriptorIterator it(res_method);
-    return VerifyInvocationArgsFromIterator(&it, inst, method_type, is_range, res_method);
+    proto_idx = dex_file_->GetMethodId(method_idx).proto_idx_;
   }
+  DexFileParameterIterator it(*dex_file_, dex_file_->GetProtoId(proto_idx));
+  ArtMethod* verified_method =
+      VerifyInvocationArgsFromIterator(&it, inst, method_type, is_range, res_method);
+
+  if (verified_method != nullptr && !verified_method->GetDeclaringClass()->IsInterface()) {
+    CheckForFinalAbstractClass(res_method->GetDeclaringClass());
+  }
+
+  return verified_method;
 }
 
 template <bool kVerifierDebug>
@@ -4296,13 +4200,12 @@ void MethodVerifier<kVerifierDebug>::VerifyNewArray(const Instruction* inst,
       /* make sure "size" register is valid type */
       work_line_->VerifyRegisterType(this, inst->VRegB_22c(), reg_types_.Integer());
       /* set register type to array class */
-      const RegType& precise_type = reg_types_.FromUninitialized(res_type);
-      work_line_->SetRegisterType<LockOp::kClear>(inst->VRegA_22c(), precise_type);
+      work_line_->SetRegisterType<LockOp::kClear>(inst->VRegA_22c(), res_type);
     } else {
       DCHECK(!res_type.IsUnresolvedMergedReference());
       // Verify each register. If "arg_count" is bad, VerifyRegisterType() will run off the end of
       // the list and fail. It's legal, if silly, for arg_count to be zero.
-      const RegType& expected_type = reg_types_.GetComponentType(res_type, class_loader_);
+      const RegType& expected_type = reg_types_.GetComponentType(res_type);
       uint32_t arg_count = (is_range) ? inst->VRegA_3rc() : inst->VRegA_35c();
       uint32_t arg[5];
       if (!is_range) {
@@ -4317,8 +4220,7 @@ void MethodVerifier<kVerifierDebug>::VerifyNewArray(const Instruction* inst,
         }
       }
       // filled-array result goes into "result" register
-      const RegType& precise_type = reg_types_.FromUninitialized(res_type);
-      work_line_->SetResultRegisterType(this, precise_type);
+      work_line_->SetResultRegisterType(this, res_type);
     }
   }
 }
@@ -4362,12 +4264,11 @@ void MethodVerifier<kVerifierDebug>::VerifyAGet(const Instruction* inst,
         Fail(VERIFY_ERROR_NO_CLASS) << "cannot verify aget for " << array_type
             << " because of missing class";
         // Approximate with java.lang.Object[].
-        work_line_->SetRegisterType<LockOp::kClear>(inst->VRegA_23x(),
-                                                    reg_types_.JavaLangObject(false));
+        work_line_->SetRegisterType<LockOp::kClear>(inst->VRegA_23x(), reg_types_.JavaLangObject());
       }
     } else {
       /* verify the class */
-      const RegType& component_type = reg_types_.GetComponentType(array_type, class_loader_);
+      const RegType& component_type = reg_types_.GetComponentType(array_type);
       if (!component_type.IsReferenceTypes() && !is_primitive) {
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "primitive array type " << array_type
             << " source for aget-object";
@@ -4489,7 +4390,7 @@ void MethodVerifier<kVerifierDebug>::VerifyAPut(const Instruction* inst,
                                     << " because of missing class";
       }
     } else {
-      const RegType& component_type = reg_types_.GetComponentType(array_type, class_loader_);
+      const RegType& component_type = reg_types_.GetComponentType(array_type);
       const uint32_t vregA = inst->VRegA_23x();
       if (is_primitive) {
         VerifyPrimitivePut(component_type, insn_type, vregA);
@@ -4588,10 +4489,8 @@ ArtField* MethodVerifier<kVerifierDebug>::GetInstanceField(const RegType& obj_ty
     // Cannot infer and check type, however, access will cause null pointer exception.
     // Fall through into a few last soft failure checks below.
   } else {
-    std::string temp;
     ObjPtr<mirror::Class> klass = field->GetDeclaringClass();
-    const RegType& field_klass =
-        FromClass(klass->GetDescriptor(&temp), klass, klass->CannotBeAssignedFromOtherTypes());
+    const RegType& field_klass = reg_types_.FromClass(klass);
     if (obj_type.IsUninitializedTypes()) {
       // Field accesses through uninitialized references are only allowable for constructors where
       // the field is declared in this class.
@@ -4609,18 +4508,12 @@ ArtField* MethodVerifier<kVerifierDebug>::GetInstanceField(const RegType& obj_ty
       // Trying to access C1.field1 using reference of type C2, which is neither C1 or a sub-class
       // of C1. For resolution to occur the declared class of the field must be compatible with
       // obj_type, we've discovered this wasn't so, so report the field didn't exist.
-      VerifyError type;
-      bool is_aot = IsAotMode();
-      if (is_aot && (field_klass.IsUnresolvedTypes() || obj_type.IsUnresolvedTypes())) {
-        // Compiler & unresolved types involved, retry at runtime.
-        type = VerifyError::VERIFY_ERROR_UNRESOLVED_TYPE_CHECK;
-      } else {
-        // Classes known (resolved; and thus assignability check is precise), or we are at runtime
-        // and still missing classes. This is a hard failure.
-        type = VerifyError::VERIFY_ERROR_BAD_CLASS_HARD;
-      }
-      Fail(type) << "cannot access instance field " << field->PrettyField()
-                 << " from object of type " << obj_type;
+      DCHECK(!field_klass.IsUnresolvedTypes());
+      Fail(obj_type.IsUnresolvedTypes()
+                 ? VERIFY_ERROR_UNRESOLVED_TYPE_CHECK
+                 : VERIFY_ERROR_BAD_CLASS_HARD)
+          << "cannot access instance field " << field->PrettyField()
+          << " from object of type " << obj_type;
       return nullptr;
     }
   }
@@ -4696,25 +4589,14 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
       }
     }
   }
-  const RegType* field_type = nullptr;
   if (field != nullptr) {
+    CheckForFinalAbstractClass(field->GetDeclaringClass());
     if (kAccType == FieldAccessType::kAccPut) {
       if (field->IsFinal() && field->GetDeclaringClass() != GetDeclaringClass().GetClass()) {
         Fail(VERIFY_ERROR_ACCESS_FIELD) << "cannot modify final field " << field->PrettyField()
                                         << " from other class " << GetDeclaringClass();
         // Keep hunting for possible hard fails.
       }
-    }
-
-    ObjPtr<mirror::Class> field_type_class =
-        CanLoadClasses() ? field->ResolveType() : field->LookupResolvedType();
-    if (field_type_class != nullptr) {
-      field_type = &FromClass(field->GetTypeDescriptor(),
-                              field_type_class,
-                              field_type_class->CannotBeAssignedFromOtherTypes());
-    } else {
-      DCHECK_IMPLIES(CanLoadClasses(), self_->IsExceptionPending());
-      self_->ClearException();
     }
   } else if (IsSdkVersionSetAndAtLeast(api_level_, SdkVersion::kP)) {
     // If we don't have the field (it seems we failed resolution) and this is a PUT, we need to
@@ -4728,12 +4610,10 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
     // Note: see b/34966607. This and above may be changed in the future.
     if (kAccType == FieldAccessType::kAccPut) {
       const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
-      const char* field_class_descriptor = dex_file_->GetFieldDeclaringClassDescriptor(field_id);
-      const RegType* field_class_type =
-          &reg_types_.FromDescriptor(class_loader_, field_class_descriptor);
-      if (!field_class_type->Equals(GetDeclaringClass())) {
+      const RegType& field_class_type = reg_types_.FromTypeIndex(field_id.class_idx_);
+      if (!field_class_type.Equals(GetDeclaringClass())) {
         Fail(VERIFY_ERROR_ACCESS_FIELD) << "could not check field put for final field modify of "
-                                        << field_class_descriptor
+                                        << dex_file_->GetFieldDeclaringClassDescriptor(field_id)
                                         << "."
                                         << dex_file_->GetFieldName(field_id)
                                         << " from other class "
@@ -4741,37 +4621,33 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
       }
     }
   }
-  if (field_type == nullptr) {
-    const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
-    const char* descriptor = dex_file_->GetFieldTypeDescriptor(field_id);
-    field_type = &reg_types_.FromDescriptor(class_loader_, descriptor);
-  }
-  DCHECK(field_type != nullptr);
+  const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
+  const RegType& field_type = reg_types_.FromTypeIndex(field_id.type_idx_);
   const uint32_t vregA = (is_static) ? inst->VRegA_21c() : inst->VRegA_22c();
   static_assert(kAccType == FieldAccessType::kAccPut || kAccType == FieldAccessType::kAccGet,
                 "Unexpected third access type");
   if (kAccType == FieldAccessType::kAccPut) {
     // sput or iput.
     if (is_primitive) {
-      VerifyPrimitivePut(*field_type, insn_type, vregA);
+      VerifyPrimitivePut(field_type, insn_type, vregA);
     } else {
       DCHECK(insn_type.IsJavaLangObject());
-      if (!insn_type.IsAssignableFrom(*field_type, this)) {
-        DCHECK(!field_type->IsReferenceTypes());
+      if (!insn_type.IsAssignableFrom(field_type, this)) {
+        DCHECK(!field_type.IsReferenceTypes());
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "expected field " << ArtField::PrettyField(field)
                                           << " to be compatible with type '" << insn_type
-                                          << "' but found type '" << *field_type
+                                          << "' but found type '" << field_type
                                           << "' in put-object";
         return;
       }
-      work_line_->VerifyRegisterType(this, vregA, *field_type);
+      work_line_->VerifyRegisterType(this, vregA, field_type);
     }
   } else if (kAccType == FieldAccessType::kAccGet) {
     // sget or iget.
     if (is_primitive) {
-      if (field_type->Equals(insn_type) ||
-          (field_type->IsFloat() && insn_type.IsInteger()) ||
-          (field_type->IsDouble() && insn_type.IsLong())) {
+      if (field_type.Equals(insn_type) ||
+          (field_type.IsFloat() && insn_type.IsInteger()) ||
+          (field_type.IsDouble() && insn_type.IsLong())) {
         // expected that read is of the correct primitive type or that int reads are reading
         // floats or long reads are reading doubles
       } else {
@@ -4780,24 +4656,24 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
         // compile time
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "expected field " << ArtField::PrettyField(field)
                                           << " to be of type '" << insn_type
-                                          << "' but found type '" << *field_type << "' in get";
+                                          << "' but found type '" << field_type << "' in get";
         return;
       }
     } else {
       DCHECK(insn_type.IsJavaLangObject());
-      if (!insn_type.IsAssignableFrom(*field_type, this)) {
-        DCHECK(!field_type->IsReferenceTypes());
+      if (!insn_type.IsAssignableFrom(field_type, this)) {
+        DCHECK(!field_type.IsReferenceTypes());
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "expected field " << ArtField::PrettyField(field)
                                           << " to be compatible with type '" << insn_type
-                                          << "' but found type '" << *field_type
+                                          << "' but found type '" << field_type
                                           << "' in get-object";
         return;
       }
     }
-    if (!field_type->IsLowHalf()) {
-      work_line_->SetRegisterType<LockOp::kClear>(vregA, *field_type);
+    if (!field_type.IsLowHalf()) {
+      work_line_->SetRegisterType<LockOp::kClear>(vregA, field_type);
     } else {
-      work_line_->SetRegisterTypeWide(vregA, *field_type, field_type->HighHalf(&reg_types_));
+      work_line_->SetRegisterTypeWide(vregA, field_type, field_type.HighHalf(&reg_types_));
     }
   } else {
     LOG(FATAL) << "Unexpected case.";
@@ -4862,9 +4738,7 @@ const RegType& MethodVerifier<kVerifierDebug>::GetMethodReturnType() {
   if (return_type_ == nullptr) {
     const dex::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
     const dex::ProtoId& proto_id = dex_file_->GetMethodPrototype(method_id);
-    dex::TypeIndex return_type_idx = proto_id.return_type_idx_;
-    const char* descriptor = dex_file_->GetTypeDescriptor(dex_file_->GetTypeId(return_type_idx));
-    return_type_ = &reg_types_.FromDescriptor(class_loader_, descriptor);
+    return_type_ = &reg_types_.FromTypeIndex(proto_id.return_type_idx_);
   }
   return *return_type_;
 }
@@ -4933,30 +4807,30 @@ bool MethodVerifier<kVerifierDebug>::PotentiallyMarkRuntimeThrow() {
 }  // namespace
 }  // namespace impl
 
+inline ClassLinker* MethodVerifier::GetClassLinker() const {
+  return reg_types_.GetClassLinker();
+}
+
 MethodVerifier::MethodVerifier(Thread* self,
-                               ClassLinker* class_linker,
                                ArenaPool* arena_pool,
+                               RegTypeCache* reg_types,
                                VerifierDeps* verifier_deps,
-                               const DexFile* dex_file,
                                const dex::ClassDef& class_def,
                                const dex::CodeItem* code_item,
                                uint32_t dex_method_idx,
-                               bool can_load_classes,
-                               bool allow_thread_suspension,
                                bool aot_mode)
     : self_(self),
       arena_stack_(arena_pool),
       allocator_(&arena_stack_),
-      reg_types_(self, class_linker, can_load_classes, allocator_, allow_thread_suspension),
+      reg_types_(*reg_types),
       reg_table_(allocator_),
       work_insn_idx_(dex::kDexNoIndex),
       dex_method_idx_(dex_method_idx),
-      dex_file_(dex_file),
+      dex_file_(reg_types->GetDexFile()),
       class_def_(class_def),
-      code_item_accessor_(*dex_file, code_item),
-      // TODO: make it designated initialization when we compile as C++20.
-      flags_({false, false}),
-      const_flags_({aot_mode, can_load_classes}),
+      code_item_accessor_(*dex_file_, code_item),
+      flags_{ .have_pending_hard_failure_ = false, .have_pending_runtime_throw_failure_ = false },
+      const_flags_{ .aot_mode_ = aot_mode, .can_load_classes_ = reg_types->CanLoadClasses() },
       encountered_failure_types_(0),
       verifier_deps_(verifier_deps),
       link_(nullptr) {
@@ -4967,13 +4841,11 @@ MethodVerifier::~MethodVerifier() {
 }
 
 MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
-                                                         ClassLinker* class_linker,
                                                          ArenaPool* arena_pool,
+                                                         RegTypeCache* reg_types,
                                                          VerifierDeps* verifier_deps,
                                                          uint32_t method_idx,
-                                                         const DexFile* dex_file,
                                                          Handle<mirror::DexCache> dex_cache,
-                                                         Handle<mirror::ClassLoader> class_loader,
                                                          const dex::ClassDef& class_def,
                                                          const dex::CodeItem* code_item,
                                                          uint32_t method_access_flags,
@@ -4983,13 +4855,11 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
                                                          std::string* hard_failure_msg) {
   if (VLOG_IS_ON(verifier_debug)) {
     return VerifyMethod<true>(self,
-                              class_linker,
                               arena_pool,
+                              reg_types,
                               verifier_deps,
                               method_idx,
-                              dex_file,
                               dex_cache,
-                              class_loader,
                               class_def,
                               code_item,
                               method_access_flags,
@@ -4999,13 +4869,11 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
                               hard_failure_msg);
   } else {
     return VerifyMethod<false>(self,
-                               class_linker,
                                arena_pool,
+                               reg_types,
                                verifier_deps,
                                method_idx,
-                               dex_file,
                                dex_cache,
-                               class_loader,
                                class_def,
                                code_item,
                                method_access_flags,
@@ -5035,13 +4903,11 @@ static inline bool CanRuntimeHandleVerificationFailure(uint32_t encountered_fail
 
 template <bool kVerifierDebug>
 MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
-                                                         ClassLinker* class_linker,
                                                          ArenaPool* arena_pool,
+                                                         RegTypeCache* reg_types,
                                                          VerifierDeps* verifier_deps,
                                                          uint32_t method_idx,
-                                                         const DexFile* dex_file,
                                                          Handle<mirror::DexCache> dex_cache,
-                                                         Handle<mirror::ClassLoader> class_loader,
                                                          const dex::ClassDef& class_def,
                                                          const dex::CodeItem* code_item,
                                                          uint32_t method_access_flags,
@@ -5053,20 +4919,16 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
   uint64_t start_ns = kTimeVerifyMethod ? NanoTime() : 0;
 
   impl::MethodVerifier<kVerifierDebug> verifier(self,
-                                                class_linker,
                                                 arena_pool,
+                                                reg_types,
                                                 verifier_deps,
-                                                dex_file,
                                                 code_item,
                                                 method_idx,
-                                                /* can_load_classes= */ true,
-                                                /* allow_thread_suspension= */ true,
                                                 aot_mode,
                                                 dex_cache,
-                                                class_loader,
                                                 class_def,
                                                 method_access_flags,
-                                                /* verify to dump */ false,
+                                                /* verify_to_dump= */ false,
                                                 api_level);
   if (verifier.Verify()) {
     // Verification completed, however failures may be pending that didn't cause the verification
@@ -5075,8 +4937,9 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
 
     if (verifier.failures_.size() != 0) {
       if (VLOG_IS_ON(verifier)) {
-        verifier.DumpFailures(VLOG_STREAM(verifier) << "Soft verification failures in "
-                                                    << dex_file->PrettyMethod(method_idx) << "\n");
+        verifier.DumpFailures(VLOG_STREAM(verifier)
+            << "Soft verification failures in "
+            << reg_types->GetDexFile()->PrettyMethod(method_idx) << "\n");
       }
       if (kVerifierDebug) {
         LOG(INFO) << verifier.info_messages_.str();
@@ -5115,9 +4978,9 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
           LOG(FATAL) << "Unsupported log-level " << static_cast<uint32_t>(log_level);
           UNREACHABLE();
       }
-      verifier.DumpFailures(LOG_STREAM(severity) << "Verification error in "
-                                                 << dex_file->PrettyMethod(method_idx)
-                                                 << "\n");
+      verifier.DumpFailures(LOG_STREAM(severity)
+          << "Verification error in "
+          << reg_types->GetDexFile()->PrettyMethod(method_idx) << "\n");
     }
     if (hard_failure_msg != nullptr) {
       CHECK(!verifier.failure_messages_.empty());
@@ -5145,7 +5008,7 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
     if (duration_ns > MsToNs(Runtime::Current()->GetVerifierLoggingThresholdMs())) {
       double bytecodes_per_second =
           verifier.code_item_accessor_.InsnsSizeInCodeUnits() / (duration_ns * 1e-9);
-      LOG(WARNING) << "Verification of " << dex_file->PrettyMethod(method_idx)
+      LOG(WARNING) << "Verification of " << reg_types->GetDexFile()->PrettyMethod(method_idx)
                    << " took " << PrettyDuration(duration_ns)
                    << (impl::IsLargeMethod(verifier.CodeItem()) ? " (large method)" : "")
                    << " (" << StringPrintf("%.2f", bytecodes_per_second) << " bytecodes/s)"
@@ -5159,30 +5022,27 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
 
 MethodVerifier* MethodVerifier::CalculateVerificationInfo(
       Thread* self,
+      RegTypeCache* reg_types,
       ArtMethod* method,
       Handle<mirror::DexCache> dex_cache,
-      Handle<mirror::ClassLoader> class_loader,
       uint32_t dex_pc) {
+  Runtime* runtime = Runtime::Current();
   std::unique_ptr<impl::MethodVerifier<false>> verifier(
       new impl::MethodVerifier<false>(self,
-                                      Runtime::Current()->GetClassLinker(),
-                                      Runtime::Current()->GetArenaPool(),
+                                      runtime->GetArenaPool(),
+                                      reg_types,
                                       /* verifier_deps= */ nullptr,
-                                      method->GetDexFile(),
                                       method->GetCodeItem(),
                                       method->GetDexMethodIndex(),
-                                      /* can_load_classes= */ false,
-                                      /* allow_thread_suspension= */ false,
-                                      Runtime::Current()->IsAotCompiler(),
+                                      runtime->IsAotCompiler(),
                                       dex_cache,
-                                      class_loader,
                                       *method->GetDeclaringClass()->GetClassDef(),
                                       method->GetAccessFlags(),
                                       /* verify_to_dump= */ false,
                                       // Just use the verifier at the current skd-version.
                                       // This might affect what soft-verifier errors are reported.
                                       // Callers can then filter out relevant errors if needed.
-                                      Runtime::Current()->GetTargetSdkVersion()));
+                                      runtime->GetTargetSdkVersion()));
   verifier->interesting_dex_pc_ = dex_pc;
   verifier->Verify();
   if (VLOG_IS_ON(verifier)) {
@@ -5197,44 +5057,40 @@ MethodVerifier* MethodVerifier::CalculateVerificationInfo(
   }
 }
 
-MethodVerifier* MethodVerifier::VerifyMethodAndDump(Thread* self,
-                                                    VariableIndentationOutputStream* vios,
-                                                    uint32_t dex_method_idx,
-                                                    const DexFile* dex_file,
-                                                    Handle<mirror::DexCache> dex_cache,
-                                                    Handle<mirror::ClassLoader> class_loader,
-                                                    const dex::ClassDef& class_def,
-                                                    const dex::CodeItem* code_item,
-                                                    uint32_t method_access_flags,
-                                                    uint32_t api_level) {
-  impl::MethodVerifier<false>* verifier = new impl::MethodVerifier<false>(
+void MethodVerifier::VerifyMethodAndDump(Thread* self,
+                                         VariableIndentationOutputStream* vios,
+                                         uint32_t dex_method_idx,
+                                         const DexFile* dex_file,
+                                         Handle<mirror::DexCache> dex_cache,
+                                         Handle<mirror::ClassLoader> class_loader,
+                                         const dex::ClassDef& class_def,
+                                         const dex::CodeItem* code_item,
+                                         uint32_t method_access_flags,
+                                         uint32_t api_level) {
+  Runtime* runtime = Runtime::Current();
+  ClassLinker* class_linker = runtime->GetClassLinker();
+  ArenaPool* arena_pool = runtime->GetArenaPool();
+  RegTypeCache reg_types(self, class_linker, arena_pool, class_loader, dex_file);
+  impl::MethodVerifier<false> verifier(
       self,
-      Runtime::Current()->GetClassLinker(),
-      Runtime::Current()->GetArenaPool(),
+      arena_pool,
+      &reg_types,
       /* verifier_deps= */ nullptr,
-      dex_file,
       code_item,
       dex_method_idx,
-      /* can_load_classes= */ true,
-      /* allow_thread_suspension= */ true,
-      Runtime::Current()->IsAotCompiler(),
+      runtime->IsAotCompiler(),
       dex_cache,
-      class_loader,
       class_def,
       method_access_flags,
       /* verify_to_dump= */ true,
       api_level);
-  verifier->Verify();
-  verifier->DumpFailures(vios->Stream());
-  vios->Stream() << verifier->info_messages_.str();
-  // Only dump and return if no hard failures. Otherwise the verifier may be not fully initialized
+  verifier.Verify();
+  verifier.DumpFailures(vios->Stream());
+  vios->Stream() << verifier.info_messages_.str();
+  // Only dump if no hard failures. Otherwise the verifier may be not fully initialized
   // and querying any info is dangerous/can abort.
-  if (verifier->flags_.have_pending_hard_failure_) {
-    delete verifier;
-    return nullptr;
-  } else {
-    verifier->Dump(vios);
-    return verifier;
+  if (!verifier.flags_.have_pending_hard_failure_) {
+    verifier.Dump(vios);
   }
 }
 
@@ -5243,21 +5099,28 @@ void MethodVerifier::FindLocksAtDexPc(
     uint32_t dex_pc,
     std::vector<MethodVerifier::DexLockInfo>* monitor_enter_dex_pcs,
     uint32_t api_level) {
-  StackHandleScope<2> hs(Thread::Current());
+  Thread* self = Thread::Current();
+  StackHandleScope<2> hs(self);
   Handle<mirror::DexCache> dex_cache(hs.NewHandle(m->GetDexCache()));
   Handle<mirror::ClassLoader> class_loader(hs.NewHandle(m->GetClassLoader()));
-  impl::MethodVerifier<false> verifier(hs.Self(),
-                                       Runtime::Current()->GetClassLinker(),
-                                       Runtime::Current()->GetArenaPool(),
+  Runtime* runtime = Runtime::Current();
+  ClassLinker* class_linker = runtime->GetClassLinker();
+  ArenaPool* arena_pool = runtime->GetArenaPool();
+  RegTypeCache reg_types(self,
+                         class_linker,
+                         arena_pool,
+                         class_loader,
+                         dex_cache->GetDexFile(),
+                         /* can_load_classes= */ false,
+                         /* can_suspend= */ false);
+  impl::MethodVerifier<false> verifier(self,
+                                       arena_pool,
+                                       &reg_types,
                                        /* verifier_deps= */ nullptr,
-                                       m->GetDexFile(),
                                        m->GetCodeItem(),
                                        m->GetDexMethodIndex(),
-                                       /* can_load_classes= */ false,
-                                       /* allow_thread_suspension= */ false,
-                                       Runtime::Current()->IsAotCompiler(),
+                                       runtime->IsAotCompiler(),
                                        dex_cache,
-                                       class_loader,
                                        m->GetClassDef(),
                                        m->GetAccessFlags(),
                                        /* verify_to_dump= */ false,
@@ -5268,30 +5131,23 @@ void MethodVerifier::FindLocksAtDexPc(
 }
 
 MethodVerifier* MethodVerifier::CreateVerifier(Thread* self,
+                                               RegTypeCache* reg_types,
                                                VerifierDeps* verifier_deps,
-                                               const DexFile* dex_file,
                                                Handle<mirror::DexCache> dex_cache,
-                                               Handle<mirror::ClassLoader> class_loader,
                                                const dex::ClassDef& class_def,
                                                const dex::CodeItem* code_item,
                                                uint32_t method_idx,
                                                uint32_t access_flags,
-                                               bool can_load_classes,
                                                bool verify_to_dump,
-                                               bool allow_thread_suspension,
                                                uint32_t api_level) {
   return new impl::MethodVerifier<false>(self,
-                                         Runtime::Current()->GetClassLinker(),
                                          Runtime::Current()->GetArenaPool(),
+                                         reg_types,
                                          verifier_deps,
-                                         dex_file,
                                          code_item,
                                          method_idx,
-                                         can_load_classes,
-                                         allow_thread_suspension,
                                          Runtime::Current()->IsAotCompiler(),
                                          dex_cache,
-                                         class_loader,
                                          class_def,
                                          access_flags,
                                          verify_to_dump,

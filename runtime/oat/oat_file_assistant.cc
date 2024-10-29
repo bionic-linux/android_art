@@ -145,9 +145,9 @@ OatFileAssistant::OatFileAssistant(const char* dex_location,
     load_executable_ = false;
   }
 
-  if (load_executable_ && isa != kRuntimeISA) {
+  if (load_executable_ && isa != kRuntimeQuickCodeISA) {
     LOG(WARNING) << "OatFileAssistant: Load executable specified, "
-                 << "but isa is not kRuntimeISA. Will not attempt to load executable.";
+                 << "but isa is not kRuntimeQuickCodeISA. Will not attempt to load executable.";
     load_executable_ = false;
   }
 
@@ -951,7 +951,6 @@ std::unique_ptr<gc::space::ImageSpace> OatFileAssistant::OpenImageSpace(const Oa
     return nullptr;
   }
   std::string error_msg;
-  ScopedObjectAccess soa(Thread::Current());
   std::unique_ptr<gc::space::ImageSpace> ret =
       gc::space::ImageSpace::CreateFromAppImage(art_file.c_str(), oat_file, &error_msg);
   if (ret == nullptr && (VLOG_IS_ON(image) || OS::FileExists(art_file.c_str()))) {

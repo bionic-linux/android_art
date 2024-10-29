@@ -997,7 +997,7 @@ bool MarkCompact::PrepareForCompaction() {
       auto iter = std::find_if(
           pages_live_bytes.rbegin() + (num_pages - threshold_passing_marker),
           pages_live_bytes.rend(),
-          [](uint32_t bytes) { return bytes * 100U < gPageSize * kBlackDenseRegionThreshold; });
+          [](uint32_t bytes) { return bytes * 100U >= gPageSize * kBlackDenseRegionThreshold; });
       black_dense_idx = (pages_live_bytes.rend() - iter) * chunk_info_per_page;
     }
     black_dense_end_ = moving_space_begin_ + black_dense_idx * kOffsetChunkSize;
@@ -2169,6 +2169,9 @@ void MarkCompact::CompactMovingSpace(uint8_t* page) {
           [&]() REQUIRES_SHARED(Locks::mutator_lock_) {
             UpdateNonMovingPage(
                 first_obj, to_space_end, from_space_slide_diff_, moving_space_bitmap_);
+            if (kMode == kFallbackMode) {
+              memcpy(to_space_end, to_space_end + from_space_slide_diff_, gPageSize);
+            }
           });
     } else {
       // The page has no reachable object on it. Just declare it mapped.

@@ -911,7 +911,7 @@ HInstruction* InstructionSimplifierVisitor::InsertOppositeCondition(HInstruction
     HInstruction* lhs = cond->InputAt(0);
     HInstruction* rhs = cond->InputAt(1);
     HInstruction* replacement =
-        GetGraph()->CreateCondition(cond->AsCondition()->GetOppositeCondition(), lhs, rhs);
+        HCondition::Create(GetGraph(), cond->AsCondition()->GetOppositeCondition(), lhs, rhs);
     cursor->GetBlock()->InsertInstructionBefore(replacement, cursor);
     return replacement;
   } else if (cond->IsIntConstant()) {
@@ -1840,7 +1840,7 @@ static HInstruction* CreateUnsignedConditionReplacement(ArenaAllocator* allocato
       //   unsigned(-1) < 0 -> False
       //   0 < 0 -> False
       //   1 < 0 -> False
-      return block->GetGraph()->GetConstant(DataType::Type::kBool, 0, cond->GetDexPc());
+      return block->GetGraph()->GetConstant(DataType::Type::kBool, 0);
     case HInstruction::kBelowOrEqual:
       // BelowOrEqual(Compare(x, y), 0) transforms into Equal(x, y)
       //    unsigned(-1) <= 0 -> False
@@ -1858,7 +1858,7 @@ static HInstruction* CreateUnsignedConditionReplacement(ArenaAllocator* allocato
       //   unsigned(-1) >= 0 -> True
       //   0 >= 0 -> True
       //   1 >= 0 -> True
-      return block->GetGraph()->GetConstant(DataType::Type::kBool, 1, cond->GetDexPc());
+      return block->GetGraph()->GetConstant(DataType::Type::kBool, 1);
     default:
       LOG(FATAL) << "Unknown ConditionType " << cond->GetKind();
       UNREACHABLE();
@@ -1879,7 +1879,7 @@ void InstructionSimplifierVisitor::VisitCondition(HCondition* condition) {
   HInstruction* right = condition->GetRight();
   if (left->IsConstant() && !right->IsConstant()) {
     IfCondition new_cond = GetOppositeConditionForOperandSwap(condition->GetCondition());
-    HCondition* replacement = GetGraph()->CreateCondition(new_cond, right, left);
+    HCondition* replacement = HCondition::Create(GetGraph(), new_cond, right, left);
     block->ReplaceAndRemoveInstructionWith(condition, replacement);
     // If it is a FP condition, we must set the opposite bias.
     if (condition->IsLtBias()) {
@@ -1961,12 +1961,12 @@ static HInstruction* CheckSignedToUnsignedCompareConversion(HInstruction* operan
       HIntConstant* int_constant = constant->AsIntConstant();
       int32_t old_value = int_constant->GetValue();
       int32_t new_value = old_value - std::numeric_limits<int32_t>::min();
-      return operand->GetBlock()->GetGraph()->GetIntConstant(new_value, constant->GetDexPc());
+      return operand->GetBlock()->GetGraph()->GetIntConstant(new_value);
     } else if (constant->IsLongConstant()) {
       HLongConstant* long_constant = constant->AsLongConstant();
       int64_t old_value = long_constant->GetValue();
       int64_t new_value = old_value - std::numeric_limits<int64_t>::min();
-      return operand->GetBlock()->GetGraph()->GetLongConstant(new_value, constant->GetDexPc());
+      return operand->GetBlock()->GetGraph()->GetLongConstant(new_value);
     } else {
       return nullptr;
     }
