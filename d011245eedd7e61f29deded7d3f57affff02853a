@@ -52,6 +52,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e809d093_fc1a8be9",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19eb49c2_2fd315de",
+      "range": {
+        "startLine": 1336,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 67
+      },
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a2ce212_e0c78980",
@@ -75,6 +99,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a9aab1_fa59f9b4",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2ce212_e0c78980",
+      "range": {
+        "startLine": 2776,
+        "startChar": 0,
+        "endLine": 2779,
+        "endChar": 3
+      },
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93818639_7080f140",
@@ -88,6 +136,30 @@
       "writtenOn": "2024-10-21T11:22:55Z",
       "side": 1,
       "message": "Are they just not required to be implemented? Or are they outright not expected at all in the graph?",
+      "range": {
+        "startLine": 140,
+        "startChar": 53,
+        "endLine": 140,
+        "endChar": 65
+      },
+      "revId": "d011245eedd7e61f29deded7d3f57affff02853a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51aefe99_c52d6e6d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:37:10Z",
+      "side": 1,
+      "message": "I don\u0027t think they are ever expected in the graph because, for example: the codegen will hit `UNREACHABLE()` if an unsigned condition is found for a floating point type (https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_arm64.cc;drc\u003d06a532ba53ed8292cc18e8edd60cb457c1ef22af;l\u003d128). There is nothing technically preventing these nodes being created however hence this check to ensure that we never try vectorizing these nodes, if they were somehow created.\n\nI\u0027ve reworded this comment slightly to better reflect this.",
+      "parentUuid": "93818639_7080f140",
       "range": {
         "startLine": 140,
         "startChar": 53,

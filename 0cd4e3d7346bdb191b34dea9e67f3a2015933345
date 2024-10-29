@@ -22,6 +22,30 @@
       },
       "revId": "0cd4e3d7346bdb191b34dea9e67f3a2015933345",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831ad4ff_a5e80eab",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2078,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-29T09:37:10Z",
+      "side": 0,
+      "message": "Int64 was supported by the codegen but wouldn\u0027t pass loop optimization because of this restriction and (I think) the `!is_int_case \u0026\u0026 !IsNarrowerOperands()` check below. With the expansion of this check to allow any condition with two inputs of the same type to be vectorized, it is now possible to lift this restriction.",
+      "parentUuid": "1590871e_fae19906",
+      "range": {
+        "startLine": 2078,
+        "startChar": 44,
+        "endLine": 2078,
+        "endChar": 57
+      },
+      "revId": "0cd4e3d7346bdb191b34dea9e67f3a2015933345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
