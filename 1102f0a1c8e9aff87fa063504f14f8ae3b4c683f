@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecba6ad_9c2522aa",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-29T16:22:01Z",
+      "side": 1,
+      "message": "You want the opposite i.e `if (!DataType::IsIntegralType(type) \u0026\u0026 !DataType::IsFloatingPointType(type)) {`.\n\nEither that or `DCHECK(IsIntegralType(type) || IsFloatingPointType(type))`",
+      "range": {
+        "startLine": 2776,
+        "startChar": 0,
+        "endLine": 2779,
+        "endChar": 3
+      },
+      "revId": "1102f0a1c8e9aff87fa063504f14f8ae3b4c683f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
