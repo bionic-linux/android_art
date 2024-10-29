@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5aa0f9_e0aa2b69",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-29T15:13:08Z",
+      "side": 1,
+      "message": "Hope you don\u0027t mind that I uploaded a new patchset. This is the main difference. We can get the target SDK version from the runtime options (instead of a hardcoded 35). \n`artd` passes this flag (https://cs.android.com/android/platform/superproject/main/+/main:art/artd/artd.cc;l\u003d1693;drc\u003dee3063bda0b3d034ef9ca18130ffe4281753159b)",
+      "range": {
+        "startLine": 653,
+        "startChar": 37,
+        "endLine": 653,
+        "endChar": 78
+      },
+      "revId": "4464db090372e331b19e475e484217a370f9ff42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
