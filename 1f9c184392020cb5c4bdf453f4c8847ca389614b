@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d8b80d_35eb4b28",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-29T12:54:51Z",
+      "side": 1,
+      "message": "Sigh, thanks for spotting! Fixed here: https://android-review.googlesource.com/c/platform/art/+/3324759",
+      "parentUuid": "59c8351e_7bc7d222",
+      "revId": "1f9c184392020cb5c4bdf453f4c8847ca389614b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8973cb_57e0eca8",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-29T12:47:59Z",
       "side": 1,
       "message": "...or if we really want `bool`, then we likely want to change this comparison to a boolean one.",
+      "revId": "1f9c184392020cb5c4bdf453f4c8847ca389614b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d56c0b9_4f79886e",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-29T12:54:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da8973cb_57e0eca8",
       "revId": "1f9c184392020cb5c4bdf453f4c8847ca389614b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
