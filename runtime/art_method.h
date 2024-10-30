@@ -517,9 +517,10 @@ class EXPORT ArtMethod final {
   bool IsSignaturePolymorphic() REQUIRES_SHARED(Locks::mutator_lock_);
 
   bool SkipAccessChecks() const {
+    return true;
     // The kAccSkipAccessChecks flag value is used with a different meaning for native methods,
     // so we need to check the kAccNative flag as well.
-    return (GetAccessFlags() & (kAccSkipAccessChecks | kAccNative)) == kAccSkipAccessChecks;
+//    return (GetAccessFlags() & (kAccSkipAccessChecks | kAccNative)) == kAccSkipAccessChecks;
   }
 
   void SetSkipAccessChecks() REQUIRES_SHARED(Locks::mutator_lock_) {
