@@ -632,7 +632,8 @@ ALWAYS_INLINE ArtMethod* FindSuperMethodToCall(uint32_t method_idx,
     }
   }
 
-  if (referenced_class->IsInterface()) {
+//  if (referenced_class->IsInterface()) {
+  if (resolved_method->GetDeclaringClass()->IsInterface()) {
     // TODO We can do better than this for a (compiled) fastpath.
     ArtMethod* found_method = referenced_class->FindVirtualMethodForInterfaceSuper(
         resolved_method, linker->GetImagePointerSize());

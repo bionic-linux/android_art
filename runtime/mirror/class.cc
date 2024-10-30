@@ -559,7 +559,8 @@ static inline ArtMethod* FindInterfaceMethodWithSignature(ObjPtr<Class> klass,
     ObjPtr<Class> object_class = klass->GetSuperClass();
     DCHECK(object_class->IsObjectClass());
     for (ArtMethod& method : object_class->GetDeclaredMethodsSlice(pointer_size)) {
-      if (method.IsPublic() && !method.IsStatic() &&
+      if (!method.IsPrivate() && !method.IsStatic() &&
+//      if (method.IsPublic() && !method.IsStatic() &&
           method.GetNameView() == name && method.GetSignature() == signature) {
         return &method;
       }
