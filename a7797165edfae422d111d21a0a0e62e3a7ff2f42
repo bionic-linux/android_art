@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707f207a_a9c339eb",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-30T09:42:02Z",
+      "side": 1,
+      "message": "`CanEnsureNotNullAt()` looks for a dominating `HNullCheck`, so if we somehow propagated that `HNullCheck` here, we could do the correct replacement here.\n\nBut the new run-test is about something completely different. It\u0027s about propagating an explicit `if (ref !\u003d null)` check to avoid the `HNullCheck(ref)` in the then-block. Are we not doing such optimizations in constant folding or DCE?",
+      "range": {
+        "startLine": 712,
+        "startChar": 23,
+        "endLine": 712,
+        "endChar": 41
+      },
+      "revId": "a7797165edfae422d111d21a0a0e62e3a7ff2f42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
