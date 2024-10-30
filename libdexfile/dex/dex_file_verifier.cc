@@ -1712,6 +1712,11 @@ bool DexFileVerifier::CheckIntraCodeItem() {
 
   ptr_ = accessor.GetCatchHandlerData();
   DECODE_UNSIGNED_CHECKED_FROM(ptr_, handlers_size);
+  if (ptr_ < offset_base_address_ || ptr_ > offset_base_address_ + size_) {
+    ErrorStringPrintf("Invalid catch handler data: %sd", ptr_);
+    return false;
+  }
+
 
   if (UNLIKELY((handlers_size == 0) || (handlers_size >= 65536))) {
     ErrorStringPrintf("Invalid handlers_size: %ud", handlers_size);
