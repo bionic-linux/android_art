@@ -163,7 +163,7 @@ class InvokePolymorphicSlowPathX86_64 : public SlowPathCode {
     SaveLiveRegisters(codegen, instruction_->GetLocations());
 
     // Passing `MethodHandle` object as hidden argument.
-    __ movq(CpuRegister(RDI), method_handle_);
+    __ movl(CpuRegister(RDI), method_handle_);
     x86_64_codegen->InvokeRuntime(QuickEntrypointEnum::kQuickInvokePolymorphicWithHiddenReceiver,
                                   instruction_,
                                   instruction_->GetDexPc());
@@ -4279,7 +4279,24 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     __ testl(Address(method, ArtMethod::AccessFlagsOffset()), Immediate(kAccPrivate));
     __ j(kNotZero, &execute_target_method);
 
+    // Re-using vtable_index as `method`'s declaring class and access flags.
     CpuRegister vtable_index = locations->GetTemp(0).AsRegister<CpuRegister>();
+
+    __ movl(vtable_index, Address(method, ArtMethod::DeclaringClassOffset()));
+    __ testl(vtable_index, Address(receiver, mirror::Object::ClassOffset()));
+    // If method is defined in the receiver's class, execute it as it is.
+    __ j(kNotZero, &execute_target_method);
+
+    __ testl(Address(vtable_index, mirror::Class::AccessFlagsOffset()), Immediate(kAccInterface));
+    // If method is declared in an interface, go to slow path.
+    __ j(kNotZero, slow_path->GetEntryLabel());
+
+    __ movl(vtable_index, Address(method, ArtMethod::AccessFlagsOffset()));
+    // These flags are uint32_t and their signed value doesn't fit into int32_t.
+    __ andl(vtable_index, Immediate((int32_t) (kAccIntrinsic | kAccCopied)));
+    __ testl(vtable_index, Immediate(kAccCopied));
+    // If method is defined in an interface and is not copied it should be interface dispatched.
+    __ j(kNotEqual, slow_path->GetEntryLabel());
 
     // MethodIndex is uint16_t.
     __ movzxw(vtable_index, Address(method, ArtMethod::MethodIndexOffset()));
