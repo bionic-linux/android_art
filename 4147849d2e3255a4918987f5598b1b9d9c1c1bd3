@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e11e59_dbe3fc4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-30T12:50:53Z",
+      "side": 1,
+      "message": "Sorry about that, I\u0027ll keep this in mind for next time.",
+      "parentUuid": "930cbb76_0abff787",
+      "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bb7f875_40ab4252",
@@ -89,6 +107,30 @@
       "writtenOn": "2024-10-25T11:29:14Z",
       "side": 1,
       "message": "The run with this CL also failed with the same error. As Vladimir said I think the toolchain already replaced bnez with beqz and a jump. Error:\n```\nld.lld: error: out/soong/.intermediates/art/test/libart-gtest/android_riscv64_static_lto-none/libart-gtest.a(jni_entrypoints_riscv64.o):(.text+0x8): relocation R_RISCV_JAL out of range: -1394888 is not in [-1048576, 1048575]; references \u0027art_jni_dlsym_lookup_stub\u0027\n\u003e\u003e\u003e referenced by jni_entrypoints_riscv64.S:71 (art/runtime/arch/riscv64/jni_entrypoints_riscv64.S:71)\n\u003e\u003e\u003e defined in out/soong/.intermediates/art/test/libart-gtest/android_riscv64_static_lto-none/libart-gtest.a(native_entrypoints_riscv64.o)\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\n``` \n\nTo reproduce this locally, you need the full android checkout (not the smaller one with just art). On the full tree do: \n```\n. build/envsetup.sh\nlunch aosp_riscv64-trunk_staging-eng\nm general-tests\n```\nIf you have any problem reproducing, let me know.",
+      "parentUuid": "2bb7f875_40ab4252",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3350db96_f23318f2",
+        "filename": "runtime/arch/riscv64/jni_entrypoints_riscv64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-30T12:50:53Z",
+      "side": 1,
+      "message": "Good point, I had missed that this had already been replaced by BEQZ+JAL and that was out of range. I have now replaced this with a tail call as that should guarantee the call is in range.\n\nI tried to reproduce this locally but couldn\u0027t as `libart-gtest.a` links correctly using the instructions above (thanks for providing those!). I wonder if it could be due to some peculiarity with the machine or specific setup that I don\u0027t have locally. Regardless it might be easier if you can verify this change on your side if you can reproduce this.",
       "parentUuid": "2bb7f875_40ab4252",
       "range": {
         "startLine": 72,
