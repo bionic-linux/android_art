@@ -1501,6 +1501,11 @@ class Heap {
   // collector_type_running_ is kCollectorTypeNone.
   size_t concurrent_start_bytes_;
 
+  // Cumulative allocated memory under continuous sticky GC
+  size_t sticky_gc_alloc_bytes_cumulate_;
+  // Under continuous sticky GC, the last bytes_allocated
+  size_t last_bytes_allocated_;
+
   // Since the heap was created, how many bytes have been freed.
   std::atomic<int64_t> total_bytes_freed_ever_;
 

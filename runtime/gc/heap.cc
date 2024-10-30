@@ -432,7 +432,9 @@ Heap::Heap(size_t initial_size,
       boot_image_spaces_(),
       boot_images_start_address_(0u),
       boot_images_size_(0u),
-      pre_oome_gc_count_(0u) {
+      pre_oome_gc_count_(0u),
+      sticky_gc_alloc_bytes_cumulate_(0),
+      last_bytes_allocated_(0) {
   if (VLOG_IS_ON(heap) || VLOG_IS_ON(startup)) {
     LOG(INFO) << "Heap() entering";
   }
@@ -3819,9 +3821,26 @@ void Heap::GrowForUtilization(collector::GarbageCollector* collector_ran,
         non_sticky_collector->GetEstimatedMeanThroughput() &&
         non_sticky_collector->NumberOfIterations() > 0 &&
         bytes_allocated <= (IsGcConcurrent() ? concurrent_start_bytes_ : target_footprint)) {
-      next_gc_type_ = collector::kGcTypeSticky;
+      if (last_bytes_allocated_ == 0) {
+        last_bytes_allocated_ = bytes_allocated;
+      } else {
+        if (bytes_allocated > last_bytes_allocated_) {
+          sticky_gc_alloc_bytes_cumulate_ += bytes_allocated - last_bytes_allocated_;
+          last_bytes_allocated_ = bytes_allocated;
+        }
+      }
+      // If the cumulated bytes allocated during sticky GC is more than 10% of the max heap, need to switch to Full GC
+      if (sticky_gc_alloc_bytes_cumulate_ <= GetMaxMemory() * 0.1) {
+        next_gc_type_ = collector::kGcTypeSticky;
+      } else {
+        next_gc_type_ = non_sticky_gc_type;
+        sticky_gc_alloc_bytes_cumulate_ = 0;
+        last_bytes_allocated_ = 0;
+      }
     } else {
       next_gc_type_ = non_sticky_gc_type;
+      sticky_gc_alloc_bytes_cumulate_ = 0;
+      last_bytes_allocated_ = 0;
     }
     // If we have freed enough memory, shrink the heap back down.
     const size_t adjusted_max_free = static_cast<size_t>(max_free_ * multiplier);
