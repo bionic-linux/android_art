@@ -140,6 +140,30 @@
       },
       "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78465931_389e6509",
+        "filename": "runtime/arch/riscv64/jni_entrypoints_riscv64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-10-30T15:11:27Z",
+      "side": 1,
+      "message": "Thanks! I verified that the new tail call fixes the issue. The test run successfully finished.",
+      "parentUuid": "3350db96_f23318f2",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "4147849d2e3255a4918987f5598b1b9d9c1c1bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
