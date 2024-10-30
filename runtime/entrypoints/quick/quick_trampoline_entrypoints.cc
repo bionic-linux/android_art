@@ -1320,7 +1320,7 @@ extern "C" const void* artQuickResolutionTrampoline(
         CHECK(caller != nullptr) << invoke_type;
         ObjPtr<mirror::Class> ref_class = linker->LookupResolvedType(
             caller->GetDexFile()->GetMethodId(called_method.index).class_idx_, caller);
-        if (ref_class->IsInterface()) {
+        if (ref_class->IsInterface() && called->GetDeclaringClass()->IsInterface()) {
           called = ref_class->FindVirtualMethodForInterfaceSuper(called, kRuntimePointerSize);
         } else {
           called = caller->GetDeclaringClass()->GetSuperClass()->GetVTableEntry(
