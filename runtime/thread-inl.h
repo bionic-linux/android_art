@@ -189,6 +189,12 @@ inline bool Thread::IsThreadSuspensionAllowable() const {
   if (GetHeldMutex(kUserCodeSuspensionLock) != nullptr && is_suspending_for_user_code()) {
     return false;
   }
+
+  // tls32_.no_thread_suspension should always be 0 in a non-debug build.
+  if (kIsDebugBuild) {
+    CHECK_EQ(0u, tls32_.no_thread_suspension) << tlsPtr_.last_no_thread_suspension_cause;
+  }
+
   return true;
 }
 
