@@ -264,7 +264,7 @@ class MANAGED DexCache final : public Object {
   // Note: update the image version in image.cc if changing any of these cache sizes.
 
   // Size of type dex cache. Needs to be a power of 2 for entrypoint assumptions to hold.
-  static constexpr size_t kDexCacheTypeCacheSize = 1024;
+  static constexpr size_t kDexCacheTypeCacheSize = 65536;
   static_assert(IsPowerOfTwo(kDexCacheTypeCacheSize),
                 "Type dex cache size is not a power of 2.");
 
