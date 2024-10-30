@@ -545,7 +545,9 @@ class EXPORT Thread {
       REQUIRES(!Locks::thread_suspend_count_lock_, !Roles::uninterruptible_)
       UNLOCK_FUNCTION(Locks::mutator_lock_);
 
-  // Once called thread suspension will cause an assertion failure.
+  // Once called thread suspension will cause an assertion failure, unless the thread allows a
+  // suspension explicitly and handles a suspension request itself, e.g. via AllowThreadSuspension()
+  // or CheckSuspend().
   const char* StartAssertNoThreadSuspension(const char* cause) ACQUIRE(Roles::uninterruptible_) {
     Roles::uninterruptible_.Acquire();  // No-op.
     if (kIsDebugBuild) {
