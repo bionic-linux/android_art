@@ -33,6 +33,7 @@ public class Main {
       Multi.$noinline$testMHFromMain(OPTIONAL_GET);
       $noinline$testWithArgs();
       $noinline$nullchecks();
+      $noinline$interfaceChecks();
     }
 
     private static void $noinline$nullchecks() throws Throwable {
@@ -43,6 +44,16 @@ public class Main {
 
       try {
         VOID_METHOD.invokeExact((Main) null);
+        unreachable("Should throw WMTE: input is of wrong type");
+      } catch (WrongMethodTypeException expected) {}
+
+      try {
+        INTERFACE_DEFAULT_METHOD.invokeExact((I) null);
+        unreachable("Receiver is null, should throw NPE");
+      } catch (NullPointerException expected) {}
+
+      try {
+        INTERFACE_DEFAULT_METHOD.invokeExact((A) null);
         unreachable("Should throw WMTE: input is of wrong type");
       } catch (WrongMethodTypeException expected) {}
 
@@ -160,6 +171,32 @@ public class Main {
       assertEquals(55L, lsum);
     }
 
+    private static void $noinline$interfaceChecks() throws Throwable {
+      LessBaseImpl instance = new LessBaseImpl();
+
+      String result = null;
+      result = (String) BASE_NONDEFAULT.invokeExact((Base) instance);
+      assertEquals("LessBaseImpl", result);
+
+      result = (String) LESSBASEIMPL_NONDEFAULT.invokeExact(instance);
+      assertEquals("LessBaseImpl", result);
+
+      result = (String) LESSBASE_NAME.invokeExact((LessBase) instance);
+      assertEquals("LessBase.name", result);
+
+      result = (String) BASE_NAME.invokeExact((Base) instance);
+      assertEquals("LessBase.name", result);
+
+      result = (String) LESSBASEIMPL_NAME.invokeExact(instance);
+      assertEquals("LessBase.name", result);
+
+      result = (String) BASE_NONOVERRIDDEN_NAME.invokeExact((Base) instance);
+      assertEquals("Base.nonOverriddenName", result);
+
+      result = (String) LESSBASE_NONOVERRIDDEN_NAME.invokeExact((LessBase) instance);
+      assertEquals("Base.nonOverriddenName", result);
+    }
+
     private static void assertEquals(Object expected, Object actual) {
       if (!Objects.equals(expected, actual)) {
         throw new AssertionError("Expected: " + expected + ", got: " + actual);
@@ -217,6 +254,14 @@ public class Main {
     private static final MethodHandle SUM_4IJ;
     private static final MethodHandle SUM_5IJ;
 
+    private static final MethodHandle BASE_NONDEFAULT;
+    private static final MethodHandle LESSBASEIMPL_NONDEFAULT;
+    private static final MethodHandle BASE_NAME;
+    private static final MethodHandle LESSBASE_NAME;
+    private static final MethodHandle LESSBASEIMPL_NAME;
+    private static final MethodHandle BASE_NONOVERRIDDEN_NAME;
+    private static final MethodHandle LESSBASE_NONOVERRIDDEN_NAME;
+
     static {
       try {
         VOID_METHOD = MethodHandles.lookup()
@@ -263,27 +308,42 @@ public class Main {
         SUM_10I = MethodHandles.lookup()
             .findVirtual(Sums.class, "sum", methodType(int.class, repeat(10, int.class)));
 
-        SUM_IJ  = MethodHandles.lookup()
+        SUM_IJ = MethodHandles.lookup()
             .findVirtual(Sums.class, "sum", methodType(long.class, int.class, long.class));
         SUM_2IJ  = MethodHandles.lookup()
             .findVirtual(Sums.class,
                          "sum",
                          methodType(long.class, repeat(2, int.class, long.class)));
-        SUM_3IJ  = MethodHandles.lookup()
+        SUM_3IJ = MethodHandles.lookup()
             .findVirtual(Sums.class,
                          "sum",
                          methodType(long.class, repeat(3, int.class, long.class)));
-        SUM_4IJ  = MethodHandles.lookup()
+        SUM_4IJ = MethodHandles.lookup()
             .findVirtual(Sums.class,
                          "sum",
                          methodType(long.class, repeat(4, int.class, long.class)));
-        SUM_5IJ  = MethodHandles.lookup()
+        SUM_5IJ = MethodHandles.lookup()
             .findVirtual(Sums.class,
                          "sum",
                          methodType(long.class, repeat(5, int.class, long.class)));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+        BASE_NONDEFAULT = MethodHandles.lookup()
+            .findVirtual(Base.class, "nonDefault", methodType(String.class));
+        LESSBASEIMPL_NONDEFAULT = MethodHandles.lookup()
+            .findVirtual(LessBaseImpl.class, "nonDefault", methodType(String.class));
+        BASE_NAME = MethodHandles.lookup()
+            .findVirtual(Base.class, "name", methodType(String.class));
+        LESSBASE_NAME = MethodHandles.lookup()
+            .findVirtual(LessBase.class, "name", methodType(String.class));
+        LESSBASEIMPL_NAME = MethodHandles.lookup()
+            .findVirtual(LessBaseImpl.class, "name", methodType(String.class));
+        BASE_NONOVERRIDDEN_NAME = MethodHandles.lookup()
+            .findVirtual(Base.class, "nonOverriddenName", methodType(String.class));
+        LESSBASE_NONOVERRIDDEN_NAME = MethodHandles.lookup()
+            .findVirtual(LessBase.class, "nonOverriddenName", methodType(String.class));
+      } catch (Exception e) {
+          throw new RuntimeException(e);
+      }
     }
 
     private static Class<?>[] repeat(int times, Class<?> clazz) {
@@ -312,6 +372,30 @@ public class Main {
 
       private String innerPrivateMethod() {
         return "boo";
+      }
+    }
+
+    static interface Base {
+      default String name() {
+        return "Base.name";
+      }
+
+      default String nonOverriddenName() {
+        return "Base.nonOverriddenName";
+      }
+
+      String nonDefault();
+    }
+
+    static interface LessBase extends Base {
+      default String name() {
+        return "LessBase.name";
+      }
+    }
+
+    static class LessBaseImpl implements LessBase {
+      public String nonDefault() {
+        return "LessBaseImpl";
       }
     }
 
