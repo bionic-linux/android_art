@@ -171,9 +171,6 @@ inline ThreadState Thread::SetState(ThreadState new_state) {
 }
 
 inline bool Thread::IsThreadSuspensionAllowable() const {
-  if (tls32_.no_thread_suspension != 0) {
-    return false;
-  }
   for (int i = kLockLevelCount - 1; i >= 0; --i) {
     if (i != kMutatorLock &&
         i != kUserCodeSuspensionLock &&
@@ -189,6 +186,12 @@ inline bool Thread::IsThreadSuspensionAllowable() const {
   if (GetHeldMutex(kUserCodeSuspensionLock) != nullptr && is_suspending_for_user_code()) {
     return false;
   }
+
+  // tls32_.no_thread_suspension should always be 0 in a non-debug build.
+  if (kIsDebugBuild) {
+    CHECK_EQ(0u, tls32_.no_thread_suspension) << tlsPtr_.last_no_thread_suspension_cause;
+  }
+
   return true;
 }
 
