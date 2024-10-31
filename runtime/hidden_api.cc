@@ -18,6 +18,7 @@
 
 #include <atomic>
 
+#include "android-base/stringprintf.h"
 #include "art_field-inl.h"
 #include "art_method-inl.h"
 #include "base/dumpable.h"
@@ -37,6 +38,8 @@
 
 namespace art HIDDEN {
 namespace hiddenapi {
+
+using android::base::StringPrintf;
 
 // Should be the same as dalvik.system.VMRuntime.HIDE_MAXTARGETSDK_P_HIDDEN_APIS,
 // dalvik.system.VMRuntime.HIDE_MAXTARGETSDK_Q_HIDDEN_APIS, and
@@ -81,6 +84,21 @@ static inline std::ostream& operator<<(std::ostream& os, AccessMethod value) {
       break;
     case AccessMethod::kLinking:
       os << "linking";
+      break;
+  }
+  return os;
+}
+
+static inline std::ostream& operator<<(std::ostream& os, Domain domain) {
+  switch (domain) {
+    case Domain::kCorePlatform:
+      os << "core-platform";
+      break;
+    case Domain::kPlatform:
+      os << "platform";
+      break;
+    case Domain::kApplication:
+      os << "app";
       break;
   }
   return os;
@@ -551,16 +569,21 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_) {
 
 template <typename T>
 bool HandleCorePlatformApiViolation(T* member,
+                                    uint32_t runtime_flags,
                                     const AccessContext& caller_context,
+                                    const AccessContext& callee_context,
                                     AccessMethod access_method,
                                     EnforcementPolicy policy) {
   DCHECK(policy != EnforcementPolicy::kDisabled)
       << "Should never enter this function when access checks are completely disabled";
 
   if (access_method != AccessMethod::kNone) {
-    LOG(WARNING) << "Core platform API violation: "
-                 << Dumpable<MemberSignature>(MemberSignature(member)) << " from " << caller_context
-                 << " using " << access_method;
+    LOG(policy == EnforcementPolicy::kEnabled ? ERROR : WARNING)
+        << "Core platform API violation: " << Dumpable<MemberSignature>(MemberSignature(member))
+        << " in " << callee_context << " (domain=" << callee_context.GetDomain()
+        << ", runtime_flags=" << StringPrintf("0x%x", runtime_flags) << ") from " << caller_context
+        << " (domain=" << caller_context.GetDomain() << ")"
+        << " using " << access_method;
 
     // If policy is set to just warn, add kAccCorePlatformApi to access flags of
     // `member` to avoid reporting the violation again next time.
@@ -657,11 +680,15 @@ bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod acce
 template uint32_t GetDexFlags<ArtField>(ArtField* member);
 template uint32_t GetDexFlags<ArtMethod>(ArtMethod* member);
 template bool HandleCorePlatformApiViolation(ArtField* member,
+                                             uint32_t runtime_flags,
                                              const AccessContext& caller_context,
+                                             const AccessContext& callee_context,
                                              AccessMethod access_method,
                                              EnforcementPolicy policy);
 template bool HandleCorePlatformApiViolation(ArtMethod* member,
+                                             uint32_t runtime_flags,
                                              const AccessContext& caller_context,
+                                             const AccessContext& callee_context,
                                              AccessMethod access_method,
                                              EnforcementPolicy policy);
 template bool ShouldDenyAccessToMemberImpl<ArtField>(ArtField* member,
@@ -765,7 +792,8 @@ bool ShouldDenyAccessToMember(T* member,
       // Access checks are not disabled, report the violation.
       // This may also add kAccCorePlatformApi to the access flags of `member`
       // so as to not warn again on next access.
-      return detail::HandleCorePlatformApiViolation(member, caller_context, access_method, policy);
+      return detail::HandleCorePlatformApiViolation(member, runtime_flags, caller_context,
+                                                    callee_context, access_method, policy);
     }
 
     case Domain::kCorePlatform: {

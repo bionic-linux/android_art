@@ -224,7 +224,9 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_);
 // `member` should be denied.
 template<typename T>
 bool HandleCorePlatformApiViolation(T* member,
+                                    uint32_t runtime_flags,
                                     const AccessContext& caller_context,
+                                    const AccessContext& callee_context,
                                     AccessMethod access_method,
                                     EnforcementPolicy policy)
     REQUIRES_SHARED(Locks::mutator_lock_);
