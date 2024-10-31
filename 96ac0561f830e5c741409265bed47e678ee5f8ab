@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fd3e9d98_81b96519",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-31T16:36:19Z",
+      "side": 1,
+      "message": "It doesn\u0027t necessarily have to be submitted with that, I\u0027m just saying that a presubmit run to verify the master-art builds would be good.\n\nIf you prefer feel free to do that with the CL (in build/soong, presumably) that disables the fallback. However although I think presubmits there include master-art builds I\u0027m not 100% sure, so the builds may have to be kicked off explicitly.",
+      "parentUuid": "9fd128f1_cce27e02",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da0601d3_9663fd70",
         "filename": "artd/Android.bp",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Not necessarily. Mostly you need a java_genrule if you\u0027re consuming other java modules as inputs to the genrule, but in this case the genrule just takes source files as inputs.",
       "parentUuid": "bb1f2ea6_4708432d",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1732,
+        "endChar": 7
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39411ab6_7b9cc3c0",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1732,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-31T16:36:19Z",
+      "side": 1,
+      "message": "Then why does `MainEmptyUncompressedAligned` below need it? It just sources this one and aligns it.\n\nAnyway, for the sake of consistency can you please make this a `java_genrule` too? Semantically it\u0027s just as java related as the others, it\u0027s only that it already has a dex file to start with.",
+      "parentUuid": "80d03eb3_435870b6",
       "range": {
         "startLine": 1732,
         "startChar": 0,
