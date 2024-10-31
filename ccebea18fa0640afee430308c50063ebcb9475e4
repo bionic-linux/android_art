@@ -59,6 +59,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70bf6e1_3b065356",
+        "filename": "runtime/verifier/reg_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-31T14:15:12Z",
+      "side": 1,
+      "message": "It\u0027s not every type but a field is indeed added to the most relevant type `ReferenceType`. But this is a temporary memory allocation that helps to complete the verification faster, so I think it\u0027s worth it.\n\nSharing `RegTypeCache` for all methods in a class was a very similar trade-off. So was the type index based cache.",
+      "parentUuid": "981cd004_501b78d3",
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81994123_087af057",
+        "filename": "runtime/verifier/reg_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-31T14:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a025e008_a1e9034d",
+      "range": {
+        "startLine": 807,
+        "startChar": 1,
+        "endLine": 807,
+        "endChar": 47
+      },
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c9b45b4_d2b341df",
@@ -72,6 +114,24 @@
       "writtenOn": "2024-10-31T13:45:57Z",
       "side": 1,
       "message": "Line too long",
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e430bfe2_452301a4",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-10-31T14:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9b45b4_d2b341df",
       "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
