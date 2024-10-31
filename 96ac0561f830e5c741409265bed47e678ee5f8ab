@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87813bc_e7390555",
+        "filename": "artd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T17:45:19Z",
+      "side": 1,
+      "message": "There\u0027s not a doc explicitly describing all the new prefixes, but they are documented along with all the other properties at go/Android.bp",
+      "parentUuid": "da0601d3_9663fd70",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb1f2ea6_4708432d",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Then why does `MainEmptyUncompressedAligned` below need it? It just sources this one and aligns it.\n\nAnyway, for the sake of consistency can you please make this a `java_genrule` too? Semantically it\u0027s just as java related as the others, it\u0027s only that it already has a dex file to start with.",
       "parentUuid": "80d03eb3_435870b6",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1732,
+        "endChar": 7
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb6eef6_6a45cbb2",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1732,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T17:45:19Z",
+      "side": 1,
+      "message": "Oh I think that was a mistake, `MainEmptyUncompressedAligned` doesn\u0027t need to be a `java_genrule`.\n\nHowever I made this a `java_genrule` per the request.",
+      "parentUuid": "39411ab6_7b9cc3c0",
       "range": {
         "startLine": 1732,
         "startChar": 0,
