@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4680d9d2_ff157f97",
+        "filename": "tools/veridex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-31T14:58:43Z",
+      "side": 0,
+      "message": "This cleanup may be better off in a separate CL, but if you\u0027re confident in it then I won\u0027t object.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 6
+      },
+      "revId": "faccb4e6c94c079d56d255e582e749dd02c2cba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
