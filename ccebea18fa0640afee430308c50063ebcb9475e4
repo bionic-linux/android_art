@@ -1,0 +1,79 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a025e008_a1e9034d",
+        "filename": "runtime/verifier/reg_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-31T13:45:57Z",
+      "side": 1,
+      "message": "Can you add a high-level comment of what this is?",
+      "range": {
+        "startLine": 807,
+        "startChar": 1,
+        "endLine": 807,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0a4d4a21_789c4932",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/verifier/reg_type.h",
+              "range": {
+                "startLine": 807,
+                "startChar": 0,
+                "endLine": 807,
+                "endChar": 0
+              },
+              "replacement": "  // The type that this type will be initialized to.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981cd004_501b78d3",
+        "filename": "runtime/verifier/reg_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-31T13:45:57Z",
+      "side": 1,
+      "message": "Aren\u0027t we incurring a memory cost for adding this new field to every type?",
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9b45b4_d2b341df",
+        "filename": "runtime/verifier/reg_type_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-10-31T13:45:57Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "ccebea18fa0640afee430308c50063ebcb9475e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
