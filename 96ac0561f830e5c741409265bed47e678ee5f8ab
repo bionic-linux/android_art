@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5dde8650_64751a3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T21:32:16Z",
+      "side": 1,
+      "message": "I did put that cl in a topic with this one: aosp/3326543",
+      "parentUuid": "f8e24828_e7b8fd0c",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da0601d3_9663fd70",
         "filename": "artd/Android.bp",
         "patchSetId": 2
