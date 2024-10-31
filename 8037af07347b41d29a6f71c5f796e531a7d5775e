@@ -40,6 +40,30 @@
       ],
       "revId": "8037af07347b41d29a6f71c5f796e531a7d5775e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67644672_0e72b2fa",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-31T10:48:40Z",
+      "side": 1,
+      "message": "Looks like I didn\u0027t express myself well. Rephrased by Gemini :)",
+      "parentUuid": "a9c753ce_0d66b308",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 73
+      },
+      "revId": "8037af07347b41d29a6f71c5f796e531a7d5775e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
