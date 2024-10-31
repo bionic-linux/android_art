@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd128f1_cce27e02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T15:58:06Z",
+      "side": 1,
+      "message": "Yes, testing with a local change to disable the 1-variant fallback. I can submit in a topic which disables it, but could I get your owners review today if you haven\u0027t stopped working yet?",
+      "parentUuid": "25c4c50e_b2e724a4",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "da0601d3_9663fd70",
@@ -60,6 +84,30 @@
       "writtenOn": "2024-10-31T14:58:43Z",
       "side": 1,
       "message": "Why not this one? Don\u0027t all genrules need to get a prefix?",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1732,
+        "endChar": 7
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d03eb3_435870b6",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1732,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-10-31T15:58:06Z",
+      "side": 1,
+      "message": "Not necessarily. Mostly you need a java_genrule if you\u0027re consuming other java modules as inputs to the genrule, but in this case the genrule just takes source files as inputs.",
+      "parentUuid": "bb1f2ea6_4708432d",
       "range": {
         "startLine": 1732,
         "startChar": 0,
