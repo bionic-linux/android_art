@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4feebc_efbfc37d",
+        "filename": "tools/luci/config/generated/luci-milo.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-31T13:52:17Z",
+      "side": 1,
+      "message": "The angler ones are still called angler. Should we rename these too? Or just hide them?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "56950b0c1c2a2dafd59a5836c65fa56f68731174",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
