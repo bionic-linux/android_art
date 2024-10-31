@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b600db_a864b686",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-10-31T16:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d50017_a24760dd",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 62
+      },
+      "revId": "f89309c175e8d8926f060baec4b8040bb7b1e7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c54aa3e8_c9562df7",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "233c8124_f782d164",
+        "filename": "test/run_test_build.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-10-31T16:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54aa3e8_c9562df7",
+      "range": {
+        "startLine": 524,
+        "startChar": 45,
+        "endLine": 524,
+        "endChar": 53
+      },
+      "revId": "f89309c175e8d8926f060baec4b8040bb7b1e7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5c153b4_3df47a79",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-10-31T08:44:35Z",
       "side": 1,
       "message": "quiet",
+      "range": {
+        "startLine": 943,
+        "startChar": 17,
+        "endLine": 943,
+        "endChar": 22
+      },
+      "revId": "f89309c175e8d8926f060baec4b8040bb7b1e7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef477b5_24be5311",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-10-31T16:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c153b4_3df47a79",
       "range": {
         "startLine": 943,
         "startChar": 17,
