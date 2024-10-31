@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f8e24828_e7b8fd0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-31T21:16:48Z",
+      "side": 1,
+      "message": "Yes, but there I was talking about the CL that disables the fallback. I assume it won\u0027t be in this repository.",
+      "parentUuid": "411582d1_33fa459b",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "96ac0561f830e5c741409265bed47e678ee5f8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da0601d3_9663fd70",
         "filename": "artd/Android.bp",
         "patchSetId": 2
