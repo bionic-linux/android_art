@@ -73,7 +73,8 @@ static const std::vector<std::string> kWarningExemptions = {
 
 static inline std::ostream& operator<<(std::ostream& os, AccessMethod value) {
   switch (value) {
-    case AccessMethod::kNone:
+    case AccessMethod::kCheck:
+    case AccessMethod::kCheckWithPolicy:
       LOG(FATAL) << "Internal access to hidden API should not be logged";
       UNREACHABLE();
     case AccessMethod::kReflection:
@@ -376,7 +377,8 @@ void MemberSignature::LogAccessToEventLog(uint32_t sampled_value,
                                           AccessMethod access_method,
                                           bool access_denied) {
 #ifdef ART_TARGET_ANDROID
-  if (access_method == AccessMethod::kLinking || access_method == AccessMethod::kNone) {
+  if (access_method == AccessMethod::kCheck || access_method == AccessMethod::kCheckWithPolicy ||
+      access_method == AccessMethod::kLinking) {
     // Linking warnings come from static analysis/compilation of the bytecode
     // and can contain false positives (i.e. code that is never run). We choose
     // not to log these in the event log.
@@ -577,7 +579,18 @@ bool HandleCorePlatformApiViolation(T* member,
   DCHECK(policy != EnforcementPolicy::kDisabled)
       << "Should never enter this function when access checks are completely disabled";
 
-  if (access_method != AccessMethod::kNone) {
+  // If we're called with AccessMethod::kCheck then the caller is doing a check,
+  // which either a) is internal and does not correspond to an actual access by
+  // app, or b) with the intention to test another member before the final
+  // decision. In either of these cases we shouldn't log anything, and we should
+  // deny access regardless of policy so that it doesn't affect the code path.
+  // In case (b) we expect to get called again with the real access method and
+  // will log the violation and apply the policy then.
+  if (access_method == AccessMethod::kCheck) {
+    return true;
+  }
+
+  if (access_method != AccessMethod::kCheckWithPolicy) {
     LOG(policy == EnforcementPolicy::kEnabled ? ERROR : WARNING)
         << "Core platform API violation: " << Dumpable<MemberSignature>(MemberSignature(member))
         << " in " << callee_context << " (domain=" << callee_context.GetDomain()
@@ -639,7 +652,7 @@ bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod acce
     }
   }
 
-  if (access_method != AccessMethod::kNone) {
+  if (access_method != AccessMethod::kCheck && access_method != AccessMethod::kCheckWithPolicy) {
     // Warn if blocked signature is being accessed or it is not exempted.
     if (deny_access || !member_signature.DoesPrefixMatchAny(kWarningExemptions)) {
       // Print a log message with information about this class member access.
