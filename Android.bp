@@ -1,7 +1,6 @@
 // If you're looking for ART global stuff, please see build/Android.bp.
 
 package {
-    default_visibility: ["//art:__subpackages__"],
     default_applicable_licenses: ["art_license"],
 }
 
