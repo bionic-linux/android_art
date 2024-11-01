@@ -2962,6 +2962,18 @@
     },
     {
       "name": "libnativeloader_test[com.google.android.art.apex]"
+    },
+    {
+      "name": "CtsLibcoreTestCases[com.android.art.apex]"
+    },
+    {
+      "name": "CtsLibcoreOjTestCases[com.android.art.apex]"
+    },
+    {
+      "name": "CtsLibcoreTestCases[com.google.android.art.apex]"
+    },
+    {
+      "name": "CtsLibcoreOjTestCases[com.google.android.art.apex]"
     }
   ],
   "presubmit": [
