@@ -313,7 +313,11 @@ def setup_test_env():
   global n_thread
   if 'target' in _user_input_variants['target']:
     device_name = get_device_name()
-    if n_thread == 0:
+
+    if env.ART_TEST_RUN_ON_ARM_FVP:
+      # FVP doesn't support multithreading.
+      n_thread = 1
+    elif n_thread == 0:
       # Use only part of the cores since fully loading the device tends to lead to timeouts.
       fraction = 1.0 if env.ART_TEST_ON_VM else 0.75
       n_thread = max(1, int(get_target_cpu_count() * fraction))
