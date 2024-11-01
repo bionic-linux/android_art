@@ -534,7 +534,7 @@ class Generator:
     # Skip tests that have both an `src` directory and an `src-art` directory.
     if os.path.isdir(os.path.join(run_test_path, "src")) and \
        os.path.isdir(os.path.join(run_test_path, "src-art")):
-        return False
+      return False
     # Skip tests that have neither an `src` directory nor an `src-art` directory.
     if not os.path.isdir(os.path.join(run_test_path, "src")) and \
        not os.path.isdir(os.path.join(run_test_path, "src-art")):
@@ -794,7 +794,6 @@ class Generator:
       add_expected_output_genrule("stdout")
       add_expected_output_genrule("stderr")
 
-
   def regen_test_mapping_file(self, art_run_tests):
     """Regenerate ART's `TEST_MAPPING`."""
 
@@ -834,7 +833,17 @@ class Generator:
                      failing_tests_excluded_from_mainline_presubmits,
                      [],
                      mainline_presubmit_apex_suffix)
-
+    # ART mainline CTS tests with APEX suffix, used by atest
+    mainline_presubmit_apex_aosp_suffix = "[com.android.art.apex]"
+    mainline_cts_tests_for_atest = [
+        "CtsLibcoreTestCases",
+        "CtsLibcoreOjTestCases",
+    ]
+    mainline_cts_tests_for_atest_dict = gen_tests_dict(
+        mainline_cts_tests_for_atest, suffix=mainline_presubmit_apex_aosp_suffix
+    ) + gen_tests_dict(
+        mainline_cts_tests_for_atest, suffix=mainline_presubmit_apex_suffix
+    )
     # ART mainline presubmits tests without APEX suffix
     art_mainline_presubmit_tests_dict = \
         gen_tests_dict(mainline_presubmit_tests,
@@ -873,10 +882,13 @@ class Generator:
     # Do not produce an entry for a test group if it is empty.
     test_mapping_dict = collections.OrderedDict([
         (test_group_name, test_group_dict)
-        for (test_group_name, test_group_dict)
-        in [
+        for (test_group_name, test_group_dict) in [
             ("art-mainline-presubmit", art_mainline_presubmit_tests_dict),
-            ("mainline-presubmit", mainline_presubmit_tests_dict),
+            (
+                "mainline-presubmit",
+                mainline_presubmit_tests_dict
+                + mainline_cts_tests_for_atest_dict,
+            ),
             ("presubmit", presubmit_tests_dict),
             ("hwasan-presubmit", hwasan_presubmit_tests_dict),
             ("avf-presubmit", avf_presubmit_tests_dict),
