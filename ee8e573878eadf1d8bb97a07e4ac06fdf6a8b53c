@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7197aad_d7371fa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-01T17:47:02Z",
+      "side": 1,
+      "message": "\u003e depends on the Test Config simplification project which doesn\u0027t have a concrete timeline.\n\nRight, that\u0027s what I meant with \"temporary\" - for now(*) we need to put these stanzas in some TEST_MAPPING file to allow the bracket syntax to work on the atest command line. Fair enough.\n\n\u003e What\u0027s the difference between mainline-presubmit and art-mainline-presubmit?\n\n`art-mainline-presubmit` is the module specific group that\u0027s replacing `mainline-presubmit` and doesn\u0027t use the bracket syntax. But given the goal here is to enable the bracket syntax on the atest command line rather than actually running anything in presubmit, it\u0027s probably not applicable.\n\n*) I.e. until some unspecified point in the future, which can be arbitrarily far away.",
+      "parentUuid": "f94fc404_a2817713",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc2ef64_87ac60c7",
@@ -229,6 +253,30 @@
       "side": 1,
       "message": "\u003e Is this change motivated by the project to enable ART Module code (line) coverage presubmits on code under art/ using Libcore tests?\n\nNo, this change is to automate the atest workflow with ART module. Like I wrote in the description. This has nothing to do with presubmit. Like I said in the description, this shouldn\u0027t impact presubmit IIUC: This change shouldn\u0027t affect the mainline presubmit runs since the mainline-presubmit tag is deprecated: https://buganizer.corp.google.com/issues/368079676#comment4",
       "parentUuid": "1ca8ea1c_4400cde3",
+      "range": {
+        "startLine": 2955,
+        "startChar": 6,
+        "endLine": 2955,
+        "endChar": 57
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a14339_d72d7797",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 2955,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-01T17:47:02Z",
+      "side": 1,
+      "message": "Thanks for the clarification.\n\nMy question about moving this to [`libcore/TEST_MAPPING`](https://cs.android.com/android/platform/superproject/main/+/main:libcore/TEST_MAPPING) remains though. That\u0027d be a better place if possible.",
+      "parentUuid": "dd807367_2a7614b4",
       "range": {
         "startLine": 2955,
         "startChar": 6,
