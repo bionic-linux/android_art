@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94fc404_a2817713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-11-01T17:16:01Z",
+      "side": 1,
+      "message": "\u003e Can\u0027t atest be made able to carry out the test run based on the command line invocation alone?\n\nI agree it is clumsy. I don\u0027t have a whole picture of how much the work it is. But from @kunniu@google.com to fully remove the bracket depends on the Test Config simplification project which doesn\u0027t have a concrete timeline. I can ask around and dig into atest logic to understand more.\n\n\u003e I suggest looking at the art-mainline-presubmit test group, which does not require the bracket syntax.\n\nWhat\u0027s the difference between `mainline-presubmit` and `art-mainline-presubmit`?",
+      "parentUuid": "85950913_7e903c72",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc2ef64_87ac60c7",
