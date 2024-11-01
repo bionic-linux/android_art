@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90437b90_60600d5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-11-01T05:14:49Z",
+      "side": 1,
+      "message": "This is WAI. I don\u0027t know if the mainline engprod or atest team have any plans for removing bracket syntax. @kunniu@google.com, @yuexima@google.com if they have extra info. @rpl@google.com prob also have context. This step should be automated, and atest should understand the mainline module even if this is not specified in test mapping IMHO.\n\nBracket triggers 2 things for coverage in atest: atest will install the mainline module to the device, in this case a coverage instrumented art module. Secondly, when generating coverage reports, the whole ART module source code will be used to, otherwise, only the test dependencies will show up in the report list, see https://b.corp.google.com/issues/352560488#comment21.",
+      "parentUuid": "b1ab779b_9ffdde2b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc2ef64_87ac60c7",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1dc8d8_ab0c5787",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 2955,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-11-01T05:14:49Z",
+      "side": 1,
+      "message": "Gotcha, thanks!",
+      "parentUuid": "8bc2ef64_87ac60c7",
+      "range": {
+        "startLine": 2955,
+        "startChar": 6,
+        "endLine": 2955,
+        "endChar": 57
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c060f7f5_94ddb3cc",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-30T11:48:20Z",
       "side": 1,
       "message": "Is this change related?",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fbe511_803bf106",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-11-01T05:14:49Z",
+      "side": 1,
+      "message": "No. I will remove the change.",
+      "parentUuid": "c060f7f5_94ddb3cc",
       "range": {
         "startLine": 34,
         "startChar": 26,
