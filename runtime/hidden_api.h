@@ -292,7 +292,6 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kSystemArrayCopyInt:
       case Intrinsics::kStringGetCharsNoCheck:
       case Intrinsics::kReferenceGetReferent:
-      case Intrinsics::kReferenceRefersTo:
       case Intrinsics::kMemoryPeekByte:
       case Intrinsics::kMemoryPokeByte:
       case Intrinsics::kCRC32Update:
@@ -380,6 +379,7 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kFP16ToFloat:
       case Intrinsics::kFP16ToHalf:
       case Intrinsics::kFP16Rint:
+      case Intrinsics::kReferenceRefersTo:
       case Intrinsics::kUnsafeArrayBaseOffset:
       case Intrinsics::kUnsafeGet:
       case Intrinsics::kUnsafeGetAbsolute:
