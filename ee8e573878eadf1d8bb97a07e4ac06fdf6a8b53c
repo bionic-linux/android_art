@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd807367_2a7614b4",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 2955,
+      "author": {
+        "id": 1884480
+      },
+      "writtenOn": "2024-11-01T16:59:20Z",
+      "side": 1,
+      "message": "\u003e Is this change motivated by the project to enable ART Module code (line) coverage presubmits on code under art/ using Libcore tests?\n\nNo, this change is to automate the atest workflow with ART module. Like I wrote in the description. This has nothing to do with presubmit. Like I said in the description, this shouldn\u0027t impact presubmit IIUC: This change shouldn\u0027t affect the mainline presubmit runs since the mainline-presubmit tag is deprecated: https://buganizer.corp.google.com/issues/368079676#comment4",
+      "parentUuid": "1ca8ea1c_4400cde3",
+      "range": {
+        "startLine": 2955,
+        "startChar": 6,
+        "endLine": 2955,
+        "endChar": 57
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c060f7f5_94ddb3cc",
