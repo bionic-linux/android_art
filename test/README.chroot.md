@@ -213,3 +213,17 @@ Note that using this chroot-based approach requires root access to the device
     ```bash
     art/tools/buildbot-cleanup-device.sh
     ```
+
+## Useful Tips
+
+Setting some of the following environment variables could be useful when
+running tests:
+
+```bash
+# To keep the failing tests artifacts and provide verbose logging for them.
+export ART_TEST_RUN_TEST_ALWAYS_CLEAN=false
+export ART_TEST_QUIET=false
+
+# To increase the tests timeouts when running on a model.
+export ART_TEST_RUN_ON_ARM_FVP=true
+```
