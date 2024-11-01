@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2af7f6af_362fed17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-01T12:04:04Z",
+      "side": 1,
+      "message": "Thanks, yes I understand why the bracket syntax is useful. What I was wondering about is the need to reflect every `atest` invocation we may need with a stanza in a `TEST_MAPPING` file. Can\u0027t atest be made able to carry out the test run based on the command line invocation alone?",
+      "parentUuid": "90437b90_60600d5e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bc2ef64_87ac60c7",
         "filename": "TEST_MAPPING",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Gotcha, thanks!",
       "parentUuid": "8bc2ef64_87ac60c7",
+      "range": {
+        "startLine": 2955,
+        "startChar": 6,
+        "endLine": 2955,
+        "endChar": 57
+      },
+      "revId": "ee8e573878eadf1d8bb97a07e4ac06fdf6a8b53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca98382_e18a4bef",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 2955,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-01T12:04:04Z",
+      "side": 1,
+      "message": "I still wonder, why not put it in `libcore/TEST_MAPPING` instead? Even though there\u0027s no effect on presubmits, that\u0027s the code base the test belongs to, and it\u0027d avoid adding special cases to the regen script. (Both `art/` and `libcore/` are core components of the ART module.)",
+      "parentUuid": "af1dc8d8_ab0c5787",
       "range": {
         "startLine": 2955,
         "startChar": 6,
