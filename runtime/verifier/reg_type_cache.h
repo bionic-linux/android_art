@@ -36,7 +36,7 @@ class ClassLoader;
 }  // namespace mirror
 
 class ClassLinker;
-class ScopedArenaAllocator;
+class DexFile;
 
 namespace verifier {
 
@@ -55,7 +55,7 @@ class LongLoType;
 class MethodVerifier;
 class NullType;
 class PreciseConstType;
-class PreciseReferenceType;
+class ReferenceType;
 class RegType;
 class ShortType;
 class UndefinedType;
@@ -69,8 +69,18 @@ class RegTypeCache {
   EXPORT RegTypeCache(Thread* self,
                       ClassLinker* class_linker,
                       ArenaPool* arena_pool,
+                      Handle<mirror::ClassLoader> class_loader,
+                      const DexFile* dex_file,
                       bool can_load_classes = true,
                       bool can_suspend = true);
+
+  Handle<mirror::ClassLoader> GetClassLoader() const {
+    return class_loader_;
+  }
+
+  const DexFile* GetDexFile() const {
+    return dex_file_;
+  }
 
   bool CanLoadClasses() const {
     return can_load_classes_;
@@ -81,16 +91,8 @@ class RegTypeCache {
   }
 
   const art::verifier::RegType& GetFromId(uint16_t id) const;
-  // Find a RegType, returns null if not found.
-  const RegType* FindClass(ObjPtr<mirror::Class> klass, bool precise) const
-      REQUIRES_SHARED(Locks::mutator_lock_);
-  // Insert a new class with a specified descriptor, must not already be in the cache.
-  const RegType* InsertClass(const std::string_view& descriptor,
-                             ObjPtr<mirror::Class> klass,
-                             bool precise)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-  // Get or insert a reg type for a description, klass, and precision.
-  const RegType& FromClass(const char* descriptor, ObjPtr<mirror::Class> klass, bool precise)
+  // Get or insert a reg type for a klass.
+  const RegType& FromClass(ObjPtr<mirror::Class> klass)
       REQUIRES_SHARED(Locks::mutator_lock_);
   const ConstantType& FromCat1Const(int32_t value, bool precise)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -98,7 +100,7 @@ class RegTypeCache {
       REQUIRES_SHARED(Locks::mutator_lock_);
   const ConstantType& FromCat2ConstHi(int32_t value, bool precise)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  const RegType& FromDescriptor(Handle<mirror::ClassLoader> loader, const char* descriptor)
+  const RegType& FromDescriptor(const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& FromUnresolvedMerge(const RegType& left,
                                      const RegType& right,
@@ -106,6 +108,8 @@ class RegTypeCache {
       REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& FromUnresolvedSuperClass(const RegType& child)
       REQUIRES_SHARED(Locks::mutator_lock_);
+
+  const RegType& FromTypeIndex(dex::TypeIndex type_index) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Note: this should not be used outside of RegType::ClassJoin!
   const RegType& MakeUnresolvedReference() REQUIRES_SHARED(Locks::mutator_lock_);
@@ -133,12 +137,12 @@ class RegTypeCache {
   const ConflictType& Conflict();
   const NullType& Null();
 
-  const PreciseReferenceType& JavaLangClass() REQUIRES_SHARED(Locks::mutator_lock_);
-  const PreciseReferenceType& JavaLangString() REQUIRES_SHARED(Locks::mutator_lock_);
-  const PreciseReferenceType& JavaLangInvokeMethodHandle() REQUIRES_SHARED(Locks::mutator_lock_);
-  const PreciseReferenceType& JavaLangInvokeMethodType() REQUIRES_SHARED(Locks::mutator_lock_);
-  const RegType& JavaLangThrowable() REQUIRES_SHARED(Locks::mutator_lock_);
-  const RegType& JavaLangObject(bool precise) REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangClass() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangString() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangInvokeMethodHandle() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangInvokeMethodType() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangThrowable() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ReferenceType& JavaLangObject() REQUIRES_SHARED(Locks::mutator_lock_);
 
   const UninitializedType& Uninitialized(const RegType& type, uint32_t allocation_pc)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -153,8 +157,7 @@ class RegTypeCache {
   const ImpreciseConstType& IntConstant() REQUIRES_SHARED(Locks::mutator_lock_);
   const ImpreciseConstType& PosByteConstant() REQUIRES_SHARED(Locks::mutator_lock_);
   const ImpreciseConstType& PosShortConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const RegType& GetComponentType(const RegType& array, Handle<mirror::ClassLoader> loader)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  const RegType& GetComponentType(const RegType& array) REQUIRES_SHARED(Locks::mutator_lock_);
   void Dump(std::ostream& os) REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& RegTypeFromPrimitiveType(Primitive::Type) const;
 
@@ -186,14 +189,17 @@ class RegTypeCache {
 
  private:
   void FillPrimitiveAndSmallConstantTypes() REQUIRES_SHARED(Locks::mutator_lock_);
-  ObjPtr<mirror::Class> ResolveClass(const char* descriptor, Handle<mirror::ClassLoader> loader)
+  ObjPtr<mirror::Class> ResolveClass(const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  bool MatchDescriptor(size_t idx, const std::string_view& descriptor, bool precise)
+  bool MatchDescriptor(size_t idx, const std::string_view& descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
   const ConstantType& FromCat1NonSmallConstant(int32_t value, bool precise)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const RegType& From(Handle<mirror::ClassLoader> loader, const char* descriptor)
+  const RegType& From(const char* descriptor)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  const RegType& FromTypeIndexUncached(dex::TypeIndex type_index)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Returns the pass in RegType.
@@ -219,6 +225,11 @@ class RegTypeCache {
   ScopedNullHandle<mirror::Class> null_handle_;
 
   ClassLinker* class_linker_;
+  Handle<mirror::ClassLoader> class_loader_;
+  const DexFile* const dex_file_;
+
+  // Fast lookup by type index.
+  const RegType** const entries_for_type_index_;
 
   // Whether or not we're allowed to load classes.
   const bool can_load_classes_;

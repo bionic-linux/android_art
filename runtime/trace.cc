@@ -91,14 +91,13 @@ static_assert(kPerThreadBufSize > kMinBufSize);
 // entries in per-thread buffer, the scaling factor is 6.
 static constexpr size_t kScalingFactorEncodedEntries = 6;
 
-TraceClockSource Trace::default_clock_source_ = kDefaultTraceClockSource;
+// The key identifying the tracer to update instrumentation.
+static constexpr const char* kTracerInstrumentationKey = "Tracer";
 
 Trace* Trace::the_trace_ = nullptr;
 pthread_t Trace::sampling_pthread_ = 0U;
 std::unique_ptr<std::vector<ArtMethod*>> Trace::temp_stack_trace_;
 
-// The key identifying the tracer to update instrumentation.
-static constexpr const char* kTracerInstrumentationKey = "Tracer";
 
 static TraceAction DecodeTraceAction(uint32_t tmid) {
   return static_cast<TraceAction>(tmid & kTraceMethodActionMask);
@@ -362,16 +361,6 @@ std::vector<ArtMethod*>* Trace::AllocStackTrace() {
 void Trace::FreeStackTrace(std::vector<ArtMethod*>* stack_trace) {
   stack_trace->clear();
   temp_stack_trace_.reset(stack_trace);
-}
-
-void Trace::SetDefaultClockSource(TraceClockSource clock_source) {
-#if defined(__linux__)
-  default_clock_source_ = clock_source;
-#else
-  if (clock_source != TraceClockSource::kWall) {
-    LOG(WARNING) << "Ignoring tracing request to use CPU time.";
-  }
-#endif
 }
 
 static uint16_t GetTraceVersion(TraceClockSource clock_source, int version) {
@@ -849,6 +838,14 @@ void Trace::Start(std::unique_ptr<File>&& trace_file_in,
                                                          the_trace_,
                                                          /*needs_interpreter=*/false);
     }
+
+    if (art_flags::always_enable_profile_code()) {
+      // Reset the trace low overhead trace entry points to be a nop.
+      MutexLock thread_list_mutex(self, *Locks::thread_list_lock_);
+      for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
+        thread->UpdateTlsLowOverheadTraceEntrypoints(/*enable= */ false);
+      }
+    }
   }
 
   // Can't call this when holding the mutator lock.
@@ -927,6 +924,10 @@ void Trace::StopTracing(bool flush_entries) {
           // processed in order.
           the_trace->trace_writer_->FlushBuffer(
               thread, /* is_sync= */ false, /* free_buffer= */ true);
+        }
+
+        if (art_flags::always_enable_profile_code()) {
+          thread->UpdateTlsLowOverheadTraceEntrypoints(/*enable= */ true);
         }
       }
       the_trace_ = nullptr;
