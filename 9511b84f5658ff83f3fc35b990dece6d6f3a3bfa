@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "992b1618_92cc8332",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-04T13:59:45Z",
+      "side": 1,
+      "message": "I tried, but clang-format keeps correcting it.",
+      "parentUuid": "e15fe7e5_d83add39",
+      "range": {
+        "startLine": 600,
+        "startChar": 54,
+        "endLine": 600,
+        "endChar": 55
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51e25b76_a43a5144",
         "filename": "runtime/mirror/object.h",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f8effcbd_e46b9028",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-04T13:59:45Z",
+      "side": 1,
+      "message": "I tried, but clang-format keeps correcting it. @mast@google.com, should I bypass the format tool?",
+      "parentUuid": "51e25b76_a43a5144",
+      "range": {
+        "startLine": 553,
+        "startChar": 10,
+        "endLine": 553,
+        "endChar": 11
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "37855370_8457d9ad",
         "filename": "runtime/mirror/object.h",
         "patchSetId": 4
@@ -83,6 +131,30 @@
       "writtenOn": "2024-10-24T13:20:40Z",
       "side": 1,
       "message": "I can\u0027t find uses of \"compare and exchange\" being shortened to CAE. Hope it won\u0027t be confusing (can\u0027t offer better naming anyway, sorry).",
+      "range": {
+        "startLine": 564,
+        "startChar": 10,
+        "endLine": 564,
+        "endChar": 13
+      },
+      "revId": "9511b84f5658ff83f3fc35b990dece6d6f3a3bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be07e3c3_2952594a",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-04T13:59:45Z",
+      "side": 1,
+      "message": "For compare and exchange there is no shortening, but I followed the same style as for the compare and set (which is shortened to CAS).",
+      "parentUuid": "37855370_8457d9ad",
       "range": {
         "startLine": 564,
         "startChar": 10,
