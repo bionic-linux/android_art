@@ -29,7 +29,6 @@ import org.junit.runner.RunWith;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 @SmallTest
 @RunWith(AndroidJUnit4.class)
