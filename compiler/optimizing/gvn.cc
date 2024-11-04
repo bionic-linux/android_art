@@ -21,6 +21,7 @@
 #include "base/scoped_arena_allocator.h"
 #include "base/scoped_arena_containers.h"
 #include "base/utils.h"
+#include "optimizing/nodes.h"
 #include "side_effects_analysis.h"
 
 namespace art HIDDEN {
@@ -389,6 +390,9 @@ class GlobalValueNumberer : public ValueObject {
   // which may reference `block`.
   bool WillBeReferencedAgain(HBasicBlock* block) const;
 
+  bool TryReplaceWithExisting(HInstruction* instruction, ValueSet* set) const;
+  bool TryReplaceWithOpposite(HCondition* condition, ValueSet* set) const;
+
   // Iterates over visited blocks and finds one which has a ValueSet such that:
   // (a) it will not be referenced in the future, and
   // (b) it can hold a copy of `reference_set` with a reasonable load factor.
@@ -504,14 +508,9 @@ void GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
         // after fixed ordering.
         current->AsBinaryOperation()->OrderInputs();
       }
-      HInstruction* existing = set->Lookup(current);
-      if (existing != nullptr) {
-        // This replacement doesn't make more OrderInputs() necessary since
-        // current is either used by an instruction that it dominates,
-        // which hasn't been visited yet due to the order we visit instructions.
-        // Or current is used by a phi, and we don't do OrderInputs() on a phi anyway.
-        current->ReplaceWith(existing);
-        current->GetBlock()->RemoveInstruction(current);
+
+      if (TryReplaceWithExisting(current, set) ||
+          (current->IsCondition() && TryReplaceWithOpposite(current->AsCondition(), set))) {
         did_optimization_ = true;
       } else {
         set->Kill(current->GetSideEffects());
@@ -524,6 +523,62 @@ void GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
   }
 
   visited_blocks_.SetBit(block->GetBlockId());
+}
+
+bool GlobalValueNumberer::TryReplaceWithExisting(HInstruction* instruction, ValueSet* set) const {
+  HInstruction* existing = set->Lookup(instruction);
+  if (existing == nullptr) {
+    return false;
+  }
+
+  // This replacement doesn't make more OrderInputs() necessary since instruction is either used by
+  // an instruction that it dominates, which hasn't been visited yet due to the order we visit
+  // instructions. Or instruction is used by a phi, and we don't do OrderInputs() on a phi anyway.
+  instruction->ReplaceWith(existing);
+  instruction->GetBlock()->RemoveInstruction(instruction);
+  return true;
+}
+
+bool GlobalValueNumberer::TryReplaceWithOpposite(HCondition* condition, ValueSet* set) const {
+  // Try to deduplicate with the opposite condition. To do this, we construct the opposite condition
+  // and we try to GVN that.
+  // TODO(solanes): find a way to do this without adding a new instruction?
+  HCondition* opposite = HCondition::Create(graph_,
+                                            condition->AsCondition()->GetOppositeCondition(),
+                                            condition->GetLeft(),
+                                            condition->GetRight());
+  // If it is a FP condition, we must set the opposite bias.
+  if (condition->IsLtBias()) {
+    opposite->SetBias(ComparisonBias::kGtBias);
+  } else if (condition->IsGtBias()) {
+    opposite->SetBias(ComparisonBias::kLtBias);
+  }
+
+  HBasicBlock* condition_block = condition->GetBlock();
+  condition_block->InsertInstructionBefore(opposite, condition);
+  HInstruction* existing_opposite = set->Lookup(opposite);
+  // Undo adding the fake replacement which was only used to check if the same instruction existed.
+  opposite->GetBlock()->RemoveInstruction(opposite);
+  if (existing_opposite == nullptr) {
+    return false;
+  }
+  // We have to add an HNot since we searched for the opposite. We might already have a valid
+  // BooleanNot, so we try not to add a new one, if possible.
+  HBooleanNot* boolean_not = new (graph_->GetAllocator()) HBooleanNot(existing_opposite);
+  condition_block->InsertInstructionBefore(boolean_not, condition);
+  HInstruction* existing_boolean_not = set->Lookup(boolean_not);
+  if (existing_boolean_not == nullptr) {
+    // We add the new instruction to the ValueSet to be able to be reused.
+    set->Add(boolean_not);
+    existing_boolean_not = boolean_not;
+  } else {
+    // Remove the extra one.
+    condition_block->RemoveInstruction(boolean_not);
+  }
+
+  condition->ReplaceWith(existing_boolean_not);
+  condition_block->RemoveInstruction(condition);
+  return true;
 }
 
 bool GlobalValueNumberer::WillBeReferencedAgain(HBasicBlock* block) const {
