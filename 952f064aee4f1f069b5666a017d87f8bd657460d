@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70852860_094971d3",
+        "filename": "artd/artd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-04T14:56:19Z",
+      "side": 1,
+      "message": "Yes, this is to avoid repeating the function signatures. Without this, we are repeating the same function signature 3~5 times in the header and in the test. As we are mocking more and more functions, this becomes more and more tedious.\n\nSince STL already has many type transformations like `remove_const_t`, `remove_volatile_t`, and `remove_reference_t`, it\u0027s not unreasonable to add one more type transformation following the same pattern. Like all the other metaprogramming helpers in STL, one doesn\u0027t need to understand how it works in order to use them. Instead, one only needs to know what it does.\n\nTherefore, I\u0027d like to keep this.",
+      "parentUuid": "48ae9744_5ee73e9d",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 65
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8288ba4e_ac789339",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-10-29T16:41:18Z",
       "side": 1,
       "message": "It seems this is somewhat frowned upon, and there\u0027s b/299355525 about some java-vs-native discrepancy that I have to admit I don\u0027t fully grasp.\n\nInstead of blocking in a `wait` call, is it an option to instead pass in an object with a callback that gets called on completion?",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25e0dcf_4a3f35ec",
+        "filename": "artd/binder/com/android/server/art/IArtd.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-04T14:56:19Z",
+      "side": 1,
+      "message": "Discussed offline. In general, @PropagateAllowBlocking only propagates the \"allow blocking\" flag from the `IArtd` interface, which is from the global `waitForservice` method, so it\u0027s not unreasonable. In particular, we need to wait for a notification in every iteration in a loop, so it will be tedious to use the callback style, especially given that Java doesn\u0027t have `async`/`await`.",
+      "parentUuid": "8288ba4e_ac789339",
       "range": {
         "startLine": 283,
         "startChar": 4,
@@ -81,6 +129,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1187f85f_4ba913d1",
+        "filename": "artd/binder/com/android/server/art/IArtd.aidl",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-04T14:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d10cc7_49a3ed9c",
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a99bba_019cdec4",
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9551ae93_6f80fc8e",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-04T14:56:19Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! This `GetBin` function is used in many places, not just for the first argument for `execv`, so `execvp` doesn\u0027t fully solve the problem. However, I\u0027m inspired by the idea and changed this function to searching $PATH instead.",
+      "parentUuid": "73a99bba_019cdec4",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "386af9df_9e035e22",
@@ -117,6 +207,30 @@
       "writtenOn": "2024-10-29T16:41:18Z",
       "side": 1,
       "message": "Not strictly related, but there should be error checking for this call.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a0b386_3a33278e",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-04T14:56:19Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "386af9df_9e035e22",
       "range": {
         "startLine": 76,
         "startChar": 4,
