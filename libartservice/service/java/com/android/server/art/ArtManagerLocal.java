@@ -111,7 +111,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -894,7 +893,7 @@ public final class ArtManagerLocal {
                                         .map(envVar -> Constants.getenv(envVar))
                                         .filter(classpath -> !TextUtils.isEmpty(classpath))
                                         .flatMap(classpath -> Arrays.stream(classpath.split(":")))
-                                        .collect(Collectors.toList());
+                                        .toList();
 
         var options = new MergeProfileOptions();
         options.forceMerge = true;
@@ -1190,7 +1189,7 @@ public final class ArtManagerLocal {
                                                              .refProfiles()
                                                              .stream()
                                                              .map(AidlUtils::toWritableProfilePath)
-                                                             .collect(Collectors.toList());
+                                                             .toList();
                 try {
                     // The artd method commits all files somewhat transactionally. Here, we are
                     // committing files transactionally at the package level just for simplicity. In
@@ -1296,7 +1295,7 @@ public final class ArtManagerLocal {
             List<String> packages = getDefaultPackages(snapshot, ReasonMapping.REASON_INACTIVE)
                                             .stream()
                                             .filter(pkg -> !excludedPackages.contains(pkg))
-                                            .collect(Collectors.toList());
+                                            .toList();
             if (!packages.isEmpty()) {
                 AsLog.i("Storage is low. Downgrading " + packages.size() + " inactive packages");
                 DexoptParams params =
@@ -1343,14 +1342,14 @@ public final class ArtManagerLocal {
                         .stream()
                         .filter(packageResult
                                 -> packageResult.getDexContainerFileDexoptResults()
-                                           .stream()
-                                           .anyMatch(fileResult
-                                                   -> DexFile.isProfileGuidedCompilerFilter(
-                                                              fileResult.getActualCompilerFilter())
-                                                           && fileResult.getStatus()
-                                                                   == DexoptResult.DEXOPT_SKIPPED))
+                                        .stream()
+                                        .anyMatch(fileResult
+                                                -> DexFile.isProfileGuidedCompilerFilter(
+                                                           fileResult.getActualCompilerFilter())
+                                                        && fileResult.getStatus()
+                                                                == DexoptResult.DEXOPT_SKIPPED))
                         .map(packageResult -> packageResult.getPackageName())
-                        .collect(Collectors.toList());
+                        .toList();
 
         DexoptParams dexoptParams = mainParams.toBuilder()
                                             .setFlags(ArtFlags.FLAG_FORCE_MERGE_PROFILE,
@@ -1399,7 +1398,7 @@ public final class ArtManagerLocal {
                         packages, true /* keepRecent */, true /* descending */);
         }
 
-        return packages.map(PackageState::getPackageName).collect(Collectors.toList());
+        return packages.map(PackageState::getPackageName).toList();
     }
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
