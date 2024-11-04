@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee75b8d1_a260d484",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4029,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-04T22:57:20Z",
+      "side": 1,
+      "message": "That just gets us a pointer, right? Does *klass give us more information?\n\nIt might also be interesting to know if i is ever non-zero here. I would be surprised.\n\nIs it a goal to workaround the failures here? If we\u0027re mainly trying to diagnose, wouldn\u0027t it be much easier to do so if we crashed in both cases for now, and only changed that if this case turns out to be frequent again?",
+      "range": {
+        "startLine": 4029,
+        "startChar": 22,
+        "endLine": 4029,
+        "endChar": 28
+      },
+      "revId": "5fbf2fa20617da220c741166fa466980b7332dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
