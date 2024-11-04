@@ -10094,9 +10094,9 @@ ArtMethod* ClassLinker::FindIncompatibleMethod(ObjPtr<mirror::Class> klass,
   }
 }
 
-ArtMethod* ClassLinker::ResolveMethodWithoutInvokeType(uint32_t method_idx,
-                                                       Handle<mirror::DexCache> dex_cache,
-                                                       Handle<mirror::ClassLoader> class_loader) {
+ArtMethod* ClassLinker::ResolveMethodId(uint32_t method_idx,
+                                        Handle<mirror::DexCache> dex_cache,
+                                        Handle<mirror::ClassLoader> class_loader) {
   DCHECK(dex_cache->GetClassLoader() == class_loader.Get());
   ArtMethod* resolved = dex_cache->GetResolvedMethod(method_idx);
   Thread::PoisonObjectPointersIfDebug();
@@ -10477,9 +10477,9 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       // the invocation type to determine if the method is private. We
       // then resolve again specifying the intended invocation type to
       // force the appropriate checks.
-      target_method = ResolveMethodWithoutInvokeType(method_handle.field_or_method_idx_,
-                                                     hs.NewHandle(referrer->GetDexCache()),
-                                                     hs.NewHandle(referrer->GetClassLoader()));
+      target_method = ResolveMethodId(method_handle.field_or_method_idx_,
+                                      hs.NewHandle(referrer->GetDexCache()),
+                                      hs.NewHandle(referrer->GetClassLoader()));
       if (UNLIKELY(target_method == nullptr)) {
         break;
       }
