@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519ea541_7da0cc6c",
+        "filename": "test/2284-checker-GVN-conditions/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T15:00:18Z",
+      "side": 1,
+      "message": "Already working without this CL, just here to have a regression test. Same for the signed one.",
+      "range": {
+        "startLine": 73,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861e7d76_7f5f6682",
+        "filename": "test/2284-checker-GVN-conditions/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T15:00:18Z",
+      "side": 1,
+      "message": "An example of what this CL targets",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
