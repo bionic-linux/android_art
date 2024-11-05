@@ -385,6 +385,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75b5337_e3234eea",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManagerInterface.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T15:41:50Z",
+      "side": 1,
+      "message": "\u003e The proto is a representation of BatchDexoptParams. If a device can\u0027t afford the proto, then it won\u0027t be able to afford the BatchDexoptParams object already.\n\nIt\u0027d have to afford the serialised representation _on top of_ the already existing one, and then there may be another copy of it on the other side, depending on memory reclamation. And unlike the ordinary data structures the serialisation needs to be continuous in memory, which also adds to the strain. That said, sure, I agree it\u0027s probably not big enough to worry about.\n\n\u003e argument 5 has type com.android.server.art.model.BatchDexoptParams, got com.android.server.art.model.BatchDexoptParams\n\nI see, thanks. That\u0027s better than I thought.\n\n\u003e it\u0027s easy to lose track of what exactly are on the API surface\n\nAgreed.",
+      "parentUuid": "0da6a0ac_4efe28fa",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70132dfe_98dfa68f",
@@ -470,6 +494,30 @@
       "side": 1,
       "message": "By \"API\", I actually meant the user-facing API (`ArtManagerLocal#setBatchDexoptStartCallback` as shown [here](https://source.android.com/docs/core/runtime/configure/art-service#customize_the_package_list_and_dexopt_parameters)).\n\nYes, the proto stuff between two versions of service-art.jar is an API, but an internal one. I regard it as an implementation detail.\n\nChanging the contract of an existing user-facing API is worrying, especially when the caller is on the non-updatable platform.\n\nConsider the following case:\n\nA user may already have code on Android V like\n\n```\ngetArtManagerLocal().setBatchDexoptStartCallback(\n    Runnable::run,\n    (snapshot, reason, defaultPackages, builder, cancellationSignal) -\u003e {\n      // Always only dexopt base apk.\n      DexoptParams params \u003d new DexoptParams.Builder(reason)\n          .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX | ArtFlags.FLAG_FOR_SINGLE_SPLIT)\n          .setSplitName(null)\n          .build();\n      builder.setDexoptParams(params);\n    });\n```\n\nAlthough such an API usage is discouraged, as the [doc](https://source.android.com/docs/core/runtime/configure/art-service#:~:text\u003dYour%20callback%20must%20ignore%20unknown%20reasons%20because%20more%20reasons%20may%20be%20added%20in%20the%20future.) says \"your callback must ignore unknown reasons because more reasons may be added in the future\", we can\u0027t be sure that no one uses the API in this way.\n\nWhen the user wrote this code on Android V, they probably didn\u0027t foresee that a new reason \"ab-ota\" will be introduced a year later. If the new reason forbade such a usage, their code on Android V would get `IllegalArgumentException`, which can crash system server.",
       "parentUuid": "b0734aec_d9caa3b3",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e5e267_c5f67670",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T15:41:50Z",
+      "side": 1,
+      "message": "My point is that this is, in fact, also an API. It\u0027s only between different versions of ART, and that admittedly gives us a bit of leeway compared to an ordinary API. However we need to think of it as an API nevertheless.\n\n\u003e If the new reason forbade such a usage, their code on Android V would get IllegalArgumentException, which can crash system server.\n\nMy worry is that we can make things difficult to our future selves by having fields in this proto that we need to support for calls from old platforms. However, as we discussed offline that can\u0027t actually happen because we\u0027ll still need to support everything for bg-dexopt, and due to various policies (the Mainline update window together with our policy to not pre-reboot dexopt when the SDK level in the OTA is more than one version above the current one) we concluded there are no situations where we\u0027d need to keep support for A/B OTAs only.\n\nThat\u0027s rather roundabout and I\u0027m apprehensive about having to recap the same line of reasoning again next time this is touched. I guess it\u0027s best if I do a CL myself on top of this one that adds a comment that (hopefully) captures this well enough for the future me.\n\nAnyway, as discussed let\u0027s do a change now to ignore split_name for both bg-dexopt and pr-dexopt so we can avoid `split_name` in this proto.",
+      "parentUuid": "3a47c291_7c0c1097",
       "range": {
         "startLine": 34,
         "startChar": 0,

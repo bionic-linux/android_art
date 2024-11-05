@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf7f6d7_c9288e34",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T15:41:50Z",
+      "side": 1,
+      "message": "It\u0027s really both ways, isn\u0027t it? Return values would be just as much of a problem.",
+      "range": {
+        "startLine": 224,
+        "startChar": 39,
+        "endLine": 225,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "88719a65_0cfc3d59",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 227,
+                "endChar": 0
+              },
+              "replacement": "        // are used. Be careful not to pass an instance of a class in the old `service-art.jar`\n        // (either as a parameter or a return value) to methods in the new `service-art.jar` (across\n        // the API boundary in `PreRebootManagerInterface`).\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f790c1e2a088cac1accfe635a16bac0e78d37a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

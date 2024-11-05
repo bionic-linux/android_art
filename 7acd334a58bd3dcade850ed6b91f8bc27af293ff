@@ -334,6 +334,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ecd59a_edb0545a",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T15:41:50Z",
+      "side": 1,
+      "message": "This ties into the discussion in the proto file, but given the outcome there the tests are ok as-is.",
+      "parentUuid": "21851b22_4ba1b4a3",
+      "range": {
+        "startLine": 45,
+        "startChar": 77,
+        "endLine": 45,
+        "endChar": 84
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49540c39_1f2d1641",
