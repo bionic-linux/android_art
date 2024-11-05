@@ -172,17 +172,27 @@ dex::StringIndex VerifierDeps::GetIdFromString(const DexFile& dex_file, const st
   }
 }
 
-std::string VerifierDeps::GetStringFromId(const DexFile& dex_file,
-                                          dex::StringIndex string_id) const {
+const char* VerifierDeps::GetStringFromId(const DexFile& dex_file,
+                                          dex::StringIndex string_idx,
+                                          /*out*/ size_t* utf8_length) const {
   uint32_t num_ids_in_dex = dex_file.NumStringIds();
-  if (string_id.index_ < num_ids_in_dex) {
-    return std::string(dex_file.GetStringView(string_id));
+  if (string_idx.index_ < num_ids_in_dex) {
+    uint32_t utf16_length;
+    const char* str = dex_file.GetStringDataAndUtf16Length(string_idx, &utf16_length);
+    if (utf8_length != nullptr) {
+      *utf8_length = DexFile::Utf8Length(str, utf16_length);
+    }
+    return str;
   } else {
     const DexFileDeps* deps = GetDexFileDeps(dex_file);
     DCHECK(deps != nullptr);
-    string_id.index_ -= num_ids_in_dex;
-    CHECK_LT(string_id.index_, deps->strings_.size());
-    return deps->strings_[string_id.index_];
+    size_t index = string_idx.index_ - num_ids_in_dex;
+    CHECK_LT(index, deps->strings_.size());
+    const std::string& str = deps->strings_[index];
+    if (utf8_length != nullptr) {
+      *utf8_length = str.length();
+    }
+    return str.c_str();
   }
 }
 
@@ -691,10 +701,12 @@ bool VerifierDeps::ValidateDependenciesAndUpdateStatus(
 // the same lookup pattern.
 static ObjPtr<mirror::Class> FindClassAndClearException(ClassLinker* class_linker,
                                                         Thread* self,
-                                                        const std::string& name,
+                                                        const char* descriptor,
+                                                        size_t descriptor_length,
                                                         Handle<mirror::ClassLoader> class_loader)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  ObjPtr<mirror::Class> result = class_linker->FindClass(self, name.c_str(), class_loader);
+  ObjPtr<mirror::Class> result =
+      class_linker->FindClass(self, descriptor, descriptor_length, class_loader);
   if (result == nullptr) {
     DCHECK(self->IsExceptionPending());
     self->ClearException();
@@ -719,11 +731,16 @@ bool VerifierDeps::VerifyDexFileAndUpdateStatus(
   static constexpr uint32_t kMaxWarnings = 5;
   for (const auto& vec : assignables) {
     for (const auto& entry : vec) {
-      const std::string& destination_desc = GetStringFromId(dex_file, entry.GetDestination());
-      destination.Assign(
-          FindClassAndClearException(class_linker, self, destination_desc, class_loader));
-      const std::string& source_desc = GetStringFromId(dex_file, entry.GetSource());
-      source.Assign(FindClassAndClearException(class_linker, self, source_desc, class_loader));
+      size_t destination_desc_length;
+      const char* destination_desc =
+          GetStringFromId(dex_file, entry.GetDestination(), &destination_desc_length);
+      destination.Assign(FindClassAndClearException(
+          class_linker, self, destination_desc, destination_desc_length, class_loader));
+      size_t source_desc_length;
+      const char* source_desc =
+          GetStringFromId(dex_file, entry.GetSource(), &source_desc_length);
+      source.Assign(FindClassAndClearException(
+          class_linker, self, source_desc, source_desc_length, class_loader));
 
       if (destination == nullptr || source == nullptr) {
         // We currently don't use assignability information for unresolved
