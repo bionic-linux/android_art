@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c680e64e_ceb2f087",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T14:27:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "87038c33_99d957e1",
+      "revId": "bffbb97584324bebda63763354ae4e0748a1e15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd16ebf_8cccb223",
