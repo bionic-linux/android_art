@@ -10456,17 +10456,16 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       kind = mirror::MethodHandle::Kind::kInvokeStatic;
       receiver_count = 0;
       target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                       method_handle.field_or_method_idx_,
-                                                       referrer,
-                                                       InvokeType::kStatic);
+          ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                  referrer,
+                                  InvokeType::kStatic);
       break;
     }
     case DexFile::MethodHandleType::kInvokeInstance: {
       kind = mirror::MethodHandle::Kind::kInvokeVirtual;
       receiver_count = 1;
       target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
+          ResolveMethodWithChecks(
                                                        method_handle.field_or_method_idx_,
                                                        referrer,
                                                        InvokeType::kVirtual);
@@ -10478,7 +10477,7 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       kind = mirror::MethodHandle::Kind::kInvokeTransform;
       receiver_count = 0;
       target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
+          ResolveMethodWithChecks(
                                                        method_handle.field_or_method_idx_,
                                                        referrer,
                                                        InvokeType::kDirect);
@@ -10504,14 +10503,14 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       if (target_method->IsPrivate()) {
         kind = mirror::MethodHandle::Kind::kInvokeDirect;
         target_method =
-            ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
+            ResolveMethodWithChecks(
                                                          method_handle.field_or_method_idx_,
                                                          referrer,
                                                          InvokeType::kDirect);
       } else {
         kind = mirror::MethodHandle::Kind::kInvokeSuper;
         target_method =
-            ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
+            ResolveMethodWithChecks(
                                                          method_handle.field_or_method_idx_,
                                                          referrer,
                                                          InvokeType::kSuper);
@@ -10531,7 +10530,7 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       kind = mirror::MethodHandle::Kind::kInvokeInterface;
       receiver_count = 1;
       target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
+          ResolveMethodWithChecks(
                                                        method_handle.field_or_method_idx_,
                                                        referrer,
                                                        InvokeType::kInterface);
