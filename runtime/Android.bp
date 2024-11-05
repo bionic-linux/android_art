@@ -571,6 +571,9 @@ cc_defaults {
                 "apex-info-list-tinyxml",
                 "art-apex-cache-info",
             ],
+            header_libs: [
+                "libxsdc-utils",
+            ],
             tidy_disabled_srcs: [":art-apex-cache-info"],
         },
         host: {

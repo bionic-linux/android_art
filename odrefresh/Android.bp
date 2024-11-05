@@ -70,6 +70,9 @@ cc_defaults {
         "apex-info-list-tinyxml",
         "art-apex-cache-info",
     ],
+    header_libs: [
+        "libxsdc-utils",
+    ],
     tidy_disabled_srcs: [":art-apex-cache-info"],
     shared_libs: [
         "libarttools",
@@ -211,7 +214,10 @@ cc_library_static {
 art_cc_defaults {
     name: "art_odrefresh_tests_defaults",
     defaults: ["odrefresh-defaults"],
-    header_libs: ["odrefresh_headers"],
+    header_libs: [
+        "libxsdc-utils",
+        "odrefresh_headers",
+    ],
     srcs: [
         "odr_artifacts_test.cc",
         "odr_common_test.cc",
