@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9365b7e1_7fb3c44a",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T13:38:20Z",
+      "side": 1,
+      "message": "I think \"returned\" is correct here. Basically if the return of CompareAndExchandeStrongSequentiallyConsistent is the same as the expected_value parameter, the exchange went through.",
+      "parentUuid": "c90b9d67_a73ce19d",
+      "range": {
+        "startLine": 110,
+        "startChar": 76,
+        "endLine": 110,
+        "endChar": 84
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb38765e_a825f165",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T13:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a938fdce_7f660688",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "648a8258_861f2621",
         "filename": "libartbase/base/atomic.h",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2024-11-05T11:22:34Z",
       "side": 1,
       "message": "nit: missing `is`?",
+      "range": {
+        "startLine": 111,
+        "startChar": 41,
+        "endLine": 111,
+        "endChar": 42
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6aadb6e_3488f41c",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T13:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648a8258_861f2621",
       "range": {
         "startLine": 111,
         "startChar": 41,
@@ -83,6 +155,30 @@
       "writtenOn": "2024-11-05T11:22:34Z",
       "side": 1,
       "message": "`g`, not `d`",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0746f586_2ee32393",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T13:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22728e9a_40f11265",
       "range": {
         "startLine": 112,
         "startChar": 20,
@@ -124,6 +220,24 @@
           ]
         }
       ],
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25666333_c468d691",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T13:38:20Z",
+      "side": 1,
+      "message": "The space is removed by the clang formatter. If I add the space, `repo upload` will complain and suggest removing it.",
+      "parentUuid": "9ac333fc_30441d36",
       "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
