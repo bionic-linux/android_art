@@ -1,0 +1,131 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90b9d67_a73ce19d",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T11:22:34Z",
+      "side": 1,
+      "message": "existing?",
+      "range": {
+        "startLine": 110,
+        "startChar": 76,
+        "endLine": 110,
+        "endChar": 84
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a938fdce_7f660688",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T11:22:34Z",
+      "side": 1,
+      "message": "Maybe add that this happens before `compare_exchange_strong` modifies `expected_value` to match the existing value before the exchange.",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648a8258_861f2621",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T11:22:34Z",
+      "side": 1,
+      "message": "nit: missing `is`?",
+      "range": {
+        "startLine": 111,
+        "startChar": 41,
+        "endLine": 111,
+        "endChar": 42
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22728e9a_40f11265",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T11:22:34Z",
+      "side": 1,
+      "message": "`g`, not `d`",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac333fc_30441d36",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T11:22:34Z",
+      "side": 1,
+      "message": "nit space",
+      "fixSuggestions": [
+        {
+          "fixId": "8d4199b6_d38d78a3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/mirror/object-inl.h",
+              "range": {
+                "startLine": 600,
+                "startChar": 0,
+                "endLine": 601,
+                "endChar": 0
+              },
+              "replacement": "        this, field_offset, old_value, /*is_volatile\u003d*/ true);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
