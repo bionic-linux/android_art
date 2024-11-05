@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262f950c_37cc6f8f",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-05T09:52:55Z",
+      "side": 1,
+      "message": "Could have kept the `while` here?",
+      "range": {
+        "startLine": 964,
+        "startChar": 0,
+        "endLine": 965,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c464b4e2_be5018b2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/mirror/class-inl.h",
+              "range": {
+                "startLine": 964,
+                "startChar": 0,
+                "endLine": 976,
+                "endChar": 0
+              },
+              "replacement": "  do {\n    if (UNLIKELY(match.empty()) || match[0] !\u003d \u0027[\u0027) {\n      return false;\n    }\n    match.remove_prefix(1u);\n    // No read barrier needed, we\u0027re reading a chain of constant references for comparison\n    // with null. Then we follow up below with reading constant references to read constant\n    // primitive data in both proxy and non-proxy paths. See ReadBarrierOption.\n    klass \u003d klass-\u003eGetComponentType\u003ckDefaultVerifyFlags, kWithoutReadBarrier\u003e();\n  } while (klass-\u003eIsArrayClass());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f5b9d87df6692e71b68eb9d37e893e400e48ff9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
