@@ -40,6 +40,30 @@
       ],
       "revId": "f5b9d87df6692e71b68eb9d37e893e400e48ff9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc800bd4_a16cf7d2",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-05T12:42:35Z",
+      "side": 1,
+      "message": "I think I wanted to add `UNLIKELY()` to the `if` - then the new structure would actually make sense. But let\u0027s get that back to a simple `while` instead.",
+      "parentUuid": "262f950c_37cc6f8f",
+      "range": {
+        "startLine": 964,
+        "startChar": 0,
+        "endLine": 965,
+        "endChar": 8
+      },
+      "revId": "f5b9d87df6692e71b68eb9d37e893e400e48ff9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
