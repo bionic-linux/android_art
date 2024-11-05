@@ -16,6 +16,47 @@
       "message": "Friendly ping.",
       "revId": "669eb9bcb2567a675adf5ccf6fa736c37122b92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3176f11f_0d2b4d07",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-05T14:47:38Z",
+      "side": 1,
+      "message": "Are we passing this just to know which profile to save last, or is it used for something else?",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6f7c38a2_913faebb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/jit/jit.h",
+              "range": {
+                "startLine": 282,
+                "startChar": 0,
+                "endLine": 282,
+                "endChar": 0
+              },
+              "replacement": "  //\n  // The `code_type` denotes the type of code that will be saved in the profile.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "669eb9bcb2567a675adf5ccf6fa736c37122b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
