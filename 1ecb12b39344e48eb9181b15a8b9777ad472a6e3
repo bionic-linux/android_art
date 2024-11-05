@@ -34,6 +34,23 @@
       "parentUuid": "d0cb183a_8a7c3af8",
       "revId": "1ecb12b39344e48eb9181b15a8b9777ad472a6e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b11b3f1_8c4c894e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-11-05T15:09:34Z",
+      "side": 1,
+      "message": "Ping, this patch is still waiting for a second review.",
+      "revId": "1ecb12b39344e48eb9181b15a8b9777ad472a6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
