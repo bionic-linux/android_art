@@ -22,6 +22,30 @@
       },
       "revId": "a924bc2078af7186945b91ea3e05c009add66a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61165417_a8e15ac3",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-05T12:58:57Z",
+      "side": 1,
+      "message": "That\u0027s right, but this was bogus. We\u0027re being asked to compile a method, so we would never hit a ICCE.",
+      "parentUuid": "d0836234_ba797f38",
+      "range": {
+        "startLine": 1087,
+        "startChar": 8,
+        "endLine": 1087,
+        "endChar": 50
+      },
+      "revId": "a924bc2078af7186945b91ea3e05c009add66a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
