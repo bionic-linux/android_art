@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ab228d_b838cc1e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-05T14:52:09Z",
+      "side": 1,
+      "message": "Looks like you\u0027d want a fast path looking at the access flags to go straight to the most common case.",
+      "range": {
+        "startLine": 4267,
+        "startChar": 0,
+        "endLine": 4301,
+        "endChar": 34
+      },
+      "revId": "55643286177ff4ac4365e3989c184f198a86e2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
