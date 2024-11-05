@@ -552,6 +552,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4afbda7_8e77c5c3",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T18:42:03Z",
+      "side": 1,
+      "message": "\u003e instead of silently ignoring the field.\n\nAgreed, that there would be checks in `toProto` to complain about anything that isn\u0027t valid in the proto was a given to me. Sorry that wasn\u0027t clear.",
+      "parentUuid": "37cc8fc9_0e43151d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9311588a_e122c703",
