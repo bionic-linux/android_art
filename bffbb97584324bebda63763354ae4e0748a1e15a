@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6425375_b805281f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T14:09:34Z",
+      "side": 1,
+      "message": "Is the method handle 32 bits?",
+      "revId": "bffbb97584324bebda63763354ae4e0748a1e15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd16ebf_8cccb223",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T14:09:34Z",
+      "side": 1,
+      "message": "Suggestion: At this point, we can call this `temp` as it is used in many ways",
+      "range": {
+        "startLine": 4284,
+        "startChar": 16,
+        "endLine": 4284,
+        "endChar": 28
+      },
+      "revId": "bffbb97584324bebda63763354ae4e0748a1e15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
