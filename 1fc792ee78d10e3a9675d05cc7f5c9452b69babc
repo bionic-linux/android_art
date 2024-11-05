@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72fbdfb0_41ffc984",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T15:48:29Z",
+      "side": 1,
+      "message": "I\u0027ve tried different rephrases, but they sound more confusing than what we have here. I think that if you look at the implementation, it may be confusing to see expected_value being returned, but I added a comment with the implementation to explain why that is.\n\nThe documentation for how the function behaves seems informative for anyone trying to use it. Otherwise, would you have a recommended phrasing?",
+      "parentUuid": "8ded744b_f5e6466b",
+      "range": {
+        "startLine": 110,
+        "startChar": 76,
+        "endLine": 110,
+        "endChar": 84
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "648a8258_861f2621",
         "filename": "libartbase/base/atomic.h",
         "patchSetId": 5
