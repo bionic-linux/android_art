@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0836234_ba797f38",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-05T10:31:36Z",
+      "side": 1,
+      "message": "We no longer do the ICCE checks here right? I don\u0027t understand this well enough to see why they aren\u0027t needed anymore (or why the checks were needed). Should we add a comment about this or is it obvious. Should we also mention this change in the commit description.",
+      "range": {
+        "startLine": 1087,
+        "startChar": 8,
+        "endLine": 1087,
+        "endChar": 50
+      },
+      "revId": "a924bc2078af7186945b91ea3e05c009add66a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
