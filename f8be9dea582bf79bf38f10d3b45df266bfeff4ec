@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecbed1a_2a939558",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3241,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T12:00:22Z",
+      "side": 1,
+      "message": "nit: 2 spaces",
+      "range": {
+        "startLine": 3241,
+        "startChar": 19,
+        "endLine": 3241,
+        "endChar": 21
+      },
+      "revId": "f8be9dea582bf79bf38f10d3b45df266bfeff4ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a331640f_c59d90d2",
+        "filename": "test/552-checker-sharpening/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T12:00:22Z",
+      "side": 1,
+      "message": "Should we do just `CHECK-START:`? Same for others",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "f8be9dea582bf79bf38f10d3b45df266bfeff4ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
