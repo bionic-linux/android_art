@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4248b9_4ba38582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "Please summarise the change: \"Instead of calling `BatchDexoptStartCallback` from `ArtManagerLocal.dexoptPackages` in the new service-art.jar loaded from the OTA package, do it in the current one where the OEM may have configured it, and send over the resulting `BatchDexoptParams` data instead.\"",
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "53f9eef3_3e2a0290",
@@ -14,6 +31,190 @@
       "writtenOn": "2024-10-31T15:59:17Z",
       "side": 1,
       "message": "Friendly ping",
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba3acce_4f156507",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "The pertinent bit to highlight here is that the system server, libcore, and framework dependencies come from the currently running system and not the OTA package if there is one.",
+      "range": {
+        "startLine": 220,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 66
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c5a975_f6fad0f0",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "Worth spelling out a bit more what the problem is, e.g: \"That means we must not pass instances of classes defined in that jar across the API boundary in `PreRebootManagerInterface`, and hence serialized protobufs are used instead.\"",
+      "range": {
+        "startLine": 226,
+        "startChar": 29,
+        "endLine": 227,
+        "endChar": 69
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a729014_a179832c",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "Iiuc this warning is a false alarm - apparently the lint check has no concept of an API-annotated identifier being used in the same container and hence not through the API. That seems like it could cause quite a bit of noise.\n\n---\n\nAnalyzer Description: Reports AndroidLint warnings.\nOwner: colefaust@google.com\n\n[FlaggedApi] Field `REASON_PRE_REBOOT_DEXOPT` is a flagged API and should be inside an `if (Flags.artServiceV3())` check (or annotate the surrounding method `run` with `@FlaggedApi(Flags.FLAG_ART_SERVICE_V3) to transfer requirement to caller`)\n\n                        ReasonMapping.REASON_PRE_REBOOT_DEXOPT, cancellationSignal, callbackExecutor,\n                                      ~~~~~~~~~~~~~~~~~~~~~~~~\n\nThis lint check looks for accesses of APIs marked with `@FlaggedApi(X)` without a guarding `if (Flags.X)` check. See go/android-flagged-apis.\n\nSuppression and local reproduction steps: go/ayeaye-android-lint\n\nThis warning was found on the git_main branch",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 97
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf76b865_9d4efeb4",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9c3b9906_464e9974",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+              "range": {
+                "startLine": 2,
+                "startChar": 0,
+                "endLine": 3,
+                "endChar": 0
+              },
+              "replacement": " * Copyright (C) 2024 The Android Open Source Project\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fd71e7_e4de5932",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "For clarity, please use \"ab-ota\" which is the reason we\u0027ll actually need to support with this API (apropos the earlier discussion).",
+      "range": {
+        "startLine": 45,
+        "startChar": 77,
+        "endLine": 45,
+        "endChar": 84
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "876c600e_8ad74fc8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+              "range": {
+                "startLine": 45,
+                "startChar": 0,
+                "endLine": 46,
+                "endChar": 0
+              },
+              "replacement": "                                                   new DexoptParams.Builder(\"ab-ota\").build())\n"
+            },
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": "                        .setDexoptParams(new DexoptParams.Builder(\"ab-ota\").build().toProto())\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49540c39_1f2d1641",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/DexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "Same here - we should only test the subset of the API that we actually need to use for pre-reboot dexopt. Maybe the new tests in this class aren\u0027t needed at all.",
+      "range": {
+        "startLine": 148,
+        "startChar": 41,
+        "endLine": 152,
+        "endChar": 48
+      },
       "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

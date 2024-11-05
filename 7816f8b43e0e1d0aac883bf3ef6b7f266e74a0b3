@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7b4e4a_438dbe35",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "So javac gets confused by assignments to `inputReason`, even though they all happen strictly before the lambda is created?\n\nIs this a common Java idiom that I\u0027ve missed? If so, I guess it\u0027s ok. Otherwise, I suggest adding `final` just for clarity, and maybe also a short comment, such as a link to some page explaining this gotcha. Optional though.",
+      "parentUuid": "d062878b_0265aa4a",
+      "range": {
+        "startLine": 867,
+        "startChar": 8,
+        "endLine": 867,
+        "endChar": 46
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb946aa_dcddd146",
@@ -289,6 +313,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3e5de5_d28d8166",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManagerInterface.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "Interesting. Iiuc we can safely use any ADT in the BCP, like `java.util.List`, `java.util.Map`, and so on, right? So full serialisation to/from a byte array is in some sense overkill. However, I\u0027m not aware of any good tools to support structured data in the JDK, and I\u0027m not suggesting replacing this with a tangle of maps and lists.\n\nI guess one option in theory could be to put a data carrier class in the BCP, e.g. somewhere in libcore/dalvik/src/main/java/dalvik/. It wouldn\u0027t need to be a system API, and it would avoid the de/serialisation overhead. But it\u0027d be dislocated from the rest of the code, and there could be issues if we enable hiddenapi runtime enforcement of core platform APIs (which I plan to do), so it has drawbacks too.\n\nOtoh this serialisation may not be entirely negligible on low memory devices. The proto could get somewhat large, perhaps on the order of a MB, and it needs to be serialised into a single continuous memory area. It still feels like premature optimisation to design for that, so I\u0027ll just put the thought out there.\n\nBtw, just out of curiosity, do you know more exactly how it crashes when the same class is present in both class loaders? I figure the object would point to the class instance, so that\u0027d presumably be carried over with the vtable etc. Is it that the class instance doesn\u0027t point back to the data structures for the loaded dex files?",
+      "parentUuid": "00b6b716_6ac416da",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70132dfe_98dfa68f",
@@ -326,6 +374,30 @@
       "side": 1,
       "message": "I defined this proto only to avoid using classes defined in `service-art.jar` in `PreRebootManagerInterface`. There is nothing special in this proto that needs extra care. At the end of the day, it\u0027s just a representation of `BatchDexoptParams`, which is a system server API that needs to be backward compatible by nature and already has all the [restrictions](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/model/DexoptParams.java;l\u003d125-177;drc\u003d5916ee589c4880e2d8a1a9ad6dc852108e4c44c1).\n\nNote that we are not creating a new API but only to extend the existing [`BatchDexoptStartCallback`](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d1416;drc\u003dc4064f4d533d7808d34f275a9e4a3048a3f9f591) API to support Pre-reboot Dexopt. All the compat aspects about `BatchDexoptStartCallback` are already there since Android U, for all compilation reasons except `ab-ota`. I think we\u0027ve done sufficient discussions when we were designing and implementing the API. To avoid going round in circles, let\u0027s not repeat all the discussions over again.\n\nChange of reason is [forbidden](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d1413;drc\u003dc4064f4d533d7808d34f275a9e4a3048a3f9f591). However, omitting the `reason` field from the proto doesn\u0027t look beneficial but only adds complexity, because one would have to remember that `toProto` drops a field and `fromProto` adds a field.\n\nThe system API change is needed. The reason constant will be used by API users in `BatchDexoptStartCallback` (e.g., in a `case` clause as [this example](https://source.android.com/docs/core/runtime/configure/art-service#customize_the_package_list_and_dexopt_parameters) shows).",
       "parentUuid": "70132dfe_98dfa68f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0734aec_d9caa3b3",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-05T01:47:45Z",
+      "side": 1,
+      "message": "This proto gets serialised and passed to a different version in `PreRebootManager.run`, so it\u0027s clearly a new API, albeit one that is largely similar to an existing one.\n\nThe use cases are only partially the same, in particular the dexopt API in `ArtManagerLocal` needs to support many more that simply aren\u0027t relevant here. Co-opting an API for a different one which isn\u0027t well aligned in use cases is usually a big red flag.\n\nThe saving grace is that it\u0027s always the ART module on both sides here, so we know which bits of the API is actually used. Hence I can agree that we can use that to streamline the code a bit. I\u0027d still like to see better docs here though which bits actually are used, to avoid having to dig around in the commit history to find that out a few years from now.\n\nThere\u0027s also the aspect of the confusion stemming from a proto with stuff in it that doesn\u0027t make sense, and that\u0027s particularly true for `split_name`. I\u0027m ok with the rest, but please drop that field.\n\n\u003e Change of reason is forbidden.\n\nCan you please point me to the check for that?",
+      "parentUuid": "535abaa9_e39a1a43",
       "range": {
         "startLine": 34,
         "startChar": 0,
