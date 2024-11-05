@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61eed29_91fa1e3e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4297,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T12:05:06Z",
+      "side": 1,
+      "message": "Do you want to do this? Or a `bit_cast\u003cint32_t, uint32_t\u003e`?",
+      "range": {
+        "startLine": 4297,
+        "startChar": 36,
+        "endLine": 4297,
+        "endChar": 45
+      },
+      "revId": "e23fe537867868bc00c4d9fa191b71c8d24c19f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
