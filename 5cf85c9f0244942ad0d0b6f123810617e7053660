@@ -22,6 +22,30 @@
       },
       "revId": "5cf85c9f0244942ad0d0b6f123810617e7053660",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfce8c2_39e34535",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-11-05T01:30:25Z",
+      "side": 1,
+      "message": "I missed this one. I agree the top one should be sufficient. Most of this code is copied from ConcurrentCopying 😊",
+      "parentUuid": "d1ceaa07_197b62df",
+      "range": {
+        "startLine": 4036,
+        "startChar": 8,
+        "endLine": 4036,
+        "endChar": 17
+      },
+      "revId": "5cf85c9f0244942ad0d0b6f123810617e7053660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
