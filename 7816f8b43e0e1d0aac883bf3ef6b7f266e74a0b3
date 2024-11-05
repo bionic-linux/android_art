@@ -154,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47ef7f6_155f3b51",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Sure, I can add a comment. I can only find a few blog posts about this but not official docs, so I\u0027ll omit the link.",
+      "parentUuid": "ed7b4e4a_438dbe35",
+      "range": {
+        "startLine": 867,
+        "startChar": 8,
+        "endLine": 867,
+        "endChar": 46
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb946aa_dcddd146",
@@ -337,6 +361,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da6a0ac_4efe28fa",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManagerInterface.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Thanks for the thoughts.\n\n\u003e Otoh this serialisation may not be entirely negligible on low memory devices. The proto could get somewhat large, perhaps on the order of a MB, and it needs to be serialised into a single continuous memory area.\n\n1. The proto is a representation of `BatchDexoptParams`. If a device can\u0027t afford the proto, then it won\u0027t be able to afford the `BatchDexoptParams` object already. Moreover, the memory required for Pre-reboot Dexopt is orders of magnitude larger than this, so it wouldn\u0027t work anyway.\n2. I don\u0027t think the size of the proto will be in the order of a MB. The largest part in the proto is the list of packages. Let\u0027s say each package has 100 characters, and the device has 1000 packages (if one installs more than that on a low-end device then there are much more things to worry about :). This is already a guess at the upper end of the range, and the proto only takes ~100KB in this case.\n\n\u003e Btw, just out of curiosity, do you know more exactly how it crashes when the same class is present in both class loaders?\n\nThe crash is:\n\njava.lang.IllegalArgumentException: method com.android.server.art.prereboot.PreRebootManager.run argument 5 has type com.android.server.art.model.BatchDexoptParams, got com.android.server.art.model. BatchDexoptParams\n\nAs a explained earlier, ART uses `\u003cclass-loader, class-name\u003e` to identify a class, so the same class in those two jars are considered two different classes. In this case, the old `com.android.server.art.model.BatchDexoptParams` is considered different from the new `com.android.server.art.model.BatchDexoptParams`. Hence we get this weird error message.\n\nAlternative to serializing the object to a proto, we can also construct an object of the new class in the old code using reflection. However, I\u0027m not a fan of this idea because it makes the API surface between the two jars obscure. In this case, `PreRebootManagerInterface` would import `BatchDexoptParams` and `BatchDexoptParams` imports others, so it\u0027s easy to lose track of what exactly are on the API surface. In contrast, in the protobuf approach, it\u0027s clear that there are only `PreRebootManagerInterface` and the proto that are on the API surface.",
+      "parentUuid": "4c3e5de5_d28d8166",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70132dfe_98dfa68f",
@@ -398,6 +446,30 @@
       "side": 1,
       "message": "This proto gets serialised and passed to a different version in `PreRebootManager.run`, so it\u0027s clearly a new API, albeit one that is largely similar to an existing one.\n\nThe use cases are only partially the same, in particular the dexopt API in `ArtManagerLocal` needs to support many more that simply aren\u0027t relevant here. Co-opting an API for a different one which isn\u0027t well aligned in use cases is usually a big red flag.\n\nThe saving grace is that it\u0027s always the ART module on both sides here, so we know which bits of the API is actually used. Hence I can agree that we can use that to streamline the code a bit. I\u0027d still like to see better docs here though which bits actually are used, to avoid having to dig around in the commit history to find that out a few years from now.\n\nThere\u0027s also the aspect of the confusion stemming from a proto with stuff in it that doesn\u0027t make sense, and that\u0027s particularly true for `split_name`. I\u0027m ok with the rest, but please drop that field.\n\n\u003e Change of reason is forbidden.\n\nCan you please point me to the check for that?",
       "parentUuid": "535abaa9_e39a1a43",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a47c291_7c0c1097",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "By \"API\", I actually meant the user-facing API (`ArtManagerLocal#setBatchDexoptStartCallback` as shown [here](https://source.android.com/docs/core/runtime/configure/art-service#customize_the_package_list_and_dexopt_parameters)).\n\nYes, the proto stuff between two versions of service-art.jar is an API, but an internal one. I regard it as an implementation detail.\n\nChanging the contract of an existing user-facing API is worrying, especially when the caller is on the non-updatable platform.\n\nConsider the following case:\n\nA user may already have code on Android V like\n\n```\ngetArtManagerLocal().setBatchDexoptStartCallback(\n    Runnable::run,\n    (snapshot, reason, defaultPackages, builder, cancellationSignal) -\u003e {\n      // Always only dexopt base apk.\n      DexoptParams params \u003d new DexoptParams.Builder(reason)\n          .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX | ArtFlags.FLAG_FOR_SINGLE_SPLIT)\n          .setSplitName(null)\n          .build();\n      builder.setDexoptParams(params);\n    });\n```\n\nAlthough such an API usage is discouraged, as the [doc](https://source.android.com/docs/core/runtime/configure/art-service#:~:text\u003dYour%20callback%20must%20ignore%20unknown%20reasons%20because%20more%20reasons%20may%20be%20added%20in%20the%20future.) says \"your callback must ignore unknown reasons because more reasons may be added in the future\", we can\u0027t be sure that no one uses the API in this way.\n\nWhen the user wrote this code on Android V, they probably didn\u0027t foresee that a new reason \"ab-ota\" will be introduced a year later. If the new reason forbade such a usage, their code on Android V would get `IllegalArgumentException`, which can crash system server.",
+      "parentUuid": "b0734aec_d9caa3b3",
       "range": {
         "startLine": 34,
         "startChar": 0,

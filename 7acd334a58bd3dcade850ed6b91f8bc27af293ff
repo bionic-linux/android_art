@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "16cf4f34_9c950e7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!",
+      "parentUuid": "7c4248b9_4ba38582",
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "53f9eef3_3e2a0290",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c1563f_bbbab3f3",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Oh, I see. That\u0027s kind of obvious to me given how Java class loaders work, but it may not be obvious to readers (especially when native dlopen doesn\u0027t work in this way).",
+      "parentUuid": "eba3acce_4f156507",
+      "range": {
+        "startLine": 220,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 66
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c5a975_f6fad0f0",
@@ -83,6 +125,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c78643d5_7eac227a",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04c5a975_f6fad0f0",
+      "range": {
+        "startLine": 226,
+        "startChar": 29,
+        "endLine": 227,
+        "endChar": 69
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9a729014_a179832c",
         "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManager.java",
         "patchSetId": 6
@@ -94,6 +160,30 @@
       "writtenOn": "2024-11-05T01:47:45Z",
       "side": 1,
       "message": "Iiuc this warning is a false alarm - apparently the lint check has no concept of an API-annotated identifier being used in the same container and hence not through the API. That seems like it could cause quite a bit of noise.\n\n---\n\nAnalyzer Description: Reports AndroidLint warnings.\nOwner: colefaust@google.com\n\n[FlaggedApi] Field `REASON_PRE_REBOOT_DEXOPT` is a flagged API and should be inside an `if (Flags.artServiceV3())` check (or annotate the surrounding method `run` with `@FlaggedApi(Flags.FLAG_ART_SERVICE_V3) to transfer requirement to caller`)\n\n                        ReasonMapping.REASON_PRE_REBOOT_DEXOPT, cancellationSignal, callbackExecutor,\n                                      ~~~~~~~~~~~~~~~~~~~~~~~~\n\nThis lint check looks for accesses of APIs marked with `@FlaggedApi(X)` without a guarding `if (Flags.X)` check. See go/android-flagged-apis.\n\nSuppression and local reproduction steps: go/ayeaye-android-lint\n\nThis warning was found on the git_main branch",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 97
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a0dca5_70d33ca9",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s annoying. I filed b/374040104.",
+      "parentUuid": "9a729014_a179832c",
       "range": {
         "startLine": 138,
         "startChar": 35,
@@ -141,6 +231,30 @@
           ]
         }
       ],
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6fc7c5_b8fa177f",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf76b865_9d4efeb4",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
       "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -196,6 +310,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21851b22_4ba1b4a3",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/BatchDexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "I actually prefer the opposite: we use an arbitrary reason to make sure that the reason doesn\u0027t matter here. Otherwise, the ability to support arbitrary reasons may be bit rot, and users will get surprised when they use this for other reasons and find that it doesn\u0027t work.",
+      "parentUuid": "62fd71e7_e4de5932",
+      "range": {
+        "startLine": 45,
+        "startChar": 77,
+        "endLine": 45,
+        "endChar": 84
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49540c39_1f2d1641",
@@ -209,6 +347,30 @@
       "writtenOn": "2024-11-05T01:47:45Z",
       "side": 1,
       "message": "Same here - we should only test the subset of the API that we actually need to use for pre-reboot dexopt. Maybe the new tests in this class aren\u0027t needed at all.",
+      "range": {
+        "startLine": 148,
+        "startChar": 41,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "7acd334a58bd3dcade850ed6b91f8bc27af293ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebc7cf9_4824be6f",
+        "filename": "libartservice/service/javatests/com/android/server/art/model/DexoptParamsTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T11:49:43Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "49540c39_1f2d1641",
       "range": {
         "startLine": 148,
         "startChar": 41,
