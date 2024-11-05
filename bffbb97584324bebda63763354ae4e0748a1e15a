@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87038c33_99d957e1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-05T14:22:15Z",
+      "side": 1,
+      "message": "It is Java object, so I thought `movl` would be less confusing here.",
+      "parentUuid": "d6425375_b805281f",
+      "revId": "bffbb97584324bebda63763354ae4e0748a1e15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cd16ebf_8cccb223",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 8
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-05T14:09:34Z",
       "side": 1,
       "message": "Suggestion: At this point, we can call this `temp` as it is used in many ways",
+      "range": {
+        "startLine": 4284,
+        "startChar": 16,
+        "endLine": 4284,
+        "endChar": 28
+      },
+      "revId": "bffbb97584324bebda63763354ae4e0748a1e15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feae36da_9433c019",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-05T14:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd16ebf_8cccb223",
       "range": {
         "startLine": 4284,
         "startChar": 16,
