@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ceaa07_197b62df",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4036,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-05T01:28:37Z",
+      "side": 1,
+      "message": "The UNLIKELY seems inappropriate at that stage. But not worth fixing in temporary code.",
+      "range": {
+        "startLine": 4036,
+        "startChar": 8,
+        "endLine": 4036,
+        "endChar": 17
+      },
+      "revId": "5cf85c9f0244942ad0d0b6f123810617e7053660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
