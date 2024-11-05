@@ -105,6 +105,30 @@
       },
       "revId": "669eb9bcb2567a675adf5ccf6fa736c37122b92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f2ae34_c3305666",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T15:41:29Z",
+      "side": 1,
+      "message": "I\u0027ve considered this, but I think it\u0027s better not to do it.\n\nFirst, the map is not ordered by the insertion order. If we want to keep the insertion order, we will need some refactoring, which adds even more complexity than adding a code type.\n\nSecond, we can\u0027t guarantee that the primary apk is the first one being inserted. The calls to register apks with profiles are from the platform. Partners may change the call order in whatever way they like. Even on AOSP, where we have control, it will be a headache to make sure that no one ever changes those calls in a way that breaks this assumption.",
+      "parentUuid": "30046692_388a7ada",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 54
+      },
+      "revId": "669eb9bcb2567a675adf5ccf6fa736c37122b92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
