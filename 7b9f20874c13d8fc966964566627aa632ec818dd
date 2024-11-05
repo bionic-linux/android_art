@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95585de9_785ccd6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T09:50:25Z",
+      "side": 1,
+      "message": "Part of the public API https://cs.android.com/android/platform/superproject/main/+/main:libcore/api/current.txt;l\u003d4936;drc\u003d84228ea5890f7f1ca3901346aeba600f90a32b36",
+      "revId": "7b9f20874c13d8fc966964566627aa632ec818dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
