@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb352a9_e8213019",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T16:15:41Z",
+      "side": 1,
+      "message": "Suggestion: I\u0027d move this right after `Atomically replace the value with desired_value if it matches the expected_value.`",
+      "range": {
+        "startLine": 110,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "9b064ddfb9e34152fcda68f2624e67f3ade5ba09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
