@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ded744b_f5e6466b",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-05T14:58:55Z",
+      "side": 1,
+      "message": "The confusing bit is that the return value of `CompareAndExchangeStrongSequentiallyConsistent` is `expected_value` every time since we do `return expected_value`. This is okay since that variable gets modified in `compare_exchange_strong`, but I can see how this can be confusing to a reader.\n\nMaybe we can talk about `witness value` to disambiguate? That\u0027s the terminology in https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/atomic/AtomicReference.html#compareAndExchange-V-V-",
+      "parentUuid": "9365b7e1_7fb3c44a",
+      "range": {
+        "startLine": 110,
+        "startChar": 76,
+        "endLine": 110,
+        "endChar": 84
+      },
+      "revId": "1fc792ee78d10e3a9675d05cc7f5c9452b69babc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "648a8258_861f2621",
         "filename": "libartbase/base/atomic.h",
         "patchSetId": 5
