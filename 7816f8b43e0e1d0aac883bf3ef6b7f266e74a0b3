@@ -528,6 +528,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37cc8fc9_0e43151d",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-05T16:04:45Z",
+      "side": 1,
+      "message": "Thanks for the discussion. As discussed, I mainly had two concerns, and we found ways to address them.\n\n1. By omitting a field from the proto, we are introducing a pitfall for future maintainers who may use the proto for other purposes. This can be mitigated by adding documentations to the proto definition and adding a check to the `toProto` method instead of silently ignoring the field.\n2. We need to support the split name for bg-dexopt, and support window for that is much longer than the support window for ab-ota. For that, we need the code that handles the split name field anyway, so it\u0027s pointless to drop the support for ab-ota only. To address this, I created a CL to drop the support globally.\n\nRemoved this field.",
+      "parentUuid": "f3e5e267_c5f67670",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "7816f8b43e0e1d0aac883bf3ef6b7f266e74a0b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9311588a_e122c703",
