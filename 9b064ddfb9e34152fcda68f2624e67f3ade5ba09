@@ -22,6 +22,30 @@
       },
       "revId": "9b064ddfb9e34152fcda68f2624e67f3ade5ba09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf01e95_835a204d",
+        "filename": "libartbase/base/atomic.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-05T17:32:50Z",
+      "side": 1,
+      "message": "I tried that, but then it confused me more. I\u0027ll leave it as is.",
+      "parentUuid": "ccb352a9_e8213019",
+      "range": {
+        "startLine": 110,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "9b064ddfb9e34152fcda68f2624e67f3ade5ba09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
