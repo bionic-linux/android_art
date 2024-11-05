@@ -16,6 +16,7 @@
 
 #include "ssa_liveness_analysis.h"
 
+#include "android-base/logging.h"
 #include "base/bit_vector-inl.h"
 #include "code_generator.h"
 #include "linear_order.h"
@@ -212,6 +213,11 @@ void SsaLivenessAnalysis::ComputeLiveRanges() {
         // Kill the instruction and shorten its interval.
         kill->SetBit(current->GetSsaIndex());
         live_in->ClearBit(current->GetSsaIndex());
+        if (current->GetLiveInterval() == nullptr) {
+          graph_->Dump(LOG_STREAM(FATAL) << *current << " has no live interval but it has SSAIndex "
+                                         << current->GetSsaIndex() << ". Full graph:\n",
+                       /* codegen_= */ nullptr);
+        }
         current->GetLiveInterval()->SetFrom(current->GetLifetimePosition());
       }
 
