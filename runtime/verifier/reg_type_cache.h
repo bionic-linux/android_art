@@ -21,9 +21,9 @@
 #include <string_view>
 #include <vector>
 
+#include "base/arena_containers.h"
 #include "base/casts.h"
 #include "base/macros.h"
-#include "base/scoped_arena_containers.h"
 #include "dex/primitive.h"
 #include "gc_root.h"
 #include "handle_scope.h"
@@ -144,7 +144,7 @@ class RegTypeCache {
   const ReferenceType& JavaLangThrowable() REQUIRES_SHARED(Locks::mutator_lock_);
   const ReferenceType& JavaLangObject() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const UninitializedType& Uninitialized(const RegType& type, uint32_t allocation_pc)
+  const UninitializedType& Uninitialized(const RegType& type)
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Create an uninitialized 'this' argument for the given type.
   const UninitializedType& UninitializedThisArgument(const RegType& type)
@@ -211,14 +211,13 @@ class RegTypeCache {
   std::string_view AddString(const std::string_view& str);
 
   // Arena allocator.
-  ArenaStack arena_stack_;
-  ScopedArenaAllocator allocator_;
+  ArenaAllocator allocator_;
 
   // The actual storage for the RegTypes.
-  ScopedArenaVector<const RegType*> entries_;
+  ArenaVector<const RegType*> entries_;
 
   // Fast lookup for quickly finding entries that have a matching class.
-  ScopedArenaVector<std::pair<Handle<mirror::Class>, const RegType*>> klass_entries_;
+  ArenaVector<std::pair<Handle<mirror::Class>, const RegType*>> klass_entries_;
 
   // Handle scope containing classes.
   VariableSizedHandleScope handles_;
@@ -230,6 +229,9 @@ class RegTypeCache {
 
   // Fast lookup by type index.
   const RegType** const entries_for_type_index_;
+
+  // Cache last uninitialized "this" type used for constructors.
+  const UninitializedType* last_uninitialized_this_type_;
 
   // Whether or not we're allowed to load classes.
   const bool can_load_classes_;
