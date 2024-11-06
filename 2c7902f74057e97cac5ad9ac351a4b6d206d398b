@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "84fbb99d_95ed2f56",
+        "filename": "compiler/optimizing/gvn.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-06T13:33:50Z",
+      "side": 1,
+      "message": "Done, also added float tests to make sure we are doing the right thing",
+      "parentUuid": "9006b8e5_ac342433",
+      "range": {
+        "startLine": 546,
+        "startChar": 16,
+        "endLine": 546,
+        "endChar": 24
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1a7bcf33_a77f8f1e",
         "filename": "compiler/optimizing/gvn.cc",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2024-11-06T10:33:11Z",
       "side": 1,
       "message": "We can work around that by providing helper functions that do not call `Integer.unsignedCompare()`. See `$inline$BelowInteger` in run-test `2275-integral-unsigned-arithmetic`.",
+      "range": {
+        "startLine": 64,
+        "startChar": 85,
+        "endLine": 65,
+        "endChar": 85
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a185f0b_7129ed17",
+        "filename": "test/2284-checker-GVN-conditions/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-06T13:33:50Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "cc7d8f7e_349c382b",
       "range": {
         "startLine": 64,
         "startChar": 85,
