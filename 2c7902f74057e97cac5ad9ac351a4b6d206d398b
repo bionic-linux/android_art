@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9006b8e5_ac342433",
+        "filename": "compiler/optimizing/gvn.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-06T10:33:11Z",
+      "side": 1,
+      "message": "You\u0027re not propagating \"bias\" for FP conditions. See `InstructionSimplifierVisitor` which refuses to process FP conditions in one case, and propagates the bias in another.",
+      "range": {
+        "startLine": 546,
+        "startChar": 16,
+        "endLine": 546,
+        "endChar": 24
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7bcf33_a77f8f1e",
+        "filename": "compiler/optimizing/gvn.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-06T10:33:11Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of the extra memory use we incur here if we do not actually replace the condition. But I don\u0027t see an easy way to avoid that.",
+      "range": {
+        "startLine": 551,
+        "startChar": 2,
+        "endLine": 551,
+        "endChar": 64
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7d8f7e_349c382b",
+        "filename": "test/2284-checker-GVN-conditions/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-06T10:33:11Z",
+      "side": 1,
+      "message": "We can work around that by providing helper functions that do not call `Integer.unsignedCompare()`. See `$inline$BelowInteger` in run-test `2275-integral-unsigned-arithmetic`.",
+      "range": {
+        "startLine": 64,
+        "startChar": 85,
+        "endLine": 65,
+        "endChar": 85
+      },
+      "revId": "2c7902f74057e97cac5ad9ac351a4b6d206d398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "519ea541_7da0cc6c",
