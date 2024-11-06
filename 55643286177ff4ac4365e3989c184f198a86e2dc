@@ -46,6 +46,30 @@
       },
       "revId": "55643286177ff4ac4365e3989c184f198a86e2dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb86805c_23df7d93",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-06T16:24:13Z",
+      "side": 1,
+      "message": "As discussed offline: landing this CL to fix the bug. But `kAccCopied` checks are not needed as they can be done at MH\u0027s creation time. That will be done in aosp/3326433.",
+      "parentUuid": "ea89c4e7_b2407ae7",
+      "range": {
+        "startLine": 4267,
+        "startChar": 0,
+        "endLine": 4301,
+        "endChar": 34
+      },
+      "revId": "55643286177ff4ac4365e3989c184f198a86e2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
