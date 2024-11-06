@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a965348e_9a5d03a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-06T21:42:15Z",
+      "side": 1,
+      "message": "Any ideas on how I could automate this testing?\n\nI tried writing an ART run-test, but ART run-tests crash in AHeapInfo_create initialization when run on device.",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

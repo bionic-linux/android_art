@@ -34,6 +34,24 @@
       "parentUuid": "9e9cff68_78149eca",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e824217_31199a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-06T21:42:15Z",
+      "side": 1,
+      "message": "I was able to reproduce the biased results pretty easily by spawning a bunch of threads and allocating at a few different call sites first thing.\n\nI updated the CL to force the slow path allocation every time and report object allocation size. That fixes the bias issues, and appears to be not too bad at all performance wise compared to the cost of taking samples when profiling is enabled.",
+      "parentUuid": "ab03c885_bef8b9d7",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
