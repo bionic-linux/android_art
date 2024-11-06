@@ -39,7 +39,6 @@
 #include "handle_scope.h"
 #include "interpreter/interpreter_cache.h"
 #include "interpreter/shadow_frame.h"
-#include "javaheapprof/javaheapsampler.h"
 #include "jvalue.h"
 #include "managed_stack.h"
 #include "offsets.h"
