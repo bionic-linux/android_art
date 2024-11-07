@@ -67,6 +67,13 @@ inline bool RegType::IsConstantBoolean() const {
   }
 }
 
+inline ObjPtr<mirror::Class> RegType::GetClass() const {
+  DCHECK(!IsUnresolvedReference());
+  DCHECK(!klass_.IsNull());
+  DCHECK(HasClass());
+  return klass_.Get();
+}
+
 inline bool RegType::AssignableFrom(const RegType& lhs,
                                     const RegType& rhs,
                                     bool strict,
