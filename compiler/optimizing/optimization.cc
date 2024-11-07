@@ -55,7 +55,6 @@
 #include "licm.h"
 #include "load_store_elimination.h"
 #include "loop_optimization.h"
-#include "reference_type_propagation.h"
 #include "scheduler.h"
 #include "select_generator.h"
 #include "sharpening.h"
@@ -99,8 +98,6 @@ const char* OptimizationPassName(OptimizationPass pass) {
       return CodeSinking::kCodeSinkingPassName;
     case OptimizationPass::kConstructorFenceRedundancyElimination:
       return ConstructorFenceRedundancyElimination::kCFREPassName;
-    case OptimizationPass::kReferenceTypePropagation:
-      return ReferenceTypePropagation::kReferenceTypePropagationPassName;
     case OptimizationPass::kScheduling:
       return HInstructionScheduling::kInstructionSchedulingPassName;
     case OptimizationPass::kWriteBarrierElimination:
@@ -157,7 +154,6 @@ OptimizationPass OptimizationPassByName(const std::string& pass_name) {
   X(OptimizationPass::kInvariantCodeMotion);
   X(OptimizationPass::kLoadStoreElimination);
   X(OptimizationPass::kLoopOptimization);
-  X(OptimizationPass::kReferenceTypePropagation);
   X(OptimizationPass::kScheduling);
   X(OptimizationPass::kSelectGenerator);
   X(OptimizationPass::kSideEffectsAnalysis);
@@ -290,10 +286,6 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         break;
       case OptimizationPass::kLoadStoreElimination:
         opt = new (allocator) LoadStoreElimination(graph, stats, pass_name);
-        break;
-      case OptimizationPass::kReferenceTypePropagation:
-        opt = new (allocator) ReferenceTypePropagation(
-            graph, dex_compilation_unit.GetDexCache(), /* is_first_run= */ false, pass_name);
         break;
       case OptimizationPass::kWriteBarrierElimination:
         opt = new (allocator) WriteBarrierElimination(graph, stats, pass_name);
