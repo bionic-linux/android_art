@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97025276_6b294ee7",
+        "filename": "artd/artd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "\u003e it\u0027s not unreasonable to add one more type transformation\n\nThat depends. If STL provided this then I\u0027d agree, but it doesn\u0027t, so apparently there hasn\u0027t been a compelling need for it so far.\n\nLet me rephrase my question: Where do the `noexcept` specifiers come from and why do they need to be removed this way? I don\u0027t see them in the Bionic headers.",
+      "parentUuid": "70852860_094971d3",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 65
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8288ba4e_ac789339",
         "filename": "artd/binder/com/android/server/art/IArtd.aidl",
         "patchSetId": 4

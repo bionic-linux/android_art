@@ -1,0 +1,281 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25e0b68_dd00e56e",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "A problem here is that it\u0027s possible for the pid to be reused if it has exited. Not much we can do about that though - the timeout will need to deal with it.",
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407b0978_d69d14e2",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "`sizeof(struct inotify_event) + NAME_MAX + 1`, as inotify(7) suggests?",
+      "range": {
+        "startLine": 1479,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9297f272_18286b42",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "artd/artd.cc",
+              "range": {
+                "startLine": 1479,
+                "startChar": 0,
+                "endLine": 1480,
+                "endChar": 0
+              },
+              "replacement": "  constexpr size_t kBufSize \u003d sizeof(struct inotify_event) + NAME_MAX + 1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f15e0ec_92af4d18",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Gerrit shows no coverage in this loop, while there is on several lines at the beginning of the function. Have you verified that the tests go in here, e.g. by temporarily planting an abort?",
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1414c1ed_d3ada01d",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "`arraysize(pollfds)`",
+      "range": {
+        "startLine": 1487,
+        "startChar": 48,
+        "endLine": 1487,
+        "endChar": 58
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f04ec23_06f2987a",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Don\u0027t know what the style guide says, but I\u0027d prefer a line break here. Or does clang-format not agree?",
+      "range": {
+        "startLine": 1503,
+        "startChar": 36,
+        "endLine": 1503,
+        "endChar": 37
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec6bb2f_78bf4a81",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Please add a test that creates a few other files in the directory before the real one.",
+      "range": {
+        "startLine": 2572,
+        "startChar": 14,
+        "endLine": 2572,
+        "endChar": 29
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6f8379_2b50b5b2",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2600,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Can this be `100` or even less? Realtime is an expensive commodity in tests.",
+      "range": {
+        "startLine": 2600,
+        "startChar": 55,
+        "endLine": 2600,
+        "endChar": 59
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af6c78f_237bff07",
+        "filename": "artd/binder/com/android/server/art/IArtd.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "A reference to the code that\u0027s responsible for this could be handy.",
+      "range": {
+        "startLine": 277,
+        "startChar": 69,
+        "endLine": 277,
+        "endChar": 81
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587a12bc_238a6c36",
+        "filename": "artd/binder/com/android/server/art/IArtdNotification.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "I see in the doc for `ndk::SharedRefBase`: \"ref must be called at least one time during the lifetime of this object.\"\n\nSo that means this function has to be called _exactly_ once, even in failure paths?",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 89
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adf8701_7ffdc274",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Nit: Either \"`wait`\" or \"the `wait` flag\".",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992340de_2e90a6f6",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-07T22:07:24Z",
+      "side": 1,
+      "message": "Why do you need this? Afaik `std::unique_ptr` is used with pointers to heap allocated memory, but I don\u0027t see that make_scope_guard returns that.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7298635c_8fea4f3f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libarttools/include_testing/tools/testing.h",
+              "range": {
+                "startLine": 92,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": "    return std::make_pair(pid, make_scope_guard(std::move(cleanup)));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
