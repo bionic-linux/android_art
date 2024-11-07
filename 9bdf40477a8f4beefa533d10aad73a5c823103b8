@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231bf24a_1f477dc6",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-07T21:02:56Z",
+      "side": 1,
+      "message": "I have also inverted the debug/ndebug flag,\nwhich make it more apparent that this build configuation is potentionally testing too much, as we might consider removing it.",
+      "revId": "9bdf40477a8f4beefa533d10aad73a5c823103b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28b5c25_f0e40a11",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-07T21:02:56Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "9bdf40477a8f4beefa533d10aad73a5c823103b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
