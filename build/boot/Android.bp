@@ -157,3 +157,10 @@ systemserverclasspath_fragment {
         "com.android.art.debug",
     ],
 }
+
+prebuilt_etc {
+    name: "com.android.art.preloaded-classes",
+    src: "preloaded-classes",
+    filename: "preloaded-classes",
+    no_full_install: true,
+}
