@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ceb178_e01c9601",
+        "filename": "tools/luci/config/generated/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-11-07T22:23:26Z",
+      "side": 0,
+      "message": "Just curious: not setting this (as not done in CMC builders) leads to setting `ART_USE_READ_BARRIER\u003dfalse` or we don\u0027t set it to anything?",
+      "range": {
+        "startLine": 265,
+        "startChar": 23,
+        "endLine": 265,
+        "endChar": 43
+      },
+      "revId": "9bdf40477a8f4beefa533d10aad73a5c823103b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
