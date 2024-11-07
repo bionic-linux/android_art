@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "445072d0_eab6a32a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-07T14:18:28Z",
+      "side": 1,
+      "message": "Internal links to content with (probably?) limited retention should be posted in the bug, not in the commit message. The name of the test should be recorded here instead. (`presubmit-cts-device-cloud`?)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "064ee247189e854c0c541a27a7b3c21c5466bdf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f58bddfa_e6860382",
@@ -37,6 +60,24 @@
       "writtenOn": "2024-11-07T11:05:19Z",
       "side": 1,
       "message": "An alternative implementation:\n```\ninline void Jit::AddSamples(Thread* self, ArtMethod* method) {\n  if (UNLIKELY(method-\u003eIsIntrinsic())) {\n    // Intrinsics are special and will be considered hot from the first call.\n    MaybeEnqueueCompilation(method, self);\n    return;\n  }\n\n  if (UNLIKELY(method-\u003eIsMemorySharedMethod())) {\n    if (self-\u003eDecrementSharedMethodHotness() \u003d\u003d 0) {\n      self-\u003eResetSharedMethodHotness();\n      MaybeEnqueueCompilation(method, self);\n    }\n    return;\n  }\n\n  if (method-\u003eCounterIsHot()) {\n    method-\u003eResetCounter(Runtime::Current()-\u003eGetJITOptions()-\u003eGetWarmupThreshold());\n    MaybeEnqueueCompilation(method, self);\n  } else {\n    method-\u003eUpdateCounter(1);\n  }\n}\n```\n\nI think this is better for readability but since this gets inlined in many places then I am not sure if we will get code size / runtime regressions. Might be okay since this is used to tier up from interpreter to JIT. WDYT?\n\nIf we go with this, I will do it in a follow-up CL to make sure this CL doesn\u0027t have any unintended regressions.",
+      "revId": "064ee247189e854c0c541a27a7b3c21c5466bdf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b586089_974be8ae",
+        "filename": "runtime/jit/jit-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-07T14:18:28Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep the current implementation which does fewer checks in the not-hot path.",
+      "parentUuid": "1509f6f8_c0996259",
       "revId": "064ee247189e854c0c541a27a7b3c21c5466bdf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
