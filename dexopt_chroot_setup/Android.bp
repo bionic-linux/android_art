@@ -38,6 +38,7 @@ cc_defaults {
     static_libs: [
         "dexopt_chroot_setup-aidl-ndk",
         "libfstab",
+        "libselinux",
     ],
     target: {
         android: {
