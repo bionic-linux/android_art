@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4c14f0_4da63355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-07T19:44:35Z",
+      "side": 1,
+      "message": "This is nice, but are we sure we want those extra builders? For example, it may be quite enough to have host.x86.gsctress.debug.64, and adding host.x86.gsctress.ndebug.64 may just consume resources and add very little extra information.\n\nShould it be discussed with the wider ART team?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "a67e2b6ede881c271f5942c64d91286dda213075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
