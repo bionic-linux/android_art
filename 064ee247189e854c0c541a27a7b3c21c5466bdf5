@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58bddfa_e6860382",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-07T11:05:19Z",
+      "side": 1,
+      "message": "There are some flaky failures that existed before my change too. There\u0027s a non-flaky failure unrelated to my changes and tracked in 369618699",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "064ee247189e854c0c541a27a7b3c21c5466bdf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1509f6f8_c0996259",
+        "filename": "runtime/jit/jit-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-07T11:05:19Z",
+      "side": 1,
+      "message": "An alternative implementation:\n```\ninline void Jit::AddSamples(Thread* self, ArtMethod* method) {\n  if (UNLIKELY(method-\u003eIsIntrinsic())) {\n    // Intrinsics are special and will be considered hot from the first call.\n    MaybeEnqueueCompilation(method, self);\n    return;\n  }\n\n  if (UNLIKELY(method-\u003eIsMemorySharedMethod())) {\n    if (self-\u003eDecrementSharedMethodHotness() \u003d\u003d 0) {\n      self-\u003eResetSharedMethodHotness();\n      MaybeEnqueueCompilation(method, self);\n    }\n    return;\n  }\n\n  if (method-\u003eCounterIsHot()) {\n    method-\u003eResetCounter(Runtime::Current()-\u003eGetJITOptions()-\u003eGetWarmupThreshold());\n    MaybeEnqueueCompilation(method, self);\n  } else {\n    method-\u003eUpdateCounter(1);\n  }\n}\n```\n\nI think this is better for readability but since this gets inlined in many places then I am not sure if we will get code size / runtime regressions. Might be okay since this is used to tier up from interpreter to JIT. WDYT?\n\nIf we go with this, I will do it in a follow-up CL to make sure this CL doesn\u0027t have any unintended regressions.",
+      "revId": "064ee247189e854c0c541a27a7b3c21c5466bdf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
