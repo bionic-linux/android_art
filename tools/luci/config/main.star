@@ -251,6 +251,7 @@ def add_builder(mode,
     category = name.replace(".", "|")
     category = category.replace("host|", "host.")
     category = category.replace("target|", "target.")
+    category = category.replace("|debug|", "|")
 
     product = None
     if arch == "arm":
