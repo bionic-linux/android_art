@@ -33,6 +33,7 @@ import static com.android.server.art.model.Config.Callback;
 import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptStatus;
 
 import android.annotation.CallbackExecutor;
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
@@ -59,6 +60,7 @@ import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.art.flags.Flags;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.server.LocalManagerRegistry;
@@ -1152,6 +1154,15 @@ public final class ArtManagerLocal {
         } finally {
             mCleanupLock.writeLock().unlock();
         }
+    }
+
+    /** Returns whether the given file is managed by ART and can be installed by Package Manager. */
+    @FlaggedApi(Flags.FLAG_ART_SERVICE_V3)
+    public static boolean isArtManagedFileForInstall(@NonNull File file) {
+        String filename = file.getName();
+        return filename.endsWith(ArtConstants.DEX_METADATA_FILE_EXT)
+                || filename.endsWith(ArtConstants.PROFILE_FILE_EXT)
+                || filename.endsWith(ArtConstants.SECURE_DEX_METADATA_FILE_EXT);
     }
 
     /** @param forSecondary true for secondary dex files; false for primary dex files. */

@@ -1466,6 +1466,14 @@ public class ArtManagerLocalTest {
         verify(mContext, never()).registerReceiver(any(), any());
     }
 
+    @Test
+    public void testIsArtManagedFileForInstall() throws Exception {
+        assertThat(ArtManagerLocal.isArtManagedFileForInstall(new File("/foo/bar.dm"))).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedFileForInstall(new File("/foo/bar.prof"))).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedFileForInstall(new File("/foo/bar.sdm"))).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedFileForInstall(new File("/foo/bar.abc"))).isFalse();
+    }
+
     private AndroidPackage createPackage(boolean multiSplit) {
         AndroidPackage pkg = mock(AndroidPackage.class);
 
