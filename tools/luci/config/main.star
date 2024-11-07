@@ -314,7 +314,7 @@ def add_builders():
       add_builder(mode, arch, bitness, cmc=True)
       add_builder(mode, arch, bitness, poison=True)
       add_builder(mode, arch, bitness, gcstress=True)
-  add_builder('qemu', 'arm', bitness=64, ndebug=True)
-  add_builder('qemu', 'riscv', bitness=64, ndebug=True)
+  add_builder('qemu', 'arm', bitness=64)
+  add_builder('qemu', 'riscv', bitness=64)
 
 add_builders()
