@@ -501,6 +501,13 @@ public final class Utils {
         return path.length() == prefixLen || path.charAt(prefixLen) == '/';
     }
 
+    @NonNull
+    public static String replaceFileExtension(@NonNull String path, @NonNull String newExtension) {
+        int pos = path.lastIndexOf('.');
+        int slashPos = path.indexOf('/', pos);
+        return ((pos != -1 && slashPos == -1) ? path.substring(0, pos) : path) + newExtension;
+    }
+
     @AutoValue
     public abstract static class Abi {
         static @NonNull Abi create(
