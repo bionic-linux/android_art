@@ -309,9 +309,9 @@ def add_builders():
     for bitness in [32, 64]:
       add_builder(mode, arch, bitness, ndebug=True)
       add_builder(mode, arch, bitness)
-      if mode == "host" and bitness == 64:
-        add_builder(mode, arch, bitness, ngen=True)
-      add_builder(mode, arch, bitness, ngen=True, cmc=True)
+      if mode == "host":
+        add_builder(mode, arch, bitness, ngen=True, cmc=True)
+      add_builder(mode, arch, bitness, cmc=True)
       if mode == "target":
         add_builder(mode, arch, bitness, poison=True, ndebug=True)
       add_builder(mode, arch, bitness, poison=True)
