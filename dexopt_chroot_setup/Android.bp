@@ -38,6 +38,7 @@ cc_defaults {
     static_libs: [
         "dexopt_chroot_setup-aidl-ndk",
         "libfstab",
+        "libselinux",
     ],
     target: {
         android: {
@@ -84,7 +85,6 @@ art_cc_test {
         "libarttools",
         "libbase",
         "libgmock",
-        "libselinux",
     ],
     test_config_template: "art_standalone_dexopt_chroot_setup_tests.xml",
 }
