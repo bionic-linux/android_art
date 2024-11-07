@@ -22,6 +22,30 @@
       },
       "revId": "a67e2b6ede881c271f5942c64d91286dda213075",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85b883a_d73ce72f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-07T20:55:04Z",
+      "side": 1,
+      "message": "Done.  This is now just a pure python refactoring.  The set of builders is the same.",
+      "parentUuid": "dd4c14f0_4da63355",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "a67e2b6ede881c271f5942c64d91286dda213075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
