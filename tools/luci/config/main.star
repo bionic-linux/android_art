@@ -313,11 +313,7 @@ def add_builders():
       if mode == "host":
         add_builder(mode, arch, bitness, ngen=True, cmc=True)
       add_builder(mode, arch, bitness, cmc=True)
-      if mode == "target":
-        add_builder(mode, arch, bitness, poison=True, ndebug=True)
       add_builder(mode, arch, bitness, poison=True)
-      if mode == "target":
-        add_builder(mode, arch, bitness, gcstress=True, ndebug=True)
       add_builder(mode, arch, bitness, gcstress=True)
   add_builder('qemu', 'arm', bitness=64)
   add_builder('qemu', 'riscv', bitness=64)
