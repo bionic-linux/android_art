@@ -1466,6 +1466,43 @@ public class ArtManagerLocalTest {
         verify(mContext, never()).registerReceiver(any(), any());
     }
 
+    @Test
+    public void testIsArtManagedInstallFile() throws Exception {
+        assertThat(ArtManagerLocal.isArtManagedInstallFile("/foo/bar.dm")).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedInstallFile("/foo/bar.prof")).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedInstallFile("/foo/bar.sdm")).isTrue();
+        assertThat(ArtManagerLocal.isArtManagedInstallFile("/foo/bar.abc")).isFalse();
+    }
+
+    @Test
+    public void testFindArtManagedInstallFiles() throws Exception {
+        File tempDir = Files.createTempDirectory("temp").toFile();
+        tempDir.deleteOnExit();
+        assertThat(new File(tempDir, "foo.dm").createNewFile()).isTrue();
+        assertThat(new File(tempDir, "foo.prof").createNewFile()).isTrue();
+        assertThat(new File(tempDir, "foo.sdm").createNewFile()).isTrue();
+        assertThat(new File(tempDir, "foo.abc").createNewFile()).isTrue();
+
+        assertThat(ArtManagerLocal.findArtManagedInstallFiles(
+                           new File(tempDir, "foo.apk").getAbsolutePath()))
+                .containsExactly(new File(tempDir, "foo.dm").getAbsolutePath(),
+                        new File(tempDir, "foo.prof").getAbsolutePath(),
+                        new File(tempDir, "foo.sdm").getAbsolutePath());
+    }
+
+    @Test
+    public void testRewriteArtManagedInstallFilePathForApk() throws Exception {
+        assertThat(ArtManagerLocal.rewriteArtManagedInstallFilePathForApk(
+                           "/foo/bar.dm", "/somewhere/base.apk"))
+                .isEqualTo("/somewhere/base.dm");
+        assertThat(ArtManagerLocal.rewriteArtManagedInstallFilePathForApk(
+                           "/foo/bar.prof", "/somewhere/base.apk"))
+                .isEqualTo("/somewhere/base.prof");
+        assertThat(ArtManagerLocal.rewriteArtManagedInstallFilePathForApk(
+                           "/foo/bar.sdm", "/somewhere/base.apk"))
+                .isEqualTo("/somewhere/base.sdm");
+    }
+
     private AndroidPackage createPackage(boolean multiSplit) {
         AndroidPackage pkg = mock(AndroidPackage.class);
 

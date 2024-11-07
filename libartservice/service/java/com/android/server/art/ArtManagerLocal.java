@@ -33,6 +33,7 @@ import static com.android.server.art.model.Config.Callback;
 import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptStatus;
 
 import android.annotation.CallbackExecutor;
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
@@ -59,6 +60,7 @@ import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.art.flags.Flags;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.server.LocalManagerRegistry;
@@ -124,6 +126,10 @@ import java.util.stream.Stream;
 public final class ArtManagerLocal {
     private static final String[] CLASSPATHS_FOR_BOOT_IMAGE_PROFILE = {
             "BOOTCLASSPATH", "SYSTEMSERVERCLASSPATH", "STANDALONE_SYSTEMSERVER_JARS"};
+
+    private static final List<String> ART_MANAGED_INSTALL_FILE_TYPES =
+            List.of(ArtConstants.DEX_METADATA_FILE_EXT, ArtConstants.PROFILE_FILE_EXT,
+                    ArtConstants.SECURE_DEX_METADATA_FILE_EXT);
 
     /** @hide */
     @VisibleForTesting public static final long DOWNGRADE_THRESHOLD_ABOVE_LOW_BYTES = 500_000_000;
@@ -1152,6 +1158,52 @@ public final class ArtManagerLocal {
         } finally {
             mCleanupLock.writeLock().unlock();
         }
+    }
+
+    /**
+     * Returns whether the given file is an <i>ART-managed install file</i> (a file installed by
+     * Package Manager and managed by ART).
+     */
+    @FlaggedApi(Flags.FLAG_ART_SERVICE_V3)
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public static boolean isArtManagedInstallFile(@NonNull String path) {
+        return ART_MANAGED_INSTALL_FILE_TYPES.stream().anyMatch(ext -> path.endsWith(ext));
+    }
+
+    /**
+     * Returns the paths to the existing <i>ART-managed install files</i> of the given APK file.
+     *
+     * @see #isArtManagedInstallFile
+     */
+    @FlaggedApi(Flags.FLAG_ART_SERVICE_V3)
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    @NonNull
+    public static List<String> findArtManagedInstallFiles(@NonNull String apkPath) {
+        return ART_MANAGED_INSTALL_FILE_TYPES.stream()
+                .map(ext -> Utils.replaceFileExtension(apkPath, ext))
+                .filter(path -> new File(path).exists())
+                .toList();
+    }
+
+    /**
+     * Returns a rewritten path of the <i>ART-managed install file</i> for the given APK file.
+     *
+     * @see #isArtManagedInstallFile
+     * @throws IllegalArgumentException if {@code fromPath} does not represent an <i>ART-managed
+     *         install file</i>
+     */
+    @FlaggedApi(Flags.FLAG_ART_SERVICE_V3)
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    @NonNull
+    public static String rewriteArtManagedInstallFilePathForApk(
+            @NonNull String fromPath, @NonNull String apkPath) {
+        for (String ext : ART_MANAGED_INSTALL_FILE_TYPES) {
+            if (fromPath.endsWith(ext)) {
+                return Utils.replaceFileExtension(apkPath, ext);
+            }
+        }
+        throw new IllegalArgumentException(
+                "Illegal ART managed install file path '" + fromPath + "'");
     }
 
     /** @param forSecondary true for secondary dex files; false for primary dex files. */
