@@ -57,6 +57,7 @@
 #include "base/utils.h"
 #include "exec_utils.h"
 #include "fstab/fstab.h"
+#include "selinux/selinux.h"
 #include "tools/binder_utils.h"
 #include "tools/cmdline_builder.h"
 #include "tools/tools.h"
@@ -158,6 +159,16 @@ Result<bool> IsSelfOrParentSymlink(const std::string& path) {
     return ErrnoErrorf("Failed to resolve real path for '{}'", path);
   }
   return path != real_path;
+}
+
+Result<std::string> GetSelinuxContext(const std::string& path) {
+  char* con;
+  if (getfilecon(path.c_str(), &con) < 0) {
+    return ErrnoErrorf("Failed to getfilecon '{}'", path);
+  }
+  std::string result(con);
+  freecon(con);
+  return result;
 }
 
 Result<void> Unmount(const std::string& target, bool logging = true) {
@@ -314,7 +325,28 @@ Result<void> BindMountRecursive(const std::string& source, const std::string& ta
       // `source` itself. Already mounted.
       continue;
     }
-    OR_RETURN(BindMount(entry.mount_point, std::string(target).append(sub_dir)));
+    if (Result<void> result = BindMount(entry.mount_point, std::string(target).append(sub_dir));
+        !result.ok()) {
+      Result<std::string> se_context = GetSelinuxContext(entry.mount_point);
+      if (!se_context.ok()) {
+        if (se_context.error().code() == ENOENT) {
+          // Don't bother. The mount point has gone.
+          LOG(INFO) << "Skipped non-existing mount point " << entry.mount_point;
+          continue;
+        }
+        LOG(WARNING) << "Failed to get SELinux context for " << entry.mount_point << ": "
+                     << se_context.error().message();
+        return result;
+      }
+      if (se_context.value() == "u:object_r:apk_tmp_file:s0") {
+        // Don't bother. The mount point is a temporary directory created by Package Manager during
+        // app install. We won't be able to dexopt the app there anyway because it's not in the
+        // Package Manager's snapshot.
+        LOG(INFO) << "Skipped temporary mount point " << entry.mount_point;
+        continue;
+      }
+      return result;
+    }
   }
   return {};
 }
