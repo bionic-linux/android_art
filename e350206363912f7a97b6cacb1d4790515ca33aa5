@@ -39,6 +39,30 @@
       },
       "revId": "e350206363912f7a97b6cacb1d4790515ca33aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "040f6dbd_9a510ae4",
+        "filename": "runtime/arch/arm64/asm_support_arm64.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-11-08T15:45:23Z",
+      "side": 1,
+      "message": "While we don\u0027t transition architecture here we still need a macro because this instruction generates a relocation. In a [later patch](https://android-review.googlesource.com/c/platform/art/+/2680026) this macro is altered to a specific relocation type that can be transformed into an x86_64 compatible relocation so that we can link these Arm64 entrypoints into a host x86_64 libart binary.",
+      "parentUuid": "a55b19e4_0adb123a",
+      "range": {
+        "startLine": 517,
+        "startChar": 8,
+        "endLine": 517,
+        "endChar": 25
+      },
+      "revId": "e350206363912f7a97b6cacb1d4790515ca33aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
