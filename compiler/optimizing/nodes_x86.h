@@ -195,6 +195,20 @@ class HX86MaskOrResetLeastSetBit final : public HUnaryOperation {
   DEFAULT_COPY_CONSTRUCTOR(X86MaskOrResetLeastSetBit);
 };
 
+#if defined(ART_ENABLE_CODEGEN_x86_64)
+// TODO: Seperate x86_64 only instructions to a separate file
+class HX86Clear final : public HExpression<0> {
+ public:
+  explicit HX86Clear(uint32_t dex_pc = kNoDexPc)
+      : HExpression(kX86Clear, SideEffects::None(), dex_pc) {}
+
+  DECLARE_INSTRUCTION(X86Clear);
+
+ protected:
+  DEFAULT_COPY_CONSTRUCTOR(X86Clear);
+};
+#endif
+
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_NODES_X86_H_
