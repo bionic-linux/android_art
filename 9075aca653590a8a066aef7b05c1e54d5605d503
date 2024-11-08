@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eed4b13_f821096e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:24:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "9075aca653590a8a066aef7b05c1e54d5605d503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e436b7_ba961b9c",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:24:22Z",
+      "side": 1,
+      "message": "Not just bg-dexopt but also first-boot, boot-after-ota, etc. I would say \"(normal) batch dexopt\".",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e5d49ef4_bb9b63f4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/proto/batch_dexopt_params.proto",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "// BatchDexoptParams API used for normal batch dexopt. That approach does not add\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9075aca653590a8a066aef7b05c1e54d5605d503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37309b1_63cefb65",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:24:22Z",
+      "side": 1,
+      "message": "Here too.",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "9075aca653590a8a066aef7b05c1e54d5605d503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
