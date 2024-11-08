@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68129c7b_96feba1e",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-08T16:44:42Z",
+      "side": 1,
+      "message": "Add a helper method `ForkUnderThreadListLock` and use a scoped MutexLock in there?",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a4201110_a08c1a8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "perfetto_hprof/perfetto_hprof.cc",
+              "range": {
+                "startLine": 982,
+                "startChar": 0,
+                "endLine": 982,
+                "endChar": 0
+              },
+              "replacement": "pid_t ForkUnderThreadListLock(art::Thread* self) {\n  art::MutexLock lk(self, art::Locks::thread_list_lock_);\n  return fork();\n}\n\n"
+            },
+            {
+              "path": "perfetto_hprof/perfetto_hprof.cc",
+              "range": {
+                "startLine": 1007,
+                "startChar": 0,
+                "endLine": 1010,
+                "endChar": 0
+              },
+              "replacement": "  pid_t pid \u003d ForkUnderThreadListLock(self);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8db099e79820ef23f42d1cc8638f7a37a240c6ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
