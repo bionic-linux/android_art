@@ -276,18 +276,44 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
  public:
   static LiveInterval* MakeInterval(ScopedArenaAllocator* allocator,
                                     DataType::Type type,
-                                    HInstruction* instruction = nullptr) {
-    return new (allocator) LiveInterval(allocator, type, instruction);
+                                    HInstruction* instruction,
+                                    bool has_overlapping_fp_vec_regs) {
+    return new (allocator) LiveInterval(allocator,
+                                        type,
+                                        instruction,
+                                        /*is_fixed*/ false,
+                                        /*reg*/ kNoRegister,
+                                        /*is_temp*/ false,
+                                        /*is_high_interval*/ false,
+                                        has_overlapping_fp_vec_regs);
   }
 
   static LiveInterval* MakeFixedInterval(ScopedArenaAllocator* allocator,
                                          int reg,
-                                         DataType::Type type) {
-    return new (allocator) LiveInterval(allocator, type, nullptr, true, reg, false);
+                                         DataType::Type type,
+                                         bool has_overlapping_fp_vec_regs) {
+    return new (allocator) LiveInterval(allocator,
+                                        type,
+                                        nullptr,
+                                        true,
+                                        reg,
+                                        /*is_temp*/ false,
+                                        /*is_high_interval*/ false,
+                                        has_overlapping_fp_vec_regs);
   }
 
-  static LiveInterval* MakeTempInterval(ScopedArenaAllocator* allocator, DataType::Type type) {
-    return new (allocator) LiveInterval(allocator, type, nullptr, false, kNoRegister, true);
+  static LiveInterval* MakeTempInterval(ScopedArenaAllocator* allocator,
+                                        DataType::Type type,
+                                        HInstruction* instruction,
+                                        bool has_overlapping_fp_vec_regs) {
+    return new (allocator) LiveInterval(allocator,
+                                        type,
+                                        instruction,
+                                        false,
+                                        kNoRegister,
+                                        true,
+                                        /*is_high_interval*/ false,
+                                        has_overlapping_fp_vec_regs);
   }
 
   bool IsFixed() const { return is_fixed_; }
@@ -658,8 +684,14 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       // This range dies before `position`, no need to split.
       return nullptr;
     }
-
-    LiveInterval* new_interval = new (allocator_) LiveInterval(allocator_, type_);
+    LiveInterval* new_interval = new (allocator_) LiveInterval(allocator_,
+                                                               type_,
+                                                               defined_by_,
+                                                               /*is_fixed*/ false,
+                                                               /*reg*/ kNoRegister,
+                                                               /*is_temp*/ false,
+                                                               /*is_high_interval*/ false,
+                                                               has_overlapping_fp_vec_registers_);
     SafepointPosition* new_last_safepoint = FindSafepointJustBefore(position);
     if (new_last_safepoint == nullptr) {
       new_interval->first_safepoint_ = first_safepoint_;
@@ -849,8 +881,14 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     DCHECK(IsParent());
     DCHECK(!HasHighInterval());
     DCHECK(!HasLowInterval());
-    high_or_low_interval_ = new (allocator_) LiveInterval(
-        allocator_, type_, defined_by_, false, kNoRegister, is_temp, true);
+    high_or_low_interval_ = new (allocator_) LiveInterval(allocator_,
+                                                          type_,
+                                                          defined_by_,
+                                                          false,
+                                                          kNoRegister,
+                                                          is_temp,
+                                                          true,
+                                                          has_overlapping_fp_vec_registers_);
     high_or_low_interval_->high_or_low_interval_ = this;
     if (first_range_ != nullptr) {
       high_or_low_interval_->first_range_ = first_range_->Dup(allocator_);
@@ -983,7 +1021,8 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
                bool is_fixed = false,
                int reg = kNoRegister,
                bool is_temp = false,
-               bool is_high_interval = false)
+               bool is_high_interval = false,
+               bool has_overlapping_fp_vec_regs = false)
       : allocator_(allocator),
         first_range_(nullptr),
         last_range_(nullptr),
@@ -1000,6 +1039,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
         is_fixed_(is_fixed),
         is_temp_(is_temp),
         is_high_interval_(is_high_interval),
+        has_overlapping_fp_vec_registers_(has_overlapping_fp_vec_regs),
         high_or_low_interval_(nullptr),
         defined_by_(defined_by) {}
 
@@ -1132,6 +1172,9 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
 
   // Whether this interval is a synthesized interval for register pair.
   const bool is_high_interval_;
+
+  // Whether vector registers overlap with fp registers.
+  const bool has_overlapping_fp_vec_registers_;
 
   // If this interval needs a register pair, the high or low equivalent.
   // `is_high_interval_` tells whether this holds the low or the high.

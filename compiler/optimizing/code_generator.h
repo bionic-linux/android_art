@@ -243,6 +243,8 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
 
   // Get the size of the target SIMD register in bytes.
   virtual size_t GetSIMDRegisterWidth() const = 0;
+  virtual bool HasOverlappingFPVecRegisters() const { return false; }
+
   virtual uintptr_t GetAddressOf(HBasicBlock* block) = 0;
   void InitializeCodeGeneration(size_t number_of_spill_slots,
                                 size_t maximum_safepoint_spill_size,
@@ -281,6 +283,18 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
 
   virtual size_t SaveFloatingPointRegister(size_t stack_index, uint32_t reg_id) = 0;
   virtual size_t RestoreFloatingPointRegister(size_t stack_index, uint32_t reg_id) = 0;
+
+  virtual size_t SaveVectorRegister([[maybe_unused]] size_t stack_index,
+                                    [[maybe_unused]] Location loc) {
+    LOG(FATAL) << "Unexpected or Unimplemented";
+    return 0;
+  }
+
+  virtual size_t RestoreVectorRegister([[maybe_unused]] size_t stack_index,
+                                       [[maybe_unused]] Location loc) {
+    LOG(FATAL) << "Unexpected or Unimplemented";
+    return 0;
+  }
 
   virtual bool NeedsTwoRegisters(DataType::Type type) const = 0;
   // Returns whether we should split long moves in parallel moves.

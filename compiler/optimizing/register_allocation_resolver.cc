@@ -218,7 +218,8 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
               temp->GetRegister(), temp->GetHighInterval()->GetRegister());
           locations->SetTempAt(temp_index, location);
         } else {
-          locations->SetTempAt(temp_index, Location::FpuRegisterLocation(temp->GetRegister()));
+          DCHECK(temp->HasRegister());
+          locations->SetTempAt(temp_index, temp->ToLocation());
         }
         break;
 

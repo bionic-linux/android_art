@@ -214,7 +214,8 @@ class ParallelMoveResolverX86_64 : public ParallelMoveResolverWithSwap {
   void Exchange64(CpuRegister reg1, CpuRegister reg2);
   void Exchange64(CpuRegister reg, int mem);
   void Exchange64(XmmRegister reg, int mem);
-  void Exchange128(XmmRegister reg, int mem);
+  void ExchangeSIMD(XmmRegister reg, int mem);
+  void ExchangeFPReg(XmmRegister reg1, XmmRegister reg2);
   void ExchangeMemory32(int mem1, int mem2);
   void ExchangeMemory64(int mem1, int mem2, int num_of_qwords);
 
@@ -411,6 +412,8 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   size_t RestoreCoreRegister(size_t stack_index, uint32_t reg_id) override;
   size_t SaveFloatingPointRegister(size_t stack_index, uint32_t reg_id) override;
   size_t RestoreFloatingPointRegister(size_t stack_index, uint32_t reg_id) override;
+  size_t SaveVectorRegister(size_t stack_index, Location loc) override;
+  size_t RestoreVectorRegister(size_t stack_index, Location loc) override;
 
   // Generate code to invoke a runtime entry point.
   void InvokeRuntime(QuickEntrypointEnum entrypoint,
@@ -443,6 +446,8 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   size_t GetSIMDRegisterWidth() const override {
     return 2 * kX86_64WordSize;
   }
+
+  bool HasOverlappingFPVecRegisters() const override { return true; }
 
   HGraphVisitor* GetLocationBuilder() override {
     return &location_builder_;

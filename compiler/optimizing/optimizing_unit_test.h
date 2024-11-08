@@ -95,8 +95,10 @@ inline LiveInterval* BuildInterval(const size_t ranges[][2],
                                    ScopedArenaAllocator* allocator,
                                    int reg = -1,
                                    HInstruction* defined_by = nullptr) {
-  LiveInterval* interval =
-      LiveInterval::MakeInterval(allocator, DataType::Type::kInt32, defined_by);
+  LiveInterval* interval = LiveInterval::MakeInterval(allocator,
+                                                      DataType::Type::kInt32,
+                                                      defined_by,
+                                                      /*has_overlapping_fp_vec_regs*/ false);
   if (defined_by != nullptr) {
     defined_by->SetLiveInterval(interval);
   }

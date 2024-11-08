@@ -55,8 +55,8 @@ void SsaLivenessAnalysis::NumberInstructions() {
       if (locations != nullptr && locations->Out().IsValid()) {
         instructions_from_ssa_index_.push_back(current);
         current->SetSsaIndex(ssa_index++);
-        current->SetLiveInterval(
-            LiveInterval::MakeInterval(allocator_, current->GetType(), current));
+        current->SetLiveInterval(LiveInterval::MakeInterval(
+            allocator_, current->GetType(), current, codegen_->HasOverlappingFPVecRegisters()));
       }
       current->SetLifetimePosition(lifetime_position);
     }
@@ -73,8 +73,8 @@ void SsaLivenessAnalysis::NumberInstructions() {
       if (locations != nullptr && locations->Out().IsValid()) {
         instructions_from_ssa_index_.push_back(current);
         current->SetSsaIndex(ssa_index++);
-        current->SetLiveInterval(
-            LiveInterval::MakeInterval(allocator_, current->GetType(), current));
+        current->SetLiveInterval(LiveInterval::MakeInterval(
+            allocator_, current->GetType(), current, codegen_->HasOverlappingFPVecRegisters()));
       }
       instructions_from_lifetime_position_.push_back(current);
       current->SetLifetimePosition(lifetime_position);
@@ -509,6 +509,18 @@ Location LiveInterval::ToLocation() const {
       if (HasHighInterval()) {
         return Location::FpuRegisterPairLocation(GetRegister(), GetHighInterval()->GetRegister());
       } else {
+        if (has_overlapping_fp_vec_registers_) {
+          HInstruction* definition = GetParent()->GetDefinedBy();
+          // For vector operation we want to embedd the vector length in the Location info
+          DCHECK(definition != nullptr);
+          // Determine if location is a vector by getting needed spill slots
+          size_t needed_spill_slots = NumberOfSpillSlotsNeeded();
+          needed_spill_slots = (needed_spill_slots > 2) ? needed_spill_slots : 0;
+          DCHECK_IMPLIES(needed_spill_slots > 0,
+                         definition->IsVecOperation() ||
+                             (definition->IsPhi() && definition->InputAt(1)->IsVecOperation()));
+          return Location::FpuRegisterLocation(GetRegister(), needed_spill_slots * kVRegSize);
+        }
         return Location::FpuRegisterLocation(GetRegister());
       }
     } else {
