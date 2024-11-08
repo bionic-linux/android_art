@@ -131,11 +131,6 @@ def main():
                 "988-method-trace/trace_fib.cc",
                 "1953-pop-frame/src/art/Test1953.java",
                 "1953-pop-frame/src/art/SuspendEvents.java",
-                // Files needed to generate runner scripts.
-                "testrunner/*.py",
-                "knownfailures.json",
-                "default_run.py",
-                "run-test",
             ],
             tools: [
                 "android-smali",
