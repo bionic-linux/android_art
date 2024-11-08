@@ -354,6 +354,10 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
 
     return unroll_factor;
   }
+
+  bool NeedsVectorRegisterClear() const override {
+    return codegen_.GetSIMDRegisterWidth() > (2 * codegen_.GetWordSize());
+  }
 };
 
 uint32_t X86_64LoopHelper::GetUnrollingFactor(HLoopInformation* loop_info,

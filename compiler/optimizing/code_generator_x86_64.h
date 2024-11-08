@@ -218,6 +218,7 @@ class ParallelMoveResolverX86_64 : public ParallelMoveResolverWithSwap {
   void ExchangeFPReg(XmmRegister reg1, XmmRegister reg2);
   void ExchangeMemory32(int mem1, int mem2);
   void ExchangeMemory64(int mem1, int mem2, int num_of_qwords);
+  void ExchangeMemorySIMD(int mem1, int mem2);
 
   CodeGeneratorX86_64* const codegen_;
 
@@ -444,7 +445,7 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   }
 
   size_t GetSIMDRegisterWidth() const override {
-    return 2 * kX86_64WordSize;
+    return GetInstructionSetFeatures().HasAVX2() ? 4 * kX86_64WordSize : 2 * kX86_64WordSize;
   }
 
   bool HasOverlappingFPVecRegisters() const override { return true; }

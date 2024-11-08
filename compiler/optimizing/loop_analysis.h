@@ -182,6 +182,8 @@ class ArchNoOptsLoopHelper : public ArenaObject<kArenaAllocOptimization> {
     return LoopAnalysisInfo::kNoUnrollingFactor;
   }
 
+  virtual bool NeedsVectorRegisterClear() const { return false; }
+
  protected:
   const CodeGenerator& codegen_;
 };
