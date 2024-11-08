@@ -192,6 +192,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2674a39b_336ca338",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-08T21:46:02Z",
+      "side": 1,
+      "message": "Is this done by the kernel calls, or explicitly by the caller? I guess I had assumed that this is done at user level and contributes to the race issues. But if the kernel handles it, it\u0027s different, and should be mentioned in the section I just added.",
+      "parentUuid": "a41373f2_4745e977",
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9232b1f_62fe8973",
         "filename": "runtime/thread_priorities.md",
         "patchSetId": 1
@@ -349,6 +367,30 @@
           ]
         }
       ],
+      "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a08634a_ea2efcce",
+        "filename": "runtime/thread_priorities.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-08T21:46:02Z",
+      "side": 1,
+      "message": "I guess this is safe, since we guarantee (a) we only boost one such thread at a time, and (b) we have more than one CPU core? Otherwise a hung UI thread would basically hang the system?\n\nI\u0027m not sure there is actually much of an issue here. AFAICT, at the API level, niceness is a completely separate thread attribute from scheduling discipline and real-time priority. So I don\u0027t think setpriority() calls actually have an effect while the thread has real-time priority. So long as the priority boosting here doesn\u0027t touch niceness, we should be fine.\n\nAdding Tim and Jared as reviewers.",
+      "parentUuid": "b43595d5_f39aac86",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 66
+      },
       "revId": "6e3b871b9c13e36818f86c112d180733441fecb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
