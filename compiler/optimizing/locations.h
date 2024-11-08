@@ -22,8 +22,10 @@
 #include "base/bit_field.h"
 #include "base/bit_utils.h"
 #include "base/bit_vector.h"
+#include "base/logging.h"
 #include "base/macros.h"
 #include "base/value_object.h"
+#include "runtime_globals.h"
 
 namespace art HIDDEN {
 
@@ -53,7 +55,7 @@ class Location : public ValueObject {
   enum Kind {
     kInvalid = 0,
     kConstant = 1,
-    kStackSlot = 2,  // 32bit stack slot.
+    kStackSlot = 2,        // 32bit stack slot.
     kDoubleStackSlot = 3,  // 64bit stack slot.
 
     kRegister = 4,  // Core register.
@@ -70,13 +72,15 @@ class Location : public ValueObject {
     // We do not use the value 9 because it conflicts with kLocationConstantMask.
     kDoNotUse9 = 9,
 
-    kSIMDStackSlot = 10,  // 128bit stack slot. TODO: generalize with encoded #bytes?
+    kVecRegister = 10,  // Vector register.
+
+    kSIMDStackSlot = 11,  // 128bit stack slot. TODO: generalize with encoded #bytes?
 
     // Unallocated location represents a location that is not fixed and can be
     // allocated by a register allocator.  Each unallocated location has
     // a policy that specifies what kind of location is suitable. Payload
     // contains register allocation policy.
-    kUnallocated = 11,
+    kUnallocated = 12,
   };
 
   constexpr Location() : ValueObject(), value_(kInvalid) {
@@ -91,6 +95,7 @@ class Location : public ValueObject {
     static_assert((kRegisterPair & kLocationConstantMask) != kConstant, "TagError");
     static_assert((kFpuRegisterPair & kLocationConstantMask) != kConstant, "TagError");
     static_assert((kConstant & kLocationConstantMask) == kConstant, "TagError");
+    static_assert((kVecRegister & kLocationConstantMask) != kConstant, "TagError");
 
     DCHECK(!IsValid());
   }
@@ -139,6 +144,15 @@ class Location : public ValueObject {
     return Location(kFpuRegister, reg);
   }
 
+  static Location FpuRegisterLocation(int reg, int vec_len) {
+    return Location(kFpuRegister, reg, vec_len);
+  }
+
+  // TODO: Implement this when we enable to architecures with exclusive Vec register
+  static Location VecRegisterLocation([[maybe_unused]] int reg, [[maybe_unused]] int vec_len) {
+    UNREACHABLE();
+  }
+
   static constexpr Location RegisterPairLocation(int low, int high) {
     return Location(kRegisterPair, low << 16 | high);
   }
@@ -153,6 +167,10 @@ class Location : public ValueObject {
 
   bool IsFpuRegister() const {
     return GetKind() == kFpuRegister;
+  }
+
+  bool IsVecRegister() const {
+    return (GetKind() == kVecRegister) || (IsFpuRegister() && GetVecLen() > 0);
   }
 
   bool IsRegisterPair() const {
@@ -192,6 +210,23 @@ class Location : public ValueObject {
   T AsFpuRegister() const {
     DCHECK(IsFpuRegister());
     return static_cast<T>(reg());
+  }
+
+  template <typename T, bool kHasOverlappingFPVecRegisters = false>
+  T AsVectorRegister() const {
+    if (kHasOverlappingFPVecRegisters) {
+      DCHECK(IsFpuRegister());
+      return T(reg(), GetVecLen());
+    } else {
+      DCHECK(!IsFpuRegister());
+      DCHECK(IsVecRegister());
+      return static_cast<T>(reg());
+    }
+  }
+
+  template <typename T>
+  T AsFPVectorRegister() const {
+    return AsVectorRegister<T, true>();
   }
 
   template <typename T>
@@ -274,9 +309,9 @@ class Location : public ValueObject {
     return GetKind() == kDoubleStackSlot;
   }
 
-  static Location SIMDStackSlot(intptr_t stack_index) {
+  static Location SIMDStackSlot(intptr_t stack_index, size_t num_of_slots = 0) {
     uintptr_t payload = EncodeStackIndex(stack_index);
-    Location loc(kSIMDStackSlot, payload);
+    Location loc(kSIMDStackSlot, payload, num_of_slots * kVRegSize);
     // Ensure that sign is preserved.
     DCHECK_EQ(loc.GetStackIndex(), stack_index);
     return loc;
@@ -295,7 +330,7 @@ class Location : public ValueObject {
         return Location::DoubleStackSlot(spill_slot);
       default:
         // Assume all other stack slot sizes correspond to SIMD slot size.
-        return Location::SIMDStackSlot(spill_slot);
+        return Location::SIMDStackSlot(spill_slot, num_of_slots);
     }
   }
 
@@ -316,7 +351,12 @@ class Location : public ValueObject {
   }
 
   bool Equals(Location other) const {
-    return value_ == other.value_;
+    // Handle the case of overlapping FP vector registers
+    if (IsFpuRegister() && other.IsFpuRegister()) {
+      return reg() == other.reg();
+    } else {
+      return value_ == other.value_;
+    }
   }
 
   bool Contains(Location other) const {
@@ -354,6 +394,8 @@ class Location : public ValueObject {
       case kFpuRegister: return "F";
       case kRegisterPair: return "RP";
       case kFpuRegisterPair: return "FP";
+      case kVecRegister:
+        return "V";
       case kDoNotUse5:  // fall-through
       case kDoNotUse9:
         LOG(FATAL) << "Should not use this location kind";
@@ -415,16 +457,35 @@ class Location : public ValueObject {
     return GetPayload();
   }
 
+  size_t GetVecLen() const {
+    uint8_t decodedVecLen = GetVecLenAsPowerOf2();
+    return (decodedVecLen > 0) ? (1 << decodedVecLen) : 0;
+  }
+
+  uint8_t GetVecLenAsPowerOf2() const {
+    DCHECK(IsFpuRegister() || IsVecRegister() || IsSIMDStackSlot());
+    return VecLenField::Decode(value_);
+  }
+
  private:
   // Number of bits required to encode Kind value.
   static constexpr uint32_t kBitsForKind = 4;
-  static constexpr uint32_t kBitsForPayload = kBitsPerIntPtrT - kBitsForKind;
+  static constexpr uint32_t kBitsForVecLen = 4;
+  static constexpr uint32_t kBitsForPayload = kBitsPerIntPtrT - (kBitsForKind + kBitsForVecLen);
   static constexpr uintptr_t kLocationConstantMask = 0x3;
 
   explicit Location(uintptr_t value) : value_(value) {}
 
-  constexpr Location(Kind kind, uintptr_t payload)
-      : value_(KindField::Encode(kind) | PayloadField::Encode(payload)) {}
+  constexpr Location(Kind kind, uintptr_t payload, size_t vec_len = 0)
+      : value_(KindField::Encode(kind) | VecLenField::Encode(0) | PayloadField::Encode(payload)) {
+    if (vec_len > 0 && (kind == kFpuRegister || kind == kVecRegister || kind == kSIMDStackSlot)) {
+      size_t vec_len_as_pow_of_2 = CTZ(vec_len);
+      DCHECK_LE(vec_len_as_pow_of_2, 15U) << "Insufficient bits to represent vector length";
+      value_ |= VecLenField::Encode(vec_len_as_pow_of_2);
+    } else {
+      DCHECK_EQ(vec_len, 0U) << "Invalid vector length on Location of kind - " << DebugString();
+    }
+  }
 
   uintptr_t GetPayload() const {
     return PayloadField::Decode(value_);
@@ -433,7 +494,8 @@ class Location : public ValueObject {
   static void DCheckInstructionIsConstant(HInstruction* instruction);
 
   using KindField = BitField<Kind, 0, kBitsForKind>;
-  using PayloadField = BitField<uintptr_t, kBitsForKind, kBitsForPayload>;
+  using VecLenField = BitField<size_t, kBitsForKind, kBitsForVecLen>;
+  using PayloadField = BitField<uintptr_t, kBitsForKind + kBitsForVecLen, kBitsForPayload>;
 
   // Layout for kUnallocated locations payload.
   using PolicyField = BitField<Policy, 0, 3>;
@@ -458,18 +520,41 @@ class RegisterSet : public ValueObject {
   void Add(Location loc) {
     if (loc.IsRegister()) {
       core_registers_ |= (1 << loc.reg());
-    } else {
-      DCHECK(loc.IsFpuRegister());
+    } else if (loc.IsFpuRegister()) {
       floating_point_registers_ |= (1 << loc.reg());
+      DCHECK_IMPLIES(!has_overlapping_fp_vec_registers_, vector_registers_ == 0U)
+          << "All FP Vec registers must either be overlapping/non-overlapping";
+      if (loc.IsVecRegister()) {
+        vector_registers_ |= (1 << loc.reg());
+        DCHECK(vector_length_as_pow_of_2_ == 0 ||
+               vector_length_as_pow_of_2_ == loc.GetVecLenAsPowerOf2())
+            << "Unexpected vector length " << (1 << loc.GetVecLenAsPowerOf2());
+        vector_length_as_pow_of_2_ = loc.GetVecLenAsPowerOf2();
+        has_overlapping_fp_vec_registers_ = true;
+      }
+    } else {
+      DCHECK(loc.IsVecRegister());
+      DCHECK(!has_overlapping_fp_vec_registers_);
+      DCHECK(vector_length_as_pow_of_2_ == 0 ||
+             vector_length_as_pow_of_2_ == loc.GetVecLenAsPowerOf2())
+          << "Unexpected vector length " << (1 << loc.GetVecLenAsPowerOf2());
+      vector_length_as_pow_of_2_ = loc.GetVecLenAsPowerOf2();
+      vector_registers_ |= (1 << loc.reg());
     }
   }
 
   void Remove(Location loc) {
     if (loc.IsRegister()) {
       core_registers_ &= ~(1 << loc.reg());
-    } else {
-      DCHECK(loc.IsFpuRegister()) << loc;
+    } else if (loc.IsFpuRegister()) {
       floating_point_registers_ &= ~(1 << loc.reg());
+      if (has_overlapping_fp_vec_registers_) {
+        vector_registers_ &= ~(1 << loc.reg());
+      }
+    } else {
+      DCHECK(loc.IsVecRegister()) << loc;
+      DCHECK(!has_overlapping_fp_vec_registers_);
+      vector_registers_ &= ~(1 << loc.reg());
     }
   }
 
@@ -480,6 +565,8 @@ class RegisterSet : public ValueObject {
   bool ContainsFloatingPointRegister(uint32_t id) const {
     return Contains(floating_point_registers_, id);
   }
+
+  bool ContainsVectorRegister(uint32_t id) const { return Contains(vector_registers_, id); }
 
   static bool Contains(uint32_t register_set, uint32_t reg) {
     return (register_set & (1 << reg)) != 0;
@@ -503,8 +590,11 @@ class RegisterSet : public ValueObject {
   }
 
   size_t GetNumberOfRegisters() const {
-    return POPCOUNT(core_registers_) + POPCOUNT(floating_point_registers_);
+    size_t total = POPCOUNT(core_registers_) + POPCOUNT(floating_point_registers_);
+    return has_overlapping_fp_vec_registers_ ? total : (total + GetNumberOfVectorRegisters());
   }
+
+  size_t GetNumberOfVectorRegisters() const { return POPCOUNT(vector_registers_); }
 
   uint32_t GetCoreRegisters() const {
     return core_registers_;
@@ -514,12 +604,49 @@ class RegisterSet : public ValueObject {
     return floating_point_registers_;
   }
 
+  uint32_t GetVectorRegisters() const { return vector_registers_; }
+
+  Location VecRegAsLocation(uint32_t reg_id) const {
+    if (ContainsVectorRegister(reg_id)) {
+      size_t vec_len = (vector_length_as_pow_of_2_ > 0) ? (1 << vector_length_as_pow_of_2_) : 0;
+      return (has_overlapping_fp_vec_registers_) ? Location::FpuRegisterLocation(reg_id, vec_len) :
+                                                   Location::VecRegisterLocation(reg_id, vec_len);
+    }
+    return Location::NoLocation();
+  }
+
  private:
-  RegisterSet() : core_registers_(0), floating_point_registers_(0) {}
-  RegisterSet(uint32_t core, uint32_t fp) : core_registers_(core), floating_point_registers_(fp) {}
+  RegisterSet()
+      : core_registers_(0),
+        floating_point_registers_(0),
+        vector_registers_(0),
+        vector_length_as_pow_of_2_(0),
+        has_overlapping_fp_vec_registers_(false) {}
+  RegisterSet(uint32_t core, uint32_t fp)
+      : core_registers_(core),
+        floating_point_registers_(fp),
+        vector_registers_(0),
+        vector_length_as_pow_of_2_(0),
+        has_overlapping_fp_vec_registers_(false) {}
+  RegisterSet(uint32_t core,
+              uint32_t fp,
+              uint32_t vecreg,
+              uint8_t vec_length_as_pow_of_2,
+              bool FPVecRegOverlap)
+      : core_registers_(core),
+        floating_point_registers_(fp),
+        vector_registers_(vecreg),
+        vector_length_as_pow_of_2_(vec_length_as_pow_of_2),
+        has_overlapping_fp_vec_registers_(FPVecRegOverlap) {}
 
   uint32_t core_registers_;
   uint32_t floating_point_registers_;
+  // TODO: Vector registers require vector length info as well, although not for all archs
+  //  Storing vector length needs atleast 4 bits/reg => 16 bytes per RegisterSet/location summary
+  //  For now we simplify by just assuming vector length to be fixed
+  uint32_t vector_registers_;
+  uint8_t vector_length_as_pow_of_2_;
+  bool has_overlapping_fp_vec_registers_;
 };
 
 static constexpr bool kIntrinsified = true;
@@ -684,6 +811,8 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
     return live_registers_.GetNumberOfRegisters();
   }
 
+  size_t GetNumLiveVectorRegisters() const { return live_registers_.GetNumberOfVectorRegisters(); }
+
   bool OutputUsesSameAs(uint32_t input_index) const {
     return (input_index == 0)
         && output_.IsUnallocated()
@@ -705,6 +834,20 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
 
   bool Intrinsified() const {
     return intrinsified_;
+  }
+
+  Location LiveFPVecRegAsLocation(int reg_id) const {
+    if (live_registers_.ContainsVectorRegister(reg_id)) {
+      return LiveVecRegAsLocation(reg_id);
+    } else if (live_registers_.ContainsFloatingPointRegister(reg_id)) {
+      return Location::FpuRegisterLocation(reg_id);
+    } else {
+      return Location::NoLocation();
+    }
+  }
+
+  Location LiveVecRegAsLocation(int reg_id) const {
+    return live_registers_.VecRegAsLocation(reg_id);
   }
 
  private:

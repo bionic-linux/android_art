@@ -1752,7 +1752,12 @@ void SlowPathCode::SaveLiveRegisters(CodeGenerator* codegen, LocationSummary* lo
     DCHECK_LT(stack_offset, codegen->GetFrameSize() - codegen->FrameEntrySpillSize());
     DCHECK_LT(i, kMaximumNumberOfExpectedRegisters);
     saved_fpu_stack_offsets_[i] = stack_offset;
-    stack_offset += codegen->SaveFloatingPointRegister(stack_offset, i);
+    if (codegen->HasOverlappingFPVecRegisters() && locations->GetNumLiveVectorRegisters() > 0) {
+      stack_offset +=
+          codegen->SaveVectorRegister(stack_offset, locations->LiveFPVecRegAsLocation(i));
+    } else {
+      stack_offset += codegen->SaveFloatingPointRegister(stack_offset, i);
+    }
   }
 }
 
@@ -1770,7 +1775,12 @@ void SlowPathCode::RestoreLiveRegisters(CodeGenerator* codegen, LocationSummary*
   for (uint32_t i : LowToHighBits(fp_spills)) {
     DCHECK_LT(stack_offset, codegen->GetFrameSize() - codegen->FrameEntrySpillSize());
     DCHECK_LT(i, kMaximumNumberOfExpectedRegisters);
-    stack_offset += codegen->RestoreFloatingPointRegister(stack_offset, i);
+    if (codegen->HasOverlappingFPVecRegisters() && locations->GetNumLiveVectorRegisters() > 0) {
+      stack_offset +=
+          codegen->RestoreVectorRegister(stack_offset, locations->LiveFPVecRegAsLocation(i));
+    } else {
+      stack_offset += codegen->RestoreFloatingPointRegister(stack_offset, i);
+    }
   }
 }
 
