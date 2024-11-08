@@ -87,6 +87,12 @@ public class Main {
   /// CHECK-NEXT: BelowOrEqual
   //
   /// CHECK:      ArrayGet loop:none
+  /// CHECK-IF:   hasIsaFeature("avx2")
+    /// CHECK-IF: isIsa("x86_64")
+      // In case of avx2 we must generate a HX86Clear just before return
+      /// CHECK: X86Clear
+    /// CHECK-FI:
+  /// CHECK-FI:
   /// CHECK-NEXT: Return
 
   /// CHECK-START: double Main.$noinline$test02(double[], int) load_store_elimination (after)
@@ -131,6 +137,12 @@ public class Main {
   //
   /// CHECK-START: double Main.$noinline$test03(int) load_store_elimination (before)
   /// CHECK:      ArrayGet loop:none
+  /// CHECK-IF:   hasIsaFeature("avx2")
+    /// CHECK-IF: isIsa("x86_64")
+      // In case of avx2 we must generate a HX86Clear just before return
+      /// CHECK: X86Clear
+    /// CHECK-FI:
+  /// CHECK-FI:
   /// CHECK-NEXT: Return
 
   /// CHECK-START: double Main.$noinline$test03(int) load_store_elimination (after)

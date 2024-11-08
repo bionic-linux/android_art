@@ -167,6 +167,27 @@ class SuspendCheckSlowPathX86_64 : public SlowPathCode {
     CodeGeneratorX86_64* x86_64_codegen = down_cast<CodeGeneratorX86_64*>(codegen);
     __ Bind(GetEntryLabel());
     SaveLiveRegisters(codegen, locations);  // Only saves full width XMM for SIMD.
+    // If this is related to an AVX2 loop,
+    //  we must emit vzeroupper here before invoking runtime methods
+    if (codegen->GetGraph()->HasSIMD() && x86_64_codegen->GetInstructionSetFeatures().HasAVX2()) {
+      // Live SIMD registers => is a SIMD loop
+      if (locations->GetNumLiveVectorRegisters() > 0) {
+        __ vzeroupper();
+      } else if (instruction_->GetBlock()->IsInLoop()) {
+        // Slow path: Look at the loop_body to determine it's a SIMD loop
+        HBasicBlock* loop_header = instruction_->GetBlock()->GetLoopInformation()->GetHeader();
+        // SIMD loop headers are guaranteed to have loop_body as second successor
+        if (loop_header->GetSuccessors().size() == 2u) {
+          HBasicBlock* loop_body = loop_header->GetSuccessors()[1];
+          for (HInstructionIterator it(loop_body->GetInstructions()); !it.Done(); it.Advance()) {
+            if (it.Current()->IsVecOperation()) {
+              __ vzeroupper();
+              break;
+            }
+          }
+        }
+      }
+    }
     x86_64_codegen->InvokeRuntime(kQuickTestSuspend, instruction_, instruction_->GetDexPc(), this);
     CheckEntrypointTypes<kQuickTestSuspend, void, void>();
     RestoreLiveRegisters(codegen, locations);  // Only restores full width XMM for SIMD.
@@ -6502,10 +6523,23 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
     } else {
       DCHECK(destination.IsSIMDStackSlot());
       size_t high = kX86_64WordSize;
-      __ movq(CpuRegister(TMP), Address(CpuRegister(RSP), source.GetStackIndex()));
-      __ movq(Address(CpuRegister(RSP), destination.GetStackIndex()), CpuRegister(TMP));
-      __ movq(CpuRegister(TMP), Address(CpuRegister(RSP), source.GetStackIndex() + high));
-      __ movq(Address(CpuRegister(RSP), destination.GetStackIndex() + high), CpuRegister(TMP));
+      if (codegen_->GetSIMDRegisterWidth() == (2 * kX86_64WordSize)) {
+        __ movq(CpuRegister(TMP), Address(CpuRegister(RSP), source.GetStackIndex()));
+        __ movq(Address(CpuRegister(RSP), destination.GetStackIndex()), CpuRegister(TMP));
+        __ movq(CpuRegister(TMP), Address(CpuRegister(RSP), source.GetStackIndex() + high));
+        __ movq(Address(CpuRegister(RSP), destination.GetStackIndex() + high), CpuRegister(TMP));
+      } else {
+        // Easier to spill a vector register
+        size_t extra_slot = codegen_->GetSIMDRegisterWidth();
+        __ subq(CpuRegister(RSP), Immediate(extra_slot));
+        __ movups(Address(CpuRegister(RSP), 0), XmmRegister(XMM0, extra_slot));
+        __ movups(XmmRegister(XMM0, extra_slot),
+                  Address(CpuRegister(RSP), source.GetStackIndex() + extra_slot));
+        __ movups(Address(CpuRegister(RSP), destination.GetStackIndex() + extra_slot),
+                  XmmRegister(XMM0, extra_slot));
+        __ movups(XmmRegister(XMM0, extra_slot), Address(CpuRegister(RSP), 0));
+        __ addq(CpuRegister(RSP), Immediate(extra_slot));
+      }
     }
   } else if (source.IsConstant()) {
     HConstant* constant = source.GetConstant();
@@ -6654,6 +6688,25 @@ void ParallelMoveResolverX86_64::ExchangeMemory64(int mem1, int mem2, int num_of
   }
 }
 
+void ParallelMoveResolverX86_64::ExchangeMemorySIMD(int mem1, int mem2) {
+  // It is better to spill a ymm onto stack than looping with 64-bit regs
+  size_t extra_slot = codegen_->GetSIMDRegisterWidth();
+  if (extra_slot > 2 * kX86_64WordSize) {
+    __ subq(CpuRegister(RSP), Immediate(2 * extra_slot));
+    __ movups(Address(CpuRegister(RSP), 0), XmmRegister(XMM0, extra_slot));
+    __ movups(Address(CpuRegister(RSP), extra_slot), XmmRegister(XMM1, extra_slot));
+    __ movups(XmmRegister(XMM0, extra_slot), Address(CpuRegister(RSP), mem2 + 2 * extra_slot));
+    __ movups(XmmRegister(XMM1, extra_slot), Address(CpuRegister(RSP), mem1 + 2 * extra_slot));
+    __ movups(Address(CpuRegister(RSP), mem2 + 2 * extra_slot), XmmRegister(XMM1, extra_slot));
+    __ movups(Address(CpuRegister(RSP), mem1 + 2 * extra_slot), XmmRegister(XMM0, extra_slot));
+    __ movups(XmmRegister(XMM1, extra_slot), Address(CpuRegister(RSP), extra_slot));
+    __ movups(XmmRegister(XMM0, extra_slot), Address(CpuRegister(RSP), 0));
+    __ addq(CpuRegister(RSP), Immediate(2 * extra_slot));
+  } else {
+    ExchangeMemory64(mem1, mem2, extra_slot >> 3);
+  }
+}
+
 void ParallelMoveResolverX86_64::EmitSwap(size_t index) {
   MoveOperands* move = moves_[index];
   Location source = move->GetSource();
@@ -6693,7 +6746,7 @@ void ParallelMoveResolverX86_64::EmitSwap(size_t index) {
     Exchange64(destination.AsFPVectorRegister<XmmRegister>(), source.GetStackIndex());
   } else if (source.IsSIMDStackSlot() && destination.IsSIMDStackSlot()) {
     DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
-    ExchangeMemory64(destination.GetStackIndex(), source.GetStackIndex(), source.GetVecLen() >> 3);
+    ExchangeMemorySIMD(destination.GetStackIndex(), source.GetStackIndex());
   } else if (source.IsFpuRegister() && destination.IsSIMDStackSlot()) {
     DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
     ExchangeSIMD(source.AsFPVectorRegister<XmmRegister>(), destination.GetStackIndex());
