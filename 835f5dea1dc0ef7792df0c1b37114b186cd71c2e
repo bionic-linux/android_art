@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a803a8_8a4589cb",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-08T20:30:28Z",
+      "side": 1,
+      "message": "I have also tweaked the order of the default 32/64 builders.",
+      "revId": "835f5dea1dc0ef7792df0c1b37114b186cd71c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
