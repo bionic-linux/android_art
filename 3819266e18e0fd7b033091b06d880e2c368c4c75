@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b64dad4_8251864a",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ce01fd_51de4f4d",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 47
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad590b80_2cdb93a2",
@@ -88,6 +112,30 @@
       "writtenOn": "2024-06-11T15:05:33Z",
       "side": 1,
       "message": "Should we have `vmovq` for the 64-bit moves?",
+      "range": {
+        "startLine": 512,
+        "startChar": 2,
+        "endLine": 513,
+        "endChar": 61
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd50123_fd977ec8",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad590b80_2cdb93a2",
       "range": {
         "startLine": 512,
         "startChar": 2,
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb17162_e967843e",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e39f733_8542a599",
+      "range": {
+        "startLine": 820,
+        "startChar": 2,
+        "endLine": 820,
+        "endChar": 35
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6b7e7aa_a6054a3d",
@@ -134,6 +206,30 @@
       "writtenOn": "2024-06-11T15:05:33Z",
       "side": 1,
       "message": "Naming style: `vex_pp`, `is_vex_3byte`, `opcode`, `is_commutative`.",
+      "range": {
+        "startLine": 1260,
+        "startChar": 30,
+        "endLine": 1263,
+        "endChar": 48
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90564a7f_a91610ef",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b7e7aa_a6054a3d",
       "range": {
         "startLine": 1260,
         "startChar": 30,
@@ -167,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "897ba58c_68402281",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c179775_ade18961",
+      "range": {
+        "startLine": 1273,
+        "startChar": 29,
+        "endLine": 1274,
+        "endChar": 48
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf1c71f0_680ec5b4",
@@ -180,6 +300,30 @@
       "writtenOn": "2024-06-11T15:05:33Z",
       "side": 1,
       "message": "Remove `explicit` from constructors that have two parameters (and no default args).",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b943839_6001adc3",
+        "filename": "compiler/utils/x86_64/constants_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1c71f0_680ec5b4",
       "range": {
         "startLine": 56,
         "startChar": 2,
@@ -213,6 +357,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da15894c_8c525d0b",
+        "filename": "compiler/utils/x86_64/constants_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1acff7e8_30377a6b",
+      "range": {
+        "startLine": 57,
+        "startChar": 47,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71604567_d22c11d8",
@@ -226,6 +394,30 @@
       "writtenOn": "2024-06-11T15:05:33Z",
       "side": 1,
       "message": "There is no support for `zmm` in assembler, so you should not add that here. (Notably, you\u0027re not printing `zmm` in the `operator\u003c\u003c(std::ostream\u0026, const XmmRegister\u0026)`.)",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf25c32b_bcfe1e59",
+        "filename": "compiler/utils/x86_64/constants_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71604567_d22c11d8",
       "range": {
         "startLine": 74,
         "startChar": 2,
@@ -259,6 +451,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b632ae1_1e29592d",
+        "filename": "compiler/utils/x86_64/constants_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f83bcbcd_615ccc40",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4218c2e_567b555b",
@@ -272,6 +488,30 @@
       "writtenOn": "2024-06-11T15:05:33Z",
       "side": 1,
       "message": "Style: `kMaxInstructionLength`.",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "3819266e18e0fd7b033091b06d880e2c368c4c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeabde90_53ad40e4",
+        "filename": "disassembler/disassembler_x86.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-08T04:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4218c2e_567b555b",
       "range": {
         "startLine": 25,
         "startChar": 25,
