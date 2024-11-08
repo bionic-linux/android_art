@@ -45,8 +45,12 @@ void LocationsBuilderX86_64::VisitVecReplicateScalar(HVecReplicateScalar* instru
     case DataType::Type::kFloat64:
       locations->SetInAt(0, is_zero ? Location::ConstantLocation(input)
                                     : Location::RequiresFpuRegister());
-      locations->SetOut(is_zero ? Location::RequiresFpuRegister()
-                                : Location::SameAsFirstInput());
+      // This is a special instruction with scalar-in and vector-out
+      // If we use same register for In and Out, we would wrongly consider it as vector-in
+      //   during register allocation.
+      // Any parallel moves generated, would have trouble as we wrongly marked
+      // the in-reg as vector. Use a different register for in and out to avoid this.
+      locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -94,12 +98,18 @@ void InstructionCodeGeneratorX86_64::VisitVecReplicateScalar(HVecReplicateScalar
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      DCHECK(locations->InAt(0).Equals(locations->Out()));
+      {
+        XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
+        __ movups(dst, src);
+      }
       __ shufps(dst, dst, Immediate(0));
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      DCHECK(locations->InAt(0).Equals(locations->Out()));
+      {
+        XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
+        __ movups(dst, src);
+      }
       __ shufpd(dst, dst, Immediate(0));
       break;
     default:
@@ -124,7 +134,13 @@ void LocationsBuilderX86_64::VisitVecExtractScalar(HVecExtractScalar* instructio
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
       locations->SetInAt(0, Location::RequiresFpuRegister());
-      locations->SetOut(Location::SameAsFirstInput());
+      // This is a special instruction with scalar-out and vector-in
+      // If we use same register for In and Out, we would consider it as vector-out
+      //   during register allocation.
+      // Eventually any users will see it as a vector register.
+      // Using a different register for out, ensures it's not marked as vector
+      locations->SetOut(Location::RequiresFpuRegister());
+
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -155,7 +171,11 @@ void InstructionCodeGeneratorX86_64::VisitVecExtractScalar(HVecExtractScalar* in
     case DataType::Type::kFloat64:
       DCHECK_LE(2u, instruction->GetVectorLength());
       DCHECK_LE(instruction->GetVectorLength(), 4u);
-      DCHECK(locations->InAt(0).Equals(locations->Out()));  // no code required
+      {
+        XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+        __ movups(dst, src);
+      }
+
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();

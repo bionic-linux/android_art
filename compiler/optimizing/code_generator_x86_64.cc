@@ -1560,6 +1560,32 @@ size_t CodeGeneratorX86_64::RestoreFloatingPointRegister(size_t stack_index, uin
   return GetSlowPathFPWidth();
 }
 
+size_t CodeGeneratorX86_64::SaveVectorRegister(size_t stack_index, Location loc) {
+  DCHECK(loc.IsFpuRegister());
+  size_t slowpath_fp_width = GetSlowPathFPWidth();
+  DCHECK(GetGraph()->HasSIMD());
+  // Although we have fully qualified location with vector length, we choose not to use it.
+  // If there is at least 1 live 256-bit register, we must emit AVX2 for all registers,
+  // to avoid performance issues
+  XmmRegister vReg(loc.reg(), GetSIMDRegisterWidth());
+  DCHECK_EQ(vReg.GetVecLen(), slowpath_fp_width);
+  __ movups(Address(CpuRegister(RSP), stack_index), vReg);
+  return slowpath_fp_width;
+}
+
+size_t CodeGeneratorX86_64::RestoreVectorRegister(size_t stack_index, Location loc) {
+  DCHECK(loc.IsFpuRegister());
+  size_t slowpath_fp_width = GetSlowPathFPWidth();
+  DCHECK(GetGraph()->HasSIMD());
+  // Although we have fully qualified location with vector length, we choose not to use it.
+  // If there is at least 1 live 256-bit register, we must emit AVX2 for all registers,
+  // to avoid performance issues
+  XmmRegister vReg(loc.reg(), GetSIMDRegisterWidth());
+  DCHECK_EQ(vReg.GetVecLen(), slowpath_fp_width);
+  __ movups(vReg, Address(CpuRegister(RSP), stack_index));
+  return slowpath_fp_width;
+}
+
 void CodeGeneratorX86_64::InvokeRuntime(QuickEntrypointEnum entrypoint,
                                         HInstruction* instruction,
                                         uint32_t dex_pc,
@@ -2000,11 +2026,13 @@ void CodeGeneratorX86_64::Move(Location destination, Location source) {
       __ movq(dest, Address(CpuRegister(RSP), source.GetStackIndex()));
     }
   } else if (destination.IsFpuRegister()) {
-    XmmRegister dest = destination.AsFpuRegister<XmmRegister>();
+    XmmRegister dest = destination.AsFPVectorRegister<XmmRegister>();
     if (source.IsRegister()) {
       __ movd(dest, source.AsRegister<CpuRegister>());
     } else if (source.IsFpuRegister()) {
-      __ movaps(dest, source.AsFpuRegister<XmmRegister>());
+      XmmRegister src = source.AsFPVectorRegister<XmmRegister>();
+      DCHECK_EQ(dest.GetVecLen(), src.GetVecLen());
+      __ movaps(dest, src);
     } else if (source.IsConstant()) {
       HConstant* constant = source.GetConstant();
       int64_t value = CodeGenerator::GetInt64ValueOf(constant);
@@ -6426,6 +6454,9 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
   Location source = move->GetSource();
   Location destination = move->GetDestination();
 
+  // Parallel moves may involve vector registers.
+  // Hence the special handling to always retrieve
+  // FpuRegister locations as VectorRegister
   if (source.IsRegister()) {
     if (destination.IsRegister()) {
       __ movq(destination.AsRegister<CpuRegister>(), source.AsRegister<CpuRegister>());
@@ -6442,8 +6473,9 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
       __ movl(destination.AsRegister<CpuRegister>(),
               Address(CpuRegister(RSP), source.GetStackIndex()));
     } else if (destination.IsFpuRegister()) {
-      __ movss(destination.AsFpuRegister<XmmRegister>(),
-              Address(CpuRegister(RSP), source.GetStackIndex()));
+      DCHECK_EQ(destination.GetVecLen(), 0u);
+      __ movss(destination.AsFPVectorRegister<XmmRegister>(),
+               Address(CpuRegister(RSP), source.GetStackIndex()));
     } else {
       DCHECK(destination.IsStackSlot());
       __ movl(CpuRegister(TMP), Address(CpuRegister(RSP), source.GetStackIndex()));
@@ -6454,7 +6486,8 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
       __ movq(destination.AsRegister<CpuRegister>(),
               Address(CpuRegister(RSP), source.GetStackIndex()));
     } else if (destination.IsFpuRegister()) {
-      __ movsd(destination.AsFpuRegister<XmmRegister>(),
+      DCHECK_EQ(destination.GetVecLen(), 0u);
+      __ movsd(destination.AsFPVectorRegister<XmmRegister>(),
                Address(CpuRegister(RSP), source.GetStackIndex()));
     } else {
       DCHECK(destination.IsDoubleStackSlot()) << destination;
@@ -6463,7 +6496,8 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
     }
   } else if (source.IsSIMDStackSlot()) {
     if (destination.IsFpuRegister()) {
-      __ movups(destination.AsFpuRegister<XmmRegister>(),
+      DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+      __ movups(destination.AsFPVectorRegister<XmmRegister>(),
                 Address(CpuRegister(RSP), source.GetStackIndex()));
     } else {
       DCHECK(destination.IsSIMDStackSlot());
@@ -6519,17 +6553,22 @@ void ParallelMoveResolverX86_64::EmitMove(size_t index) {
     }
   } else if (source.IsFpuRegister()) {
     if (destination.IsFpuRegister()) {
-      __ movaps(destination.AsFpuRegister<XmmRegister>(), source.AsFpuRegister<XmmRegister>());
+      DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+      __ movaps(destination.AsFPVectorRegister<XmmRegister>(),
+                source.AsFPVectorRegister<XmmRegister>());
     } else if (destination.IsStackSlot()) {
+      DCHECK_EQ(source.GetVecLen(), 0u);
       __ movss(Address(CpuRegister(RSP), destination.GetStackIndex()),
-               source.AsFpuRegister<XmmRegister>());
+               source.AsFPVectorRegister<XmmRegister>());
     } else if (destination.IsDoubleStackSlot()) {
+      DCHECK_EQ(source.GetVecLen(), 0u);
       __ movsd(Address(CpuRegister(RSP), destination.GetStackIndex()),
-               source.AsFpuRegister<XmmRegister>());
+               source.AsFPVectorRegister<XmmRegister>());
     } else {
        DCHECK(destination.IsSIMDStackSlot());
-      __ movups(Address(CpuRegister(RSP), destination.GetStackIndex()),
-                source.AsFpuRegister<XmmRegister>());
+       DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+       __ movups(Address(CpuRegister(RSP), destination.GetStackIndex()),
+                 source.AsFPVectorRegister<XmmRegister>());
     }
   }
 }
@@ -6564,13 +6603,22 @@ void ParallelMoveResolverX86_64::Exchange64(XmmRegister reg, int mem) {
   __ movd(reg, CpuRegister(TMP));
 }
 
-void ParallelMoveResolverX86_64::Exchange128(XmmRegister reg, int mem) {
-  size_t extra_slot = 2 * kX86_64WordSize;
+void ParallelMoveResolverX86_64::ExchangeSIMD(XmmRegister reg, int mem) {
+  // We are operating on Vector register for sure
+  size_t extra_slot = reg.GetVecLen();
   __ subq(CpuRegister(RSP), Immediate(extra_slot));
-  __ movups(Address(CpuRegister(RSP), 0), XmmRegister(reg));
-  ExchangeMemory64(0, mem + extra_slot, 2);
-  __ movups(XmmRegister(reg), Address(CpuRegister(RSP), 0));
+  __ movups(Address(CpuRegister(RSP), 0), reg);
+  ExchangeMemory64(0, mem + extra_slot, extra_slot >> 3);
+  __ movups(reg, Address(CpuRegister(RSP), 0));
   __ addq(CpuRegister(RSP), Immediate(extra_slot));
+}
+
+void ParallelMoveResolverX86_64::ExchangeFPReg(XmmRegister reg1, XmmRegister reg2) {
+  // We may be either operating on plain FP registers or Vector registers
+  DCHECK_EQ(reg1.GetVecLen(), reg2.GetVecLen());
+  __ pxor(reg1, reg2);
+  __ pxor(reg2, reg1);
+  __ pxor(reg1, reg2);
 }
 
 void ParallelMoveResolverX86_64::ExchangeMemory32(int mem1, int mem2) {
@@ -6611,6 +6659,9 @@ void ParallelMoveResolverX86_64::EmitSwap(size_t index) {
   Location source = move->GetSource();
   Location destination = move->GetDestination();
 
+  // Parallel moves may involve vector registers.
+  // Hence the special handling to always retrieve
+  // FpuRegister locations as VectorRegister
   if (source.IsRegister() && destination.IsRegister()) {
     Exchange64(source.AsRegister<CpuRegister>(), destination.AsRegister<CpuRegister>());
   } else if (source.IsRegister() && destination.IsStackSlot()) {
@@ -6626,23 +6677,29 @@ void ParallelMoveResolverX86_64::EmitSwap(size_t index) {
   } else if (source.IsDoubleStackSlot() && destination.IsDoubleStackSlot()) {
     ExchangeMemory64(destination.GetStackIndex(), source.GetStackIndex(), 1);
   } else if (source.IsFpuRegister() && destination.IsFpuRegister()) {
-    __ movd(CpuRegister(TMP), source.AsFpuRegister<XmmRegister>());
-    __ movaps(source.AsFpuRegister<XmmRegister>(), destination.AsFpuRegister<XmmRegister>());
-    __ movd(destination.AsFpuRegister<XmmRegister>(), CpuRegister(TMP));
+    ExchangeFPReg(source.AsFPVectorRegister<XmmRegister>(),
+                  destination.AsFPVectorRegister<XmmRegister>());
   } else if (source.IsFpuRegister() && destination.IsStackSlot()) {
-    Exchange32(source.AsFpuRegister<XmmRegister>(), destination.GetStackIndex());
+    DCHECK_EQ(source.GetVecLen(), 0u);
+    Exchange32(source.AsFPVectorRegister<XmmRegister>(), destination.GetStackIndex());
   } else if (source.IsStackSlot() && destination.IsFpuRegister()) {
-    Exchange32(destination.AsFpuRegister<XmmRegister>(), source.GetStackIndex());
+    DCHECK_EQ(destination.GetVecLen(), 0u);
+    Exchange32(destination.AsFPVectorRegister<XmmRegister>(), source.GetStackIndex());
   } else if (source.IsFpuRegister() && destination.IsDoubleStackSlot()) {
-    Exchange64(source.AsFpuRegister<XmmRegister>(), destination.GetStackIndex());
+    DCHECK_EQ(source.GetVecLen(), 0u);
+    Exchange64(source.AsFPVectorRegister<XmmRegister>(), destination.GetStackIndex());
   } else if (source.IsDoubleStackSlot() && destination.IsFpuRegister()) {
-    Exchange64(destination.AsFpuRegister<XmmRegister>(), source.GetStackIndex());
+    DCHECK_EQ(destination.GetVecLen(), 0u);
+    Exchange64(destination.AsFPVectorRegister<XmmRegister>(), source.GetStackIndex());
   } else if (source.IsSIMDStackSlot() && destination.IsSIMDStackSlot()) {
-    ExchangeMemory64(destination.GetStackIndex(), source.GetStackIndex(), 2);
+    DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+    ExchangeMemory64(destination.GetStackIndex(), source.GetStackIndex(), source.GetVecLen() >> 3);
   } else if (source.IsFpuRegister() && destination.IsSIMDStackSlot()) {
-    Exchange128(source.AsFpuRegister<XmmRegister>(), destination.GetStackIndex());
+    DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+    ExchangeSIMD(source.AsFPVectorRegister<XmmRegister>(), destination.GetStackIndex());
   } else if (destination.IsFpuRegister() && source.IsSIMDStackSlot()) {
-    Exchange128(destination.AsFpuRegister<XmmRegister>(), source.GetStackIndex());
+    DCHECK_EQ(source.GetVecLen(), destination.GetVecLen());
+    ExchangeSIMD(destination.AsFPVectorRegister<XmmRegister>(), source.GetStackIndex());
   } else {
     LOG(FATAL) << "Unimplemented swap between " << source << " and " << destination;
   }

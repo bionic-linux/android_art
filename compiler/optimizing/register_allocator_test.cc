@@ -427,16 +427,18 @@ TEST_F(RegisterAllocatorTest, FreeUntil) {
   // Add three temps holding the same register, and starting at different positions.
   // Put the one that should be picked in the middle of the inactive list to ensure
   // we do not depend on an order.
-  LiveInterval* interval =
-      LiveInterval::MakeFixedInterval(GetScopedAllocator(), 0, DataType::Type::kInt32);
+  LiveInterval* interval = LiveInterval::MakeFixedInterval(
+      GetScopedAllocator(), 0, DataType::Type::kInt32, codegen.HasOverlappingFPVecRegisters());
   interval->AddRange(40, 50);
   register_allocator.inactive_.push_back(interval);
 
-  interval = LiveInterval::MakeFixedInterval(GetScopedAllocator(), 0, DataType::Type::kInt32);
+  interval = LiveInterval::MakeFixedInterval(
+      GetScopedAllocator(), 0, DataType::Type::kInt32, codegen.HasOverlappingFPVecRegisters());
   interval->AddRange(20, 30);
   register_allocator.inactive_.push_back(interval);
 
-  interval = LiveInterval::MakeFixedInterval(GetScopedAllocator(), 0, DataType::Type::kInt32);
+  interval = LiveInterval::MakeFixedInterval(
+      GetScopedAllocator(), 0, DataType::Type::kInt32, codegen.HasOverlappingFPVecRegisters());
   interval->AddRange(60, 70);
   register_allocator.inactive_.push_back(interval);
 
