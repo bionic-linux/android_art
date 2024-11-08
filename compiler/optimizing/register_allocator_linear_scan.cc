@@ -44,32 +44,32 @@ static bool IsLowOfUnalignedPairInterval(LiveInterval* low) {
 RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* allocator,
                                                          CodeGenerator* codegen,
                                                          const SsaLivenessAnalysis& liveness)
-      : RegisterAllocator(allocator, codegen, liveness),
-        unhandled_core_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        unhandled_fp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        unhandled_(nullptr),
-        handled_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        active_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        inactive_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        physical_core_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        physical_fp_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        block_registers_for_call_interval_(
-            LiveInterval::MakeFixedInterval(allocator, kNoRegister, DataType::Type::kVoid)),
-        block_registers_special_interval_(
-            LiveInterval::MakeFixedInterval(allocator, kNoRegister, DataType::Type::kVoid)),
-        temp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        int_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        long_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        float_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        double_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        catch_phi_spill_slots_(0),
-        safepoints_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        current_register_type_(RegisterType::kCoreRegister),
-        number_of_registers_(-1),
-        registers_array_(nullptr),
-        blocked_core_registers_(codegen->GetBlockedCoreRegisters()),
-        blocked_fp_registers_(codegen->GetBlockedFloatingPointRegisters()),
-        reserved_out_slots_(0) {
+    : RegisterAllocator(allocator, codegen, liveness),
+      unhandled_core_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      unhandled_fp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      unhandled_(nullptr),
+      handled_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      active_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      inactive_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      physical_core_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      physical_fp_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      block_registers_for_call_interval_(LiveInterval::MakeFixedInterval(
+          allocator, kNoRegister, DataType::Type::kVoid, codegen->HasOverlappingFPVecRegisters())),
+      block_registers_special_interval_(LiveInterval::MakeFixedInterval(
+          allocator, kNoRegister, DataType::Type::kVoid, codegen->HasOverlappingFPVecRegisters())),
+      temp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      int_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      long_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      float_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      double_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      catch_phi_spill_slots_(0),
+      safepoints_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      current_register_type_(RegisterType::kCoreRegister),
+      number_of_registers_(-1),
+      registers_array_(nullptr),
+      blocked_core_registers_(codegen->GetBlockedCoreRegisters()),
+      blocked_fp_registers_(codegen->GetBlockedFloatingPointRegisters()),
+      reserved_out_slots_(0) {
   temp_intervals_.reserve(4);
   int_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
   long_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
@@ -142,7 +142,8 @@ void RegisterAllocatorLinearScan::BlockRegister(Location location,
       ? DataType::Type::kInt32
       : DataType::Type::kFloat32;
   if (interval == nullptr) {
-    interval = LiveInterval::MakeFixedInterval(allocator_, reg, type);
+    interval = LiveInterval::MakeFixedInterval(
+        allocator_, reg, type, codegen_->HasOverlappingFPVecRegisters());
     if (location.IsRegister()) {
       physical_core_register_intervals_[reg] = interval;
     } else {
@@ -341,7 +342,10 @@ void RegisterAllocatorLinearScan::CheckForTempLiveIntervals(HInstruction* instru
       switch (temp.GetPolicy()) {
         case Location::kRequiresRegister: {
           LiveInterval* interval =
-              LiveInterval::MakeTempInterval(allocator_, DataType::Type::kInt32);
+              LiveInterval::MakeTempInterval(allocator_,
+                                             DataType::Type::kInt32,
+                                             instruction,
+                                             codegen_->HasOverlappingFPVecRegisters());
           temp_intervals_.push_back(interval);
           interval->AddTempUse(instruction, i);
           unhandled_core_intervals_.push_back(interval);
@@ -350,7 +354,10 @@ void RegisterAllocatorLinearScan::CheckForTempLiveIntervals(HInstruction* instru
 
         case Location::kRequiresFpuRegister: {
           LiveInterval* interval =
-              LiveInterval::MakeTempInterval(allocator_, DataType::Type::kFloat64);
+              LiveInterval::MakeTempInterval(allocator_,
+                                             DataType::Type::kFloat64,
+                                             instruction,
+                                             codegen_->HasOverlappingFPVecRegisters());
           temp_intervals_.push_back(interval);
           interval->AddTempUse(instruction, i);
           if (codegen_->NeedsTwoRegisters(DataType::Type::kFloat64)) {
