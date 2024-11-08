@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b4e563_58020e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-08T16:49:12Z",
+      "side": 1,
+      "message": "Thanks Chris! This still shows a merge conflict. I think you may have to rebase it again. The changes look good. I will +2 once the rebase is done.",
+      "revId": "c4777f081a1c1ffbf5875e0fd92f657f682f5586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
