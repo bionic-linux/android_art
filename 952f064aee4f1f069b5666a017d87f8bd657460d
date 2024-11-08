@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "174827eb_210fc01f",
+        "filename": "artd/artd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. It made me dig deeper and understand more about the problem.\n\n`noexcept` is from the [glibc header](https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/signal.h;l\u003d127;drc\u003d33581f7b65a5545e9ad836bab9495e95a59c63bf) where ` __THROW` is from [here](https://cs.android.com/android/platform/superproject/main/+/main:prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/x86_64-linux-gnu/sys/cdefs.h;l\u003d61;drc\u003d33581f7b65a5545e9ad836bab9495e95a59c63bf) (although the #define is for GCC only, clang seems to pretend to be GCC 4.2.1).\n\nAs you said, the `noexcept` doesn\u0027t exist in the Bionic header. The compilation only fails on the host test, not on a device build. When it fails, the error looks like:\n \n```\nerror: implicit instantiation of undefined template \u0027std::function\u003cint (int, int) noexcept\u003e\u0027\n   95 |   std::function\u003cdecltype(kill)\u003e kill_;\n      |                                 ^\n```\n\nThis is because `std::function` doesn\u0027t support a function type with `noexcept`. To address this problem, I have to remove the `noexcept` from the function type.\n\nAlternatives Considered:\n\n1. Disabling host test.\n\n    Not worth it just because of this.\n\n1. Overriding `__THROW`.\n\n    Didn\u0027t find a way to do it, and too hacky even if there is a way.\n\n1. Defining an std::function variant (say, `art::function`) that supports `noexcept`.\n\n    The metaprogramming part is as complicated as `remove_noexcept_t`, although it\u0027s simpler to use.\n    \nIt looks like we have to choose between repeating the same function signature 3~5 times and using `remove_noexcept_t`. To me, the latter is less annoying than or at most the same annoying as the former. Objectively speaking, there isn\u0027t one choice that is obviously better than the other, so it\u0027s more about personal taste. And when the discussion comes to personal taste, it is out of the scope of a code review.",
+      "parentUuid": "97025276_6b294ee7",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 65
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8288ba4e_ac789339",

@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e5996e_7b73adfa",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "This part is dealt with on the Java side, in the next CL.",
+      "parentUuid": "d25e0b68_dd00e56e",
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "407b0978_d69d14e2",
@@ -59,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ff9f72_e63d95d9",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I considered that. I think it makes the expression more complicated without providing obvious benefits. Such a buf size may still hold multiple `inotify_event`\u0027s, as `NAME_MAX` is 255, while `sizeof(struct inotify_event)` is only 16, so it won\u0027t help us avoid the complicated for loop below. Even the example at the bottom of inotify(7) is not using it.",
+      "parentUuid": "407b0978_d69d14e2",
+      "range": {
+        "startLine": 1479,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f15e0ec_92af4d18",
@@ -76,6 +118,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1420f96b_d8d796d7",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure why Gerrit shows no coverage, but the lines are covered.\n\nAnyway, I planted an abort and the test did hit it.\n\n```\n[ RUN      ] ArtdProfileSaveNotificationTest.initAndWaitSuccess\n11-08 16:51:36.170  3432  3446 I art_artd_tests: artd.cc:1462 Waiting for notification \u0027/usr/local/google/home/jiakaiz/android/aosp-main/out/soong/.temp/art-data-1tYPym/tmp-BxTeAB/data/misc/profiles/cur/0/com.android.foo/primary.prof.prof\u0027\n/.../\nArtdProfileSaveNotificationTest.initAndWaitSuccess terminated by signal: Aborted.\n[  FAILED  ] ArtdProfileSaveNotificationTest.initAndWaitSuccess (62 ms)\n```",
+      "parentUuid": "3f15e0ec_92af4d18",
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1414c1ed_d3ada01d",
@@ -89,6 +149,30 @@
       "writtenOn": "2024-11-07T22:07:24Z",
       "side": 1,
       "message": "`arraysize(pollfds)`",
+      "range": {
+        "startLine": 1487,
+        "startChar": 48,
+        "endLine": 1487,
+        "endChar": 58
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f9c65b_364ef56b",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "Thank you for the tip!",
+      "parentUuid": "1414c1ed_d3ada01d",
       "range": {
         "startLine": 1487,
         "startChar": 48,
@@ -122,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a322f5_fa1e9101",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I wanted a line break too, but clang-format didn\u0027t agree, and I couldn\u0027t find a way to configure this :(",
+      "parentUuid": "2f04ec23_06f2987a",
+      "range": {
+        "startLine": 1503,
+        "startChar": 36,
+        "endLine": 1503,
+        "endChar": 37
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ec6bb2f_78bf4a81",
@@ -135,6 +243,30 @@
       "writtenOn": "2024-11-07T22:07:24Z",
       "side": 1,
       "message": "Please add a test that creates a few other files in the directory before the real one.",
+      "range": {
+        "startLine": 2572,
+        "startChar": 14,
+        "endLine": 2572,
+        "endChar": 29
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5d4e85_5faef8a0",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "Updated this test and `initAndWaitTimeout`.",
+      "parentUuid": "2ec6bb2f_78bf4a81",
       "range": {
         "startLine": 2572,
         "startChar": 14,
@@ -168,6 +300,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce486c97_de55f36a",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2600,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I mocked `poll`, so this doesn\u0027t take realtime.",
+      "parentUuid": "1d6f8379_2b50b5b2",
+      "range": {
+        "startLine": 2600,
+        "startChar": 55,
+        "endLine": 2600,
+        "endChar": 59
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1af6c78f_237bff07",
@@ -181,6 +337,30 @@
       "writtenOn": "2024-11-07T22:07:24Z",
       "side": 1,
       "message": "A reference to the code that\u0027s responsible for this could be handy.",
+      "range": {
+        "startLine": 277,
+        "startChar": 69,
+        "endLine": 277,
+        "endChar": 81
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39115a9c_a177bc91",
+        "filename": "artd/binder/com/android/server/art/IArtd.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af6c78f_237bff07",
       "range": {
         "startLine": 277,
         "startChar": 69,
@@ -214,6 +394,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e3923e_afab96dc",
+        "filename": "artd/binder/com/android/server/art/IArtdNotification.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I think the doc for `ndk::SharedRefBase` is irrelevant here. `ndk::SharedRefBase::make` [internally calls `ref`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/ndk/include_cpp/android/binder_interface_utils.h;l\u003d107;drc\u003d8fdf7eb239a4c6173067ecf36f5208cc1ff37268) (and that\u0027s why it\u0027s recommended).",
+      "parentUuid": "587a12bc_238a6c36",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 89
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1adf8701_7ffdc274",
@@ -227,6 +431,30 @@
       "writtenOn": "2024-11-07T22:07:24Z",
       "side": 1,
       "message": "Nit: Either \"`wait`\" or \"the `wait` flag\".",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a8f9e1_7954fea9",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1adf8701_7ffdc274",
       "range": {
         "startLine": 61,
         "startChar": 28,
@@ -274,6 +502,30 @@
           ]
         }
       ],
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3a26fe_ebd52df1",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-08T18:20:32Z",
+      "side": 1,
+      "message": "I need it to enable move assignment. The move assignment operator for `ScopeGuard` is [deleted](https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/scopeguard.h;l\u003d47;drc\u003d6fe6a1d1fb7e7b1b6e8ba14994237038a683a036). I need a move assignment on `artd_test.cc` line 2545 to move the `ScopeGuard` to a member of the test fixture class.\n\nI considered implementing a move assignment operator for `ScopeGuard`, but I then realized that it would be unclear to the user whether the function in the `ScopeGuard` being assigned (the one on the left-hand side of `\u003d`) should be immediately executed or ignored, so I gave up.\n\nI also considered replacing this whole function with a RAII class to avoid this ugliness, but I would then have to implement move assignment from scratch (e.g., using a flag to indicate whether the object has moved), which is even less charming.\n\n`make_scope_guard` doesn\u0027t return a pointer. The pointer is created by `std::make_unique` below.",
+      "parentUuid": "992340de_2e90a6f6",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 59
+      },
       "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
