@@ -22,6 +22,53 @@
       },
       "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93e284a_ef22eb19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-09T01:03:36Z",
+      "side": 1,
+      "message": "This may be a question for the Perfetto experts. You presumably loaded the appropriate library or libraries?\nI\u0027ve also often been been having issues with running target tests locally. If it looks like a general testing issue, you might ask dsrbecky@. I don\u0027t know if it\u0027s possible to do this on host?",
+      "parentUuid": "a965348e_9a5d03a5",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f6e62a_ac1db7f4",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4551,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-09T01:03:36Z",
+      "side": 1,
+      "message": "Nit: Maybe do this with a conditional expression, as above? I think it would read a bit better without the partially dead code, but I don\u0027t have a strong opinion. Or do with an if-then-else everywhere.",
+      "range": {
+        "startLine": 4549,
+        "startChar": 4,
+        "endLine": 4551,
+        "endChar": 5
+      },
+      "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
