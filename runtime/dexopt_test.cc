@@ -221,8 +221,60 @@ void DexoptTest::ReserveImageSpace() {
   ReserveImageSpaceChunk(reservation_start, reservation_end);
 }
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+
+static std::string overlapping_entries(unsigned long start, unsigned long size) {
+  std::string result = "";
+
+  std::vector<std::string> lines;
+  std::ifstream mmap_file("/proc/self/maps");
+  std::string line;
+
+  while (std::getline(mmap_file, line)) {
+    std::istringstream iss(line);
+    unsigned long int begin, end;
+    char dash;
+
+    // Parse the line to extract the address range
+    if (iss >> std::hex >> begin >> dash >> std::hex >> end) {
+      // Check if the current line's range overlaps with the given range
+      if ((begin >= start && begin < start + size) ||
+          (end > start && end <= start + size) ||
+          (begin < start && end > start)) {
+        lines.push_back(line);
+      }
+    }
+  }
+
+  if (lines.size() > 0) {
+    result = "Overlapping Mappings:\n\n";
+
+    for (const auto& entry : lines) {
+      result += entry + "\n";
+    }
+
+    result += "\n";
+  }
+
+  return result;
+}
+
+static inline void MmapHintTest(void* addr, size_t size) {
+    unsigned long start = reinterpret_cast<unsigned long>(addr);
+    void* mmap_addr = mmap(addr, size, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED_NOREPLACE, -1, 0);
+    ASSERT_NE(mmap_addr, MAP_FAILED) << "\n=== MMAP FAILED ===\n\nRequested range: [" << std::hex << start
+                                     << ", " << std::hex << (start + size) << ")\n\n"
+                                     << overlapping_entries(reinterpret_cast<unsigned long>(addr), size);
+    ASSERT_NE(munmap(mmap_addr, size), -1) << "munmap failed";
+}
+
 void DexoptTest::ReserveImageSpaceChunk(uintptr_t start, uintptr_t end) {
   if (start < end) {
+    MmapHintTest(reinterpret_cast<void*>(start), end - start);
+
     std::string error_msg;
     image_reservation_.push_back(MemMap::MapAnonymous("image reservation",
                                                       reinterpret_cast<uint8_t*>(start),
