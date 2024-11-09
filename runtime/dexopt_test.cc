@@ -221,7 +221,73 @@ void DexoptTest::ReserveImageSpace() {
   ReserveImageSpaceChunk(reservation_start, reservation_end);
 }
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <string>
+#include <sys/mman.h>
+#include <unistd.h>
+
+static inline bool is_address_available(void* addr, size_t size) {
+    std::ifstream maps_file("/proc/self/maps");
+    if (!maps_file.is_open()) return true;
+
+    unsigned long start, end;
+    std::string line;
+
+    while (std::getline(maps_file, line)) {
+        std::istringstream line_stream(line);
+
+        char dash;
+        if (line_stream >> std::hex >> start >> dash >> end && dash == '-') {
+            if (reinterpret_cast<unsigned long>(addr) >= start &&
+                reinterpret_cast<unsigned long>(addr) < end) {
+                maps_file.close();
+                return false; // Address overlaps
+            }
+            if (reinterpret_cast<unsigned long>(addr) + size > start &&
+                reinterpret_cast<unsigned long>(addr) < end) {
+                maps_file.close();
+                return false; // Address + size overlaps
+            }
+
+            if (reinterpret_cast<unsigned long>(addr) + size < start) {
+                break; // No need to check further lines
+            }
+        }
+    }
+
+    maps_file.close();
+
+    return true; // Address and size are available
+}
+
+static inline std::string read_maps_to_string() {
+  std::ifstream maps_file("/proc/self/maps");
+  std::stringstream buffer;
+  buffer << maps_file.rdbuf();
+  return buffer.str();
+}
+
+static inline void MmapHintTest(void* addr, size_t size) {
+
+    ASSERT_TRUE(is_address_available(addr, size)) << "Address: 0x" << std::hex << addr
+                                                  << " Size: 0x" << std::hex << size
+                                                  << " is not available\n\n" << read_maps_to_string();
+
+    void *hint_address = addr;
+
+    void* mapped_address = mmap(hint_address, size, PROT_NONE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    ASSERT_NE(mapped_address, MAP_FAILED) << "mmap failed";
+    ASSERT_EQ(mapped_address, hint_address) << "FAILED: Mapped returned address 0x"
+                                            << std::hex << mapped_address << "; hint address was 0x"
+                                            << std::hex << hint_address;
+    ASSERT_NE(munmap(mapped_address, size), -1) << "munmap failed";
+}
+
 void DexoptTest::ReserveImageSpaceChunk(uintptr_t start, uintptr_t end) {
+  MmapHintTest(reinterpret_cast<void*>(start), end - start);
+
   if (start < end) {
     std::string error_msg;
     image_reservation_.push_back(MemMap::MapAnonymous("image reservation",
