@@ -366,7 +366,7 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kJdkUnsafePutAbsolute:
       case Intrinsics::kJdkUnsafePutReference:
       case Intrinsics::kJdkUnsafePutByte:
-        return 0u;
+        return kAccPublicApi;
       case Intrinsics::kFP16Ceil:
       case Intrinsics::kFP16Compare:
       case Intrinsics::kFP16Floor:
@@ -390,10 +390,10 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kUnsafePutAbsolute:
       case Intrinsics::kUnsafePutObject:
       case Intrinsics::kUnsafePutByte:
-        return kAccCorePlatformApi;
+        return 0u;
       default:
         // Remaining intrinsics are public API. We DCHECK that in SetIntrinsic().
-        return kAccPublicApi;
+        return kAccCorePlatformApi;
     }
   } else {
     return method->GetAccessFlags() & kAccHiddenapiBits;
