@@ -61,6 +61,8 @@ using ::android::base::ConsumePrefix;
 using ::android::base::StringPrintf;
 
 static constexpr const char* kAnonymousDexPrefix = "Anonymous-DexFile@";
+static constexpr const char* kVdexExtension = ".vdex";
+static constexpr const char* kDmExtension = ".dm";
 
 std::ostream& operator<<(std::ostream& stream, const OatFileAssistant::OatStatus status) {
   switch (status) {
@@ -641,7 +643,7 @@ bool OatFileAssistant::DexLocationToOdexFilename(const std::string& location,
   pos = file.rfind('.');
   std::string base = pos != std::string::npos ? file.substr(0, pos) : file;
 
-  *odex_filename = dir + "/" + base + kOdexExtension;
+  *odex_filename = dir + "/" + base + ".odex";
   return true;
 }
 
@@ -944,7 +946,7 @@ OatFileAssistant::OatFileInfo& OatFileAssistant::GetBestInfo() {
 
 std::unique_ptr<gc::space::ImageSpace> OatFileAssistant::OpenImageSpace(const OatFile* oat_file) {
   DCHECK(oat_file != nullptr);
-  std::string art_file = ReplaceFileExtension(oat_file->GetLocation(), kArtExtension);
+  std::string art_file = ReplaceFileExtension(oat_file->GetLocation(), "art");
   if (art_file.empty()) {
     return nullptr;
   }

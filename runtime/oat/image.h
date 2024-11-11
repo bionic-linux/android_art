@@ -19,7 +19,6 @@
 
 #include <string.h>
 
-#include "base/file_utils.h"
 #include "base/iteration_range.h"
 #include "base/macros.h"
 #include "base/os.h"
@@ -203,11 +202,11 @@ class PACKED(8) ImageHeader {
   EXPORT PointerSize GetPointerSize() const;
 
   static std::string GetOatLocationFromImageLocation(const std::string& image) {
-    return ReplaceFileExtension(image, kOatExtension);
+    return GetLocationFromImageLocation(image, "oat");
   }
 
   static std::string GetVdexLocationFromImageLocation(const std::string& image) {
-    return ReplaceFileExtension(image, kVdexExtension);
+    return GetLocationFromImageLocation(image, "vdex");
   }
 
   enum ImageMethod {
@@ -441,6 +440,17 @@ class PACKED(8) ImageHeader {
  private:
   static const uint8_t kImageMagic[4];
   static const uint8_t kImageVersion[4];
+
+  static std::string GetLocationFromImageLocation(const std::string& image,
+                                                  const std::string& extension) {
+    std::string filename = image;
+    if (filename.length() <= 3) {
+      filename += "." + extension;
+    } else {
+      filename.replace(filename.length() - 3, 3, extension);
+    }
+    return filename;
+  }
 
   uint8_t magic_[4];
   uint8_t version_[4];

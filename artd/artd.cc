@@ -45,7 +45,6 @@
 #include <utility>
 #include <vector>
 
-#include "aidl/com/android/server/art/ArtConstants.h"
 #include "aidl/com/android/server/art/BnArtd.h"
 #include "aidl/com/android/server/art/DexoptTrigger.h"
 #include "aidl/com/android/server/art/IArtdCancellationSignal.h"
@@ -91,7 +90,6 @@ namespace artd {
 
 namespace {
 
-using ::aidl::com::android::server::art::ArtConstants;
 using ::aidl::com::android::server::art::ArtdDexoptResult;
 using ::aidl::com::android::server::art::ArtifactsLocation;
 using ::aidl::com::android::server::art::ArtifactsPath;
@@ -374,8 +372,7 @@ CopyAndRewriteProfileResult AnalyzeCopyAndRewriteProfileFailure(
     if (zip_archive == nullptr) {
       return bad_profile(error_msg);
     }
-    std::unique_ptr<ZipEntry> zip_entry(
-        zip_archive->Find(ArtConstants::DEX_METADATA_PROFILE_ENTRY, &error_msg));
+    std::unique_ptr<ZipEntry> zip_entry(zip_archive->Find("primary.prof", &error_msg));
     if (zip_entry == nullptr || zip_entry->GetUncompressedLength() == 0) {
       return no_profile;
     }

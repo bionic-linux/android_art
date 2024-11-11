@@ -175,8 +175,6 @@ TEST_F(FileUtilsTest, ReplaceFileExtension) {
   EXPECT_EQ("/.directory/file.vdex", ReplaceFileExtension("/.directory/file.oat", "vdex"));
   EXPECT_EQ("/directory/file.vdex", ReplaceFileExtension("/directory/file", "vdex"));
   EXPECT_EQ("/.directory/file.vdex", ReplaceFileExtension("/.directory/file", "vdex"));
-  EXPECT_EQ("/directory/file.vdex", ReplaceFileExtension("/directory/file.oat", ".vdex"));
-  EXPECT_EQ("/directory/file.vdex", ReplaceFileExtension("/directory/file", ".vdex"));
 }
 
 TEST_F(FileUtilsTest, ArtApexDataPath) {
