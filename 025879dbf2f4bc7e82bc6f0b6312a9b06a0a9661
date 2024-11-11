@@ -16,6 +16,152 @@
       "message": "Nicolas, PTAL. Thanks!",
       "revId": "025879dbf2f4bc7e82bc6f0b6312a9b06a0a9661",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea6e144_1bd654bf",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-11T11:02:29Z",
+      "side": 1,
+      "message": "Add a /* parameter_name */",
+      "range": {
+        "startLine": 192,
+        "startChar": 50,
+        "endLine": 192,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f7dc98b9_e322003e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/interpreter/interpreter_common.cc",
+              "range": {
+                "startLine": 192,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "      shadow_frame.SetNotifyExceptionHandledEvent(/*notify\u003d*/true);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "025879dbf2f4bc7e82bc6f0b6312a9b06a0a9661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c35a602_a1e3973b",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-11T11:02:29Z",
+      "side": 1,
+      "message": "Add a /* parameter_name */",
+      "range": {
+        "startLine": 387,
+        "startChar": 51,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "025879dbf2f4bc7e82bc6f0b6312a9b06a0a9661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3bd5b0_4d5f6b01",
+        "filename": "runtime/interpreter/interpreter_switch_impl0.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-11T11:02:29Z",
+      "side": 1,
+      "message": "Is that expected? If yes, add a comment and check that there is one?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "244346aa_671cfabb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/interpreter/interpreter_switch_impl0.cc",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "    // Clear the exception so that the instrumentation can\u0027t throw a new exception.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "025879dbf2f4bc7e82bc6f0b6312a9b06a0a9661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7f4c25_a2d79b36",
+        "filename": "runtime/interpreter/shadow_frame.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-11T11:02:29Z",
+      "side": 1,
+      "message": "exception",
+      "range": {
+        "startLine": 69,
+        "startChar": 72,
+        "endLine": 69,
+        "endChar": 80
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6994227f_49eca0a3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/interpreter/shadow_frame.h",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "    // these events are reported when we reach the catch block after an exception\n"
+            }
+          ]
+        }
+      ],
+      "revId": "025879dbf2f4bc7e82bc6f0b6312a9b06a0a9661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
