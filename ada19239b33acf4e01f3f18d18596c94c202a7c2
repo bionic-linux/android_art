@@ -94,6 +94,29 @@
       },
       "revId": "ada19239b33acf4e01f3f18d18596c94c202a7c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf35dd4_9c473d96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-11T13:55:34Z",
+      "side": 1,
+      "message": "We do implicit null checks in nterp. Won\u0027t that be a problem?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "ada19239b33acf4e01f3f18d18596c94c202a7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
