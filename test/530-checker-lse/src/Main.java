@@ -626,11 +626,10 @@ public class Main {
   /// CHECK-DAG:  <<Add1:i\d+>>      Add [<<Get1:i\d+>>,<<Int1>>]
   /// CHECK-DAG:  <<Get1>>           InstanceFieldGet [<<Obj>>]
   /// CHECK-DAG:                     InstanceFieldSet [<<Obj>>,<<Add1>>]
-  /// CHECK-DAG:  <<Add2:i\d+>>      Add [<<Get2:i\d+>>,<<Int2>>]
-  /// CHECK-DAG:  <<Get2>>           InstanceFieldGet [<<Obj>>]
+  /// CHECK-DAG:  <<Add2:i\d+>>      Add [<<Get1>>,<<Int2>>]
   /// CHECK-DAG:                     InstanceFieldSet [<<Obj>>,<<Add2>>]
-  /// CHECK-DAG:                     Return [<<Get3:i\d+>>]
-  /// CHECK-DAG:  <<Get3>>           InstanceFieldGet [<<Obj>>]
+  /// CHECK-DAG:                     Return [<<Get2:i\d+>>]
+  /// CHECK-DAG:  <<Get2>>           InstanceFieldGet [<<Obj>>]
 
   /// CHECK-START: int Main.test23(boolean) load_store_elimination (after)
   /// CHECK-DAG:  <<Int1:i\d+>>      IntConstant 1
@@ -1017,18 +1016,15 @@ public class Main {
 
   /// CHECK-START: int Main.test33(TestClass, boolean) load_store_elimination (after)
   /// CHECK-DAG:                     InstanceFieldSet
-  /// CHECK-DAG:                     InstanceFieldSet
   /// CHECK-DAG: <<Phi:i\d+>>        Phi
 
   /// CHECK-START: int Main.test33(TestClass, boolean) load_store_elimination (after)
   /// CHECK:                         InstanceFieldSet
-  /// CHECK:                         InstanceFieldSet
   /// CHECK-NOT:                     InstanceFieldSet
 
-  // Test that we are not eliminating the if/else sets to `obj.i`. We have `NullCheck`s on `obj`
-  // when doing `obj.i`. Since `NullCheck` can throw, we save the stores.
-  // The 3rd `obj.i` set is redundant and can be eliminated. It will have the same value and it is
-  // not needed.
+  // Test that we can eliminate the if/else sets to `obj.i`. We have `NullCheck`s on `obj`
+  // when doing `obj.i`, but that has been pulled before the if, so we can emit
+  // only one `InstanceFieldSet`.
   static int test33(TestClass obj, boolean x) {
     int phi;
     if (x) {
@@ -2203,7 +2199,6 @@ public class Main {
   /// CHECK-DAG:                 ArraySet
   /// CHECK-DAG:                 ArraySet
   /// CHECK-DAG:                 ArrayGet
-  /// CHECK-DAG:                 ArrayGet
 
   /// CHECK-START: int Main.testLocalArrayMerge6(int[], boolean, boolean) load_store_elimination (after)
   /// CHECK-DAG: <<Const1:i\d+>> IntConstant 1
@@ -2212,9 +2207,8 @@ public class Main {
   /// CHECK-DAG:                 ArraySet
   /// CHECK-DAG:                 ArraySet
   /// CHECK-DAG: <<Phi:i\d+>>    Phi [<<Arg1:i\d+>>,<<Arg2:i\d+>>]
-  /// CHECK-DAG:                 Return [<<Phi>>]
   /// CHECK-DAG: <<Sub:i\d+>>    Sub [<<Const3>>,<<Phi>>]
-  /// CHECK-DAG:                 Return [<<Sub>>]
+  /// CHECK-DAG: <<Sel:i\d+>>    Select [<<Sub>>,<<Phi>>,<<Param:z\d+>>]
   /// CHECK-EVAL: set(["<<Arg1>>","<<Arg2>>"]) == set(["<<Const1>>","<<Const2>>"])
 
   /// CHECK-START: int Main.testLocalArrayMerge6(int[], boolean, boolean) load_store_elimination (after)
