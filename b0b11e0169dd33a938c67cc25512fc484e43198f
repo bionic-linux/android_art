@@ -70,6 +70,24 @@
       "parentUuid": "0e824217_31199a29",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbda708_9a3c3c12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-11T18:53:49Z",
+      "side": 1,
+      "message": "AHeapProfile_reportAllocation does sampling internally based on the sampling interval. https://perfetto.dev/docs/design-docs/heapprofd-sampling#implementation.\n\nIt only takes a stack trace sample if the \"computed number of times we would draw a sample if we sampled each byte with the given sampling rate\" is greater than zero.\n\nThere is going to be some performance cost to profiling. There are two things to worry about:\n1. The performance cost of taking the sample, which can be reduced by increasing the sample interval.\n2. The performance cost of having profiling enabled without taking the sample (e.g. runtime overhead when sample interval is extremely large).\n\nI don\u0027t think this CL regresses the performance cost of (1) significantly (though I haven\u0027t looked in detail). This CL does regress (2) a bit. How important is it to reduce the performance costs of profiling?",
+      "parentUuid": "8e6de458_f87cc244",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

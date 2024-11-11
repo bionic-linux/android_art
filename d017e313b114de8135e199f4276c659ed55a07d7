@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3466eae_54173145",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-11T18:53:49Z",
+      "side": 1,
+      "message": "I haven\u0027t investigated the ART run-tests crash in detail. Let me see what I can find there.\n\nWe can test that the different TLAB sizing logic doesn\u0027t break things running on host, but we can\u0027t test the sampling results because perfetto isn\u0027t enabled on host. I don\u0027t know if that\u0027s a limitation of perfetto or not.",
+      "parentUuid": "f93e284a_ef22eb19",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89f6e62a_ac1db7f4",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 2
@@ -61,6 +85,30 @@
       "writtenOn": "2024-11-09T01:03:36Z",
       "side": 1,
       "message": "Nit: Maybe do this with a conditional expression, as above? I think it would read a bit better without the partially dead code, but I don\u0027t have a strong opinion. Or do with an if-then-else everywhere.",
+      "range": {
+        "startLine": 4549,
+        "startChar": 4,
+        "endLine": 4551,
+        "endChar": 5
+      },
+      "revId": "d017e313b114de8135e199f4276c659ed55a07d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8fe3778_dad6ed04",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4551,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-11T18:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f6e62a_ac1db7f4",
       "range": {
         "startLine": 4549,
         "startChar": 4,
