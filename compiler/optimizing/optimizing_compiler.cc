@@ -661,6 +661,7 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
              "dead_code_elimination$after_inlining",
              OptimizationPass::kInliner),
       // GVN.
+      OptDef(OptimizationPass::kCodePulling),
       OptDef(OptimizationPass::kSideEffectsAnalysis,
              "side_effects$before_gvn"),
       OptDef(OptimizationPass::kGlobalValueNumbering),
