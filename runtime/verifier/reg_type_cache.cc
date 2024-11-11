@@ -43,7 +43,8 @@ void RegTypeCache::FillPrimitiveAndSmallConstantTypes() {
   }
 
 #define CREATE_PRIMITIVE_TYPE(type, descriptor, id) \
-  entries_[id] = new (&allocator_) type(descriptor, id);
+  static constexpr type const##type(descriptor, id); \
+  entries_[id] = &const##type;
 
   CREATE_PRIMITIVE_TYPE(BooleanType, "Z", kBooleanCacheId);
   CREATE_PRIMITIVE_TYPE(ByteType, "B", kByteCacheId);
