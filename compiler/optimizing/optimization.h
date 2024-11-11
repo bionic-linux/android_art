@@ -74,6 +74,7 @@ enum class OptimizationPass {
   kConstantFolding,
   kConstructorFenceRedundancyElimination,
   kDeadCodeElimination,
+  kCodePulling,
   kGlobalValueNumbering,
   kInductionVarAnalysis,
   kInliner,
