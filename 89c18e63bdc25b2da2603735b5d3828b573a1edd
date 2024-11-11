@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc096355_9e8933c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-11T22:56:55Z",
+      "side": 1,
+      "message": "I\u0027m not convinced the last failure is real. Adding the libartpalette CL to the topic, and retesting, to make sure that doesn\u0027t break in other ways. I plan to eventually remove it from this topic again and submit it separately.",
+      "revId": "89c18e63bdc25b2da2603735b5d3828b573a1edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
