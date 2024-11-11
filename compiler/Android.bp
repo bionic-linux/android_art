@@ -150,6 +150,7 @@ art_cc_defaults {
         "optimizing/code_generation_data.cc",
         "optimizing/code_generator.cc",
         "optimizing/code_generator_utils.cc",
+        "optimizing/code_pulling.cc",
         "optimizing/code_sinking.cc",
         "optimizing/constant_folding.cc",
         "optimizing/constructor_fence_redundancy_elimination.cc",

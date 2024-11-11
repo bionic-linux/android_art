@@ -1,0 +1,1 @@
+Tests we pull common code from both branches of an if instruction.
