@@ -16,11 +16,15 @@
 
 package com.android.server.art;
 
+import static android.content.pm.PackageManager.SigningInfoException;
+
 import static com.android.server.art.DexUseManagerLocal.CheckedSecondaryDexInfo;
 import static com.android.server.art.DexUseManagerLocal.DexLoader;
 import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptStatus;
 
 import android.annotation.NonNull;
+import android.content.pm.PackageManager;
+import android.content.pm.SigningInfo;
 import android.os.Build;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
@@ -34,6 +38,7 @@ import com.android.server.pm.pkg.PackageState;
 
 import dalvik.system.VMRuntime;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -65,13 +70,13 @@ public class DumpHelper {
     }
 
     /** Handles {@link ArtManagerLocal#dump(PrintWriter, PackageManagerLocal.FilteredSnapshot)}. */
-    public void dump(
-            @NonNull PrintWriter pw, @NonNull PackageManagerLocal.FilteredSnapshot snapshot) {
+    public void dump(@NonNull PrintWriter pw,
+            @NonNull PackageManagerLocal.FilteredSnapshot snapshot, boolean includeSdmStatus) {
         snapshot.getPackageStates()
                 .values()
                 .stream()
                 .sorted(Comparator.comparing(PackageState::getPackageName))
-                .forEach(pkgState -> dumpPackage(pw, snapshot, pkgState));
+                .forEach(pkgState -> dumpPackage(pw, snapshot, pkgState, includeSdmStatus));
         pw.printf("\nCurrent GC: %s\n", ArtJni.getGarbageCollector());
     }
 
@@ -80,8 +85,8 @@ public class DumpHelper {
      * ArtManagerLocal#dumpPackage(PrintWriter, PackageManagerLocal.FilteredSnapshot, String)}.
      */
     public void dumpPackage(@NonNull PrintWriter pw,
-            @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
-            @NonNull PackageState pkgState) {
+            @NonNull PackageManagerLocal.FilteredSnapshot snapshot, @NonNull PackageState pkgState,
+            boolean includeSdmStatus) {
         if (pkgState.isApex() || pkgState.getAndroidPackage() == null) {
             return;
         }
@@ -124,7 +129,7 @@ public class DumpHelper {
 
         ipw.increaseIndent();
         for (List<DexContainerFileDexoptStatus> fileStatuses : primaryStatusesByDexPath.values()) {
-            dumpPrimaryDex(ipw, snapshot, fileStatuses, packageName);
+            dumpPrimaryDex(ipw, snapshot, fileStatuses, packageName, includeSdmStatus);
         }
         if (!secondaryStatusesByDexPath.isEmpty()) {
             ipw.println("known secondary dex files:");
@@ -141,7 +146,8 @@ public class DumpHelper {
 
     private void dumpPrimaryDex(@NonNull IndentingPrintWriter ipw,
             @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
-            List<DexContainerFileDexoptStatus> fileStatuses, @NonNull String packageName) {
+            List<DexContainerFileDexoptStatus> fileStatuses, @NonNull String packageName,
+            boolean includeSdmStatus) {
         String dexPath = fileStatuses.get(0).getDexContainerFile();
         ipw.printf("path: %s\n", dexPath);
         ipw.increaseIndent();
@@ -149,6 +155,10 @@ public class DumpHelper {
         dumpUsedByOtherApps(ipw, snapshot,
                 mInjector.getDexUseManager().getPrimaryDexLoaders(packageName, dexPath),
                 packageName);
+        // This operation is expensive, so hide it behind a flag.
+        if (includeSdmStatus) {
+            dumpSdmStatus(ipw, dexPath);
+        }
         ipw.decreaseIndent();
     }
 
@@ -217,6 +227,42 @@ public class DumpHelper {
         }
     }
 
+    private void dumpSdmStatus(@NonNull IndentingPrintWriter ipw, @NonNull String dexPath) {
+        String sdmPath = getSdmPath(dexPath);
+        String status = "not-found";
+        String signature = "unknown";
+        if (mInjector.fileExists(sdmPath)) {
+            // "Pending" means yet to be picked up by dexopt. For now, "pending" is the only status
+            // because SDM files are not supported yet.
+            status = "pending";
+            try {
+                SigningInfo sdmSigningInfo =
+                        mInjector.verifySigningInfo(sdmPath, SigningInfo.VERSION_SIGNING_BLOCK_V3);
+                try {
+                    SigningInfo apkSigningInfo = mInjector.verifySigningInfo(
+                            dexPath, SigningInfo.VERSION_SIGNING_BLOCK_V3);
+                    if (sdmSigningInfo.signersMatchExactly(apkSigningInfo)) {
+                        signature = "verified";
+                    } else {
+                        signature = "signers-not-match";
+                    }
+                } catch (SigningInfoException e) {
+                    AsLog.e("Failed to verify the signature of '" + dexPath + "'", e);
+                    signature = "invalid-apk-signature";
+                }
+            } catch (SigningInfoException e) {
+                AsLog.e("Failed to verify the signature of '" + sdmPath + "'", e);
+                signature = "invalid-sdm-signature";
+            }
+        }
+        ipw.printf("sdm: [sdm-status=%s] [sdm-signature=%s]\n", status, signature);
+    }
+
+    @NonNull
+    private static String getSdmPath(@NonNull String dexPath) {
+        return Utils.replaceFileExtension(dexPath, ArtConstants.SECURE_DEX_METADATA_FILE_EXT);
+    }
+
     @NonNull
     private String getLoaderState(
             @NonNull PackageManagerLocal.FilteredSnapshot snapshot, @NonNull DexLoader loader) {
@@ -251,6 +297,18 @@ public class DumpHelper {
         @NonNull
         public DexUseManagerLocal getDexUseManager() {
             return GlobalInjector.getInstance().getDexUseManager();
+        }
+
+        public boolean fileExists(@NonNull String path) {
+            return new File(path).exists();
+        }
+
+        //@FlaggedApi(android.content.pm.Flags.FLAG_CLOUD_COMPILATION_PM)
+        //@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @NonNull
+        public SigningInfo verifySigningInfo(@NonNull String path, int minAppSigningSchemeVersion)
+                throws SigningInfoException {
+            return PackageManager.verifySigningInfo(path, minAppSigningSchemeVersion);
         }
     }
 }
