@@ -40,6 +40,7 @@
 
 #include "bounds_check_elimination.h"
 #include "cha_guard_optimization.h"
+#include "code_pulling.h"
 #include "code_sinking.h"
 #include "constant_folding.h"
 #include "constructor_fence_redundancy_elimination.h"
@@ -74,6 +75,8 @@ const char* OptimizationPassName(OptimizationPass pass) {
       return HInductionVarAnalysis::kInductionPassName;
     case OptimizationPass::kGlobalValueNumbering:
       return GVNOptimization::kGlobalValueNumberingPassName;
+    case OptimizationPass::kCodePulling:
+      return CodePulling::kCodePullingPassName;
     case OptimizationPass::kInvariantCodeMotion:
       return LICM::kLoopInvariantCodeMotionPassName;
     case OptimizationPass::kLoopOptimization:
@@ -247,6 +250,9 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         break;
       case OptimizationPass::kDeadCodeElimination:
         opt = new (allocator) HDeadCodeElimination(graph, stats, pass_name);
+        break;
+      case OptimizationPass::kCodePulling:
+        opt = new (allocator) CodePulling(graph, stats, pass_name);
         break;
       case OptimizationPass::kInliner: {
         CodeItemDataAccessor accessor(*dex_compilation_unit.GetDexFile(),
