@@ -171,11 +171,22 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
                 return 0;
             }
             case "dump": {
+                boolean includeSdmStatus = false;
+
+                String opt;
+                while ((opt = getNextOption()) != null) {
+                    switch (opt) {
+                        case "--include-sdm-status":
+                            includeSdmStatus = true;
+                            break;
+                    }
+                }
+
                 String packageName = getNextArg();
                 if (packageName != null) {
-                    mArtManagerLocal.dumpPackage(pw, snapshot, packageName);
+                    mArtManagerLocal.dumpPackage(pw, snapshot, packageName, includeSdmStatus);
                 } else {
-                    mArtManagerLocal.dump(pw, snapshot);
+                    mArtManagerLocal.dump(pw, snapshot, includeSdmStatus);
                 }
                 return 0;
             }
@@ -1014,10 +1025,12 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
         pw.println("    Cleanup obsolete files, such as dexopt artifacts that are outdated or");
         pw.println("    correspond to dex container files that no longer exist.");
         pw.println();
-        pw.println("  dump [PACKAGE_NAME]");
-        pw.println("    Dumps the dexopt state in text format to stdout.");
+        pw.println("  dump [--include-sdm-status] [PACKAGE_NAME]");
+        pw.println("    Dump the dexopt state in text format to stdout.");
         pw.println("    If PACKAGE_NAME is empty, the command is for all packages. Otherwise, it");
         pw.println("    is for the given package.");
+        pw.println("    Options:");
+        pw.println("      --include-sdm-status Also dump the status of the SDM file.");
         pw.println();
         pw.println("  dexopt-packages -r REASON");
         pw.println("    Run batch dexopt for the given reason.");
