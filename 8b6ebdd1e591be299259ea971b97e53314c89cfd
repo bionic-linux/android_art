@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093c0ca4_d1792781",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-11T20:52:58Z",
+      "side": 1,
+      "message": "directory",
+      "range": {
+        "startLine": 113,
+        "startChar": 59,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "8b6ebdd1e591be299259ea971b97e53314c89cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
