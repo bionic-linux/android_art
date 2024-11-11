@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbf619b_5efae355",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-11T13:53:28Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a3e436b7_ba961b9c",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "9075aca653590a8a066aef7b05c1e54d5605d503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b37309b1_63cefb65",
@@ -72,6 +96,30 @@
       "writtenOn": "2024-11-08T18:24:22Z",
       "side": 1,
       "message": "Here too.",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "9075aca653590a8a066aef7b05c1e54d5605d503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98bd530a_d37ace4d",
+        "filename": "libartservice/service/proto/batch_dexopt_params.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-11T13:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b37309b1_63cefb65",
       "range": {
         "startLine": 31,
         "startChar": 19,
