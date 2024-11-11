@@ -22,6 +22,30 @@
       },
       "revId": "dc3709b9c31351e373be234068c08e355eb85e42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9231f4a_4b4e3e01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-11T10:25:22Z",
+      "side": 1,
+      "message": "`instruction_builder` sees e.g. an `if-gez` and a `if-ltz` so it is not doing anything wrong. We might be able to nudge d8/r8 into emitting code that we like better but we might have similar duplication after inlining / optimization passes.",
+      "parentUuid": "71f9d451_f4af23bc",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "dc3709b9c31351e373be234068c08e355eb85e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
