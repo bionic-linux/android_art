@@ -6173,6 +6173,12 @@ class HInstanceFieldSet final : public HExpression<2> {
     SetRawInputAt(1, value);
   }
 
+  // TODO(solanes): worth adding this? The instruction cannot be moved anyway.
+  // bool InstructionDataEquals(const HInstruction* other) const override {
+  //   const HInstanceFieldSet* other_set = other->AsInstanceFieldSet();
+  //   return GetFieldOffset().SizeValue() == other_set->GetFieldOffset().SizeValue();
+  // }
+
   bool IsClonable() const override { return true; }
 
   bool CanDoImplicitNullCheckOn(HInstruction* obj) const override {

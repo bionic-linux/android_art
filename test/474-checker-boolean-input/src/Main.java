@@ -22,24 +22,30 @@ public class Main {
     }
   }
 
+  public static boolean f1;
+  public static boolean f2;
+  
+  public static boolean $inline$Phi(int x) {
+    return (x == 42) ? f1 : f2;
+  }
+  
   /*
    * Test that integer Phis are accepted as Boolean inputs until
    * we implement a suitable type analysis.
    */
 
-  /// CHECK-START: boolean Main.TestPhiAsBoolean(int) select_generator (after)
-  /// CHECK-DAG:     <<Phi:i\d+>>     Phi
-  /// CHECK-DAG:                      Select [{{i\d+}},{{i\d+}},<<Phi>>]
+  // We check that there's a Phi that is used as an input to an HIf instruction
+  // and the return instruction (which returns a boolean).
+  // We cannot use a Select like in the other tests as we perform more
+  // opitmizations which remove the need of having a Phi.
 
-  public static boolean f1;
-  public static boolean f2;
-
-  public static boolean InlinePhi(int x) {
-    return (x == 42) ? f1 : f2;
-  }
-
-  public static boolean TestPhiAsBoolean(int x) {
-    return InlinePhi(x) != true ? true : false;
+  /// CHECK-START: boolean Main.$noinline$TestPhiAsBoolean(int) inliner (after)
+  /// CHECK:     <<Phi1:i\d+>>     Phi
+  /// CHECK:                       Return [<<Phi1>>]
+  /// CHECK:     <<Phi2:i\d+>>     Phi
+  /// CHECK:                       If [<<Phi2>>]
+  public static boolean $noinline$TestPhiAsBoolean(int x) {
+    return $inline$Phi(x) != true ? true : false;
   }
 
   /*
@@ -47,16 +53,16 @@ public class Main {
    * we implement a suitable type analysis.
    */
 
-  /// CHECK-START: boolean Main.TestAndAsBoolean(boolean, boolean) select_generator (after)
+  /// CHECK-START: boolean Main.$noinline$TestAndAsBoolean(boolean, boolean) select_generator (after)
   /// CHECK-DAG:     <<And:i\d+>>     And
   /// CHECK-DAG:                      Select [{{i\d+}},{{i\d+}},<<And>>]
 
-  public static boolean InlineAnd(boolean x, boolean y) {
+  public static boolean $inline$And(boolean x, boolean y) {
     return x & y;
   }
 
-  public static boolean TestAndAsBoolean(boolean x, boolean y) {
-    return InlineAnd(x, y) != true ? true : false;
+  public static boolean $noinline$TestAndAsBoolean(boolean x, boolean y) {
+    return $inline$And(x, y) != true ? true : false;
   }
 
   /*
@@ -64,16 +70,16 @@ public class Main {
    * we implement a suitable type analysis.
    */
 
-  /// CHECK-START: boolean Main.TestOrAsBoolean(boolean, boolean) select_generator (after)
+  /// CHECK-START: boolean Main.$noinline$TestOrAsBoolean(boolean, boolean) select_generator (after)
   /// CHECK-DAG:     <<Or:i\d+>>      Or
   /// CHECK-DAG:                      Select [{{i\d+}},{{i\d+}},<<Or>>]
 
-  public static boolean InlineOr(boolean x, boolean y) {
+  public static boolean $inline$Or(boolean x, boolean y) {
     return x | y;
   }
 
-  public static boolean TestOrAsBoolean(boolean x, boolean y) {
-    return InlineOr(x, y) != true ? true : false;
+  public static boolean $noinline$TestOrAsBoolean(boolean x, boolean y) {
+    return $inline$Or(x, y) != true ? true : false;
   }
 
   /*
@@ -81,28 +87,28 @@ public class Main {
    * we implement a suitable type analysis.
    */
 
-  /// CHECK-START: boolean Main.TestXorAsBoolean(boolean, boolean) select_generator (after)
+  /// CHECK-START: boolean Main.$noinline$TestXorAsBoolean(boolean, boolean) select_generator (after)
   /// CHECK-DAG:     <<Xor:i\d+>>     Xor
   /// CHECK-DAG:                      Select [{{i\d+}},{{i\d+}},<<Xor>>]
 
-  public static boolean InlineXor(boolean x, boolean y) {
+  public static boolean $inline$Xor(boolean x, boolean y) {
     return x ^ y;
   }
 
-  public static boolean TestXorAsBoolean(boolean x, boolean y) {
-    return InlineXor(x, y) != true ? true : false;
+  public static boolean $noinline$TestXorAsBoolean(boolean x, boolean y) {
+    return $inline$Xor(x, y) != true ? true : false;
   }
 
   public static void main(String[] args) {
     f1 = true;
     f2 = false;
-    assertBoolEquals(true, TestPhiAsBoolean(0));
-    assertBoolEquals(false, TestPhiAsBoolean(42));
-    assertBoolEquals(true, TestAndAsBoolean(true, false));
-    assertBoolEquals(false, TestAndAsBoolean(true, true));
-    assertBoolEquals(true, TestOrAsBoolean(false, false));
-    assertBoolEquals(false, TestOrAsBoolean(true, true));
-    assertBoolEquals(true, TestXorAsBoolean(true, true));
-    assertBoolEquals(false, TestXorAsBoolean(true, false));
+    assertBoolEquals(true, $noinline$TestPhiAsBoolean(0));
+    assertBoolEquals(false, $noinline$TestPhiAsBoolean(42));
+    assertBoolEquals(true, $noinline$TestAndAsBoolean(true, false));
+    assertBoolEquals(false, $noinline$TestAndAsBoolean(true, true));
+    assertBoolEquals(true, $noinline$TestOrAsBoolean(false, false));
+    assertBoolEquals(false, $noinline$TestOrAsBoolean(true, true));
+    assertBoolEquals(true, $noinline$TestXorAsBoolean(true, true));
+    assertBoolEquals(false, $noinline$TestXorAsBoolean(true, false));
   }
 }

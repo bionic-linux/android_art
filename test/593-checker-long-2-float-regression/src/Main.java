@@ -30,8 +30,8 @@ public class Main {
   }
 
   /// CHECK-START: float Main.$noinline$longToFloat(boolean) register (after)
-  /// CHECK:     <<Get:j\d+>>      StaticFieldGet field_name:Main.longValue
-  /// CHECK:     <<Convert:f\d+>>  TypeConversion [<<Get>>]
+  /// CHECK:     <<Phi:j\d+>>      Phi
+  /// CHECK:     <<Convert:f\d+>>  TypeConversion [<<Phi>>]
   /// CHECK:                       Return [<<Convert>>]
 
   static float $noinline$longToFloat(boolean param) {
