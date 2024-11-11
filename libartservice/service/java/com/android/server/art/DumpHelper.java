@@ -16,11 +16,16 @@
 
 package com.android.server.art;
 
+import static android.content.pm.PackageManager.SigningInfoException;
+
 import static com.android.server.art.DexUseManagerLocal.CheckedSecondaryDexInfo;
 import static com.android.server.art.DexUseManagerLocal.DexLoader;
 import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptStatus;
 
 import android.annotation.NonNull;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.content.pm.SigningInfo;
 import android.os.Build;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
@@ -146,6 +151,7 @@ public class DumpHelper {
         ipw.printf("path: %s\n", dexPath);
         ipw.increaseIndent();
         dumpFileStatuses(ipw, fileStatuses);
+        dumpSignatures(ipw, dexPath);
         dumpUsedByOtherApps(ipw, snapshot,
                 mInjector.getDexUseManager().getPrimaryDexLoaders(packageName, dexPath),
                 packageName);
@@ -165,6 +171,7 @@ public class DumpHelper {
                                                                                : "")));
         ipw.increaseIndent();
         dumpFileStatuses(ipw, fileStatuses);
+        dumpSignatures(ipw, dexPath);
         ipw.printf("class loader context: %s\n", info.displayClassLoaderContext());
         TreeMap<DexLoader, String> classLoaderContexts =
                 info.loaders().stream().collect(Collectors.toMap(loader
@@ -215,6 +222,54 @@ public class DumpHelper {
                             .map(loader -> getLoaderState(snapshot, loader))
                             .collect(Collectors.joining(", ")));
         }
+    }
+
+    private void dumpSignatures(@NonNull IndentingPrintWriter ipw, @NonNull String dexPath) {
+        SigningInfo apkSigningInfo = null;
+        SigningInfo sdmSigningInfo = null;
+        ipw.printf("Signers:\n");
+        ipw.increaseIndent();
+        try {
+            apkSigningInfo = PackageManager.verifySigningInfo(dexPath, SigningInfo.VERSION_JAR);
+            Signature[] signatures = apkSigningInfo.getApkContentsSigners();
+            if (signatures.length > 0) {
+                for (var signature : signatures) {
+                    ipw.printf("%s\n", signature.toCharsString());
+                }
+            } else {
+                ipw.printf("<none>\n");
+            }
+        } catch (SigningInfoException e) {
+            ipw.printf("<error: %s>\n", e);
+        }
+        ipw.decreaseIndent();
+        ipw.printf("SDM Signers:\n");
+        ipw.increaseIndent();
+        try {
+            sdmSigningInfo =
+                    PackageManager.verifySigningInfo(getSdmPath(dexPath), SigningInfo.VERSION_JAR);
+            Signature[] signatures = sdmSigningInfo.getApkContentsSigners();
+            if (signatures.length > 0) {
+                for (var signature : signatures) {
+                    ipw.printf("%s\n", signature.toCharsString());
+                }
+            } else {
+                ipw.printf("<none>\n");
+            }
+        } catch (SigningInfoException e) {
+            ipw.printf("<error: %s>\n", e);
+        }
+        ipw.decreaseIndent();
+        ipw.printf("Signers Match: %b\n",
+                apkSigningInfo != null && sdmSigningInfo != null
+                        && sdmSigningInfo.signersMatchExactly(apkSigningInfo));
+    }
+
+    @NonNull
+    private static String getSdmPath(@NonNull String dexPath) {
+        int pos = dexPath.lastIndexOf(".");
+        return (pos != -1 ? dexPath.substring(0, pos) : dexPath)
+                + ArtConstants.SECURE_DEX_METADATA_FILE_EXT;
     }
 
     @NonNull
