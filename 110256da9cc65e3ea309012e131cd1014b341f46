@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c853a665_0bc3ab4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-11-12T01:24:43Z",
+      "side": 1,
+      "message": "I\u0027m guessing you want to say `may report this`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "110256da9cc65e3ea309012e131cd1014b341f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
