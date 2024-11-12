@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc5b03a_5f7cac7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-12T13:47:47Z",
+      "side": 1,
+      "message": "This CL broke our fuzzer. We are now getting errors like:\n\n```\n11-04 20:32:46.478  1509  1509 E libart_verify_classes_fuzzer: runtime.cc:2019 Could not initialize without image: Boot classpath is empty.\n11-04 20:32:46.496  1509  1509 F libart_verify_classes_fuzzer: libart_verify_classes_fuzzer.cc:128 We should always be able to create the runtime\n```\nWhat\u0027s the difference with `device_common_data` versus `data`? For reference, we were pushing jars using `data` and expecting them in `\u003cexecutable_dir\u003e/data/\u003cfile\u003e.jar`. If you can tell me where to find them with `device_common_data` then I can update the fuzzer so that it works again.\n\nAlso, even if this is named `device_common_data`, it should work for host right?",
+      "revId": "d30b340648378d269920519f469ca197e47dcb27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
