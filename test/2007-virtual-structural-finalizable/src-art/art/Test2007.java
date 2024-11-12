@@ -24,6 +24,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.function.Supplier;
 import java.util.concurrent.atomic.*;
 import java.lang.ref.*;
+import java.lang.Thread;
 
 public class Test2007 {
   public static final CountDownLatch finish_latch = new CountDownLatch(1);
@@ -103,8 +104,11 @@ public class Test2007 {
     gc_thr.start();
     // Make a transform
     mktransform();
+    System.out.println("Starting Redef");
     Redefinition.doCommonStructuralClassRedefinition(Transform.class, DEX_BYTES);
+    System.out.println("Done Redef");
     theObject = null;
+    System.out.println("Waiting for Finalizer");
     finish_latch.await();
     System.out.println("counter: " + counter);
     // Make sure we don't have any remaining things to finalize, eg obsolete objects or something.

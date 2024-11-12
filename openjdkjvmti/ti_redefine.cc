@@ -2405,6 +2405,7 @@ class ScopedSuspendClassLoading {
         }
         pauser_->WaitFor(in_progress_defines);
       }
+      VLOG(plugin) << "Pausing Class loading for structural redefinition Done.";
     }
   }
   ~ScopedSuspendClassLoading() {
@@ -2437,6 +2438,7 @@ class ScopedSuspendAllocations {
       AllocationManager::Get()->PauseAllocations(art::Thread::Current());
       // Collect garbage so we don't need to recreate as much.
       runtime->GetHeap()->CollectGarbage(/*clear_soft_references=*/false);
+      VLOG(plugin) << "Pausing allocations for structural redefinition Done.";
     }
   }
 
@@ -2514,6 +2516,7 @@ jvmtiError Redefiner::Run() {
     // Disable GC and wait for it to be done if we are a moving GC.  This is fine since we are done
     // allocating so no deadlocks.
     ScopedDisableConcurrentAndMovingGc sdcamgc(runtime_->GetHeap(), self_);
+    VLOG(plugin) << "DisabledConcurrentAndMovigGC ";
 
     // Do transition to final suspension
     // TODO We might want to give this its own suspended state!
