@@ -16,6 +16,24 @@
       "message": "This CL broke our fuzzer. We are now getting errors like:\n\n```\n11-04 20:32:46.478  1509  1509 E libart_verify_classes_fuzzer: runtime.cc:2019 Could not initialize without image: Boot classpath is empty.\n11-04 20:32:46.496  1509  1509 F libart_verify_classes_fuzzer: libart_verify_classes_fuzzer.cc:128 We should always be able to create the runtime\n```\nWhat\u0027s the difference with `device_common_data` versus `data`? For reference, we were pushing jars using `data` and expecting them in `\u003cexecutable_dir\u003e/data/\u003cfile\u003e.jar`. If you can tell me where to find them with `device_common_data` then I can update the fuzzer so that it works again.\n\nAlso, even if this is named `device_common_data`, it should work for host right?",
       "revId": "d30b340648378d269920519f469ca197e47dcb27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4669bcde_08f6a2ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-11-12T18:07:14Z",
+      "side": 1,
+      "message": "`data` requests the files from another module in the same variant as the original module. `device_common_data` requests them in the same variants as the original module, except the os variant is remapped to \"android\", and the arch variant is remapped to \"common\". This is useful for the host tests that include data built for device, as it expresses that change in the os variant from linux_glibc to android.\n\nPreviously, if there was only 1 variant of the dependency module, we would always use that, no questions asked, but now, the variants have to line up or else it will be an error. So the switch from `data` to `device_common_data` should be a no-op, because that is what was happening anyways. It also shouldn\u0027t affect what folders the jars are in.\n\nI\u0027d be surprised if this cl was causing issues, but if you could give me reproduction steps I could take a look.",
+      "parentUuid": "dfc5b03a_5f7cac7d",
+      "revId": "d30b340648378d269920519f469ca197e47dcb27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
