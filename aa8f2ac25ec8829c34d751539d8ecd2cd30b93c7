@@ -22,6 +22,30 @@
       },
       "revId": "aa8f2ac25ec8829c34d751539d8ecd2cd30b93c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736bbfea_80b48ade",
+        "filename": "test/2277-methodhandle-invokeexact/src-util/annotations/ConstantMethodHandle.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-12T11:05:45Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a09e5c86_199b19d9",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "aa8f2ac25ec8829c34d751539d8ecd2cd30b93c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
