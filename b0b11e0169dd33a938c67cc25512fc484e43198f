@@ -88,6 +88,24 @@
       "parentUuid": "8e6de458_f87cc244",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23727bde_53bed65d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386032
+      },
+      "writtenOn": "2024-11-12T11:47:39Z",
+      "side": 1,
+      "message": "I am not the owner (or familiar) with this part of the codebase so I\u0027ve cc\u0027d @ddiproietto@google.com that might have some more inputs.\n\nfwiw the perfetto profilers have historically tried to minimize impact on the profiled process - e.g. out-of-process unwinding, sampling, non-blocking sends to heapprofd so that we can confidently enable them without degrading user-perceptible performance",
+      "parentUuid": "dbbda708_9a3c3c12",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
