@@ -126,9 +126,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(bool_reg_type.IsChar());
   EXPECT_FALSE(bool_reg_type.IsShort());
   EXPECT_FALSE(bool_reg_type.IsInteger());
-  EXPECT_FALSE(bool_reg_type.IsLong());
+  EXPECT_FALSE(bool_reg_type.IsLongLo());
   EXPECT_FALSE(bool_reg_type.IsFloat());
-  EXPECT_FALSE(bool_reg_type.IsDouble());
+  EXPECT_FALSE(bool_reg_type.IsDoubleLo());
   EXPECT_FALSE(bool_reg_type.IsReference());
   EXPECT_FALSE(bool_reg_type.IsLowHalf());
   EXPECT_FALSE(bool_reg_type.IsHighHalf());
@@ -146,7 +146,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(bool_reg_type.IsDoubleTypes());
   EXPECT_TRUE(bool_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(bool_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(bool_reg_type.HasClass());
+  EXPECT_FALSE(bool_reg_type.HasClass());
 
   const RegType& byte_reg_type = cache.Byte();
   EXPECT_FALSE(byte_reg_type.IsUndefined());
@@ -159,9 +159,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(byte_reg_type.IsChar());
   EXPECT_FALSE(byte_reg_type.IsShort());
   EXPECT_FALSE(byte_reg_type.IsInteger());
-  EXPECT_FALSE(byte_reg_type.IsLong());
+  EXPECT_FALSE(byte_reg_type.IsLongLo());
   EXPECT_FALSE(byte_reg_type.IsFloat());
-  EXPECT_FALSE(byte_reg_type.IsDouble());
+  EXPECT_FALSE(byte_reg_type.IsDoubleLo());
   EXPECT_FALSE(byte_reg_type.IsReference());
   EXPECT_FALSE(byte_reg_type.IsLowHalf());
   EXPECT_FALSE(byte_reg_type.IsHighHalf());
@@ -179,7 +179,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(byte_reg_type.IsDoubleTypes());
   EXPECT_TRUE(byte_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(byte_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(byte_reg_type.HasClass());
+  EXPECT_FALSE(byte_reg_type.HasClass());
 
   const RegType& char_reg_type = cache.Char();
   EXPECT_FALSE(char_reg_type.IsUndefined());
@@ -192,9 +192,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_TRUE(char_reg_type.IsChar());
   EXPECT_FALSE(char_reg_type.IsShort());
   EXPECT_FALSE(char_reg_type.IsInteger());
-  EXPECT_FALSE(char_reg_type.IsLong());
+  EXPECT_FALSE(char_reg_type.IsLongLo());
   EXPECT_FALSE(char_reg_type.IsFloat());
-  EXPECT_FALSE(char_reg_type.IsDouble());
+  EXPECT_FALSE(char_reg_type.IsDoubleLo());
   EXPECT_FALSE(char_reg_type.IsReference());
   EXPECT_FALSE(char_reg_type.IsLowHalf());
   EXPECT_FALSE(char_reg_type.IsHighHalf());
@@ -212,7 +212,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(char_reg_type.IsDoubleTypes());
   EXPECT_TRUE(char_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(char_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(char_reg_type.HasClass());
+  EXPECT_FALSE(char_reg_type.HasClass());
 
   const RegType& short_reg_type = cache.Short();
   EXPECT_FALSE(short_reg_type.IsUndefined());
@@ -225,9 +225,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(short_reg_type.IsChar());
   EXPECT_TRUE(short_reg_type.IsShort());
   EXPECT_FALSE(short_reg_type.IsInteger());
-  EXPECT_FALSE(short_reg_type.IsLong());
+  EXPECT_FALSE(short_reg_type.IsLongLo());
   EXPECT_FALSE(short_reg_type.IsFloat());
-  EXPECT_FALSE(short_reg_type.IsDouble());
+  EXPECT_FALSE(short_reg_type.IsDoubleLo());
   EXPECT_FALSE(short_reg_type.IsReference());
   EXPECT_FALSE(short_reg_type.IsLowHalf());
   EXPECT_FALSE(short_reg_type.IsHighHalf());
@@ -245,7 +245,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(short_reg_type.IsDoubleTypes());
   EXPECT_TRUE(short_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(short_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(short_reg_type.HasClass());
+  EXPECT_FALSE(short_reg_type.HasClass());
 
   const RegType& int_reg_type = cache.Integer();
   EXPECT_FALSE(int_reg_type.IsUndefined());
@@ -258,9 +258,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(int_reg_type.IsChar());
   EXPECT_FALSE(int_reg_type.IsShort());
   EXPECT_TRUE(int_reg_type.IsInteger());
-  EXPECT_FALSE(int_reg_type.IsLong());
+  EXPECT_FALSE(int_reg_type.IsLongLo());
   EXPECT_FALSE(int_reg_type.IsFloat());
-  EXPECT_FALSE(int_reg_type.IsDouble());
+  EXPECT_FALSE(int_reg_type.IsDoubleLo());
   EXPECT_FALSE(int_reg_type.IsReference());
   EXPECT_FALSE(int_reg_type.IsLowHalf());
   EXPECT_FALSE(int_reg_type.IsHighHalf());
@@ -278,7 +278,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(int_reg_type.IsDoubleTypes());
   EXPECT_TRUE(int_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(int_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(int_reg_type.HasClass());
+  EXPECT_FALSE(int_reg_type.HasClass());
 
   const RegType& long_reg_type = cache.LongLo();
   EXPECT_FALSE(long_reg_type.IsUndefined());
@@ -291,9 +291,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(long_reg_type.IsChar());
   EXPECT_FALSE(long_reg_type.IsShort());
   EXPECT_FALSE(long_reg_type.IsInteger());
-  EXPECT_TRUE(long_reg_type.IsLong());
+  EXPECT_TRUE(long_reg_type.IsLongLo());
   EXPECT_FALSE(long_reg_type.IsFloat());
-  EXPECT_FALSE(long_reg_type.IsDouble());
+  EXPECT_FALSE(long_reg_type.IsDoubleLo());
   EXPECT_FALSE(long_reg_type.IsReference());
   EXPECT_TRUE(long_reg_type.IsLowHalf());
   EXPECT_FALSE(long_reg_type.IsHighHalf());
@@ -311,7 +311,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(long_reg_type.IsDoubleTypes());
   EXPECT_FALSE(long_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(long_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(long_reg_type.HasClass());
+  EXPECT_FALSE(long_reg_type.HasClass());
 
   const RegType& float_reg_type = cache.Float();
   EXPECT_FALSE(float_reg_type.IsUndefined());
@@ -324,9 +324,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(float_reg_type.IsChar());
   EXPECT_FALSE(float_reg_type.IsShort());
   EXPECT_FALSE(float_reg_type.IsInteger());
-  EXPECT_FALSE(float_reg_type.IsLong());
+  EXPECT_FALSE(float_reg_type.IsLongLo());
   EXPECT_TRUE(float_reg_type.IsFloat());
-  EXPECT_FALSE(float_reg_type.IsDouble());
+  EXPECT_FALSE(float_reg_type.IsDoubleLo());
   EXPECT_FALSE(float_reg_type.IsReference());
   EXPECT_FALSE(float_reg_type.IsLowHalf());
   EXPECT_FALSE(float_reg_type.IsHighHalf());
@@ -344,7 +344,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(float_reg_type.IsDoubleTypes());
   EXPECT_FALSE(float_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(float_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(float_reg_type.HasClass());
+  EXPECT_FALSE(float_reg_type.HasClass());
 
   const RegType& double_reg_type = cache.DoubleLo();
   EXPECT_FALSE(double_reg_type.IsUndefined());
@@ -357,9 +357,9 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_FALSE(double_reg_type.IsChar());
   EXPECT_FALSE(double_reg_type.IsShort());
   EXPECT_FALSE(double_reg_type.IsInteger());
-  EXPECT_FALSE(double_reg_type.IsLong());
+  EXPECT_FALSE(double_reg_type.IsLongLo());
   EXPECT_FALSE(double_reg_type.IsFloat());
-  EXPECT_TRUE(double_reg_type.IsDouble());
+  EXPECT_TRUE(double_reg_type.IsDoubleLo());
   EXPECT_FALSE(double_reg_type.IsReference());
   EXPECT_TRUE(double_reg_type.IsLowHalf());
   EXPECT_FALSE(double_reg_type.IsHighHalf());
@@ -377,7 +377,7 @@ TEST_F(RegTypeTest, Primitives) {
   EXPECT_TRUE(double_reg_type.IsDoubleTypes());
   EXPECT_FALSE(double_reg_type.IsArrayIndexTypes());
   EXPECT_FALSE(double_reg_type.IsNonZeroReferenceTypes());
-  EXPECT_TRUE(double_reg_type.HasClass());
+  EXPECT_FALSE(double_reg_type.HasClass());
 }
 
 class RegTypeReferenceTest : public RegTypeTest {};
@@ -413,7 +413,7 @@ TEST_F(RegTypeReferenceTest, UnresolvedUnintializedType) {
   EXPECT_TRUE(ref_type_0.Equals(ref_type));
   // Create an uninitialized type of this unresolved type.
   const RegType& unresolved_uninitialized = cache.Uninitialized(ref_type);
-  EXPECT_TRUE(unresolved_uninitialized.IsUnresolvedAndUninitializedReference());
+  EXPECT_TRUE(unresolved_uninitialized.IsUnresolvedUninitializedReference());
   EXPECT_TRUE(unresolved_uninitialized.IsUninitializedTypes());
   EXPECT_TRUE(unresolved_uninitialized.IsNonZeroReferenceTypes());
   // Create an another uninitialized type of this unresolved type.
@@ -466,7 +466,7 @@ TEST_F(RegTypeReferenceTest, JavalangString) {
   // Create an uninitialized type out of this:
   const RegType& ref_type_uninitialized = cache.Uninitialized(ref_type);
   EXPECT_TRUE(ref_type_uninitialized.IsUninitializedReference());
-  EXPECT_FALSE(ref_type_uninitialized.IsUnresolvedAndUninitializedReference());
+  EXPECT_FALSE(ref_type_uninitialized.IsUnresolvedUninitializedReference());
 }
 
 TEST_F(RegTypeReferenceTest, JavalangObject) {
@@ -507,7 +507,7 @@ TEST_F(RegTypeReferenceTest, Merging) {
   RegType& merged_nonconst = const_cast<RegType&>(merged);
 
   const BitVector& unresolved_parts =
-      down_cast<UnresolvedMergedType*>(&merged_nonconst)->GetUnresolvedTypes();
+      down_cast<UnresolvedMergedReferenceType*>(&merged_nonconst)->GetUnresolvedTypes();
   EXPECT_TRUE(unresolved_parts.IsBitSet(ref_type_0.GetId()));
   EXPECT_TRUE(unresolved_parts.IsBitSet(ref_type_1.GetId()));
 }
@@ -1115,10 +1115,8 @@ class RegTypeClassJoinTest : public RegTypeTest {
     Handle<mirror::ClassLoader> class_loader(
         hs.NewHandle(soa.Decode<mirror::ClassLoader>(jclass_loader)));
 
-    Handle<mirror::Class> c1(hs.NewHandle(
-        class_linker_->FindClass(soa.Self(), in1, class_loader)));
-    Handle<mirror::Class> c2(hs.NewHandle(
-        class_linker_->FindClass(soa.Self(), in2, class_loader)));
+    Handle<mirror::Class> c1 = hs.NewHandle(FindClass(in1, class_loader));
+    Handle<mirror::Class> c2 = hs.NewHandle(FindClass(in2, class_loader));
     ASSERT_TRUE(c1 != nullptr);
     ASSERT_TRUE(c2 != nullptr);
     const DexFile* dex_file = &c1->GetDexFile();

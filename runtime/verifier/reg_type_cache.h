@@ -48,13 +48,13 @@ class ConstantType;
 class DoubleHiType;
 class DoubleLoType;
 class FloatType;
-class ImpreciseConstType;
+class ImpreciseConstantType;
 class IntegerType;
 class LongHiType;
 class LongLoType;
 class MethodVerifier;
 class NullType;
-class PreciseConstType;
+class PreciseConstantType;
 class ReferenceType;
 class RegType;
 class ShortType;
@@ -151,22 +151,18 @@ class RegTypeCache {
       REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& FromUninitialized(const RegType& uninit_type)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& ByteConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& CharConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& ShortConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& IntConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& PosByteConstant() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ImpreciseConstType& PosShortConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& ByteConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& CharConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& ShortConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& IntConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& PosByteConstant() REQUIRES_SHARED(Locks::mutator_lock_);
+  const ImpreciseConstantType& PosShortConstant() REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& GetComponentType(const RegType& array) REQUIRES_SHARED(Locks::mutator_lock_);
   void Dump(std::ostream& os) REQUIRES_SHARED(Locks::mutator_lock_);
   const RegType& RegTypeFromPrimitiveType(Primitive::Type) const;
 
   ClassLinker* GetClassLinker() const {
     return class_linker_;
-  }
-
-  Handle<mirror::Class> GetNullHandle() const {
-    return null_handle_;
   }
 
   static constexpr int32_t kMinSmallConstant = -1;
@@ -189,7 +185,7 @@ class RegTypeCache {
 
  private:
   void FillPrimitiveAndSmallConstantTypes() REQUIRES_SHARED(Locks::mutator_lock_);
-  ObjPtr<mirror::Class> ResolveClass(const char* descriptor)
+  ObjPtr<mirror::Class> ResolveClass(const char* descriptor, size_t descriptor_length)
       REQUIRES_SHARED(Locks::mutator_lock_);
   bool MatchDescriptor(size_t idx, const std::string_view& descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -221,7 +217,6 @@ class RegTypeCache {
 
   // Handle scope containing classes.
   VariableSizedHandleScope handles_;
-  ScopedNullHandle<mirror::Class> null_handle_;
 
   ClassLinker* class_linker_;
   Handle<mirror::ClassLoader> class_loader_;
