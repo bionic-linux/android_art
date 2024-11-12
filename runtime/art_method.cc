@@ -752,8 +752,6 @@ void ArtMethod::SetIntrinsic(Intrinsics intrinsic) {
 #endif
 
   SetAccessFlags(new_value);
-  // Intrinsics are considered hot from the first call.
-  SetHotCounter();
 
   // DCHECK that the flags weren't overridden.
   DCHECK_EQ(java_flags, (GetAccessFlags() & kAccJavaFlagsMask));
