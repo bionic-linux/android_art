@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c0e5cb_7b62eeb2",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-13T13:47:55Z",
+      "side": 0,
+      "message": "Why are you removing these old tests? Do you think there is enough coverage with only `SimpleFloat` and `DifferentTypes`? The `SimpleUByte` looks particularly interesting to me as it shows an interesting optimization opportunity.",
+      "range": {
+        "startLine": 539,
+        "startChar": 22,
+        "endLine": 539,
+        "endChar": 33
+      },
+      "revId": "01df4b3a9bb31f21f451452f0ce47632dd8916ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

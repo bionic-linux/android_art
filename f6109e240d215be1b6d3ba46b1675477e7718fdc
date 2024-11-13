@@ -16,6 +16,29 @@
       "message": "Rebased to fix the merge conflict (although I\u0027m not exactly sure where it was). Needs a second review please!",
       "revId": "f6109e240d215be1b6d3ba46b1675477e7718fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460b25d7_01f0fa79",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-13T13:47:55Z",
+      "side": 1,
+      "message": "There is no handling of \"bias\" anywhere in this CL or in the existing code in `loop_optimization.cc`. Therefore I must assume that the FP condition vectorization is not handling `NaN` correctly and should not be enabled for now. (Also, there are no tests for `NaN` handling in this CL.)",
+      "range": {
+        "startLine": 1258,
+        "startChar": 10,
+        "endLine": 1258,
+        "endChar": 14
+      },
+      "revId": "f6109e240d215be1b6d3ba46b1675477e7718fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
