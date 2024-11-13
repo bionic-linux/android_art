@@ -124,6 +124,24 @@
       "parentUuid": "23727bde_53bed65d",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2184cbb7_b1943f79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-11-13T20:21:06Z",
+      "side": 1,
+      "message": "I wrote a test that does 400,400 allocations totaling 307,609,600 bytes, a mix of 512 and 1024 long byte arrays.\n\nWithout JHP enabled, the test takes 0.11 seconds to complete.\nWith JHP enabled and infinite sampling interval, the existing implementation takes 0.13s to complete the test. Patch set 2 of this CL takes 0.4s to complete the test. That suggest about 4x overhead of having JHP enabled with infinite sampling interval. (When sampling interval isn\u0027t infinite and sampling cost takes over, I see my test taking on the order of 1 or 2 seconds to complete with and without my change.)\n\nI\u0027m happy to work towards a model that randomizes the TLAB size to try and get the overhead of JHP enabled down to what it was before. Let me work on a draft for that.",
+      "parentUuid": "75d996f2_e8a9aad8",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
