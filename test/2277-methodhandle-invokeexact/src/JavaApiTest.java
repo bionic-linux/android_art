@@ -63,6 +63,12 @@ public class JavaApiTest extends AbstractInvokeExactTest {
   private static final MethodHandle FOOBARIMPL_DEFAULT;
   private static final MethodHandle FOO_NONOVERRIDDEN_DEFAULT;
   private static final MethodHandle BAR_NONOVERRIDDEN_DEFAULT;
+  private static final MethodHandle TO_STRING_DEFINED_IN_AN_INTERFACE;
+
+  private static final MethodHandle INTERFACE_ONE_METHOD;
+  private static final MethodHandle INTERFACE_TWO_METHOD;
+  private static final MethodHandle INTERFACE_THREE_METHOD;
+  private static final MethodHandle INTERFACE_FOUR_METHOD;
 
   static {
     try {
@@ -150,6 +156,17 @@ public class JavaApiTest extends AbstractInvokeExactTest {
           .findVirtual(Foo.class, "nonOverriddenDefault", methodType(String.class));
       BAR_NONOVERRIDDEN_DEFAULT = MethodHandles.lookup()
           .findVirtual(Bar.class, "nonOverriddenDefault", methodType(String.class));
+      TO_STRING_DEFINED_IN_AN_INTERFACE = MethodHandles.lookup()
+          .findVirtual(ToStringable.class, "toString", methodType(String.class));
+
+      INTERFACE_ONE_METHOD = MethodHandles.lookup()
+          .findVirtual(Interface1.class, "methodOne", methodType(String.class));
+      INTERFACE_TWO_METHOD = MethodHandles.lookup()
+          .findVirtual(Interface2.class, "methodTwo", methodType(String.class));
+      INTERFACE_THREE_METHOD = MethodHandles.lookup()
+          .findVirtual(Interface3.class, "methodThree", methodType(String.class));
+      INTERFACE_FOUR_METHOD = MethodHandles.lookup()
+          .findVirtual(Interface4.class, "methodFour", methodType(String.class));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -345,7 +362,32 @@ public class JavaApiTest extends AbstractInvokeExactTest {
   }
 
   @Override
+  public MethodHandle toStringDefinedInAnInterface() {
+    return TO_STRING_DEFINED_IN_AN_INTERFACE;
+  }
+
+  @Override
   public MethodHandle optionalGet() {
     return OPTIONAL_GET;
+  }
+
+  @Override
+  public MethodHandle interfaceOneMethod() {
+    return INTERFACE_ONE_METHOD;
+  }
+
+  @Override
+  public MethodHandle interfaceTwoMethod() {
+    return INTERFACE_TWO_METHOD;
+  }
+
+  @Override
+  public MethodHandle interfaceThreeMethod() {
+    return INTERFACE_THREE_METHOD;
+  }
+
+  @Override
+  public MethodHandle interfaceFourMethod() {
+    return INTERFACE_FOUR_METHOD;
   }
 }
