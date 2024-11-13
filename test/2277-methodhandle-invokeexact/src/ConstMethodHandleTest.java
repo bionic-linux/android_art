@@ -529,4 +529,18 @@ public class ConstMethodHandleTest extends AbstractInvokeExactTest {
     return constFooBarNonDefault();
   }
 
+  @ConstantMethodHandle(
+    kind = ConstantMethodHandle.INVOKE_INTERFACE,
+    owner = "ToStringable",
+    fieldOrMethodName = "toString",
+    descriptor = "()Ljava/lang/String;")
+  private static MethodHandle constToStringFromAnInterface() {
+    unreachable("should be replaced by const-method-handle");
+    return null;
+  }
+
+  @Override
+  public MethodHandle toStringFromAnInterface() {
+    return constToStringFromAnInterface();
+  }
 }
