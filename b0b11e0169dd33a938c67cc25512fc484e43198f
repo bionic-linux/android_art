@@ -106,6 +106,24 @@
       "parentUuid": "dbbda708_9a3c3c12",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d996f2_e8a9aad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-13T19:28:25Z",
+      "side": 1,
+      "message": "My guess is that this would decrease the performance of small object allocation with an essentially infinite sampling interval by an order of magnitude or so. It doesn\u0027t affect the associated GC cost, but I would still expect that code that\u0027s dominated by small object allocation would slow down by at least a factor of two or so, possibly significantly more. Of course actual measurements would be a lot more convincing.\n\n(I actually don\u0027t fully understand the cost impact here for various configurations. It seems that in the partial TLAB case, we could at least slowly increment the size of the TLAB, without the full allocate-a-new-TLAB each time dance. The latter requires several lock acquisitions, etc., which would also destroy our ability to allocate in multiple threads in parallel. The former probably not. But I don\u0027t think the CMC collector currently uses partial TLABs.)\n\nMy intuition is that this will sometimes cause a user-perceptible slowdown. If you only enable it a fraction of a second at a time, it may be OK. But otherwise bypassing the allocation fast path completely, as I think we\u0027re doing here, seems heavy. We\u0027re replacing a short hand-written assembly routine with a full entry into the runtime, which then executes a fair amount of code, both to allocate, and to test whether we should sample.\n\nI think the old scheme sort-of was (and probably should have been):\n\n- Randomize the TLAB size\n- on TLAB overflow, count that allocation as (TLAB size / allocation size) samples of that size.\n- Non-TLAB allocations are sampled directly.\n\nThat doesn\u0027t quite work, especially for largish TLABs, because it fails to count TLABs that are retired without overflowing, e.g. because the thread is short-lived, or we GC before the TLAB fills. So we somehow need to sample those as well. But I think it should suffice to sample a random location within such a TLAB before we retire it, and treat it the same way. And since we have a bitmap for object boundaries, I think we can do that. I\u0027m not sure we currently do that, and that may be part of the problem. And we\u0027re definitely not consistent about non-TLAB allocations.\n\nIf we agree that\u0027s reasonable, does it make sense to work towards this model? It doesn\u0027t actually seem that complicated to me. Do we have functionality on the Perfetto side to, say, record the fact that we just allocated 1000 24 byte objects, without going through the motions 1000 times? I think it would be better if that code were in Perfetto than in ART, since I think long-term more of the statistics expertise is likely to be there.",
+      "parentUuid": "23727bde_53bed65d",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
