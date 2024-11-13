@@ -765,6 +765,11 @@ static bool DoMethodHandleInvokeMethod(Thread* self,
     DCHECK(self->IsExceptionPending());
     return false;
   }
+  if (called_method->IsDefaultConflicting()) {
+    // ART throws ICCE in this case.
+    ThrowIncompatibleClassChangeErrorForMethodConflict(called_method);
+    return false;
+  }
   // Compute method information.
   CodeItemDataAccessor accessor(called_method->DexInstructionData());
   uint16_t num_regs;
