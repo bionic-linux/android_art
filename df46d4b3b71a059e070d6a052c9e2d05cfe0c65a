@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90cfac9_1747b169",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-13T05:24:07Z",
+      "side": 1,
+      "message": "Testing revert to make sure it still works, for testing purposes. We may need to backport this or a similar flag flip to Mainline module branche.",
+      "revId": "df46d4b3b71a059e070d6a052c9e2d05cfe0c65a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
