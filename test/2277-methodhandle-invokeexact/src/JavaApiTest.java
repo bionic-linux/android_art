@@ -63,6 +63,8 @@ public class JavaApiTest extends AbstractInvokeExactTest {
   private static final MethodHandle FOOBARIMPL_DEFAULT;
   private static final MethodHandle FOO_NONOVERRIDDEN_DEFAULT;
   private static final MethodHandle BAR_NONOVERRIDDEN_DEFAULT;
+  private static final MethodHandle TO_STRING_DEFINED_IN_AN_INTERFACE;
+  private static final MethodHandle TO_STRING_LOOKUP_IN_AN_INTERFACE;
 
   static {
     try {
@@ -150,6 +152,10 @@ public class JavaApiTest extends AbstractInvokeExactTest {
           .findVirtual(Foo.class, "nonOverriddenDefault", methodType(String.class));
       BAR_NONOVERRIDDEN_DEFAULT = MethodHandles.lookup()
           .findVirtual(Bar.class, "nonOverriddenDefault", methodType(String.class));
+      TO_STRING_DEFINED_IN_AN_INTERFACE = MethodHandles.lookup()
+          .findVirtual(ToStringable.class, "toString", methodType(String.class));
+      TO_STRING_LOOKUP_IN_AN_INTERFACE = MethodHandles.lookup()
+          .findVirtual(Foo.class, "toString", methodType(String.class));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -342,6 +348,16 @@ public class JavaApiTest extends AbstractInvokeExactTest {
   @Override
   public MethodHandle fooBarNonDefault() {
     return FOOBAR_NONDEFAULT;
+  }
+
+  @Override
+  public MethodHandle toStringDefinedInAnInterface() {
+    return TO_STRING_DEFINED_IN_AN_INTERFACE;
+  }
+
+  @Override
+  public MethodHandle toStringLookedUpFromAnInterface() {
+    return TO_STRING_LOOKUP_IN_AN_INTERFACE;
   }
 
   @Override

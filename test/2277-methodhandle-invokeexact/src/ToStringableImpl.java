@@ -14,14 +14,9 @@
  * limitations under the License.
  */
 
-class FooBarImpl extends FooBar {
-  @Override
-  public String nonDefault() {
-    return "FooBarImpl.nonDefault";
-  }
-
-  @Override
-  public String toString() {
-    return "FooBarImpl";
-  }
+public class ToStringableImpl implements ToStringable {
+    @Override
+    public String toString() {
+        return "ToStringableImpl";
+    }
 }
