@@ -176,6 +176,15 @@ public abstract class AbstractInvokeExactTest {
 
     result = (String) barNonOverriddenDefault().invokeExact((Bar) instance);
     assertEquals("Foo.nonOverriddenDefault", result);
+
+    ToStringable toStringable = new ToStringableImpl();
+    result = (String) toStringDefinedInAnInterface().invokeExact(toStringable);
+    assertEquals("ToStringableImpl", result);
+
+    try {
+      String ignored = (String) toStringDefinedInAnInterface().invokeExact(instance);
+      unreachable("Should throw WMTE");
+    } catch (WrongMethodTypeException expected) {}
   }
 
   private void $noinline$abstractClass() throws Throwable {
@@ -263,6 +272,7 @@ public abstract class AbstractInvokeExactTest {
   public abstract MethodHandle fooBarImplDefault();
   public abstract MethodHandle fooNonOverriddenDefault();
   public abstract MethodHandle barNonOverriddenDefault();
+  public abstract MethodHandle toStringDefinedInAnInterface();
 
   public abstract MethodHandle fooBarDefinedInAbstract();
   public abstract MethodHandle fooBarImplDefinedInAbstract();
