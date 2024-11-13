@@ -774,11 +774,21 @@ static bool DoMethodHandleInvokeMethod(Thread* self,
     first_dest_reg = num_regs - accessor.InsSize();
     // Parameter registers go at the end of the shadow frame.
     DCHECK_NE(first_dest_reg, (size_t)-1);
-  } else {
+  } else if (called_method->IsNative() || called_method->IsProxyMethod()) {
     // No local regs for proxy and native methods.
-    DCHECK(called_method->IsNative() || called_method->IsProxyMethod());
     num_regs = GetInsForProxyOrNativeMethod(called_method);
     first_dest_reg = 0;
+  } else {
+    if (called_method->IsDefaultConflicting()) {
+      // ART throws ICCE in this case.
+      ThrowIncompatibleClassChangeErrorForMethodConflict(called_method);
+      return false;
+    }
+
+    // Is it precise enough?
+    ObjPtr<mirror::Object> receiver(shadow_frame.GetVRegReference(receiver_reg));
+    ThrowAbstractMethodError(called_method);
+    return false;
   }
 
   const char* old_cause = self->StartAssertNoThreadSuspension("DoMethodHandleInvokeMethod");
