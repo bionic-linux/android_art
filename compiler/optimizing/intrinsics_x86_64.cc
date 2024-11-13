@@ -4235,7 +4235,8 @@ void IntrinsicLocationsBuilderX86_64::VisitMethodHandleInvokeExact(HInvoke* invo
   // The last input is MethodType object corresponding to the call-site.
   locations->SetInAt(number_of_args, Location::RequiresRegister());
 
-  locations->AddTemp(Location::RequiresRegister());
+  // Using RAX as invoke-interface branch needs it as hidden arg.
+  locations->AddTemp(Location::RegisterLocation(RAX));
 }
 
 void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke) {
@@ -4273,14 +4274,15 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     // No dispatch is needed for invoke-direct.
     __ j(kEqual, &execute_target_method);
 
+    Label non_virtual_dispatch;
     // Handle invoke-virtual case.
     __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeVirtual));
-    __ j(kNotEqual, &static_dispatch);
+    __ j(kNotEqual, &non_virtual_dispatch);
+
     // Skip virtual dispatch if `method` is private.
     __ testl(Address(method, ArtMethod::AccessFlagsOffset()), Immediate(kAccPrivate));
     __ j(kNotZero, &execute_target_method);
 
-    Label do_virtual_dispatch;
     CpuRegister temp = locations->GetTemp(0).AsRegister<CpuRegister>();
 
     __ movl(temp, Address(method, ArtMethod::DeclaringClassOffset()));
@@ -4288,7 +4290,6 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     // If method is defined in the receiver's class, execute it as it is.
     __ j(kEqual, &execute_target_method);
 
-    __ Bind(&do_virtual_dispatch);
     // MethodIndex is uint16_t.
     __ movzxw(temp, Address(method, ArtMethod::MethodIndexOffset()));
 
@@ -4299,6 +4300,47 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     constexpr uint32_t vtable_offset =
         mirror::Class::EmbeddedVTableOffset(art::PointerSize::k64).Int32Value();
     __ movq(method, Address(method, temp, TIMES_8, vtable_offset));
+    __ Jump(&execute_target_method);
+
+    __ Bind(&non_virtual_dispatch);
+    __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeInterface));
+    __ j(kNotEqual, &static_dispatch);
+
+    __ movl(temp, Address(method, ArtMethod::AccessFlagsOffset()));
+
+    __ testl(temp, Immediate(kAccPrivate));
+    __ j(kNotZero, &execute_target_method);
+
+    Label get_imt_index_from_method_index;
+    Label do_imt_dispatch;
+
+    // Get IMT index.
+    // Not doing default conflict check as IMT index is set for all method which have
+    // kAccAbstract bit.
+    __ testl(temp, Immediate(kAccAbstract));
+    __ j(kZero, &get_imt_index_from_method_index);
+
+    // imt_index_ is uint16_t
+    __ movzxw(temp, Address(method, ArtMethod::ImtIndexOffset()));
+    __ Jump(&do_imt_dispatch);
+
+    // Default method, do method->GetMethodIndex() & (ImTable::kSizeTruncToPowerOfTwo - 1);
+    __ Bind(&get_imt_index_from_method_index);
+    __ movl(temp, Address(method, ArtMethod::MethodIndexOffset()));
+    __ andl(temp, Immediate(ImTable::kSizeTruncToPowerOfTwo - 1));
+
+    __ Bind(&do_imt_dispatch);
+    // Re-using `method` to store receiver class and ImTableEntry.
+    __ movl(method, Address(receiver, mirror::Object::ClassOffset()));
+
+    __ movq(method, Address(method, mirror::Class::ImtPtrOffset(kX86_64PointerSize).Uint32Value()));
+    // method = receiver->GetClass()->embedded_imtable_->Get(method_offset);
+    __ movq(method, Address(method, temp, TIMES_8, /* disp= */ 0));
+
+    // We pass the method from the IMT in case of a conflict. This will ensure
+    // we go into the runtime to resolve the actual method.
+    DCHECK_EQ(RAX, temp.AsRegister());
+    __ movq(temp, Address(method_handle, mirror::MethodHandle::ArtFieldOrMethodOffset()));
     __ Jump(&execute_target_method);
   }
   __ Bind(&static_dispatch);
