@@ -4236,6 +4236,10 @@ void IntrinsicLocationsBuilderX86_64::VisitMethodHandleInvokeExact(HInvoke* invo
   locations->SetInAt(number_of_args, Location::RequiresRegister());
 
   locations->AddTemp(Location::RequiresRegister());
+  if (invoke->AsInvokePolymorphic()->CanTargetInstanceMethod()) {
+    // 2 extra temps are needed in interface dispatch case.
+    locations->AddRegisterTemps(2);
+  }
 }
 
 void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke) {
@@ -4273,9 +4277,10 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     // No dispatch is needed for invoke-direct.
     __ j(kEqual, &execute_target_method);
 
+    Label interface_dispatch;
     // Handle invoke-virtual case.
     __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeVirtual));
-    __ j(kNotEqual, &static_dispatch);
+    __ j(kNotEqual, &interface_dispatch);
     // Skip virtual dispatch if `method` is private.
     __ testl(Address(method, ArtMethod::AccessFlagsOffset()), Immediate(kAccPrivate));
     __ j(kNotZero, &execute_target_method);
@@ -4299,6 +4304,52 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
     constexpr uint32_t vtable_offset =
         mirror::Class::EmbeddedVTableOffset(art::PointerSize::k64).Int32Value();
     __ movq(method, Address(method, temp, TIMES_8, vtable_offset));
+    __ Jump(&execute_target_method);
+
+    __ Bind(&interface_dispatch);
+    __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeInterface));
+    __ j(kNotEqual, &static_dispatch);
+
+    __ testl(Address(method, ArtMethod::AccessFlagsOffset()), Immediate(kAccPrivate));
+    __ j(kNotZero, &execute_target_method);
+
+    // temp = receiver->GetClass()->GetIfTable()
+    __ movl(temp, Address(receiver, mirror::Object::ClassOffset()));
+    __ movl(temp, Address(temp, mirror::Class::IfTableOffset()));
+
+    CpuRegister counter = locations->GetTemp(1).AsRegister<CpuRegister>();
+    CpuRegister decl_class = locations->GetTemp(2).AsRegister<CpuRegister>();
+
+    __ movl(counter, Immediate(0));
+    __ movl(decl_class, Address(method, ArtMethod::DeclaringClassOffset()));
+
+    Label iftable_loop;
+    Label match_found;
+
+    __ Bind(&iftable_loop);
+    // `iftable_` is an array of class and array pointer pairs. Its length is twice the amount of
+    // interfaces a class implements.
+    __ cmpl(counter, Address(temp, mirror::Array::LengthOffset()));
+    __ j(kAboveEqual, slow_path->GetEntryLabel());
+
+    constexpr uint32_t iftable_data_offset =
+        mirror::Array::DataOffset(kHeapReferenceSize).Uint32Value();
+    __ cmpl(decl_class, Address(temp, counter, TIMES_4, iftable_data_offset));
+    __ j(kEqual, &match_found);
+    __ addl(counter, Immediate(2));
+    __ Jump(&iftable_loop);
+
+    __ Bind(&match_found);
+
+    // temp = iftable->GetMethodArray(counter / 2)
+    __ movl(temp, Address(temp, counter, TIMES_4, iftable_data_offset + kHeapReferenceSize));
+
+    constexpr uint32_t pointer_array_data_offset =
+        mirror::Array::DataOffset(kX86_64WordSize).Uint32Value();
+
+    // Reusing counter to store method offset.
+    __ movzxw(counter, Address(method, ArtMethod::MethodIndexOffset()));
+    __ movq(method, Address(temp, counter, TIMES_8, pointer_array_data_offset));
     __ Jump(&execute_target_method);
   }
   __ Bind(&static_dispatch);
