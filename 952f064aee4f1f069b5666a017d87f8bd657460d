@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86798484_f8e76e85",
+        "filename": "artd/artd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I agree on the alternatives you mentioned, but there\u0027s another one: Add the function signatures once in this header as, say, `KillFn` etc, and use those instead.\n\nWith `using` aliases it may be possible to get rid of all the `decltype` as well.\n\nThis isn\u0027t purely taste - there\u0027s a readability aspect in that introducing new tools unavoidably adds cognitive load, and even more so when we need to implement and maintain them ourselves. That needs to be offset by the benefit.",
+      "parentUuid": "174827eb_210fc01f",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 65
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8288ba4e_ac789339",
         "filename": "artd/binder/com/android/server/art/IArtd.aidl",
         "patchSetId": 4

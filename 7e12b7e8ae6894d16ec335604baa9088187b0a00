@@ -103,6 +103,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e39d3424_d1c88449",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "I also realise it doesn\u0027t help with the loop, as much as I\u0027d prefer to simplify that (not least because it\u0027s hard to test).\n\nThe benefit is that it shows where the limit comes from. With just a number the reader has to spend more time working out what\u0027s going on to convince themselves that it\u0027s large enough.\n\nAnother (less important) benefit is that it avoids making an assumption on how large `NAME_MAX` is.",
+      "parentUuid": "98ff9f72_e63d95d9",
+      "range": {
+        "startLine": 1479,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f15e0ec_92af4d18",
         "filename": "artd/artd.cc",
         "patchSetId": 8
@@ -132,6 +156,24 @@
       "side": 1,
       "message": "I\u0027m not sure why Gerrit shows no coverage, but the lines are covered.\n\nAnyway, I planted an abort and the test did hit it.\n\n```\n[ RUN      ] ArtdProfileSaveNotificationTest.initAndWaitSuccess\n11-08 16:51:36.170  3432  3446 I art_artd_tests: artd.cc:1462 Waiting for notification \u0027/usr/local/google/home/jiakaiz/android/aosp-main/out/soong/.temp/art-data-1tYPym/tmp-BxTeAB/data/misc/profiles/cur/0/com.android.foo/primary.prof.prof\u0027\n/.../\nArtdProfileSaveNotificationTest.initAndWaitSuccess terminated by signal: Aborted.\n[  FAILED  ] ArtdProfileSaveNotificationTest.initAndWaitSuccess (62 ms)\n```",
       "parentUuid": "3f15e0ec_92af4d18",
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a2b715_dfe1d532",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "Great, thanks.",
+      "parentUuid": "1420f96b_d8d796d7",
       "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -220,6 +262,30 @@
       "side": 1,
       "message": "I wanted a line break too, but clang-format didn\u0027t agree, and I couldn\u0027t find a way to configure this :(",
       "parentUuid": "2f04ec23_06f2987a",
+      "range": {
+        "startLine": 1503,
+        "startChar": 36,
+        "endLine": 1503,
+        "endChar": 37
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc85548b_f9281a03",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "All right, I suspected that but had to ask.",
+      "parentUuid": "23a322f5_fa1e9101",
       "range": {
         "startLine": 1503,
         "startChar": 36,
@@ -467,6 +533,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bee2a47_e52b1a15",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "No that wasn\u0027t what I meant. Please drop \"the\" - it shouldn\u0027t precede a proper noun.",
+      "parentUuid": "e9a8f9e1_7954fea9",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "992340de_2e90a6f6",
         "filename": "libarttools/include_testing/tools/testing.h",
         "patchSetId": 8
@@ -520,6 +610,30 @@
       "side": 1,
       "message": "I need it to enable move assignment. The move assignment operator for `ScopeGuard` is [deleted](https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/scopeguard.h;l\u003d47;drc\u003d6fe6a1d1fb7e7b1b6e8ba14994237038a683a036). I need a move assignment on `artd_test.cc` line 2545 to move the `ScopeGuard` to a member of the test fixture class.\n\nI considered implementing a move assignment operator for `ScopeGuard`, but I then realized that it would be unclear to the user whether the function in the `ScopeGuard` being assigned (the one on the left-hand side of `\u003d`) should be immediately executed or ignored, so I gave up.\n\nI also considered replacing this whole function with a RAII class to avoid this ugliness, but I would then have to implement move assignment from scratch (e.g., using a flag to indicate whether the object has moved), which is even less charming.\n\n`make_scope_guard` doesn\u0027t return a pointer. The pointer is created by `std::make_unique` below.",
       "parentUuid": "992340de_2e90a6f6",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 59
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18fc34b_0afff554",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "I see. When it gets to shenanigans like this I\u0027m not sure `ScopeGuard` is the right abstraction anymore - I think it\u0027s better to just return the cleanup function and leave it to the caller to ensure it gets called, possibly by wrapping it in `ScopeGuard` on their side. But I\u0027ll leave it as optional.",
+      "parentUuid": "ba3a26fe_ebd52df1",
       "range": {
         "startLine": 94,
         "startChar": 8,

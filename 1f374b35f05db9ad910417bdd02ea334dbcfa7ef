@@ -16,6 +16,23 @@
       "message": "PS10 -\u003e PS13 fixes the test failure.",
       "revId": "1f374b35f05db9ad910417bdd02ea334dbcfa7ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bc4f26_5291582a",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T23:51:26Z",
+      "side": 1,
+      "message": "Please add comment: \"Use a condvar to sequence the NewFile::Create calls.\"",
+      "revId": "1f374b35f05db9ad910417bdd02ea334dbcfa7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
