@@ -15,13 +15,13 @@
 # limitations under the License.
 
 #
-# This script creates the final boot image profile (suitable to include in the platform build).
+# This script creates the framework boot image profile (suitable to include in the platform build).
 # The input to the script are:
 #   1) the boot.zip file which contains the boot classpath and system server jars.
 #      This file can be obtained from running `m dist` or by configuring the device with
 #      the `art/tools/boot-image-profile-configure-device.sh` script.
 #   2) the preloaded classes denylist which specify what clases should not be preloaded
-#      in Zygote. Usually located in usually in frameworks/base/config/preloaded-classes-denylist
+#      in Zygote. Usually located in frameworks/base/boot/preloaded-classes-denylist
 #   3) a list of raw boot image profiles extracted from devices. An example how to do that is
 #      by running `art/tools/boot-image-profile-extract-profile.sh` script.
 #
@@ -41,9 +41,9 @@ fi
 if [[ "$#" -lt 4 ]]; then
   echo "Usage $0 <output-dir> <boot.zip-location> <preloaded-denylist-location> <profile-input1> <profile-input2> ... <profman args>"
   echo "Without any profman args the script will use defaults."
-  echo "Example: $0 output-dir boot.zip frameworks/base/config/preloaded-classes-denylist android1.prof android2.prof"
-  echo "         $0 output-dir boot.zip frameworks/base/config/preloaded-classes-denylist android.prof --profman-arg --upgrade-startup-to-hot=true"
-  echo "preloaded-deny-list-location is usually frameworks/base/config/preloaded-classes-denylist"
+  echo "Example: $0 output-dir boot.zip frameworks/base/boot/preloaded-classes-denylist android1.prof android2.prof"
+  echo "         $0 output-dir boot.zip frameworks/base/boot/preloaded-classes-denylist android.prof --profman-arg --upgrade-startup-to-hot=true"
+  echo "preloaded-deny-list-location is usually frameworks/base/boot/preloaded-classes-denylist"
   exit 1
 fi
 
@@ -81,6 +81,7 @@ echo "Unziping boot.zip"
 BOOT_UNZIP_DIR="$WORK_DIR"/boot-dex
 BOOT_JARS="$BOOT_UNZIP_DIR"/dex_bootjars_input
 SYSTEM_SERVER_JAR="$BOOT_UNZIP_DIR"/system/framework/services.jar
+ART_JARS=("core-oj.jar core-libart.jar okhttp.jar bouncycastle.jar apache-xml.jar")
 
 unzip -o "$BOOT_ZIP" -d "$BOOT_UNZIP_DIR"
 
@@ -88,7 +89,11 @@ echo "Processing boot image jar files"
 jar_args=()
 for entry in "$BOOT_JARS"/*
 do
-  jar_args+=("--apk=$entry")
+  # Ignore ART jars, since we want fromework related jars only.
+  jar_name=$(basename "$entry")
+  if [[ ! " ${ART_JARS[*]} " =~ [[:space:]]${jar_name}[[:space:]] ]]; then
+    jar_args+=("--apk=$entry")
+  fi
 done
 profman_args+=("${jar_args[@]}")
 
