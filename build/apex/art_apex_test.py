@@ -490,6 +490,7 @@ class ReleaseChecker:
 
     # Check etc.
     self._checker.check_file('etc/boot-image.prof')
+    self._checker.check_file('etc/preloaded-classes')
     self._checker.check_dir('etc/classpaths')
     self._checker.check_file('etc/classpaths/bootclasspath.pb')
     self._checker.check_file('etc/classpaths/systemserverclasspath.pb')
