@@ -15,6 +15,7 @@
 
 import sys, os, shutil, shlex, re, subprocess, glob
 from argparse import ArgumentParser, BooleanOptionalAction, Namespace
+from globals import BOOTCLASSPATH
 from os import path
 from os.path import isfile, isdir, basename
 from subprocess import check_output, DEVNULL, PIPE, STDOUT
@@ -154,19 +155,7 @@ bpath_modules = ("core-oj core-libart okhttp bouncycastle apache-xml core-icu4j"
 # Helper function to construct paths for apex modules (for both -Xbootclasspath and
 # -Xbootclasspath-location).
 def get_apex_bootclasspath_impl(bpath_prefix: str):
-  bpath_separator = ""
-  bpath = ""
-  bpath_jar = ""
-  for bpath_module in bpath_modules.split(" "):
-    apex_module = "com.android.art"
-    if bpath_module == "conscrypt":
-      apex_module = "com.android.conscrypt"
-    if bpath_module == "core-icu4j":
-      apex_module = "com.android.i18n"
-    bpath_jar = f"/apex/{apex_module}/javalib/{bpath_module}.jar"
-    bpath += f"{bpath_separator}{bpath_prefix}{bpath_jar}"
-    bpath_separator = ":"
-  return bpath
+  return ":".join(bpath_prefix + bpath for bpath in BOOTCLASSPATH)
 
 
 # Gets a -Xbootclasspath paths with the apex modules.
