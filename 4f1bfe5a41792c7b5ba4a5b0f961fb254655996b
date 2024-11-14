@@ -16,6 +16,24 @@
       "message": "Alternative to aosp/3350845",
       "revId": "4f1bfe5a41792c7b5ba4a5b0f961fb254655996b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c002753a_29128d17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-14T09:45:42Z",
+      "side": 1,
+      "message": "I\u0027m giving CR+2 on both CLs but let\u0027s merge only one of them. (Note that the edits are very far in that file, so there would be no conflict if we try to merge both.)",
+      "parentUuid": "92d312fa_851d01a3",
+      "revId": "4f1bfe5a41792c7b5ba4a5b0f961fb254655996b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
