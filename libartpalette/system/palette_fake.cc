@@ -151,5 +151,21 @@ palette_status_t PaletteSetTaskProfiles([[maybe_unused]] int32_t tid,
 // Methods in version 4 API, corresponding to SDK level 36.
 palette_status_t PaletteDebugStoreGetString([[maybe_unused]] char* result,
                                             [[maybe_unused]] size_t max_size) {
+  result[0] = '\0';
+  return PALETTE_STATUS_OK;
+}
+
+palette_status_t PaletteGetPriorityMapping(int* result,
+                                           int32_t managed_min_priority,
+                                           size_t npriorities) {
+  if (managed_min_priority < 1 || managed_min_priority + npriorities > 11) {
+    return PALETTE_STATUS_INVALID_ARGUMENT;
+  }
+  size_t ri = 0;
+  for (int32_t i = managed_min_priority; ri < npriorities && i <= 10; ++i, ++ri) {
+    // Some test code assumes these are monotically decreasing, so we can reconstruct priority
+    // from niceness.
+    result[ri] = 10 - 2 * i;
+  }
   return PALETTE_STATUS_OK;
 }
