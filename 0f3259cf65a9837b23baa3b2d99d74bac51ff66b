@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3b4ef5_16a85b76",
+        "filename": "libartbase/base/globals.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-14T18:49:09Z",
+      "side": 1,
+      "message": "so this is the real thing that would need to be fixed, we\u0027d need to make \u0027kMaxPageSize\u0027 non-static, decided at load time. There are ~100+ places referencing kElfSegmentAlignment, if you search for it, so you can see how non-trivial this is.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "adba27ea_99853252",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartbase/base/globals.h",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libartbase/base/globals.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "0f3259cf65a9837b23baa3b2d99d74bac51ff66b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
