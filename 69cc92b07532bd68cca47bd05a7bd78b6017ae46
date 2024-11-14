@@ -16,6 +16,24 @@
       "message": "Why aren\u0027t you using https://source.corp.google.com/search?q\u003dgenerate-boot-image.cc?",
       "revId": "69cc92b07532bd68cca47bd05a7bd78b6017ae46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0834db_739937cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-14T22:25:49Z",
+      "side": 1,
+      "message": "1) That indirectly depends on ART C++ codebase, which is undesirable dependency.\n2) I am keeping the output archive target agnostic\n\nInstead of one more copy-paste, I took the bootclasspath from default_run.py.\nAs bonus point, that is what run-test dex2oat uses later, so more compatible.",
+      "parentUuid": "c22988b8_cdde2626",
+      "revId": "69cc92b07532bd68cca47bd05a7bd78b6017ae46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
