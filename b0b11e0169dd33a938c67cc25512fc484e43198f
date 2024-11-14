@@ -142,6 +142,24 @@
       "parentUuid": "75d996f2_e8a9aad8",
       "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af9230cc_cc4e05a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-11-14T00:00:01Z",
+      "side": 1,
+      "message": "My concern is that our average allocation size is probably much smaller than this? The GC cost is proportional to bytes allocated, but the allocation overhead will be largely proportional to the number of objects allocated. Is it easy to retry this experiment with 16-byte, e.g. Long objects? (16-bytes is clearly below average. But it would allow us to bracket the actual costs.)",
+      "parentUuid": "2184cbb7_b1943f79",
+      "revId": "b0b11e0169dd33a938c67cc25512fc484e43198f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
