@@ -34,6 +34,24 @@
       "parentUuid": "92d312fa_851d01a3",
       "revId": "4f1bfe5a41792c7b5ba4a5b0f961fb254655996b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0887303_3155f53b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-14T09:51:12Z",
+      "side": 1,
+      "message": "Merging this one because the scope is narrower, and LUCI bots should be green soon",
+      "parentUuid": "c002753a_29128d17",
+      "revId": "4f1bfe5a41792c7b5ba4a5b0f961fb254655996b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
