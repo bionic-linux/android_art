@@ -1,0 +1,183 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68102c77_1775142a",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "\"package\"",
+      "range": {
+        "startLine": 1219,
+        "startChar": 49,
+        "endLine": 1219,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4790cb55_4df84b2c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+              "range": {
+                "startLine": 1219,
+                "startChar": 0,
+                "endLine": 1220,
+                "endChar": 0
+              },
+              "replacement": "     * Forces all running processes of the given package to flush profiles to the disk.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44889ff_ec12f9bc",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "`dumpAppProfile` will later on collect profiles for [all users](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d818;drc\u003d8cec104ae64bd45e1377d799ac4653fbce7fb631), so this means only a subset of them get flushed, doesn\u0027t it? Is this due to security concerns?",
+      "range": {
+        "startLine": 1229,
+        "startChar": 42,
+        "endLine": 1229,
+        "endChar": 64
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73cfed0_fd301aaf",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "While this is neat, it doesn\u0027t fully solve the problem with pid reuse since there\u0027s still a race from here down to `kill` below (`pidfd_open` doesn\u0027t cause the kernel to keep zombies, from what I can find).\n\nTo really fix it properly I think the only option is to use `pidfd_send_signal`. But to do that from system server would require passing over the pidfd from artd, and a new JNI wrapper to call `pidfd_send_signal`, so it\u0027s kind of tedious. Maybe that\u0027s reason enough to actually allow artd to send the signals? Then it\u0027d be a simple matter of changing `wait` to `sendSignalAndWait`. Otoh, from what I can see it\u0027s unfortunately not possible to have an sepolicy that restricts artd to only send SIGUSR1.\n\nThen again, I\u0027m not sure how serious a problem it is to send SIGUSR1 to the wrong process, so perhaps this race is fine?",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 17
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de27a1db_caceda99",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Maybe worth swapping the nesting of this and the `for` loop? Then it\u0027d continue to other pids for the `NonFatal`s in `initProfileSaveNotification`. All those errors aren\u0027t pid specific, but it looks like at least some could be.",
+      "range": {
+        "startLine": 1259,
+        "startChar": 0,
+        "endLine": 1262,
+        "endChar": 9
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ea9def_4dcec925",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "(One thing I don\u0027t like about stream code is that all the lambdas leave out types which are useful when reading the code, just like `var`. But that\u0027s opinion.)",
+      "range": {
+        "startLine": 514,
+        "startChar": 24,
+        "endLine": 514,
+        "endChar": 28
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bc9a1f_76d309b1",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Not clear to me what this list contains. Is it all secondary dex\u0027es as well? If so that\u0027d mean we could be sending signals a bit wider than expected (in particular if the package is something like `com.google.android.gms`).",
+      "range": {
+        "startLine": 516,
+        "startChar": 46,
+        "endLine": 516,
+        "endChar": 53
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2647c0f_9f14caa9",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Docs are a bit contradictory - `ActivityManager.getRunningAppProcesses` claims it returns \"all running processes\" but then there\u0027s `IMPORTANCE_GONE` too, so I guess not really, then. (Of course the list is always more or less stale, but `IMPORTANCE_GONE` doesn\u0027t solve that.)\n\nBut nevermind that, with your condition I see `IMPORTANCE_CACHED` gets filtered out as well (and some deprecated values I presume can\u0027t occur anymore). Why?",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 92
+      },
+      "revId": "8c4739ea30fc413b971274f013caee1e11e34b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

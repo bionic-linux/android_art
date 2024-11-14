@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1b1361_d29bcbb2",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Since there\u0027s still a race, this should ignore `ESRCH`.",
+      "range": {
+        "startLine": 1255,
+        "startChar": 20,
+        "endLine": 1255,
+        "endChar": 72
+      },
+      "revId": "9c20f8a824b383a1ad001ebc484788c82c8c4139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a04cf0a_8aeac228",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Regardless of the outcome of the user handle discussion above, a fixture with a different one may be useful.",
+      "range": {
+        "startLine": 1484,
+        "startChar": 54,
+        "endLine": 1484,
+        "endChar": 55
+      },
+      "revId": "9c20f8a824b383a1ad001ebc484788c82c8c4139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d01302_864e670d",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:37:30Z",
+      "side": 1,
+      "message": "Suggest `notificationForPid1000` etc, to make it easier to follow along.",
+      "range": {
+        "startLine": 1503,
+        "startChar": 12,
+        "endLine": 1503,
+        "endChar": 25
+      },
+      "revId": "9c20f8a824b383a1ad001ebc484788c82c8c4139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
