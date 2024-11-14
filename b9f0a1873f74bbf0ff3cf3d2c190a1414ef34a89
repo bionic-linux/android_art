@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbf3024_d4e0e0b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:07:12Z",
+      "side": 1,
+      "message": "Nit: Line breaks.",
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ca3f42_94abe751",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:07:12Z",
+      "side": 1,
+      "message": "Nit: Perhaps `GetSelinuxFileContext` to be more precise.",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0c9ee5b6_9e43ec85",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+              "range": {
+                "startLine": 164,
+                "startChar": 0,
+                "endLine": 165,
+                "endChar": 0
+              },
+              "replacement": "Result\u003cstd::string\u003e GetSelinuxFileContext(const std::string\u0026 path) {\n"
+            },
+            {
+              "path": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+              "range": {
+                "startLine": 330,
+                "startChar": 0,
+                "endLine": 331,
+                "endChar": 0
+              },
+              "replacement": "      Result\u003cstd::string\u003e se_context \u003d GetSelinuxFileContext(entry.mount_point);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873c869b_d5af962c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:07:12Z",
+      "side": 1,
+      "message": "I\u0027d like to confirm we have the sepolicy to do this. Is it the `getattr` permission from [this line](https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/dexopt_chroot_setup.te;l\u003d136;drc\u003db0d75afc8cf2ab8a54f5c0307c3c3905debb6cb6)?",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38569dc7_41d5db4e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:07:12Z",
+      "side": 1,
+      "message": "I\u0027m not well versed enough with selinux (as used in Android) to know for sure that all fields remain constant here. If you are then fine, otherwise please match just the relevant field.",
+      "range": {
+        "startLine": 341,
+        "startChar": 32,
+        "endLine": 341,
+        "endChar": 60
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a48872e6_f0582e13",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-14T21:07:12Z",
+      "side": 1,
+      "message": "There\u0027s a guarantee that apps aren\u0027t entered into the snapshot until they\u0027re fully installed and the temporary directory is gone?",
+      "range": {
+        "startLine": 343,
+        "startChar": 80,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
