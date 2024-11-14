@@ -78,11 +78,12 @@ import threading
 import time
 
 import env
-from target_config import target_config
 from device_config import device_config
-from typing import Dict, Set, List
+from fcntl import lockf, LOCK_EX, LOCK_NB
 from functools import lru_cache
 from pathlib import Path
+from target_config import target_config
+from typing import Dict, Set, List
 
 # TODO: make it adjustable per tests and for buildbots
 #
@@ -379,6 +380,25 @@ def get_device_name():
     print_text("Continuing anyway.\n")
     return "UNKNOWN_TARGET"
 
+def clean_tmp_dir():
+  """ Delete all old temporary directories in '/tmp/art' """
+  tmp = Path(os.environ.get("TMPDIR", "/tmp")) / "art"
+  if not tmp.exists():
+    return
+  for file in tmp.iterdir():
+    lock = file.with_suffix(".lock")  # Ensure it is not used.
+    try:
+      lockf(open(lock, "w"), LOCK_EX | LOCK_NB)
+    except BlockingIOError:
+      continue
+    if not file.exists():  # Recheck under a lock.
+      continue
+    if file.is_dir():
+      shutil.rmtree(file)
+    elif file != lock:
+      file.unlink()
+    lock.unlink()
+
 def run_tests(tests):
   """This method generates variants of the tests to be run and executes them.
 
@@ -578,6 +598,9 @@ def run_tests(tests):
         python3_bin = sys.executable  # Fallback to current python if we are in a sandbox.
       args_test = [python3_bin, run_test_sh] + args_test + extra_arguments[target] + [test]
       return executor.submit(run_test, args_test, test, variant_set, test_name)
+
+  # Delete previous temporary directories
+  clean_tmp_dir()
 
   global n_thread
   with concurrent.futures.ThreadPoolExecutor(max_workers=n_thread) as executor:

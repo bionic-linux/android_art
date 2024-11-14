@@ -105,11 +105,11 @@ class RunTestContext:
 # Make unique temporary directory guarded by lock file.
 # The name is deterministic (appending suffix as needed).
 def make_tmp_dir():
-  parent = Path(os.environ.get("TMPDIR", "/tmp/art/rtest"))
+  parent = Path(os.environ.get("TMPDIR", "/tmp")) / "art"
   parent.mkdir(parents=True, exist_ok=True)
-  args_hash = sha1((" ".join(sys.argv[1:])).encode()).digest().hex()
+  hash = sha1((" ".join(sys.argv[1:])).encode()).hexdigest()
   for i in range(100):
-    tmp_dir = parent / (f"{args_hash[:8]}" + (f"-{i}" if i > 0 else ""))
+    tmp_dir = parent / (f"{hash[:8]}" + (f"-{i}" if i > 0 else ""))
     lock = tmp_dir.with_suffix(".lock")  # NB: Next to the directory, not inside.
     lock_handle = open(lock, "w")
     try:
@@ -809,12 +809,12 @@ if True:
     if always_clean or (passed and not never_clean):
       os.chdir(oldwd)
       shutil.rmtree(tmp_dir)
-      os.remove(tmp_dir_lock)
       if target_mode:
         if ON_VM:
           run(f"{SSH_CMD} \"rm -rf {chroot_dex_location}\"")
         else:
           run(f"adb shell rm -rf {chroot_dex_location}")
+      os.remove(tmp_dir_lock)
       print(f"{TEST_NAME} files deleted from host" +
             (" and from target" if target_mode else ""))
     else:
