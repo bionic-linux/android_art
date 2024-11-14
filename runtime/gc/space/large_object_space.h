@@ -122,11 +122,7 @@ class LargeObjectSpace : public DiscontinuousSpace, public AllocSpace {
   // the same as the *runtime* OS page size. However, in the future this may
   // change so it is important to use LargeObjectSpace::ObjectAlignment() rather
   // than gPageSize when appropriate.
-#if defined(ART_PAGE_SIZE_AGNOSTIC)
   static ALWAYS_INLINE size_t ObjectAlignment() { return gPageSize; }
-#else
-  static constexpr size_t ObjectAlignment() { return kMinPageSize; }
-#endif
 
  protected:
   explicit LargeObjectSpace(const std::string& name, uint8_t* begin, uint8_t* end,

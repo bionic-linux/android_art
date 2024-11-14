@@ -89,9 +89,7 @@ std::ostream& operator<<(std::ostream& os, const Maps& mem_maps) {
 }
 
 std::mutex* MemMap::mem_maps_lock_ = nullptr;
-#ifdef ART_PAGE_SIZE_AGNOSTIC
 size_t MemMap::page_size_ = 0;
-#endif
 
 #if USE_ART_LOW_4G_ALLOCATOR
 // Handling mem_map in 32b address range for 64b architectures that do not support MAP_32BIT.
@@ -1021,9 +1019,7 @@ void MemMap::Init() {
   mem_maps_lock_ = new std::mutex();
   // Not for thread safety, but for the annotation that gMaps is GUARDED_BY(mem_maps_lock_).
   std::lock_guard<std::mutex> mu(*mem_maps_lock_);
-#ifdef ART_PAGE_SIZE_AGNOSTIC
   page_size_ = GetPageSizeSlow();
-#endif
   CHECK_GE(GetPageSize(), kMinPageSize);
   CHECK_LE(GetPageSize(), kMaxPageSize);
 #if USE_ART_LOW_4G_ALLOCATOR

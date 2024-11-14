@@ -130,9 +130,7 @@ static constexpr bool kHostStaticBuildEnabled = false;
 // or in a component which might operate without MemMap being initialized, the GetPageSizeSlow()
 // would be generally suitable. For performance-sensitive code, GetPageSizeSlow() shouldn't be used
 // without caching the value to remove repeated calls of the function.
-#ifdef ART_PAGE_SIZE_AGNOSTIC
 inline ALWAYS_INLINE size_t GetPageSizeSlow() {
-  static_assert(kPageSizeAgnostic, "The dynamic version is only for page size agnostic build");
 #ifdef __linux__
   static const size_t page_size = sysconf(_SC_PAGE_SIZE);
 #else
@@ -140,12 +138,6 @@ inline ALWAYS_INLINE size_t GetPageSizeSlow() {
 #endif
   return page_size;
 }
-#else
-constexpr size_t GetPageSizeSlow() {
-  static_assert(!kPageSizeAgnostic, "The constexpr version is only for page size agnostic build");
-  return kMinPageSize;
-}
-#endif
 
 }  // namespace art
 

@@ -28,7 +28,6 @@ namespace art HIDDEN {
 // Size of Dex virtual registers.
 static constexpr size_t kVRegSize = 4;
 
-#ifdef ART_PAGE_SIZE_AGNOSTIC
 // Accessor for the page size constant local to the libart.
 //
 // The value is only available after the Runtime initialization started - to ensure there is no
@@ -89,9 +88,6 @@ struct PageSize {
 // gPageSize should only be used within libart. For most of the other cases MemMap::GetPageSize()
 // or GetPageSizeSlow() should be used. See also the comment for GetPageSizeSlow().
 extern PageSize gPageSize ALWAYS_HIDDEN;
-#else
-static constexpr size_t gPageSize = kMinPageSize;
-#endif
 
 // In the page-size-agnostic configuration the compiler may not recognise gPageSize as a
 // power-of-two value, and may therefore miss opportunities to optimize: divisions via a

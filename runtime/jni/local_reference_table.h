@@ -224,11 +224,7 @@ class SmallLrtAllocator {
 
  private:
   // Number of free lists in the allocator.
-#ifdef ART_PAGE_SIZE_AGNOSTIC
   const size_t num_lrt_slots_ = (WhichPowerOf2(gPageSize / kInitialLrtBytes));
-#else
-  static constexpr size_t num_lrt_slots_ = (WhichPowerOf2(gPageSize / kInitialLrtBytes));
-#endif
 
   size_t GetIndex(size_t size);
 

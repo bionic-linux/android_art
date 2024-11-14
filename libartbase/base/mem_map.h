@@ -374,16 +374,10 @@ class MemMap {
   // 'redzone_size_ == 0' indicates that we are not using memory-tool on this mapping.
   size_t GetRedzoneSize() const { return redzone_size_; }
 
-#ifdef ART_PAGE_SIZE_AGNOSTIC
   static inline size_t GetPageSize() {
     DCHECK_NE(page_size_, 0u);
     return page_size_;
   }
-#else
-  static constexpr size_t GetPageSize() {
-    return GetPageSizeSlow();
-  }
-#endif
 
  private:
   MemMap(const std::string& name,
@@ -474,9 +468,7 @@ class MemMap {
 
   static std::mutex* mem_maps_lock_;
 
-#ifdef ART_PAGE_SIZE_AGNOSTIC
   static size_t page_size_;
-#endif
 
   friend class MemMapTest;  // To allow access to base_begin_ and base_size_.
 };
