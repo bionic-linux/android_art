@@ -100,6 +100,12 @@ class RegType {
 #undef DEFINE_REG_TYPE_ENUMERATOR
   };
 
+  static constexpr size_t NumberOfRegKinds() {
+#define ADD_ONE_FOR_CONCRETE_REG_TYPE(name) + 1
+    return 0 FOR_EACH_CONCRETE_REG_TYPE(ADD_ONE_FOR_CONCRETE_REG_TYPE);
+#undef ADD_ONE_FOR_CONCRETE_REG_TYPE
+  }
+
   constexpr Kind GetKind() const { return kind_; }
 
 #define DEFINE_IS_CONCRETE_REG_TYPE(name) \
@@ -125,9 +131,10 @@ class RegType {
   constexpr bool IsUninitializedTypes() const;
   constexpr bool IsUnresolvedTypes() const;
 
-  bool IsLowHalf() const { return (IsLongLo() || IsDoubleLo() || IsConstantLo()); }
-  bool IsHighHalf() const { return (IsLongHi() || IsDoubleHi() || IsConstantHi()); }
-  bool IsLongOrDoubleTypes() const { return IsLowHalf(); }
+  constexpr bool IsLowHalf() const { return (IsLongLo() || IsDoubleLo() || IsConstantLo()); }
+  constexpr bool IsHighHalf() const { return (IsLongHi() || IsDoubleHi() || IsConstantHi()); }
+  constexpr bool IsLongOrDoubleTypes() const { return IsLowHalf(); }
+
   // Check this is the low half, and that type_h is its matching high-half.
   inline bool CheckWidePair(const RegType& type_h) const {
     if (IsLowHalf()) {
@@ -144,7 +151,7 @@ class RegType {
   constexpr bool IsReferenceTypes() const {
     return IsNonZeroReferenceTypes() || IsZero() || IsNull();
   }
-  bool IsZeroOrNull() const {
+  constexpr bool IsZeroOrNull() const {
     return IsZero() || IsNull();
   }
   bool IsCategory1Types() const {
@@ -266,51 +273,13 @@ class RegType {
   static void* operator new(size_t size, ArenaAllocator* allocator);
   static void* operator new(size_t size, ScopedArenaAllocator* allocator) = delete;
 
-  enum class AssignmentType {
-    kBoolean,
-    kByte,
-    kShort,
-    kChar,
-    kInteger,
-    kFloat,
-    kLongLo,
-    kDoubleLo,
-    kConflict,
-    kReference,
+  enum class Assignability : uint8_t {
+    kAssignable,
     kNotAssignable,
+    kNarrowingConversion,
+    kReference,
+    kInvalid,
   };
-
-  ALWAYS_INLINE
-  inline AssignmentType GetAssignmentType() const {
-    AssignmentType t = GetAssignmentTypeImpl();
-    if (kIsDebugBuild) {
-      if (IsBoolean()) {
-        CHECK(AssignmentType::kBoolean == t);
-      } else if (IsByte()) {
-        CHECK(AssignmentType::kByte == t);
-      } else if (IsShort()) {
-        CHECK(AssignmentType::kShort == t);
-      } else if (IsChar()) {
-        CHECK(AssignmentType::kChar == t);
-      } else if (IsInteger()) {
-        CHECK(AssignmentType::kInteger == t);
-      } else if (IsFloat()) {
-        CHECK(AssignmentType::kFloat == t);
-      } else if (IsLongLo()) {
-        CHECK(AssignmentType::kLongLo == t);
-      } else if (IsDoubleLo()) {
-        CHECK(AssignmentType::kDoubleLo == t);
-      } else if (IsConflict()) {
-        CHECK(AssignmentType::kConflict == t);
-      } else if (IsReferenceTypes()) {
-        CHECK(AssignmentType::kReference == t);
-      } else {
-        LOG(FATAL) << "Unreachable";
-        UNREACHABLE();
-      }
-    }
-    return t;
-  }
 
  protected:
   constexpr RegType(Handle<mirror::Class> klass,
@@ -325,8 +294,6 @@ class RegType {
   template <typename Class>
   constexpr void CheckConstructorInvariants([[maybe_unused]] Class* this_) const
       REQUIRES_SHARED(Locks::mutator_lock_);
-
-  virtual AssignmentType GetAssignmentTypeImpl() const = 0;
 
   const std::string_view descriptor_;
   const Handle<mirror::Class> klass_;
@@ -355,10 +322,6 @@ class ConflictType final : public RegType {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kConflict;
-  }
-
   constexpr ConflictType(uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -369,10 +332,6 @@ class ConflictType final : public RegType {
 class UndefinedType final : public RegType {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kNotAssignable;
-  }
 
   constexpr UndefinedType(uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -398,10 +357,6 @@ class IntegerType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kInteger;
-  }
-
   constexpr IntegerType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -409,10 +364,6 @@ class IntegerType final : public Cat1Type {
 class BooleanType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kBoolean;
-  }
 
   constexpr BooleanType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -422,10 +373,6 @@ class ByteType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kByte;
-  }
-
   constexpr ByteType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -433,10 +380,6 @@ class ByteType final : public Cat1Type {
 class ShortType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kShort;
-  }
 
   constexpr ShortType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -446,10 +389,6 @@ class CharType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kChar;
-  }
-
   constexpr CharType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -457,10 +396,6 @@ class CharType final : public Cat1Type {
 class FloatType final : public Cat1Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kFloat;
-  }
 
   constexpr FloatType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -477,10 +412,6 @@ class LongLoType final : public Cat2Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kLongLo;
-  }
-
   constexpr LongLoType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -488,10 +419,6 @@ class LongLoType final : public Cat2Type {
 class LongHiType final : public Cat2Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kNotAssignable;
-  }
 
   constexpr LongHiType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -501,10 +428,6 @@ class DoubleLoType final : public Cat2Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
 
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kDoubleLo;
-  }
-
   constexpr DoubleLoType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
@@ -512,10 +435,6 @@ class DoubleLoType final : public Cat2Type {
 class DoubleHiType final : public Cat2Type {
  public:
   std::string Dump() const override REQUIRES_SHARED(Locks::mutator_lock_);
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kNotAssignable;
-  }
 
   constexpr DoubleHiType(const std::string_view& descriptor, uint16_t cache_id)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -526,10 +445,6 @@ class ConstantType : public RegType {
   constexpr ConstantType(uint16_t cache_id, Kind kind)
       REQUIRES_SHARED(Locks::mutator_lock_)
       : RegType(Handle<mirror::Class>(), "", cache_id, kind) {}
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kNotAssignable;
-  }
 };
 
 // Constant 0, or merged constants 0. Can be interpreted as `null`.
@@ -623,10 +538,6 @@ class UninitializedType : public RegType {
                     uint16_t cache_id,
                     Kind kind)
       : RegType(klass, descriptor, cache_id, kind) {}
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kReference;
-  }
 };
 
 // A type of register holding a reference to an Object of type GetClass or a
@@ -642,10 +553,6 @@ class ReferenceType final : public RegType {
   }
 
   bool HasClassVirtual() const override { return true; }
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kReference;
-  }
 
   const UninitializedReferenceType* GetUninitializedType() const {
     return uninitialized_type_;
@@ -722,10 +629,6 @@ class UnresolvedType : public RegType {
   UnresolvedType(const std::string_view& descriptor, uint16_t cache_id, Kind kind)
       REQUIRES_SHARED(Locks::mutator_lock_)
       : RegType(Handle<mirror::Class>(), descriptor, cache_id, kind) {}
-
-  AssignmentType GetAssignmentTypeImpl() const override {
-    return AssignmentType::kReference;
-  }
 };
 
 // Similar to ReferenceType except the Class couldn't be loaded. Assignability
