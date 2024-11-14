@@ -1342,13 +1342,6 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
     return false;
   }
 
-  // Don't try to devirtualize intrinsics as it breaks pattern matching from later phases.
-  // TODO(solanes): This `if` could be removed if we update optimizations like
-  // TryReplaceStringBuilderAppend.
-  if (invoke_instruction->IsIntrinsic()) {
-    return false;
-  }
-
   // Don't devirtualize to an intrinsic invalid after the builder phase. The ArtMethod might be an
   // intrinsic even when the HInvoke isn't e.g. java.lang.CharSequence.isEmpty (not an intrinsic)
   // can get devirtualized into java.lang.String.isEmpty (which is an intrinsic).
@@ -1418,9 +1411,13 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
   *replacement = new_invoke;
 
   MaybeReplaceAndRemove(*replacement, invoke_instruction);
-  // No need to call MaybeRunReferenceTypePropagation, as we know the return type
-  // cannot be more specific.
-  DCHECK(!ReturnTypeMoreSpecific(*replacement, invoke_instruction));
+  if (ReturnTypeMoreSpecific(*replacement, invoke_instruction)) {
+    // Actual return value has a more specific type than the method's declared
+    // return type. Run RTP again on the outer graph to propagate it.
+    ReferenceTypePropagation(graph_,
+                             outer_compilation_unit_.GetDexCache(),
+                             /* is_first_run= */ false).Run();
+  }
   return true;
 }
 
