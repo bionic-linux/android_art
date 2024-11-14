@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22988b8_cdde2626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-14T19:30:11Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using https://source.corp.google.com/search?q\u003dgenerate-boot-image.cc?",
+      "revId": "69cc92b07532bd68cca47bd05a7bd78b6017ae46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
