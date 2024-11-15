@@ -1,6 +1,5 @@
-#!/bin/bash
 #
-# Copyright (C) 2016 The Android Open Source Project
+# Copyright (C) 2024 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,14 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# We push art and its dependencies to '/data/local/tmp', but the 'stack'
-# script expect things to be in '/'. So we just remove the
-# '/data/local/tmp' prefix.
-if [[ -n "$1" ]]; then
-  cat $1
-else
-  adb logcat -d
-fi | sed 's,/data/local/tmp,,g' | development/scripts/stack
-
-# Always return 0 to avoid having the buildbot complain about wrong stacks.
-exit 0
+BOOTCLASSPATH = [
+  "/apex/com.android.art/javalib/core-oj.jar",
+  "/apex/com.android.art/javalib/core-libart.jar",
+  "/apex/com.android.art/javalib/okhttp.jar",
+  "/apex/com.android.art/javalib/bouncycastle.jar",
+  "/apex/com.android.art/javalib/apache-xml.jar",
+  "/apex/com.android.i18n/javalib/core-icu4j.jar",
+  "/apex/com.android.conscrypt/javalib/conscrypt.jar",
+]
