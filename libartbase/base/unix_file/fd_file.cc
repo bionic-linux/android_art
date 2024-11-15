@@ -49,6 +49,17 @@
 
 namespace unix_file {
 
+// f2fs decompress issue.
+static bool b376814207() {
+  return true;  // TODO
+}
+
+// Used to work around kernel bugs.
+bool AllowSparseFiles() {
+  static bool allow = !b376814207();
+  return allow;
+}
+
 #if defined(_WIN32)
 // RAII wrapper for an event object to allow asynchronous I/O to correctly signal completion.
 class ScopedEvent {
@@ -534,7 +545,7 @@ bool FdFile::SparseWrite(const uint8_t* data,
                          size_t size,
                          const std::vector<uint8_t>& zeroes) {
   DCHECK_GE(zeroes.size(), size);
-  if (memcmp(zeroes.data(), data, size) == 0) {
+  if (memcmp(zeroes.data(), data, size) == 0 && AllowSparseFiles()) {
     // These bytes are all zeroes, skip them by moving the file offset via lseek SEEK_CUR (available
     // since linux kernel 3.1).
     if (TEMP_FAILURE_RETRY(lseek(Fd(), size, SEEK_CUR)) < 0) {
