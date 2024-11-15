@@ -1,0 +1,105 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ecaf28_861c0a68",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-15T01:32:03Z",
+      "side": 1,
+      "message": "yeah, so may also need to do this for .dex, .art files",
+      "range": {
+        "startLine": 2284,
+        "startChar": 23,
+        "endLine": 2284,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d84eced5_92b4135e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2285,
+                "startChar": 0,
+                "endLine": 2288,
+                "endChar": 0
+              },
+              "replacement": "     for (size_t i \u003d 0; i \u003c files-\u003esize(); ++i) {\n       std::unique_ptr\u003cFile\u003e\u0026 file \u003d files-\u003eat(i);\n       LOG(INFO) \u003c\u003c file-\u003eGetPath();\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2289,
+                "startChar": 0,
+                "endLine": 2296,
+                "endChar": 0
+              },
+              "replacement": "       struct statfs64 fsInfo;\n       int result \u003d statfs64(file-\u003eGetPath().c_str(), \u0026fsInfo);\n       if (result \u003c 0) {\n         PLOG(ERROR) \u003c\u003c \"Failed to stat \" \u003c\u003c file-\u003eGetPath();\n         error \u003d true;\n         continue;\n       }\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2297,
+                "startChar": 0,
+                "endLine": 2298,
+                "endChar": 0
+              },
+              "replacement": "       LOG(INFO) \u003c\u003c file-\u003eGetPath() \u003c\u003c \" super magic \" \u003c\u003c fsInfo.f_type;\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2299,
+                "startChar": 0,
+                "endLine": 2306,
+                "endChar": 0
+              },
+              "replacement": "       // this is trying to avoid the issue, which was solved in f2fs with\n       // https://lore.kernel.org/lkml/20240819083431-1-youngjin.gil@samsung.com/\n       // TODO: scope to old kernel versions?\n       // TODO: scope to \u003c\u003d Android U?\n       // TODO: scope only to those OEMs which this affects.\n       if (fsInfo.f_type !\u003d F2FS_SUPER_MAGIC)\n         continue;\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2307,
+                "startChar": 0,
+                "endLine": 2313,
+                "endChar": 0
+              },
+              "replacement": "       unsigned int flags;\n       if (ioctl(file-\u003eFd(), FS_IOC_GETFLAGS, \u0026flags)) {\n         PLOG(ERROR) \u003c\u003c \"Could not get flags for \" \u003c\u003c file-\u003eFd();\n         error \u003d true;\n         continue;\n       }\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2314,
+                "startChar": 0,
+                "endLine": 2315,
+                "endChar": 0
+              },
+              "replacement": "       flags |\u003d FS_NOCOMP_FL;\n"
+            },
+            {
+              "path": "dex2oat/dex2oat.cc",
+              "range": {
+                "startLine": 2316,
+                "startChar": 0,
+                "endLine": 2322,
+                "endChar": 0
+              },
+              "replacement": "       if (ioctl(file-\u003eFd(), FS_IOC_SETFLAGS, \u0026flags)) {\n         PLOG(ERROR) \u003c\u003c \"Could not set nocomp ioc flags for \" \u003c\u003c file-\u003eFd();\n         error \u003d true;\n         continue;\n       }\n     }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b76cf3db05d063c445bc1f41c55a241c0f6fc62f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
