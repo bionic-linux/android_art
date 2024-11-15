@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee3d15d_4303b6f9",
+        "filename": "test/README.chroot.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:09:11Z",
+      "side": 1,
+      "message": "`ART_TEST_QUIET\u003dtrue` will show logging for the failures only. When it is false, it will show output for all tests.\n\nAdding @dsrbecky@google.com who worked on these flags, and it planning on refactoring the \"always clean\" one",
+      "range": {
+        "startLine": 223,
+        "startChar": 38,
+        "endLine": 223,
+        "endChar": 74
+      },
+      "revId": "5e40482587cd744acf48403ddae55dca29c19d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
