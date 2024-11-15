@@ -16,6 +16,52 @@
       "message": "+1 after cursory review, to allow respin (with PS2) to start.",
       "revId": "dba45cbfa99288568ba449508356e219f908340d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b52a4c1_5ebf4d77",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-15T22:37:11Z",
+      "side": 1,
+      "message": "nit: go/16kb prefer \u00274 KB\u0027 everywhere (obviously ignore this and just submit, but hey)",
+      "range": {
+        "startLine": 569,
+        "startChar": 72,
+        "endLine": 569,
+        "endChar": 74
+      },
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74296b1e_5f3b74cf",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3505,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-15T22:37:11Z",
+      "side": 1,
+      "message": "We can simplify and remove a lot of #defs as well, since this is the default and always on. Like this change, it\u0027s much easier to only change that one value, not the other values.",
+      "range": {
+        "startLine": 3505,
+        "startChar": 0,
+        "endLine": 3505,
+        "endChar": 29
+      },
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
