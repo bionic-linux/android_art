@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "487ea766_cfc5b1ca",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4317,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-15T17:26:49Z",
+      "side": 1,
+      "message": "But `decl_class` is just read from memory and is compared against data in memory only. Why is poisoning needed here? (it takes slow path without poisoning)\n\n\u003e You are probably not running with poisoning enabled and that\u0027s why this was succeeding.\n\nI guess\n`__ cmpl(call_site_type, Address(method_handle, mirror::MethodHandle::MethodTypeOffset()));`\n\nwas always false when poisoning is enabled and slow path was executed.",
+      "parentUuid": "531d5de7_23498045",
+      "range": {
+        "startLine": 4316,
+        "startChar": 0,
+        "endLine": 4317,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3876af4_74a2a82e",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 6
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "That one uses `Int32` internally instead of `Uint32` so the raw value can be static_casted into the wrong type. Not sure if this can result into errors",
       "parentUuid": "47abf61f_0bb56924",
+      "range": {
+        "startLine": 4331,
+        "startChar": 63,
+        "endLine": 4331,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c14d248_3ca4207c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4331,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-15T17:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6bf18a_2366436c",
       "range": {
         "startLine": 4331,
         "startChar": 63,
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "Ah I see. Maybe a comment like:\n```\n`temp + counter * TIMES_4 + iftable_data_offset` points to `(class, method array)`. To get the method array, we can add kHeapReferenceSize\n```\n\nbefore `    // temp \u003d iftable-\u003eGetMethodArray(counter / 2)`.",
       "parentUuid": "285a1c24_d7c624bf",
+      "range": {
+        "startLine": 4344,
+        "startChar": 50,
+        "endLine": 4344,
+        "endChar": 90
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd89621c_e0fd5989",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4344,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-15T17:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bad4993_b1129b47",
       "range": {
         "startLine": 4344,
         "startChar": 50,
