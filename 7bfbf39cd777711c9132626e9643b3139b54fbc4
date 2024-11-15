@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fb82c87_8c9fb8a8",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2318,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T11:54:51Z",
+      "side": 1,
+      "message": "Iiuc this approach is blocked on sepolicy.",
+      "range": {
+        "startLine": 2318,
+        "startChar": 12,
+        "endLine": 2318,
+        "endChar": 54
+      },
+      "revId": "7bfbf39cd777711c9132626e9643b3139b54fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e23a3258_f7fe5f6f",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 2
