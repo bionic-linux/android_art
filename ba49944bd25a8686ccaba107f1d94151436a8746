@@ -1,0 +1,252 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c4d3c0_ccc1a170",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Spello: \"under\"(?)",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99d5aac_ea61bb3e",
+        "filename": "libartpalette/include/palette/palette_method_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Please add a new header like this one.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 69
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc4c838_5a42ecff",
+        "filename": "libartpalette/include/palette/palette_method_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "There are constants for these in palette_system.h.\n\nEven so, this approach only works if we never change `kMinManagedThreadPriority` or `kMaxManagedThreadPriority`. Is it wise to lock ourselves into that limitation? Otherwise we\u0027ll need an API to query them as well.",
+      "range": {
+        "startLine": 99,
+        "startChar": 62,
+        "endLine": 100,
+        "endChar": 63
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28d6dad_15c47153",
+        "filename": "libartpalette/include/palette/palette_method_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "`int32_t`? It seems to be the type for these priorities elsewhere, and the NDK API guidelines advocate fixed size types: go/android-ndk-api-guidelines#fixed-size-types",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7b680d74_59267b07",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartpalette/include/palette/palette_method_list.h",
+              "range": {
+                "startLine": 102,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": "  M(PaletteGetPriorityMapping, int32_t* result, int32_t managed_start_priority, size_t npriorities)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613753dc_04ea3006",
+        "filename": "libartpalette/include/palette/palette_method_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Please add API tests for the function in palette_test.cc.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b79d43_91a12e57",
+        "filename": "libartpalette/libartpalette.map",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Like in the other CL, the new function needs a new section with a new version, with the corresponding change in Android.bp.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d815afa_ced29cba",
+        "filename": "libartpalette/libartpalette.map",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "I don\u0027t think this matters here, but for the sake of consistency please make it `apex` like the others. (This file really shouldn\u0027t exist at all, and it\u0027s also part of b/265435354 to get rid of it.)",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac0f50d_93b1a5f2",
+        "filename": "libartpalette/system/palette_fake.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Please add a corresponding comment to the new function.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 62
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1486ffd_db2e288b",
+        "filename": "libartpalette/system/palette_fake.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Thanks.",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff81bfd9_17488d28",
+        "filename": "libartpalette/system/palette_fake.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T19:45:18Z",
+      "side": 1,
+      "message": "Please use `art:palette::k*ManagedThreadPriority` constants.",
+      "range": {
+        "startLine": 161,
+        "startChar": 29,
+        "endLine": 161,
+        "endChar": 30
+      },
+      "revId": "ba49944bd25a8686ccaba107f1d94151436a8746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
