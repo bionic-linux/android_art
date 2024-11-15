@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976cd3b1_20ebe4c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "I don\u0027t see how this optimization helps the branch predictor. It does not eliminate any branches.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a06029_dbf8bd6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "`LoadClass` can be merged only if it\u0027s non-throwing, i.e. if it\u0027s in the boot/app image. For a throwing `LoadClass`, we\u0027d need to extend the `Environment` and stack maps to encode different environments for the same PC and a discriminator to choose from them.",
+      "range": {
+        "startLine": 19,
+        "startChar": 50,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db72109f_ad4a6c6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "`ClinitCheck` can throw, so the same as for a throwing `LoadClass` applies.",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10bd2426_81a54ea7",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "Always false because we split critical edges. Change to `DCHECK()` and add a comment.",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 97
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e834fc_88a69e00",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "If the instruction has an environment, we need to check that the two environments and dex PCs are identical. And that can happen only if an instruction was cloned by some other pass.\n\nIf they are not identical, we\u0027d need to extend the `Environment` and stack maps, see comments in the commit message.",
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9231e492_4436c7e0",
+        "filename": "compiler/optimizing/code_pulling.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "This is a critical edge and we split those, so this is not a case we can encounter.",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3aa17f_5489f664",
+        "filename": "test/2284-checker-pull-common-code/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "But if the merged `LoadClass` or `ClinitCheck` throws here, we may or may not report the wrong line, depending on the value of `b`.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecbe27f_b06722ee",
+        "filename": "test/474-checker-boolean-input/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-15T10:41:14Z",
+      "side": 1,
+      "message": "I guess the `$inline$Phi()` got reduced to a `Select`, right? To preserve the intent of this test, we\u0027d need to add some other instructions to the then-block and/or else-block in `$inline$Phi()`.",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
