@@ -459,7 +459,9 @@ const UninitializedType& RegTypeCache::UninitializedThisArgument(const RegType& 
     for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
       const RegType* cur_entry = entries_[i];
       if (cur_entry->IsUnresolvedUninitializedThisReference() &&
-          cur_entry->GetDescriptor() == descriptor) {
+          down_cast<const UnresolvedUninitializedThisReferenceType*>(cur_entry)
+              ->GetInitializedType() == &type) {
+        DCHECK_EQ(cur_entry->GetDescriptor(), type.GetDescriptor());
         return *down_cast<const UninitializedType*>(cur_entry);
       }
     }
@@ -470,7 +472,10 @@ const UninitializedType& RegTypeCache::UninitializedThisArgument(const RegType& 
     ObjPtr<mirror::Class> klass = type.GetClass();
     for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
       const RegType* cur_entry = entries_[i];
-      if (cur_entry->IsUninitializedThisReference() && cur_entry->GetClass() == klass) {
+      if (cur_entry->IsUninitializedThisReference() &&
+          down_cast<const UninitializedThisReferenceType*>(cur_entry)
+              ->GetInitializedType() == &type) {
+        DCHECK_EQ(cur_entry->GetDescriptor(), type.GetDescriptor());
         return *down_cast<const UninitializedType*>(cur_entry);
       }
     }
