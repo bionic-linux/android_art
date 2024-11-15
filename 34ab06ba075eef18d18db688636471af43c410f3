@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6ccc25_290b3654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:50:08Z",
+      "side": 1,
+      "message": "Hi Martin, I need your +2 on this CL again. Thanks.",
+      "revId": "34ab06ba075eef18d18db688636471af43c410f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
