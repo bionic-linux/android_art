@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "437c6681_50dbcf06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "It can potentially make the branches just a HGoto. Even if it can\u0027t remove all instructions, there will be less divergence among branches so there is less pressure on the branch predictor.",
+      "parentUuid": "976cd3b1_20ebe4c9",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78a06029_dbf8bd6e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-15T10:41:14Z",
       "side": 1,
       "message": "`LoadClass` can be merged only if it\u0027s non-throwing, i.e. if it\u0027s in the boot/app image. For a throwing `LoadClass`, we\u0027d need to extend the `Environment` and stack maps to encode different environments for the same PC and a discriminator to choose from them.",
+      "range": {
+        "startLine": 19,
+        "startChar": 50,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a4da92_d2351849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Updated the CL. Sadly, it is pretty rare to have the same dex pc and environment and these kinds of instructions are usually at the top of the BasicBlocks so it blocks other instructions from moving.\n\nWe could try to change the optimization to try moving other instructions upwards too e.g.\n```\n If\n/  \\\nA   D\nB   B\nC   E\n```\nbut I\u0027d think it is pretty rare that `B` wouldn\u0027t use a previous throwing instruction e.g. a NullCheck.\n\nI will mark the CL as WIP for now and reassess at a later point whether implementing the discriminator makes sense.",
+      "parentUuid": "78a06029_dbf8bd6e",
       "range": {
         "startLine": 19,
         "startChar": 50,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ccca60_089d7624",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Let\u0027s merge this thread in the LoadClass one, since the resolution will be the same",
+      "parentUuid": "db72109f_ad4a6c6a",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10bd2426_81a54ea7",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-11-15T10:41:14Z",
       "side": 1,
       "message": "Always false because we split critical edges. Change to `DCHECK()` and add a comment.",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 97
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc489fa_1432bd2e",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10bd2426_81a54ea7",
       "range": {
         "startLine": 77,
         "startChar": 8,
@@ -110,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e4c597_3c941438",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Done. Let\u0027s continue the conversation in the other thread to keep only one open.",
+      "parentUuid": "54e834fc_88a69e00",
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9231e492_4436c7e0",
@@ -123,6 +237,30 @@
       "writtenOn": "2024-11-15T10:41:14Z",
       "side": 1,
       "message": "This is a critical edge and we split those, so this is not a case we can encounter.",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf6312b_75cd8297",
+        "filename": "compiler/optimizing/code_pulling.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Ack, removed that case.",
+      "parentUuid": "9231e492_4436c7e0",
       "range": {
         "startLine": 60,
         "startChar": 10,
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e477266b_9afe8705",
+        "filename": "test/2284-checker-pull-common-code/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "Done. Let\u0027s continue the conversation in the other thread to keep only one open.",
+      "parentUuid": "7c3aa17f_5489f664",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cecbe27f_b06722ee",
@@ -169,6 +331,30 @@
       "writtenOn": "2024-11-15T10:41:14Z",
       "side": 1,
       "message": "I guess the `$inline$Phi()` got reduced to a `Select`, right? To preserve the intent of this test, we\u0027d need to add some other instructions to the then-block and/or else-block in `$inline$Phi()`.",
+      "range": {
+        "startLine": 48,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "a71f8f5875d6f52b516b690256793bd4fbc2bfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7203b9e7_06dfcb35",
+        "filename": "test/474-checker-boolean-input/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T15:11:44Z",
+      "side": 1,
+      "message": "We could do that, but if the test is just checking `that integer Phis are accepted as Boolean inputs` then these CHECKs work too right?",
+      "parentUuid": "cecbe27f_b06722ee",
       "range": {
         "startLine": 48,
         "startChar": 6,
