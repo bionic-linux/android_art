@@ -32,7 +32,11 @@
 #include <vector>
 
 #if defined(__linux__)
+#include <linux/fs.h>
+#include <linux/magic.h>
 #include <sched.h>
+#include <sys/ioctl.h>
+#include <sys/vfs.h>
 #if defined(__arm__)
 #include <sys/personality.h>
 #include <sys/utsname.h>
@@ -2273,6 +2277,55 @@ class Dex2Oat final {
     return true;
   }
 
+  bool DisallowAllFileCompression() {
+#ifdef __linux__
+    TimingLogger::ScopedTiming t2("dex2oat Disallow file compression", timings_);
+    bool error = false;
+    for (auto& files : {&vdex_files_, &oat_files_}) {
+      for (size_t i = 0; i < files->size(); ++i) {
+        std::unique_ptr<File>& file = files->at(i);
+        LOG(INFO) << file->GetPath();
+
+        struct statfs64 fsInfo;
+        int result = statfs64(file->GetPath().c_str(), &fsInfo);
+        if (result < 0) {
+          PLOG(ERROR) << "Failed to stat " << file->GetPath();
+          error = true;
+          continue;
+        }
+
+        LOG(INFO) << file->GetPath() << " super magic " << fsInfo.f_type;
+
+        // this is trying to avoid the issue, which was solved in f2fs with
+        // https://lore.kernel.org/lkml/20240819083430.31852-1-youngjin.gil@samsung.com/
+        // TODO: scope to old kernel versions?
+        // TODO: scope to <= Android U?
+        // TODO: scope only to those OEMs which this affects.
+        if (fsInfo.f_type != F2FS_SUPER_MAGIC)
+          continue;
+
+        unsigned int flags;
+        if (ioctl(file->Fd(), FS_IOC_GETFLAGS, &flags)) {
+          PLOG(ERROR) << "Could not get flags for " << file->Fd();
+          error = true;
+          continue;
+        }
+
+        flags |= FS_NOCOMP_FL;
+
+        if (ioctl(file->Fd(), FS_IOC_SETFLAGS, &flags)) {
+          PLOG(ERROR) << "Could not set nocomp ioc flags for " << file->Fd();
+          error = true;
+          continue;
+        }
+      }
+    }
+    return !error;
+#else
+    return true;
+#endif
+  }
+
   bool FlushOutputFile(std::unique_ptr<File>* file) {
     if ((file->get() != nullptr) && !file->get()->ReadOnlyMode()) {
       if (file->get()->Flush() != 0) {
@@ -3083,9 +3136,14 @@ static dex2oat::ReturnCode DoCompilation(Dex2Oat& dex2oat) REQUIRES(!Locks::muta
     return dex2oat::ReturnCode::kOther;
   }
 
-  // Creates the boot.art and patches the oat files.
+  // FIXME: also need to save this FD to de-sparse (pending one of questions on
+  // b/376814207#comment34). Creates the boot.art and patches the oat files.
   if (!dex2oat.HandleImage()) {
     return dex2oat::ReturnCode::kOther;
+  }
+
+  if (!dex2oat.DisallowAllFileCompression()) {
+    // FIXME: file follow-up to fail hard. Probably land softly.
   }
 
   // When given --host, finish early without stripping.
