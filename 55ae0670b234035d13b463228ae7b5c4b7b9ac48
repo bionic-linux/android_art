@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41758f9_92502d16",
+        "filename": "test/globals.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-15T08:45:55Z",
+      "side": 1,
+      "message": "4",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "55ae0670b234035d13b463228ae7b5c4b7b9ac48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b026eaf4_e7c2d0a8",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-15T08:45:55Z",
+      "side": 1,
+      "message": "Is it worth extracting the prefix into a variable that would be initialized based on ART_TEST_RUN_FROM_SOONG?",
+      "range": {
+        "startLine": 182,
+        "startChar": 29,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "55ae0670b234035d13b463228ae7b5c4b7b9ac48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a2e96a_e3b49050",
+        "filename": "test/run_test_build.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-11-15T08:45:55Z",
+      "side": 1,
+      "message": "Can you expand the comment to clarify that it compiles the testing boot image on device (it has no change of doing so on host because the dex paths don\u0027t have a prefix), and also mention the other existing way of compiling boot image using generate-boot-image.cc? Just so anyone looking at this won\u0027t be confused.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 50
+      },
+      "revId": "55ae0670b234035d13b463228ae7b5c4b7b9ac48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
