@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929f43bf_8dbbdd4b",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:05:27Z",
+      "side": 1,
+      "message": "WDYT about adding `print_text(\"Forcing the number of threads to 1 since FVP doesn\u0027t support multithreading\")`?\n\nWe print a similar thing in dex2oat to let the user know why this is running single threaded https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/dex2oat.cc;l\u003d1229-1234;drc\u003da202343b6dd492bea383f9babc427dfa2e274b7d",
+      "fixSuggestions": [
+        {
+          "fixId": "76fe779d_47944491",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/testrunner/testrunner.py",
+              "range": {
+                "startLine": 318,
+                "startChar": 0,
+                "endLine": 318,
+                "endChar": 0
+              },
+              "replacement": "      print_text(\"Forcing the number of threads to 1 since FVP doesn\u0027t support multithreading\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4c92f3499ff894814b9c72a7fd9e1df52dd34f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
