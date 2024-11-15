@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a458101_c5f343f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-15T18:22:22Z",
+      "side": 1,
+      "message": "+1 after cursory review, to allow respin (with PS2) to start.",
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
