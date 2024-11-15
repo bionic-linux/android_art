@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2040ba_5a960630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cbf3024_d4e0e0b6",
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39ca3f42_94abe751",
@@ -69,6 +87,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a396380_69dfe5d7",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:49:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "39ca3f42_94abe751",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 37
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "873c869b_d5af962c",
@@ -82,6 +124,30 @@
       "writtenOn": "2024-11-14T21:07:12Z",
       "side": 1,
       "message": "I\u0027d like to confirm we have the sepolicy to do this. Is it the `getattr` permission from [this line](https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/dexopt_chroot_setup.te;l\u003d136;drc\u003db0d75afc8cf2ab8a54f5c0307c3c3905debb6cb6)?",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65799f0_3b9ec492",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:49:37Z",
+      "side": 1,
+      "message": "Thanks for bringing this up! It turned out that we don\u0027t have the sepolicy to do this! I think we can only check the path name then.",
+      "parentUuid": "873c869b_d5af962c",
       "range": {
         "startLine": 166,
         "startChar": 6,
@@ -115,6 +181,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b58e5a_78f8213c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:49:37Z",
+      "side": 1,
+      "message": "My understanding is that the whole string is constant.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/file_contexts;l\u003d610;drc\u003d48966b6105be61ea89f42310532582a2059f2b89\n\nAnyway, this is irrelevant now.",
+      "parentUuid": "38569dc7_41d5db4e",
+      "range": {
+        "startLine": 341,
+        "startChar": 32,
+        "endLine": 341,
+        "endChar": 60
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a48872e6_f0582e13",
@@ -128,6 +218,30 @@
       "writtenOn": "2024-11-14T21:07:12Z",
       "side": 1,
       "message": "There\u0027s a guarantee that apps aren\u0027t entered into the snapshot until they\u0027re fully installed and the temporary directory is gone?",
+      "range": {
+        "startLine": 343,
+        "startChar": 80,
+        "endLine": 344,
+        "endChar": 37
+      },
+      "revId": "b9f0a1873f74bbf0ff3cf3d2c190a1414ef34a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e980110e_d5e0f70b",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-15T22:49:37Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. I can only tell from my observation that apps being installed are not in the snapshot, but even if they are, we will just get a dexopt failure on those particular apps, which is not the end of the world.",
+      "parentUuid": "a48872e6_f0582e13",
       "range": {
         "startLine": 343,
         "startChar": 80,
