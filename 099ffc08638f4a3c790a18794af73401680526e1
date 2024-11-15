@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c09b1f_091802ab",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4313,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:50:49Z",
+      "side": 1,
+      "message": "FYI this is common for both the invoke interface and invoke virtual path. Not sure if there\u0027s an easy way to deduplicate it without more `cmp` or a refactor, though.\n\nIf you do a refactor, I\u0027d move the `  __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeStatic));` near the `Direct` check above since they are similar.",
+      "range": {
+        "startLine": 4312,
+        "startChar": 0,
+        "endLine": 4313,
+        "endChar": 43
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddaa7142_50e3744e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4317,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:50:49Z",
+      "side": 1,
+      "message": "```\n    __ movl(temp, Address(receiver, mirror::Object::ClassOffset().Int32Value()));\n    __ MaybeUnpoisonHeapReference(temp);\n    __ movl(temp, Address(temp, mirror::Class::IfTableOffset().Uint32Value()));\n    __ MaybeUnpoisonHeapReference(temp);\n```\nemulating https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_x86_64.cc;l\u003d7394-7399;drc\u003df8ac417533d9ebee6d02ad84a1e6a6b056e6720d\n\nIn that code they are also maybe poisoning the class (`decl_class` in your case) so that they don\u0027t have to maybe unpoison each class.\n\nYou are probably not running with poisoning enabled and that\u0027s why this was succeeding.",
+      "range": {
+        "startLine": 4316,
+        "startChar": 0,
+        "endLine": 4317,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3876af4_74a2a82e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4331,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:50:49Z",
+      "side": 1,
+      "message": "`.Uint32Value()`",
+      "range": {
+        "startLine": 4331,
+        "startChar": 63,
+        "endLine": 4331,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd011b6a_5b5d9bfc",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4344,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-15T09:50:49Z",
+      "side": 1,
+      "message": "You found the match in the loop with `Address(temp, counter, TIMES_4, iftable_data_offset)`. Why are you adding kHeapReferenceSize?",
+      "range": {
+        "startLine": 4344,
+        "startChar": 50,
+        "endLine": 4344,
+        "endChar": 90
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
