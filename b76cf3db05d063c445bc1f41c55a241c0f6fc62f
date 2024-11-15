@@ -100,6 +100,29 @@
       ],
       "revId": "b76cf3db05d063c445bc1f41c55a241c0f6fc62f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f79e44b_677359f2",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2314,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-15T04:06:32Z",
+      "side": 1,
+      "message": "and also if please someone from Art team tries this, can take it over, or point out where, someone bdc@ told me this may need to be set before the file is ever written to",
+      "range": {
+        "startLine": 2314,
+        "startChar": 17,
+        "endLine": 2314,
+        "endChar": 29
+      },
+      "revId": "b76cf3db05d063c445bc1f41c55a241c0f6fc62f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
