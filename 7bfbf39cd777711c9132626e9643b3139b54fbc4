@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23a3258_f7fe5f6f",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-15T06:33:25Z",
+      "side": 1,
+      "message": "well, this fails with an SELinux denial, so it\u0027s a no go:\n\n    11-15 06:20:57.856 12074 12074 I dex2oat : type\u003d1400 audit(0.0:325): avc:  denied  { setattr } for  path\u003d\"/data/dalvik-cache/arm64/product@priv-app@Velvet@Velvet.apk@classes.vdex.s00AfH.tmp\" dev\u003d\"dm-59\" ino\u003d11998 scontext\u003du:r:dex2oat:s0 tcontext\u003du:object_r:dalvikcache_data_file:s0 tclass\u003dfile permissive\u003d0\n\nf2fs also returns \u0027operation not permitted here\u0027 if I disable SELinux. I think that the flag would need to be set earlier, but it\u0027s not worth trying if it\u0027s blocked by SELinux.",
+      "range": {
+        "startLine": 2326,
+        "startChar": 12,
+        "endLine": 2326,
+        "endChar": 17
+      },
+      "revId": "7bfbf39cd777711c9132626e9643b3139b54fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
