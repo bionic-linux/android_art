@@ -65,6 +65,7 @@
 #include "oat/oat_file.h"
 #include "profile/profile_compilation_info.h"
 #include "runtime.h"
+#include "runtime_globals.h"
 #include "space-inl.h"
 
 namespace art HIDDEN {
@@ -3242,6 +3243,11 @@ bool ImageSpace::BootImageLoader::LoadFromSystem(
     /*out*/MemMap* extra_reservation,
     /*out*/std::string* error_msg) {
   TimingLogger logger(__PRETTY_FUNCTION__, /*precise=*/ true, VLOG_IS_ON(image));
+
+  if (gPageSize != kMinPageSize) {
+    *error_msg = "Loading boot image is only supported on devices with 4K page size";
+    return false;
+  }
 
   BootImageLayout layout(image_locations_,
                          boot_class_path_,
