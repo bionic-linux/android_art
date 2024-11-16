@@ -269,25 +269,53 @@ public class AhatArrayInstance extends AhatInstance {
 
   /**
    * Returns the String value associated with this array.
-   * Only char arrays are considered as having an associated String value.
    */
   String asString(int offset, int count, int maxChars) {
-    if (mCharArray == null) {
-      return null;
-    }
-
-    if (count == 0) {
-      return "";
-    }
-    int numChars = mCharArray.length;
     if (0 <= maxChars && maxChars < count) {
       count = maxChars;
     }
 
-    int end = offset + count - 1;
-    if (offset >= 0 && offset < numChars && end >= 0 && end < numChars) {
-      return new String(mCharArray, offset, count);
+    if (mCharArray != null) {
+      // Always treat char arrays as strings.
+      if (count == 0) {
+        return "";
+      }
+
+      int numChars = mCharArray.length;
+      int end = offset + count - 1;
+      if (offset >= 0 && offset < numChars && end >= 0 && end < numChars) {
+        return new String(mCharArray, offset, count);
+      }
+
+      return null;
     }
+
+    if (mByteArray != null) {
+      // Treat byte arrays as strings if they look like a sequence of ascii
+      // characters.
+      int end = offset + count - 1;
+      if (offset < 0 || offset >= mByteArray.length || end < 0 || end >= mByteArray.length) {
+        return null;
+      }
+
+      for (int i = offset; i < end; ++i) {
+        if (mByteArray[i] == '\0') {
+          count = i - offset;
+          break;
+        }
+
+        if (mByteArray[i] < ' ' || mByteArray[i] > '~') {
+          // This doesn't look like a string.
+          return null;
+        }
+      }
+
+      if (count <= 0) {
+        return null;
+      }
+      return asAsciiString(offset, count, maxChars);
+    }
+
     return null;
   }
 
