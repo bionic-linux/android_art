@@ -1103,9 +1103,6 @@ bool LoopClonerHelper::IsLoopClonable(HLoopInformation* loop_info) {
 }
 
 HBasicBlock* LoopClonerHelper::DoLoopTransformationImpl(TransformationKind transformation) {
-  // For now do transformations only for natural loops.
-  DCHECK(!loop_info_->IsIrreducible());
-
   HBasicBlock* loop_header = loop_info_->GetHeader();
   // Check that loop info is up-to-date.
   DCHECK(loop_info_ == loop_header->GetLoopInformation());
