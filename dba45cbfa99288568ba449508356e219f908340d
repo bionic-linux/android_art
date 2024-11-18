@@ -41,6 +41,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd7a933_a752d962",
+        "filename": "runtime/oat/oat_file_assistant.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-18T10:20:22Z",
+      "side": 1,
+      "message": "Not sure about this: we\u0027d generate oat files with 4k alignment here no? And that\u0027s ok because we wouldn\u0027t have executable code in the oat file?\n\nAlso given the changes above line 1111, where we never load odex file, why would we want to generate files with the verify filter?",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ec467870_2b9e2b94",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/oat/oat_file_assistant.cc",
+              "range": {
+                "startLine": 1154,
+                "startChar": 0,
+                "endLine": 1160,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74296b1e_5f3b74cf",
