@@ -22,6 +22,30 @@
       },
       "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274f0c5a_002af5c3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-18T11:47:28Z",
+      "side": 1,
+      "message": "I followed https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/mirror/class-inl.h;l\u003d574;drc\u003d1cce66c0004230c737a7ef3bbc1559015d83eaa6 here.",
+      "parentUuid": "d4d62a78_9d263174",
+      "range": {
+        "startLine": 4318,
+        "startChar": 0,
+        "endLine": 4318,
+        "endChar": 48
+      },
+      "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
