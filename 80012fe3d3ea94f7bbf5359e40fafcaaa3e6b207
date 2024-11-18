@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b07da68_03c90664",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-18T11:36:39Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3b2f79bd_f490fc78",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/code_pulling.cc",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "  // Post order visit to be able to optimize nested ifs.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "80012fe3d3ea94f7bbf5359e40fafcaaa3e6b207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
