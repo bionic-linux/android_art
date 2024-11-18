@@ -165,6 +165,30 @@
       },
       "revId": "ada19239b33acf4e01f3f18d18596c94c202a7c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e5bca9_ae3d0fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-18T11:48:38Z",
+      "side": 1,
+      "message": "OK, can you add a comment in arm64ng/main.S that we deliberately don\u0027t use implicit suspend checks because they wouldn\u0027t work with execute-only binary?",
+      "parentUuid": "7bff9b47_a330f7b3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "ada19239b33acf4e01f3f18d18596c94c202a7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
