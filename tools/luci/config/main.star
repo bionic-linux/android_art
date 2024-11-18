@@ -175,8 +175,7 @@ luci.gitiles_poller(
     refs = ["refs/heads/master-art"],
 )
 
-def ci_builder(name, category, short_name, dimensions, properties={},
-               experiments={}, hidden=False):
+def ci_builder(name, category, short_name, dimensions, properties={}, hidden=False):
     luci.builder(
         name = name,
         bucket = "ci",
@@ -211,7 +210,6 @@ def ci_builder(name, category, short_name, dimensions, properties={},
             "manifest",
             "vogar",
         ],
-        experiments = experiments,
     )
     if not hidden:
         luci.console_view_entry(
@@ -299,14 +297,11 @@ def add_builder(mode,
         "testrunner_args": testrunner_args,
     }
 
-    experiments = {"art.superproject": 100} if mode == "qemu" else {}
-
     ci_builder(name=name,
                category="|".join(category.split("|")[:-1]),
                short_name=category.split("|")[-1],
                dimensions=dimensions,
                properties={k:v for k, v in properties.items() if v},
-               experiments=experiments,
                hidden=hidden)
 
 def add_builders():
