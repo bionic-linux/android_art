@@ -16,6 +16,24 @@
       "message": "Adding vmarko to assess whether this change is safe to switch back to 4K alignment in OAT and ART image files, PTAL.",
       "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e6db85_92d4b548",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-18T16:04:03Z",
+      "side": 1,
+      "message": "I\u0027d recommend incrementing the oat version. (Though I heard that ART now recompiles everything even if the only thing that changes is the ART module version.)",
+      "parentUuid": "e17e1d05_583afc76",
+      "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
