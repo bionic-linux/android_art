@@ -721,10 +721,6 @@ class HLoopInformation : public ArenaObject<kArenaAllocLoopInfo> {
     return header_;
   }
 
-  void SetHeader(HBasicBlock* block) {
-    header_ = block;
-  }
-
   HSuspendCheck* GetSuspendCheck() const { return suspend_check_; }
   void SetSuspendCheck(HSuspendCheck* check) { suspend_check_ = check; }
   bool HasSuspendCheck() const { return suspend_check_ != nullptr; }
@@ -807,7 +803,7 @@ class HLoopInformation : public ArenaObject<kArenaAllocLoopInfo> {
   void PopulateRecursive(HBasicBlock* block);
   void PopulateIrreducibleRecursive(HBasicBlock* block, ArenaBitVector* finalized);
 
-  HBasicBlock* header_;
+  HBasicBlock* const header_;
   HSuspendCheck* suspend_check_;
   bool irreducible_;
   bool contains_irreducible_loop_;
