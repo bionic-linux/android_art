@@ -16,6 +16,23 @@
       "message": "Friendly ping",
       "revId": "87bb64c286c81492075ef2a6c176db36023c7cab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c54683_3642a3cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T11:32:44Z",
+      "side": 1,
+      "message": "Hi Nicolas, hope you had a good weekend! Could you find some time to take another look at this CL when you get a chance? It\u0027s not urgent, but it\u0027s been hanging around for a bit. Thanks!",
+      "revId": "87bb64c286c81492075ef2a6c176db36023c7cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
