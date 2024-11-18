@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90e7f948_01495937",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4317,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-18T10:10:13Z",
+      "side": 1,
+      "message": "Not sure about the poisoning rules regarding the declaring class in the iftable. Maybe @vmarko@google.com or @hboehm@google.com know",
+      "parentUuid": "710bf045_71bb5cc2",
+      "range": {
+        "startLine": 4316,
+        "startChar": 0,
+        "endLine": 4317,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3876af4_74a2a82e",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 6
