@@ -1595,6 +1595,7 @@
                 "050-sync-test",
                 "083-compiler-regressions",
                 "137-cfi",
+                "905-object-free",
                 "913-heaps",
                 "989-method-trace-throw",
                 "2029-contended-monitors",
@@ -1617,7 +1618,7 @@
                 "2239-varhandle-perf-vh-unsafe-get",
                 "2239-varhandle-perf-vh-unsafe-put"],
       "bug": "b/328023607",
-      "description": ["Fails on QEMU"],
+      "description": ["Fails or times out on QEMU"],
       "env_vars": {"ART_TEST_ON_VM": "true"}
     },
     {
