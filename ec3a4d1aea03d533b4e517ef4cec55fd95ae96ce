@@ -46,6 +46,30 @@
       },
       "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ac62a0_15d6fa2e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-18T11:53:19Z",
+      "side": 1,
+      "message": "I think you can follow CodeGeneratorX86_64::VisitInvokeInterface.",
+      "parentUuid": "274f0c5a_002af5c3",
+      "range": {
+        "startLine": 4318,
+        "startChar": 0,
+        "endLine": 4318,
+        "endChar": 48
+      },
+      "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
