@@ -84,6 +84,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ff6457ad_d6fe96c0",
+        "filename": "runtime/oat/oat_file_assistant.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T11:11:51Z",
+      "side": 1,
+      "message": "The function affects the result of GetDexOptNeeded. I added these lines to avoid repeated recompilation during bg-dexopt on 16KB page devices.\n\nOn 16KB page devices, because we reject to open the oat file, `file` is the vdex, and `current` is \"verify\".\n\nWithout these lines, `target` will be \"speed-profile\", so `GetDexOptNeeded` will return true. This will repeatedly happen everyday during bg-dexopt.\n\nAfter adding these lines, we will only compile the app if `current` is less than \"verify\" (e.g., \"run-from-apk\"). This happens when an app is newly installed. In this case, we will still generate the oat file with 4K alignment, which will admittedly waste some cycles, but the oat file won\u0027t be opened because the change on line 1111 will prevent it.\n\nI didn\u0027t change dex2oat because I wanted to minimize the change, but I\u0027m open to other suggestions if you have a better approach.",
+      "parentUuid": "2fd7a933_a752d962",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 37
+      },
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74296b1e_5f3b74cf",
         "filename": "runtime/runtime.cc",
         "patchSetId": 2
