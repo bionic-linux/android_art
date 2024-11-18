@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "710bf045_71bb5cc2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4317,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-18T09:47:06Z",
+      "side": 1,
+      "message": "\u003e Why is poisoning needed here?\n\nDoes it have anything to with the fact that field is `GcRoot` or that it is defined in a native object?",
+      "parentUuid": "487ea766_cfc5b1ca",
+      "range": {
+        "startLine": 4316,
+        "startChar": 0,
+        "endLine": 4317,
+        "endChar": 65
+      },
+      "revId": "099ffc08638f4a3c790a18794af73401680526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3876af4_74a2a82e",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 6
