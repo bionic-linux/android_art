@@ -34,6 +34,24 @@
       "parentUuid": "e17e1d05_583afc76",
       "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a058ef_e89d97e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-18T17:06:48Z",
+      "side": 1,
+      "message": "ART recompiles if the mtime of the ART module changes (@jiakaiz to keep me honest), so in that regard I\u0027m not sure what a version bump will give us. It\u0027s mostly applicable to local dev use, isn\u0027t it?\n\nWhat I most would like to confirm is that there are no other side-effects from switching back to 4K alignment in 4K mode.",
+      "parentUuid": "c6e6db85_92d4b548",
+      "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
