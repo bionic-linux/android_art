@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee9a960_d72a5eca",
+        "filename": "runtime/oat/oat_file_assistant.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-18T11:15:29Z",
+      "side": 1,
+      "message": "Ack. Expand the comment that this is to prevent infinite recompilations?",
+      "parentUuid": "ff6457ad_d6fe96c0",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1157,
+        "endChar": 37
+      },
+      "revId": "dba45cbfa99288568ba449508356e219f908340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74296b1e_5f3b74cf",
