@@ -247,6 +247,10 @@ class CompilerOptions final {
     return !verbose_methods_.empty();
   }
 
+  bool HasVerbosePasses() const {
+    return !verbose_passes_.empty();
+  }
+
   bool IsVerboseMethod(const std::string& pretty_method) const {
     for (const std::string& cur_method : verbose_methods_) {
       if (pretty_method.find(cur_method) != std::string::npos) {
@@ -254,6 +258,11 @@ class CompilerOptions final {
       }
     }
     return false;
+  }
+
+  bool IsVerbosePass(const std::string& pass) const {
+    return std::find(verbose_passes_.cbegin(), verbose_passes_.cend(), pass) !=
+           verbose_passes_.cend();
   }
 
   std::ostream* GetInitFailureOutput() const {
@@ -427,6 +436,9 @@ class CompilerOptions final {
 
   // Vector of methods to have verbose output enabled for.
   std::vector<std::string> verbose_methods_;
+
+  // Vector of passes to have diagnostic messages enabled for.
+  std::vector<std::string> verbose_passes_;
 
   // Abort compilation with an error if we find a class that fails verification with a hard
   // failure.

@@ -509,8 +509,9 @@ HLoopOptimization::HLoopOptimization(HGraph* graph,
                                      const CodeGenerator& codegen,
                                      HInductionVarAnalysis* induction_analysis,
                                      OptimizingCompilerStats* stats,
+                                     std::ostream* diagnostic_output,
                                      const char* name)
-    : HOptimization(graph, name, stats),
+    : HOptimization(graph, name, stats, diagnostic_output),
       compiler_options_(&codegen.GetCompilerOptions()),
       simd_register_size_(codegen.GetSIMDRegisterWidth()),
       induction_range_(induction_analysis),
@@ -537,7 +538,8 @@ HLoopOptimization::HLoopOptimization(HGraph* graph,
       vector_header_(nullptr),
       vector_body_(nullptr),
       vector_index_(nullptr),
-      arch_loop_helper_(ArchNoOptsLoopHelper::Create(codegen, global_allocator_)) {}
+      arch_loop_helper_(ArchNoOptsLoopHelper::Create(codegen, global_allocator_)),
+      vectorization_diagnostic_reporter_(nullptr) {}
 
 bool HLoopOptimization::Run() {
   // Skip if there is no loop or the graph has irreducible loops.
@@ -594,6 +596,8 @@ bool HLoopOptimization::LocalRun() {
   ScopedArenaSet<HInstruction*> ext_set(loop_allocator_->Adapter(kArenaAllocLoopOptimization));
   ScopedArenaSafeMap<HBasicBlock*, BlockPredicateInfo*> pred(
       std::less<HBasicBlock*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  VectorizationDiagnosticReporter reporter(this);
+
   // Attach.
   iset_ = &iset;
   reductions_ = &reds;
@@ -602,6 +606,7 @@ bool HLoopOptimization::LocalRun() {
   vector_permanent_map_ = &perm;
   vector_external_set_ = &ext_set;
   predicate_info_map_ = &pred;
+  vectorization_diagnostic_reporter_ = &reporter;
   // Traverse.
   const bool did_loop_opt = TraverseLoopsInnerToOuter(top_loop_);
   // Detach.
@@ -612,6 +617,7 @@ bool HLoopOptimization::LocalRun() {
   vector_permanent_map_ = nullptr;
   vector_external_set_ = nullptr;
   predicate_info_map_ = nullptr;
+  vectorization_diagnostic_reporter_ = nullptr;
 
   return did_loop_opt;
 }
@@ -881,11 +887,13 @@ bool HLoopOptimization::TryOptimizeInnerLoopFinite(LoopNode* node) {
   // Ensure loop header logic is finite.
   int64_t trip_count = 0;
   if (!induction_range_.IsFinite(node->loop_info, &trip_count)) {
+    MaybeReportDiagnostic(header->GetLastInstruction(), "loop is not finite");
     return false;
   }
   // Check loop exits.
   HBasicBlock* exit = GetInnerLoopFiniteSingleExit(node->loop_info);
   if (exit == nullptr) {
+    MaybeReportDiagnostic(header->GetLastInstruction(), "loop has multiple exits");
     return false;
   }
 
@@ -928,6 +936,9 @@ bool HLoopOptimization::TryOptimizeInnerLoopFinite(LoopNode* node) {
       // TODO: b/138601207, investigate other possible cases with wrong environment values and
       // possibly switch back vectorization on for debuggable graphs.
       graph_->IsDebuggable()) {
+    MaybeReportDiagnostic(
+        header->GetLastInstruction(),
+        kEnableVectorization ? "cannot vectorize debuggable loop" : "vectorization is disabled");
     return false;
   }
 
@@ -943,7 +954,11 @@ bool HLoopOptimization::TryVectorizePredicated(LoopNode* node,
                                                HBasicBlock* exit,
                                                HPhi* main_phi,
                                                int64_t trip_count) {
-  if (!IsPredicatedLoopControlFlowSupported(node->loop_info) ||
+  ScopedVectorizationDiagnostics svd(this);
+
+  if (VecDiagIf(!IsPredicatedLoopControlFlowSupported(node->loop_info),
+                node,
+                "predicated loop's control flow is not supported") ||
       !ShouldVectorizeCommon(node, main_phi, trip_count)) {
     return false;
   }
@@ -953,8 +968,12 @@ bool HLoopOptimization::TryVectorizePredicated(LoopNode* node,
   // TODO: Support array disambiguation tests for CF loops.
   if (NeedsArrayRefsDisambiguationTest() &&
       node->loop_info->GetBlocks().NumSetBits() != 2) {
+    VecDiag(node, "array disambiguation tests for control flow loops are not supported");
     return false;
   }
+
+  // The loop will be vectorized so remove diagnostics from prevoius attempts.
+  vectorization_diagnostic_reporter_->Clear();
 
   VectorizePredicated(node, body, exit);
   MaybeRecordStat(stats_, MethodCompilationStat::kLoopVectorized);
@@ -970,9 +989,16 @@ bool HLoopOptimization::TryVectorizedTraditional(LoopNode* node,
   HBasicBlock* header = node->loop_info->GetHeader();
   size_t num_of_blocks = header->GetLoopInformation()->GetBlocks().NumSetBits();
 
-  if (num_of_blocks != 2 || !ShouldVectorizeCommon(node, main_phi, trip_count)) {
+  ScopedVectorizationDiagnostics svd(this);
+
+  if (VecDiagIf(num_of_blocks != 2, node, "control flow loops are not supported") ||
+      !ShouldVectorizeCommon(node, main_phi, trip_count)) {
     return false;
   }
+
+  // The loop will be vectorized so remove diagnostics from prevoius attempts.
+  vectorization_diagnostic_reporter_->Clear();
+
   VectorizeTraditional(node, body, exit, trip_count);
   MaybeRecordStat(stats_, MethodCompilationStat::kLoopVectorized);
   graph_->SetHasTraditionalSIMD(true);  // flag SIMD usage
@@ -1203,6 +1229,10 @@ bool HLoopOptimization::CanVectorizeDataFlow(LoopNode* node,
           // Found a[i+x] vs. a[i+y]. Accept if x == y (loop-independent data dependence).
           // Conservatively assume a loop-carried data dependence otherwise, and reject.
           if (x != y) {
+            VecDiag(node, [a, x, y](std::ostream& os) {
+              os << "found a data dependency between accesses array (inst_id = " << a->GetId()
+                 << ") with offsets inst_id = " << x->GetId() << " and inst_id = " << y->GetId();
+            });
             return false;
           }
           // Count the number of references that have the same alignment (since
@@ -1221,6 +1251,12 @@ bool HLoopOptimization::CanVectorizeDataFlow(LoopNode* node,
               vector_runtime_test_b_ = b;
             } else if ((vector_runtime_test_a_ != a || vector_runtime_test_b_ != b) &&
                        (vector_runtime_test_a_ != b || vector_runtime_test_b_ != a)) {
+              VecDiag(node, [a, b, this](std::ostream& os) {
+                os << "several runtime tests are needed: "
+                   << "(inst_id = " << a->GetId() << ", inst_id = " << b->GetId() << "), "
+                   << "(inst_id = " << vector_runtime_test_a_->GetId()
+                   << ", inst_id = " << vector_runtime_test_b_->GetId() << ")";
+              });
               return false;  // second test would be needed
             }
           }
@@ -1270,7 +1306,7 @@ bool HLoopOptimization::ShouldVectorizeCommon(LoopNode* node,
   bool enable_alignment_strategies = !IsInPredicatedVectorizationMode();
   if (!TrySetSimpleLoopHeader(header, &main_phi) ||
       !CanVectorizeDataFlow(node, header, enable_alignment_strategies) ||
-      !IsVectorizationProfitable(trip_count) ||
+      VecDiagIf(!IsVectorizationProfitable(trip_count), node, "vectorization is not profitable") ||
       !TryAssignLastValue(node->loop_info, main_phi, preheader, /*collect_loop_uses*/ true)) {
     return false;
   }
@@ -1744,6 +1780,7 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
   uint64_t restrictions = kNone;
   // Don't accept expressions that can throw.
   if (instruction->CanThrow()) {
+    VecDiag(instruction, "instruction can throw an exception");
     return false;
   }
   if (instruction->IsArraySet()) {
@@ -1757,9 +1794,18 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
     if (DataType::Size(type) <= 2) {
       restrictions |= kNoHiBits;
     }
-    if (TrySetVectorType(type, &restrictions) &&
-        node->loop_info->IsDefinedOutOfTheLoop(base) &&
-        induction_range_.IsUnitStride(instruction->GetBlock(), index, graph_, &offset) &&
+    if (VecDiagIfNot(TrySetVectorType(type, &restrictions),
+                     instruction,
+                     [type, this](std::ostream& os) {
+                       os << "array store type = " << type << " "
+                          << "is not consistent with VL = " << vector_length_;
+                     }) &&
+        VecDiagIfNot(node->loop_info->IsDefinedOutOfTheLoop(base),
+                     instruction,
+                     "array is not a loop invariant") &&
+        VecDiagIfNot(induction_range_.IsUnitStride(instruction->GetBlock(), index, graph_, &offset),
+                     instruction,
+                     "array's index induction is not an unit stride") &&
         VectorizeUse(node, value, generate_code, type, restrictions)) {
       if (generate_code) {
         GenerateVecSub(index, offset);
@@ -1780,7 +1826,12 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
     // Recognize SAD idiom or direct reduction.
     if (VectorizeSADIdiom(node, instruction, generate_code, type, restrictions) ||
         VectorizeDotProdIdiom(node, instruction, generate_code, type, restrictions) ||
-        (TrySetVectorType(type, &restrictions) &&
+        (VecDiagIfNot(TrySetVectorType(type, &restrictions),
+                      instruction,
+                      [type, this](std::ostream& os) {
+                        os << "reduction type = " << type << " "
+                           << "is not consistent with VL = " << vector_length_;
+                      }) &&
          VectorizeUse(node, instruction, generate_code, type, restrictions))) {
       DCHECK(!instruction->IsPhi());
       if (generate_code) {
@@ -1804,8 +1855,10 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
   }
   // Otherwise accept only expressions with no effects outside the immediate loop-body.
   // Note that actual uses are inspected during right-hand-side tree traversal.
-  return !IsUsedOutsideLoop(node->loop_info, instruction)
-         && !instruction->DoesAnyWrite();
+  return VecDiagIfNot(!IsUsedOutsideLoop(node->loop_info, instruction),
+                      instruction,
+                      "instruction is used outside the loop") &&
+         VecDiagIfNot(!instruction->DoesAnyWrite(), instruction, "instruction do write");
 }
 
 bool HLoopOptimization::VectorizeUse(LoopNode* node,
@@ -1833,6 +1886,7 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     bool is_string_char_at = instruction->AsArrayGet()->IsStringCharAt();
 
     if (is_string_char_at && (HasVectorRestrictions(restrictions, kNoStringCharAt))) {
+      VecDiag(instruction, "cannot vectorize String.charAt");
       return false;
     }
     // Accept a right-hand-side array base[index] for
@@ -1843,9 +1897,19 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     HInstruction* base = instruction->InputAt(0);
     HInstruction* index = instruction->InputAt(1);
     HInstruction* offset = nullptr;
-    if (HVecOperation::ToSignedType(type) == HVecOperation::ToSignedType(instruction->GetType()) &&
-        node->loop_info->IsDefinedOutOfTheLoop(base) &&
-        induction_range_.IsUnitStride(instruction->GetBlock(), index, graph_, &offset)) {
+    if (VecDiagIfNot(
+          HVecOperation::ToSignedType(type) == HVecOperation::ToSignedType(instruction->GetType()),
+          instruction,
+          [instruction, type](std::ostream& os) {
+            os << "type mismatch between array's component type = " << instruction->GetType()
+                << " and vector type = " << type;
+          }) &&
+        VecDiagIfNot(node->loop_info->IsDefinedOutOfTheLoop(base),
+                     instruction,
+                     "array is not a loop invariant") &&
+        VecDiagIfNot(induction_range_.IsUnitStride(instruction->GetBlock(), index, graph_, &offset),
+                     instruction,
+                     "array's index induction is not an unit stride")) {
       if (generate_code) {
         GenerateVecSub(index, offset);
         GenerateVecMem(instruction, vector_map_->Get(index), nullptr, offset, type);
@@ -1859,6 +1923,9 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     if (reductions_->find(instruction) != reductions_->end()) {
       // Deal with vector restrictions.
       if (HasVectorRestrictions(restrictions, kNoReduction)) {
+        VecDiag(instruction->InputAt(1), [type](std::ostream& os) {
+          os << "cannot vectorize reduction with vector type = " << type;
+        });
         return false;
       }
       // Accept a reduction.
@@ -1868,6 +1935,7 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
       return true;
     }
     // TODO: accept right-hand-side induction?
+    VecDiag(instruction->AsPhi(), "cannot vectorize as a reduction or select");
     return false;
   } else if (instruction->IsTypeConversion()) {
     // Accept particular type conversions.
@@ -1903,7 +1971,12 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
       // Accept int to float conversion for
       // (1) supported int,
       // (2) vectorizable operand.
-      if (TrySetVectorType(from, &restrictions) &&
+      if (VecDiagIfNot(TrySetVectorType(from, &restrictions),
+                       instruction,
+                       [from, type](std::ostream& os) {
+                         os << "type mismatch between source type = " << from
+                            << " and vector type = " << type;
+                       }) &&
           VectorizeUse(node, opa, generate_code, from, restrictions)) {
         if (generate_code) {
           GenerateVecOp(instruction, vector_map_->Get(opa), nullptr, type);
@@ -1911,6 +1984,10 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
         return true;
       }
     }
+    VecDiag(instruction, [from, to, type](std::ostream& os) {
+      os << "cannot vectorize type converions " << from << " -> " << to
+         << " with vector type = " << type;
+    });
     return false;
   } else if (instruction->IsNeg() || instruction->IsNot() || instruction->IsBooleanNot()) {
     // Accept unary operator for vectorizable operand.
@@ -1925,8 +2002,16 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
              instruction->IsMul() || instruction->IsDiv() ||
              instruction->IsAnd() || instruction->IsOr()  || instruction->IsXor()) {
     // Deal with vector restrictions.
-    if ((instruction->IsMul() && HasVectorRestrictions(restrictions, kNoMul)) ||
-        (instruction->IsDiv() && HasVectorRestrictions(restrictions, kNoDiv))) {
+    if (VecDiagIf((instruction->IsMul() && HasVectorRestrictions(restrictions, kNoMul)),
+                  instruction,
+                  [type](std::ostream& os) {
+                    os << "cannot vectorize multiplication with vector type = " << type;
+                  }) ||
+        VecDiagIf((instruction->IsDiv() && HasVectorRestrictions(restrictions, kNoDiv)),
+                  instruction,
+                  [type](std::ostream& os) {
+                    os << "cannot vectorize division with vector type = " << type;
+                  })) {
       return false;
     }
     // Accept binary operator for vectorizable operands.
@@ -1949,17 +2034,33 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     HInstruction* opb = instruction->InputAt(1);
     HInstruction* r = opa;
     bool is_unsigned = false;
-    if ((HasVectorRestrictions(restrictions, kNoShift)) ||
-        (instruction->IsShr() && HasVectorRestrictions(restrictions, kNoShr))) {
+    if (VecDiagIf((HasVectorRestrictions(restrictions, kNoShift)),
+                  instruction,
+                  [type](std::ostream& os) {
+                    os << "cannot vectorize shift with vector type = " << type;
+                  }) ||
+        VecDiagIf((instruction->IsShr() && HasVectorRestrictions(restrictions, kNoShr)),
+                  instruction,
+                  [type](std::ostream& os) {
+                    os << "cannot vectorize right shift with vector type = " << type;
+                  })) {
       return false;  // unsupported instruction
     } else if (HasVectorRestrictions(restrictions, kNoHiBits)) {
       // Shifts right need extra care to account for higher order bits.
       // TODO: less likely shr/unsigned and ushr/signed can by flipping signess.
       if (instruction->IsShr() &&
           (!IsNarrowerOperand(opa, type, &r, &is_unsigned) || is_unsigned)) {
+        VecDiag(instruction, [type](std::ostream& os) {
+          os << "cannot vectorize right shift with vector type = " << type
+             << ": operand should be sign-extension narrower";
+        });
         return false;  // reject, unless all operands are sign-extension narrower
       } else if (instruction->IsUShr() &&
                  (!IsNarrowerOperand(opa, type, &r, &is_unsigned) || !is_unsigned)) {
+        VecDiag(instruction, [type](std::ostream& os) {
+          os << "cannot vectorize unsigned right shift with vector type = " << type
+             << ": operand should be zero-extension narrower";
+        });
         return false;  // reject, unless all operands are zero-extension narrower
       }
     }
@@ -1971,7 +2072,8 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     }
     int64_t distance = 0;
     if (VectorizeUse(node, r, generate_code, type, restrictions) &&
-        IsInt64AndGet(opb, /*out*/ &distance)) {
+        VecDiagIfNot(
+            IsInt64AndGet(opb, /*out*/ &distance), instruction, "shift amount is not a constant")) {
       // Restrict shift distance to packed data type width.
       int64_t max_distance = DataType::Size(type) * 8;
       if (0 <= distance && distance < max_distance) {
@@ -1979,6 +2081,10 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
           GenerateVecOp(instruction, vector_map_->Get(r), opb, type);
         }
         return true;
+      } else {
+        VecDiag(instruction, [max_distance](std::ostream& os) {
+          os << "shift amount should be less than " << max_distance;
+        });
       }
     }
   } else if (instruction->IsAbs()) {
@@ -1987,9 +2093,16 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
     HInstruction* r = opa;
     bool is_unsigned = false;
     if (HasVectorRestrictions(restrictions, kNoAbs)) {
+      VecDiag(instruction, [type](std::ostream& os) {
+        os << "cannot vectorize abs with vector type = " << type;
+      });
       return false;
     } else if (HasVectorRestrictions(restrictions, kNoHiBits) &&
                (!IsNarrowerOperand(opa, type, &r, &is_unsigned) || is_unsigned)) {
+      VecDiag(instruction, [type](std::ostream& os) {
+        os << "cannot vectorize abs with vector type = " << type
+           << ": operand should be sign-extension narrower";
+      });
       return false;  // reject, unless operand is sign-extension narrower
     }
     // Accept ABS(x) for vectorizable operand.
@@ -2985,6 +3098,10 @@ bool HLoopOptimization::TrySetSimpleLoopHeader(HBasicBlock* block, /*out*/ HPhi*
       // Found the first candidate for main induction.
       phi = it.Current()->AsPhi();
     } else {
+      VecDiag(block->GetLastInstruction(), [phi, it](std::ostream& os) {
+        os << "multiple induction candidates in the loop: inst_id = "
+           << phi->GetId() << " inst_id = " << it.Current()->GetId();
+      });
       return false;
     }
   }
@@ -3011,6 +3128,7 @@ bool HLoopOptimization::TrySetSimpleLoopHeader(HBasicBlock* block, /*out*/ HPhi*
       }
     }
   }
+  VecDiag(block->GetLastInstruction(), "cannot vectorize loop header");
   return false;
 }
 

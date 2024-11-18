@@ -56,6 +56,7 @@ COMPILER_OPTIONS_KEY (std::string,                 DumpCFG)
 COMPILER_OPTIONS_KEY (Unit,                        DumpCFGAppend)
 // TODO: Add type parser.
 COMPILER_OPTIONS_KEY (ParseStringList<','>,        VerboseMethods)
+COMPILER_OPTIONS_KEY (ParseStringList<','>,        VerbosePasses)
 COMPILER_OPTIONS_KEY (bool,                        DeduplicateCode,            true)
 COMPILER_OPTIONS_KEY (Unit,                        CountHotnessInCompiledCode)
 COMPILER_OPTIONS_KEY (ProfileMethodsCheck,         CheckProfiledMethods)

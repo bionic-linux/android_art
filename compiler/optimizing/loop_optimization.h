@@ -49,6 +49,7 @@ class HLoopOptimization : public HOptimization {
                     const CodeGenerator& codegen,    // Needs info about the target.
                     HInductionVarAnalysis* induction_analysis,
                     OptimizingCompilerStats* stats,
+                    std::ostream* diagnostic_output,
                     const char* name = kLoopOptimizationPassName);
 
   bool Run() override;
@@ -233,6 +234,146 @@ class HLoopOptimization : public HOptimization {
     // Vector predicate instruction, associated with the false sucessor of the block.
     HVecPredSetOperation* false_predicate_;
   };
+
+  // This is a helper class to report loop vectorization diagnostics. It allows to separate
+  // diagnostic messages that are reported in a traditional or a predicated mode and lazily
+  // write them to the diagnostics output in a destructor. This provides a better reporting
+  // control that is necessary in cases when, for example, there are several attempts to
+  // vectorize a loop in different modes and it is unnecessary to report diagnostics about a
+  // faulure of a loop vectorization in the traditional mode if it is vectorized in predicated
+  // one.
+  class VectorizationDiagnosticReporter {
+   public:
+    VectorizationDiagnosticReporter(HLoopOptimization* loop_optimization)
+        : loop_optimization_(loop_optimization), is_enabled_(false) {
+      DCHECK(loop_optimization_ != nullptr);
+    }
+
+    // Emit a report to a temporary stream dedicated to a particular vectorization mode.
+    // Node should be either:
+    // - A subtype of HInstruction.
+    // - LoopNode.
+    //   In this case a last instruction of the header is used.
+    template <typename Report, typename Node>
+    void ReportDiagnostic(Node* node, Report&& report) {
+      if (!is_enabled_) {
+        return;
+      }
+
+      HInstruction* instruction;
+      if constexpr (std::is_same_v<Node, LoopNode>) {
+        instruction = node->loop_info->GetHeader()->GetLastInstruction();
+      } else {
+        instruction = node;
+      }
+
+      loop_optimization_->ReportDiagnostic(
+          instruction,
+          GetOutput(),
+          [this](HInstruction* instruction, std::ostream& os) {
+            loop_optimization_->WriteDiagnosticPrefix(instruction, os);
+            os << (IsPredicateMode() ? "predicated" : "traditional") << " vectorization: ";
+          },
+          std::forward<Report>(report));
+    }
+
+    bool TryEnable() {
+      DCHECK(!is_enabled_);
+      is_enabled_ = loop_optimization_->IsDiagnosticsEnabled();
+      return is_enabled_;
+    }
+
+    void Disable() {
+      DCHECK(is_enabled_);
+      is_enabled_ = false;
+    }
+
+    void Clear() {
+      ClearStringStream(&traditional_mode_output_);
+      ClearStringStream(&predicated_mode_output_);
+    }
+
+    ~VectorizationDiagnosticReporter() {
+      if (!loop_optimization_->IsDiagnosticsEnabled()) {
+        return;
+      }
+      std::ostream& os = loop_optimization_->GetDiagnosticsOutput();
+      os << traditional_mode_output_.str();
+      os << predicated_mode_output_.str();
+    }
+
+   private:
+    bool IsPredicateMode() const {
+      return kForceTryPredicatedSIMD && loop_optimization_->IsInPredicatedVectorizationMode();
+    }
+
+    std::ostream& GetOutput() {
+      if (IsPredicateMode()) {
+        return predicated_mode_output_;
+      }
+      return traditional_mode_output_;
+    }
+
+    static void ClearStringStream(std::stringstream* ss) {
+      ss->str("");
+      ss->clear();
+    }
+
+    HLoopOptimization* loop_optimization_;
+    bool is_enabled_;
+
+    std::stringstream traditional_mode_output_;
+    std::stringstream predicated_mode_output_;
+  };
+
+  // This class provides ability to enable loop vectorization diagnostic messages in a scope.
+  // By default they are disabled and one of the approaches to enable them is to create an instance
+  // of this class. Such approach allows to avoid excess reports in cases when diagnostic is
+  // reported from a method that is called from different contexts and it is necessary to enable
+  // diagnostics only in particular ones.
+  class ScopedVectorizationDiagnostics {
+   public:
+    ScopedVectorizationDiagnostics(HLoopOptimization* loop_optimization)
+        : loop_optimization_(loop_optimization) {
+      DCHECK(loop_optimization_ != nullptr);
+      is_enabled_ = GetReporter().TryEnable();
+    }
+
+    ~ScopedVectorizationDiagnostics() {
+      if (is_enabled_) {
+        GetReporter().Disable();
+      }
+    }
+
+   private:
+    VectorizationDiagnosticReporter& GetReporter() const {
+      return *loop_optimization_->vectorization_diagnostic_reporter_;
+    }
+
+    HLoopOptimization* loop_optimization_;
+    bool is_enabled_;
+  };
+
+  template <typename Report, typename Node>
+  void VecDiag(Node* node, Report&& report) const {
+    vectorization_diagnostic_reporter_->ReportDiagnostic(node, std::forward<Report>(report));
+  }
+
+  template <typename Report, typename Node>
+  bool VecDiagIf(bool result, Node* node, Report&& report) const {
+    if (result) {
+      vectorization_diagnostic_reporter_->ReportDiagnostic(node, std::forward<Report>(report));
+    }
+    return result;
+  }
+
+  template <typename Report, typename Node>
+  bool VecDiagIfNot(bool result, Node* node, Report&& report) const {
+    if (!result) {
+      vectorization_diagnostic_reporter_->ReportDiagnostic(node, std::forward<Report>(report));
+    }
+    return result;
+  }
 
   //
   // Loop setup and traversal.
@@ -577,6 +718,12 @@ class HLoopOptimization : public HOptimization {
 
   // Helper for target-specific behaviour for loop optimizations.
   ArchNoOptsLoopHelper* arch_loop_helper_;
+
+  // Loop vectorization diagnostic reporter.
+  //
+  // It is not used directly to report diagnostics, instead wrapper methods VecDiag* are used
+  // as a more convenient way.
+  VectorizationDiagnosticReporter* vectorization_diagnostic_reporter_;
 
   friend class LoopOptimizationTest;
   friend class PredicatedSimdLoopOptimizationTest;

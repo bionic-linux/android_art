@@ -16,6 +16,8 @@
 
 #include "optimization.h"
 
+#include "art_method-inl.h"
+
 #ifdef ART_ENABLE_CODEGEN_arm
 #include "critical_native_abi_fixup_arm.h"
 #include "instruction_simplifier_arm.h"
@@ -37,6 +39,9 @@
 #ifdef ART_ENABLE_CODEGEN_x86_64
 #include "instruction_simplifier_x86_64.h"
 #endif
+
+#include <iostream>
+#include <sstream>
 
 #include "bounds_check_elimination.h"
 #include "cha_guard_optimization.h"
@@ -206,6 +211,10 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         ? alt_name
         : OptimizationPassName(pass);
     HOptimization* opt = nullptr;
+    std::ostream* diagnostic_output = nullptr;
+    if (codegen->GetCompilerOptions().IsVerbosePass(pass_name)) {
+      diagnostic_output = &std::cerr;
+    }
 
     switch (pass) {
       //
@@ -232,7 +241,7 @@ ArenaVector<HOptimization*> ConstructOptimizations(
       case OptimizationPass::kLoopOptimization:
         CHECK(most_recent_induction != nullptr);
         opt = new (allocator) HLoopOptimization(
-            graph, *codegen, most_recent_induction, stats, pass_name);
+            graph, *codegen, most_recent_induction, stats, diagnostic_output, pass_name);
         break;
       case OptimizationPass::kBoundsCheckElimination:
         CHECK(most_recent_side_effects != nullptr && most_recent_induction != nullptr);
@@ -361,6 +370,37 @@ ArenaVector<HOptimization*> ConstructOptimizations(
   }
 
   return optimizations;
+}
+
+void HOptimization::WriteDiagnosticPrefix(HInstruction* instruction, std::ostream& output) const {
+  DCHECK(instruction != nullptr);
+  while (instruction->IsPhi()) {
+    instruction = instruction->InputAt(0);
+  }
+
+  uint32_t dex_pc = instruction->GetDexPc();
+  if (dex_pc == kNoDexPc) {
+    dex_pc = 0;
+  }
+
+  ArtMethod* method = graph_->GetArtMethod();
+  DCHECK(method != nullptr);
+
+  const char* source_file;
+  int32_t line_num;
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    source_file = method->GetDeclaringClassSourceFile();
+    line_num = method->GetLineNumFromDexPC(dex_pc);
+  }
+
+  if (source_file == nullptr || line_num < 0) {
+    output << graph_->PrettyMethod(true) << ":" << dex_pc;
+  } else {
+    output << source_file << ":" << line_num;
+  }
+
+  output << ": warning: " << pass_name_ << " (inst_id = " << instruction->GetId() << "): ";
 }
 
 }  // namespace art

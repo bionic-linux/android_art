@@ -65,6 +65,7 @@ CompilerOptions::CompilerOptions()
       profile_branches_(false),
       profile_compilation_info_(nullptr),
       verbose_methods_(),
+      verbose_passes_(),
       abort_on_hard_verifier_failure_(false),
       abort_on_soft_verifier_failure_(false),
       init_failure_output_(nullptr),

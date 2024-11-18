@@ -17,6 +17,8 @@
 #ifndef ART_COMPILER_OPTIMIZING_OPTIMIZATION_H_
 #define ART_COMPILER_OPTIMIZING_OPTIMIZATION_H_
 
+#include <ostream>
+
 #include "base/arena_object.h"
 #include "base/macros.h"
 #include "nodes.h"
@@ -34,9 +36,11 @@ class HOptimization : public ArenaObject<kArenaAllocOptimization> {
  public:
   HOptimization(HGraph* graph,
                 const char* pass_name,
-                OptimizingCompilerStats* stats = nullptr)
+                OptimizingCompilerStats* stats = nullptr,
+                std::ostream* diagnostic_output = nullptr)
       : graph_(graph),
         stats_(stats),
+        diagnostic_output_(diagnostic_output),
         pass_name_(pass_name) {}
 
   virtual ~HOptimization() {}
@@ -52,11 +56,68 @@ class HOptimization : public ArenaObject<kArenaAllocOptimization> {
   virtual bool Run() = 0;
 
  protected:
+  bool IsDiagnosticsEnabled() const { return diagnostic_output_ != nullptr; }
+
+  std::ostream& GetDiagnosticsOutput() const {
+    DCHECK(IsDiagnosticsEnabled());
+    return *diagnostic_output_;
+  }
+
+  // Emit a diagnostic report if diagnostics are enabled.
+  // Report should be either:
+  // - A callable object that accepts a reference to an ostream.
+  //   Can be used to evaluate diagnostic message lazily.
+  // - An object that can be written to an ostream using << operator.
+  template <typename Report>
+  void MaybeReportDiagnostic(HInstruction* instruction, Report&& report) const {
+    if (!IsDiagnosticsEnabled()) {
+      return;
+    }
+    ReportDiagnostic(
+        instruction,
+        GetDiagnosticsOutput(),
+        [this](HInstruction* instruction, std::ostream& output) {
+          WriteDiagnosticPrefix(instruction, output);
+        },
+        std::forward<Report>(report));
+  }
+
+  // Write prefix for a diagnostic message in the following format:
+  //   <source>:<line number>: note: <pass name>:
+  // or if information about source location is not available:
+  //   <method name>:<bytecode offset>: note: <pass name>:
+  void WriteDiagnosticPrefix(HInstruction* instruction, std::ostream& output) const;
+
+  // Emit a diagnostic report if diagnostics are enabled.
+  // - PrefixWriter should be a callable that accepts pointer to an instruction
+  //   and a reference to an ostream.
+  // - Report should be either:
+  //   - A callable object that accepts a reference to an ostream.
+  //     Can be used to evaluate diagnostic message lazily.
+  //   - An object that can be written to an ostream using << operator.
+  template <typename Report, typename PrefixWriter>
+  static void ReportDiagnostic(HInstruction* instruction,
+                               std::ostream& output,
+                               PrefixWriter&& prefix_writer,
+                               Report&& report) {
+    std::stringstream ss;
+    prefix_writer(instruction, ss);
+    if constexpr (std::is_invocable_v<Report, std::ostream&>) {
+      report(ss);
+    } else {
+      ss << report;
+    }
+    output << ss.str() << std::endl;
+  }
+
   HGraph* const graph_;
   // Used to record stats about the optimization.
   OptimizingCompilerStats* const stats_;
 
  private:
+  // Output stream for diagnostic messages.
+  std::ostream* diagnostic_output_;
+
   // Optimization pass name.
   const char* pass_name_;
 

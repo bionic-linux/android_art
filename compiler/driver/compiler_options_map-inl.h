@@ -82,6 +82,7 @@ inline bool ReadCompilerOptions(Base& map, CompilerOptions* options, std::string
     options->dump_cfg_append_ = true;
   }
   map.AssignIfExists(Base::VerboseMethods, &options->verbose_methods_);
+  map.AssignIfExists(Base::VerbosePasses, &options->verbose_passes_);
   options->deduplicate_code_ = map.GetOrDefault(Base::DeduplicateCode);
   if (map.Exists(Base::CountHotnessInCompiledCode)) {
     options->count_hotness_in_compiled_code_ = true;
@@ -233,6 +234,12 @@ NO_INLINE void AddCompilerOptionsArgumentParserOptions(Builder& b) {
           .WithHelp("Restrict the dumped CFG data to methods whose name is listed.\n"
                     "Eg: --verbose-methods=toString,hashCode")
           .IntoKey(Map::VerboseMethods)
+
+      .Define("--verbose-passes=_")
+          .template WithType<ParseStringList<','>>()
+          .WithHelp("Enable diagnostic messages for passes whose name is listed.\n"
+                    "Eg: --verbose-passes=loop_optimization,induction_var_analysis")
+          .IntoKey(Map::VerbosePasses)
 
       .Define("--max-image-block-size=_")
           .template WithType<unsigned int>()
