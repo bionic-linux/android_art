@@ -34,6 +34,24 @@
       "parentUuid": "a67c11d2_244ba892",
       "revId": "553fce4dc46347524c0dda98688f494901a9a3d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3447e1c5_bd071ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T15:49:11Z",
+      "side": 1,
+      "message": "In fact, as I think more about it, we have a [lock](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ArtManagerLocal.java;l\u003d142;drc\u003d8cec104ae64bd45e1377d799ac4653fbce7fb631) that makes dexopt and cleanup mutually exclusive, so it\u0027s fine if the app is installed while the cleanup is taking place. The race only happens if the cleanup kicks off while the app is being dexopted during the install (in which case the cleanup will obtain the snapshot before obtaining the lock). Anyway, the point that the race window is much shorter remains the same.",
+      "parentUuid": "e9eccbe6_3ad2a1aa",
+      "revId": "553fce4dc46347524c0dda98688f494901a9a3d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
