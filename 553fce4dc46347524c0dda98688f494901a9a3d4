@@ -16,6 +16,24 @@
       "message": "Thank you for the change! We\u0027ll still have some race after this change because apps can be installed while cleanup is taking place, but this change is a big step forward, as it reduces the race period from the whole bg-dexopt duration (~8mins) to the duration of the cleanup (~5 seconds).",
       "revId": "553fce4dc46347524c0dda98688f494901a9a3d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9eccbe6_3ad2a1aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-18T15:20:52Z",
+      "side": 1,
+      "message": "Yes, removing that race would require a two phase cleanup, which is much more complex and for little benefit. Clarified in the commit message, thanks.",
+      "parentUuid": "a67c11d2_244ba892",
+      "revId": "553fce4dc46347524c0dda98688f494901a9a3d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
