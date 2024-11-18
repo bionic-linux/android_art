@@ -456,33 +456,6 @@ class LoopClonerHelper : public ValueObject {
     return DoLoopTransformationImpl(TransformationKind::kUnrolling);
   }
 
-  // Perform loop versioning.
-  //
-  // Control flow of an example (ignoring critical edges splitting).
-  //
-  //       Before                    After
-  //
-  //         |B|                      |B|
-  //          |                        |
-  //          v                        v
-  //         |1|                      |1|_________
-  //          |                        |          |
-  //          v                        v          v
-  //         |2|<-\                   |2|<-\     |2A|<-\
-  //         / \  /                   / \  /     /  \  /
-  //        v   v/                   |   v/      |   v/
-  //        |   |3|                  |  |3|      | |3A|
-  //        |                        | __________|
-  //        |                        ||
-  //        v                        vv
-  //       |4|                       |4|
-  //        |                         |
-  //        v                         v
-  //       |E|                       |E|
-  HBasicBlock* DoVersioning() {
-    return DoLoopTransformationImpl(TransformationKind::kVersioning);
-  }
-
   HLoopInformation* GetRegionToBeAdjusted() const { return cloner_.GetRegionToBeAdjusted(); }
 
  protected:
@@ -512,7 +485,6 @@ class LoopClonerSimpleHelper : public ValueObject {
   bool IsLoopClonable() const { return helper_.IsLoopClonable(); }
   HBasicBlock* DoPeeling() { return helper_.DoPeeling(); }
   HBasicBlock* DoUnrolling() { return helper_.DoUnrolling(); }
-  HBasicBlock* DoVersioning() { return helper_.DoVersioning(); }
   HLoopInformation* GetRegionToBeAdjusted() const { return helper_.GetRegionToBeAdjusted(); }
 
   const SuperblockCloner::HBasicBlockMap* GetBasicBlockMap() const { return &bb_map_; }
