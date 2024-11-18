@@ -40,6 +40,30 @@
       ],
       "revId": "80012fe3d3ea94f7bbf5359e40fafcaaa3e6b207",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "534ffbf1_29f02fd6",
+        "filename": "compiler/optimizing/code_pulling.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-18T14:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b07da68_03c90664",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "80012fe3d3ea94f7bbf5359e40fafcaaa3e6b207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
