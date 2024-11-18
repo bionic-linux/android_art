@@ -70,6 +70,24 @@
       "parentUuid": "b6a058ef_e89d97e3",
       "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d65a0c5_ae2ab7e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T17:37:12Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, Vladimir! I bumped the oat version to be on the safer side.\n\nWe do [check the apex mtime](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file_assistant.cc;l\u003d523;drc\u003d1cce66c0004230c737a7ef3bbc1559015d83eaa6), but it\u0027s done at a relatively late stage (in particular, **after the oat file is loaded with executable: true**).\n\nOn my local device, I compiled apps with 16K alignment and then installed an ART APEX containing this CL, which loaded it assuming 4K alignment. The apex mtime check did make the runtime reject the old oat file after loading it, so it looks fine.\n\nHowever, I\u0027m not confident that that won\u0027t be any edge cases that cause the runtime to crash when loading the oat files with the wrong alignment. It will be safer if we bump the oat version. The [oat version check](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file.cc;l\u003d627;drc\u003d1cce66c0004230c737a7ef3bbc1559015d83eaa6) is performed at a very early stage (in particular, **before the oat file is loaded**). In fact, if the oat version check fails, the runtime won\u0027t even look at the rest of the oat header, so it looks much safer.",
+      "parentUuid": "86bdab13_2c8455ad",
+      "revId": "86dfd6a099853f2ee46e7be86d2c5897e5dc3cb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
