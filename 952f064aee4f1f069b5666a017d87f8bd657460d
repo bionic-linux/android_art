@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc53979_c88c4518",
+        "filename": "artd/artd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T13:12:40Z",
+      "side": 1,
+      "message": "OK. I don\u0027t fully agree that the \"cognitive load\" can be an excuse of refusing to use new tools, but the \"needs to be offset by the benefit\" part persuaded me. The `using` approach is acceptable as it\u0027s not that clunky, so you successfully reduced the benefit of `remove_noexcept_t` to below my threshold :) Thanks for the suggestion.",
+      "parentUuid": "86798484_f8e76e85",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 65
+      },
+      "revId": "952f064aee4f1f069b5666a017d87f8bd657460d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8288ba4e_ac789339",

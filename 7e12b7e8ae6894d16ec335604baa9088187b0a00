@@ -125,6 +125,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d222ef4f_c171f548",
+        "filename": "artd/artd.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T13:12:40Z",
+      "side": 1,
+      "message": "I see your point. Done.",
+      "parentUuid": "e39d3424_d1c88449",
+      "range": {
+        "startLine": 1479,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f15e0ec_92af4d18",
@@ -545,6 +569,30 @@
       "side": 1,
       "message": "No that wasn\u0027t what I meant. Please drop \"the\" - it shouldn\u0027t precede a proper noun.",
       "parentUuid": "e9a8f9e1_7954fea9",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "7e12b7e8ae6894d16ec335604baa9088187b0a00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295736f4_bd63d51b",
+        "filename": "libarttools/include_testing/tools/testing.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T13:12:40Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t notice there was a \"the\" and I\u0027m not sure why I added it. Removed.",
+      "parentUuid": "1bee2a47_e52b1a15",
       "range": {
         "startLine": 61,
         "startChar": 28,

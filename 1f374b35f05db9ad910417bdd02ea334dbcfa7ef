@@ -33,6 +33,24 @@
       "message": "Please add comment: \"Use a condvar to sequence the NewFile::Create calls.\"",
       "revId": "1f374b35f05db9ad910417bdd02ea334dbcfa7ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d16e4c_3bd914c3",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-18T13:12:40Z",
+      "side": 1,
+      "message": "Done. It\u0027s actually `CommitOrAbandon` that triggers the `IN_MOVED_TO` event that we are polling for.",
+      "parentUuid": "65bc4f26_5291582a",
+      "revId": "1f374b35f05db9ad910417bdd02ea334dbcfa7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
