@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e99b450_e0e0b16d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-19T12:50:21Z",
+      "side": 1,
+      "message": "You can rebase this on top of the other revert and to start a TH run.",
+      "revId": "4f78b97940703576a4aba0fe5a188300c2725931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
