@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9430b015_418a9470",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-19T17:01:01Z",
+      "side": 1,
+      "message": "`boolalpha`?",
+      "range": {
+        "startLine": 502,
+        "startChar": 4,
+        "endLine": 503,
+        "endChar": 99
+      },
+      "revId": "cba33975ba764c948a769e9dd604aa43caec192e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
