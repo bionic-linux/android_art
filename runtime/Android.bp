@@ -151,9 +151,9 @@ cc_defaults {
         "liblog",
         "liblz4",
         "liblzma", // libelffile(d) dependency; must be repeated here since it's a static lib.
-        "libnativebridge#impl",
-        "libnativeloader#impl",
-        "libsigchain#impl",
+        "libnativebridge",
+        "libnativeloader",
+        "libsigchain",
         "libunwindstack",
     ],
     static_libs: ["libodrstatslog"],
@@ -167,11 +167,11 @@ cc_defaults {
     ],
     shared_libs: [
         "libartbase",
-        "libdexfile#impl",
+        "libdexfile",
         "libprofile",
     ],
     export_shared_lib_headers: [
-        "libdexfile#impl",
+        "libdexfile",
     ],
 }
 
@@ -183,11 +183,11 @@ cc_defaults {
     ],
     shared_libs: [
         "libartbased",
-        "libdexfiled#impl",
+        "libdexfiled",
         "libprofiled",
     ],
     export_shared_lib_headers: [
-        "libdexfiled#impl",
+        "libdexfiled",
     ],
 }
 
@@ -843,6 +843,10 @@ art_cc_library_static {
     defaults: ["libartd-runtime_defaults"],
     apex_available: [
         "com.android.art.debug",
+        // TODO(b/183882457): This lib doesn't go into com.android.art, but
+        // apex_available lists need to be the same for internal libs to avoid
+        // stubs, and this depends on libsigchain.
+        "com.android.art",
     ],
 }
 
@@ -929,6 +933,11 @@ art_cc_library {
     ],
     apex_available: [
         "com.android.art.debug",
+        // TODO(b/183882457): This lib doesn't go into com.android.art, but
+        // apex_available lists need to be the same for internal libs to avoid
+        // stubs, and this depends on libsigchain.
+        "com.android.art",
+        "test_broken_com.android.art",
     ],
 }
 
