@@ -315,6 +315,7 @@ void SetupDataSource(const std::string& ds_name, bool is_oome_heap) {
   dsd.set_name(ds_name);
   dsd.set_will_notify_on_stop(true);
   JavaHprofDataSource::Register(dsd, is_oome_heap);
+  LOG(INFO) << "registered data source " << ds_name;
 }
 
 // Waits for the data source OnStart
@@ -976,11 +977,6 @@ enum class ResumeParentPolicy {
   DEFERRED
 };
 
-pid_t ForkUnderThreadListLock(art::Thread* self) {
-  art::MutexLock lk(self, *art::Locks::thread_list_lock_);
-  return fork();
-}
-
 void ForkAndRun(art::Thread* self,
                 ResumeParentPolicy resume_parent_policy,
                 const std::function<void(pid_t child)>& parent_runnable,
@@ -994,8 +990,6 @@ void ForkAndRun(art::Thread* self,
   // We need to do this before the fork, because otherwise it can deadlock
   // waiting for the GC, as all other threads get terminated by the clone, but
   // their locks are not released.
-  // We must also avoid any logd logging actions on the forked process; art LogdLoggerLocked
-  // serializes logging from different threads via a mutex.
   // This does not perfectly solve all fork-related issues, as there could still be threads that
   // are unaffected by ScopedSuspendAll and in a non-fork-friendly situation
   // (e.g. inside a malloc holding a lock). This situation is quite rare, and in that case we will
@@ -1005,8 +999,7 @@ void ForkAndRun(art::Thread* self,
 
   std::optional<art::ScopedSuspendAll> ssa(std::in_place, __FUNCTION__, /* long_suspend=*/ true);
 
-  // Optimistically get the thread_list_lock_ to avoid the child process deadlocking
-  pid_t pid = ForkUnderThreadListLock(self);
+  pid_t pid = fork();
   if (pid == -1) {
     // Fork error.
     PLOG(ERROR) << "fork";
@@ -1059,7 +1052,7 @@ void WriteHeapPackets(pid_t parent_pid, uint64_t timestamp) {
               dump_smaps = ds->dump_smaps();
               ignored_types = ds->ignored_types();
             }
-            art::ScopedTrace trace("ART heap dump for " + std::to_string(parent_pid));
+            LOG(INFO) << "dumping heap for " << parent_pid;
             if (dump_smaps) {
               DumpSmaps(&ctx);
             }
