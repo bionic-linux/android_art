@@ -81,6 +81,30 @@
       },
       "revId": "355a472b5c21c42120446d1a2a5e663516198612",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf874b9b_1a831971",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-19T15:25:48Z",
+      "side": 1,
+      "message": "Aha, thanks. Please add a comment, e.g. \"Match paths for the u:object_r:apk_tmp_file:s0 file context.\"\n\nOne reason is to make this code somewhat more visible if someone were to change that file context. (Adding comments in `file_contexts` would be even better in that regard, but is perhaps overkill.)",
+      "parentUuid": "eed0405a_a146780d",
+      "range": {
+        "startLine": 319,
+        "startChar": 38,
+        "endLine": 319,
+        "endChar": 88
+      },
+      "revId": "355a472b5c21c42120446d1a2a5e663516198612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
