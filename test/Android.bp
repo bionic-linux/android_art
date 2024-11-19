@@ -723,6 +723,7 @@ art_cc_defaults {
         "2009-structural-local-ref/local-ref.cc",
         "2035-structural-native-method/structural-native.cc",
         "2243-single-step-default/single_step_helper.cc",
+	"2284-exception-catch-throws/exception_catch_throws.cc",
     ],
     // Use NDK-compatible headers for ctstiagent.
     header_libs: [

@@ -1,0 +1,2 @@
+Tests that exception thrown by exception catch handlers aren't reported to the
+JVMTI exception hanlders.

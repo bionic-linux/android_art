@@ -390,8 +390,8 @@ class InstructionHandler {
       if (!InstrumentationHandler::ExceptionHandledEvent(
               Self(), is_move_exception, Instrumentation())) {
         DCHECK(Self()->IsExceptionPending());
-        // TODO(375373721): We need to set SetSkipNextExceptionEvent here since the exception was
-        // thrown by an instrumentation handler.
+        // We don't skip exception events here. This matches the behaviour of
+        // RI. See b/375373721 for more discussion.
         return false;  // Pending exception.
       }
 

@@ -1,0 +1,7 @@
+class art.Test2284$TestException
+main: public static void art.Test2284.testExceptionCatchHandlerThrows() @ line = 71 throws class art.Test2284$TestException: test exception
+MethodExit false public static void art.Test2284.enableMethodExit() throws java.lang.Exception
+MethodExit true public static native void art.Test2284.exceptionCatchHandlerNative(java.lang.Thread,java.lang.reflect.Executable,long,java.lang.Throwable)
+MethodExit true public static void art.Test2284.testMethod() throws java.lang.Exception
+Caught Error
+MethodExit false public static void art.Test2284.run() throws java.lang.Exception
