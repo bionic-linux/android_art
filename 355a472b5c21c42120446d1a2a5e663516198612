@@ -57,6 +57,30 @@
       ],
       "revId": "355a472b5c21c42120446d1a2a5e663516198612",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed0405a_a146780d",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-19T15:10:33Z",
+      "side": 1,
+      "message": "The regex is from [system/sepolicy/private/file_contexts](https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/file_contexts)",
+      "parentUuid": "5f181a8e_614fb544",
+      "range": {
+        "startLine": 319,
+        "startChar": 38,
+        "endLine": 319,
+        "endChar": 88
+      },
+      "revId": "355a472b5c21c42120446d1a2a5e663516198612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
