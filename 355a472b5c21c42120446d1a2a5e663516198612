@@ -16,6 +16,47 @@
       "message": "Friendly ping",
       "revId": "355a472b5c21c42120446d1a2a5e663516198612",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f181a8e_614fb544",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-19T15:07:15Z",
+      "side": 1,
+      "message": "Where does this regexp come from? Can you e.g. point me to the code in PM?\n\n(Interestingly, as I edit this the AI tries to give all kinds of creative answers, none of them true so far.)",
+      "range": {
+        "startLine": 319,
+        "startChar": 38,
+        "endLine": 319,
+        "endChar": 88
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "acb7c164_522af0e8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+              "range": {
+                "startLine": 319,
+                "startChar": 0,
+                "endLine": 319,
+                "endChar": 0
+              },
+              "replacement": "      // The regex is from `PackageInstallerSession.java`.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "355a472b5c21c42120446d1a2a5e663516198612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
