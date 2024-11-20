@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ac6f3e_165a5d99",
+        "filename": "libartbase/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-11-20T03:51:35Z",
+      "side": 1,
+      "message": "note - requested in b/376814207#comment68",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "daea4faa8e3e39531a9e8cea00f72d1f40563999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
