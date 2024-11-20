@@ -805,6 +805,8 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
 
   FetchAndCacheResolvedClassesAndMethods(/*startup=*/ false);
 
+  LOG(ERROR) << "jiakaiz 1";
+
   for (const auto& it : tracked_locations) {
     if (!force_save && ShuttingDown(Thread::Current())) {
       // The ProfileSaver is in shutdown mode, meaning a stop request was made and
@@ -815,8 +817,8 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
     }
     const std::string& filename = it.first;
     const std::set<std::string>& locations = it.second;
-    VLOG(profiler) << "Tracked filename " << filename << " locations "
-                   << android::base::Join(locations, ":");
+    LOG(ERROR) << "jiakaiz " << "Tracked filename " << filename << " locations "
+               << android::base::Join(locations, ":");
 
     std::vector<ProfileMethodInfo> profile_methods;
     {
@@ -840,9 +842,9 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
 
       uint64_t last_save_number_of_methods = info.GetNumberOfMethods();
       uint64_t last_save_number_of_classes = info.GetNumberOfResolvedClasses();
-      VLOG(profiler) << "last_save_number_of_methods=" << last_save_number_of_methods
-                     << " last_save_number_of_classes=" << last_save_number_of_classes
-                     << " number of profiled methods=" << profile_methods.size();
+      LOG(ERROR) << "jiakaiz " << "last_save_number_of_methods=" << last_save_number_of_methods
+                 << " last_save_number_of_classes=" << last_save_number_of_classes
+                 << " number of profiled methods=" << profile_methods.size();
 
       // Try to add the method data. Note this may fail is the profile loaded from disk contains
       // outdated data (e.g. the previous profiled dex files might have been updated).
@@ -866,7 +868,7 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
             info.ClearData();
             force_save = true;
           }
-        } else if (VLOG_IS_ON(profiler)) {
+        } else if ((true)) {
           LOG(INFO) << "Failed to find cached profile for " << filename;
           for (auto&& pair : profile_cache_) {
             LOG(INFO) << "Cached profile " << pair.first;
@@ -883,9 +885,9 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
         if (!force_save &&
             delta_number_of_methods < options_.GetMinMethodsToSave() &&
             delta_number_of_classes < options_.GetMinClassesToSave()) {
-          VLOG(profiler) << "Not enough information to save to: " << filename
-                        << " Number of methods: " << delta_number_of_methods
-                        << " Number of classes: " << delta_number_of_classes;
+          LOG(ERROR) << "jiakaiz " << "Not enough information to save to: " << filename
+                     << " Number of methods: " << delta_number_of_methods
+                     << " Number of classes: " << delta_number_of_classes;
           total_number_of_skipped_writes_++;
           continue;
         }
@@ -898,7 +900,7 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
         uint64_t bytes_written;
         // Force the save. In case the profile data is corrupted or the profile
         // has the wrong version this will "fix" the file to the correct format.
-        if (info.Save(filename, &bytes_written)) {
+        if (info.Save(filename, &bytes_written, force_save)) {
           // We managed to save the profile. Clear the cache stored during startup.
           if (profile_cache_it != profile_cache_.end()) {
             ProfileCompilationInfo *cached_info = profile_cache_it->second;
@@ -923,6 +925,8 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
       }
     }
   }
+
+  LOG(ERROR) << "jiakaiz done";
 
   // Trim the maps to madvise the pages used for profile info.
   // It is unlikely we will need them again in the near feature.
