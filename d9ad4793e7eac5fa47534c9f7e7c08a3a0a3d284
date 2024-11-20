@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c196a2e4_5fa729a1",
+        "filename": "compiler/optimizing/superblock_cloner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-20T09:46:13Z",
+      "side": 1,
+      "message": "Range-based loop?\n\n    for (const auto\u0026 live_out : live_outs) {",
+      "range": {
+        "startLine": 886,
+        "startChar": 2,
+        "endLine": 886,
+        "endChar": 91
+      },
+      "revId": "d9ad4793e7eac5fa47534c9f7e7c08a3a0a3d284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a98da5e2_723a1b7a",
