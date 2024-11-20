@@ -37,35 +37,60 @@ inline const RegType& RegisterLine::GetRegisterType(MethodVerifier* verifier, ui
 }
 
 template <LockOp kLockOp>
-inline void RegisterLine::SetRegisterType(uint32_t vdst, const RegType& new_type) {
+inline void RegisterLine::SetRegisterTypeImpl(uint32_t vdst, uint16_t new_id) {
   DCHECK_LT(vdst, num_regs_);
-  DCHECK(!new_type.IsLowHalf());
-  DCHECK(!new_type.IsHighHalf());
   // Note: previously we failed when asked to set a conflict. However, conflicts are OK as long
   //       as they are not accessed, and our backends can handle this nowadays.
-  line_[vdst] = new_type.GetId();
+  line_[vdst] = new_id;
   switch (kLockOp) {
     case LockOp::kClear:
       // Clear the monitor entry bits for this register.
       ClearAllRegToLockDepths(vdst);
       break;
     case LockOp::kKeep:
-      // Should only be doing this with reference types.
-      DCHECK(new_type.IsReferenceTypes());
       break;
   }
+}
+
+inline void RegisterLine::SetRegisterType(uint32_t vdst, RegType::Kind new_kind) {
+  DCHECK(!RegType::IsLowHalf(new_kind));
+  DCHECK(!RegType::IsHighHalf(new_kind));
+  SetRegisterTypeImpl<LockOp::kClear>(vdst, RegTypeCache::IdForRegKind(new_kind));
+}
+
+template <LockOp kLockOp>
+inline void RegisterLine::SetRegisterType(uint32_t vdst, const RegType& new_type) {
+  DCHECK(!new_type.IsLowHalf());
+  DCHECK(!new_type.IsHighHalf());
+  // Should only keep locks for reference types.
+  DCHECK_IMPLIES(kLockOp == LockOp::kKeep, new_type.IsReferenceTypes());
+  SetRegisterTypeImpl<kLockOp>(vdst, new_type.GetId());
+}
+
+inline void RegisterLine::SetRegisterTypeWideImpl(uint32_t vdst,
+                                                  uint16_t new_id1,
+                                                  uint16_t new_id2) {
+  DCHECK_LT(vdst + 1, num_regs_);
+  line_[vdst] = new_id1;
+  line_[vdst + 1] = new_id2;
+  // Clear the monitor entry bits for this register.
+  ClearAllRegToLockDepths(vdst);
+  ClearAllRegToLockDepths(vdst + 1);
+}
+
+inline void RegisterLine::SetRegisterTypeWide(uint32_t vdst,
+                                              RegType::Kind new_kind1,
+                                              RegType::Kind new_kind2) {
+  DCHECK(RegType::CheckWidePair(new_kind1, new_kind2));
+  SetRegisterTypeWideImpl(
+      vdst, RegTypeCache::IdForRegKind(new_kind1), RegTypeCache::IdForRegKind(new_kind2));
 }
 
 inline void RegisterLine::SetRegisterTypeWide(uint32_t vdst,
                                               const RegType& new_type1,
                                               const RegType& new_type2) {
-  DCHECK_LT(vdst + 1, num_regs_);
   DCHECK(new_type1.CheckWidePair(new_type2));
-  line_[vdst] = new_type1.GetId();
-  line_[vdst + 1] = new_type2.GetId();
-  // Clear the monitor entry bits for this register.
-  ClearAllRegToLockDepths(vdst);
-  ClearAllRegToLockDepths(vdst + 1);
+  SetRegisterTypeWideImpl(vdst, new_type1.GetId(), new_type2.GetId());
 }
 
 inline void RegisterLine::SetResultTypeToUnknown(RegTypeCache* reg_types) {
