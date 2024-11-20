@@ -39,6 +39,57 @@
       },
       "revId": "fad0e768ae12d5e2978473f0caaf20c05abac48f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539dcfcf_529d1bec",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-11-20T11:54:59Z",
+      "side": 1,
+      "message": "nit: low-overhead trace?\n\nThe term of profile / trace seems to have multiple meanings in ART.",
+      "range": {
+        "startLine": 176,
+        "startChar": 73,
+        "endLine": 176,
+        "endChar": 80
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2b6dcab6_a1fcf273",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "    LOG(ERROR) \u003c\u003c \"Invalid file descriptor, ignoring the request to dump trace\";\n"
+            },
+            {
+              "path": "runtime/native/dalvik_system_VMDebug.cc",
+              "range": {
+                "startLine": 183,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "    LOG(ERROR) \u003c\u003c \"Unable to dup the file descriptor, ignoring the request to dump trace\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fad0e768ae12d5e2978473f0caaf20c05abac48f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
