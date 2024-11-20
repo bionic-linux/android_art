@@ -129,7 +129,7 @@ static ssize_t pwrite(int fd, const void* buf, size_t count, off64_t offset) {
   return static_cast<ssize_t>(bytes_written);
 }
 
-static int fsync(int fd) {
+int fsync(int fd) {
   auto handle = reinterpret_cast<HANDLE>(_get_osfhandle(fd));
   if (handle != INVALID_HANDLE_VALUE && ::FlushFileBuffers(handle)) {
     return 0;

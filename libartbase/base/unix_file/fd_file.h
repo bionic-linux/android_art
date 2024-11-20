@@ -74,6 +74,7 @@ class FdFile : public RandomAccessFile {
   int64_t Write(const char* buf, int64_t byte_count, int64_t offset) override WARN_UNUSED;
 
   int Flush() override WARN_UNUSED { return Flush(/*flush_metadata=*/false); }
+  int Flush(bool flush_metadata) WARN_UNUSED;
 
   // Short for SetLength(0); Flush(); Close();
   // If the file was opened with a path name and unlink = true, also calls Unlink() on the path.
@@ -175,8 +176,6 @@ class FdFile : public RandomAccessFile {
   template <bool kUseOffset>
   bool WriteFullyGeneric(const void* buffer, size_t byte_count, size_t offset);
 
-  int Flush(bool flush_metadata) WARN_UNUSED;
-
   // The file path we hold for the file descriptor may be invalid, or may not even exist (e.g. if
   // the FdFile wasn't initialised with a path). This helper function checks if calling open() on
   // the file path (if it is set) returns the expected up-to-date file descriptor. This is still
@@ -217,6 +216,10 @@ class FdFile : public RandomAccessFile {
 };
 
 std::ostream& operator<<(std::ostream& os, FdFile::GuardState kind);
+
+#if defined(_WIN32)
+int fsync(int fd);
+#endif
 
 }  // namespace unix_file
 
