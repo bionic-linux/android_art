@@ -70,6 +70,30 @@
       },
       "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abafb794_f93e7b94",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-20T19:28:02Z",
+      "side": 1,
+      "message": "Done, thanks!\n\n`GetIMTIndex`code (via `IsAbstract()`) checks for default methods conflict [1]. This PS has that check. However, if I remove that check from intrinsic and only leave method being abstract check then all tests still pass (I\u0027ve introduced default method conflict test - check for `src2`).\n\nIs something off in the way I construct classes in the test or that check can be removed?\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/art_method-inl.h;l\u003d775;drc\u003dd5a09b3adf930729ccb17c1e466c9c5eb053082a",
+      "parentUuid": "97ac62a0_15d6fa2e",
+      "range": {
+        "startLine": 4318,
+        "startChar": 0,
+        "endLine": 4318,
+        "endChar": 48
+      },
+      "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
