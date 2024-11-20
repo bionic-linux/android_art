@@ -571,7 +571,12 @@ art_cc_test {
     test_config: "art_standalone_dex2oat_cts_tests.xml",
     test_suites: [
         "cts",
+<<<<<<< HEAD   (34759b Ignore ReferenceQueue.add method when running method trace t)
         "mts-art",
+||||||| BASE
+=======
+        "vts",
+>>>>>>> CHANGE (22a0c0 Add vts tags to CTS-on-GSI modules.)
         "mcts-art",
     ],
 }

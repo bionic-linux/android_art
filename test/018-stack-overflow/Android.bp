@@ -23,6 +23,7 @@ java_test {
     ],
     test_suites: [
         "cts",
+        "vts",
         "mcts-art",
         "mts-art",
     ],
