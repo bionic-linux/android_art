@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6457d9_0ed798fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-20T10:43:35Z",
+      "side": 1,
+      "message": "Victor, PTAL. Thanks!",
+      "revId": "fad0e768ae12d5e2978473f0caaf20c05abac48f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d17959_0c287d14",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-20T10:43:35Z",
+      "side": 1,
+      "message": "I just wanted to make the behaviour uniform across filename and the fd implementations. If throwing an error is better, I can update the filename one.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 82
+      },
+      "revId": "fad0e768ae12d5e2978473f0caaf20c05abac48f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
