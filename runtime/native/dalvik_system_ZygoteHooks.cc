@@ -156,6 +156,8 @@ enum {
   DISABLE_TEST_API_ENFORCEMENT_POLICY = 1 << 18,
   PROFILEABLE                         = 1 << 24,
 
+  ALLOW_RT_PRIO                       = 1 << 31,
+
   // bits to shift (flags & HIDDEN_API_ENFORCEMENT_POLICY_MASK) by to get a value
   // corresponding to hiddenapi::EnforcementPolicy
   API_ENFORCEMENT_POLICY_SHIFT = CTZ(HIDDEN_API_ENFORCEMENT_POLICY_MASK),
@@ -340,6 +342,8 @@ static void ZygoteHooks_nativePostForkChild(JNIEnv* env,
   runtime->SetLoadAppImageStartupCacheEnabled(
       (runtime_flags & USE_APP_IMAGE_STARTUP_CACHE) != 0u);
   runtime_flags &= ~USE_APP_IMAGE_STARTUP_CACHE;
+
+  runtime_flags &= ~ALLOW_RT_PRIO;
 
   if (runtime_flags != 0) {
     LOG(ERROR) << StringPrintf("Unknown bits set in runtime_flags: %#x", runtime_flags);
