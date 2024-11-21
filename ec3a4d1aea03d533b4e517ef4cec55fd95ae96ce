@@ -94,6 +94,30 @@
       },
       "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69be28f2_54b4ba99",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-21T10:03:48Z",
+      "side": 1,
+      "message": "Looks like we do give an IMT to all \"abstract\" methods and that\u0027s ok:\nhttps://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/class_linker.cc;drc\u003da780201b38d21bd9b159f83815021b050355a273;bpv\u003d1;bpt\u003d1;l\u003d4200",
+      "parentUuid": "abafb794_f93e7b94",
+      "range": {
+        "startLine": 4318,
+        "startChar": 0,
+        "endLine": 4318,
+        "endChar": 48
+      },
+      "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
