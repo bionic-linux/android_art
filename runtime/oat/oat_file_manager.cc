@@ -271,9 +271,22 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
       bool added_image_space = false;
       if (should_madvise) {
         VLOG(oat) << "Madvising oat file: " << oat_file->GetLocation();
+        if (true) {
+          auto percent = [](uint64_t value, uint64_t max) {
+            return max == 0 ? "0"
+                            : android::base::StringPrintf(
+                                  "%" PRId64 "/%" PRId64 "(%.2f%%)",
+                                  value,
+                                  max,
+                                  static_cast<double>(value * 100) / static_cast<double>(max));
+          };
+          LOG(INFO) << "Madvising "
+                    << percent(oat_file->SizeMadvise() / 1024, oat_file->Size() / 1024)
+                    << " for oat file: " << oat_file->GetLocation();
+        }
         size_t madvise_size_limit = runtime->GetMadviseWillNeedSizeOdex();
         Runtime::MadviseFileForRange(madvise_size_limit,
-                                     oat_file->Size(),
+                                     oat_file->SizeMadvise(),
                                      oat_file->Begin(),
                                      oat_file->End(),
                                      oat_file->GetLocation());
