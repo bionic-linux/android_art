@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78753705_f0f99a45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-21T09:56:58Z",
+      "side": 1,
+      "message": "field",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71fea56_e463ec32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-21T09:56:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3f6052_597f6c36",
+        "filename": "test/918-fields/src/art/Test918.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-11-21T09:56:58Z",
+      "side": 1,
+      "message": "Maybe a comment here on why this was needed.",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "36e12bc8_2b153ffe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/918-fields/src/art/Test918.java",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "            // Make sure the field is initialized.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
