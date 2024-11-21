@@ -2075,6 +2075,16 @@ const uint8_t* OatFile::End() const {
   return end_;
 }
 
+size_t OatFile::SizeMadvise() const {
+  if (!IsAotCompilationEnabled(GetCompilerFilter())) {
+    return Size();
+  }
+  const size_t size_madvise =
+      GetOatHeader().GetExecutableOffset() + GetOatHeader().GetExecutableStartupCodeSize();
+  CHECK_LE(size_madvise, Size());
+  return size_madvise;
+}
+
 const uint8_t* OatFile::DexBegin() const {
   return vdex_->Begin();
 }

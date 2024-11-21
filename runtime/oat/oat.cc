@@ -70,6 +70,7 @@ OatHeader::OatHeader(InstructionSet instruction_set,
       oat_dex_files_offset_(0),
       bcp_bss_info_offset_(0),
       executable_offset_(0),
+      executable_startup_code_size_(0),
       jni_dlsym_lookup_trampoline_offset_(0),
       jni_dlsym_lookup_critical_trampoline_offset_(0),
       quick_generic_jni_trampoline_offset_(0),
@@ -211,6 +212,18 @@ void OatHeader::SetExecutableOffset(uint32_t executable_offset) {
   DCHECK_EQ(executable_offset_, 0U);
 
   executable_offset_ = executable_offset;
+}
+
+uint32_t OatHeader::GetExecutableStartupCodeSize() const {
+  DCHECK(IsValid());
+  return executable_startup_code_size_;
+}
+
+void OatHeader::SetExecutableStartupCodeSize(uint32_t executable_startup_code_size) {
+  DCHECK(IsValid());
+  DCHECK_EQ(executable_startup_code_size_, 0U);
+
+  executable_startup_code_size_ = executable_startup_code_size;
 }
 
 static const void* GetTrampoline(const OatHeader& header, uint32_t offset) {
