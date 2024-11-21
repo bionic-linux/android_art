@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9d36b7bd_7ec2a182",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-21T10:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78753705_f0f99a45",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d71fea56_e463ec32",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -78,6 +102,30 @@
           ]
         }
       ],
+      "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a58d8d_d3406550",
+        "filename": "test/918-fields/src/art/Test918.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-21T10:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3f6052_597f6c36",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 21
+      },
       "revId": "882c4a9f971ce5f01f0b98c0bfaca345f635ce13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
