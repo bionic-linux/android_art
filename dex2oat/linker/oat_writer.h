@@ -542,6 +542,7 @@ class OatWriter {
   uint32_t size_method_header_ = 0;
   uint32_t size_code_ = 0;
   uint32_t size_code_alignment_ = 0;
+  uint32_t size_code_startup_ = 0;
   uint32_t size_data_img_rel_ro_ = 0;
   uint32_t size_data_img_rel_ro_alignment_ = 0;
   uint32_t size_relative_call_thunks_ = 0;
