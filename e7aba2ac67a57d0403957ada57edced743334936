@@ -16,6 +16,23 @@
       "message": "Patchset #3 has a variant that tries to keep all hot methods contiguous (sticking them in the middle), but a few different benchmark runs didn\u0027t show any improvement. See https://dashboards.corp.google.com/_0e1b06dd_a79e_4433_b625_b62e5cac004b?p\u003dBootImageProfileId:42023 (patchset #2 is the latest version). I tried a few runs and this version was neutral to an improvement across almost every metric, and that\u0027s without the madvise follow-up tweak.",
       "revId": "e7aba2ac67a57d0403957ada57edced743334936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ee31a9_808c8748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-11-21T16:21:56Z",
+      "side": 1,
+      "message": "I\u0027m thinking the MD5-related ArtRunTest failure is another case of b/218030517 flakiness? /cc @rpl@google.com",
+      "revId": "e7aba2ac67a57d0403957ada57edced743334936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
