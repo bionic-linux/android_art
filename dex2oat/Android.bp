@@ -261,7 +261,7 @@ art_cc_binary {
             shared_libs: [
                 "libart",
                 "libartbase",
-                "libdexfile",
+                "libdexfile#impl",
                 "libprofile",
             ],
             static_libs: [
@@ -327,7 +327,7 @@ art_cc_binary {
             shared_libs: [
                 "libartbased",
                 "libartd",
-                "libdexfiled",
+                "libdexfiled#impl",
                 "libprofiled",
             ],
             static_libs: [
@@ -380,6 +380,7 @@ art_cc_binary {
         "libcrypto_for_art",
         "libdex2oat_static",
     ],
+    visibility: ["//tools/vendor/google_prebuilts/arc"],
 }
 
 art_cc_binary {
@@ -425,7 +426,7 @@ art_cc_library_static {
 
 art_cc_defaults {
     name: "art_dex2oat_tests_defaults",
-    data: [
+    device_common_data: [
         ":art-gtest-jars-AbstractMethod",
         ":art-gtest-jars-ArrayClassWithUnresolvedComponent",
         ":art-gtest-jars-DefaultMethods",
@@ -482,7 +483,10 @@ art_cc_defaults {
     ],
     target: {
         host: {
-            required: ["dex2oatd"],
+            required: [
+                "dex2oatd",
+                "art_boot_images",
+            ],
         },
     },
 
@@ -519,6 +523,7 @@ art_cc_defaults {
     ],
     static_libs: [
         "libcrypto_for_art",
+        "libgmock",
         "liblz4", // libart(d)-dex2oat dependency; must be repeated here since it's a static lib.
     ],
 }
@@ -561,16 +566,13 @@ art_cc_test {
     srcs: ["dex2oat_cts_test.cc"],
     data: [
         ":art-gtest-jars-Main",
-        ":art-gtest-jars-MainStripped",
-        ":art-gtest-jars-MultiDex",
-        ":art-gtest-jars-MultiDexModifiedSecondary",
-        ":art-gtest-jars-MultiDexUncompressedAligned",
-        ":art-gtest-jars-Nested",
         ":generate-boot-image",
     ],
     test_config: "art_standalone_dex2oat_cts_tests.xml",
     test_suites: [
         "cts",
+        "vts",
+        "mts-art",
         "mcts-art",
     ],
 }
