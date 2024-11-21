@@ -22,6 +22,29 @@
       },
       "revId": "0fabffcfbd73943001e1c0f0f20443298ffbcd71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80566fdd_b6764769",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-21T10:45:30Z",
+      "side": 1,
+      "message": "These changes seem to be related to `MethodHandle` behavior rather than the intrinsic implementation. Should they be in their own CL?",
+      "range": {
+        "startLine": 777,
+        "startChar": 9,
+        "endLine": 777,
+        "endChar": 73
+      },
+      "revId": "0fabffcfbd73943001e1c0f0f20443298ffbcd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
