@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad6bb31_63e69e99",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3287,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-21T10:19:22Z",
+      "side": 1,
+      "message": "The fall-through to the first boxed case is weird. Please add an explicit `return false` here, or move the `return false` from the `DEFINE_BOXED_CASE` macro after the `#undef DEFINE_BOXED_CASE`.",
+      "revId": "b0cdf04d9b237976c0db7191da86d13b91df2ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cd0492_da38aba6",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-21T10:19:22Z",
+      "side": 1,
+      "message": "I\u0027d keep the old indentation here to have the `case` (even inside macro definition) two spaces right from the `switch` (and now aligned with the other `case`s above).",
+      "range": {
+        "startLine": 3289,
+        "startChar": 2,
+        "endLine": 3289,
+        "endChar": 6
+      },
+      "revId": "b0cdf04d9b237976c0db7191da86d13b91df2ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
