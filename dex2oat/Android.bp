@@ -571,6 +571,11 @@ art_cc_test {
     test_config: "art_standalone_dex2oat_cts_tests.xml",
     test_suites: [
         "cts",
+<<<<<<< HEAD   (53d817 Log an error for an invalid fd in dumpLowOverheadTraceImpl)
+||||||| BASE
+=======
+        "vts",
+>>>>>>> CHANGE (85765e Add vts tags to CTS-on-GSI modules.)
         "mts-art",
         "mcts-art",
     ],
