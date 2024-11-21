@@ -722,6 +722,13 @@ class OatWriter::OatDexMethodVisitor : public DexMethodVisitor {
   }
 
  protected:
+  // Note: Bin-to-bin order does not matter. If the kernel does or does not read-ahead
+  // any memory, it only goes into the buffer cache and does not grow the PSS until the
+  // first time that memory is referenced in the process.
+  constexpr uint32_t kStartupBit = 4u;
+  constexpr uint32_t kHotBit = 2u;
+  constexpr uint32_t kPostStartupBit = 1u;
+
   size_t oat_class_index_;
   size_t method_offsets_index_;
 };
@@ -1067,12 +1074,6 @@ class OatWriter::LayoutCodeMethodVisitor final : public OatDexMethodVisitor {
       if (profile_index_ != ProfileCompilationInfo::MaxProfileIndex()) {
         ProfileCompilationInfo* pci = writer_->profile_compilation_info_;
         DCHECK(pci != nullptr);
-        // Note: Bin-to-bin order does not matter. If the kernel does or does not read-ahead
-        // any memory, it only goes into the buffer cache and does not grow the PSS until the
-        // first time that memory is referenced in the process.
-        constexpr uint32_t kStartupBit = 4u;
-        constexpr uint32_t kHotBit = 2u;
-        constexpr uint32_t kPostStartupBit = 1u;
         hotness_bits =
             (pci->IsHotMethod(profile_index_, method_index) ? kHotBit : 0u) |
             (pci->IsStartupMethod(profile_index_, method_index) ? kStartupBit : 0u) |
@@ -1540,6 +1541,7 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
       : OrderedMethodVisitor(std::move(ordered_methods)),
         writer_(writer),
         offset_(relative_offset),
+        offset_after_last_startup_method_(relative_offset),
         dex_file_(nullptr),
         pointer_size_(GetInstructionSetPointerSize(writer_->compiler_options_.GetInstructionSet())),
         class_loader_(writer->HasImage() ? writer->image_writer_->GetAppClassLoader() : nullptr),
@@ -1806,6 +1808,10 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
       }
       writer_->size_code_ += code_size;
       offset_ += code_size;
+      if ((method_data & kStartupBit) != 0) {
+        writer_->size_code_startup_ += code_size;
+        offset_after_last_startup_method_ = offset_;
+      }
     }
     DCHECK_OFFSET_();
 
@@ -1816,11 +1822,16 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
     return offset_;
   }
 
+  size_t GetOffsetAfterLastStartupMethod() const { return offset_after_last_startup_method_; }
+
  private:
   OatWriter* const writer_;
 
   // Updated in VisitMethod as methods are written out.
   size_t offset_;
+
+  // Updated in VisitMethod as startup methods are written out.
+  size_t offset_after_last_startup_method_;
 
   // Potentially varies with every different VisitMethod.
   // Used to determine which DexCache to use when finding ArtMethods.
@@ -2677,6 +2688,7 @@ bool OatWriter::CheckOatSize(OutputStream* out, size_t file_offset, size_t relat
     DO_STAT(size_method_header_);
     DO_STAT(size_code_);
     DO_STAT(size_code_alignment_);
+    DO_STAT(size_code_startup_);
     DO_STAT(size_data_img_rel_ro_);
     DO_STAT(size_data_img_rel_ro_alignment_);
     DO_STAT(size_relative_call_thunks_);
@@ -3204,6 +3216,8 @@ size_t OatWriter::WriteCodeDexFiles(OutputStream* out,
   if (UNLIKELY(!visitor.Visit())) {
     return 0;
   }
+  oat_header_->SetExecutableStartupCodeSize(visitor.GetOffsetAfterLastStartupMethod() -
+                                            oat_header_->GetExecutableOffset());
   relative_offset = visitor.GetOffset();
 
   size_code_alignment_ += relative_patcher_->CodeAlignmentSize();

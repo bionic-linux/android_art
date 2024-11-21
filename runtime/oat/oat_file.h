@@ -368,6 +368,8 @@ class OatFile {
   EXPORT const uint8_t* Begin() const;
   EXPORT const uint8_t* End() const;
 
+  EXPORT size_t SizeMadvise() const;
+
   const uint8_t* DataImgRelRoBegin() const { return data_img_rel_ro_begin_; }
   const uint8_t* DataImgRelRoEnd() const { return data_img_rel_ro_end_; }
   const uint8_t* DataImgRelRoAppImage() const { return data_img_rel_ro_app_image_; }
