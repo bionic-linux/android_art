@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77adb578_b85d0474",
+        "filename": "compiler/optimizing/superblock_cloner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1975361
+      },
+      "writtenOn": "2024-11-21T10:47:14Z",
+      "side": 1,
+      "message": "nit: AFAIUnderstand the change, this is only possible when there is try-catch info present, right? Could you add a code comment about this and maybe a DCHECK(graph has TryCatchInfo)?",
+      "revId": "70cb3b60e2b62ce2ca604032570618987f590e2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
