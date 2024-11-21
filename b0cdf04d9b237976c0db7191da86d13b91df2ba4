@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9559655_08c6cafb",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3287,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-21T11:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad6bb31_63e69e99",
+      "revId": "b0cdf04d9b237976c0db7191da86d13b91df2ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9cd0492_da38aba6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-21T10:19:22Z",
       "side": 1,
       "message": "I\u0027d keep the old indentation here to have the `case` (even inside macro definition) two spaces right from the `switch` (and now aligned with the other `case`s above).",
+      "range": {
+        "startLine": 3289,
+        "startChar": 2,
+        "endLine": 3289,
+        "endChar": 6
+      },
+      "revId": "b0cdf04d9b237976c0db7191da86d13b91df2ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e136090_058abcf0",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3289,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-21T11:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9cd0492_da38aba6",
       "range": {
         "startLine": 3289,
         "startChar": 2,
