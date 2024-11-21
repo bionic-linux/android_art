@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2724975_6b9bd9a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-21T12:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee0b1d69_30ab3f9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "0fabffcfbd73943001e1c0f0f20443298ffbcd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80566fdd_b6764769",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Newly added tests fail when they are run in the interpreter. Should I move failing tests and `method_handles` changes to a separate CL?",
       "parentUuid": "80566fdd_b6764769",
+      "range": {
+        "startLine": 777,
+        "startChar": 9,
+        "endLine": 777,
+        "endChar": 73
+      },
+      "revId": "0fabffcfbd73943001e1c0f0f20443298ffbcd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8e9248_a652fbfb",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-21T12:52:23Z",
+      "side": 1,
+      "message": "Disabled these new tests and will enable them in the interpreter fix CL.",
+      "parentUuid": "c6e3f9d7_3673e845",
       "range": {
         "startLine": 777,
         "startChar": 9,

@@ -118,6 +118,30 @@
       },
       "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d165d529_60ab95e0",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-21T12:52:23Z",
+      "side": 1,
+      "message": "And\n\n```\nDCHECK(dst-\u003eIsAbstact());\n``` [1]\n\nbefore that is fine because default conflict bits are set later?\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/class_linker.cc;l\u003d4198;drc\u003da780201b38d21bd9b159f83815021b050355a273",
+      "parentUuid": "69be28f2_54b4ba99",
+      "range": {
+        "startLine": 4318,
+        "startChar": 0,
+        "endLine": 4318,
+        "endChar": 48
+      },
+      "revId": "ec3a4d1aea03d533b4e517ef4cec55fd95ae96ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
