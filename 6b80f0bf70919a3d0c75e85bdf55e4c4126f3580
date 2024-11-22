@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8fa6c6_4fa488ae",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-22T16:03:45Z",
+      "side": 1,
+      "message": "Can we change `BreakBeforeTernaryOperators` in `.clang-format` to `true`? That would better align with the example in the \"Android Runtime C++ Style Guide (WIP)\" document.",
+      "range": {
+        "startLine": 146,
+        "startChar": 74,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea4ae70_f03b5bca",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-22T16:03:45Z",
+      "side": 1,
+      "message": "We can define\n\n    template \u003cbool (Matcher::*Fn1)(), bool (Matcher::*Fn2)()\u003e\n    bool Matcher::Or() {\n      return (this-\u003e*Fn1)() || (this-\u003e*Fn2)();\n    }\n\nand use it here as\n\n    \u0026Matcher::Or\u003c\u0026Matcher::Opcode\u003cInstruction::INVOKE_DIRECT\u003e,\n                 \u0026Matcher::Opcode\u003cInstruction::INVOKE_DIRECT_RANGE\u003e\u003e\n\nand we shall not need a second matcher array that repeats some of the work.",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 69
+      },
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42945d85_0c4f2ce7",
+        "filename": "test/569-checker-pattern-replacement/smali-multidex/multidex.smali",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-22T16:03:45Z",
+      "side": 1,
+      "message": "Remove one blank line?",
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa729f24_1e15a0a8",
+        "filename": "test/569-checker-pattern-replacement/smali/smali.smali",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-22T16:03:45Z",
+      "side": 1,
+      "message": "Remove one blank line?",
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
