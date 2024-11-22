@@ -39,6 +39,30 @@
       },
       "revId": "28083167daab16889179c6efb402a39922a0a0bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389aadc2_c01d2be4",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-22T15:47:31Z",
+      "side": 1,
+      "message": "Hey Nicolas, good point, completely overlooked that. I haven\u0027t gotten around to upstreaming the rest of the topic that would make this change make sense. I\u0027ll upstream the rest of the Topic and lyk as soon as its ready for the review.",
+      "parentUuid": "27edd605_274ff822",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "28083167daab16889179c6efb402a39922a0a0bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
