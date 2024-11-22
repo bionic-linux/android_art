@@ -34,6 +34,24 @@
       "parentUuid": "23dc7416_e0f814ef",
       "revId": "597753009d2294644e108c45f63c99475fe063bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a22adf_f7b78dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-11-22T23:35:33Z",
+      "side": 1,
+      "message": "Thanks. I took a look and generally lgtm. Though it seems a bit cumbersome to pass `artManagedFilePaths` around in `PackageInstallerSession`, the current set of the new APIs seems to be the best we can do without exposing some internal details of `PackageInstallerSession` like `FileUtils.isValidExtFilename`.",
+      "parentUuid": "f3e314a7_ee95fd33",
+      "revId": "597753009d2294644e108c45f63c99475fe063bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
