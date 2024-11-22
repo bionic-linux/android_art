@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25535cb6_98c97e13",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-22T16:30:29Z",
+      "side": 1,
+      "message": "drive-by: Added `constexpr`",
+      "revId": "ed0ff9d47aadb72be12ac04d2d160e08cafd6c2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
