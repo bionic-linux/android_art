@@ -16,6 +16,23 @@
       "message": "LUCI build https://ci.chromium.org/ui/p/art/builders/ci.shadow/qemu.riscv.64/11/overview is green",
       "revId": "0abdbc3350e8b519373880159ea07e69f5a4bde3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c610dc07_f16f1044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-11-22T08:48:07Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "0abdbc3350e8b519373880159ea07e69f5a4bde3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
