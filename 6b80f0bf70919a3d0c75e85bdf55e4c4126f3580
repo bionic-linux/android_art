@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34284eeb_a52389f3",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-22T16:36:32Z",
+      "side": 1,
+      "message": "Your implementation differs from my proposal and does not allow chaining three or more opcodes. But it works for the current change, so that\u0027s fine with me.",
+      "parentUuid": "adf7e425_622fff1c",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 69
+      },
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42945d85_0c4f2ce7",
