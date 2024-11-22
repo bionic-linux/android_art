@@ -51,6 +51,8 @@
 #include "thread.h"
 #include "well_known_classes.h"
 
+extern "C" const char *__progname;
+
 namespace art HIDDEN {
 
 // This helper cannot be in the anonymous namespace because it needs to be
@@ -913,7 +915,8 @@ class ScopedCheck {
       }
     }
     if (!okay) {
-      AbortF("JNI ERROR (app bug): %s is an invalid %s: %p (%s)",
+      AbortF("JNI ERROR (app bug (%s)): %s is an invalid %s: %p (%s)",
+             __progname,
              what,
              ToStr<IndirectRefKind>(ref_kind).c_str(),
              java_object,

@@ -397,7 +397,8 @@ void CheckMethodArguments(JavaVMExt* vm, ArtMethod* m, uint32_t* args)
       ObjPtr<mirror::Object> argument =
           (reinterpret_cast<StackReference<mirror::Object>*>(&args[i + offset]))->AsMirrorPtr();
       if (argument != nullptr && !argument->InstanceOf(param_type)) {
-        LOG(ERROR) << "JNI ERROR (app bug): attempt to pass an instance of "
+        LOG(ERROR) << "JNI ERROR (app bug (" << __progname
+                   << ")): attempt to pass an instance of "
                    << argument->PrettyTypeOf() << " as argument " << (i + 1)
                    << " to " << m->PrettyMethod();
         ++error_count;
@@ -408,26 +409,34 @@ void CheckMethodArguments(JavaVMExt* vm, ArtMethod* m, uint32_t* args)
       int32_t arg = static_cast<int32_t>(args[i + offset]);
       if (param_type->IsPrimitiveBoolean()) {
         if (arg != JNI_TRUE && arg != JNI_FALSE) {
-          LOG(ERROR) << "JNI ERROR (app bug): expected jboolean (0/1) but got value of "
-              << arg << " as argument " << (i + 1) << " to " << m->PrettyMethod();
+          LOG(ERROR) << "JNI ERROR (app bug (" << __progname
+                     << ")): expected jboolean (0/1) but got value of " << arg
+                     << " as argument " << (i + 1) << " to "
+                     << m->PrettyMethod();
           ++error_count;
         }
       } else if (param_type->IsPrimitiveByte()) {
         if (arg < -128 || arg > 127) {
-          LOG(ERROR) << "JNI ERROR (app bug): expected jbyte but got value of "
-              << arg << " as argument " << (i + 1) << " to " << m->PrettyMethod();
+          LOG(ERROR) << "JNI ERROR (app bug (" << __progname
+                     << ")): expected jbyte but got value of " << arg
+                     << " as argument " << (i + 1) << " to "
+                     << m->PrettyMethod();
           ++error_count;
         }
       } else if (param_type->IsPrimitiveChar()) {
         if (args[i + offset] > 0xFFFF) {
-          LOG(ERROR) << "JNI ERROR (app bug): expected jchar but got value of "
-              << arg << " as argument " << (i + 1) << " to " << m->PrettyMethod();
+          LOG(ERROR) << "JNI ERROR (app bug (" << __progname
+                     << ")): expected jchar but got value of " << arg
+                     << " as argument " << (i + 1) << " to "
+                     << m->PrettyMethod();
           ++error_count;
         }
       } else if (param_type->IsPrimitiveShort()) {
         if (arg < -32768 || arg > 0x7FFF) {
-          LOG(ERROR) << "JNI ERROR (app bug): expected jshort but got value of "
-              << arg << " as argument " << (i + 1) << " to " << m->PrettyMethod();
+          LOG(ERROR) << "JNI ERROR (app bug (" << __progname
+                     << ")): expected jshort but got value of " << arg
+                     << " as argument " << (i + 1) << " to "
+                     << m->PrettyMethod();
           ++error_count;
         }
       }

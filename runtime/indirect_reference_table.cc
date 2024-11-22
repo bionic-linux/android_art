@@ -187,7 +187,8 @@ IndirectRef IndirectReferenceTable::Add(ObjPtr<mirror::Object> obj, std::string*
   if (top_index_ == max_entries_) {
     // TODO: Fill holes before reporting error.
     std::ostringstream oss;
-    oss << "JNI ERROR (app bug): " << kind_ << " table overflow "
+    oss << "JNI ERROR (app bug (" << __progname << ")): " << kind_
+        << " table overflow "
         << "(max=" << max_entries_ << ")"
         << MutatorLockedDumpable<IndirectReferenceTable>(*this);
     *error_msg = oss.str();

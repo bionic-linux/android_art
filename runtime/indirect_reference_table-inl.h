@@ -26,7 +26,10 @@
 #include "obj_ptr-inl.h"
 #include "verify_object.h"
 
+extern "C" const char *__progname;
+
 namespace art HIDDEN {
+
 namespace mirror {
 class Object;
 }  // namespace mirror
@@ -67,11 +70,8 @@ inline bool IndirectReferenceTable::CheckEntry(const char* what,
   IndirectRef checkRef = ToIndirectRef(idx);
   if (UNLIKELY(checkRef != iref)) {
     std::string msg = android::base::StringPrintf(
-        "JNI ERROR (app bug): attempt to %s stale %s %p (should be %p)",
-        what,
-        GetIndirectRefKindString(kind_),
-        iref,
-        checkRef);
+        "JNI ERROR (app bug (%s)): attempt to %s stale %s %p (should be %p)",
+        __progname, what, GetIndirectRefKindString(kind_), iref, checkRef);
     AbortIfNoCheckJNI(msg);
     return false;
   }
