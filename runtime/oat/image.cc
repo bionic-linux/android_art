@@ -34,8 +34,8 @@
 namespace art HIDDEN {
 
 const uint8_t ImageHeader::kImageMagic[] = { 'a', 'r', 't', '\n' };
-// Revert dex cache change.
-const uint8_t ImageHeader::kImageVersion[] = { '1', '1', '8', '\0' };
+// Add ARM64 MethodHandle.invokeExact intrinsic.
+const uint8_t ImageHeader::kImageVersion[] = { '1', '1', '9', '\0' };
 
 ImageHeader::ImageHeader(uint32_t image_reservation_size,
                          uint32_t component_count,
