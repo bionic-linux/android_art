@@ -16,6 +16,24 @@
       "message": "Do you know if we could write an art test for this? I thought about adding to `569-checker-pattern-replacement`. For that I would need to write the code in Smali to force the invoke range but the Java code from classes.dex is not able to see it since we need reflection. I also thought about smali to smali inlining but we don\u0027t support smali multidex in our testing suite as far as I could see.\n\nFor what it\u0027s worth, I manually checked that this works with the R8 version I mentioned and I was seeing the patterns being recognized",
       "revId": "e10a74fd0e5be43a61a3f35a8222bb487e21b81d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d8d9db_960e55bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-22T14:05:25Z",
+      "side": 1,
+      "message": "Updated with a test",
+      "parentUuid": "148ef6c2_721a883f",
+      "revId": "e10a74fd0e5be43a61a3f35a8222bb487e21b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
