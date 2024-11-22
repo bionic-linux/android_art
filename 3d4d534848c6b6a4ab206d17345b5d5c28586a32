@@ -51,6 +51,24 @@
       "message": "I\u0027ll take a look after the changes we discussed yesterday.",
       "revId": "3d4d534848c6b6a4ab206d17345b5d5c28586a32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86de0095_979eff8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-22T16:34:47Z",
+      "side": 1,
+      "message": "This change is now ready for review. Thanks for the discussion!",
+      "parentUuid": "ef544fee_4d27bf93",
+      "revId": "3d4d534848c6b6a4ab206d17345b5d5c28586a32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
