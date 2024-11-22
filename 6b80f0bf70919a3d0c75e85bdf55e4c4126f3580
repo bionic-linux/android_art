@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b524cff_5a7f62f5",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-22T16:46:19Z",
+      "side": 1,
+      "message": "Updated to your version to allow for possible chaining later on.",
+      "parentUuid": "34284eeb_a52389f3",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 69
+      },
+      "revId": "6b80f0bf70919a3d0c75e85bdf55e4c4126f3580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42945d85_0c4f2ce7",
