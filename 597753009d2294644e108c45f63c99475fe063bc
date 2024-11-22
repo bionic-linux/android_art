@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dc7416_e0f814ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-11-22T17:42:02Z",
+      "side": 1,
+      "message": "Is there a CL that shows how the new APIs will be used? I can see how `isArtManaged` would be useful, but not for the other two methods",
+      "revId": "597753009d2294644e108c45f63c99475fe063bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
