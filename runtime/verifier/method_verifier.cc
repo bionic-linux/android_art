@@ -2197,29 +2197,29 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       /* could be long or double; resolved upon use */
     case Instruction::CONST_WIDE_16: {
       int64_t val = static_cast<int16_t>(inst->VRegB_21s());
-      const RegType& lo = reg_types_.FromCat2ConstLo(static_cast<int32_t>(val), true);
-      const RegType& hi = reg_types_.FromCat2ConstHi(static_cast<int32_t>(val >> 32), true);
+      const RegType& lo = reg_types_.ConstantLo();
+      const RegType& hi = reg_types_.ConstantHi();
       work_line_->SetRegisterTypeWide(inst->VRegA_21s(), lo, hi);
       break;
     }
     case Instruction::CONST_WIDE_32: {
       int64_t val = static_cast<int32_t>(inst->VRegB_31i());
-      const RegType& lo = reg_types_.FromCat2ConstLo(static_cast<int32_t>(val), true);
-      const RegType& hi = reg_types_.FromCat2ConstHi(static_cast<int32_t>(val >> 32), true);
+      const RegType& lo = reg_types_.ConstantLo();
+      const RegType& hi = reg_types_.ConstantHi();
       work_line_->SetRegisterTypeWide(inst->VRegA_31i(), lo, hi);
       break;
     }
     case Instruction::CONST_WIDE: {
       int64_t val = inst->VRegB_51l();
-      const RegType& lo = reg_types_.FromCat2ConstLo(static_cast<int32_t>(val), true);
-      const RegType& hi = reg_types_.FromCat2ConstHi(static_cast<int32_t>(val >> 32), true);
+      const RegType& lo = reg_types_.ConstantLo();
+      const RegType& hi = reg_types_.ConstantHi();
       work_line_->SetRegisterTypeWide(inst->VRegA_51l(), lo, hi);
       break;
     }
     case Instruction::CONST_WIDE_HIGH16: {
       int64_t val = static_cast<uint64_t>(inst->VRegB_21h()) << 48;
-      const RegType& lo = reg_types_.FromCat2ConstLo(static_cast<int32_t>(val), true);
-      const RegType& hi = reg_types_.FromCat2ConstHi(static_cast<int32_t>(val >> 32), true);
+      const RegType& lo = reg_types_.ConstantLo();
+      const RegType& hi = reg_types_.ConstantHi();
       work_line_->SetRegisterTypeWide(inst->VRegA_21h(), lo, hi);
       break;
     }
@@ -2887,21 +2887,22 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
           break;
         }
 
-        /* must be in same class or in superclass */
-        // const RegType& this_super_klass = this_type.GetSuperClass(&reg_types_);
-        // TODO: re-enable constructor type verification
-        // if (this_super_klass.IsConflict()) {
-          // Unknown super class, fail so we re-check at runtime.
-          // Fail(VERIFY_ERROR_BAD_CLASS_SOFT) << "super class unknown for '" << this_type << "'";
-          // break;
-        // }
-
         /* arg must be an uninitialized reference */
         if (!this_type.IsUninitializedTypes()) {
           Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "Expected initialization on uninitialized reference "
               << this_type;
           break;
         }
+
+        // Note: According to JLS, constructors are never inherited. Therefore the target
+        // constructor should be defined exactly by the `this_type`, or by the direct
+        // superclass in the case of a constructor calling the superclass constructor.
+        // However, ART had this check commented out for a very long time and this has
+        // allowed bytecode optimizers such as R8 to inline constructors, often calling
+        // `j.l.Object.<init>` directly without any intermediate constructor. Since this
+        // optimization allows eliminating constructor methods, this often results in a
+        // significant dex size reduction. Therefore it is undesirable to reinstate this
+        // check and ART deliberately remains permissive here and diverges from the RI.
 
         /*
          * Replace the uninitialized reference with an initialized one. We need to do this for all
@@ -4249,8 +4250,8 @@ void MethodVerifier<kVerifierDebug>::VerifyAGet(const Instruction* inst,
       } else {
         // Category 2
         work_line_->SetRegisterTypeWide(inst->VRegA_23x(),
-                                        reg_types_.FromCat2ConstLo(0, false),
-                                        reg_types_.FromCat2ConstHi(0, false));
+                                        reg_types_.ConstantLo(),
+                                        reg_types_.ConstantHi());
       }
     } else if (!array_type.IsArrayTypes()) {
       Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "not array type " << array_type << " with aget";
@@ -4746,7 +4747,7 @@ template <bool kVerifierDebug>
 const RegType& MethodVerifier<kVerifierDebug>::DetermineCat1Constant(int32_t value) {
   // Imprecise constant type.
   if (value < -32768) {
-    return reg_types_.IntConstant();
+    return reg_types_.IntegerConstant();
   } else if (value < -128) {
     return reg_types_.ShortConstant();
   } else if (value < 0) {
@@ -4754,15 +4755,15 @@ const RegType& MethodVerifier<kVerifierDebug>::DetermineCat1Constant(int32_t val
   } else if (value == 0) {
     return reg_types_.Zero();
   } else if (value == 1) {
-    return reg_types_.One();
+    return reg_types_.BooleanConstant();
   } else if (value < 128) {
-    return reg_types_.PosByteConstant();
+    return reg_types_.PositiveByteConstant();
   } else if (value < 32768) {
-    return reg_types_.PosShortConstant();
+    return reg_types_.PositiveShortConstant();
   } else if (value < 65536) {
     return reg_types_.CharConstant();
   } else {
-    return reg_types_.IntConstant();
+    return reg_types_.IntegerConstant();
   }
 }
 

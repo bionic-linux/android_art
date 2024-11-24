@@ -35,36 +35,45 @@
 namespace art HIDDEN {
 namespace verifier {
 
-void RegTypeCache::FillPrimitiveAndSmallConstantTypes() {
-  entries_.resize(kNumPrimitivesAndSmallConstants);
-  for (int32_t value = kMinSmallConstant; value <= kMaxSmallConstant; ++value) {
-    int32_t i = value - kMinSmallConstant;
-    entries_[i] = new (&allocator_) PreciseConstantType(value, i);
-  }
+void RegTypeCache::FillPrimitiveAndConstantTypes() {
+  entries_.resize(kNumberOfFixedCacheIds);
+  ArrayRef<const RegType*> entries(entries_);
 
-#define CREATE_PRIMITIVE_TYPE(type, descriptor, id) \
-  static constexpr type const##type(descriptor, id); \
-  entries_[id] = &const##type;
+  static constexpr UndefinedType constUndefinedType(kUndefinedCacheId);
+  entries[kUndefinedCacheId] = &constUndefinedType;
+  static constexpr ConflictType constConflictType(kConflictCacheId);
+  entries[kConflictCacheId] = &constConflictType;
 
-  CREATE_PRIMITIVE_TYPE(BooleanType, "Z", kBooleanCacheId);
-  CREATE_PRIMITIVE_TYPE(ByteType, "B", kByteCacheId);
-  CREATE_PRIMITIVE_TYPE(ShortType, "S", kShortCacheId);
-  CREATE_PRIMITIVE_TYPE(CharType, "C", kCharCacheId);
-  CREATE_PRIMITIVE_TYPE(IntegerType, "I", kIntCacheId);
-  CREATE_PRIMITIVE_TYPE(LongLoType, "J", kLongLoCacheId);
-  CREATE_PRIMITIVE_TYPE(LongHiType, "J", kLongHiCacheId);
-  CREATE_PRIMITIVE_TYPE(FloatType, "F", kFloatCacheId);
-  CREATE_PRIMITIVE_TYPE(DoubleLoType, "D", kDoubleLoCacheId);
-  CREATE_PRIMITIVE_TYPE(DoubleHiType, "D", kDoubleHiCacheId);
-
+#define CREATE_PRIMITIVE_TYPE(name, descriptor) \
+  static constexpr name##Type const##name(descriptor, k##name##CacheId); \
+  entries[k##name##CacheId] = &const##name;
+  CREATE_PRIMITIVE_TYPE(Boolean, "Z");
+  CREATE_PRIMITIVE_TYPE(Byte, "B");
+  CREATE_PRIMITIVE_TYPE(Short, "S");
+  CREATE_PRIMITIVE_TYPE(Char, "C");
+  CREATE_PRIMITIVE_TYPE(Integer, "I");
+  CREATE_PRIMITIVE_TYPE(LongLo, "J");
+  CREATE_PRIMITIVE_TYPE(LongHi, "J");
+  CREATE_PRIMITIVE_TYPE(Float, "F");
+  CREATE_PRIMITIVE_TYPE(DoubleLo, "D");
+  CREATE_PRIMITIVE_TYPE(DoubleHi, "D");
 #undef CREATE_PRIMITIVE_TYPE
 
-  static constexpr UndefinedType constUndefinedType("", kUndefinedCacheId);
-  entries_[kUndefinedCacheId] = &constUndefinedType;
-  static constexpr ConflictType constConflictType("", kConflictCacheId);
-  entries_[kConflictCacheId] = &constConflictType;
-  static constexpr NullType constNullType("", kNullCacheId);
-  entries_[kNullCacheId] = &constNullType;
+#define CREATE_CONSTANT_TYPE(name) \
+  static constexpr name##Type const##name(k##name##CacheId); \
+  entries[k##name##CacheId] = &const##name;
+  CREATE_CONSTANT_TYPE(Zero);
+  CREATE_CONSTANT_TYPE(BooleanConstant);
+  CREATE_CONSTANT_TYPE(PositiveByteConstant);
+  CREATE_CONSTANT_TYPE(PositiveShortConstant);
+  CREATE_CONSTANT_TYPE(CharConstant);
+  CREATE_CONSTANT_TYPE(ByteConstant);
+  CREATE_CONSTANT_TYPE(ShortConstant);
+  CREATE_CONSTANT_TYPE(IntegerConstant);
+  CREATE_CONSTANT_TYPE(ConstantLo);
+  CREATE_CONSTANT_TYPE(ConstantHi);
+  CREATE_CONSTANT_TYPE(Null);
+#undef CREATE_CONSTANT_TYPE
 }
 
 const RegType& RegTypeCache::FromDescriptor(const char* descriptor) {
@@ -98,31 +107,32 @@ const RegType& RegTypeCache::FromDescriptor(const char* descriptor) {
 }
 
 const RegType& RegTypeCache::FromTypeIndexUncached(dex::TypeIndex type_index) {
-  DCHECK(entries_for_type_index_[type_index.index_] == nullptr);
+  DCHECK_EQ(ids_for_type_index_[type_index.index_], kNoIdForTypeIndex);
   const char* descriptor = dex_file_->GetTypeDescriptor(type_index);
   const RegType& reg_type = FromDescriptor(descriptor);
-  entries_for_type_index_[type_index.index_] = &reg_type;
+  DCHECK_NE(reg_type.GetId(), kNoIdForTypeIndex);
+  ids_for_type_index_[type_index.index_] = reg_type.GetId();
   return reg_type;
 }
 
 const RegType& RegTypeCache::RegTypeFromPrimitiveType(Primitive::Type prim_type) const {
   switch (prim_type) {
     case Primitive::kPrimBoolean:
-      return *entries_[kBooleanCacheId];
+      return Boolean();
     case Primitive::kPrimByte:
-      return *entries_[kByteCacheId];
+      return Byte();
     case Primitive::kPrimShort:
-      return *entries_[kShortCacheId];
+      return Short();
     case Primitive::kPrimChar:
-      return *entries_[kCharCacheId];
+      return Char();
     case Primitive::kPrimInt:
-      return *entries_[kIntCacheId];
+      return Integer();
     case Primitive::kPrimLong:
-      return *entries_[kLongLoCacheId];
+      return LongLo();
     case Primitive::kPrimFloat:
-      return *entries_[kFloatCacheId];
+      return Float();
     case Primitive::kPrimDouble:
-      return *entries_[kDoubleLoCacheId];
+      return DoubleLo();
     case Primitive::kPrimVoid:
     default:
       return *entries_[kConflictCacheId];
@@ -167,7 +177,7 @@ const RegType& RegTypeCache::From(const char* descriptor) {
   std::string_view sv_descriptor(descriptor);
   // Try looking up the class in the cache first. We use a std::string_view to avoid
   // repeated strlen operations on the descriptor.
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
+  for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
     if (MatchDescriptor(i, sv_descriptor)) {
       return *(entries_[i]);
     }
@@ -265,7 +275,7 @@ RegTypeCache::RegTypeCache(Thread* self,
       class_linker_(class_linker),
       class_loader_(class_loader),
       dex_file_(dex_file),
-      entries_for_type_index_(allocator_.AllocArray<const RegType*>(dex_file->NumTypeIds())),
+      ids_for_type_index_(allocator_.AllocArray<uint16_t>(dex_file->NumTypeIds())),
       last_uninitialized_this_type_(nullptr),
       can_load_classes_(can_load_classes),
       can_suspend_(can_suspend) {
@@ -274,16 +284,16 @@ RegTypeCache::RegTypeCache(Thread* self,
     Thread::Current()->AssertThreadSuspensionIsAllowable(gAborting == 0);
   }
   // `ArenaAllocator` guarantees zero-initialization.
-  DCHECK(std::all_of(entries_for_type_index_,
-                     entries_for_type_index_ + dex_file->NumTypeIds(),
-                     [](const RegType* reg_type) { return reg_type == nullptr; }));
-  // The klass_entries_ array does not have primitives or small constants.
+  static_assert(kNoIdForTypeIndex == 0u);
+  DCHECK(std::all_of(ids_for_type_index_,
+                     ids_for_type_index_ + dex_file->NumTypeIds(),
+                     [](uint16_t id) { return id == kNoIdForTypeIndex; }));
+  // The klass_entries_ array does not have primitives or constants.
   static constexpr size_t kNumReserveEntries = 32;
   klass_entries_.reserve(kNumReserveEntries);
-  // We want to have room for additional entries after inserting primitives and small
-  // constants.
-  entries_.reserve(kNumReserveEntries + kNumPrimitivesAndSmallConstants);
-  FillPrimitiveAndSmallConstantTypes();
+  // We want to have room for additional entries after inserting primitives and constants.
+  entries_.reserve(kNumReserveEntries + kNumberOfFixedCacheIds);
+  FillPrimitiveAndConstantTypes();
 }
 
 const RegType& RegTypeCache::FromUnresolvedMerge(const RegType& left,
@@ -356,7 +366,7 @@ const RegType& RegTypeCache::FromUnresolvedMerge(const RegType& left,
   }
 
   // Check if entry already exists.
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
+  for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
     const RegType* cur_entry = entries_[i];
     if (cur_entry->IsUnresolvedMergedReference()) {
       const UnresolvedMergedReferenceType* cmp_type =
@@ -378,7 +388,7 @@ const RegType& RegTypeCache::FromUnresolvedMerge(const RegType& left,
 
 const RegType& RegTypeCache::FromUnresolvedSuperClass(const RegType& child) {
   // Check if entry already exists.
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
+  for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
     const RegType* cur_entry = entries_[i];
     if (cur_entry->IsUnresolvedSuperClass()) {
       const UnresolvedSuperClassType* tmp_entry =
@@ -446,7 +456,7 @@ const UninitializedType& RegTypeCache::UninitializedThisArgument(const RegType& 
   UninitializedType* entry;
   const std::string_view& descriptor(type.GetDescriptor());
   if (type.IsUnresolvedReference()) {
-    for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
+    for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
       const RegType* cur_entry = entries_[i];
       if (cur_entry->IsUnresolvedUninitializedThisReference() &&
           cur_entry->GetDescriptor() == descriptor) {
@@ -458,7 +468,7 @@ const UninitializedType& RegTypeCache::UninitializedThisArgument(const RegType& 
   } else {
     DCHECK(type.IsReference());
     ObjPtr<mirror::Class> klass = type.GetClass();
-    for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
+    for (size_t i = kNumberOfFixedCacheIds; i < entries_.size(); i++) {
       const RegType* cur_entry = entries_[i];
       if (cur_entry->IsUninitializedThisReference() && cur_entry->GetClass() == klass) {
         return *down_cast<const UninitializedType*>(cur_entry);
@@ -472,59 +482,6 @@ const UninitializedType& RegTypeCache::UninitializedThisArgument(const RegType& 
   // for resolved types.
   entries_.push_back(entry);
   return *entry;
-}
-
-const ConstantType& RegTypeCache::FromCat1NonSmallConstant(int32_t value, bool precise) {
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
-    const RegType* cur_entry = entries_[i];
-    if (!cur_entry->HasClass() &&
-        cur_entry->IsConstant() &&
-        cur_entry->IsPreciseConstant() == precise &&
-        (down_cast<const ConstantType*>(cur_entry))->ConstantValue() == value) {
-      return *down_cast<const ConstantType*>(cur_entry);
-    }
-  }
-  ConstantType* entry;
-  if (precise) {
-    entry = new (&allocator_) PreciseConstantType(value, entries_.size());
-  } else {
-    entry = new (&allocator_) ImpreciseConstantType(value, entries_.size());
-  }
-  return AddEntry(entry);
-}
-
-const ConstantType& RegTypeCache::FromCat2ConstLo(int32_t value, bool precise) {
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
-    const RegType* cur_entry = entries_[i];
-    if (cur_entry->IsConstantLo() && (cur_entry->IsPrecise() == precise) &&
-        (down_cast<const ConstantType*>(cur_entry))->ConstantValueLo() == value) {
-      return *down_cast<const ConstantType*>(cur_entry);
-    }
-  }
-  ConstantType* entry;
-  if (precise) {
-    entry = new (&allocator_) PreciseConstantLoType(value, entries_.size());
-  } else {
-    entry = new (&allocator_) ImpreciseConstantLoType(value, entries_.size());
-  }
-  return AddEntry(entry);
-}
-
-const ConstantType& RegTypeCache::FromCat2ConstHi(int32_t value, bool precise) {
-  for (size_t i = kNumPrimitivesAndSmallConstants; i < entries_.size(); i++) {
-    const RegType* cur_entry = entries_[i];
-    if (cur_entry->IsConstantHi() && (cur_entry->IsPrecise() == precise) &&
-        (down_cast<const ConstantType*>(cur_entry))->ConstantValueHi() == value) {
-      return *down_cast<const ConstantType*>(cur_entry);
-    }
-  }
-  ConstantType* entry;
-  if (precise) {
-    entry = new (&allocator_) PreciseConstantHiType(value, entries_.size());
-  } else {
-    entry = new (&allocator_) ImpreciseConstantHiType(value, entries_.size());
-  }
-  return AddEntry(entry);
 }
 
 const RegType& RegTypeCache::GetComponentType(const RegType& array) {
