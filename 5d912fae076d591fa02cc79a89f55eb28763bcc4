@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc7cc87_d70d5595",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T19:05:56Z",
+      "side": 1,
+      "message": "Yes, this can potentially add significantly to the already heavyweight dump operation. Every signature verification involves calculating a digest, etc., so it\u0027s expensive. In the worst case, every APK has an SDM associated to it, so we\u0027ll be performing the signature verification on `2n` files, where `n` is usually \u003e100.",
+      "parentUuid": "37d43e75_fa287239",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 65
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45aa739_cd79388c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-25T15:14:03Z",
       "side": 1,
       "message": "If this is the expensive call, then what about letting the flag control skipping only it?\n\nIt seems useful to see whether an sdm file exists regardless of the flag, at least.",
+      "range": {
+        "startLine": 240,
+        "startChar": 34,
+        "endLine": 240,
+        "endChar": 51
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42db59a_c8bc277f",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T19:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a45aa739_cd79388c",
       "range": {
         "startLine": 240,
         "startChar": 34,
@@ -88,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13547a23_677bff9c",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T19:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97dae52_ed0f97e2",
+      "range": {
+        "startLine": 247,
+        "startChar": 37,
+        "endLine": 247,
+        "endChar": 54
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6238c16f_1fdaf0b0",
@@ -125,6 +197,30 @@
           ]
         }
       ],
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13515ac1_5620b0e0",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T19:05:56Z",
+      "side": 1,
+      "message": "Sorry, this was premature. I need these annotations.",
+      "parentUuid": "6238c16f_1fdaf0b0",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 60
+      },
       "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
