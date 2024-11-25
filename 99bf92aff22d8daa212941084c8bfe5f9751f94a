@@ -16,6 +16,24 @@
       "message": "Yoooo",
       "revId": "99bf92aff22d8daa212941084c8bfe5f9751f94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6f4dc5_dd3bd1e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-25T07:27:03Z",
+      "side": 1,
+      "message": "Marking bogus comment as resolved.",
+      "parentUuid": "878de755_9b0f545d",
+      "revId": "99bf92aff22d8daa212941084c8bfe5f9751f94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
