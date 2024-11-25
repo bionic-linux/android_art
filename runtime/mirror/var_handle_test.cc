@@ -137,26 +137,6 @@ class VarHandleTest : public CommonRuntimeTest {
     return AccessModesBitMask(first) | AccessModesBitMask(args...);
   }
 
-  ObjPtr<MethodType> MethodTypeOf(const std::string& method_descriptor);
-
-  template <typename VH>
-  bool AccessModeExactMatch(Handle<VH> vh,
-                            VarHandle::AccessMode access_mode,
-                            const char* descriptor)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
-  template <typename VH>
-  bool AccessModeWithConversionsMatch(Handle<VH> vh,
-                                      VarHandle::AccessMode access_mode,
-                                      const char* descriptor)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
-  template <typename VH>
-  bool AccessModeNoMatch(Handle<VH> vh,
-                         VarHandle::AccessMode access_mode,
-                         const char* descriptor)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
  private:
   static void InitializeVarHandle(ObjPtr<VarHandle> vh,
                                   Handle<Class> var_type,
@@ -189,7 +169,7 @@ class VarHandleTest : public CommonRuntimeTest {
 
 // Convenience method for constructing MethodType instances from
 // well-formed method descriptors.
-ObjPtr<MethodType> VarHandleTest::MethodTypeOf(const std::string& method_descriptor) {
+static ObjPtr<MethodType> MethodTypeOf(const std::string& method_descriptor) {
   std::vector<std::string> descriptors;
 
   auto it = method_descriptor.cbegin();
@@ -246,9 +226,10 @@ ObjPtr<MethodType> VarHandleTest::MethodTypeOf(const std::string& method_descrip
       ObjectArray<Class>::Alloc(Thread::Current(), array_of_class, ptypes_count));
   Handle<mirror::ClassLoader> boot_class_loader = hs.NewHandle<mirror::ClassLoader>(nullptr);
   for (int i = 0; i < ptypes_count; ++i) {
-    ptypes->Set(i, FindClass(descriptors[i].c_str(), boot_class_loader));
+    ptypes->Set(i, class_linker->FindClass(self, descriptors[i].c_str(), boot_class_loader));
   }
-  Handle<Class> rtype = hs.NewHandle(FindClass(descriptors.back().c_str(), boot_class_loader));
+  Handle<Class> rtype =
+      hs.NewHandle(class_linker->FindClass(self, descriptors.back().c_str(), boot_class_loader));
   return MethodType::Create(self, rtype, ptypes);
 }
 
@@ -261,9 +242,10 @@ static bool AccessModeMatch(ObjPtr<VarHandle> vh,
 }
 
 template <typename VH>
-bool VarHandleTest::AccessModeExactMatch(Handle<VH> vh,
-                                         VarHandle::AccessMode access_mode,
-                                         const char* descriptor) {
+static bool AccessModeExactMatch(Handle<VH> vh,
+                                 VarHandle::AccessMode access_mode,
+                                 const char* descriptor)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   ObjPtr<MethodType> method_type = MethodTypeOf(descriptor);
   return AccessModeMatch(vh.Get(),
                          access_mode,
@@ -272,9 +254,10 @@ bool VarHandleTest::AccessModeExactMatch(Handle<VH> vh,
 }
 
 template <typename VH>
-bool VarHandleTest::AccessModeWithConversionsMatch(Handle<VH> vh,
-                                                   VarHandle::AccessMode access_mode,
-                                                   const char* descriptor) {
+static bool AccessModeWithConversionsMatch(Handle<VH> vh,
+                                          VarHandle::AccessMode access_mode,
+                                          const char* descriptor)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   ObjPtr<MethodType> method_type = MethodTypeOf(descriptor);
   return AccessModeMatch(vh.Get(),
                          access_mode,
@@ -283,9 +266,10 @@ bool VarHandleTest::AccessModeWithConversionsMatch(Handle<VH> vh,
 }
 
 template <typename VH>
-bool VarHandleTest::AccessModeNoMatch(Handle<VH> vh,
-                                      VarHandle::AccessMode access_mode,
-                                      const char* descriptor) {
+static bool AccessModeNoMatch(Handle<VH> vh,
+                              VarHandle::AccessMode access_mode,
+                              const char* descriptor)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   ObjPtr<MethodType> method_type = MethodTypeOf(descriptor);
   return AccessModeMatch(vh.Get(),
                          access_mode,

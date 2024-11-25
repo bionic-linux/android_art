@@ -1066,7 +1066,8 @@ class SetLocalVariableClosure : public CommonLocalVariableClosure {
           art::ObjPtr<art::mirror::Class> set_class = caller_->DecodeJObject(val_.l)->GetClass();
           art::ObjPtr<art::mirror::ClassLoader> loader =
               method->GetDeclaringClass()->GetClassLoader();
-          art::ObjPtr<art::mirror::Class> slot_class = cl->LookupClass(caller_, descriptor, loader);
+          art::ObjPtr<art::mirror::Class> slot_class =
+              cl->LookupClass(caller_, descriptor.c_str(), loader);
           DCHECK(!slot_class.IsNull()) << descriptor << " slot: " << slot_type;
           return slot_class->IsAssignableFrom(set_class) ? OK : ERR(TYPE_MISMATCH);
         }

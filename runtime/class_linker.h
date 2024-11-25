@@ -207,15 +207,6 @@ class ClassLinker {
   // If class_loader is null, searches boot_class_path_.
   EXPORT ObjPtr<mirror::Class> FindClass(Thread* self,
                                          const char* descriptor,
-                                         size_t descriptor_length,
-                                         Handle<mirror::ClassLoader> class_loader)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!Locks::dex_lock_);
-
-  // Helper overload that retrieves the descriptor and its length from the `dex_file`.
-  EXPORT ObjPtr<mirror::Class> FindClass(Thread* self,
-                                         const DexFile& dex_file,
-                                         dex::TypeIndex type_index,
                                          Handle<mirror::ClassLoader> class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_);
@@ -225,7 +216,7 @@ class ClassLinker {
   ObjPtr<mirror::Class> FindSystemClass(Thread* self, const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_) {
-    return FindClass(self, descriptor, strlen(descriptor), ScopedNullHandle<mirror::ClassLoader>());
+    return FindClass(self, descriptor, ScopedNullHandle<mirror::ClassLoader>());
   }
 
   // Finds the array class given for the element class.
@@ -330,7 +321,7 @@ class ClassLinker {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Look up a resolved type with the given descriptor associated with the given ClassLoader.
-  ObjPtr<mirror::Class> LookupResolvedType(std::string_view descriptor,
+  ObjPtr<mirror::Class> LookupResolvedType(const char* descriptor,
                                            ObjPtr<mirror::ClassLoader> class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -1111,7 +1102,6 @@ class ClassLinker {
 
   ObjPtr<mirror::Class> CreateArrayClass(Thread* self,
                                          const char* descriptor,
-                                         size_t descriptor_length,
                                          size_t hash,
                                          Handle<mirror::ClassLoader> class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_)
