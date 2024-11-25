@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821b51ef_de6608e2",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "Be explicit that this won\u0027t do any I/O to find this out?",
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf117e5f_305d9e66",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "I take it this is necessary even though the class already got this annotation.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8795d66_1ae2d143",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "This should be more clear on the requirements on the paths. There\u0027s the aspect that they won\u0027t be opened so they don\u0027t have to correspond to files in the file system. Another aspect is that by passing full paths there\u0027s uncertainty on what happens when the directories don\u0027t match.\n\nThat can all be remedied by more docs, but restricting all arguments and the return value to file names only would make all that disappear and the API would be simpler. Not only for this method but all three of them, really. It makes it inherently clear that I/O can\u0027t happen here, and it leaves all directory layout concerns on the Package Manager side.\n\nThe only argument against it (that I\u0027m aware of) is that full paths can be useful for logging. It\u0027s a valid point, but would it be good enough to ensure we have sufficient logging on the package manager side to make it a non-issue? Sure, we can\u0027t be sure that OEM\u0027s won\u0027t change things to cause logging gaps, but that seems like a fringe concern. All things considered I think I\u0027m more in favour of avoiding paths (sorry for changing my mind).\n\nIf we want to stick to full paths then I suggest that only for `apkPath` in this method, and let both the given and returned lists be filenames only (which also should make it a little easier in code since directory lists are that way from the start).",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a56cb7_f51d1132",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "Please be more clear on what this means.",
+      "range": {
+        "startLine": 66,
+        "startChar": 19,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

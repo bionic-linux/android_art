@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213c33dc_c47cca74",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "A detail worth documenting is that the extension is assumed to include the starting period.",
+      "range": {
+        "startLine": 505,
+        "startChar": 84,
+        "endLine": 505,
+        "endChar": 96
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "865af2b9_2bf7d668",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Utils.java",
+              "range": {
+                "startLine": 504,
+                "startChar": 0,
+                "endLine": 504,
+                "endChar": 0
+              },
+              "replacement": "    /**\n     * Replaces the file extension of the given path with the given new extension.\n     *\n     * @param path the path to replace the extension for\n     * @param newExtension the new extension, including the leading dot\n     */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bb6015_be75036e",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "Please add a test where the apk doesn\u0027t match anything in the list.",
+      "fixSuggestions": [
+        {
+          "fixId": "f7917ec7_10ee8000",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+              "range": {
+                "startLine": 48,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": "\n    @Test\n    public void testFilterPathsForApk_noMatch() throws Exception {\n        assertThat(ArtManagedInstallFileHelper.filterPathsForApk(\n                           List.of(\"/foo/bar.dm\", \"/foo/bar.prof\", \"/foo/bar.sdm\", \"/foo/bar.abc\",\n                                   \"/foo/baz.dm\"),\n                           \"/foo/qux.apk\"))\n                .isEmpty();\n    }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59dce52_0c048bb5",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "Please test the `IllegalArgumentException` case.",
+      "fixSuggestions": [
+        {
+          "fixId": "cfb3685d_8673e633",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "import static org.junit.Assert.assertThrows;\n"
+            },
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+              "range": {
+                "startLine": 60,
+                "startChar": 0,
+                "endLine": 60,
+                "endChar": 0
+              },
+              "replacement": "        assertThrows(IllegalArgumentException.class, () -\u003e\n            ArtManagedInstallFileHelper.getTargetPathForApk(\n                \"/foo/bar.abc\", \"/somewhere/base.apk\"));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdc20f4_8b136c41",
+        "filename": "libartservice/service/javatests/com/android/server/art/UtilsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-25T14:38:09Z",
+      "side": 1,
+      "message": "For the sake of completeness, please test the empty string in either argument.",
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
