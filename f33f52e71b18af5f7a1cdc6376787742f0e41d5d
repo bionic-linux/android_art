@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c2eead4_a5a6862c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-25T10:19:31Z",
+      "side": 1,
+      "message": "Done for 597-deopt-new-string. Where did you see 652-deopt-intrinsic being disabled?",
+      "parentUuid": "6c6f54bf_546e3805",
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e2bb871_b57948c4",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-25T09:59:05Z",
       "side": 1,
       "message": "why is this needed?",
+      "range": {
+        "startLine": 128,
+        "startChar": 44,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28c122c_27ed2dec",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-25T10:19:31Z",
+      "side": 1,
+      "message": "Good catch, that was for some temporary code. Removed.",
+      "parentUuid": "1e2bb871_b57948c4",
       "range": {
         "startLine": 128,
         "startChar": 44,
@@ -54,6 +96,30 @@
       "writtenOn": "2024-11-25T09:59:05Z",
       "side": 1,
       "message": "Should we remove these lines? I wouldn\u0027t think they are needed now",
+      "range": {
+        "startLine": 611,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 3
+      },
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095fef47_01bb996f",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-25T10:19:31Z",
+      "side": 1,
+      "message": "I actually missed that it was already there. Removed the lines I\u0027ve added.",
+      "parentUuid": "bafeb088_d2193942",
       "range": {
         "startLine": 611,
         "startChar": 0,
