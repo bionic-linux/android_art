@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6f54bf_546e3805",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-25T09:59:05Z",
+      "side": 1,
+      "message": "We should make a follow-up CL re-enabling tests 652-deopt-intrinsic and 597-deopt-new-string which were disabled due to this.",
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2bb871_b57948c4",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-25T09:59:05Z",
+      "side": 1,
+      "message": "why is this needed?",
+      "range": {
+        "startLine": 128,
+        "startChar": 44,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafeb088_d2193942",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-25T09:59:05Z",
+      "side": 1,
+      "message": "Should we remove these lines? I wouldn\u0027t think they are needed now",
+      "range": {
+        "startLine": 611,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 3
+      },
+      "revId": "f33f52e71b18af5f7a1cdc6376787742f0e41d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
