@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d11043fd_90b4c9fa",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821b51ef_de6608e2",
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf117e5f_305d9e66",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
         "patchSetId": 6
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-25T14:38:09Z",
       "side": 1,
       "message": "I take it this is necessary even though the class already got this annotation.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b4fe53_523a750f",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Yes, unlike `@SystemApi`, `@FlaggedApi` isn\u0027t propagated to the children, unfortunately :(",
+      "parentUuid": "cf117e5f_305d9e66",
       "range": {
         "startLine": 46,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc266299_e32e31b1",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Discussed offline. Methods that take full paths are easier to use on the PM side given how PM is implemented. I added a comment regarding directories being different and added a test.",
+      "parentUuid": "a8795d66_1ae2d143",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a56cb7_f51d1132",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-11-25T14:38:09Z",
       "side": 1,
       "message": "Please be more clear on what this means.",
+      "range": {
+        "startLine": 66,
+        "startChar": 19,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e63f35a_efd5ee94",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a56cb7_f51d1132",
       "range": {
         "startLine": 66,
         "startChar": 19,

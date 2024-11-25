@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4d438a_a665e285",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "213c33dc_c47cca74",
+      "range": {
+        "startLine": 505,
+        "startChar": 84,
+        "endLine": 505,
+        "endChar": 96
+      },
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90bb6015_be75036e",
@@ -73,6 +97,24 @@
           ]
         }
       ],
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc29b99_72bfc86d",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90bb6015_be75036e",
       "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +164,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c14078_b21d11e5",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagedInstallFileHelperTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59dce52_0c048bb5",
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfdc20f4_8b136c41",
@@ -135,6 +195,24 @@
       "writtenOn": "2024-11-25T14:38:09Z",
       "side": 1,
       "message": "For the sake of completeness, please test the empty string in either argument.",
+      "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e1c9eb_ba4f8563",
+        "filename": "libartservice/service/javatests/com/android/server/art/UtilsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-25T20:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfdc20f4_8b136c41",
       "revId": "fc4cc735a8b28d52eae739cccbe9389df3df442d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
