@@ -124,7 +124,8 @@ class JitCodeCache::JniStubData {
     code_ = code;
   }
 
-  void UpdateEntryPoints(const void* entrypoint) REQUIRES_SHARED(Locks::mutator_lock_) {
+  void UpdateEntryPoints(const void* entrypoint)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::jit_lock_) {
     DCHECK(IsCompiled());
     DCHECK(entrypoint == OatQuickMethodHeader::FromCodePointer(GetCode())->GetEntryPoint());
     instrumentation::Instrumentation* instrum = Runtime::Current()->GetInstrumentation();
@@ -576,6 +577,13 @@ void JitCodeCache::RemoveMethodsIn(Thread* self, const LinearAlloc& alloc) {
         ++it;
       }
     }
+    for (auto it = processed_zombie_jni_code_.begin(); it != processed_zombie_jni_code_.end();) {
+      if (alloc.ContainsUnsafe(*it)) {
+        it = processed_zombie_jni_code_.erase(it);
+      } else {
+        ++it;
+      }
+    }
     for (auto it = method_code_map_.begin(); it != method_code_map_.end();) {
       if (alloc.ContainsUnsafe(it->second)) {
         method_headers.insert(OatQuickMethodHeader::FromCodePointer(it->first));
@@ -892,10 +900,11 @@ bool JitCodeCache::RemoveMethodLocked(ArtMethod* method, bool release_memory) {
           FreeCodeAndData(it->second.GetCode());
         }
         jni_stubs_map_.erase(it);
-        zombie_jni_code_.erase(method);
       } else {
         it->first.UpdateShorty(it->second.GetMethods().front());
       }
+      zombie_jni_code_.erase(method);
+      processed_zombie_jni_code_.erase(method);
     }
   } else {
     for (auto it = method_code_map_.begin(); it != method_code_map_.end();) {
@@ -1196,19 +1205,11 @@ void JitCodeCache::RemoveUnmarkedCode(Thread* self) {
     WriterMutexLock mu2(self, *Locks::jit_mutator_lock_);
     ArtMethod* method = *it;
     auto stub = jni_stubs_map_.find(JniStubKey(method));
-    if (stub == jni_stubs_map_.end()) {
-      it = processed_zombie_jni_code_.erase(it);
-      continue;
-    }
+    DCHECK(stub != jni_stubs_map_.end()) << method->PrettyMethod();
     JniStubData& data = stub->second;
-    if (!data.IsCompiled() || !ContainsElement(data.GetMethods(), method)) {
-      it = processed_zombie_jni_code_.erase(it);
-    } else if (method->GetEntryPointFromQuickCompiledCode() ==
-            OatQuickMethodHeader::FromCodePointer(data.GetCode())->GetEntryPoint()) {
-      // The stub got reused for this method, remove ourselves from the zombie
-      // list.
-      it = processed_zombie_jni_code_.erase(it);
-    } else if (!GetLiveBitmap()->Test(FromCodeToAllocation(data.GetCode()))) {
+    DCHECK(data.IsCompiled());
+    DCHECK(ContainsElement(data.GetMethods(), method));
+    if (!GetLiveBitmap()->Test(FromCodeToAllocation(data.GetCode()))) {
       data.RemoveMethod(method);
       if (data.GetMethods().empty()) {
         OatQuickMethodHeader* header = OatQuickMethodHeader::FromCodePointer(data.GetCode());
@@ -1258,6 +1259,13 @@ void JitCodeCache::AddZombieCode(ArtMethod* method, const void* entry_point) {
 
 void JitCodeCache::AddZombieCodeInternal(ArtMethod* method, const void* code_ptr) {
   if (method->IsNative()) {
+    if (kIsDebugBuild) {
+      auto it = jni_stubs_map_.find(JniStubKey(method));
+      CHECK(it != jni_stubs_map_.end()) << method->PrettyMethod();
+      CHECK(it->second.IsCompiled()) << method->PrettyMethod();
+      CHECK_EQ(it->second.GetCode(), code_ptr) << method->PrettyMethod();
+      CHECK(ContainsElement(it->second.GetMethods(), method)) << method->PrettyMethod();
+    }
     zombie_jni_code_.insert(method);
   } else {
     CHECK(!ContainsElement(zombie_code_, code_ptr));
@@ -1684,6 +1692,7 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method,
 
   if (UNLIKELY(method->IsNative())) {
     JniStubKey key(method);
+    MutexLock mu2(self, *Locks::jit_lock_);
     WriterMutexLock mu(self, *Locks::jit_mutator_lock_);
     auto it = jni_stubs_map_.find(key);
     bool new_compilation = false;
@@ -1702,6 +1711,10 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method,
       // changed these entrypoints to GenericJNI in preparation for a full GC, we may
       // as well change them back as this stub shall not be collected anyway and this
       // can avoid a few expensive GenericJNI calls.
+      for (ArtMethod* m : it->second.GetMethods()) {
+        zombie_jni_code_.erase(m);
+        processed_zombie_jni_code_.erase(m);
+      }
       data->UpdateEntryPoints(entrypoint);
     }
     return new_compilation;
