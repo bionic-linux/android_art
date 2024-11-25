@@ -52,6 +52,47 @@
       "parentUuid": "f3e314a7_ee95fd33",
       "revId": "597753009d2294644e108c45f63c99475fe063bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d029783_e29fbea6",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-11-25T11:51:36Z",
+      "side": 1,
+      "message": "`File` and `Path` seem to have the same semantic meaning in the class. The following method `getTargetPathForApk` uses `path`. Is it possible to be consistent? Can this method be `filterPathsForApk`? Especially, first arguments is `paths`.",
+      "range": {
+        "startLine": 56,
+        "startChar": 46,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "89b100d5_716aa474",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": "    public static @NonNull List\u003cString\u003e filterPathsForApk(\n"
+            }
+          ]
+        }
+      ],
+      "revId": "597753009d2294644e108c45f63c99475fe063bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
