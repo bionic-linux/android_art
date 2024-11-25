@@ -53,6 +53,24 @@ public class Main {
       System.out.println("Got unexpected failure " + e);
     }
 
+    try {
+      new GetInstanceFieldOnUninitializedThis();
+      System.out.println("Unexpectedly constructed GetInstanceFieldOnUninitializedThis");
+    } catch (VerifyError expected) {
+      System.out.println("Got expected failure");
+    } catch (Exception e) {
+      System.out.println("Got unexpected failure " + e);
+    }
+
+    try {
+      new PutInstanceFieldOnUninitializedThisViaSubClass();
+      System.out.println("Unexpectedly constructed PutInstanceFieldOnUninitializedThisViaSubClass");
+    } catch (VerifyError expected) {
+      System.out.println("Got expected failure");
+    } catch (Exception e) {
+      System.out.println("Got unexpected failure " + e);
+    }
+
     OOMEOnNullAccess.main(args);
   }
 
