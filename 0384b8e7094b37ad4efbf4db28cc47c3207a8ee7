@@ -92,6 +92,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0fe231_19a34e8e",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85f54ce_c1929519",
+      "range": {
+        "startLine": 1034,
+        "startChar": 26,
+        "endLine": 1035,
+        "endChar": 37
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a207b58_e881430b",
@@ -115,6 +139,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded0908d_5627c787",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a207b58_e881430b",
+      "range": {
+        "startLine": 250,
+        "startChar": 16,
+        "endLine": 250,
+        "endChar": 91
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd59ab40_64ae2cb4",
@@ -128,6 +176,30 @@
       "writtenOn": "2024-11-26T16:51:47Z",
       "side": 1,
       "message": "Isn\u0027t the situation the same here as for `dumpSdmStatus` above? In a sense it\u0027d be more honest to use `@SuppressLint(\"NewApi\")` here as well, then. It only needs a short `TODO` comment referring to the explanation for `dumpSdmStatus`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e985b09_3488328c",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "The situation here is a bit different because I will eventually change this `@FlaggedApi(...)` to `@RequiresApi(B)` after B SDK is finalized. I put a placeholder `@RequiresApi` for a smoother transition later. Anyway, I can remove it. It\u0027s not important.",
+      "parentUuid": "cd59ab40_64ae2cb4",
       "range": {
         "startLine": 253,
         "startChar": 0,
@@ -184,6 +256,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0a2118_5464308c",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb75f800_dd4612b7",
+      "range": {
+        "startLine": 262,
+        "startChar": 18,
+        "endLine": 262,
+        "endChar": 19
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00495bc5_3918082a",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "You are right. The message already contains the path. Removed the path from here.",
+      "parentUuid": "f5b200f7_0803871b",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 73
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c94296b_6a5361cc",
@@ -197,6 +317,30 @@
       "writtenOn": "2024-11-26T16:51:47Z",
       "side": 1,
       "message": "Iiuc it\u0027s the same thing here.",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 91
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a57bc3_14b69eea",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-26T22:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c94296b_6a5361cc",
       "range": {
         "startLine": 327,
         "startChar": 0,
