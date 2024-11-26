@@ -130,6 +130,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8f24ec_9a7a8a12",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T12:11:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2f28e173_3c91cc3a",
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ad0a95_8f562616",
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "Done. When exactly it is used? Tests are passing either way - I wonder if coverage is not enough.\n\nThough code_generator_x86_64:VisitInvokeInterface [1] seems to be doing what the current patch set is doing? \n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_x86_64.cc;l\u003d3266;drc\u003df8ac417533d9ebee6d02ad84a1e6a6b056e6720d",
       "parentUuid": "c9ad0a95_8f562616",
+      "range": {
+        "startLine": 4343,
+        "startChar": 18,
+        "endLine": 4343,
+        "endChar": 24
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0fa0e6_c3d32632",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4343,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T12:11:16Z",
+      "side": 1,
+      "message": "You should look at:\nhttps://source.corp.google.com/h/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_x86_64.cc;l\u003d3251;drc\u003df8ac417533d9ebee6d02ad84a1e6a6b056e6720d\n\nWe\u0027re not missing tests, passing the implementation method here is ok for correctness as it\u0027s a conflict method if we need to reach the runtime. But we should pass the actual interface method as this is what we optimize for.",
+      "parentUuid": "e22032dd_1da5040b",
       "range": {
         "startLine": 4343,
         "startChar": 18,
