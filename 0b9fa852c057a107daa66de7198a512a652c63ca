@@ -46,6 +46,30 @@
       },
       "revId": "0b9fa852c057a107daa66de7198a512a652c63ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988a08e7_4e7d0d52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T11:42:37Z",
+      "side": 1,
+      "message": "Can you run an APK scan to see if we hit the issue?",
+      "parentUuid": "89861889_cf86593e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "0b9fa852c057a107daa66de7198a512a652c63ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
