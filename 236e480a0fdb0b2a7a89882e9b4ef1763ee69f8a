@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7428e3d5_fcfc9bda",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4277,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-26T10:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e952c1d4_ad880a40",
+      "range": {
+        "startLine": 4277,
+        "startChar": 10,
+        "endLine": 4277,
+        "endChar": 28
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d9b980d_5dc05428",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-26T10:08:49Z",
       "side": 1,
       "message": "Default method, do..",
+      "range": {
+        "startLine": 4327,
+        "startChar": 7,
+        "endLine": 4327,
+        "endChar": 11
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98662deb_e3711c3d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-26T10:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9b980d_5dc05428",
       "range": {
         "startLine": 4327,
         "startChar": 7,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f28e173_3c91cc3a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-26T10:32:36Z",
+      "side": 1,
+      "message": "For it to be effective, call site references should be (un)poisoned in\n```\n__ cmpl(call_site_type, Address(method_handle, mirror::MethodHandle::MethodTypeOffset()));\n``` \n\nThat in turn will lead to the need of unpoisoning in this entire intrinsic.\n\nAs per \"Could you make this two CLs, one for fixing the poisoning, and one for invoke-interface?\"\n\nI will introduce them in a follow up CL.",
+      "parentUuid": "7f278b80_864688ab",
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9ad0a95_8f562616",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 16
@@ -77,6 +143,30 @@
       "writtenOn": "2024-11-26T10:08:49Z",
       "side": 1,
       "message": "This should be the interface method, not the implementation method.",
+      "range": {
+        "startLine": 4343,
+        "startChar": 18,
+        "endLine": 4343,
+        "endChar": 24
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22032dd_1da5040b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4343,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-26T10:32:36Z",
+      "side": 1,
+      "message": "Done. When exactly it is used? Tests are passing either way - I wonder if coverage is not enough.\n\nThough code_generator_x86_64:VisitInvokeInterface [1] seems to be doing what the current patch set is doing? \n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_x86_64.cc;l\u003d3266;drc\u003df8ac417533d9ebee6d02ad84a1e6a6b056e6720d",
+      "parentUuid": "c9ad0a95_8f562616",
       "range": {
         "startLine": 4343,
         "startChar": 18,
