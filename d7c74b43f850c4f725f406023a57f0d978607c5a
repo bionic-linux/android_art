@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4ec1ad_ea116c37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T17:22:57Z",
+      "side": 1,
+      "message": "Does this also mean we can remove [the repo and its deps](https://android.googlesource.com/platform/manifest/+/refs/heads/master-art/default.xml#126) from the master-art manifest?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "d7c74b43f850c4f725f406023a57f0d978607c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
