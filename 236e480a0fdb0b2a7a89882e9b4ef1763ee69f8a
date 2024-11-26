@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e952c1d4_ad880a40",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4277,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T10:08:49Z",
+      "side": 1,
+      "message": "non_virtual_dispatch.",
+      "range": {
+        "startLine": 4277,
+        "startChar": 10,
+        "endLine": 4277,
+        "endChar": 28
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9b980d_5dc05428",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T10:08:49Z",
+      "side": 1,
+      "message": "Default method, do..",
+      "range": {
+        "startLine": 4327,
+        "startChar": 7,
+        "endLine": 4327,
+        "endChar": 11
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f278b80_864688ab",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T10:08:49Z",
+      "side": 1,
+      "message": "Unpoison missing here.",
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ad0a95_8f562616",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4343,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T10:08:49Z",
+      "side": 1,
+      "message": "This should be the interface method, not the implementation method.",
+      "range": {
+        "startLine": 4343,
+        "startChar": 18,
+        "endLine": 4343,
+        "endChar": 24
+      },
+      "revId": "236e480a0fdb0b2a7a89882e9b4ef1763ee69f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
