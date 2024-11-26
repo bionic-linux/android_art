@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9707fae3_8fb78536",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:59:56Z",
+      "side": 1,
+      "message": "Can you please make a topic with the test that needs this lib?",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "2fa51b47c4060d49630f4261ecb8fbdbd290fcb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
