@@ -1342,6 +1342,13 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
     return false;
   }
 
+  // Don't try to devirtualize intrinsics as it breaks pattern matching from later phases.
+  // TODO(solanes): This `if` could be removed if we update optimizations like
+  // TryReplaceStringBuilderAppend.
+  if (invoke_instruction->IsIntrinsic()) {
+    return false;
+  }
+
   // Don't devirtualize to an intrinsic invalid after the builder phase. The ArtMethod might be an
   // intrinsic even when the HInvoke isn't e.g. java.lang.CharSequence.isEmpty (not an intrinsic)
   // can get devirtualized into java.lang.String.isEmpty (which is an intrinsic).
@@ -2445,7 +2452,7 @@ bool HInliner::ReturnTypeMoreSpecific(HInstruction* return_replacement,
       ReferenceTypeInfo invoke_rti = invoke_instruction->GetReferenceTypeInfo();
       if (IsReferenceTypeRefinement(invoke_rti.GetTypeHandle().Get(),
                                     invoke_rti.IsExact(),
-                                    invoke_instruction->CanBeNull(),
+                                    /*declared_can_be_null=*/ true,
                                     return_replacement)) {
         return true;
       } else if (return_replacement->IsInstanceFieldGet()) {
