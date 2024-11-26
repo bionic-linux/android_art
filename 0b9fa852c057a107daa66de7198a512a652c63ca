@@ -22,6 +22,30 @@
       },
       "revId": "0b9fa852c057a107daa66de7198a512a652c63ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89861889_cf86593e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-11-26T11:26:42Z",
+      "side": 1,
+      "message": "This CL is sort of a follow-up to the old (2016) change https://android-review.googlesource.com/197021 which did not add target SDK check either. Some of the code I\u0027m moving around originates in the more recent (2021) change https://android-review.googlesource.com/1837415 which also didn\u0027t add any SDK checks.\n\nBoth new tests actually succeed on the RI (that is, we get the expected `VerifyError`), so I would not expect any bytecode optimizer to emit such broken bytecode. I\u0027d rather go without the SDK check and relax the check later in the unlikely case that this breaks some app.",
+      "parentUuid": "0a3a62cf_cd28b497",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "0b9fa852c057a107daa66de7198a512a652c63ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
