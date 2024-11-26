@@ -806,6 +806,10 @@ bool JitCodeCache::Commit(Thread* self,
 
             DCHECK(std::find(code_ptrs.begin(), code_ptrs.end(), code_ptr) == code_ptrs.end());
             it->second.emplace_back(code_ptr);
+
+            // Unlike `j.l.Class` and `j.l.String`, `MethodType`s are strong GC roots and need
+            // write barrier.
+            WriteBarrier::ForEveryFieldWrite(method->GetDeclaringClass<kWithoutReadBarrier>());
             break;
           }
         }
