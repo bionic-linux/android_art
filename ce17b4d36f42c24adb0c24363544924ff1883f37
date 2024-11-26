@@ -22,6 +22,30 @@
       },
       "revId": "ce17b4d36f42c24adb0c24363544924ff1883f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917cf10e_f6255168",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-26T17:32:45Z",
+      "side": 1,
+      "message": "I need to set `method` to `receiver-\u003eGetClass()-\u003eembedded_imtable_-\u003eGet(method_offset);` and for that I need `temp` (which stores `imt_index`).\n\nWith an extra temp register I can eliminate this load. Will it be better?\n\nIs it good to use `RAX` as a temp in general?",
+      "parentUuid": "e5b13dd1_53ee9432",
+      "range": {
+        "startLine": 4341,
+        "startChar": 0,
+        "endLine": 4342,
+        "endChar": 90
+      },
+      "revId": "ce17b4d36f42c24adb0c24363544924ff1883f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
