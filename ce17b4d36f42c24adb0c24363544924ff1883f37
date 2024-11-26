@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b13dd1_53ee9432",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-26T17:10:13Z",
+      "side": 1,
+      "message": "Don\u0027t you have the method line 4333? Can you move it then?",
+      "range": {
+        "startLine": 4341,
+        "startChar": 0,
+        "endLine": 4342,
+        "endChar": 90
+      },
+      "revId": "ce17b4d36f42c24adb0c24363544924ff1883f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
