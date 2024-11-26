@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30e2fb9_c281f8c6",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:06:18Z",
+      "side": 1,
+      "message": "Fair enough, thanks.",
+      "parentUuid": "cc266299_e32e31b1",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "6d28065ee3988135938fbcc58dbb2ea1108e174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a56cb7_f51d1132",

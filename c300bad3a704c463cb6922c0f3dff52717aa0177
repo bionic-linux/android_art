@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6fe28f_889a6810",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagedInstallFileHelper.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:06:18Z",
+      "side": 1,
+      "message": "Consider doing this in a separate step first, to avoid O(n^2) string operations.",
+      "range": {
+        "startLine": 68,
+        "startChar": 39,
+        "endLine": 68,
+        "endChar": 79
+      },
+      "revId": "c300bad3a704c463cb6922c0f3dff52717aa0177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
