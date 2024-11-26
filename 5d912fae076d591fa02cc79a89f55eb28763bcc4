@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d122693_93b1a55a",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "Just to get a sense of how bad it is, what are we talking about in extra time? Is it like half a sec per file?",
+      "parentUuid": "7bc7cc87_d70d5595",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 65
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45aa739_cd79388c",

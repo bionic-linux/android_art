@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85f54ce_c1929519",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "Nit: To put more emphasis on that this adds significant work, I suggest `--verify-sdm-signatures`, explained as \"Verify SDM file signatures and include their statuses.\"",
+      "range": {
+        "startLine": 1034,
+        "startChar": 26,
+        "endLine": 1035,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1cffd255_88b37e35",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 174,
+                "startChar": 0,
+                "endLine": 175,
+                "endChar": 0
+              },
+              "replacement": "                boolean verifySdmSignatures \u003d false;\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 179,
+                "startChar": 0,
+                "endLine": 181,
+                "endChar": 0
+              },
+              "replacement": "                        case \"--verify-sdm-signatures\":\n                            verifySdmSignatures \u003d true;\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 188,
+                "startChar": 0,
+                "endLine": 189,
+                "endChar": 0
+              },
+              "replacement": "                            pw, snapshot, packageName, verifySdmSignatures);\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "                    mArtManagerLocal.dump(pw, snapshot, verifySdmSignatures);\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 1029,
+                "startChar": 0,
+                "endLine": 1030,
+                "endChar": 0
+              },
+              "replacement": "        pw.println(\"  dump [--verify-sdm-signatures] [PACKAGE_NAME]\");\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 1034,
+                "startChar": 0,
+                "endLine": 1036,
+                "endChar": 0
+              },
+              "replacement": "        pw.println(\"      --verify-sdm-signatures Verify SDM file signatures and include their\");\n        pw.println(\"        statuses.\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a207b58_e881430b",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "A variant here is to output something like `[sdm-signature\u003dskipped]` when the flag is false, so that it\u0027s more clear in the output, and the format stays the same.",
+      "range": {
+        "startLine": 250,
+        "startChar": 16,
+        "endLine": 250,
+        "endChar": 91
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd59ab40_64ae2cb4",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "Isn\u0027t the situation the same here as for `dumpSdmStatus` above? In a sense it\u0027d be more honest to use `@SuppressLint(\"NewApi\")` here as well, then. It only needs a short `TODO` comment referring to the explanation for `dumpSdmStatus`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb75f800_dd4612b7",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "Since the operation continues, isn\u0027t `w` more appropriate?",
+      "range": {
+        "startLine": 262,
+        "startChar": 18,
+        "endLine": 262,
+        "endChar": 19
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b200f7_0803871b",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "I haven\u0027t checked, but please only include the message with the path if `e` doesn\u0027t already contain that error context (which it ought to, because the called function knows it).",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 73
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c94296b_6a5361cc",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-26T16:51:47Z",
+      "side": 1,
+      "message": "Iiuc it\u0027s the same thing here.",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 91
+      },
+      "revId": "0384b8e7094b37ad4efbf4db28cc47c3207a8ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
