@@ -46,6 +46,30 @@
       },
       "revId": "ce17b4d36f42c24adb0c24363544924ff1883f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdfeece_e3b101d8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-11-27T10:06:45Z",
+      "side": 1,
+      "message": "Feel free to use another temp when you need to. Ideally, you wouldn\u0027t over-request more than what you need but two temporaries is acceptable. You can specify the register e.g. `RAX` if you want to, or you can use `locations-\u003eAddTemp(Location::RequiresRegister());` like you had before",
+      "parentUuid": "917cf10e_f6255168",
+      "range": {
+        "startLine": 4341,
+        "startChar": 0,
+        "endLine": 4342,
+        "endChar": 90
+      },
+      "revId": "ce17b4d36f42c24adb0c24363544924ff1883f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
