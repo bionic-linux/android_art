@@ -350,7 +350,7 @@ MemMap MemMap::MapAnonymous(const char* name,
   // Whereas old kernels allocated at 'addr' if provided, newer kernels seem to ignore it.
   // However, MAP_FIXED_NOREPLACE tells the kernel it must allocate at the address or fail.
   // Do this only on host since android kernels still obey the hint without flag (for now).
-  if (!kIsTargetBuild && (flags & MAP_FIXED) == 0 && addr != nullptr) {
+  if ((!kIsTargetBuild || kIsVm) && (flags & MAP_FIXED) == 0 && addr != nullptr) {
     actual = MapInternal(
         addr, page_aligned_byte_count, prot, flags | MAP_FIXED_NOREPLACE, fd.get(), 0, low_4gb);
     // If the fixed-address allocation failed, fallback to the default path (random address).

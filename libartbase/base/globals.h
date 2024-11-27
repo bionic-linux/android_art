@@ -118,6 +118,12 @@ static constexpr bool kIsTargetAndroid = false;
 # endif
 #endif
 
+#if defined(ART_TEST_ON_VM)
+static constexpr bool kIsVm = true;
+#else
+static constexpr bool kIsVm = false;
+#endif
+
 // Additional statically-linked ART binaries (dex2oats, oatdumps, etc.) are
 // always available on the host
 #if !defined(ART_TARGET)

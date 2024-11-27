@@ -231,7 +231,12 @@ func addImplicitFlags(ctx android.LoadHookContext) {
 	} else {
 		p.Target.Android.Cflags = []string{"-DART_TARGET", "-DART_TARGET_ANDROID"}
 	}
+	ctx.AppendProperties(p)
 
+	p = &props{}
+	if ctx.Config().IsEnvTrue("ART_TEST_ON_VM") {
+		p.Target.Android.Cflags = []string{"-DART_TEST_ON_VM"}
+	}
 	ctx.AppendProperties(p)
 }
 
