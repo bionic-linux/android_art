@@ -414,11 +414,15 @@ void* OpenNativeLibrary(JNIEnv* env,
     }
   }
 
-  std::lock_guard<std::mutex> guard(g_namespaces_mutex);
+  std::unique_lock<std::mutex> lock(g_namespaces_mutex);
+  auto AssertLockHeld = [&lock]()
+                            ASSERT_CAPABILITY(g_namespaces_mutex) { CHECK(lock.owns_lock()); };
 
   {
+    AssertLockHeld();
     NativeLoaderNamespace* ns = g_namespaces->FindNamespaceByClassLoader(env, class_loader);
     if (ns != nullptr) {
+      lock.unlock();
       *needs_native_bridge = ns->IsBridged();
       Result<void*> handle = ns->Load(path);
       ALOGD("Load %s using ns %s from class loader (caller=%s): %s",
@@ -434,6 +438,8 @@ void* OpenNativeLibrary(JNIEnv* env,
     }
   }
 
+  AssertLockHeld();
+
   // This is the case where the classloader was not created by ApplicationLoaders
   // In this case we create an isolated not-shared namespace for it.
   const std::string empty_dex_path;
@@ -447,6 +453,7 @@ void* OpenNativeLibrary(JNIEnv* env,
                                        library_path_j,
                                        /*permitted_path_j=*/nullptr,
                                        /*uses_library_list_j=*/nullptr);
+  lock.unlock();
   if (!isolated_ns.ok()) {
     ALOGD("Failed to create isolated ns for %s (caller=%s)",
           path,
