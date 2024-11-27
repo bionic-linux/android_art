@@ -2976,8 +2976,13 @@ void InstructionSimplifierVisitor::SimplifyReturnThis(HInvoke* invoke) {
 
 // Helper method for StringBuffer escape analysis.
 static bool NoEscapeForStringBufferReference(HInstruction* reference, HInstruction* user) {
-  if (user->IsInvoke()) {
-    switch (user->AsInvoke()->GetIntrinsic()) {
+  if (user->IsInvokeStaticOrDirect()) {
+    // Any constructor on StringBuffer is okay.
+    return user->AsInvokeStaticOrDirect()->GetResolvedMethod() != nullptr &&
+           user->AsInvokeStaticOrDirect()->GetResolvedMethod()->IsConstructor() &&
+           user->InputAt(0) == reference;
+  } else if (user->IsInvokeVirtual()) {
+    switch (user->AsInvokeVirtual()->GetIntrinsic()) {
       case Intrinsics::kStringBufferLength:
       case Intrinsics::kStringBufferToString:
         DCHECK_EQ(user->InputAt(0), reference);
@@ -2991,14 +2996,6 @@ static bool NoEscapeForStringBufferReference(HInstruction* reference, HInstructi
         break;
     }
   }
-
-  if (user->IsInvokeStaticOrDirect()) {
-    // Any constructor on StringBuffer is okay.
-    return user->AsInvokeStaticOrDirect()->GetResolvedMethod() != nullptr &&
-           user->AsInvokeStaticOrDirect()->GetResolvedMethod()->IsConstructor() &&
-           user->InputAt(0) == reference;
-  }
-
   return false;
 }
 
@@ -3054,24 +3051,13 @@ static bool TryReplaceStringBuilderAppend(CodeGenerator* codegen, HInvoke* invok
         return false;
       }
     }
-
-    // Pattern match seeing arguments, then constructor, then constructor fence.
-    if (user->IsInvokeStaticOrDirect() &&
-        user->AsInvokeStaticOrDirect()->GetResolvedMethod() != nullptr &&
-        user->AsInvokeStaticOrDirect()->GetResolvedMethod()->IsConstructor() &&
-        user->AsInvokeStaticOrDirect()->GetNumberOfArguments() == 1u) {
-      // After arguments, we should see the constructor.
-      // We accept only the constructor with no extra arguments.
-      DCHECK(!seen_constructor);
-      DCHECK(!seen_constructor_fence);
-      seen_constructor = true;
-    } else if (user->IsInvoke()) {
-      // The arguments.
-      HInvoke* as_invoke = user->AsInvoke();
+    // Then we should see the arguments.
+    if (user->IsInvokeVirtual()) {
+      HInvokeVirtual* as_invoke_virtual = user->AsInvokeVirtual();
       DCHECK(!seen_constructor);
       DCHECK(!seen_constructor_fence);
       StringBuilderAppend::Argument arg;
-      switch (as_invoke->GetIntrinsic()) {
+      switch (as_invoke_virtual->GetIntrinsic()) {
         case Intrinsics::kStringBuilderAppendObject:
           // TODO: Unimplemented, needs to call String.valueOf().
           return false;
@@ -3103,7 +3089,7 @@ static bool TryReplaceStringBuilderAppend(CodeGenerator* codegen, HInvoke* invok
           has_fp_args = true;
           break;
         case Intrinsics::kStringBuilderAppendCharSequence: {
-          ReferenceTypeInfo rti = as_invoke->InputAt(1)->GetReferenceTypeInfo();
+          ReferenceTypeInfo rti = user->AsInvokeVirtual()->InputAt(1)->GetReferenceTypeInfo();
           if (!rti.IsValid()) {
             return false;
           }
@@ -3126,14 +3112,23 @@ static bool TryReplaceStringBuilderAppend(CodeGenerator* codegen, HInvoke* invok
         }
       }
       // Uses of the append return value should have been replaced with the first input.
-      DCHECK(!as_invoke->HasUses());
-      DCHECK(!as_invoke->HasEnvironmentUses());
+      DCHECK(!as_invoke_virtual->HasUses());
+      DCHECK(!as_invoke_virtual->HasEnvironmentUses());
       if (num_args == StringBuilderAppend::kMaxArgs) {
         return false;
       }
       format = (format << StringBuilderAppend::kBitsPerArg) | static_cast<uint32_t>(arg);
-      args[num_args] = as_invoke->InputAt(1u);
+      args[num_args] = as_invoke_virtual->InputAt(1u);
       ++num_args;
+    } else if (user->IsInvokeStaticOrDirect() &&
+               user->AsInvokeStaticOrDirect()->GetResolvedMethod() != nullptr &&
+               user->AsInvokeStaticOrDirect()->GetResolvedMethod()->IsConstructor() &&
+               user->AsInvokeStaticOrDirect()->GetNumberOfArguments() == 1u) {
+      // After arguments, we should see the constructor.
+      // We accept only the constructor with no extra arguments.
+      DCHECK(!seen_constructor);
+      DCHECK(!seen_constructor_fence);
+      seen_constructor = true;
     } else if (user->IsConstructorFence()) {
       // The last use we see is the constructor fence.
       DCHECK(seen_constructor);

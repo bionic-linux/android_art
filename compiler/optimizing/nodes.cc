@@ -3263,35 +3263,17 @@ std::ostream& operator<<(std::ostream& os, HInvokeStaticOrDirect::ClinitCheckReq
 }
 
 bool HInvokeStaticOrDirect::CanBeNull() const {
-  if (IsStringInit()) {
+  if (GetType() != DataType::Type::kReference || IsStringInit()) {
     return false;
   }
-  return HInvoke::CanBeNull();
-}
-
-bool HInvoke::CanBeNull() const {
   switch (GetIntrinsic()) {
-    case Intrinsics::kThreadCurrentThread:
-    case Intrinsics::kStringBufferAppend:
-    case Intrinsics::kStringBufferToString:
-    case Intrinsics::kStringBuilderAppendObject:
-    case Intrinsics::kStringBuilderAppendString:
-    case Intrinsics::kStringBuilderAppendCharSequence:
-    case Intrinsics::kStringBuilderAppendCharArray:
-    case Intrinsics::kStringBuilderAppendBoolean:
-    case Intrinsics::kStringBuilderAppendChar:
-    case Intrinsics::kStringBuilderAppendInt:
-    case Intrinsics::kStringBuilderAppendLong:
-    case Intrinsics::kStringBuilderAppendFloat:
-    case Intrinsics::kStringBuilderAppendDouble:
-    case Intrinsics::kStringBuilderToString:
 #define DEFINE_BOXED_CASE(name, unused1, unused2, unused3, unused4) \
-    case Intrinsics::k##name##ValueOf:
+    case Intrinsics::k##name##ValueOf: \
+      return false;
     BOXED_TYPES(DEFINE_BOXED_CASE)
 #undef DEFINE_BOXED_CASE
-      return false;
     default:
-      return GetType() == DataType::Type::kReference;
+      return true;
   }
 }
 
