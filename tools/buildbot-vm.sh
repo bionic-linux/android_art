@@ -32,7 +32,7 @@ action="$1"
 get_stable_binary() {
     mkdir tmp && cd tmp
     wget "http://security.ubuntu.com/ubuntu/pool/main/$1"
-    7z x "$(basename $1)" && zstd -d data.tar.zst && tar -xf data.tar
+    ar x "$(basename $1)" && zstd -d data.tar.zst && tar -xf data.tar
     mv "$2" ..
     cd .. && rm -rf tmp
 }
@@ -45,19 +45,14 @@ if [[ $action = create ]]; then
 
     # sudo apt install qemu-system-<arch> qemu-efi cloud-image-utils
 
-    # Get the cloud image for Ubunty 23.10 (Mantic Minotaur)
-    wget "http://cloud-images.ubuntu.com/releases/23.10/release/$ART_TEST_VM_IMG"
+    # Get the cloud image for Ubuntu 24.04 LTS (Noble Numbat)
+    wget "http://cloud-images.ubuntu.com/releases/24.04/release/$ART_TEST_VM_IMG"
 
     if [[ "$TARGET_ARCH" = "riscv64" ]]; then
-        # Get U-Boot for Ubuntu 22.04 (Jammy)
+        # Get U-Boot
         get_stable_binary \
             u/u-boot/u-boot-qemu_2024.01+dfsg-5ubuntu2_all.deb \
             usr/lib/u-boot/qemu-riscv64_smode/uboot.elf
-
-        # Get OpenSBI for Ubuntu 22.04 (Jammy)
-        get_stable_binary \
-            o/opensbi/opensbi_1.3-1ubuntu0.23.04.2_all.deb \
-            usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf
 
     elif [[ "$TARGET_ARCH" = "arm64" ]]; then
         # Get EFI (ARM64)
@@ -87,10 +82,18 @@ chpasswd:
 users:
   - default
   - name: $ART_TEST_SSH_USER
-    ssh-authorized-keys:
+    ssh_authorized_keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCOYmwd9qoYd7rfYI6Q8zzqoZ3BtLC/SQo0WCvBFoJT6JzwU8F7nkN57KBQPLtvX2OBeDnFbtEY8uLtuNEp1Z19VcDbRd3LhyAMYFz6Ox/vWtPfl0hv0kUMQMAne1Bg0tawlNxawP2HXrLOh/FaXdSBSRUHNqMTQEnkIYw4faArDS/zKjVDs0/+e9mhtjL0akLcK04crlk2KD8Q2csya5givdAD7fVNOx7DtckRR47FLM1bERe0t0FlUESx/x7oLjNEmNUrPXV6GSkCoskmKSZC1vwgAf0VrxFADv1EywQXmlNaa4+rzqS4jMYuwi5QCtQXFFZl5qQ1Sh1rnliTRJvJzjXCeq3QPsPzUJInfVGzrPClfHG7whlJE/Uwv8UOF7WHzUt5OBOsW6nZrplldvfYif/qz6dR+RX2G0zi8tC/2Mzahr6toAqtsqbdp3coYvpi/OjHIV3RhyJxG1FtyGYQRnmGPs8R9ic3pupjLFWM9qIilUCjFrUoiw7QAgfUrUc= ubuntu_user@example.com
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: users, admin
+write_files:
+  - path: /etc/sysctl.d/60-apparmor.conf
+    permissions: 0644
+    owner: root
+    content: |
+      kernel.apparmor_restrict_unprivileged_userns=0
+runcmd:
+  - systemctl restart systemd-sysctl
 EOF
     # meta-data is necessary, even if empty.
     cat >meta-data <<EOF
@@ -104,18 +107,18 @@ elif [[ $action = boot ]]; then
     cp "$(dirname $0)/user-data.img" "$ART_TEST_VM_DIR/user-data.img"
     cd "$ART_TEST_VM_DIR"
     if [[ "$TARGET_ARCH" = "riscv64" ]]; then
+        echo -n > $SCRIPT_DIR/boot.out
         ($ANDROID_BUILD_TOP/device/google/cuttlefish_vmm/qemu/x86_64-linux-gnu/bin/qemu-system-riscv64 \
             -M virt \
             -nographic \
             -m 16G \
             -smp 8 \
             -cpu rv64,v=true,elen=64,vlen=128,zba=true,zbb=true,zbs=true \
-            -bios fw_jump.elf \
             -kernel uboot.elf \
             -drive file="$ART_TEST_VM_IMG",if=virtio \
             -drive file=user-data.img,format=raw,if=virtio \
             -device virtio-net-device,netdev=usernet \
-            -netdev user,id=usernet,hostfwd=tcp::$ART_TEST_SSH_PORT-:22 > $SCRIPT_DIR/boot.out &)
+            -netdev user,id=usernet,hostfwd=tcp::$ART_TEST_SSH_PORT-:22 >> $SCRIPT_DIR/boot.out &)
         echo "Now listening for successful boot"
         finish_str='.*finished at.*'
         while IFS= read -d $'\0' -n 1 a ; do
@@ -132,6 +135,7 @@ elif [[ $action = boot ]]; then
         done < <(tail -f $SCRIPT_DIR/boot.out)
 
     elif [[ "$TARGET_ARCH" = "arm64" ]]; then
+        echo -n > $SCRIPT_DIR/boot.out
         (qemu-system-aarch64 \
             -m 16G \
             -smp 8 \
@@ -144,7 +148,7 @@ elif [[ $action = boot ]]; then
             -drive file=user-data.img,format=raw,id=cloud \
             -device virtio-blk-device,drive=hd0 \
             -device virtio-net-device,netdev=usernet \
-            -netdev user,id=usernet,hostfwd=tcp::$ART_TEST_SSH_PORT-:22 > $SCRIPT_DIR/boot.out &)
+            -netdev user,id=usernet,hostfwd=tcp::$ART_TEST_SSH_PORT-:22 >> $SCRIPT_DIR/boot.out &)
         echo "Now listening for successful boot"
         finish_str='.*finished at.*'
         while IFS= read -d $'\0' -n 1 a ; do
