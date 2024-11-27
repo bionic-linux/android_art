@@ -32,7 +32,7 @@ action="$1"
 get_stable_binary() {
     mkdir tmp && cd tmp
     wget "http://security.ubuntu.com/ubuntu/pool/main/$1"
-    7z x "$(basename $1)" && zstd -d data.tar.zst && tar -xf data.tar
+    ar x "$(basename $1)" && zstd -d data.tar.zst && tar -xf data.tar
     mv "$2" ..
     cd .. && rm -rf tmp
 }
@@ -45,19 +45,14 @@ if [[ $action = create ]]; then
 
     # sudo apt install qemu-system-<arch> qemu-efi cloud-image-utils
 
-    # Get the cloud image for Ubunty 23.10 (Mantic Minotaur)
-    wget "http://cloud-images.ubuntu.com/releases/23.10/release/$ART_TEST_VM_IMG"
+    # Get the cloud image for Ubuntu 24.04 LTS (Noble Numbat)
+    wget "http://cloud-images.ubuntu.com/releases/24.04/release/$ART_TEST_VM_IMG"
 
     if [[ "$TARGET_ARCH" = "riscv64" ]]; then
-        # Get U-Boot for Ubuntu 22.04 (Jammy)
+        # Get U-Boot
         get_stable_binary \
             u/u-boot/u-boot-qemu_2024.01+dfsg-5ubuntu2_all.deb \
             usr/lib/u-boot/qemu-riscv64_smode/uboot.elf
-
-        # Get OpenSBI for Ubuntu 22.04 (Jammy)
-        get_stable_binary \
-            o/opensbi/opensbi_1.3-1ubuntu0.23.04.2_all.deb \
-            usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf
 
     elif [[ "$TARGET_ARCH" = "arm64" ]]; then
         # Get EFI (ARM64)
@@ -110,7 +105,6 @@ elif [[ $action = boot ]]; then
             -m 16G \
             -smp 8 \
             -cpu rv64,v=true,elen=64,vlen=128,zba=true,zbb=true,zbs=true \
-            -bios fw_jump.elf \
             -kernel uboot.elf \
             -drive file="$ART_TEST_VM_IMG",if=virtio \
             -drive file=user-data.img,format=raw,if=virtio \
