@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "478a15eb_ced359c8",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-27T21:52:23Z",
+      "side": 1,
+      "message": "The 49s is not how long the dump took. It\u0027s the time it took to manually ran `PackageManager.getVerifiedSigningInfo` on all APKs on my Pixel device, which is the estimation of how long `--verify-sdm-signatures` would add to dump if all APKs had SDM files.",
+      "parentUuid": "54ead5bf_98367c02",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 65
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45aa739_cd79388c",

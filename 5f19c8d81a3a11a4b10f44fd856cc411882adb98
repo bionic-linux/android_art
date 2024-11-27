@@ -22,6 +22,30 @@
       },
       "revId": "5f19c8d81a3a11a4b10f44fd856cc411882adb98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cab75a_cebfcdb4",
+        "filename": "libartservice/service/jarjar-rules.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-27T21:52:23Z",
+      "side": 1,
+      "message": "Yes, a build error:\n\n```\nClass file android/content/pm/FeatureFlagsImpl.class is outside specified packages.\nClass file android/content/pm/CustomFeatureFlags.class is outside specified packages.\nClass file android/content/pm/FeatureFlags.class is outside specified packages.\nClass file android/content/pm/FakeFeatureFlagsImpl.class is outside specified packages.\nClass file android/content/pm/Flags.class is outside specified packages.\n```",
+      "parentUuid": "06ec1a42_7793b43b",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "5f19c8d81a3a11a4b10f44fd856cc411882adb98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
