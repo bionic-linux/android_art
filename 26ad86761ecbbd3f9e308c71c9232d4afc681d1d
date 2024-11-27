@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2155a906_97faf35b",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-27T17:50:54Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 72
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "784b62fe_3b47e46c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/method_handles.cc",
+              "range": {
+                "startLine": 779,
+                "startChar": 0,
+                "endLine": 780,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "26ad86761ecbbd3f9e308c71c9232d4afc681d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
