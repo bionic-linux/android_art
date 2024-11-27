@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ec1a42_7793b43b",
+        "filename": "libartservice/service/jarjar-rules.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-27T19:23:03Z",
+      "side": 1,
+      "message": "What would happen if a rule was missing here? Would we see a build error?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 62
+      },
+      "revId": "5f19c8d81a3a11a4b10f44fd856cc411882adb98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

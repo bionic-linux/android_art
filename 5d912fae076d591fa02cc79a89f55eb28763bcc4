@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ead5bf_98367c02",
+        "filename": "libartservice/service/java/com/android/server/art/DumpHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-27T19:23:03Z",
+      "side": 1,
+      "message": "Thanks, is that 49s longer than without `--verify-sdm-signatures`?",
+      "parentUuid": "2c663015_25374986",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 65
+      },
+      "revId": "5d912fae076d591fa02cc79a89f55eb28763bcc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a45aa739_cd79388c",
