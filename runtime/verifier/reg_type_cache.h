@@ -27,6 +27,7 @@
 #include "dex/primitive.h"
 #include "gc_root.h"
 #include "handle_scope.h"
+#include "reg_type.h"
 
 namespace art HIDDEN {
 
@@ -40,33 +41,7 @@ class DexFile;
 
 namespace verifier {
 
-class BooleanConstantType;
-class BooleanType;
-class ByteConstantType;
-class ByteType;
-class CharConstantType;
-class CharType;
-class ConflictType;
-class ConstantHiType;
-class ConstantLoType;
-class DoubleHiType;
-class DoubleLoType;
-class FloatType;
-class IntegerConstantType;
-class IntegerType;
-class LongHiType;
-class LongLoType;
 class MethodVerifier;
-class NullType;
-class PositiveByteConstantType;
-class PositiveShortConstantType;
-class ReferenceType;
-class RegType;
-class ShortConstantType;
-class ShortType;
-class UndefinedType;
-class UninitializedType;
-class ZeroType;
 
 // Use 8 bytes since that is the default arena allocator alignment.
 static constexpr size_t kDefaultArenaBitVectorBytes = 8;
@@ -97,7 +72,21 @@ class RegTypeCache {
     return can_suspend_;
   }
 
-  const art::verifier::RegType& GetFromId(uint16_t id) const;
+  static constexpr uint32_t NumberOfRegKindCacheIds() { return kNumberOfRegKindCacheIds; }
+
+  // Translate `RegType::Kind` to id for a pre-initialized register type.
+  // Cannot be used for non-zero reference kinds other than `JavaLangObject()`; all other
+  // kinds (undefined, conflict, primitive and constant kinds) have pre-initialized types.
+  static constexpr uint16_t IdForRegKind(RegType::Kind kind);
+
+  // Translate `id` to `RegType::Kind`.
+  // The `id` must be lower than `NumberOfRegKindCacheIds()`.
+  static constexpr RegType::Kind RegKindForId(uint16_t id);
+
+  // Get register type for a `RegType::Kind` with the same restrictions as `IdForRegKind()`.
+  const RegType& GetFromRegKind(RegType::Kind kind) const;
+
+  const RegType& GetFromId(uint16_t id) const;
   // Get or insert a reg type for a klass.
   const RegType& FromClass(ObjPtr<mirror::Class> klass)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -106,8 +95,6 @@ class RegTypeCache {
   const RegType& FromUnresolvedMerge(const RegType& left,
                                      const RegType& right,
                                      MethodVerifier* verifier)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-  const RegType& FromUnresolvedSuperClass(const RegType& child)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   const RegType& FromTypeIndex(dex::TypeIndex type_index) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -152,7 +139,7 @@ class RegTypeCache {
   const ReferenceType& JavaLangInvokeMethodHandle() REQUIRES_SHARED(Locks::mutator_lock_);
   const ReferenceType& JavaLangInvokeMethodType() REQUIRES_SHARED(Locks::mutator_lock_);
   const ReferenceType& JavaLangThrowable() REQUIRES_SHARED(Locks::mutator_lock_);
-  const ReferenceType& JavaLangObject() REQUIRES_SHARED(Locks::mutator_lock_);
+  const JavaLangObjectType& JavaLangObject() REQUIRES_SHARED(Locks::mutator_lock_);
 
   const UninitializedType& Uninitialized(const RegType& type)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -194,7 +181,11 @@ class RegTypeCache {
   static constexpr uint32_t kConstantLoCacheId = kIntegerConstantCacheId + 1u;
   static constexpr uint32_t kConstantHiCacheId = kConstantLoCacheId + 1u;
   static constexpr uint32_t kNullCacheId = kConstantHiCacheId + 1u;
-  static constexpr uint32_t kNumberOfFixedCacheIds = kNullCacheId + 1u;
+  static constexpr uint32_t kJavaLangObjectCacheId = kNullCacheId + 1u;
+  static constexpr uint32_t kNumberOfRegKindCacheIds = kJavaLangObjectCacheId + 1u;
+
+  static constexpr uint32_t kUninitializedJavaLangObjectCacheId = kNumberOfRegKindCacheIds;
+  static constexpr uint32_t kNumberOfFixedCacheIds = kUninitializedJavaLangObjectCacheId + 1u;
 
  private:
   // We want 0 to mean an empty slot in `ids_for_type_index_`, so that we do not need to fill

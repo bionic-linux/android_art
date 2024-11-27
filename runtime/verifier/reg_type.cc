@@ -55,95 +55,87 @@ std::ostream& operator<<(std::ostream& os, RegType::Kind kind) {
   return os << kind_name;
 }
 
-std::string BooleanType::Dump() const {
-  return "Boolean";
+std::ostream& operator<<(std::ostream& os, RegType::Assignability assignability) {
+  const char* assignability_name;
+  switch (assignability) {
+    case RegType::Assignability::kAssignable:
+      assignability_name = "Assignable";
+      break;
+    case RegType::Assignability::kNotAssignable:
+      assignability_name = "NotAssignable";
+      break;
+    case RegType::Assignability::kNarrowingConversion:
+      assignability_name = "NarrowingConversion";
+      break;
+    case RegType::Assignability::kReference:
+      assignability_name = "Reference";
+      break;
+    case RegType::Assignability::kInvalid:
+      assignability_name = "Invalid";
+      break;
+    default:
+      return os << "Corrupted RegType::Assignability: " << static_cast<uint32_t>(assignability);
+  }
+  return os << assignability_name;
 }
 
-std::string ConflictType::Dump() const {
-    return "Conflict";
+std::string RegType::Dump() const {
+  std::string_view reference_tag;
+  switch (GetKind()) {
+    case Kind::kUndefined: return "Undefined";
+    case Kind::kConflict: return "Conflict";
+    case Kind::kBoolean: return "Boolean";
+    case Kind::kByte: return "Byte";
+    case Kind::kShort: return "Short";
+    case Kind::kChar: return "Char";
+    case Kind::kInteger: return "Integer";
+    case Kind::kLongLo: return "Long (Low Half)";
+    case Kind::kLongHi: return "Long (High Half)";
+    case Kind::kFloat: return "Float";
+    case Kind::kDoubleLo: return "Double (Low Half)";
+    case Kind::kDoubleHi: return "Double (High Half)";
+    case Kind::kZero: return "Zero/null";
+    case Kind::kBooleanConstant: return "BooleanConstant";
+    case Kind::kPositiveByteConstant: return "PositiveByteConstant";
+    case Kind::kPositiveShortConstant: return "PositiveShortConstant";
+    case Kind::kCharConstant: return "CharConstant";
+    case Kind::kByteConstant: return "ByteConstant";
+    case Kind::kShortConstant: return "ShortConstant";
+    case Kind::kIntegerConstant: return "IntegerConstant";
+    case Kind::kConstantLo: return "Low-half Constant";
+    case Kind::kConstantHi: return "High-half Constant";
+    case Kind::kNull: return "null";
+    case Kind::kJavaLangObject: return "Reference java.lang.Object";
+
+    case Kind::kUnresolvedReference:
+      reference_tag = "Unresolved Reference: ";
+      break;
+    case Kind::kUninitializedReference:
+      reference_tag = "Uninitialized Reference: ";
+      break;
+    case Kind::kUninitializedThisReference:
+      reference_tag = "Uninitialized This Reference: ";
+      break;
+    case Kind::kUnresolvedUninitializedReference:
+      reference_tag = "Unresolved And Uninitialized Reference: ";
+      break;
+    case Kind::kUnresolvedUninitializedThisReference:
+      reference_tag = "Unresolved And Uninitialized This Reference: ";
+      break;
+    case Kind::kReference:
+      reference_tag = "Reference: ";
+      break;
+
+    case Kind::kUnresolvedMergedReference:
+      return down_cast<const UnresolvedMergedReferenceType&>(*this).DumpImpl();
+  }
+  DCHECK(!reference_tag.empty());
+  std::string result(reference_tag);
+  AppendPrettyDescriptor(std::string(GetDescriptor()).c_str(), &result);
+  return result;
 }
 
-std::string ByteType::Dump() const {
-  return "Byte";
-}
-
-std::string ShortType::Dump() const {
-  return "Short";
-}
-
-std::string CharType::Dump() const {
-  return "Char";
-}
-
-std::string IntegerType::Dump() const {
-  return "Integer";
-}
-
-std::string FloatType::Dump() const {
-  return "Float";
-}
-
-std::string LongLoType::Dump() const {
-  return "Long (Low Half)";
-}
-
-std::string LongHiType::Dump() const {
-  return "Long (High Half)";
-}
-
-std::string DoubleLoType::Dump() const {
-  return "Double (Low Half)";
-}
-
-std::string DoubleHiType::Dump() const {
-  return "Double (High Half)";
-}
-
-std::string ZeroType::Dump() const {
-  return "Zero/null";
-}
-
-std::string BooleanConstantType::Dump() const {
-  return "BooleanConstant";
-}
-
-std::string PositiveByteConstantType::Dump() const {
-  return "PositiveByteConstant";
-}
-
-std::string PositiveShortConstantType::Dump() const {
-  return "PositiveShortConstant";
-}
-
-std::string CharConstantType::Dump() const {
-  return "CharConstant";
-}
-
-std::string ByteConstantType::Dump() const {
-  return "ByteConstant";
-}
-
-std::string ShortConstantType::Dump() const {
-  return "ShortConstant";
-}
-
-std::string IntegerConstantType::Dump() const {
-  return "IntegerConstant";
-}
-
-std::string ConstantLoType::Dump() const {
-  return "Low-half Constant";
-}
-
-std::string ConstantHiType::Dump() const {
-  return "High-half Constant";
-}
-
-std::string UndefinedType::Dump() const REQUIRES_SHARED(Locks::mutator_lock_) {
-  return "Undefined";
-}
-
-std::string UnresolvedMergedReferenceType::Dump() const {
+std::string UnresolvedMergedReferenceType::DumpImpl() const {
   std::stringstream result;
   result << "UnresolvedMergedReferences(" << GetResolvedPart().Dump() << " | ";
   const BitVector& types = GetUnresolvedTypes();
@@ -158,51 +150,6 @@ std::string UnresolvedMergedReferenceType::Dump() const {
     result << reg_type_cache_->GetFromId(idx).Dump();
   }
   result << ")";
-  return result.str();
-}
-
-std::string UnresolvedSuperClassType::Dump() const {
-  std::stringstream result;
-  uint16_t super_type_id = GetUnresolvedSuperClassChildId();
-  result << "UnresolvedSuperClass(" << reg_type_cache_->GetFromId(super_type_id).Dump() << ")";
-  return result.str();
-}
-
-std::string UnresolvedReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Unresolved Reference: " << PrettyDescriptor(std::string(GetDescriptor()).c_str());
-  return result.str();
-}
-
-std::string UnresolvedUninitializedReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Unresolved And Uninitialized Reference: "
-      << PrettyDescriptor(std::string(GetDescriptor()).c_str());
-  return result.str();
-}
-
-std::string UnresolvedUninitializedThisReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Unresolved And Uninitialized This Reference: "
-      << PrettyDescriptor(std::string(GetDescriptor()).c_str());
-  return result.str();
-}
-
-std::string ReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Reference: " << mirror::Class::PrettyDescriptor(GetClass());
-  return result.str();
-}
-
-std::string UninitializedReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Uninitialized Reference: " << mirror::Class::PrettyDescriptor(GetClass());
-  return result.str();
-}
-
-std::string UninitializedThisReferenceType::Dump() const {
-  std::stringstream result;
-  result << "Uninitialized This Reference: " << mirror::Class::PrettyDescriptor(GetClass());
   return result.str();
 }
 
@@ -241,39 +188,10 @@ Primitive::Type RegType::GetPrimitiveType() const {
   }
 }
 
-const RegType& RegType::GetSuperClass(RegTypeCache* cache) const {
-  if (!IsUnresolvedTypes()) {
-    ObjPtr<mirror::Class> super_klass = GetClass()->GetSuperClass();
-    if (super_klass != nullptr) {
-      return cache->FromClass(super_klass);
-    } else {
-      return cache->Zero();
-    }
-  } else {
-    if (!IsUnresolvedMergedReference() && !IsUnresolvedSuperClass() &&
-        GetDescriptor()[0] == '[') {
-      // Super class of all arrays is Object.
-      return cache->JavaLangObject();
-    } else {
-      return cache->FromUnresolvedSuperClass(*this);
-    }
-  }
-}
-
-bool RegType::IsJavaLangObject() const REQUIRES_SHARED(Locks::mutator_lock_) {
-  return IsReference() && GetClass()->IsObjectClass();
-}
-
-bool RegType::IsObjectArrayTypes() const REQUIRES_SHARED(Locks::mutator_lock_) {
-  if (IsUnresolvedTypes()) {
-    DCHECK(!IsUnresolvedMergedReference());
-
-    if (IsUnresolvedSuperClass()) {
-      // Cannot be an array, as the superclass of arrays is java.lang.Object (which cannot be
-      // unresolved).
-      return false;
-    }
-
+bool RegType::IsObjectArrayTypes() const {
+  if (IsUnresolvedMergedReference()) {
+    return down_cast<const UnresolvedMergedReferenceType&>(*this).IsObjectArrayTypesImpl();
+  } else if (IsUnresolvedTypes()) {
     // Primitive arrays will always resolve.
     DCHECK(descriptor_[1] == 'L' || descriptor_[1] == '[');
     return descriptor_[0] == '[';
@@ -285,15 +203,10 @@ bool RegType::IsObjectArrayTypes() const REQUIRES_SHARED(Locks::mutator_lock_) {
   }
 }
 
-bool RegType::IsArrayTypes() const REQUIRES_SHARED(Locks::mutator_lock_) {
-  if (IsUnresolvedTypes()) {
-    DCHECK(!IsUnresolvedMergedReference());
-
-    if (IsUnresolvedSuperClass()) {
-      // Cannot be an array, as the superclass of arrays is java.lang.Object (which cannot be
-      // unresolved).
-      return false;
-    }
+bool RegType::IsArrayTypes() const {
+  if (IsUnresolvedMergedReference()) {
+    return down_cast<const UnresolvedMergedReferenceType&>(*this).IsArrayTypesImpl();
+  } else if (IsUnresolvedTypes()) {
     return descriptor_[0] == '[';
   } else if (HasClass()) {
     return GetClass()->IsArrayClass();
@@ -311,7 +224,8 @@ bool RegType::IsJavaLangObjectArray() const {
 }
 
 bool RegType::IsInstantiableTypes() const {
-  return IsUnresolvedTypes() || (IsNonZeroReferenceTypes() && GetClass()->IsInstantiable());
+  DCHECK(IsJavaLangObject() || IsReference() || IsUnresolvedReference()) << *this;
+  return !IsReference() || GetClass()->IsInstantiable();
 }
 
 static constexpr const RegType& SelectNonConstant(const RegType& a, const RegType& b) {
@@ -464,10 +378,7 @@ ObjPtr<mirror::Class> InterfaceClassJoin(ObjPtr<mirror::Class> s, ObjPtr<mirror:
 class RegTypeMergeImpl final : public RegType {
  public:
   explicit constexpr RegTypeMergeImpl(RegType::Kind kind)
-      : RegType(Handle<mirror::Class>(), "", /* unused cache id */ 0, kind) {}
-
-  std::string Dump() const override { UNREACHABLE(); }
-  AssignmentType GetAssignmentTypeImpl() const override { UNREACHABLE(); }
+      : RegType("", /* unused cache id */ 0, kind) {}
 
   constexpr RegType::Kind MergeKind(RegType::Kind incoming_kind) const;
 };
@@ -548,6 +459,8 @@ constexpr RegType::Kind RegTypeMergeImpl::MergeKind(RegType::Kind incoming_kind)
       // special. They may only ever be merged with themselves (must be taken care of by the
       // caller of Merge(), see the DCHECK on entry). So mark any other merge as conflicting here.
       return Kind::kConflict;
+    } else if (IsJavaLangObject() || incoming_type.IsJavaLangObject()) {
+      return Kind::kJavaLangObject;
     } else {
       // Use `UnresolvedMergedReference` to tell the caller to process a reference merge.
       // This does not mean that the actual merged kind must be `UnresolvedMergedReference`.
@@ -558,8 +471,6 @@ constexpr RegType::Kind RegTypeMergeImpl::MergeKind(RegType::Kind incoming_kind)
   }
 }
 
-
-
 }  // namespace
 
 const RegType& RegType::Merge(const RegType& incoming_type,
@@ -567,12 +478,10 @@ const RegType& RegType::Merge(const RegType& incoming_type,
                               MethodVerifier* verifier) const {
   DCHECK(!Equals(incoming_type));  // Trivial equality handled by caller
 
-#define ADD_ONE_FOR_CONCRETE_REG_TYPE(name) + 1
-  constexpr size_t kNumKinds = 0 FOR_EACH_CONCRETE_REG_TYPE(ADD_ONE_FOR_CONCRETE_REG_TYPE);
-#undef ADD_ONE_FOR_CONCRETE_REG_TYPE
-  static constexpr std::array<std::array<RegType::Kind, kNumKinds>, kNumKinds> kMergeTable =
-      []() constexpr {
-    std::array<std::array<RegType::Kind, kNumKinds>, kNumKinds> result;
+  static constexpr size_t kNumKinds = NumberOfKinds();
+  using MergeTable = std::array<std::array<Kind, kNumKinds>, kNumKinds>;
+  static constexpr MergeTable kMergeTable = []() constexpr {
+    MergeTable result;
     for (size_t lhs = 0u; lhs != kNumKinds; ++lhs) {
       for (size_t rhs = 0u; rhs != kNumKinds; ++rhs) {
         RegTypeMergeImpl lhs_impl(enum_cast<RegType::Kind>(lhs));
@@ -584,7 +493,7 @@ const RegType& RegType::Merge(const RegType& incoming_type,
 
   Kind merge_kind = kMergeTable[GetKind()][incoming_type.GetKind()];
   if (merge_kind != Kind::kUnresolvedMergedReference) {
-    return RegTypeFromKind(reg_types, merge_kind);
+    return reg_types->GetFromRegKind(merge_kind);
   } else {
     // The `UnresolvedMergedReference` tells us to do non-trivial reference merging which
     // requires more information than the two kinds used for the lookup in `kMergeTable`.
@@ -592,10 +501,10 @@ const RegType& RegType::Merge(const RegType& incoming_type,
     DCHECK(incoming_type.IsReferenceTypes()) << incoming_type;
     DCHECK(!IsUninitializedTypes()) << *this;
     DCHECK(!incoming_type.IsUninitializedTypes());
+    DCHECK(!IsJavaLangObject());
+    DCHECK(!incoming_type.IsJavaLangObject());
     if (IsZeroOrNull() || incoming_type.IsZeroOrNull()) {
       return SelectNonConstant2(*this, incoming_type);  // 0 MERGE ref => ref
-    } else if (IsJavaLangObject() || incoming_type.IsJavaLangObject()) {
-      return reg_types->JavaLangObject();  // Object MERGE ref => Object
     } else if (IsUnresolvedTypes() || incoming_type.IsUnresolvedTypes()) {
       // We know how to merge an unresolved type with itself, 0 or Object. In this case we
       // have two sub-classes and don't know how to merge. Create a new string-based unresolved
@@ -657,22 +566,12 @@ const RegType& RegType::Merge(const RegType& incoming_type,
   }
 }
 
-void RegType::CheckClassDescriptor() const {
-  CHECK(HasClass());
+void ReferenceType::CheckClassDescriptor() const {
+  CHECK(IsReference());
+  CHECK(!klass_.IsNull());
   CHECK(!descriptor_.empty()) << *this;
   std::string temp;
   CHECK_EQ(descriptor_, klass_->GetDescriptor(&temp)) << *this;
-}
-
-UnresolvedSuperClassType::UnresolvedSuperClassType(uint16_t child_id,
-                                                   RegTypeCache* reg_type_cache,
-                                                   uint16_t cache_id)
-    REQUIRES_SHARED(Locks::mutator_lock_)
-    : UnresolvedType("", cache_id, Kind::kUnresolvedSuperClass),
-      unresolved_child_id_(child_id),
-      reg_type_cache_(reg_type_cache) {
-  CheckConstructorInvariants(this);
-  DCHECK_NE(unresolved_child_id_, 0U) << *this;
 }
 
 UnresolvedMergedReferenceType::UnresolvedMergedReferenceType(const RegType& resolved,
@@ -716,7 +615,7 @@ void UnresolvedMergedReferenceType::CheckInvariants() const {
   }
 }
 
-bool UnresolvedMergedReferenceType::IsArrayTypes() const {
+bool UnresolvedMergedReferenceType::IsArrayTypesImpl() const {
   // For a merge to be an array, both the resolved and the unresolved part need to be object
   // arrays.
   // (Note: we encode a missing resolved part [which doesn't need to be an array] as zero.)
@@ -731,7 +630,7 @@ bool UnresolvedMergedReferenceType::IsArrayTypes() const {
   const RegType& unresolved = reg_type_cache_->GetFromId(idx);
   return unresolved.IsArrayTypes();
 }
-bool UnresolvedMergedReferenceType::IsObjectArrayTypes() const {
+bool UnresolvedMergedReferenceType::IsObjectArrayTypesImpl() const {
   // Same as IsArrayTypes, as primitive arrays are always resolved.
   return IsArrayTypes();
 }
