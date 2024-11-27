@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0b95e6_3a5196b2",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-27T17:47:36Z",
+      "side": 1,
+      "message": "suspend check",
+      "range": {
+        "startLine": 1553,
+        "startChar": 25,
+        "endLine": 1553,
+        "endChar": 37
+      },
+      "revId": "c53c7a802d9a91025647547667fc048f7f1eed27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
