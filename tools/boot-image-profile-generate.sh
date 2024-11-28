@@ -15,7 +15,7 @@
 # limitations under the License.
 
 #
-# This script creates the final boot image profile (suitable to include in the platform build).
+# This script creates the framework boot image profile (suitable to include in the platform build).
 # The input to the script are:
 #   1) the boot.zip file which contains the boot classpath and system server jars.
 #      This file can be obtained from running `m dist` or by configuring the device with
@@ -73,6 +73,7 @@ done
 OUT_BOOT_PROFILE="$OUT_DIR"/boot-image-profile.txt
 OUT_PRELOADED_CLASSES="$OUT_DIR"/preloaded-classes
 OUT_SYSTEM_SERVER="$OUT_DIR"/art-profile
+ART_JARS=("core-oj.jar core-libart.jar okhttp.jar bouncycastle.jar apache-xml.jar")
 
 echo "Changing dirs to the build top"
 cd "$ANDROID_BUILD_TOP"
@@ -88,7 +89,11 @@ echo "Processing boot image jar files"
 jar_args=()
 for entry in "$BOOT_JARS"/*
 do
-  jar_args+=("--apk=$entry")
+  # Ignore ART jars, since we want fromework related jars only.
+  jar_name=$(basename "$entry")
+  if [[ ! " ${ART_JARS[*]} " =~ [[:space:]]${jar_name}[[:space:]] ]]; then
+    jar_args+=("--apk=$entry")
+  fi
 done
 profman_args+=("${jar_args[@]}")
 
@@ -96,11 +101,11 @@ echo "Running profman for boot image profiles"
 # NOTE:
 # You might want to adjust the default generation arguments based on the data
 # For example, to update the selection thresholds you could specify:
-#  --method-threshold=10 \
-#  --class-threshold=10 \
-#  --preloaded-class-threshold=10 \
-#  --special-package=android:1 \
-#  --special-package=com.android.systemui:1 \
+#  --profman-arg --method-threshold=10 \
+#  --profman-arg --class-threshold=10 \
+#  --profman-arg --preloaded-class-threshold=10 \
+#  --profman-arg --special-package=android:1 \
+#  --profman-arg --special-package=com.android.systemui:1 \
 # The threshold is percentage of total aggregation, that is, a method/class is
 # included in the profile only if it's used by at least x% of the packages.
 # (from 0% - include everything to 100% - include only the items that
@@ -115,22 +120,18 @@ profman \
   --out-profile-path="$OUT_BOOT_PROFILE" \
   --out-preloaded-classes-path="$OUT_PRELOADED_CLASSES" \
   --preloaded-classes-denylist="$PRELOADED_DENYLIST" \
-  --special-package=android:1 \
-  --special-package=com.android.systemui:1 \
   "${profman_args[@]}"
 
 echo "Done boot image profile"
 
 echo "Running profman for system server"
-# For system server profile we want to include everything usually
-# We also don't have a preloaded-classes file for it, so we ignore the argument.
+# We don't have a preloaded-classes file for System Server, so we ignore the argument.
 profman \
   --generate-boot-image-profile \
   "${profman_profile_input_args[@]}" \
   --out-profile-path="$OUT_SYSTEM_SERVER" \
   --apk="$SYSTEM_SERVER_JAR" \
-  --method-threshold=0 \
-  --class-threshold=0
+  "${profman_args[@]}"
 
 echo "Done system server"
 
