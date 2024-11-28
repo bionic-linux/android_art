@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473dc427_cee5f554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T17:19:42Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5af8d5_fea932c0",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T17:19:42Z",
+      "side": 1,
+      "message": "Is it good to use the same thresholds for both the boot image profile and the system server profile? If not, it\u0027s better to keep the original flags. \n\nIf you really want to make this configurable, consider splitting `--profman-arg` into two options: `--boot-image-profile-arg` and `--system-server-profile-arg`.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

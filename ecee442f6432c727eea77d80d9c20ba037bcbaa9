@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345e822d_ba0c5edd",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T17:19:42Z",
+      "side": 0,
+      "message": "Was the intention to prioritize `android` and `com.android.systemui`? If so, I think it\u0027s better to keep them. Users can still override them by passing `--profman-arg --special-package`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
