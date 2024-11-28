@@ -40,6 +40,30 @@
       ],
       "revId": "4b1cd0986c46764f47743496e96bc5b2bf15aa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7f407a_e50fbcc6",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-28T15:52:28Z",
+      "side": 1,
+      "message": "Fails in the assignment on native_loader.cpp:308, and I think it\u0027d be necessary to change dlext.h in Bionic to fix that. It may be possible for `native_bridge_namespace_t`, but it leads to lots of const propagation.\n\nBoth are opaque structs so `const` doesn\u0027t give us much. I prefer to keep it this way (for both, for consistency).",
+      "parentUuid": "fbe28849_a7674490",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 69
+      },
+      "revId": "4b1cd0986c46764f47743496e96bc5b2bf15aa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
