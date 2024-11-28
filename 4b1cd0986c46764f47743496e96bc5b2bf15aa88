@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe28849_a7674490",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T15:36:39Z",
+      "side": 1,
+      "message": "Add `const` to these pointers?",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 69
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3f7b0fe1_b8e91df1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libnativeloader/native_loader_namespace.h",
+              "range": {
+                "startLine": 75,
+                "startChar": 0,
+                "endLine": 76,
+                "endChar": 0
+              },
+              "replacement": "  const std::variant\u003cconst android_namespace_t*, const native_bridge_namespace_t*\u003e raw_;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4b1cd0986c46764f47743496e96bc5b2bf15aa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
