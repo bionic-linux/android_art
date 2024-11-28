@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cbfe9a2_7b1f92c4",
+        "filename": "test/README.chroot.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-11-28T16:17:07Z",
+      "side": 1,
+      "message": "Suggestion: These tips do not seem specific to running tests in an on-device chroot environment; perhaps move them to [`art/test/README.md`](https://cs.android.com/android/platform/superproject/main/+/main:art/test/README.md)?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 14
+      },
+      "revId": "5e40482587cd744acf48403ddae55dca29c19d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390f72d6_cec11e7e",
+        "filename": "test/README.chroot.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-11-28T16:17:07Z",
+      "side": 1,
+      "message": "can",
+      "range": {
+        "startLine": 219,
+        "startChar": 52,
+        "endLine": 219,
+        "endChar": 57
+      },
+      "revId": "5e40482587cd744acf48403ddae55dca29c19d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cee3d15d_4303b6f9",
         "filename": "test/README.chroot.md",
         "patchSetId": 1
