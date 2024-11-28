@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "642735f4_ac9810cf",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-28T15:29:10Z",
+      "side": 1,
+      "message": "It actually wasn\u0027t too tedious to join the code paths after `ns` and `isolated_ns`, so I did that.",
+      "parentUuid": "5fca8b45_b2879c5d",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 0
+      },
+      "revId": "fbd25cc909073476d31d5025470458d81456cd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94fe0c73_fb72637c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-28T14:24:22Z",
       "side": 1,
       "message": "Is the intention of `g_namespaces_mutex` to only guard the `g_namespaces` container or also the namespaces in it? From the code it looks like the former, but is there any risk of races on the namespaces? To me, it will be a lot easier to reason about thread safety if `name_` and `raw_` in `NativeLoaderNamespace` are `const`.",
+      "range": {
+        "startLine": 427,
+        "startChar": 29,
+        "endLine": 427,
+        "endChar": 44
+      },
+      "revId": "fbd25cc909073476d31d5025470458d81456cd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a83caf2c_77b60691",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-28T15:29:10Z",
+      "side": 1,
+      "message": "I think the mutex is for the global state (`g_namespaces` and `g_nativeloader_extra_libs_namespace`), with the premise that the namespaces stored there are immutable, yes.\n\nI like your idea, and it wasn\u0027t too hard to fix. Put it in a follow-up CL.",
+      "parentUuid": "94fe0c73_fb72637c",
       "range": {
         "startLine": 427,
         "startChar": 29,
