@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fca8b45_b2879c5d",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T14:24:22Z",
+      "side": 1,
+      "message": "It\u0027s a pity that `std::unique_lock` isn\u0027t marked with thread safety annotations. Consider [`ScopedLockAssertion`](https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/thread_annotations.h;l\u003d137;drc\u003da8dc1b2fb091f77410122f3b4f31dbf4e57379fe)? I know it\u0027s not great because it doesn\u0027t take `unlock` into account, but this lambda doesn\u0027t seem to do so either. Maybe the benefit of the lambda is that it does a CHECK? Does the lambda take scopes into account?\n\nAlternatively, put `g_namespaces-\u003eFindNamespaceByClassLoader` and `CreateClassLoaderNamespaceLocked` into a scope and guard the scope with `std::lock_guard`. I think that makes it easier to reason about the mutex ownership (no more `unlock`, which is under the radar of static analysis).",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 0
+      },
+      "revId": "fbd25cc909073476d31d5025470458d81456cd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94fe0c73_fb72637c",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T14:24:22Z",
+      "side": 1,
+      "message": "Is the intention of `g_namespaces_mutex` to only guard the `g_namespaces` container or also the namespaces in it? From the code it looks like the former, but is there any risk of races on the namespaces? To me, it will be a lot easier to reason about thread safety if `name_` and `raw_` in `NativeLoaderNamespace` are `const`.",
+      "range": {
+        "startLine": 427,
+        "startChar": 29,
+        "endLine": 427,
+        "endChar": 44
+      },
+      "revId": "fbd25cc909073476d31d5025470458d81456cd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
