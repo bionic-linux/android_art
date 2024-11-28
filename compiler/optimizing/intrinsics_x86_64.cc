@@ -32,6 +32,7 @@
 #include "intrinsics_utils.h"
 #include "lock_word.h"
 #include "mirror/array-inl.h"
+#include "mirror/method_handle_impl.h"
 #include "mirror/object_array-inl.h"
 #include "mirror/reference.h"
 #include "mirror/string.h"
@@ -4224,10 +4225,16 @@ void IntrinsicLocationsBuilderX86_64::VisitMethodHandleInvokeExact(HInvoke* invo
   InvokeDexCallingConventionVisitorX86_64 calling_convention;
   locations->SetOut(calling_convention.GetReturnLocation(invoke->GetType()));
 
-  locations->SetInAt(0, Location::RequiresRegister());
+  uint32_t number_of_args = invoke->GetNumberOfArguments();
+  // Accessors have at most 2 arguments (base and new value). Target methods are crafted in such a
+  // way that MethodHandle should be at RCX.
+  if (number_of_args <= 3) {
+    locations->SetInAt(0, Location::RegisterLocation(RCX));
+  } else {
+    locations->SetInAt(0, Location::RequiresRegister());
+  }
 
   // Accomodating LocationSummary for underlying invoke-* call.
-  uint32_t number_of_args = invoke->GetNumberOfArguments();
   for (uint32_t i = 1; i < number_of_args; ++i) {
     locations->SetInAt(i, calling_convention.GetNextLocation(invoke->InputAt(i)->GetType()));
   }
@@ -4261,10 +4268,18 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
   CpuRegister method = CpuRegister(kMethodRegisterArgument);
   __ movq(method, Address(method_handle, mirror::MethodHandle::ArtFieldOrMethodOffset()));
 
-  Label static_dispatch;
   Label execute_target_method;
+  Label method_dispatch;
+  Label static_dispatch;
 
   Address method_handle_kind = Address(method_handle, mirror::MethodHandle::HandleKindOffset());
+
+  __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::kFirstAccessorKind));
+  __ j(kLess, &method_dispatch);
+  __ movq(method, Address(method_handle, mirror::MethodHandleImpl::TargetOffset()));
+  __ Jump(&execute_target_method);
+
+  __ Bind(&method_dispatch);
   if (invoke->AsInvokePolymorphic()->CanTargetInstanceMethod()) {
     CpuRegister receiver = locations->InAt(1).AsRegister<CpuRegister>();
 

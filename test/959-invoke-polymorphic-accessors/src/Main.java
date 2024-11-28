@@ -712,6 +712,8 @@ public class Main {
             // invoke-polymorphic dispatch.
             MethodHandles.Lookup lookup = MethodHandles.lookup();
             {
+                // TODO(b/379259800): forcing initialization manually.
+                Class.forName(ValueHolder.class.getName());
                 MethodHandle mh = lookup.findStaticGetter(ValueHolder.class, "s_fi", int.class);
                 int initialValue = (int) mh.invokeExact();
                 System.out.println(initialValue);
