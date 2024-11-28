@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f976c9_a43fb195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-28T10:27:39Z",
+      "side": 1,
+      "message": "Thanks Mythri!",
+      "revId": "3747eaf0e24953ab23093aee703aa7f3db775884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b09fd3c_de679ed1",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-11-28T10:26:56Z",
       "side": 1,
       "message": "IIUC, the earlier code of ResolveMethod didn\u0027t look for SkipAccessChecks right? Was that a bug?",
+      "range": {
+        "startLine": 946,
+        "startChar": 13,
+        "endLine": 946,
+        "endChar": 41
+      },
+      "revId": "3747eaf0e24953ab23093aee703aa7f3db775884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0b24b0_21cb6bfb",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-28T10:27:39Z",
+      "side": 1,
+      "message": "No, that was just a missed optimization.",
+      "parentUuid": "0b09fd3c_de679ed1",
       "range": {
         "startLine": 946,
         "startChar": 13,
