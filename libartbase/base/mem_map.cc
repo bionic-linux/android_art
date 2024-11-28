@@ -1273,7 +1273,11 @@ static void inline RawClearMemory(uint8_t* begin, uint8_t* end) {
 static inline void ClearMemory(uint8_t* page_begin, size_t size, bool resident, size_t page_size) {
   DCHECK(IsAlignedParam(page_begin, page_size));
   DCHECK(IsAlignedParam(page_begin + size, page_size));
-  if (resident) {
+  // We have seen old kernels and custom kernel features misbehave in the
+  // presence of too much usage of MADV_FREE. So always release memory eagerly
+  // while we investigate.
+  static constexpr bool kEnableLazyRelease = false;
+  if (resident && kEnableLazyRelease) {
     RawClearMemory(page_begin, page_begin + size);
     // Note we check madvise return value against -1, as it seems old kernels
     // can return 1.
