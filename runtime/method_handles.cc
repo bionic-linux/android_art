@@ -100,11 +100,10 @@ bool GetUnboxedTypeAndValue(ObjPtr<mirror::Object> o, Primitive::Type* type, JVa
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ScopedAssertNoThreadSuspension ants(__FUNCTION__);
   ObjPtr<mirror::Class> klass = o->GetClass();
-  ArtField* primitive_field = &klass->GetIFieldsPtr()->At(0);
-#define CASE_PRIMITIVE(primitive, abbrev, _, shorthand)         \
+#define CASE_PRIMITIVE(primitive, abbrev, java_name, shorthand)         \
   if (klass == GetBoxedPrimitiveClass(primitive)) {             \
     *type = primitive;                                          \
-    value->Set ## shorthand(primitive_field->Get ## abbrev(o)); \
+    value->Set ## shorthand(WellKnownClasses::java_lang_ ## java_name ## _value->Get ## abbrev(o)); \
     return true;                                                \
   }
   PRIMITIVES_LIST(CASE_PRIMITIVE)

@@ -110,8 +110,7 @@ class ClassLinkerTest : public CommonRuntimeTest {
     EXPECT_FALSE(primitive->IsSynthetic());
     EXPECT_EQ(0U, primitive->NumDirectMethods());
     EXPECT_EQ(0U, primitive->NumVirtualMethods());
-    EXPECT_EQ(0U, primitive->NumInstanceFields());
-    EXPECT_EQ(0U, primitive->NumStaticFields());
+    EXPECT_EQ(0U, primitive->NumFields());
     EXPECT_EQ(0U, primitive->NumDirectInterfaces());
     EXPECT_FALSE(primitive->HasVTable());
     EXPECT_EQ(0, primitive->GetIfTableCount());
@@ -156,13 +155,10 @@ class ClassLinkerTest : public CommonRuntimeTest {
     EXPECT_FALSE(JavaLangObject->IsSynthetic());
     EXPECT_EQ(4U, JavaLangObject->NumDirectMethods());
     EXPECT_EQ(11U, JavaLangObject->NumVirtualMethods());
-    EXPECT_EQ(2U, JavaLangObject->NumInstanceFields());
-    EXPECT_STREQ(JavaLangObject->GetInstanceField(0)->GetName(),
-                 "shadow$_klass_");
-    EXPECT_STREQ(JavaLangObject->GetInstanceField(1)->GetName(),
-                 "shadow$_monitor_");
+    EXPECT_EQ(2U, JavaLangObject->NumFields());
+    EXPECT_STREQ(JavaLangObject->GetField(0)->GetName(), "shadow$_klass_");
+    EXPECT_STREQ(JavaLangObject->GetField(1)->GetName(), "shadow$_monitor_");
 
-    EXPECT_EQ(0U, JavaLangObject->NumStaticFields());
     EXPECT_EQ(0U, JavaLangObject->NumDirectInterfaces());
 
     PointerSize pointer_size = class_linker_->GetImagePointerSize();
@@ -220,8 +216,7 @@ class ClassLinkerTest : public CommonRuntimeTest {
     EXPECT_FALSE(array->IsSynthetic());
     EXPECT_EQ(0U, array->NumDirectMethods());
     EXPECT_EQ(0U, array->NumVirtualMethods());
-    EXPECT_EQ(0U, array->NumInstanceFields());
-    EXPECT_EQ(0U, array->NumStaticFields());
+    EXPECT_EQ(0U, array->NumFields());
     EXPECT_EQ(2U, array->NumDirectInterfaces());
     EXPECT_TRUE(array->ShouldHaveImt());
     EXPECT_TRUE(array->ShouldHaveEmbeddedVTable());
@@ -343,27 +338,21 @@ class ClassLinkerTest : public CommonRuntimeTest {
           << "declaring class: " << method.GetDeclaringClass()->PrettyClass();
     }
 
-    for (size_t i = 0; i < klass->NumInstanceFields(); i++) {
-      ArtField* field = klass->GetInstanceField(i);
+    for (size_t i = 0; i < klass->NumFields(); i++) {
+      ArtField* field = klass->GetField(i);
       AssertField(klass.Get(), field);
-      EXPECT_FALSE(field->IsStatic());
-    }
-
-    for (size_t i = 0; i < klass->NumStaticFields(); i++) {
-      ArtField* field = klass->GetStaticField(i);
-      AssertField(klass.Get(), field);
-      EXPECT_TRUE(field->IsStatic());
     }
 
     // Confirm that all instances field offsets are packed together at the start.
-    EXPECT_GE(klass->NumInstanceFields(), klass->NumReferenceInstanceFields());
+    EXPECT_GE(klass->NumFields(), klass->NumReferenceInstanceFields());
     MemberOffset start_ref_offset = klass->GetFirstReferenceInstanceFieldOffset();
     MemberOffset end_ref_offset(start_ref_offset.Uint32Value() +
                                 klass->NumReferenceInstanceFields() *
                                     sizeof(mirror::HeapReference<mirror::Object>));
     MemberOffset current_ref_offset = start_ref_offset;
-    for (size_t i = 0; i < klass->NumInstanceFields(); i++) {
-      ArtField* field = klass->GetInstanceField(i);
+    for (size_t i = 0; i < klass->NumFields(); i++) {
+      ArtField* field = klass->GetField(i);
+      if (field->IsStatic()) continue;
       ObjPtr<mirror::Class> field_type = field->ResolveType();
       ASSERT_TRUE(field_type != nullptr);
       if (!field->IsPrimitiveType()) {
@@ -499,7 +488,7 @@ struct CheckOffsets {
       }
     }
 
-    size_t num_fields = is_static ? klass->NumStaticFields() : klass->NumInstanceFields();
+    size_t num_fields = is_static ? klass->ComputeNumStaticFields() : klass->ComputeNumInstanceFields();
     if (offsets.size() != num_fields) {
       LOG(ERROR) << "Field count mismatch:"
          << " class=" << class_descriptor
@@ -508,17 +497,25 @@ struct CheckOffsets {
       error = true;
     }
 
+    size_t j = 0;
     for (size_t i = 0; i < offsets.size(); i++) {
-      ArtField* field = is_static ? klass->GetStaticField(i) : klass->GetInstanceField(i);
+      ArtField* field = nullptr;
+      do {
+        field = klass->GetField(j++);
+      } while (field->IsStatic() != is_static);
       std::string_view field_name(field->GetName());
       if (field_name != offsets[i].java_name) {
         error = true;
       }
     }
+    j = 0;
     if (error) {
       for (size_t i = 0; i < offsets.size(); i++) {
         CheckOffset& offset = offsets[i];
-        ArtField* field = is_static ? klass->GetStaticField(i) : klass->GetInstanceField(i);
+        ArtField* field = nullptr;
+        do {
+          field = klass->GetField(j++);
+        } while (field->IsStatic() != is_static);
         std::string_view field_name(field->GetName());
         if (field_name != offsets[i].java_name) {
           LOG(ERROR) << "JAVA FIELD ORDER MISMATCH NEXT LINE:";
@@ -530,17 +527,25 @@ struct CheckOffsets {
       }
     }
 
+    j = 0;
     for (size_t i = 0; i < offsets.size(); i++) {
       CheckOffset& offset = offsets[i];
-      ArtField* field = is_static ? klass->GetStaticField(i) : klass->GetInstanceField(i);
+      ArtField* field = nullptr;
+      do {
+        field = klass->GetField(j++);
+      } while (field->IsStatic() != is_static);
       if (field->GetOffset().Uint32Value() != offset.cpp_offset) {
         error = true;
       }
     }
+    j = 0;
     if (error) {
       for (size_t i = 0; i < offsets.size(); i++) {
         CheckOffset& offset = offsets[i];
-        ArtField* field = is_static ? klass->GetStaticField(i) : klass->GetInstanceField(i);
+        ArtField* field = nullptr;
+        do {
+          field = klass->GetField(j++);
+        } while (field->IsStatic() != is_static);
         if (field->GetOffset().Uint32Value() != offset.cpp_offset) {
           LOG(ERROR) << "OFFSET MISMATCH NEXT LINE:";
         }
@@ -973,8 +978,7 @@ TEST_F(ClassLinkerTest, FindClass) {
   EXPECT_FALSE(MyClass->IsSynthetic());
   EXPECT_EQ(1U, MyClass->NumDirectMethods());
   EXPECT_EQ(0U, MyClass->NumVirtualMethods());
-  EXPECT_EQ(0U, MyClass->NumInstanceFields());
-  EXPECT_EQ(0U, MyClass->NumStaticFields());
+  EXPECT_EQ(0U, MyClass->NumFields());
   EXPECT_EQ(0U, MyClass->NumDirectInterfaces());
 
   EXPECT_OBJ_PTR_EQ(JavaLangObject->GetClass()->GetClass(), MyClass->GetClass()->GetClass());
@@ -1135,30 +1139,6 @@ TEST_F(ClassLinkerTest, ValidatePrimitiveArrayElementsOffset) {
   // Take it as given that bytes and booleans have byte alignment
 }
 
-TEST_F(ClassLinkerTest, ValidateBoxedTypes) {
-  // Validate that the "value" field is always the 0th field in each of java.lang's box classes.
-  // This lets UnboxPrimitive avoid searching for the field by name at runtime.
-  ScopedObjectAccess soa(Thread::Current());
-  ScopedNullHandle<mirror::ClassLoader> class_loader;
-  ObjPtr<mirror::Class> c;
-  c = FindClass("Ljava/lang/Boolean;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Byte;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Character;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Double;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Float;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Integer;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Long;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-  c = FindClass("Ljava/lang/Short;", class_loader);
-  EXPECT_STREQ("value", c->GetIFieldsPtr()->At(0).GetName());
-}
-
 TEST_F(ClassLinkerTest, TwoClassLoadersOneClass) {
   ScopedObjectAccess soa(Thread::Current());
   StackHandleScope<3> hs(soa.Self());
@@ -1187,7 +1167,7 @@ TEST_F(ClassLinkerTest, StaticFields) {
   ArtMethod* clinit = statics->FindClassMethod("<clinit>", "()V", kRuntimePointerSize);
   EXPECT_TRUE(clinit == nullptr);
 
-  EXPECT_EQ(9U, statics->NumStaticFields());
+  EXPECT_EQ(9U, statics->NumFields());
 
   ArtField* s0 = statics->FindStaticField("s0", "Z");
   EXPECT_EQ(s0->GetTypeAsPrimitiveType(), Primitive::kPrimBoolean);
