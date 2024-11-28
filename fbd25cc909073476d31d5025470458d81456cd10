@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d85b1cc0_dfd301ca",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T15:35:03Z",
+      "side": 1,
+      "message": "Great, thanks!",
+      "parentUuid": "642735f4_ac9810cf",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 0
+      },
+      "revId": "fbd25cc909073476d31d5025470458d81456cd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94fe0c73_fb72637c",
