@@ -24,6 +24,7 @@
 
 #include "art_field-inl.h"
 #include "art_method-inl.h"
+#include "base/macros.h"
 #include "base/pointer_size.h"
 #include "class_linker-inl.h"
 #include "class_root-inl.h"
@@ -777,6 +778,9 @@ struct MethodHandleOffsets : public CheckOffsets<mirror::MethodHandle> {
 struct MethodHandleImplOffsets : public CheckOffsets<mirror::MethodHandleImpl> {
   MethodHandleImplOffsets() : CheckOffsets<mirror::MethodHandleImpl>(
       false, "Ljava/lang/invoke/MethodHandleImpl;") {
+
+    addOffset(OFFSETOF_MEMBER(mirror::MethodHandleImpl, field_), "field");
+    addOffset(OFFSETOF_MEMBER(mirror::MethodHandleImpl, target_), "target");
     addOffset(OFFSETOF_MEMBER(mirror::MethodHandleImpl, target_class_or_info_),
               "targetClassOrMethodHandleInfo");
   }

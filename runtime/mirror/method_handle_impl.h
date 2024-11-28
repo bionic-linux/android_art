@@ -17,13 +17,17 @@
 #ifndef ART_RUNTIME_MIRROR_METHOD_HANDLE_IMPL_H_
 #define ART_RUNTIME_MIRROR_METHOD_HANDLE_IMPL_H_
 
+#include <cstdint>
 #include "art_field.h"
 #include "art_method.h"
 #include "base/macros.h"
 #include "class.h"
 #include "method_type.h"
+#include "mirror/field.h"
+#include "mirror/object_reference.h"
 #include "obj_ptr.h"
 #include "object.h"
+#include "offsets.h"
 
 namespace art HIDDEN {
 
@@ -127,8 +131,14 @@ class MANAGED MethodHandleImpl : public MethodHandle {
                                                         Handle<MethodType> method_type)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
 
+  static MemberOffset TargetOffset() {
+    return MemberOffset(OFFSETOF_MEMBER(MethodHandleImpl, target_));
+  }
+
  private:
+  HeapReference<mirror::Field> field_;
   HeapReference<mirror::Object> target_class_or_info_;  // Unused by the runtime.
+  uint64_t target_;
 
   friend struct art::MethodHandleImplOffsets;  // for verifying offset information
   DISALLOW_IMPLICIT_CONSTRUCTORS(MethodHandleImpl);
