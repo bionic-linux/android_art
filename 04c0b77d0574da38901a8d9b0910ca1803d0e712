@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2dee14_51a85714",
+        "filename": "runtime/arch/arm64/fault_handler_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-11-28T13:16:32Z",
+      "side": 1,
+      "message": "sorry I missed that one. `suspend check`.",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3b76a5cf_60fc1ff9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/arch/arm64/fault_handler_arm64.cc",
+              "range": {
+                "startLine": 110,
+                "startChar": 0,
+                "endLine": 111,
+                "endChar": 0
+              },
+              "replacement": "    // Interpreter does not do suspend check through the exception handler\n"
+            }
+          ]
+        }
+      ],
+      "revId": "04c0b77d0574da38901a8d9b0910ca1803d0e712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
