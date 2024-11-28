@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90eb26a3_57ed17a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1868565
+      },
+      "writtenOn": "2024-11-28T13:22:07Z",
+      "side": 1,
+      "message": "I don\u0027t konw if the patch is appropriate, waiting for experts\u0027 comments. \n\nthis have performance regression on our devices kernel-5.4.",
+      "revId": "10ebd3b6be6c59dcc88099da66eeb27ff2c1686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
