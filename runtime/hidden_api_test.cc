@@ -651,8 +651,8 @@ TEST_F(HiddenApiTest, CheckMemberSignatureForProxyClass) {
 
   // Find the "interfaces" static field. This is generated for all proxies.
   ArtField* field = nullptr;
-  for (size_t i = 0; i < proxyClass->NumStaticFields(); ++i) {
-    ArtField* f = proxyClass->GetStaticField(i);
+  for (size_t i = 0; i < proxyClass->NumFields(); ++i) {
+    ArtField* f = proxyClass->GetField(i);
     if (strcmp("interfaces", f->GetName()) == 0) {
       field = f;
       break;
