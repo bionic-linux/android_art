@@ -64,6 +64,30 @@
       },
       "revId": "4b1cd0986c46764f47743496e96bc5b2bf15aa88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7675ab4_68c929bc",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-11-28T16:27:17Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t know they are opaque structs. It\u0027s fine then.",
+      "parentUuid": "4d7f407a_e50fbcc6",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 69
+      },
+      "revId": "4b1cd0986c46764f47743496e96bc5b2bf15aa88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
