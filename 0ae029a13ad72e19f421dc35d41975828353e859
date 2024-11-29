@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbec0f3_82b059b9",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T17:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8683abc6_aebf9ea9",
+      "range": {
+        "startLine": 23,
+        "startChar": 57,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51eee6ad_9f61fbfb",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47996e2_13199545",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T17:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51eee6ad_9f61fbfb",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e0736f_11aafad8",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-11-29T14:04:44Z",
       "side": 1,
       "message": "```suggestion\n  if [[ \" ${ART_JARS[*]} \" !\u003d *\\ ${jar_name}\\ * ]]; then\n```\n\nUsing glob pattern matching instead of regexps avoid misinterpreting \".\", at least.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ead75b_8d72429f",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T17:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e0736f_11aafad8",
       "range": {
         "startLine": 94,
         "startChar": 8,
@@ -148,6 +220,30 @@
       "side": 1,
       "message": "Isn\u0027t it only a matter of time before someone wants to specify different args for the different profman invocations? I suggest supporting all three options, but I\u0027d call the latter two `--boot-image-profman-arg` and `--system-server-profman-arg`.",
       "parentUuid": "4010b5d2_2eb98f98",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0337ede4_805758b2",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T17:21:32Z",
+      "side": 1,
+      "message": "Makes sense, I have split the `--profman-arg` into `--boot-image-profile-arg` and `--system-server-profile-arg` as you suggested",
+      "parentUuid": "6aad2e48_3a83a146",
       "range": {
         "startLine": 134,
         "startChar": 0,

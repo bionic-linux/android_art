@@ -70,6 +70,30 @@
       },
       "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88895920_1ae90ec2",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T17:21:32Z",
+      "side": 0,
+      "message": "I think the default should be to include everything, besides that as I mentioned above, even if `--special-package` is not specified and instead `--method-threshold` is specified, then in this case adding `--special-package\u003dandroid:1` as a default will override the effect of `--method-threshold` value. which is very confusing!\n\nI think we already have the available args to the help section and it is up to the user to choose, otherwise include everything as a default (without any parameters), WDYT?",
+      "parentUuid": "d223c89a_2a47ac4f",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
