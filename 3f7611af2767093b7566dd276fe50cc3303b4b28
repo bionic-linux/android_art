@@ -16,6 +16,23 @@
       "message": "Pushed changes after some re-design as per last review meeting with ART team. Please review",
       "revId": "3f7611af2767093b7566dd276fe50cc3303b4b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9be23df_2e93d0a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269804
+      },
+      "writtenOn": "2024-11-29T13:33:26Z",
+      "side": 1,
+      "message": "Can you fix linter errors? Can we add a short \"why\"? Something like \"...when AVX2 is enabled in order boost performance on XXX chips.\"",
+      "revId": "3f7611af2767093b7566dd276fe50cc3303b4b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
