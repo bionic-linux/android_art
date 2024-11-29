@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be66488_250d3c70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269804
+      },
+      "writtenOn": "2024-11-29T13:28:04Z",
+      "side": 1,
+      "message": "Can you fix the 4 types the linter found? Trying presubmit.",
+      "revId": "61e2f5b0139bd6ec680314c23e14b94f87c20318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
