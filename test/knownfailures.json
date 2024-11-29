@@ -1300,9 +1300,8 @@
     },
     {
         "tests": ["153-reference-stress"],
-        "env_vars": {"ART_HEAP_POISONING": "true"},
         "variant": "debuggable",
-        "description": ["Timing out for debuggable + poison."]
+        "description": ["Timing out for debuggable."]
     },
     {
         "tests": ["021-string2"],
