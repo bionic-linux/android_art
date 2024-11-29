@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8be5ed8_ff39742a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-29T14:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4078014_e0e3b05b",
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485d379a_7e84907e",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d28fe7_e466dc6c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-29T14:59:39Z",
+      "side": 1,
+      "message": "Yeah, it should be `w0` as `MethodHandle` is a Java object. Fixed.",
+      "parentUuid": "485d379a_7e84907e",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec6c69f9_820fdbd3",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-11-29T14:43:04Z",
       "side": 1,
       "message": "Is this one and line 6014 supposed to have `.W()` (as line 6004 does)?",
+      "range": {
+        "startLine": 6009,
+        "startChar": 27,
+        "endLine": 6009,
+        "endChar": 40
+      },
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5c8395_1546b77e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6009,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-29T14:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec6c69f9_820fdbd3",
       "range": {
         "startLine": 6009,
         "startChar": 27,
@@ -94,6 +160,30 @@
       "writtenOn": "2024-11-29T14:43:04Z",
       "side": 1,
       "message": "I don\u0027t think this is needed",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 77
+      },
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9984c99e_ba13bc1b",
+        "filename": "runtime/oat/oat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-11-29T14:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c170f3_53599392",
       "range": {
         "startLine": 47,
         "startChar": 0,
