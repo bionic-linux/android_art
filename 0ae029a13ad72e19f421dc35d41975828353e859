@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8683abc6_aebf9ea9",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-29T14:04:44Z",
+      "side": 1,
+      "message": "```suggestion\n#   2) the preloaded classes denylist which specify what classes should not be preloaded\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 57,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51eee6ad_9f61fbfb",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-29T14:04:44Z",
+      "side": 1,
+      "message": "```suggestion\n#      in Zygote. Usually located in frameworks/base/config/preloaded-classes-denylist\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e0736f_11aafad8",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-29T14:04:44Z",
+      "side": 1,
+      "message": "```suggestion\n  if [[ \" ${ART_JARS[*]} \" !\u003d *\\ ${jar_name}\\ * ]]; then\n```\n\nUsing glob pattern matching instead of regexps avoid misinterpreting \".\", at least.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e5af8d5_fea932c0",
         "filename": "tools/boot-image-profile-generate.sh",
         "patchSetId": 3
@@ -55,6 +124,30 @@
       "side": 1,
       "message": "It is a bit confusing that the command you can specify general profman thresholds and then it get applied for boot image profile only, I think we still need to apply some thresholds to the system server, and currently we apply the same thresholds in our update automation for both boot-image-profile and system server, WDYT?",
       "parentUuid": "2e5af8d5_fea932c0",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aad2e48_3a83a146",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-29T14:04:44Z",
+      "side": 1,
+      "message": "Isn\u0027t it only a matter of time before someone wants to specify different args for the different profman invocations? I suggest supporting all three options, but I\u0027d call the latter two `--boot-image-profman-arg` and `--system-server-profman-arg`.",
+      "parentUuid": "4010b5d2_2eb98f98",
       "range": {
         "startLine": 134,
         "startChar": 0,

@@ -46,6 +46,30 @@
       },
       "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d223c89a_2a47ac4f",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-11-29T14:04:44Z",
+      "side": 0,
+      "message": "The usage help says \"Without any profman args the script will use defaults\", so this should only be added if `${#profman_args[*]}` is zero?",
+      "parentUuid": "16a598e7_3aa28c20",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
