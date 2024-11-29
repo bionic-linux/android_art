@@ -22,6 +22,30 @@
       },
       "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a598e7_3aa28c20",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T10:27:45Z",
+      "side": 0,
+      "message": "So it is a bit of a hidden configuration to me, it took me some time to figure out why thresholds are not applied while using the `--method-threshold` and `--class-threshold`\n\n\u003e Users can still override them by passing --profman-arg --special-package.\n\nI think it won\u0027t work if I need to specify different thresholds for methods and classes using `--method-threshold` and `--class-threshold`, since `--special-package` applies to both, isn\u0027t it?",
+      "parentUuid": "345e822d_ba0c5edd",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

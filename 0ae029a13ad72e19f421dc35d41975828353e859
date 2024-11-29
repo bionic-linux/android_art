@@ -39,6 +39,30 @@
       },
       "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4010b5d2_2eb98f98",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-11-29T10:27:45Z",
+      "side": 1,
+      "message": "It is a bit confusing that the command you can specify general profman thresholds and then it get applied for boot image profile only, I think we still need to apply some thresholds to the system server, and currently we apply the same thresholds in our update automation for both boot-image-profile and system server, WDYT?",
+      "parentUuid": "2e5af8d5_fea932c0",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "0ae029a13ad72e19f421dc35d41975828353e859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
