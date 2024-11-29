@@ -33,6 +33,24 @@
       "message": "This CL breaks build for arm targets such as cf_arm64_only_phone-trunk_staging-userdebug at git_main",
       "revId": "895052d63148ff64ce6f37a45344cedb853216e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd94794_61bd0497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-29T06:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c9fa3a_69de5bb8",
+      "revId": "895052d63148ff64ce6f37a45344cedb853216e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4f33a0_f57ad551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2024-11-29T06:22:47Z",
+      "side": 1,
+      "message": "Pushed changes after some re-design as per last review meeting with ART team. Please review",
+      "revId": "3f7611af2767093b7566dd276fe50cc3303b4b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
