@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d1e005_1f1c8ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-12-02T20:45:24Z",
+      "side": 1,
+      "message": "Where does it fail without this? I thought we don\u0027t particularly care about file owners in this script, and the only mode bit we test is the executable bit on binaries. Isn\u0027t even that retained by deapexer without --preserve?",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "2404b6fb5ce79838cabd2a2d922ec73446b17866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "935e92f9_3bc51c0a",
