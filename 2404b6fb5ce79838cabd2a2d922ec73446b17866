@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935e92f9_3bc51c0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-02T03:39:45Z",
+      "side": 1,
+      "message": "Imo, art_apex_test checks \"is executable\" for various binaries in the art apex, but the checks are done against files extracted with `deapexer extract`, which might not be correct. We\u0027d better check it \"on device\" by temp-mounting the apex.",
+      "revId": "2404b6fb5ce79838cabd2a2d922ec73446b17866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
