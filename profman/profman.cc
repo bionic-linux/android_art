@@ -477,6 +477,14 @@ class ProfMan final {
         Usage("Unknown argument '%s'", raw_option);
       }
     }
+    // TODO [DO NOT SUBMIT]: Remove the calls to `std::reverse()`.
+    // This is a crude workaround for `run-test`s running `profman` only once for both primary
+    // and "-ex" jars and passing these jars in this order, therefore being unable to record
+    // a class for the "-ex" jar if a duplicate is present in the primary jar.
+    // We should run `profman` separately for each jar.
+    std::reverse(apks_fd_.begin(), apks_fd_.end());
+    std::reverse(apk_files_.begin(), apk_files_.end());
+    std::reverse(dex_locations_.begin(), dex_locations_.end());
 
     // Validate global consistency between file/fd options.
     if (!profile_files_.empty() && !profile_files_fd_.empty()) {
