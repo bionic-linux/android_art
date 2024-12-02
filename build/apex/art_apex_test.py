@@ -73,7 +73,7 @@ def extract_apex(apex_path, deapexer_path, debugfs_path, fsckerofs_path,
     shutil.rmtree(extract_path)
   subprocess.check_call([deapexer_path, '--debugfs', debugfs_path,
                          '--fsckerofs', fsckerofs_path,
-                         'extract', apex_path, extract_path],
+                         'extract', '--preserve', apex_path, extract_path],
                         stdout=subprocess.DEVNULL)
   return extract_path
 
