@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d78a222_88824c0e",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-12-02T18:58:39Z",
+      "side": 1,
+      "message": "Maybe nice to keep `--profman-arg` as a convenient shorthand to add something to both profman invocations? No strong opinion on if such niceties are worth it here, just a thought.",
+      "range": {
+        "startLine": 57,
+        "startChar": 38,
+        "endLine": 57,
+        "endChar": 112
+      },
+      "revId": "1088f68ff823c4a31bd60f4423c14967e1909875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e08abea_c35fb2bf",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-12-02T18:58:39Z",
+      "side": 1,
+      "message": "This imposes an order that all boot image args need to come before all system server args, etc. I suggest joining the three `while` loops and use a `case` inside to split up the args.\n\nThat\u0027d also avoid the current behaviour where it stops when it can\u0027t parse an arg and just ignores the rest, which isn\u0027t super user friendly.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "1088f68ff823c4a31bd60f4423c14967e1909875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
