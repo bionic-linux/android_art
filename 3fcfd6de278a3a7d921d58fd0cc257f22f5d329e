@@ -16,6 +16,23 @@
       "message": "Addressed all comments. Also redesigned vectorization patch to work on fixed length. Please review.",
       "revId": "3fcfd6de278a3a7d921d58fd0cc257f22f5d329e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa490d6_80d30e79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269804
+      },
+      "writtenOn": "2024-12-02T14:18:28Z",
+      "side": 1,
+      "message": "Looks like some failures were a network error, retry presubmit.",
+      "revId": "3fcfd6de278a3a7d921d58fd0cc257f22f5d329e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
