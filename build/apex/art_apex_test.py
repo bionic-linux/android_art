@@ -24,7 +24,6 @@ import os.path
 import shutil
 import subprocess
 import sys
-import zipfile
 
 logging.basicConfig(format='%(message)s')
 
@@ -129,78 +128,6 @@ class TargetApexProvider:
         apex_map[basename] = FSObject(basename, is_dir, is_exec, is_symlink, size)
     self._folder_cache[apex_dir] = apex_map
     return apex_map
-
-
-class HostApexProvider:
-  def __init__(self, apex, tmpdir):
-    self._tmpdir = tmpdir
-    self._folder_cache = {}
-    self._payload = os.path.join(self._tmpdir, 'apex_payload.zip')
-    # Extract payload to tmpdir.
-    apex_zip = zipfile.ZipFile(apex)
-    apex_zip.extract('apex_payload.zip', tmpdir)
-
-  def __del__(self):
-    # Delete temps.
-    if os.path.exists(self._payload):
-      os.remove(self._payload)
-
-  def get(self, path):
-    apex_dir, name = os.path.split(path)
-    if not apex_dir:
-      apex_dir = ''
-    apex_map = self.read_dir(apex_dir)
-    return apex_map[name] if name in apex_map else None
-
-  def read_dir(self, apex_dir):
-    if apex_dir in self._folder_cache:
-      return self._folder_cache[apex_dir]
-    if not self._folder_cache:
-      self.parse_zip()
-    if apex_dir in self._folder_cache:
-      return self._folder_cache[apex_dir]
-    return {}
-
-  def parse_zip(self):
-    apex_zip = zipfile.ZipFile(self._payload)
-    infos = apex_zip.infolist()
-    for zipinfo in infos:
-      path = zipinfo.filename
-
-      # Assume no empty file is stored.
-      assert path
-
-      def get_octal(val, index):
-        return (val >> (index * 3)) & 0x7
-
-      def bits_is_exec(val):
-        # TODO: Enforce group/other, too?
-        return get_octal(val, 2) & 1 == 1
-
-      is_zipinfo = True
-      while path:
-        apex_dir, base = os.path.split(path)
-        # TODO: If directories are stored, base will be empty.
-
-        if apex_dir not in self._folder_cache:
-          self._folder_cache[apex_dir] = {}
-        dir_map = self._folder_cache[apex_dir]
-        if base not in dir_map:
-          if is_zipinfo:
-            bits = (zipinfo.external_attr >> 16) & 0xFFFF
-            is_dir = get_octal(bits, 4) == 4
-            is_symlink = get_octal(bits, 4) == 2
-            is_exec = bits_is_exec(bits)
-            size = zipinfo.file_size
-          else:
-            is_exec = False  # Seems we can't get this easily?
-            is_symlink = False
-            is_dir = True
-            # Use a negative value as an indicator of undefined/unknown size.
-            size = -1
-          dir_map[base] = FSObject(base, is_dir, is_exec, is_symlink, size)
-        is_zipinfo = False
-        path = apex_dir
 
 
 # DO NOT USE DIRECTLY! This is an "abstract" base class.
@@ -611,28 +538,6 @@ class ReleaseTargetChecker:
     self._checker.check_native_library('libexpat')
 
 
-class ReleaseHostChecker:
-  def __init__(self, checker):
-    self._checker = checker
-
-  def __str__(self):
-    return 'Release (Host) Checker'
-
-  def run(self):
-    # Check binaries for ART.
-    self._checker.check_executable('hprof-conv')
-    self._checker.check_symlinked_first_executable('dex2oatd')
-    self._checker.check_symlinked_first_executable('dex2oat')
-
-    # Check exported native libraries for Managed Core Library.
-    self._checker.check_native_library('libicu')
-    self._checker.check_native_library('libandroidio')
-
-    # Check internal libraries for Managed Core Library.
-    self._checker.check_native_library('libexpat-host')
-    self._checker.check_native_library('libz-host')
-
-
 class DebugChecker:
   def __init__(self, checker):
     self._checker = checker
@@ -889,9 +794,6 @@ class Tree:
 
 # Note: do not sys.exit early, for __del__ cleanup.
 def art_apex_test_main(test_args):
-  if test_args.host and test_args.flattened:
-    logging.error('Both of --host and --flattened set')
-    return 1
   if test_args.list and test_args.tree:
     logging.error('Both of --list and --tree set')
     return 1
@@ -901,7 +803,7 @@ def art_apex_test_main(test_args):
   if not test_args.flattened and not test_args.tmpdir:
     logging.error('Need a tmpdir.')
     return 1
-  if not test_args.flattened and not test_args.host:
+  if not test_args.flattened:
     if not test_args.deapexer:
       logging.error('Need deapexer.')
       return 1
@@ -912,49 +814,34 @@ def art_apex_test_main(test_args):
       logging.error('Need fsck.erofs.')
       return 1
 
-  if test_args.host:
-    # Host APEX.
-    if test_args.flavor not in [FLAVOR_DEBUG, FLAVOR_AUTO]:
-      logging.error('Using option --host with non-Debug APEX')
-      return 1
-    # Host APEX is always a debug flavor (for now).
-    test_args.flavor = FLAVOR_DEBUG
-  else:
-    # Device APEX.
+  # Device APEX.
+  if test_args.flavor == FLAVOR_AUTO:
+    logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
+    # The order of flavors in the list below matters, as the release tag (empty string) will
+    # match any package name.
+    for flavor in [ FLAVOR_DEBUG, FLAVOR_TESTING, FLAVOR_RELEASE ]:
+      flavor_tag = flavor
+      # Special handling for the release flavor, whose name is no longer part of the Release ART
+      # APEX file name (`com.android.art.capex` / `com.android.art`).
+      if flavor == FLAVOR_RELEASE:
+        flavor_tag = ''
+      flavor_pattern = '*.%s*' % flavor_tag
+      if fnmatch.fnmatch(test_args.apex, flavor_pattern):
+        test_args.flavor = flavor
+        logging.warning('  Detected %s flavor', flavor)
+        break
     if test_args.flavor == FLAVOR_AUTO:
-      logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
-      # The order of flavors in the list below matters, as the release tag (empty string) will
-      # match any package name.
-      for flavor in [ FLAVOR_DEBUG, FLAVOR_TESTING, FLAVOR_RELEASE ]:
-        flavor_tag = flavor
-        # Special handling for the release flavor, whose name is no longer part of the Release ART
-        # APEX file name (`com.android.art.capex` / `com.android.art`).
-        if flavor == FLAVOR_RELEASE:
-          flavor_tag = ''
-        flavor_pattern = '*.%s*' % flavor_tag
-        if fnmatch.fnmatch(test_args.apex, flavor_pattern):
-          test_args.flavor = flavor
-          logging.warning('  Detected %s flavor', flavor)
-          break
-      if test_args.flavor == FLAVOR_AUTO:
-        logging.error('  Could not detect APEX flavor, neither %s, %s nor %s for \'%s\'',
-                    FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING, test_args.apex)
-        return 1
+      logging.error('  Could not detect APEX flavor, neither %s, %s nor %s for \'%s\'',
+                  FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING, test_args.apex)
+      return 1
 
-  try:
-    if test_args.host:
-      apex_provider = HostApexProvider(test_args.apex, test_args.tmpdir)
-    else:
-      apex_dir = test_args.apex
-      if not test_args.flattened:
-        # Extract the apex. It would be nice to use the output from "deapexer list"
-        # to avoid this work, but it doesn't provide info about executable bits.
-        apex_dir = extract_apex(test_args.apex, test_args.deapexer, test_args.debugfs,
-                                test_args.fsckerofs, test_args.tmpdir)
-      apex_provider = TargetApexProvider(apex_dir)
-  except (zipfile.BadZipFile, zipfile.LargeZipFile) as e:
-    logging.error('Failed to create provider: %s', e)
-    return 1
+  apex_dir = test_args.apex
+  if not test_args.flattened:
+    # Extract the apex. It would be nice to use the output from "deapexer list"
+    # to avoid this work, but it doesn't provide info about executable bits.
+    apex_dir = extract_apex(test_args.apex, test_args.deapexer, test_args.debugfs,
+                            test_args.fsckerofs, test_args.tmpdir)
+  apex_provider = TargetApexProvider(apex_dir)
 
   if test_args.tree:
     Tree(apex_provider, test_args.apex, test_args.size).print_tree()
@@ -991,14 +878,10 @@ def art_apex_test_main(test_args):
     base_checker = MultilibChecker(apex_provider)
 
   checkers.append(ReleaseChecker(base_checker))
-  if test_args.host:
-    checkers.append(ReleaseHostChecker(base_checker))
-  else:
-    checkers.append(ReleaseTargetChecker(base_checker))
+  checkers.append(ReleaseTargetChecker(base_checker))
   if test_args.flavor == FLAVOR_DEBUG or test_args.flavor == FLAVOR_TESTING:
     checkers.append(DebugChecker(base_checker))
-    if not test_args.host:
-      checkers.append(DebugTargetChecker(base_checker))
+    checkers.append(DebugTargetChecker(base_checker))
   if test_args.flavor == FLAVOR_TESTING:
     checkers.append(TestingTargetChecker(base_checker))
 
@@ -1043,13 +926,12 @@ def art_apex_test_default(test_parser):
                   test_args.debugfs)
     sys.exit(1)
 
-  # TODO: Add host support.
   # TODO: Add support for flattened APEX packages.
   configs = [
-    {'name': 'com.android.art.capex',         'flavor': FLAVOR_RELEASE, 'host': False},
-    {'name': 'com.android.art.debug.capex',   'flavor': FLAVOR_DEBUG,   'host': False},
+    {'name': 'com.android.art.capex',         'flavor': FLAVOR_RELEASE},
+    {'name': 'com.android.art.debug.capex',   'flavor': FLAVOR_DEBUG},
     # Note: The Testing ART APEX is not a Compressed APEX.
-    {'name': 'com.android.art.testing.apex',  'flavor': FLAVOR_TESTING, 'host': False},
+    {'name': 'com.android.art.testing.apex',  'flavor': FLAVOR_TESTING},
   ]
 
   for config in configs:
@@ -1061,7 +943,6 @@ def art_apex_test_default(test_parser):
       logging.error('Cannot find APEX %s. Please build it first.', test_args.apex)
       continue
     test_args.flavor = config['flavor']
-    test_args.host = config['host']
     failed = art_apex_test_main(test_args) != 0
 
   if failed:
@@ -1072,8 +953,6 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Check integrity of an ART APEX.')
 
   parser.add_argument('apex', help='APEX file input')
-
-  parser.add_argument('--host', help='Check as host APEX', action='store_true')
 
   parser.add_argument('--flattened', help='Check as flattened (target) APEX', action='store_true')
 
