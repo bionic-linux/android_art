@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ae83c6_7d3de6f5",
+        "filename": "libdexfile/dex/descriptors_names.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-12-02T17:18:24Z",
+      "side": 1,
+      "message": "drive-by question: Can it start with `L` and not end with `;`? I think this `if` will always be true",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "0f4672699a60ccba70e983d66ccac326ec16ff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a556e31_94b0c8f8",
+        "filename": "libdexfile/dex/descriptors_names.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-12-02T17:18:24Z",
+      "side": 1,
+      "message": "another drive-by question: Why does this case exist? Is it for gracefully handling errors?",
+      "revId": "0f4672699a60ccba70e983d66ccac326ec16ff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
