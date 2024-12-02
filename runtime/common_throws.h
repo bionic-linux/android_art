@@ -216,11 +216,6 @@ void ThrowNoSuchMethodError(InvokeType type,
                             const Signature& signature)
     REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;
 
-void ThrowNoSuchMethodError(ObjPtr<mirror::Class> c,
-                            std::string_view name,
-                            const Signature& signature)
-    REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;
-
 // NullPointerException
 EXPORT
 void ThrowNullPointerExceptionForFieldAccess(ArtField* field, ArtMethod* method, bool is_read)
