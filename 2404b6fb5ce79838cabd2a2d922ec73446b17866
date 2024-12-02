@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca3046f_f6ac67a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2024-12-02T22:25:37Z",
+      "side": 1,
+      "message": "I want to make deapexer to drop owners/bits when extracting because they are for device not host. I found this when running `deapexer extract` for build/make/tools/releasetools/testdata/foo.apex, which has very weird owners/permissions. I couldn\u0027t read (even `ls`) then after extracting. I think it\u0027s not what we expect from `deapexer extract`. IMO, as alternative we could drop only onwers and retain permissions. (and no flag like --preserve) What do you think?",
+      "parentUuid": "e8d1e005_1f1c8ec5",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "2404b6fb5ce79838cabd2a2d922ec73446b17866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "935e92f9_3bc51c0a",
