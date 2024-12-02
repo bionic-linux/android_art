@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b28246_3e39fcca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-12-02T21:04:55Z",
+      "side": 1,
+      "message": "PS2 joins the target checkers with the agnostic ones.",
+      "revId": "fce573648ab0922be27a02492f8f2a0ac6c5c949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
