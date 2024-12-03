@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85ace94_880ab51d",
+        "filename": "libdexfile/dex/descriptors_names.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-12-03T07:44:40Z",
+      "side": 1,
+      "message": "If the string comes from a type id in a verified dex file, then there shall be a semicolon. But I didn\u0027t check all callers, so I\u0027m defensively trying to handle all possible inputs here.",
+      "parentUuid": "07ae83c6_7d3de6f5",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "0f4672699a60ccba70e983d66ccac326ec16ff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a556e31_94b0c8f8",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-02T17:18:24Z",
       "side": 1,
       "message": "another drive-by question: Why does this case exist? Is it for gracefully handling errors?",
+      "revId": "0f4672699a60ccba70e983d66ccac326ec16ff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2867463a_45bd22e1",
+        "filename": "libdexfile/dex/descriptors_names.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-12-03T07:44:40Z",
+      "side": 1,
+      "message": "And that\u0027s also the reason I\u0027m keeping this theoretically unreachable case.\n\nNote that I\u0027m almost perfectly preserving the old behavior. Almost because for a plain \"L\" (or with any number of leading \u0027[\u0027), the old code would have called `temp.back()` on an empty `temp`.",
+      "parentUuid": "5a556e31_94b0c8f8",
       "revId": "0f4672699a60ccba70e983d66ccac326ec16ff92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
