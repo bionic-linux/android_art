@@ -16,6 +16,69 @@
       "message": "PS2 joins the target checkers with the agnostic ones.",
       "revId": "fce573648ab0922be27a02492f8f2a0ac6c5c949",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdeaf04b_aa860afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-12-03T19:34:45Z",
+      "side": 1,
+      "message": "Thanks for cleaning up this script, Martin!",
+      "revId": "fce573648ab0922be27a02492f8f2a0ac6c5c949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a79f061_89ffe108",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-12-03T19:34:45Z",
+      "side": 1,
+      "message": "This comment seems superfluous now; consider removing it.",
+      "range": {
+        "startLine": 784,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 16
+      },
+      "revId": "fce573648ab0922be27a02492f8f2a0ac6c5c949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa2fad7_2ebb481d",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-12-03T19:34:45Z",
+      "side": 1,
+      "message": "Also remove this comment?",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 904,
+        "endChar": 42
+      },
+      "revId": "fce573648ab0922be27a02492f8f2a0ac6c5c949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
