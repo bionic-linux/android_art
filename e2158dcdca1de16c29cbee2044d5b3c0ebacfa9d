@@ -149,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff07421c_7f5ecd03",
+        "filename": "runtime/oat/image.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-12-03T10:40:03Z",
+      "side": 1,
+      "message": "Friendly ping",
+      "parentUuid": "9f10df93_464ec33b",
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75c170f3_53599392",
         "filename": "runtime/oat/oat.h",
         "patchSetId": 4
