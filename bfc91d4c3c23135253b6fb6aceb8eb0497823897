@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "bfc91d4c3c23135253b6fb6aceb8eb0497823897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f77864_5f30cbbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-12-03T16:42:14Z",
+      "side": 1,
+      "message": "Hi Fabien, Just wanted to mention the linter errors about copyright headers can be ignored. We use symlinks for some files and the linter doesn\u0027t understand them. Thanks!",
+      "revId": "bfc91d4c3c23135253b6fb6aceb8eb0497823897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
