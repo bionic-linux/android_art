@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d059fab7_873fce4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-12-03T16:26:31Z",
+      "side": 1,
+      "message": "Presubmit failure is unrelated, and it was seen in other CLs without my changes too",
+      "revId": "ed71ec62949f638ff7bdaae42b4c903a7de14abb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
