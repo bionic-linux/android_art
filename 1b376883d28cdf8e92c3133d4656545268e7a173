@@ -46,6 +46,30 @@
       },
       "revId": "1b376883d28cdf8e92c3133d4656545268e7a173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b81505e_a36af630",
+        "filename": "test/2040-huge-native-alloc/huge_native_buf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-12-04T23:22:48Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a run-time property? Shouldn\u0027t we be able to take the same executable and run it on an emulated VM or real hardware?\n\nThe real question here is presumably whether we\u0027re going through some slow-ish architectural emulation? If we\u0027re running inside an x86 VM on x86, this is presumably not an issue?",
+      "parentUuid": "a25cfaf6_2146b386",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "1b376883d28cdf8e92c3133d4656545268e7a173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
