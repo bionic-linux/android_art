@@ -541,11 +541,11 @@ class MethodVerifier final : public ::art::verifier::MethodVerifier {
                   bool is_primitive) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Lookup instance field and fail for resolution violations
-  ArtField* GetInstanceField(const RegType& obj_type, int field_idx)
+  ArtField* GetInstanceField(uint32_t vregB, uint32_t field_idx, bool is_put)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Lookup static field and fail for resolution violations
-  ArtField* GetStaticField(int field_idx) REQUIRES_SHARED(Locks::mutator_lock_);
+  ArtField* GetStaticField(uint32_t field_idx) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Perform verification of an iget/sget/iput/sput instruction.
   template <FieldAccessType kAccType>
@@ -1021,9 +1021,30 @@ class MethodVerifier final : public ::art::verifier::MethodVerifier {
   }
 
   // Returns the method index of an invoke instruction.
-  uint16_t GetMethodIdxOfInvoke(const Instruction* inst)
+  static uint16_t GetMethodIdxOfInvoke(const Instruction* inst)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    return inst->VRegB();
+    // Note: This is compiled to a single load in release mode.
+    Instruction::Code opcode = inst->Opcode();
+    if (opcode == Instruction::INVOKE_VIRTUAL ||
+        opcode == Instruction::INVOKE_SUPER ||
+        opcode == Instruction::INVOKE_DIRECT ||
+        opcode == Instruction::INVOKE_STATIC ||
+        opcode == Instruction::INVOKE_INTERFACE ||
+        opcode == Instruction::INVOKE_CUSTOM) {
+      return inst->VRegB_35c();
+    } else if (opcode == Instruction::INVOKE_VIRTUAL_RANGE ||
+               opcode == Instruction::INVOKE_SUPER_RANGE ||
+               opcode == Instruction::INVOKE_DIRECT_RANGE ||
+               opcode == Instruction::INVOKE_STATIC_RANGE ||
+               opcode == Instruction::INVOKE_INTERFACE_RANGE ||
+               opcode == Instruction::INVOKE_CUSTOM_RANGE) {
+      return inst->VRegB_3rc();
+    } else if (opcode == Instruction::INVOKE_POLYMORPHIC) {
+      return inst->VRegB_45cc();
+    } else {
+      DCHECK_EQ(opcode, Instruction::INVOKE_POLYMORPHIC_RANGE);
+      return inst->VRegB_4rcc();
+    }
   }
   // Returns the field index of a field access instruction.
   uint16_t GetFieldIdxOfFieldAccess(const Instruction* inst, bool is_static)
@@ -2186,7 +2207,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyMethod() {
       if (register_line != nullptr) {
         if (work_line_->CompareLine(register_line) != 0) {
           Dump(LOG_STREAM(FATAL_WITHOUT_ABORT));
-          LOG(FATAL_WITHOUT_ABORT) << info_messages_.str();
+          LOG(FATAL_WITHOUT_ABORT) << InfoMessages().str();
           LOG(FATAL) << "work_line diverged in " << dex_file_->PrettyMethod(dex_method_idx_)
                      << "@" << reinterpret_cast<void*>(work_insn_idx_) << "\n"
                      << " work_line=" << work_line_->Dump(this) << "\n"
@@ -2259,7 +2280,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyMethod() {
     // To dump the state of the verify after a method, do something like:
     // if (dex_file_->PrettyMethod(dex_method_idx_) ==
     //     "boolean java.lang.String.equals(java.lang.Object)") {
-    //   LOG(INFO) << info_messages_.str();
+    //   LOG(INFO) << InfoMessages().str();
     // }
   }
   return true;
@@ -3570,7 +3591,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       }
     }
     /* immediate failure, reject class */
-    info_messages_ << "Rejecting opcode " << inst->DumpString(dex_file_);
+    InfoMessages() << "Rejecting opcode " << inst->DumpString(dex_file_);
     return false;
   } else if (flags_.have_pending_runtime_throw_failure_) {
     LogVerifyInfo() << "Elevating opcode flags from " << opcode_flags << " to Throw";
@@ -4703,17 +4724,15 @@ void MethodVerifier<kVerifierDebug>::VerifyAPut(const Instruction* inst,
 }
 
 template <bool kVerifierDebug>
-ArtField* MethodVerifier<kVerifierDebug>::GetStaticField(int field_idx) {
+ArtField* MethodVerifier<kVerifierDebug>::GetStaticField(uint32_t field_idx) {
   const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
   // Check access to class
   const RegType& klass_type = ResolveClass<CheckAccess::kYes>(field_id.class_idx_);
-  if (klass_type.IsConflict()) {  // bad class
-    AppendToLastFailMessage(StringPrintf(" in attempt to access static field %d (%s) in %s",
-                                         field_idx, dex_file_->GetFieldName(field_id),
-                                         dex_file_->GetFieldDeclaringClassDescriptor(field_id)));
-    return nullptr;
-  }
-  if (klass_type.IsUnresolvedTypes()) {
+  // Dex file verifier ensures that field ids reference valid descriptors starting with `L`.
+  DCHECK(klass_type.IsJavaLangObject() ||
+         klass_type.IsReference() ||
+         klass_type.IsUnresolvedReference());
+  if (klass_type.IsUnresolvedReference()) {
     // Accessibility checks depend on resolved fields.
     DCHECK(klass_type.Equals(GetDeclaringClass()) ||
            !failures_.empty() ||
@@ -4743,41 +4762,88 @@ ArtField* MethodVerifier<kVerifierDebug>::GetStaticField(int field_idx) {
 }
 
 template <bool kVerifierDebug>
-ArtField* MethodVerifier<kVerifierDebug>::GetInstanceField(const RegType& obj_type, int field_idx) {
-  if (!obj_type.IsZeroOrNull() && !obj_type.IsReferenceTypes()) {
+ArtField* MethodVerifier<kVerifierDebug>::GetInstanceField(uint32_t vregB,
+                                                           uint32_t field_idx,
+                                                           bool is_put) {
+  const RegType& obj_type = work_line_->GetRegisterType(this, vregB);
+  if (!obj_type.IsReferenceTypes()) {
     // Trying to read a field from something that isn't a reference.
-    Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "instance field access on object that has "
-        << "non-reference type " << obj_type;
+    Fail(VERIFY_ERROR_BAD_CLASS_HARD)
+        << "instance field access on object that has non-reference type " << obj_type;
     return nullptr;
   }
   const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
   // Check access to class.
   const RegType& klass_type = ResolveClass<CheckAccess::kYes>(field_id.class_idx_);
-  if (klass_type.IsConflict()) {
-    AppendToLastFailMessage(StringPrintf(" in attempt to access instance field %d (%s) in %s",
-                                         field_idx, dex_file_->GetFieldName(field_id),
-                                         dex_file_->GetFieldDeclaringClassDescriptor(field_id)));
-    return nullptr;
-  }
-  if (klass_type.IsUnresolvedTypes()) {
+  // Dex file verifier ensures that field ids reference valid descriptors starting with `L`.
+  DCHECK(klass_type.IsJavaLangObject() ||
+         klass_type.IsReference() ||
+         klass_type.IsUnresolvedReference());
+  ArtField* field = nullptr;
+  if (klass_type.IsUnresolvedReference()) {
     // Accessibility checks depend on resolved fields.
     DCHECK(klass_type.Equals(GetDeclaringClass()) ||
            !failures_.empty() ||
            IsSdkVersionSetAndLessThan(api_level_, SdkVersion::kP));
-
-    return nullptr;  // Can't resolve Class so no more to do here
+  } else {
+    ClassLinker* class_linker = GetClassLinker();
+    field = class_linker->ResolveFieldJLS(field_idx, dex_cache_, class_loader_);
+    if (field == nullptr) {
+      VLOG(verifier) << "Unable to resolve instance field " << field_idx << " ("
+                     << dex_file_->GetFieldName(field_id) << ") in "
+                     << dex_file_->GetFieldDeclaringClassDescriptor(field_id);
+      DCHECK(self_->IsExceptionPending());
+      self_->ClearException();
+    }
   }
-  DCHECK(klass_type.IsJavaLangObject() || klass_type.IsReference());
-  ClassLinker* class_linker = GetClassLinker();
-  ArtField* field = class_linker->ResolveFieldJLS(field_idx, dex_cache_, class_loader_);
 
-  if (field == nullptr) {
-    VLOG(verifier) << "Unable to resolve instance field " << field_idx << " ("
-              << dex_file_->GetFieldName(field_id) << ") in "
-              << dex_file_->GetFieldDeclaringClassDescriptor(field_id);
-    DCHECK(self_->IsExceptionPending());
-    self_->ClearException();
+  if (obj_type.IsUninitializedTypes()) {
+    // One is not allowed to access fields on uninitialized references, except to write to
+    // fields in the constructor (before calling another constructor). We strictly check
+    // that the field id references the class directly instead of some subclass.
+    if (is_put && field_id.class_idx_ == GetClassDef().class_idx_) {
+      if (obj_type.IsUnresolvedUninitializedThisReference()) {
+        DCHECK(GetDeclaringClass().IsUnresolvedReference());
+        DCHECK(GetDeclaringClass().Equals(reg_types_.FromUninitialized(obj_type)));
+        ClassAccessor accessor(*dex_file_, GetClassDef());
+        auto it = std::find_if(
+            accessor.GetInstanceFields().begin(),
+            accessor.GetInstanceFields().end(),
+            [field_idx] (const ClassAccessor::Field& f) { return f.GetIndex() == field_idx; });
+        if (it != accessor.GetInstanceFields().end()) {
+          // There are no soft failures to report anymore, other than the class being unresolved.
+          return nullptr;
+        }
+      } else if (obj_type.IsUninitializedThisReference()) {
+        DCHECK(GetDeclaringClass().IsJavaLangObject() || GetDeclaringClass().IsReference());
+        DCHECK(GetDeclaringClass().Equals(reg_types_.FromUninitialized(obj_type)));
+        if (field != nullptr &&
+            field->GetDeclaringClass() == GetDeclaringClass().GetClass() &&
+            !field->IsStatic()) {
+          // The field is now fully verified against the `obj_type`.
+          return field;
+        }
+      }
+    }
+    // Allow `iget` on resolved uninitialized `this` for app compatibility.
+    // This is rejected by the RI but there are Android apps that actually have such `iget`s.
+    // TODO: Should we start rejecting such bytecode based on the SDK level?
+    if (!is_put &&
+        obj_type.IsUninitializedThisReference() &&
+        field != nullptr &&
+        field->GetDeclaringClass() == GetDeclaringClass().GetClass()) {
+      return field;
+    }
+    Fail(VERIFY_ERROR_BAD_CLASS_HARD)
+        << "cannot access instance field " << dex_file_->PrettyField(field_idx)
+        << " of a not fully initialized object within the context of "
+        << dex_file_->PrettyMethod(dex_method_idx_);
     return nullptr;
+  }
+
+  DCHECK_IMPLIES(klass_type.IsUnresolvedReference(), field == nullptr);
+  if (field == nullptr) {
+    return nullptr;  // Can't resolve class or field, so no more to do here.
   } else if (obj_type.IsZeroOrNull()) {
     // Cannot infer and check type, however, access will cause null pointer exception.
     // Fall through into a few last soft failure checks below.
@@ -4788,20 +4854,8 @@ ArtField* MethodVerifier<kVerifierDebug>::GetInstanceField(const RegType& obj_ty
         LIKELY(klass_type.IsJavaLangObject() || klass_type.GetClass() == klass)
             ? klass_type
             : reg_types_.FromClass(klass);
-    if (obj_type.IsUninitializedTypes()) {
-      // Field accesses through uninitialized references are only allowable for constructors where
-      // the field is declared in this class.
-      // Note: this IsConstructor check is technically redundant, as UninitializedThis should only
-      //       appear in constructors.
-      if (!obj_type.IsUninitializedThisReference() ||
-          !IsConstructor() ||
-          !field_klass.Equals(GetDeclaringClass())) {
-        Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "cannot access instance field " << field->PrettyField()
-                                          << " of a not fully initialized object within the context"
-                                          << " of " << dex_file_->PrettyMethod(dex_method_idx_);
-        return nullptr;
-      }
-    } else if (!field_klass.IsAssignableFrom(obj_type, this)) {
+    DCHECK(!obj_type.IsUninitializedTypes());
+    if (!field_klass.IsAssignableFrom(obj_type, this)) {
       // Trying to access C1.field1 using reference of type C2, which is neither C1 or a sub-class
       // of C1. For resolution to occur the declared class of the field must be compatible with
       // obj_type, we've discovered this wasn't so, so report the field didn't exist.
@@ -4836,55 +4890,17 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
                                                          bool is_primitive,
                                                          bool is_static) {
   uint32_t field_idx = GetFieldIdxOfFieldAccess(inst, is_static);
+  DCHECK(!flags_.have_pending_hard_failure_);
   ArtField* field;
   if (is_static) {
     field = GetStaticField(field_idx);
   } else {
-    const RegType& object_type = work_line_->GetRegisterType(this, inst->VRegB_22c());
-
-    // One is not allowed to access fields on uninitialized references, except to write to
-    // fields in the constructor (before calling another constructor).
-    // GetInstanceField does an assignability check which will fail for uninitialized types.
-    // We thus modify the type if the uninitialized reference is a "this" reference (this also
-    // checks at the same time that we're verifying a constructor).
-    bool should_adjust = (kAccType == FieldAccessType::kAccPut) &&
-                         (object_type.IsUninitializedThisReference() ||
-                          object_type.IsUnresolvedUninitializedThisReference());
-    const RegType& adjusted_type = should_adjust
-                                       ? GetRegTypeCache()->FromUninitialized(object_type)
-                                       : object_type;
-    field = GetInstanceField(adjusted_type, field_idx);
+    field = GetInstanceField(inst->VRegB_22c(), field_idx, kAccType == FieldAccessType::kAccPut);
     if (UNLIKELY(flags_.have_pending_hard_failure_)) {
       return;
     }
-    if (should_adjust) {
-      bool illegal_field_access = false;
-      if (field == nullptr) {
-        const dex::FieldId& field_id = dex_file_->GetFieldId(field_idx);
-        if (field_id.class_idx_ != GetClassDef().class_idx_) {
-          illegal_field_access = true;
-        } else {
-          ClassAccessor accessor(*dex_file_, GetClassDef());
-          illegal_field_access = (accessor.GetInstanceFields().end() ==
-              std::find_if(accessor.GetInstanceFields().begin(),
-                           accessor.GetInstanceFields().end(),
-                           [field_idx] (const ClassAccessor::Field& f) {
-                             return f.GetIndex() == field_idx;
-                           }));
-        }
-      } else if (field->GetDeclaringClass() != GetDeclaringClass().GetClass()) {
-        illegal_field_access = true;
-      }
-      if (illegal_field_access) {
-        Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "cannot access instance field "
-                                          << dex_file_->PrettyField(field_idx)
-                                          << " of a not fully initialized "
-                                          << "object within the context of "
-                                          << dex_file_->PrettyMethod(dex_method_idx_);
-        return;
-      }
-    }
   }
+  DCHECK(!flags_.have_pending_hard_failure_);
   if (field != nullptr) {
     CheckForFinalAbstractClass(field->GetDeclaringClass());
     if (kAccType == FieldAccessType::kAccPut) {
@@ -5127,6 +5143,7 @@ MethodVerifier::MethodVerifier(Thread* self,
       flags_{ .have_pending_hard_failure_ = false, .have_pending_runtime_throw_failure_ = false },
       const_flags_{ .aot_mode_ = aot_mode, .can_load_classes_ = reg_types->CanLoadClasses() },
       encountered_failure_types_(0),
+      info_messages_(std::nullopt),
       verifier_deps_(verifier_deps),
       link_(nullptr) {
 }
@@ -5237,7 +5254,7 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
             << reg_types->GetDexFile()->PrettyMethod(method_idx) << "\n");
       }
       if (kVerifierDebug) {
-        LOG(INFO) << verifier.info_messages_.str();
+        LOG(INFO) << verifier.InfoMessages().str();
         verifier.Dump(LOG_STREAM(INFO));
       }
       if (CanRuntimeHandleVerificationFailure(verifier.encountered_failure_types_)) {
@@ -5285,13 +5302,13 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
     result.kind = FailureKind::kHardFailure;
 
     if (kVerifierDebug || VLOG_IS_ON(verifier)) {
-      LOG(ERROR) << verifier.info_messages_.str();
+      LOG(ERROR) << verifier.InfoMessages().str();
       verifier.Dump(LOG_STREAM(ERROR));
     }
     // Under verifier-debug, dump the complete log into the error message.
     if (kVerifierDebug && hard_failure_msg != nullptr) {
       hard_failure_msg->append("\n");
-      hard_failure_msg->append(verifier.info_messages_.str());
+      hard_failure_msg->append(verifier.InfoMessages().str());
       hard_failure_msg->append("\n");
       std::ostringstream oss;
       verifier.Dump(oss);
@@ -5341,7 +5358,7 @@ MethodVerifier* MethodVerifier::CalculateVerificationInfo(
   verifier->Verify();
   if (VLOG_IS_ON(verifier)) {
     verifier->DumpFailures(VLOG_STREAM(verifier));
-    VLOG(verifier) << verifier->info_messages_.str();
+    VLOG(verifier) << verifier->InfoMessages().str();
     verifier->Dump(VLOG_STREAM(verifier));
   }
   if (verifier->flags_.have_pending_hard_failure_) {
@@ -5380,7 +5397,7 @@ void MethodVerifier::VerifyMethodAndDump(Thread* self,
       api_level);
   verifier.Verify();
   verifier.DumpFailures(vios->Stream());
-  vios->Stream() << verifier.info_messages_.str();
+  vios->Stream() << verifier.InfoMessages().str();
   // Only dump if no hard failures. Otherwise the verifier may be not fully initialized
   // and querying any info is dangerous/can abort.
   if (!verifier.flags_.have_pending_hard_failure_) {
@@ -5495,7 +5512,7 @@ std::ostream& MethodVerifier::Fail(VerifyError error, bool pending_exc) {
 }
 
 ScopedNewLine MethodVerifier::LogVerifyInfo() {
-  ScopedNewLine ret{info_messages_};
+  ScopedNewLine ret{InfoMessages()};
   ret << "VFY: " << dex_file_->PrettyMethod(dex_method_idx_)
       << '[' << reinterpret_cast<void*>(work_insn_idx_) << "] : ";
   return ret;
