@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b700dba_3b0d86ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269804
+      },
+      "writtenOn": "2024-12-04T15:34:40Z",
+      "side": 1,
+      "message": "Fixed lint and commit message. Retry presubmit on latest patchset.",
+      "revId": "008b617b729bd4d3deab51f1417e27f1a9a40016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
