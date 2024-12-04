@@ -40,18 +40,18 @@ inline Handle<mirror::Class> RegType::GetClassHandle() const {
 
 namespace detail {
 
-class RegTypeAssignabilityImpl final : RegType {
+class RegTypeAssignableImpl final : RegType {
  public:
-  explicit constexpr RegTypeAssignabilityImpl(RegType::Kind kind)
+  explicit constexpr RegTypeAssignableImpl(RegType::Kind kind)
       : RegType("", /* unused cache id */ 0, kind) {}
 
   static constexpr Assignability AssignableFrom(RegType::Kind lhs_kind, RegType::Kind rhs_kind);
 };
 
-constexpr RegType::Assignability RegTypeAssignabilityImpl::AssignableFrom(RegType::Kind lhs_kind,
-                                                                          RegType::Kind rhs_kind) {
-  RegTypeAssignabilityImpl lhs(lhs_kind);
-  RegTypeAssignabilityImpl rhs(rhs_kind);
+constexpr RegType::Assignability RegTypeAssignableImpl::AssignableFrom(RegType::Kind lhs_kind,
+                                                                       RegType::Kind rhs_kind) {
+  RegTypeAssignableImpl lhs(lhs_kind);
+  RegTypeAssignableImpl rhs(rhs_kind);
   auto maybe_narrowing_conversion = [&rhs]() constexpr {
     return rhs.IsIntegralTypes() ? Assignability::kNarrowingConversion
                                  : Assignability::kNotAssignable;
@@ -105,32 +105,28 @@ constexpr RegType::Assignability RegTypeAssignabilityImpl::AssignableFrom(RegTyp
 
 }  // namespace detail
 
-inline RegType::Assignability RegType::AssignabilityFrom(Kind lhs, Kind rhs) {
+inline bool RegType::AssignableFrom(const RegType& lhs,
+                                    const RegType& rhs,
+                                    bool strict,
+                                    MethodVerifier* verifier) {
   static constexpr size_t kNumKinds = NumberOfKinds();
   using AssignabilityTable = std::array<std::array<Assignability, kNumKinds>, kNumKinds>;
   static constexpr AssignabilityTable kAssignabilityTable = []() constexpr {
     AssignabilityTable result;
     for (size_t lhs = 0u; lhs != kNumKinds; ++lhs) {
       for (size_t rhs = 0u; rhs != kNumKinds; ++rhs) {
-        result[lhs][rhs] = detail::RegTypeAssignabilityImpl::AssignableFrom(
+        result[lhs][rhs] = detail::RegTypeAssignableImpl::AssignableFrom(
             enum_cast<RegType::Kind>(lhs), enum_cast<RegType::Kind>(rhs));
       }
     }
     return result;
   }();
 
-  return kAssignabilityTable[lhs][rhs];
-}
-
-inline bool RegType::AssignableFrom(const RegType& lhs,
-                                    const RegType& rhs,
-                                    bool strict,
-                                    MethodVerifier* verifier) {
   if (lhs.Equals(rhs)) {
     return true;
   }
 
-  Assignability assignable = AssignabilityFrom(lhs.GetKind(), rhs.GetKind());
+  Assignability assignable = kAssignabilityTable[lhs.GetKind()][rhs.GetKind()];
   DCHECK(assignable != Assignability::kInvalid)
       << "Unexpected register type in IsAssignableFrom: '" << lhs << "' := '" << rhs << "'";
   if (assignable == Assignability::kAssignable) {
