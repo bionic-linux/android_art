@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b483d58_1e258b38",
+        "filename": "test/2040-huge-native-alloc/huge_native_buf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-12-04T06:05:24Z",
+      "side": 1,
+      "message": "Where is that defined?",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "1b376883d28cdf8e92c3133d4656545268e7a173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
