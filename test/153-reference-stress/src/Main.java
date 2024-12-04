@@ -17,12 +17,16 @@
 import java.lang.ref.WeakReference;
 
 public class Main {
-    static final int numWeakReferences = 16 * 1024;
-    static WeakReference[] weakReferences = new WeakReference[numWeakReferences];
+    static int numWeakReferences;
+    static WeakReference[] weakReferences;
     static volatile boolean done = false;
     static Object keepAlive;
 
     public static void main(String[] args) throws Exception {
+        System.loadLibrary(args[0]);
+        numWeakReferences = 16 * 1024 / (isVm() ? 4 : 1);
+        weakReferences = new WeakReference[numWeakReferences];
+
         // Try to call Reference.get repeatedly while the GC is running.
         Thread gcThread = new GcThread();
         Thread[] readerThread = new ReaderThread[4];
@@ -70,4 +74,6 @@ public class Main {
             }
         }
     }
+
+    private static native boolean isVm();
 }

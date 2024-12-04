@@ -64,6 +64,10 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_hasJit(JNIEnv*, jclass) {
   return GetJitIfEnabled() != nullptr;
 }
 
+extern "C" JNIEXPORT jboolean JNICALL Java_Main_isVm() {
+  return kIsVm;
+}
+
 // public static native boolean hasOatFile();
 
 extern "C" JNIEXPORT jboolean JNICALL Java_Main_hasOatFile(JNIEnv* env, jclass cls) {

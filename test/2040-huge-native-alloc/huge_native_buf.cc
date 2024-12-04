@@ -41,9 +41,5 @@ extern "C" JNIEXPORT jint JNICALL Java_Main_getGcNum(
   return Runtime::Current()->GetHeap()->GetCurrentGcNum();
 }
 
-extern "C" JNIEXPORT jboolean JNICALL Java_Main_isVm() {
-  return kIsVm;
-}
-
 }  // namespace HugeNativeBuf
 }  // namespace art
