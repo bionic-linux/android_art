@@ -459,6 +459,7 @@ class Instruction {
   // VRegH
   bool HasVRegH() const;
   int32_t VRegH() const;
+  ALWAYS_INLINE int32_t VRegH(Format format) const;
   uint16_t VRegH_45cc() const;
   uint16_t VRegH_4rcc() const;
 
