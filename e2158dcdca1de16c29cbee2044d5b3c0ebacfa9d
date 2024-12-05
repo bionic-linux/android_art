@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6034d688_0c4535f8",
+        "filename": "runtime/oat/image.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-12-05T14:58:56Z",
+      "side": 1,
+      "message": "I think it\u0027s ok not to update.",
+      "parentUuid": "ff07421c_7f5ecd03",
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75c170f3_53599392",
         "filename": "runtime/oat/oat.h",
         "patchSetId": 4
