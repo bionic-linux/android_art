@@ -118,6 +118,30 @@
       },
       "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d332821b_2f682a60",
+        "filename": "tools/boot-image-profile-generate.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-12-05T18:05:24Z",
+      "side": 0,
+      "message": "Sorry for the delay.\n\nI agree that including everything as the default would be simple, but the fact is that the current default is **not** including everything, AFAIUI. For example, the default `--method-threshold` is [10](https://cs.android.com/android/platform/superproject/main/+/main:art/profman/boot_image_profile.h;l\u003d52;drc\u003d93610b4b9be11adc30cd9b0061649e204e849191).\n\nIIUC, before this change, this script includes everything from `android` and `com.android.systemui`, but after this change, it will no longer be the case. I don\u0027t know who\u0027s using this script, but they may expect it to includes everything from `android` and `com.android.systemui` and find a surprise that it no longer does.\n\nLooking at the comment at the top of this script, it says\n\n\u003e This script creates the framework boot image profile (suitable to include in the platform build).\n\nMy understanding is that OEMs should be able to use this script to create a boot image profile for their system image and drop it to `frameworks/base/boot/boot-image-profile.txt` as is. If having `--special-package\u003dandroid:1` and `--special-package\u003dcom.android.systemui:1` makes sense for that purpose, then it\u0027s better to keep them. Otherwise, we should make the default behavior whatever makes sense for that purpose (think of how we create boot image profile on the cloud).\n\nTo your worry that it\u0027s very confusing that `--method-threshold` doesn\u0027t take effect due to the existence of the default arguments, we can restrict the default arguments so that they are only applied when there is no user-specified argument (i.e., `${#profman_args[*]}` is zero), as Martin suggested.",
+      "parentUuid": "b7d66b38_a2f28ec7",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "ecee442f6432c727eea77d80d9c20ba037bcbaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
