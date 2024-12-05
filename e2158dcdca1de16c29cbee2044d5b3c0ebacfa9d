@@ -183,6 +183,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1989222d_72e1115e",
+        "filename": "runtime/oat/image.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-12-05T15:34:36Z",
+      "side": 1,
+      "message": "Thanks, reverted this file\u0027s changes.",
+      "parentUuid": "6034d688_0c4535f8",
+      "revId": "e2158dcdca1de16c29cbee2044d5b3c0ebacfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75c170f3_53599392",
