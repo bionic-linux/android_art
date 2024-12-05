@@ -4165,16 +4165,13 @@ void ClassLinker::LoadMethod(const DexFile& dex_file,
     }
   } else if (method_name[0] == '<') {
     // Fix broken access flags for initializers. Bug 11157540.
-    bool is_init = has_ascii_name("<init>", sizeof("<init>") - 1u);
-    bool is_clinit = has_ascii_name("<clinit>", sizeof("<clinit>") - 1u);
-    if (UNLIKELY(!is_init && !is_clinit)) {
-      LOG(WARNING) << "Unexpected '<' at start of method name " << method_name;
-    } else {
-      if (UNLIKELY((access_flags & kAccConstructor) == 0)) {
-        LOG(WARNING) << method_name << " didn't have expected constructor access flag in class "
-            << klass->PrettyDescriptor() << " in dex file " << dex_file.GetLocation();
-        access_flags |= kAccConstructor;
-      }
+    // `DexFileVerifier` rejects method names starting with '<' other than constructors.
+    DCHECK(has_ascii_name("<init>", sizeof("<init>") - 1u) ||
+           has_ascii_name("<clinit>", sizeof("<clinit>") - 1u)) << method_name;
+    if (UNLIKELY((access_flags & kAccConstructor) == 0)) {
+      LOG(WARNING) << method_name << " didn't have expected constructor access flag in class "
+          << klass->PrettyDescriptor() << " in dex file " << dex_file.GetLocation();
+      access_flags |= kAccConstructor;
     }
   }
 
@@ -10455,21 +10452,17 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
     case DexFile::MethodHandleType::kInvokeStatic: {
       kind = mirror::MethodHandle::Kind::kInvokeStatic;
       receiver_count = 0;
-      target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                       method_handle.field_or_method_idx_,
-                                                       referrer,
-                                                       InvokeType::kStatic);
+      target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                              referrer,
+                                              InvokeType::kStatic);
       break;
     }
     case DexFile::MethodHandleType::kInvokeInstance: {
       kind = mirror::MethodHandle::Kind::kInvokeVirtual;
       receiver_count = 1;
-      target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                       method_handle.field_or_method_idx_,
-                                                       referrer,
-                                                       InvokeType::kVirtual);
+      target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                              referrer,
+                                              InvokeType::kVirtual);
       break;
     }
     case DexFile::MethodHandleType::kInvokeConstructor: {
@@ -10477,11 +10470,9 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
       // are special cased later in this method.
       kind = mirror::MethodHandle::Kind::kInvokeTransform;
       receiver_count = 0;
-      target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                       method_handle.field_or_method_idx_,
-                                                       referrer,
-                                                       InvokeType::kDirect);
+      target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                              referrer,
+                                              InvokeType::kDirect);
       break;
     }
     case DexFile::MethodHandleType::kInvokeDirect: {
@@ -10503,18 +10494,14 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
 
       if (target_method->IsPrivate()) {
         kind = mirror::MethodHandle::Kind::kInvokeDirect;
-        target_method =
-            ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                         method_handle.field_or_method_idx_,
-                                                         referrer,
-                                                         InvokeType::kDirect);
+        target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                                referrer,
+                                                InvokeType::kDirect);
       } else {
         kind = mirror::MethodHandle::Kind::kInvokeSuper;
-        target_method =
-            ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                         method_handle.field_or_method_idx_,
-                                                         referrer,
-                                                         InvokeType::kSuper);
+        target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                                referrer,
+                                                InvokeType::kSuper);
         if (UNLIKELY(target_method == nullptr)) {
           break;
         }
@@ -10530,11 +10517,9 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
     case DexFile::MethodHandleType::kInvokeInterface: {
       kind = mirror::MethodHandle::Kind::kInvokeInterface;
       receiver_count = 1;
-      target_method =
-          ResolveMethod<ResolveMode::kCheckICCEAndIAE>(self,
-                                                       method_handle.field_or_method_idx_,
-                                                       referrer,
-                                                       InvokeType::kInterface);
+      target_method = ResolveMethodWithChecks(method_handle.field_or_method_idx_,
+                                              referrer,
+                                              InvokeType::kInterface);
       break;
     }
   }

@@ -119,11 +119,7 @@ void CheckNterpAsmConstants() {
 inline void UpdateHotness(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_) {
   // The hotness we will add to a method when we perform a
   // field/method/class/string lookup.
-  Runtime* runtime = Runtime::Current();
-  bool increase_hotness_for_ui = runtime->GetStartupCompleted() &&
-      runtime->InJankPerceptibleProcessState() &&
-      Thread::Current()->IsJitSensitiveThread();
-  method->UpdateCounter(increase_hotness_for_ui ? 0x6ff : 0xf);
+  method->UpdateCounter(0xf);
 }
 
 template<typename T>
@@ -335,10 +331,8 @@ extern "C" size_t NterpGetMethod(Thread* self, ArtMethod* caller, const uint16_t
 
   ClassLinker* const class_linker = Runtime::Current()->GetClassLinker();
   ArtMethod* resolved_method = caller->SkipAccessChecks()
-      ? class_linker->ResolveMethod<ClassLinker::ResolveMode::kNoChecks>(
-            self, method_index, caller, invoke_type)
-      : class_linker->ResolveMethod<ClassLinker::ResolveMode::kCheckICCEAndIAE>(
-            self, method_index, caller, invoke_type);
+      ? class_linker->ResolveMethodId(method_index, caller)
+      : class_linker->ResolveMethodWithChecks(method_index, caller, invoke_type);
   if (resolved_method == nullptr) {
     DCHECK(self->IsExceptionPending());
     return 0;
