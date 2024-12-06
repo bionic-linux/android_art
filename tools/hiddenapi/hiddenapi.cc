@@ -1091,9 +1091,9 @@ class HiddenApi final {
   static constexpr std::string_view kExcludeFromOutput{"exclude-from-output"};
 
   void ListApi() {
-    if (boot_dex_paths_.empty()) {
+    /*if (boot_dex_paths_.empty()) {
       Usage("No boot DEX files specified");
-    } else if (stub_classpaths_.empty()) {
+    } else*/ if (stub_classpaths_.empty()) {
       Usage("No stub DEX files specified");
     } else if (api_flags_path_.empty()) {
       Usage("No output path specified");
