@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9422f1_e11803e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-12-06T09:33:59Z",
+      "side": 1,
+      "message": "Feel free to do bypass-presubmit +1. The failure is a known failure tip of tree",
+      "revId": "3122e028a420eb893d2003bd6ce91dc77f32637d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
